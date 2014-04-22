@@ -16,3 +16,7 @@ releasetests/dtd/
 selftests/dtd/
 webtest-results/
 webtestRunning.txt
+junit*.properties
+dummy
+spiderman.txt
+
