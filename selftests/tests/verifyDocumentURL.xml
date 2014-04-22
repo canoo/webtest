@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="verifyDocumentURL" default="all" basedir=".">
+
+    <target name="all">
+        <antcall target="testText"/>
+        <antcall target="testRegEx"/>
+        <antcall target="testRedirect"/>
+    </target>
+
+    <target name="testText">
+        <webtest name="verifyDocumentURL: Show how to test against arbitrary text in the document URL">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page"
+                        url="${start.page}"/>
+                <verifyDocumentURL
+                        description="Compare the complete document URL"
+                        text="${webtest.protocol}://${webtest.host}:${webtest.port}/${webtest.basepath}/${start.page}"
+                        />
+                <not description="expected to fail for URL is not complete">
+                    <verifyDocumentURL description="URL fragment"
+                                       text="${start.page}"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testRegEx">
+        <webtest name="verifyDocumentURL: Show how to use regular expressions on the document URL">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page"
+                        url="${start.page}"/>
+                <verifyDocumentURL description="fixed text without wildcards"
+                                   text="${start.page}"
+                                   regex="true"/>
+                <verifyDocumentURL description="one line plain text with pattern"
+                                   text="${webtest.protocol}://${webtest.host}:\d+/${webtest.basepath}/${start.page}"
+                                   regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testRedirect">
+        <webtest name="verifyDocumentURL: Show that redirected pages work (via sendRedirect())">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="test servlet for redirect test (via sendRedirect())"
+                        url="formTest?mode=redirectTest"/>
+                <verifyDocumentURL
+                        description="Compare the complete document URL"
+                        text="${webtest.protocol}://${webtest.host}:${webtest.port}/${webtest.basepath}/${start.page}?mode=redirectTarget"
+                        />
+            </steps>
+        </webtest>
+        <webtest name="verifyDocumentURL: Show that redirected pages work (via Meta-equiv refresh)">
+            <config
+                    host="${webtest.host}"
+                    port="${webtest.port}"
+                    protocol="${webtest.protocol}"
+                    basepath="${webtest.basepath}"
+                    saveresponse="true"
+                    autorefresh="true"
+                    resultpath="${wt.config.resultpath}"
+                    resultfile="${webtest.resultfile}"
+                    haltonfailure="true"
+                    showhtmlparseroutput="false"
+                    />
+            <steps>
+                <invoke description="test servlet for redirect test (via meta equiv)"
+                        url="formTest?mode=redirectTestMeta"/>
+                <verifyDocumentURL
+                        description="Compare the complete document URL"
+                        text="${webtest.protocol}://${webtest.host}:${webtest.port}/${webtest.basepath}/${start.page}?mode=redirectTarget"
+                        />
+            </steps>
+        </webtest>
+    </target>
+
+
+</project>

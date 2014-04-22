@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testForceInputFieldAttributeSteps" default="all" basedir=".">
+
+	<target name="all">
+		<antcall target="testForceInputFieldAttributeStepsError"/>
+        <!-- <antcall target="testForceInputFieldAttributeStepsControl"/> -->
+		<antcall target="testForceInputFieldAttributeStepsUsage"/>
+	</target>
+
+	<target name="testForceInputFieldAttributeStepsError">
+		<webtest name="forceInputFieldAttribute: Show forceInputFieldAttribute fails if field doesn't exist">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="getMainPage for test" url="disabledElementPage.html"/>
+				<verifytitle description="check we are on the test page" text="Disabled Element Test Page"/>
+				<not>
+					<forceInputFieldAttribute
+						name="noElementWithThisName" value="dummy"
+					    attributeName="foo" attributeValue="bar"/>
+                </not>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testForceInputFieldAttributeStepsControl">
+		<webtest name="forceInputFieldAttribute: Show working javascript example that toggles disabled field">
+			&sharedConfiguration;
+			<steps>
+				<invoke
+					description="getMainPage for forceHiddenInputField test"
+				    url="disabledElementPage.html"/>
+				<verifytitle description="check we are on the test page" text="Disabled Element Test Page"/>
+				<verifyXPath description="for Kind, menu and text field are disabled"
+				             xpath="count(//form/node()[contains(@name, 'teamKind')]/@disabled)" text="2"/>
+				<verifyXPath description="for Country, menu and text field are disabled"
+				             xpath="count(//form/node()[contains(@name, 'teamCountry')]/@disabled)" text="2"/>
+				<setRadioButton name="subSelection" value="teamKind"/>
+                <verifyXPath description="for Kind, menu is enabled"
+                             xpath="not(//form/select[@name='teamKind']/@disabled)"
+                             text="true"/>
+                <verifyXPath description="for Kind, text field is disabled"
+                             xpath="boolean(//form/input[@name='teamKindOther']/@disabled)"
+                             text="true"/>
+                <verifyXPath description="for Country, menu and text field are disabled"
+                             xpath="count(//form/node()[contains(@name, 'teamCountry')]/@disabled)" text="2"/>
+                <setSelectField name="teamKind" text="Other"/>
+                <verifyXPath description="for Kind, menu and text field are enabled"
+                             xpath="not(//form/node()[contains(@name, 'teamKind')]/@disabled)" text="true"/>
+                <verifyXPath description="for Country, menu and text field are disabled"
+                             xpath="count(//form/node()[contains(@name, 'teamCountry')]/@disabled)" text="2"/>
+                <setInputField name="teamKindOther" value="Canoo" />
+				<clickButton name="search"/>
+				<verifyText text="teamKind = Other"/>
+				<verifyText text="teamKindOther = Canoo"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testForceInputFieldAttributeStepsUsage">
+		<webtest
+			name="forceInputFieldAttribute: Show usage of forceInputFieldAttribute step for non-working javascript">
+			&sharedConfiguration;
+			<steps>
+				<enableJavaScript enable="false"/>
+				<invoke description="getMainPage for test" url="disabledElementPage.html"/>
+				<verifytitle description="check we are on the test page" text="Disabled Element Test Page"/>
+                <verifyXPath description="for Kind, menu and text field are disabled"
+                             xpath="count(//form/node()[contains(@name, 'teamKind')]/@disabled)" text="2"/>
+                <verifyXPath description="for Country, menu and text field are disabled"
+                             xpath="count(//form/node()[contains(@name, 'teamCountry')]/@disabled)" text="2"/>
+                <setRadioButton name="subSelection" value="teamKind"/>
+				<forceInputFieldAttribute
+					description="Emulate radio-button javascript, enable a select element"
+				    name="teamKind" tagName="select"
+				    attributeName="disabled" attributeValue=""/>
+                <verifyXPath description="for Kind, menu is enabled"
+                             xpath="not(//form/select[@name='teamKind']/@disabled)"
+                             text="true"/>
+                <verifyXPath description="for Kind, text field is disabled"
+                             xpath="boolean(//form/input[@name='teamKindOther']/@disabled)"
+                             text="true"/>
+                <verifyXPath description="for Country, menu and text field are disabled"
+                             xpath="count(//form/node()[contains(@name, 'teamCountry')]/@disabled)" text="2"/>
+                <setSelectField name="teamKind" text="Other"/>
+				<forceInputFieldAttribute
+					description="Emulate select javascript, enable a input element"
+				    name="teamKindOther" attributeName="disabled" attributeValue=""/>
+                <verifyXPath description="for Kind, menu and text field are enabled"
+                             xpath="not(//form/node()[contains(@name, 'teamKind')]/@disabled)" text="true"/>
+                <verifyXPath description="for Country, menu and text field are disabled"
+                             xpath="count(//form/node()[contains(@name, 'teamCountry')]/@disabled)" text="2"/>
+                <setInputField name="teamKindOther" value="Canoo"/>
+				<clickButton name="search"/>
+				<verifyText text="teamKind = Other"/>
+				<verifyText text="teamKindOther = Canoo"/>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

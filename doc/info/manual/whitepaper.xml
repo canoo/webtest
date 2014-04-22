@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd"
+[
+	<!ENTITY site       SYSTEM "WebTestSite.xml">
+	<!ENTITY example    "<include src='examples/whitepaperExample.xml' />">
+]
+>
+
+<manpage siteid="White Paper">
+
+	&site;
+
+	<head title="Canoo WebTest White Paper">
+
+		<b>Testing is an important part of any serious development effort.
+		For web applications it is crucial.</b>
+
+		<b>Defects in your corporate website may be only annoying at one time but
+		they can cost you real money at other times, they can lower your
+		market value and may even put you out of business.</b>
+
+		<b>
+			Canoo WebTest helps you to reduce the defect rate of your web application.
+		</b>
+
+	</head>
+
+	<section title="What our customers care about">
+			<dl>
+				<li>
+					<dt> Quality </dt>
+					<dd> Quality improvements are hard to achieve if you cannot see
+					the effects of your measures.
+						<n/>
+						Canoo WebTest measures the externally observable quality of your
+					application.
+
+					</dd>
+				</li>
+				<li>
+					<dt> Development Risk </dt>
+					<dd> Is the development team on track? What progress did it achieve?
+					What does it mean, if they say that 80% is working? Is it really?
+						<n/>
+						Canoo WebTest reports the real progress in terms of running Use Cases.
+
+					</dd>
+				</li>
+				<li>
+					<dt> Operations Risk </dt>
+					<dd> Can we put our application into production safely? Will it work?
+					Will it not do any harm when running?
+						<n/>
+						Canoo WebTest tells you whether it will work.
+
+					</dd>
+				</li>
+				<li>
+					<dt> Delivery </dt>
+					<dd> Did the development team really deliver everything they promised?
+						<n/>
+						Canoo WebTest tells you what was delivered and whether it works as expected.
+
+					</dd>
+				</li>
+				<li>
+					<dt> Costs </dt>
+					<dd> The costs for testing must not exceed its benefits.
+						<n/>
+						Canoo WebTest is free of charge, tests are easy and quick to write. They can
+					be run countless times unsupervised and automatically. In fact it is cheaper and
+					faster than testing manually.
+
+					</dd>
+				</li>
+			</dl>
+	</section>
+
+	<section title="What programmers care about">
+
+		<b>As programmers we want to be sure that our web application works as
+		expected. We want to validate our work. We need some backing so that we
+		can boldly say: &quot;Yes, we have done
+		it correctly. Yes, it works. Yes, we are finished with this.
+		No, we have not broken any old functionality.&quot;</b>
+
+		<b>If we apply the full set of tests to the system every day then it is
+		easy to find the cause of any reported defect,
+		because it must be something we checked in yesterday.</b>
+
+		<b>If testing finds a defect, we want to solve it quickly.
+		Therefore, we need to reproduce the unexpected behavior. What were the
+		steps that led to this error? What was the sequence? What were the
+		intermediate results? How much easier would it be to track down the
+		error if we only had this information!</b>
+
+		<b>No matter how hard we try, there will always be defects that slip
+		through our testing. They get reported by our users. We want to make
+		sure that their feedback does not get lost, that the defect really gets solved,
+		that it never appears again in future releases. The best solution
+		is to write an automated test that exposes the bug. It will fail
+		as long as the bug is unsolved. It will stay forever in our suite of tests.</b>
+
+		<b>We have to read a lot of documentation every day.
+		Bad experience made us suspicious about the correctness of any external
+		documentation. We don't really like writing documentation ourselves because
+		we know that it is only a matter of time until it is out of sync with the
+		system and all our effort will be wasted. If the documentation is done
+		via automated tests, it is assured to be up to date, making it a reliable
+		source of information. We are much more motivated to invest our
+		time for this.</b>
+
+		<b>The same holds true for requirements specifications. It would be really
+		convenient if we could automatically prove that we comply with the
+		requirements spec. Therefore the spec needs to be formal enough to
+		allow automated compliance tests. It must still be easy to understand
+		so that the customer, the requirements analyst and
+		the development team can all easily understand the spec.
+		The specification language needs to be flexible enough to express
+		page contents, workflow and navigational structures.</b>
+
+		<b>You may claim that all the above would be really helpful but
+		impossible to implement under the constraints of real projects.
+		We have done it ourselves
+		and we have helped others doing it. The effect is tremendous: to
+		the quality of the system, to the satisfaction of the customer and
+		to the motivation and self-esteem of the development crew.</b>
+
+		<b>Testing is not for free, but it pays off.</b>
+
+	</section>
+
+	<section title="How Canoo WebTest works">
+
+		<b>
+			Canoo WebTest lets you specify test steps like</b>
+
+			<dl>
+				<li>
+					<dd>get the login page</dd>
+				</li>
+				<li>
+					<dd>validate the page title to be
+						<example>Login Page</example>
+					</dd>
+				</li>
+				<li>
+					<dd>fill
+						<example>scott</example> in the username text field
+					</dd>
+				</li>
+				<li>
+					<dd>fill
+						<example>tiger</example> in the password field
+					</dd>
+				</li>
+				<li>
+					<dd>hit the ok button</dd>
+				</li>
+				<li>
+					<dd>validate the page title to be
+						<example>Home Page</example>
+					</dd>
+				</li>
+			</dl>
+
+		<b>The example steps above make up a sequence of steps that only make
+		sense if executed in exactly this order and within one user session. We call
+		this a
+			<em>use case</em> or a
+			<em>scenario</em>.
+
+			Canoo WebTest offers the appropriate abstraction
+		for this. Refer to the
+			<pageref name="Manual Overview" />
+		and the
+			<pageref name="API Doc" /> for a complete list of step types.
+		</b>
+
+		<b>Converting the textual description into a
+			Canoo WebTest is easy, as you see
+		below. Note how close it is to the textual description.
+		</b>
+
+		<code caption="The example as a Canoo WebTest">
+			&example;
+		</code>
+
+		<b>This is
+			<key>XML</key> and you will get all the support from your preferred
+			<key>XML</key> editor, including
+		syntax highlighting and code completion based on the
+			<example>WebTest.dtd</example>.
+
+			Canoo WebTest leverages the advantages of
+			<key>XML</key> even further. You may have noticed the line
+
+			<example>&amp;config;</example>. This is an
+			<key>XML</key> entity that refers to the content of a file.
+		The
+			<key>XML</key> parser inlines the file at
+		test execution time. It is one of the possible ways to share common settings for all test steps. Here
+		the settings for protocol, host, port and webapp name are shared.
+
+		</b>
+
+		<b>If you are familiar with the
+			<key>ANT</key> build automation tool you will have recognized that
+
+			Canoo WebTest makes use of this. If
+			<key>ANT</key> is totally new to you, we recommend having a look at the
+
+			<key>ANT</key> description at
+			<key>jakarta</key>.
+			Canoo WebTest
+		exploits
+			<key>ANT</key>&apos;s ability to structure a &quot;build&quot; into modules that can either be called
+		separately or as a whole. That way, you can run any WebTest in isolation. You can also
+		group tests into a testsuite that again can be part of a bigger testsuite. In the end
+		you have a tree of testsuites, where each node and subtree can be executed.
+		</b>
+
+		<b>The execution of the several test steps is currently implemented by using the
+
+			<key>htmlunit</key> API, again an Open Source package. Test results are reported in either plain text
+		or in
+			<key>XML</key> format for later presentation via
+			<key>XSLT</key>. Standard reporting
+
+			<key>XSLT</key> stylesheets come with the
+
+			Canoo WebTest distribution. They can easily be adapted to your corporate style and reporting
+		requirements.
+		</b>
+
+		<b>A sidebar: Do you think that the above example is so easy that
+		you do not need an automatic test for this? Consider the following variations:</b>
+
+			<dl>
+				<li>
+					<dt>Bookmark</dt>
+					<dd>What if I try to get the Home Page directly without login?</dd>
+				</li>
+				<li>
+					<dt>Other pages</dt>
+					<dd>We have to test that no page is shown without proper
+					login and that we get the requested page after proper login.</dd>
+				</li>
+				<li>
+					<dt>Bad Login</dt>
+					<dd>Bad login should keep us on the login page.</dd>
+				</li>
+			</dl>
+		<b>This is quite a number of scenarios to be tested.
+		Now imagine a manual tester checking all this. Very soon he will
+		get bored and unobservant, not to mention that resetting his session
+		for every single test requires a lot of work. Is he
+			<em>really</em>
+		checking again all the possible variations at every full test?
+		</b>
+
+	</section>
+
+	<section title="Pragmatic Considerations">
+
+		<b>Test automation is key to better quality. Manual checks are more flexible and less
+		expensive to do
+			<em>one time</em>. They are more expensive and less reliable when tests
+		need to be done over and over again. We advise to do manual checks for everything that
+		cannot break after it worked once. Everything else should be automated if the automation
+		can be done without excessive costs. We feel that testing with
+			Canoo WebTest reaches the
+		break-even point for 90% of our tests after a few test runs at latest.
+		</b>
+
+		<b>We want to use what we already know. We don&apos;t want to learn a new language
+		for the test automation. We want to rely on standard formats.</b>
+
+		<b>Functional testing can be classified as being either data driven or record/replay.
+
+			Canoo WebTest follows the data driven approach. Record/replay is appealing at first, because you can
+		create a lot of tests in a short time. A proxy logs what pages you request and stores
+		the results. It can then replay the requests and compare the results against the stored
+		ones. You typically have to tweak this procedure to tell the program what parts of the
+		page are expected to change. The actual date and time are the most obvious examples.
+		Every small change to your webapp causes a lot of these tests to fail. These failures
+		must be manually processed to separate the &quot;real&quot; failures from the &quot;false negatives&quot;.
+		Doing this is almost as tedious and error prone as the manual testing and is therefore
+		discouraged e.g. by the
+			<key>ats</key> group.
+		</b>
+
+		<citeref>cost-effective</citeref>
+
+		<b>Any automated test should fit snugly into your build process. If you are already using
+
+			<key>ANT</key> for your build automation, it is no effort to integrate
+			Canoo WebTest. An Example of this is Canoo WebTest itself. It contains a selftest that is written with
+			Canoo WebTest. Every new build of Canoo WebTest triggers
+		that selftest. You can explore this behavior online, starting at the Build Info
+		link of the Canoo WebTest distribution page. Note that this is very convenient for
+		nightly builds and even for use with a continuous integration platform
+		like
+			<key>cruisecontrol</key>.
+		</b>
+
+		<b>If your build process is not <key>ANT</key> based, calling Canoo WebTest is still easy.
+		It means starting a Java Application. This can easily be done with every build script
+		language that we know.
+		</b>
+
+		<b>&quot;Regression tests&quot; is the concept of testing that asserts that everything that
+		worked yesterday still works today. To achieve this, our tests must not be dependent
+		on random data. Also, the expected result must be clear in advance as opposed to the
+		&quot;guru checks output&quot; approach, where a specialist validates changing results.
+		Tests must give a thumps up indication when successful
+		and a detailed error indication otherwise. Well, this is pretty much like compiler
+		messages.</b>
+
+		<b>Functional tests do not replace unit tests. They work together hand-in-hand.
+		Consider the following example: Your
+		Webapp displays an html table that is filled with data from the database. The
+		maximum number of rows should be 20 and if there is more data available, a link
+		should be shown that points to the page that contains the next 20 entries.
+		If there is no data, no table should be shown, but the message &quot;sorry, no data&quot;.
+		We would test this with a) no data b) one row c) 5 rows d) exactly 20 rows
+		e) 21 rows f) 40 rows g) 41 rows. A naive way of testing this would be to manipulate the database
+		(maybe by using an administration servlet that we can call via &quot;invoke&quot;) prior
+		to calling the page. But this is not only very slow but also a little dangerous.
+		What if two tests run concurrently against the same test database? They
+		will mutually destroy their test setup. What if the test run breaks? Is the
+		state of the test database rolled back? The whole job is difficult to do for a
+		functional test, but easy and quick for a unit test. A unit test can easily
+		call the table rendering and assert the proper &quot;paging&quot; without even having a
+		database! What is left for the functional test is to assert that the table rendering logic
+		was called at all.</b>
+
+		<b>There is a lot more to say about unit testing. Refer to
+			<key>junit</key> and the annotated
+		references for further information.
+		</b>
+
+		<b>
+			Canoo WebTest is an Open Source Java project and totally based on Open Source
+		packages. If you are not satisfied with any of the functionality, you can adapt it
+		to your requirements. Having the sources, you even gain the ability to start the test in the
+		debugger, revealing everything that goes on.
+		</b>
+
+		<b>
+			Canoo WebTest is free of charge. The downside is, that there is no guaranteed
+		support. However, you can ask Canoo for special support incidents, a support contract
+		and on-site help for introducing automated testing in your project.
+		</b>
+
+		<b>
+			Canoo WebTest is not restricted to any special technology on the server side.
+		It makes no difference if you use Servlets, JSP, ASP, CGI, PHP or whatever as long
+		as it produces html. Canoo WebTest executes client side JavaScript just like
+		your browser does. In fact, it uses <key>htmlunit</key> for this purpose, which can
+		be seen as a faceless browser that is able to mimic the behaviour of e.g.
+		MSIE or Firefox.
+		</b>
+
+		<b>Browser dependencies are the menace of web programming. One possibility is
+		to check manually against all the "supported browsers". Our approach is to
+		validate our html to comply with the specification. A full and pedantic validation
+		is outside the scope of Canoo WebTest, but every validation step calls the
+		Neko Html parser (part of
+			<key>htmlunit</key>) and will warn you on improper html.
+		That has proven to be very
+		helpful. If your manual tests reveal that certain html constructions produce
+		different behavior in your supported browers (like empty table cells in
+		IE and Netscape), you can set up a test that checks against the usage
+		of these constructs.
+		</b>
+
+	</section>
+
+	<section title="Advanced Topics">
+
+		<b>We found Canoo WebTests to be easy to understand, maintain and create even
+		for non-developers. We had testers,
+		assistants, novice programmers, business-process analysts and even managers and
+		customers writing tests. This opens another opportunity: if the customer is able
+		to understand or even write the tests, than they can serve as a
+		requirements collection.
+		Our preferred way of dealing with requirements is:
+		&quot;Whatever you write in a test, we will make
+		it run. We promise nothing else but this.&quot;
+		</b>
+
+		<b>If we get the tests written in advance, they serve as a requirements
+		specification. While implementing, they give feedback how far we are. After
+		Implementation, they document what we have done. That documentation is always
+		up to date, as we can prove by the click of a button. The format of this
+		documentation may be unfamiliar (as it is not MS-Word) but it has
+		&quot;the power of plain text&quot; (cf.
+			<key>pragmatic</key>). It can
+		easily be transferred into other formats, e.g. by using
+			<key>XSLT</key>.
+
+		</b>
+
+		<b>It is good practice to care for the quality of your tests no less than you
+		do for the quality of your production code. The first point here is to avoid
+		duplication. Canoo WebTest combines the options of
+			<key>XML</key> and
+			<key>ANT</key>
+		for helping you with this.
+		</b>
+
+		<b>
+			Canoo WebTest allows defining modules that can be reused in a number of
+		tests. A common example is a sequence of validation steps that you apply to
+		almost every page. These steps check against error indications like
+		http errors, java stack traces, &quot;sorry, we cannot...&quot;, etc. It may also
+		contain a check for the copyright statement that is supposed to appear on
+		every page. The samples that come with Canoo WebTest show how to do this.
+		</b>
+
+		<b>Sometimes we have to test the same scenario for a number of different
+		languages, each with different classes of users and each of these combinations
+		with different user settings, etc. That
+		can easily lead to so many test combinations that copy/paste would make
+		the tests unmaintainable.
+			Canoo WebTest uses the <key>ANT</key> mechanics to allow calling tests
+		with overriding parameters. Again, the distribution contains a comprehensive
+		example. Although all the test combinations get tested, the test description contains
+		the scenario only once plus the information about the variation of calling
+		parameters.
+		</b>
+
+		<b>
+			Canoo WebTest can be used to do automated tracking of your project.
+		If your tests capture all the requirements, then every test run gives
+		you feedback on how much you have achieved so far. The history of
+		test reports reflects your team&apos;s productivity in terms of delivered
+		functionality. The last report always shows the current state of
+		your project in the most reliable metric we know: running and tested
+		use cases.
+		</b>
+
+	</section>
+
+	<section title="Quotes and Success Stories">
+
+		<b>
+			Canoo WebTest has been used successfully in thousands of organizations ranging
+		from small internet startup companies up to global players, for intranet and internet
+		sites, for portals and B2B applications. Needless to say that we use it for our own
+
+			<key>OLS</key> as well.
+		</b>
+
+		<citeref>ffo-success</citeref>
+
+		<citeref>informit</citeref>
+
+		<citeref>raibleDesigns</citeref>
+	</section>
+
+</manpage>

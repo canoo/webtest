@@ -1,0 +1,10 @@
+<post>
+    <b>
+        Here is an example of using <em>excelFindRow</em>:
+    </b>
+
+    <code caption='excelFindRow example'>
+        <include src='excelExamples/findRowExample.xml'/>
+    </code>
+
+</post>

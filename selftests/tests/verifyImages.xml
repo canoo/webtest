@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testVerifyImages" default="testAll" basedir=".">
+
+    <target name="testAll">
+        <webtest name="verifyImages: image check">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="getMainPage" url="${start.page}"/>
+                <verifyImages description="are all images available"/>
+                <invoke description="get traffic light page"
+                    url="/trafficlight.html"/>
+                <not description="broken image link test">
+                    <verifyImages description="expected to fail with two broken image links"/>
+                </not>
+            </steps>
+        </webtest>
+        <webtest name="verifyImages: currentResponse unchanged">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="getMainPage" url="${start.page}"/>
+                <verifyTitle text="Canoo WebTest"/>
+                <verifyImages description="are all images available"/>
+                <verifyTitle text="Canoo WebTest"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

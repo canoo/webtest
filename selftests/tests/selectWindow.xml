@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testSelectWindow" default="all" basedir=".">
+
+    <target name="all" depends="testSelectWindow, testSelectWindowByTitle,
+    testPreviousResponseRestoresWindows, testSelectWindowWithFrames, testSelectWindowUsingIndex"/>
+
+    <target name="testSelectWindowUsingIndex">
+        <webtest name="selectWindow: Show how to select a popup window using the window index">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="try the popup" url="selectWindowMain.html"/>
+                <verifyTitle text="SelectWindow Popup Page"/>
+                <not description="expect to fail">
+                    <selectWindow description="try to find non-existing window" index="2"/>
+                </not>
+            	
+                <selectWindow description="get the popup window" index="1"/>
+                <verifyTitle text="SelectWindow Popup Page"/>
+                <verifyText description="verify window" text="This is the popup"/>
+				<selectWindow description="get the main window using index" index="0" />
+                <verifyTitle text="SelectWindow Main Page"/>
+				
+                <selectWindow description="get the popup window again" index="1"/>
+                <verifyTitle text="SelectWindow Popup Page"/>
+                <verifyText description="verify window" text="This is the popup"/>
+		        <clickButton description="close the window" htmlid="closeButton"/>
+                <verifyTitle description="should now be back on the main page"
+                             text="SelectWindow Main Page"/>
+				
+				<not description="popup should not be available now">
+		              <selectWindow description="try to find non-existing window" index="1"/>		
+				</not>
+            </steps>
+        </webtest>
+    </target>
+	
+    <target name="testSelectWindow">
+        <webtest name="selectWindow: Show how to select a popup window">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="try the popup" url="selectWindowMain.html"/>
+                <verifyTitle text="SelectWindow Popup Page" description="popup shoud habe become the current response"/>
+                <not description="expect to fail">
+                    <selectWindow description="try to find non-existing window" name="wontFindThisName"/>
+                </not>
+            	<group description="go back to main window">
+	                <selectWindow description="get the main window" title="SelectWindow Main Page"/>
+	                <verifyTitle text="SelectWindow Main Page"/>
+            	</group>
+                <selectWindow description="get the popup window" name="popupwindow"/>
+                <verifyTitle text="SelectWindow Popup Page"/>
+                <verifyText description="verify window" text="This is the popup"/>
+                <clickButton description="close the window" htmlid="closeButton"/>
+                <verifyTitle description="should now be back on the main page"
+                             text="SelectWindow Main Page"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testPreviousResponseRestoresWindows">
+        <webtest name="selectWindow: Test whether a previous response restores a popup window">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="try the popup" url="selectWindowMain.html"/>
+                <verifyTitle text="SelectWindow Popup Page"/>
+                <selectWindow description="get the popup window" name="popupwindow"/>
+                <verifyTitle text="SelectWindow Popup Page"/>
+                <clickButton description="close the window" htmlid="closeButton"/>
+                <verifyTitle description="should now be back on the main page"
+                             text="SelectWindow Main Page"/>
+                <not description="expect to fail">
+                    <selectWindow description="get the popup window" name="popupwindow"/>
+                </not>
+                <previousResponse/>
+                <selectWindow description="get the popup window" name="popupwindow"/>
+                <verifyTitle text="SelectWindow Popup Page"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSelectWindowWithFrames">
+        <webtest name="selectWindow: test selectWindow in the presence of frames">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page"
+                        url="frameset.jsp"/>
+                <not description="expect to fail">
+                    <selectWindow description="try to find toplevel window using framewindow name" name="left"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSelectWindowByTitle">
+        <webtest name="selectWindow: Show how to select a popup window using the html document's title">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="selectWindowMain.html"/>
+                <verifyTitle text="SelectWindow Popup Page"/>
+                <not description="expect to fail">
+                    <selectWindow description="try to find non-existing window" title="this doesn't exist"/>
+                </not>
+                <selectWindow description="get the popup window" title="SelectWindow Popup Page"/>
+                <verifyTitle text="SelectWindow Popup Page"/>
+                <verifyText description="verify window" text="This is the popup"/>
+
+				<selectWindow description="get the main window using index" title="SelectWindow Main Page" />
+                <verifyTitle text="SelectWindow Main Page"/>
+				
+                <selectWindow description="get the popup window again" title="SelectWindow Popup Page"/>
+                <verifyTitle text="SelectWindow Popup Page"/>
+                <verifyText description="verify window" text="This is the popup"/>
+		        <clickButton description="close the window" htmlid="closeButton"/>
+                <verifyTitle description="should now be back on the main page"
+                             text="SelectWindow Main Page"/>
+				
+				<not description="popup should not be available now">
+	                <verifyTitle text="SelectWindow Popup Page"/>
+				</not>
+            </steps>
+        </webtest>
+    </target>
+</project>

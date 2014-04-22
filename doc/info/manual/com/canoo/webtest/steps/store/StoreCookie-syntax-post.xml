@@ -1,0 +1,39 @@
+<post>
+
+    <b>
+    Suppose that we have created a JSP called <em>visitCount.jsp</em>
+    which increments a cookie called <em>VISITCOUNT</em> each time
+    we visit the page. The following test code can test the
+    cookie usage of this JSP:
+    </b>
+
+    <code caption='storeCookie Example1'>
+        <include src='examples/storeCookieExample1.xml'/>
+    </code>
+
+    <b>Cookie usage is as follows:</b>
+    <dl>
+    <li><dd>The <em>JSESSIONID</em> cookie is used by Java web servers to
+    manage user sessions and should be unique between visitors.</dd></li>
+    <li><dd>The <em>VISITCOUNT</em> cookie is used to track unique hits to
+    the site and should increment after each invoke.</dd></li>
+    </dl>
+
+    <b>Browsers store cookie values away persistently (except for transient
+    cookies - but that is another story). <key>CWT</key> doesn't support
+    persistence of cookies (although you could simulate that using <key>ANT</key>
+    functionality). What is possible however without further <key>ANT</key>
+    tasks is the ability to set an initial cookie value. This lets you partially
+    simulate a persistent cookie. This is done by using the <em>header</em>
+    nested element within the <em>config</em> section of your test.
+    Here is an example using <em>verifyCookie</em>
+    and an initial cookie value for the above example.
+    </b>
+
+    <code caption='storeCookie Example2'>
+        <include src='examples/storeCookieExample2.xml'/>
+    </code>
+
+    <b><em>See also</em>: the <stepref name="verifyCookie"/> step.</b>
+
+</post>

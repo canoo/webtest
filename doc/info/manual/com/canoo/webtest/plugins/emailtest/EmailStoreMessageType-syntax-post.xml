@@ -1,0 +1,7 @@
+<post>
+
+    <code caption="emailStoreMessageType">
+        <include src='emailexamples/emailStoreMessageTypeExample.xml' />
+    </code>
+
+</post>

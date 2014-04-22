@@ -1,0 +1,6 @@
+<post>
+
+	<code caption="steps">
+		<include src='examples/stepsExample.xml'/>
+	</code>
+</post>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testSiteReporting" default="testSiteReporting" basedir=".">
+
+	<target name="testSiteReporting">
+		<property name="resultfile" value="MainSite.tsl"/>
+
+		<webtest name="siteReporting">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="linkReportMainPage.html"/>
+				<reportSite file="${resultfile}" depth="1">
+					<verifyText description="should be always true" text="body"/>
+					<verifyText description="should be wrong once" text="Label"/>
+				</reportSite>
+
+				<group description="verify the generated file">
+					<groovy description="retrieve the output folder path for this test for later use">
+						step.setWebtestProperty 'thisTestResultFolder', step.context.config.webTestResultDir.absolutePath
+					</groovy>
+					<invoke url="file://#{thisTestResultFolder}/${resultfile}" description="get the generated file"/>
+					<verifyText text="0&#x09;0, should be always true: ok"/>
+					<verifyText text="1&#x09;0, should be always true: ok"/>
+					<verifyText text="&#x09;1, should be wrong once: ok"/>
+					<verifyText text="&#x09;1, should be wrong once: Step"/>
+				</group>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

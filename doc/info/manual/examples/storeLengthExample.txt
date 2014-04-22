@@ -1,0 +1,12 @@
+<webtest name="storeLength: storeLength with table">
+    <config ... />
+    <steps>
+        <invoke description="tableTest mode of the test servlet"
+                url="${start.page}?mode=tableTest"/>
+        <verifyElement description="table expected" type="table" text="test"/>
+        <storeLength property="lengthTable">
+            <table description="content should be 'row:column'" row="1" column="1" id="test"/>
+        </storeLength>
+        <verifyProperty description="content should be '1:1' so length should be 3" name="lengthTable" text="3"/>
+    </steps>
+</webtest>

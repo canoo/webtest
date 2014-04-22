@@ -1,0 +1,14 @@
+<post>
+
+    <b>This content filter can be useful in environments with mixed Unix/Windows/Mac machines or if there are differences
+        in your development and build environments related to version control systems. E.g., some of your development
+        environments or your continuous integration/build environment may have gzip compression for CVS access
+        turned on (which will bypass line separator expansion on Windows machines). In general, it is recommended
+        that you always use this filter for steps which take content filters. It isn't very expensive and will
+        make your builds and tests resistant to future changes in operating systems and/or other settings.</b>
+
+    <b>See the <stepref name="verifyContent"/>,
+        <stepref name="storeLength"/> and
+        <stepref name="storeDigest"/> steps for some examples of using this content filter.</b>
+
+</post>

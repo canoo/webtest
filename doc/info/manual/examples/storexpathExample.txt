@@ -1,0 +1,14 @@
+<webtest name="...">
+	<config ... />
+	<steps>
+		<invoke ... />
+        <storeXPath
+            description="Extract href of first link on page"
+            xpath="//a[1]/@href"
+            property="uri" />
+        <invoke
+            description="Invoke target page specified in href"
+            url="#{uri}" />
+		...
+	</steps>
+</webtest>

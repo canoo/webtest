@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testJsWithForms" default="full" basedir=".">
+
+	<target name="full" depends="testSimple, testOnloadDom, testResizeTo, testFormActionChange,
+    testBuggy, testBuggyWithIgnore, testEnabled, testDisabledViaConfig, testDisabledViaStep"/>
+
+	<target name="testSimple">
+		<webtest name="javascript: simple script using document.write()">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="invoke simple javascript sample page" url="SimpleJavaScript.html"/>
+				<!-- regex required below to skip over script -->
+				<verifyElementText type="p" regex="true" text=".*The sky is blue"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testOnloadDom">
+		<webtest name="javascript: DOM manipulation script called by onLoad">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="get temperature Page"
+				        url="JavaScriptTemperature.html"/>
+				<verifyXPath description="check the script worked"
+				             xpath="//h1[@id='theHeading']" text="Today's Temperature: 86 degrees Fahrenheit"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testResizeTo">
+		<webtest
+			name="javascript: complex moveTo function call will fail if various JavaScript functionality is not supported">
+			&sharedConfiguration;
+			<steps>
+
+				<invoke description="invoke tricky page" url="JavaScript.html"/>
+				<verifyText text="Original Text"/>
+
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testFormActionChange">
+		<webtest name="javascript: script changes action attribute of form on button click">
+			&sharedConfiguration;
+			<steps>
+
+				<invoke description="invoke tricky form page" url="trickyform.html"/>
+				<clickButton
+					description="submit unchanged in same window"
+				   label="Select"/>
+				<verifyText text="selector_chosenId = Select"/>
+				<previousResponse/>
+				<clickButton
+					description="submit changed in new window"
+				   label="Show"/>
+				<verifyText text="action = more"/>
+
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testBuggy">
+		<webtest name="javascript: test javascript containing an error fails (save case)">
+			&sharedConfiguration;
+			<steps>
+				<not description="expect to fail due to javascript error">
+					<invoke
+						description="invoke page containing error. Should fail, but page should be visible in report"
+					   url="JavaScriptWithError.html"
+						/>
+				</not>
+			</steps>
+		</webtest>
+		<webtest name="javascript: test javascript containing an error fails (no save case)">
+            <config
+                    host="${webtest.host}"
+                    port="${webtest.port}"
+                    protocol="${webtest.protocol}"
+                    basepath="${webtest.basepath}"
+                    saveresponse="false"
+                    resultpath="${wt.config.resultpath}"
+                    resultfile="${webtest.resultfile}"
+                    haltonfailure="true"
+                    showhtmlparseroutput="false"
+                    />
+            <steps>
+				<not description="expect to fail due to javascript error">
+					<invoke
+						description="invoke page containing error"
+					   url="JavaScriptWithError.html"
+					   saveResponse="javaScriptWithErrorNoSave"
+						/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testBuggyWithIgnore">
+		<webtest name="javascript: test config option to ignore javascript errors">
+			<config
+				host="${webtest.host}"
+			   port="${webtest.port}"
+			   protocol="${webtest.protocol}"
+			   basepath="${webtest.basepath}"
+			   saveresponse="true"
+			   resultpath="${wt.config.resultpath}"
+			   resultfile="${webtest.resultfile}"
+			   haltonfailure="true"
+			   showhtmlparseroutput="false"
+				>
+				<option name="ThrowExceptionOnScriptError" value="false"/>
+			</config>
+			<steps>
+				<invoke description="invoke page containing error" url="JavaScriptWithError.html"/>
+				<verifyElementText type="h1" text="Buggy JavaScript"/>
+				<not description="expected to fail because JavaScript which prints out test text won't run">
+					<verifyElementText type="p" regex="true" text=".*The answer is:.*"/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testEnabled">
+		<webtest name="javascript: test javascript enabled (default)">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="invoke detect page" url="DetectJavaScript.html"/>
+				<verifyElementText type="p" regex="true" text=".*Your browser supports JavaScript.*"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testDisabledViaConfig">
+		<webtest name="javascript: test javascript disabled using config setting">
+			<config
+				host="${webtest.host}"
+			   port="${webtest.port}"
+			   protocol="${webtest.protocol}"
+			   basepath="${webtest.basepath}"
+			   saveresponse="true"
+			   resultpath="${wt.config.resultpath}"
+			   resultfile="${webtest.resultfile}"
+			   haltonfailure="true"
+			   showhtmlparseroutput="false"
+				>
+				<option name="JavaScriptEnabled" value="false"/>
+			</config>
+			<steps>
+				<invoke description="invoke detect page" url="DetectJavaScript.html"/>
+				<verifyElementText type="noscript" regex="true" text="Your browser doesn't support JavaScript.*"/>
+				<not>
+					<verifyElementText type="p" regex="true" text=".*Your browser supports JavaScript.*"/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testDisabledViaStep">
+		<webtest name="javascript: test javascript disabled using enableJavaScript step">
+			&sharedConfiguration;
+			<steps>
+				<enableJavaScript description="disable JavaScript manually"/>
+				<invoke description="invoke detect page" url="DetectJavaScript.html"/>
+				<verifyElementText type="noscript" regex="true" text="Your browser doesn't support JavaScript.*"/>
+				<not>
+					<verifyElementText type="p" regex="true" text=".*Your browser supports JavaScript.*"/>
+				</not>
+				<enableJavaScript enable="true" description="disable JavaScript manually"/>
+				<invoke description="invoke detect page" url="DetectJavaScript.html"/>
+				<verifyElementText type="p" regex="true" text=".*Your browser supports JavaScript.*"/>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

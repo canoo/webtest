@@ -1,0 +1,10 @@
+<webtest name="exceltest - structure filter">
+	<config .../>
+	<steps>
+		<invoke url="testExcel.xls"/>
+		<compareToExpected saveFiltered="true" readFiltered="false" toFile="${expectedFile}">
+			<excelStructureFilter description="extract XLS structure"/>
+			<lineSeparatorFilter description="normalise line separators"/>
+		</compareToExpected>
+	</steps>
+</webtest>

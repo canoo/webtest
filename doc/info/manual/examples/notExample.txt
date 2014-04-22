@@ -1,0 +1,12 @@
+<webtest name="No firstname input field">
+	<config ... />
+	<steps>
+		<invoke ... />
+		<not description="Input field firstname shall not be present">
+			<verifyElement description="Check firstname"
+				type="input"
+				text="firstname"/>
+		</not>
+		...
+	</steps>
+</webtest>

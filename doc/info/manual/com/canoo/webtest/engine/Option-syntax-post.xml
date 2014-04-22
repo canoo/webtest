@@ -1,0 +1,11 @@
+<pre>
+    <b>Option settings provide a crude mechanism to alter settings provided by the underlying
+        browser client layer. This sometimes allows settings needed for a particular test to be changed
+        without coding. They may stop working if supporting jar file versions change or if
+        WebTest provides more complete support via a different approach in the future. See the JavaDoc
+        for
+        <em>Target</em>
+        for more details - look in the source as the relevant JavaDocs are
+        for private methods and do not show in the published JavaDocs.
+    </b>
+</pre>

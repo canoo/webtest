@@ -1,0 +1,50 @@
+<webtest name="testHardDiskErase">
+  <config .../>
+  <steps>
+    <invoke description="Load Initial Page" url="/diskadmin.jsp"/>
+    <verifytitle description="Should be disk admin page" text="Disk Admin Page"/>
+    <!-- Interaction 1: initial cancel -->
+    <expectDialogs description="set up dialog expectations - save message style">
+        <confirm description="Dialog1A: expect confirm - click cancel"
+            response="false" saveProperty="initialDialog" />
+        <alert description="Dialog1B: expect alert - auto OK"
+            saveProperty="resultDialog" />
+    </expectDialogs>
+    <clickbutton description="Click Clean button" name="CleanButton" />
+    <verifyProperty description="Check text from first JavaScript Dialog"
+        property="initialDialog" text="Are you sure?" />
+    <verifyProperty description="Check text from second JavaScript Dialog"
+        property="resultDialog" text="Operation cancelled!" />
+    <verifyNoDialogs description="Check all dialogs were used" />
+
+    <!-- Interaction 2: initial OK but then cancel instead of confirm -->
+    <expectDialogs description="set up dialog expectations - save message style">
+        <confirm description="Dialog2A: expect confirm - click OK"
+            response="true" saveProperty="initialDialog" />
+        <prompt description="Dialog2B: expect prompt - click cancel"
+            response="false" saveProperty="confirmDialog" />
+        <alert description="Dialog2C: expect alert - auto OK"
+            saveProperty="resultDialog" />
+    </expectDialogs>
+    <clickbutton description="Click Clean button" name="CleanButton" />
+    <verifyProperty description="Check text from first JavaScript Dialog"
+        property="initialDialog" text="Are you sure?" />
+    <verifyProperty description="Check text from second JavaScript Dialog"
+        property="confirmDialog" regex="true" text=".*very sure.*YES.*" />
+    <verifyProperty description="Check text from third JavaScript Dialog"
+        property="resultDialog" text="Operation aborted!" />
+    <verifyNoDialogs description="Check all dialogs were used" />
+
+    <!-- Interaction 3: initial OK followed by confirm -->
+    <expectDialogs description="set up dialog expectations - inline checks style">
+        <confirm description="Dialog3A: expect confirm - click OK"
+            response="true" text="Are you sure?" />
+        <prompt description="Dialog3B: expect prompt - enter 'YES'"
+            response="YES" regex="true" text=".*very sure.*YES.*" />
+        <alert description="Dialog3C: expect alert - auto OK"
+             text="Hard disk erased!" />
+    </expectDialogs>
+    <clickbutton description="Click Clean button" name="CleanButton" />
+    <verifyNoDialogs description="Check all dialogs were used" />
+  </steps>
+</webtest>

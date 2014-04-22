@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testClickButton" default="allTests" basedir=".">
+
+    <target name="allTests" depends="testClickButton, testClickButtonWithTarget,
+            testClickButtonInFrame, testClickButtonNoForm, testClickButtonWithJsError"/>
+    <!-- ,formAndIndex -->
+
+    <target name="testClickButton">
+        <webtest name="clickButton: Locating submit buttons and submitting the respective forms">
+            &sharedConfiguration;
+            <steps>
+
+                <invoke description="buttonTest mode of the test servlet" url="clickButton.jsp"/>
+                <clickButton
+                    description="No attribute specified -&gt; first button"/>
+                <verifyInputField name="lastForm" value="form1"/>
+                <clickButton
+                    description="Locate an image button with unique name in the whole page (no locator)"
+                    name="imageButton0"/>
+                <verifyInputField name="lastForm" value="form1"/>
+				<clickButton
+					description="Locate an image button with non-unique name appearing in two forms"
+					name="imageButton1"/>
+				<clickButton
+					description="Locate an image button with non-unique name appearing twice in the same form"
+					name="imageButton2"/>
+                <clickButton
+                    description="Locate an image button by label"
+                    label="some image button text"/>
+                <verifyInputField name="lastForm" value="form2"/>
+
+                <setInputField name="someInput1" value="1"/>
+				<!-- <form name="form1"/> -->
+                <clickButton
+                    description="Locate an image button with non-unique name. Button exists once in this form"
+                    name="imageButton1"/>
+                <verifyInputField name="lastForm" value="form1"/>
+
+                <setInputField name="someInput2" value="2"/>
+				<!-- <form name="form2"/> -->
+                <clickButton
+                    description="Locate an image button with non-unique name. Button exists also once in this form"
+                    name="imageButton1"/>
+                <verifyInputField name="lastForm" value="form2"/>
+
+                <setInputField name="someInput2" value="2"/>
+                <clickButton
+                    description="Locate an image button with non-unique name (using a locator). Button exists twice!"
+                    name="imageButton2"/>
+                <verifyInputField name="lastForm" value="form2"/>
+
+                <setInputField name="someInput1" value="1"/>
+                <clickButton
+                    description="Locate an image button with non-unique name appearing twice in different forms using an index locator"
+                    name="imageButton0"/>
+                <verifyInputField name="lastForm" value="form1"/>
+                <not>
+                    <verifyInputField name="lastForm" value="incorrectvalue"/>
+                </not>
+
+                <setInputField name="someInput2" value="2"/>
+                <clickButton
+                    description="Locate an image button with non-unique name appearing twice in different forms using an index locator"
+                    name="imageButton1"/>
+                <verifyInputField name="lastForm" value="form2"/>
+
+				<!-- verify that the correct button is clicked when 2 buttons in the same form have the same name -->
+                <clickButton
+                    description="Click first button with non-unique name appearing twice in different forms using an index locator"
+                    name="2ButtonsWithSameName"/>
+                <verifyInputField name="lastForm" value="form7"/>
+				<verifyText description="Verify that the first button has been clicked" text="2ButtonsWithSameName: First button"/>
+
+                <clickButton
+                    description="Click 2nd button with non-unique name appearing twice in different forms using an index locator"
+                    name="2ButtonsWithSameName" fieldIndex="1"/>
+                <verifyInputField name="lastForm" value="form7"/>
+				<verifyText description="Verify that the 2nd button has been clicked" text="2ButtonsWithSameName: 2nd button"/>
+
+                <!--
+                    Check HTML buttons
+                -->
+                <clickButton
+                        description="Click first button with non-unique name appearing twice"
+                        name="2HtmlButtonsWithSameName"/>
+                <verifyInputField name="lastForm" value="form8"/>
+                <verifyText description="Verify that the first button has been clicked"
+                            text="2HtmlButtonsWithSameName: First button"/>
+                <clickButton
+                        description="Click 2nd button with non-unique name appearing twice"
+                        name="2HtmlButtonsWithSameName" fieldIndex="1"/>
+                <verifyInputField name="lastForm" value="form8"/>
+                <verifyText description="Verify that the 2nd button has been clicked"
+                            text="2HtmlButtonsWithSameName: 2nd button"/>
+                <clickButton
+                        description="Click second html button using value"
+                        name="2HtmlButtonsWithSameName" label="HtmlButton2"/>
+                <verifyInputField name="lastForm" value="form8"/>
+                <verifyText description="Verify that the 2nd button has been clicked"
+                            text="2HtmlButtonsWithSameName: 2nd button"/>
+                <clickButton
+                        description="Click 3rd html button using id"
+                        htmlId="HtmlButtonWithId"/>
+                <verifyInputField name="lastForm" value="form8"/>
+                <verifyText description="Verify that the 3rd button has been clicked"
+                            text="3rdButton: 3rd button"/>
+
+                <!--
+                    Check image buttons
+                -->
+                <invoke description="Access button test page" url="clickButton.jsp"/>
+
+                <clickButton description="click the image button" name="imageButton0" x="1" y="2"/>
+                <verifyText text="imageButton0.x: 1"/>
+                <verifyText text="imageButton0.y: 2"/>
+
+                <clickButton
+                    description="click a submit button with click positions"
+                    name="submitButton1"
+                    x="1" y="2"/>
+
+                <clickButton
+                    description="click the image button with negative coordinates, kind of strange ..."
+                    name="imageButton0"
+                    x="-10" y="-20"/>
+
+				<!--
+					Click button with id
+				-->
+                <invoke description="Access button test page" url="clickButton.jsp"/>
+                <clickButton
+                    description="click the button identified by its id"
+                    htmlid="buttonWithId"
+                    />
+                <verifyText text="buttonWithIdName: ok"/>
+            </steps>
+        </webtest>
+
+        <webtest name="clickButton: ClickButton with javascript">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="start"
+                    url="linkpage.html"/>
+                <clickButton description="click input button with js loading a new page in the onclick"
+                    name="input_button"/>
+				<verifyText text="Dummy page"/>
+            </steps>
+        </webtest>
+	</target>
+
+    <target name="testClickButtonNoForm">
+        <webtest name="clickButton: check that we can locate button when form is left out (non-compliant)">
+            &sharedConfiguration;
+            <steps>
+                <!-- input button -->
+                <invoke description="get start page" url="clickButtonNoForm.html"/>
+                <clickButton description="Click Input Button" label="Add New Question"/>
+                <verifyText text="Dummy page"/>
+                <!-- html button -->
+                <invoke description="get start page" url="clickButtonNoForm.html"/>
+                <clickButton description="Click Html Button" name="HtmlButton"/>
+                <verifyText text="Dummy page"/>
+            </steps>
+        </webtest>
+    </target>
+
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <target name="testClickButtonInFrame">
+        <webtest name="clickButton: Clicks a button in a frame and checks that the frameset is always there">
+            &sharedConfiguration;
+            <steps>
+
+                <invoke description="Get the frameset" url="frameset.jsp"/>
+                <followFrame description="follow the left frame" name="left"/>
+				<verifyTitle text="Frame for left"/>
+                <clickButton description="submit the form using the text button" name="textButton"/>
+				<verifyTitle text="Frame for right"/>
+                <followFrame description="follow the left frame again" name="left"/>
+				<verifyTitle text="Frame for left"/>
+                <clickButton description="submit the form using the image button" name="imageButton"/>
+				<verifyTitle text="Frame for right"/>
+                <followFrame description="follow the left frame again" name="left"/>
+			</steps>
+		</webtest>
+	</target>
+
+    <target name="testClickButtonWithTarget">
+        <webtest name="clickButton: ClickButton with Target">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="start"
+                    url="linkpage.html"/>
+                <clickButton description="button that opens response in a new window"
+                    name="button_to_new_window"/>
+				<verifyText text="new almost empty page"/>
+            </steps>
+        </webtest>
+
+        <webtest name="clickButton: ClickButton with button element">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="start"
+                    url="linkpage.html"/>
+                <clickButton
+                    name="button_element"/>
+				<verifyText text="new almost empty page"/>
+            </steps>
+        </webtest>
+    </target>
+
+<!--    problem report by Phil -->
+    <target name="formAndIndex">
+        <webtest name="clickButton: Click Button using form and index">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="get page" url="/pages/page6.html" />
+                <clickButton description="Click on button of the second form to access Handsets" name="SameButtonName"/>
+                <verifyText description="Verify it's page handset" text="Accessing page handset"/>
+            </steps>
+          </webtest>
+    </target>
+
+    <target name="testClickButtonWithJsError">
+        <webtest name="clickButton: click button to form with JS error">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="JavaScriptWithUnknownFunction.html"/>
+                <not description="expect to fail due to call to incorrectly named JS function">
+                    <clickButton name="DoButton"/>
+                </not>
+                <verifyInputField name="colorField" value="?"/>
+            </steps>
+        </webtest>
+        <webtest name="clickButton: click button to form with JS error with ThrowExceptionOnScriptError set to false">
+            <config
+                    host="${webtest.host}"
+                    port="${webtest.port}"
+                    protocol="${webtest.protocol}"
+                    basepath="${webtest.basepath}"
+                    saveresponse="true"
+                    resultpath="${wt.config.resultpath}"
+                    resultfile="${webtest.resultfile}"
+                    haltonfailure="true"
+                    showhtmlparseroutput="false"
+                    >
+                <option name="ThrowExceptionOnScriptError" value="false"/>
+                <option name="Timeout" value="0"/>
+            </config>
+            <steps>
+                <invoke url="JavaScriptWithUnknownFunction.html"/>
+                <clickButton description="will not fail but won't set colorField either" name="DoButton"/>
+                <verifyInputField name="colorField" value="?"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

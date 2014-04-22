@@ -1,0 +1,14 @@
+<steps>
+    <emailSetConfig .../>
+    <retry maxcount="10">
+        <!-- find id of first message matching desired subject -->
+        <emailStoreMessageId subject="/mailtest - multifiles/"
+            property="mid" messageIndex="0"/>
+        <!-- delete message -->
+        <emailDeleteMessage messageId="#{mid}" />
+        <!-- see if any remain -->
+        <emailStoreMessageCount subject="/mailtest - multifiles/"
+            property="emailcount"/>
+        <verifyProperty name="emailcount" text="0"/>
+    </retry>
+</steps>

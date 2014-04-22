@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project default="wt.full">
+	<description>
+		Build file to run all webtest's functional tests.
+		It should be called from the main build.xml with the target functionalTest.
+	</description>
+
+	<property file="environment/installation.properties"/>
+	<property file="environment/selftest.properties"/>
+	<property file="environment/server/localhost.properties"/>
+	<property file="environment/mode/main-build.properties"/>
+
+	<property name="selftest.witness" location="selftestRunning.txt"/>
+	<property name="wt.htmlReports.report.title" value="WebTest Functional Selftests"/>
+
+	<property name="webtest.resultpath" value="${wt.config.resultpath}" description="old prop still used in some tests"/>
+
+	<!-- default config values, when nothing is specified in <config .../> -->
+    <property name="wt.config.host" value="${webtest.host}"/>
+    <property name="wt.config.port" value="${webtest.port}"/>
+    <property name="wt.config.protocol" value="${webtest.protocol}"/>
+    <property name="wt.config.basepath" value="${webtest.basepath}"/>
+    <property name="wt.config.saveresponse" value="${webtest.saveresponse}"/>
+    <property name="wt.config.resultpath" value="${wt.config.resultpath}"/>
+    <property name="wt.config.haltonerror" value="${webtest.haltonerror}"/>
+    <property name="wt.config.errorproperty" value="${webtest.errorproperty}"/>
+    <property name="wt.config.haltonfailure" value="${webtest.haltonfailure}"/>
+    <property name="wt.config.failureproperty" value="${webtest.failureproperty}"/>
+    <property name="wt.config.defaultpropertytype" value="${webtest.defaultpropertytype}"/>
+    <property name="wt.config.showhtmlparseroutput" value="${webtest.showhtmlparseroutput}"/>
+    <property name="wt.htmlReports.testInfo.issueNumber.baseUrl" value="http://webtest-community.canoo.com/jira/browse/"/>
+	
+	<import file="${webtest.home}/webtest.xml"/>
+	
+
+	<!--
+         Change only this target to point to your test in work
+     -->
+	<target name="wt.testInWork">
+		<tstamp>
+			<format property="now" pattern="dd-MMM-yyyy HH:mm"/>
+		</tstamp>
+		<echo message="Selftests (${buildnumber}) starting: ${now}"/>
+
+		<touch file="${selftest.witness}"/>
+		<groovyScript>
+			println "System.properties: " + System.properties
+		</groovyScript>
+		<ant antfile="AllTests.xml" dir="tests" inheritrefs="true"/>
+		<delete file="${selftest.witness}" quiet="true" failonerror="false"/>
+	</target>
+
+	<target name="wt.countWebtestResults">
+		<countWebtestResults failOnError="false" resultFile="${wt.config.resultpath}/WebTestOverview.xml" failureProperty="nbFailed" successProperty="nbSuccess"/>
+		<property name="expectedTestResults" value="265 ok, 8 failed"/>
+		<property name="actualTestResults" value="${nbSuccess} ok, ${nbFailed} failed"/>
+		<fail>
+			<condition>
+				<not>
+					<equals arg1="${expectedTestResults}" arg2="${actualTestResults}"/>
+				</not>
+			</condition>
+			Test results are not as expected! 
+Expected: &gt;${expectedTestResults}&lt;
+Actual: &gt;${actualTestResults}&lt; 
+(have you forgotten to update the reference after adding new tests?)"
+		</fail>
+	</target>
+</project>

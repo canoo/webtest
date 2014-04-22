@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" 
+[
+	<!ENTITY site SYSTEM "WebTestSite.xml">
+]
+>
+
+<manpage siteid="News Archive">
+
+	&site;
+
+	<head title="News Archive">
+		<b>Displayed previously in the news column:</b>
+	</head>
+
+	<section title="News">
+		<b>
+			19.10.07: WebTest at
+			<ext href="http://skillsmatter.com/menu/372">Grails eXchange 2007</ext>
+			<n/>
+			WebTest committer Dierk König will present
+			<ext href="http://www.grails-exchange.com/dierk-koenig#canoo-web-test">Canoo WebTest and Grails</ext>
+			<posted>14 September 2007</posted>
+		</b>
+		<b>
+			30.10.07: WebTest at
+			<ext href="http://verifyconference.com">Verify 2007</ext>
+			<n/>
+			Nate Oster will present
+			<ext href="http://verifyconference.com/content/view/133/41/">Jumpstart Your Functional Test Automation with Canoo WebTest</ext>
+			<posted>14 September 2007</posted>
+		</b>
+		<b>
+			26.09.07: WebTest at
+			<ext href="http://www.kruchten.org/agilevancouver/conference.html">Much Ado About Agile 2007</ext>
+			<n/>
+			Nate Oster will present
+			<ext href="http://www.kruchten.org/agilevancouver/conference_files/oster.html">Patterns for Continuous Functional Testing</ext>
+			<posted>14 September 2007</posted>
+		</b>
+		<b>
+			Over 150 attendees at the <ext href="http://jax.de/konferenzen/jax07">JAX 2007</ext>
+			for the session presented by WebTest committers Marc Guillemot and Dierk König
+			<ext href="http://jax.de/konferenzen/jax07/overview_sessions.php?track=3&amp;_language=de#session-wa7">
+				Automatisiertes Testen von Webapplikationen
+			</ext>
+			(German)
+			<n/>
+			Slides now available <ext href="externalCitations/JAX2007_WebTestPresentation.pdf">here</ext> (mostly in English).
+			<posted>30 April 2007</posted>
+		</b>
+		<b>
+			26.04.07: WebTest at
+			<ext href="http://jax.de/konferenzen/jax07">JAX 2007</ext>
+			<n/>
+			The WebTest committers Marc Guillemot and Dierk König will present
+			<ext href="http://jax.de/konferenzen/jax07/overview_sessions.php?track=3&amp;_language=de#session-wa7">
+				Automatisiertes Testen von Webapplikationen
+			</ext>
+			(German)
+			<posted>12 Februar 2007</posted>
+		</b>
+		<b>
+			The page <sidebar name="sidebar" /> is an index of all steps that can be used as a sidebar! 
+			<posted>14 Februar 2007</posted>
+		</b>
+		<b>
+		24-26.10: WebTest at <ext href="http://www.oopsla.org/2006/program/demonstrations/d03:_the_webapp_tests_tester_watt.html">OOPSLA</ext><n/>
+		The WebTest committers Marc Guillemot and Dierk König will present the demo 
+		<ext href="http://www.oopsla.org/2006/program/demonstrations/d03:_the_webapp_tests_tester_watt.html">Web Testing Made Easy</ext>
+			<posted>28 September 2006</posted>
+		</b>
+		<b>
+			WebTest 2.1 released.
+			<posted>3 September 2006</posted>
+		</b>
+		<b>
+			Many thanks to the
+			<ext href="http://www.softed.com/stanz2006/">STANZ 2006</ext>
+			conference organisers for a very interesting conference.
+			Thanks also to everyone who attended my tutorial for your feedback.
+			I did have some negative feedback - that there wasn't enough WebTest
+			content - so we might have to fix that up for next time.
+			<posted>26 Aug 2006 by Paul King</posted>
+		</b>
+	    <b>
+	        Many thanks to the
+	        <ext href="http://www.agile2006.org">Agile 2006</ext>
+	        conference organisers for a wonderful conference. I had a great time.
+	        Thanks also to everyone who attended my tutorial for the wonderful feedback.
+	        Please drop me a line if you have any further questions.
+	        <posted>31 Jul 2006 by Paul King</posted>
+	    </b>
+	
+        <b>Even more WebTest committers on tour! Dierk Koenig and Marc Guillemot gives a one day tutorial at
+            <ext href="http://www.ix-konferenz.de/stundenplan.php?konferenzid=11">iX Better Software</ext>
+            .
+            <posted>11 July 2006</posted>
+        </b>
+		<b>
+			Extend WebTest with Groovy! Now available through MEAP:
+			<ext href="http://groovy.canoo.com/gina">Groovy in Action</ext>
+			.
+			<n/>
+			<ext href="http://groovy.canoo.com/gina">
+				<img src="images/gina.jpg">Groovy in Action</img>
+			</ext>
+			<posted>7 July 2006</posted>
+		</b>
+        <b>
+            Meet a WebTest committer! Paul King gives a half-day tutorial at
+            <ext href="http://www.agile2006.org">Agile Conference</ext>
+            .
+            <posted>16 May 2006</posted>
+        </b>
+        <b>
+            Press release:
+            <ext href="http://www.canoo.com/news/webtest20.html">WebTest 2.0 released</ext>
+            .
+            <posted>14 March 2006</posted>
+        </b>
+	</section>
+
+</manpage>

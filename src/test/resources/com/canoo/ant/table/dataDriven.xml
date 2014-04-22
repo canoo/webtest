@@ -1,0 +1,13 @@
+<project name="testProject">
+	<dirname property="dataDriven.currentDir" file="${ant.file.testProject}" description="the current directory, no matter where this file is imported"/>
+
+	<target name="testFailASAP">
+		<dataDriven tableContainer="${dataDriven.currentDir}/simple.xls" table="Weekdays" failASAP="${failASAP}">
+			<echo message="${en}"/>
+		    <condition property="shouldFail${en}">
+		      <equals arg1="${en}" arg2="Wednesday"/>
+		    </condition>
+    		<fail if="shouldFail${en}" message="Wrong day!"/>
+		</dataDriven>
+	</target>
+</project>

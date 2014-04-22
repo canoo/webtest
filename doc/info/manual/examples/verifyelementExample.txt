@@ -1,0 +1,11 @@
+<webtest name="Verify the username INPUT field">
+	<config ... />
+	<steps>
+		<invoke ... />
+		<verifyElement
+			description="Checks for the existence of an INPUT field named username"
+			type="INPUT"
+			text="username" />
+		...
+	</steps>
+</webtest>

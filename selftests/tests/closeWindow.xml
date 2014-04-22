@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testCloseWindow" default="all" basedir=".">
+
+    <target name="all" depends="testCloseWindow"/>
+
+    <target name="testCloseWindow">
+        <webtest name="closeWindow: show how closing the current window brings back to the previous one">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="try the popup" url="closeWindow/closeWindowMain.html"/>
+                <verifyTitle text="CloseWindow Main Page"/>
+
+            	<clickLink label="open 2nd page in new window"/>
+                <verifyTitle text="CloseWindow 2nd Page"/>
+
+            	<clickLink label="open 3rd page in new window"/>
+                <verifyTitle text="CloseWindow 3rd Page"/>
+
+                <closeWindow description="close the just opened window"/>
+                <verifyTitle text="CloseWindow 2nd Page"/>
+
+                <closeWindow description="close the just opened window"/>
+               	<verifyTitle text="CloseWindow Main Page" description="verify that the last opened window becomes the current one again"/>
+            </steps>
+        </webtest>
+    </target>
+</project>

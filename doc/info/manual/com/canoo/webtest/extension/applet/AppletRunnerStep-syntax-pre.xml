@@ -1,0 +1,16 @@
+<pre>
+	<b>
+ This step provides a mechanism to integrate the testing of an applet into
+ the overall testing of the encompassing web application. If you have a complex web
+ application in which the workflow changes between html pages and applet(s), you can
+ use this step to test the complete application from webtest.
+	</b>
+	<b>
+ This step runs an user-specified
+		<em>scenario</em> against the applet to drive the
+ applet's GUI. With a scenario, you can input value into the applet, verify the
+ informations displayed and follow the pages invoked by the applet. The scenario is
+ a Java classes that uses
+		<key>jemmy</key> to interact with the GUI of the applet.
+	</b>
+</pre>

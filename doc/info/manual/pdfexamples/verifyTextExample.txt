@@ -1,0 +1,12 @@
+<webtest name="pdftest - verify document text">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyText description="Document text"
+      startPage="3"
+      endPage="4"
+      text="The user .* has been added to the list."
+      regex="true"/>
+    ...
+  </steps>
+</webtest>

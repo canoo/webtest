@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testGroup" default="testGroup" basedir=".">
+
+    <target name="testGroup">
+        <webtest name="group: Show how to use the group step">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="the first step in the group" url="${start.page}"/>
+                <group description="some simple example of the group step">
+                    <invoke description="the first step in the group" url="${start.page}"/>
+                    <verifyText description="some other step" text="html"/>
+                </group>
+
+                <group description="empty group">
+                </group>
+
+                <group description="outermost group">
+                    <group description="outer group">
+                        <group description="inner group">
+                            <verifyText description="some other step" text="html"/>
+                        </group>
+                    </group>
+                    <group description="inner group">
+                        <verifyText description="some other step" text="html"/>
+                    </group>
+                </group>
+
+                <group description="not test group">
+                    <not>
+                        <verifyText description="some other step" text="you will not find this"/>
+                    </not>
+                </group>
+
+                <not description="not with group">
+                    <group>
+                        <verifyText text="you will not find this"/>
+                    </group>
+                </not>
+
+            </steps>
+        </webtest>
+        <webtest name="group: Check that description expands properly">
+            &sharedConfiguration;
+            <steps>
+                <storeProperty name="storeddescription" value="empty group" />
+                <group description="#{storeddescription}">
+                </group>
+            </steps>
+        </webtest>
+    </target>
+</project>

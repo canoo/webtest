@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testVerifyDialogs" default="all" basedir=".">
+
+    <target name="all" depends="
+    	testDialogInSetTimeout,
+    	testSimpleDialogExample,testDialogStepsUnderPrepared,
+        testDialogStepsOverPrepared,testDialogStepsJustRight,testIncorrectDialogType,
+        testIncorrectDialogValueSave,testIncorrectDialogValueInline,testNoDialogs" />
+
+    <target name="testDialogInSetTimeout">
+        <webtest name="verifyDialogs: test simple dialog coming from a function started by setTimeout">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="/simpleDialogExample.html"/>
+                <verifyTitle description="Confirm page" text="Simple Dialog Example"/>
+
+                <expectDialog dialogType="alert" saveProperty="simpleDialog" />
+                <clickElement htmlId="setTimeoutAlert" />
+                <sleep seconds="3"/>
+                <verifyProperty name="simpleDialog" text="started from setTimout"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSimpleDialogExample">
+        <webtest name="verifyDialogs: test simple dialog form validation example using legacy steps">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load Page" url="/simpleDialogExample.html"/>
+                <verifyTitle description="Confirm page" text="Simple Dialog Example"/>
+                <!-- try with both fields blank -->
+                <expectDialog dialogType="alert" saveProperty="simpleDialog" />
+                <clickButton description="Click Login button" name="submit" />
+                <verifyProperty name="simpleDialog" text=".*Username field must not be blank.*" regex="true"/>
+                <verifyProperty name="simpleDialog" text=".*Password field must not be blank.*" regex="true"/>
+                <verifyNoDialogs description="Check all responses were used" />
+                <!-- try with password field blank -->
+                <expectDialog dialogType="alert" saveProperty="simpleDialog" />
+                <setInputField name="name" value="some username" />
+                <clickButton description="Click Login button" name="submit" />
+                <not>
+                    <verifyProperty name="simpleDialog" text=".*Username field must not be blank.*" regex="true"/>
+                </not>
+                <verifyProperty name="simpleDialog" text=".*Password field must not be blank.*" regex="true"/>
+                <verifyNoDialogs description="Check all responses were used" />
+                <!-- try with username field blank -->
+                <expectDialog saveProperty="simpleDialog" /><!-- default type = alert -->
+                <setInputField name="name" value="" />
+                <setInputField name="password" value="some password" />
+                <clickButton description="Click Login button" name="submit" />
+                <verifyProperty name="simpleDialog" text=".*Username field must not be blank.*" regex="true"/>
+                <not>
+                    <verifyProperty name="simpleDialog" text=".*Password field must not be blank.*" regex="true"/>
+                </not>
+                <verifyNoDialogs description="Check all responses were used" />
+                <!-- try with username field blank -->
+                <setInputField name="name" value="some username" />
+                <expectDialog description="not normally needed" dialogType="alert" />
+                <clickButton description="Click Login button" name="submit" />
+                <!-- would normally check we are on a new page here -->
+                <not description="prepared response should not be used if fields were valid">
+                    <verifyNoDialogs description="Check all responses were used" />
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testDialogStepsUnderPrepared">
+        <webtest name="verifyDialogs: test mock HardDiskErase but don't expect enough responses">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load disk admin Page" url="/mockdiskadmin.html"/>
+                <verifyTitle description="Confirm disk admin page" text="Mock Disk Admin Page - for dialog handling tests"/>
+
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="First Dialog - Expect Confirm - Response is Cancel" response="false" />
+                </expectDialogs>
+                <!-- skip required Save second JavaScript Response -->
+                <not description="Expected to fail because required alert dialog is missing">
+                    <clickButton description="Click Clean button" name="CleanButton" />
+                </not>
+                <!-- skip required Save first JavaScript Response -->
+                <not description="Expected to fail because required confirm dialog is missing">
+                    <clickButton description="Click Clean button" name="CleanButton" />
+                </not>
+
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="First Dialog - Expect Confirm - Response is OK" response="true" />
+                </expectDialogs>
+                <!-- skip required Save second JavaScript Response -->
+                <not description="Expected to fail because required prompt dialog is missing">
+                    <clickButton description="Click Clean button" name="CleanButton" />
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testDialogStepsOverPrepared">
+        <webtest name="verifyDialogs: test mock HardDiskErase but prepare too many responses">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load Initial Page" url="/mockdiskadmin.html"/>
+                <verifyTitle description="Should be disk admin page" text="Mock Disk Admin Page - for dialog handling tests"/>
+                <!-- check for initial cancel -->
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="First Dialog - Expect Confirm Dialog - Response is Cancel" response="false" />
+                    <alert description="Second Dialog - Expect Alert (OK response automatic)" />
+                    <alert description="Third Dialog - Unexpected Alert - intentionally not used!" />
+                </expectDialogs>
+                <clickButton description="Click Clean button" name="CleanButton" />
+                <not description="Expected to fail because of incorrect dialog expectations - too many dialogs">
+                    <verifyNoDialogs description="Check for any remaining Dialogs" />
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testDialogStepsJustRight">
+        <webtest name="verifyDialogs: test mock HardDiskErase">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load Initial Page" url="/mockdiskadmin.html"/>
+                <verifyTitle description="Should be disk admin page" text="Mock Disk Admin Page - for dialog handling tests"/>
+
+                <!-- check for initial cancel -->
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="Dialog1A: Confirm with Cancel" response="false" saveProperty="initialDialog"/>
+                    <alert description="Dialog1B: Alert" saveProperty="resultDialog"/>
+                </expectDialogs>
+                <clickButton description="Click Clean button" name="CleanButton" />
+                <verifyProperty description="Check text from Dialog1A" name="initialDialog" text="Are you sure?" />
+                <verifyProperty description="Check text from Dialog1B" name="resultDialog" text="Operation cancelled!" />
+                <verifyNoDialogs description="Check all dialogs were used" />
+
+                <!-- check for initial OK but then cancel instead of confirm -->
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="Dialog2A: Confirm with OK" response="true" saveProperty="initialDialog"/>
+                    <prompt description="Dialog2B: Prompt with Cancel" response="false" saveProperty="confirmDialog"/>
+                    <alert description="Dialog2C: Alert" saveProperty="resultDialog"/>
+                </expectDialogs>
+                <clickButton description="Click Clean button" name="CleanButton" />
+                <verifyProperty description="Check text from Dialog2A" name="initialDialog" text="Are you sure?" />
+                <verifyProperty description="Check text from Dialog2B" name="confirmDialog" regex="true" text=".*very sure.*YES.*" />
+                <verifyProperty description="Check text from Dialog2C" name="resultDialog" text="Operation aborted!" />
+                <verifyNoDialogs description="Check all dialogs were used" />
+
+                <!-- check for initial OK followed by confirm -->
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="Dialog3A: Confirm with OK" response="true" saveProperty="initialDialog" />
+                    <prompt description="Dialog3B: Prompt with OK" response="YES" saveProperty="confirmDialog" />
+                    <alert description="Dialog3C: Alert" saveProperty="resultDialog" />
+                </expectDialogs>
+                <clickButton description="Click Clean button" name="CleanButton" />
+                <verifyProperty description="Check text from first JavaScript Dialog" name="initialDialog" text="Are you sure?" />
+                <verifyProperty description="Check text from second JavaScript Dialog" name="confirmDialog" regex="true" text=".*very sure.*YES.*" />
+                <verifyProperty description="Check text from third JavaScript Dialog" name="resultDialog" text="Hard disk erased!" />
+                <verifyNoDialogs description="Check all dialogs were used" />
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testIncorrectDialogType">
+        <webtest name="verifyDialogs: test mock HardDiskErase but with incorrect dialog type">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load Initial Page" url="/mockdiskadmin.html"/>
+                <verifyTitle description="Should be disk admin page" text="Mock Disk Admin Page - for dialog handling tests"/>
+
+                <expectDialogs description="Set up Dialog Expectations">
+                    <alert description="Dialog1A - Should be confirm but we expect alert" response="false"/>
+                </expectDialogs>
+                <not description="Expected to fail because alert expected instead of confirm">
+                    <clickButton description="Click Clean button" name="CleanButton" />
+                </not>
+
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="Dialog2A - correct expectation" response="true" savePropertyType="dynamic"/>
+                </expectDialogs>
+                <!-- legacy steps below should just be added on to above expectation -->
+                <expectDialog description="Dialog2B - should be prompt but expect confirm" dialogType="confirm" response="true"/>
+                <expectDialog description="Dialog2B - should be prompt but expect confirm" dialogType="confirm" response="false"/>
+                <not description="Expected to fail because confirm used instead of prompt">
+                    <clickButton description="Click Clean button" name="CleanButton" />
+                </not>
+
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="Dialog3A - Correct expectation" response="true"/>
+                    <prompt description="Dialog3B - Correct expectation" response="YES"/>
+                    <prompt description="Dialog3C - should be alert but expect prompt"/>
+                </expectDialogs>
+                <not description="Expected to fail because prompt used instead of alert">
+                    <clickButton description="Click Clean button" name="CleanButton" />
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testIncorrectDialogValueSave">
+        <webtest name="verifyDialogs: test mock HardDiskErase but with incorrect dialog text using saveProperty">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load Initial Page" url="/mockdiskadmin.html"/>
+                <verifyTitle description="Should be disk admin page" text="Mock Disk Admin Page - for dialog handling tests"/>
+                <!-- check for initial cancel -->
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="Dialog1" response="false" saveProperty="initialDialog"/>
+                    <alert description="Dialog2" saveProperty="resultDialog"/>
+                </expectDialogs>
+                <clickButton description="Click Clean button" name="CleanButton" />
+                <not description="Expected to fail because of incorrect dialog message value">
+                    <verifyProperty description="Check text from first JavaScript Dialog" name="initialDialog" text="Incorrect Value To Test Error" />
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testIncorrectDialogValueInline">
+        <webtest name="verifyDialogs: test mock HardDiskErase but with incorrect dialog text using inline attributes">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load Initial Page" url="/mockdiskadmin.html"/>
+                <verifyTitle description="Should be disk admin page" text="Mock Disk Admin Page - for dialog handling tests"/>
+                <!-- check for initial cancel -->
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="Dialog1A" response="false" text="Are you sure?" />
+                    <alert description="Dialog1B" text=".*cancelled.*" regex="true" />
+                </expectDialogs>
+                <clickButton description="Click Clean button" name="CleanButton" />
+                <expectDialogs description="Set up Dialog Expectations">
+                    <confirm description="Dialog2 - Incorrect expectation" response="false" text="Are sure?" />
+                </expectDialogs>
+                <not>
+                    <clickButton description="Click Clean button" name="CleanButton"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testNoDialogs">
+        <webtest name="verifyDialogs: test mock HardDiskErase but with incorrect dialog text using inline attributes">
+            &sharedConfiguration;
+            <steps>
+                <!-- if we expect no dialogs and get one, it should fail -->
+                <invoke description="Load Initial Page" url="/mockdiskadmin.html"/>
+                <verifyTitle description="Should be disk admin page" text="Mock Disk Admin Page - for dialog handling tests"/>
+                <!-- check for initial cancel -->
+                <clickButton description="Click Clean button" name="CleanButton" />
+                <expectDialogs description="Set up Dialog Expectations: expect none"/>
+                <not description="should fail because incorrectly expecting no dialogs">
+                    <clickButton description="Click Clean button" name="CleanButton"/>
+                </not>
+
+                <!-- if we expect no dialogs and don't get any, it should pass -->
+                <invoke description="main page" url="links.jsp"/>
+                <expectDialogs description="Set up Dialog Expectations: expect none"/>
+                <clickLink description="click on MyLink" label="MyLink"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

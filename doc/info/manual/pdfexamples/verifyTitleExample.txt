@@ -1,0 +1,10 @@
+<webtest name="pdftest - verify document title">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyTitle description="Document title"
+      title="Report .* - Overview"
+      regex="true"/>
+		...
+  </steps>
+</webtest>

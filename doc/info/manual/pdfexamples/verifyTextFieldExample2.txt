@@ -1,0 +1,12 @@
+<webtest name="pdftest - verify text field value">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyTextField description="Text field value"
+      page="1"
+      name="LastName"
+      value="Stu[d,t]er"
+      regex="true"/>
+    ...
+  </steps>
+</webtest>

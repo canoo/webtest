@@ -1,0 +1,14 @@
+<webtest name="Visit the shop on myhost">
+	<config
+		host="www.myhost.com"
+		port="8080"
+		protocol="http"
+		basepath="shop"
+		saveresponse="true"
+		resultpath="/tmp/results"
+	>
+		<header name="User-Agent" value="Mozilla/4.0"/>
+		<header name="Accept-Language" value="de-ch"/>
+	</config>
+	...
+</webtest>

@@ -1,0 +1,37 @@
+<pre>
+    <b>This step is used prior to clicking on a link or button
+        which invokes some
+        <key>javascript</key>
+        that uses dialogs (Alert, Confirm or Prompt dialogs).
+        If you don't use this step,
+        <key>CWT</key>
+        simply clicks 'OK' on every dialog silently.
+        This is OK if you don't care about the Dialogs, but if you do care, you have no way of
+        telling if anything was actually clicked or what messages were displayed in the dialogs.
+    </b>
+
+    <b>You may be wondering why you need to set up expectations prior to clicking on a link
+        or button. This is mostly due to implementation issues with the way <key>CWT</key>
+        works and the way it calls <key>htmlunit</key> . It turns out to be easier at the moment to
+        create a list of dialog expectations. As interactions with your application cause
+        <key>javascript</key> to invoke dialogs, we simply look at the next dialog expectation
+        on the list, check that it meets expectations (or optionally save away the dialog
+        message text) and then remove it from the list. For tricky <key>javascript</key>
+        there may be multiple interactions from the user.
+        We simply list all the expected dialog interactions in the order we expect them to
+        occur by repeating this step as many times as required. (Alternatively, consider
+        using the newer <stepref name="expectDialogs"/> step which allows more concise expression
+        of dialog sequences.)
+    </b>
+
+    <b>Often you will use the
+        <stepref name="verifyNoDialogs"/>
+        step in conjunction
+        with this step to ensure that your expectations for dialogs were met. The
+        <stepref name="verifyNoDialogs"/>
+        step is used after clicking on your link or button - it
+        checks that the list of expected dialogs is now empty, i.e. by the
+        time you have finished interacting with your application all the dialogs you
+        were expecting to need clicking were actually clicked.
+    </b>
+</pre>

@@ -1,0 +1,24 @@
+<post>
+
+<b><em>Examples</em></b>
+
+<b>Place the <em>&lt;ifStep&gt;</em> around other steps, e.g.:</b>
+
+<code caption='ifStep example 1'>
+    <include src='examples/ifStepExample1.xml' />
+</code>
+
+<b>If you are using <key>XSLT</key> reporting, you should see something like this:</b>
+
+<b><img src="images/ifstep.gif"/></b>
+
+<b>In this next scenario, we simply look for span statements within
+the html of class 'debug' and if we find any we skip creating new users.
+This example shows how we can use a nested condition, in addition to ant
+or dynamic variables, to use more sophisticated tests.</b>
+
+<code caption='ifStep example 2'>
+ <include src='examples/ifStepExample2.xml' />
+</code>
+
+</post>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testStoreRandom" default="testStoreRandom" basedir=".">
+
+    <target name="testStoreRandom">
+        <property name="UCCHARS" value="ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
+        <property name="LCCHARS" value="abcdefghijklmnopqrstuvwxyz"/>
+        <webtest name="storeRandom: Show how to use storeRandom step">
+            &sharedConfiguration;
+            <steps>
+                <repeat count="5">
+                    <invoke description="load page (Iteration: #{count})" url="favourite.jsp"/>
+                    <!-- random colour using tokens -->
+                    <storeRandom description="choose colour" property="expectedColour" choice="red,green,blue,black"/>
+                    <setSelectField name="colour" value="#{expectedColour}"/>
+
+                    <!-- random font extracted from dropdown select list -->
+                    <storeXPath property="numsel" xpath="count(//select[@name='font']/option)"/>
+                    <storeRandom property="fontIndex" from="2" to="#{numsel}"/>
+                    <storeXPath property="expectedFont" xpath="//select[@name='font']/option[#{fontIndex}]/@value"/>
+                    <setSelectField name="font" value="#{expectedFont}"/>
+
+                    <!-- random level including out of range values to test server validation -->
+                    <storeRandom description="choose level" property="level" from="0" to="9"/>
+                    <setInputField name="level" value="#{level}"/>
+
+                    <!-- random two-word name (firstname up to 10 chars, lastname up to 20 chars) -->
+                    <storeRandom description="first name first letter" property="firstStart" chars="${UCCHARS}" length="1"/>
+                    <storeRandom description="first name num remaining chars" property="firstSizeRest" from="3" to="9"/>
+                    <storeRandom description="first name remaining chars" property="firstRest" chars="${LCCHARS}" length="#{firstSizeRest}"/>
+                    <storeRandom description="last name first letter" property="lastStart" chars="${UCCHARS}" length="1"/>
+                    <storeRandom description="last name num remaining chars" property="lastSizeRest" from="3" to="19"/>
+                    <storeRandom description="last name remaining chars" property="lastRest" chars="${LCCHARS}" length="#{lastSizeRest}"/>
+                    <storeProperty name="expectedName" value="#{firstStart}#{firstRest} #{lastStart}#{lastRest}" />
+                    <setInputField name="name" value="#{expectedName}"/>
+
+                    <clickButton name="fav_submit"/>
+
+                    <!-- now check the returned form comparing actual with expected values -->
+                    <storeXPath property="actualLevel" xpath="//input[@type='hidden']/@value"/>
+                    <storeXPath property="actualGreeting" xpath="//h#{actualLevel}/text()"/>
+                    <verifyProperty name="actualGreeting" text="Hello #{expectedName}"/>
+                    <storeElementAttribute htmlId="heading" propertyName="actualStyle" attributeName="style"/>
+                    <verifyProperty name="actualStyle" regex="true" text=".*color:#{expectedColour}.*"/>
+                    <verifyProperty name="actualStyle" regex="true" text=".*font-family:#{expectedFont}.*"/>
+                </repeat>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- TODO: once the new reporting is in place, make this work outside webtest -->
+    <target name="manualTestStoreRandomOutsideWebtest">
+        <storeRandom description="choose colour" property="expectedColour" choice="red,green,blue,black"/>
+    </target>
+</project>

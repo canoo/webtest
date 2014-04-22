@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testIfStep" default="all" basedir=".">
+
+    <target name="all" depends="testIfStepParameter, testIfStepNested, testIfStepConditionFailedMacro"/>
+
+    <target name="testIfStepParameter">
+        <property name="prodScenario" value="true"/>
+        <property name="nonProdScenario" value="false"/>
+        <webtest name="ifstep: test and illustrate if step usage">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="simulate bad step to check it creates error message"
+                        url="prodSimulation.jsp?action=createUser&amp;mode=prod"/>
+                <verifyText description="confirm we get error message" text="DISASTER"/>
+
+                <!-- now try sample tests for prod scenario and ensure we don't get above error -->
+                <ifStep description="something which should ONLY run in prod" test="${prodScenario}">
+                    <invoke description="simulate bad step to check it creates error message"
+                            url="prodSimulation.jsp?action=viewUser&amp;mode=prod"/>
+                    <not>
+                        <verifyText description="check for error message" text="DISASTER"/>
+                    </not>
+                </ifStep>
+                <ifStep description="something which should NEVER run in prod" unless="${prodScenario}">
+                    <invoke description="simulate bad step to check it creates error message"
+                            url="prodSimulation.jsp?action=createUser&amp;mode=prod"/>
+                    <verifyText description="check for error message" text="DISASTER"/>
+                </ifStep>
+                <ifStep description="something which should NEVER run in prod" test="${prodScenario}">
+                    <then>
+                        <invoke description="simulate bad step to check it creates error message"
+                                url="prodSimulation.jsp?action=viewUser&amp;mode=prod"/>
+                        <not>
+                            <verifyText description="check for error message" text="DISASTER"/>
+                        </not>
+                    </then>
+                </ifStep>
+                <ifStep description="something which should NEVER run in prod" test="${prodScenario}">
+                    <then>
+                        <invoke description="simulate bad step to check it creates error message"
+                                url="prodSimulation.jsp?action=viewUser&amp;mode=prod"/>
+                        <not>
+                            <verifyText description="check for error message" text="DISASTER"/>
+                        </not>
+                    </then>
+                    <else>
+                        <fail>Shouldn't reach this else</fail>
+                    </else>
+                </ifStep>
+                <ifStep description="something which should NEVER run in prod" unless="${prodScenario}">
+                    <then>
+                        <fail>Shouldn't reach this then</fail>
+                    </then>
+                    <otherwise>
+                        <invoke description="simulate bad step to check it creates error message"
+                                url="prodSimulation.jsp?action=createUser&amp;mode=prod"/>
+                        <verifyText description="check for error message" text="DISASTER"/>
+                    </otherwise>
+                </ifStep>
+                <ifStep description="something which should NEVER run in prod" unless="${prodScenario}">
+                    <else>
+                        <invoke description="simulate bad step to check it creates error message"
+                                url="prodSimulation.jsp?action=createUser&amp;mode=prod"/>
+                        <verifyText description="check for error message" text="DISASTER"/>
+                    </else>
+                </ifStep>
+                <!-- now try sample tests for test scenario and ensure we don't get above error -->
+                <ifStep description="something which should NEVER run in prod" test="${nonProdScenario}">
+                    <invoke description="simulate bad step to check it creates error message"
+                            url="prodSimulation.jsp?action=createUser&amp;mode=prod"/>
+                    <verifyText description="check for error message" text="DISASTER"/>
+                </ifStep>
+                <ifStep description="something which should NEVER run in prod" unless="${nonProdScenario}">
+                    <invoke description="simulate bad step to check it creates error message"
+                            url="prodSimulation.jsp?action=createUser&amp;mode=test"/>
+                    <not>
+                        <verifyText description="check for error message" text="DISASTER"/>
+                    </not>
+                </ifStep>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testIfStepNested">
+        <property name="prodScenario" value="true"/>
+        <property name="nonProdScenario" value="false"/>
+        <webtest name="ifstep: test and illustrate if step usage">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="simulate bad step to check it creates error message"
+                        url="prodSimulation.jsp?action=createUser&amp;mode=prod"/>
+                <verifyText description="confirm we get error message"
+                            regex="true" text=".*DISASTER.*"/>
+                <!-- now try sample tests for prod scenario and ensure we don't get above error -->
+                <ifStep description="something which should ONLY run in prod">
+                    <condition>
+                        <verifyProperty propertyType="ant" name="prodScenario" value="true"/>
+                    </condition>
+                    <invoke description="simulate bad step to check it creates error message"
+                            url="prodSimulation.jsp?action=viewUser&amp;mode=prod"/>
+                    <not>
+                        <verifyText description="check for error message" text="DISASTER"/>
+                    </not>
+                </ifStep>
+                <ifStep description="something which should NEVER run in prod">
+                    <condition>
+                        <not>
+                            <verifyProperty propertyType="ant" name="prodScenario" value="true"/>
+                        </not>
+                    </condition>
+                    <invoke description="simulate bad step to check it creates error message"
+                            url="prodSimulation.jsp?action=createUser&amp;mode=prod"/>
+                    <verifyText description="check for error message" text="DISASTER"/>
+                </ifStep>
+                <!-- now try sample tests for prod scenario and ensure we don't get above error -->
+                <ifStep description="something which should NEVER run in prod">
+                    <condition>
+                        <verifyProperty propertyType="ant" name="nonProdScenario" value="true"/>
+                    </condition>
+                    <invoke description="simulate bad step to check it creates error message"
+                            url="prodSimulation.jsp?action=createUser&amp;mode=prod"/>
+                    <verifyText description="check for error message" text="DISASTER"/>
+                </ifStep>
+                <ifStep description="something which should NEVER run in prod">
+                    <condition>
+                        <not>
+                            <verifyProperty propertyType="ant" name="nonProdScenario" value="false"/>
+                        </not>
+                    </condition>
+                    <invoke description="simulate bad step to check it creates error message"
+                            url="prodSimulation.jsp?action=createUser&amp;mode=test"/>
+                    <not>
+                        <verifyText description="check for error message" text="DISASTER"/>
+                    </not>
+                </ifStep>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testIfStepConditionFailedMacro">
+    	<macrodef name="testIf_FailingMacro" description="macro failing with a nested StepFailedException">
+    		<sequential>
+    			<verifyProperty name="foo" value="not here"/>
+    		</sequential>
+    	</macrodef>
+
+    	<webtest name="ifstep: test that when a macro used in condition fails, the test doesn't fail (WT-317)">
+            &sharedConfiguration;
+            <steps>
+            	<ifStep>
+            		<condition>
+            			<testIf_FailingMacro/>
+            		</condition>
+            			
+            		<fail message="Should never come here"/>
+            	</ifStep>
+            </steps>
+        </webtest>
+	</target>
+</project>

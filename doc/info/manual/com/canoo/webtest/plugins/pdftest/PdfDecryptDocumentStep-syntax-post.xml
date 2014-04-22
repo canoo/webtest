@@ -1,0 +1,7 @@
+<post>
+
+    <code caption="pdfDecryptDocument">
+        <include src='pdfexamples/decryptDocumentExample.xml' />
+    </code>
+
+</post>

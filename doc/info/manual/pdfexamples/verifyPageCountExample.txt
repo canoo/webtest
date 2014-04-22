@@ -1,0 +1,9 @@
+<webtest name="pdftest - verify page count">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyPageCount description="Page count"
+      count="2"/>
+    ...
+  </steps>
+</webtest>

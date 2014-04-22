@@ -1,0 +1,7 @@
+<project default="all">
+	<target name="all">
+		<ant file="testFoo.xml"/>
+		<ant file="testSomething.xml"/>
+		<ant file="testSomethingElse.xml"/>
+	</target>
+</project>

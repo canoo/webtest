@@ -1,0 +1,71 @@
+<post>
+    <b>When you are supplying the scripting code you can define methods and variables
+        as needed. In addition, you can call any of the Java methods which would be available
+        to the <em>&lt;groovy&gt;</em> step. See the API documentation for WebTest to determine
+        what method calls are available.</b>
+    <b>As an example, the <em>GroovyStep</em> class extends
+        the <em>Step</em> class which has a <em>getContext()</em> method which returns the
+        current <em>Context</em> which has a method <em>getCurrentResponse()</em> which
+        returns the current response which has a method <em>getDocumentElement()</em>.
+        In groovy you can just use <em>step.context.currentResponse.documentElement</em> to
+        return the current HTML document.</b>
+    <b>In addition to the functionality available to the <em>GroovyStep</em> class, there
+        are additional convenience variables <em>step</em> and <em>out</em> available to let
+        the script access itself or its log respectively.</b>
+
+    <dl>
+        <li>
+            <dt>step</dt>
+            <dd>The groovy step itself.</dd>
+        </li>
+        <li>
+            <dt>out</dt>
+            <dd>Mapped to step's log (at the debug level).</dd>
+        </li>
+    </dl>
+
+    <b>Note that the groovy step does not provide all the convenience variables provided by scriptStep.
+        The value of the missing variables are easily computed as follows:</b>
+
+    <dl>
+        <li>
+            <dt>document, for an html page</dt>
+            <dd>step.context.currentResponse.documentElement</dd>
+            <dt>document, for an xml page</dt>
+            <dd>step.context.currentResponse.xmlDocumentElement</dd>
+            <dt>response</dt>
+            <dd>step.context.currentResponse.webResponse</dd>
+        </li>
+    </dl>
+
+    <b>
+        The examples reuse the scenario of the
+        <stepref name="scriptStep" category="Extension"/>
+        .
+    </b>
+
+    <b>
+        <em>Order Example</em>
+    </b>
+
+    <code caption="OrderTest">
+        <include src="examples/groovyStepOrderExample.xml"/>
+    </code>
+
+    <b>
+        <em>Traffic Light Example</em>
+    </b>
+
+    <code caption="GroovyTrafficLightTest">
+        <include src="examples/groovyStepTrafficLightExample.xml"/>
+    </code>
+
+    <b>Rather than having the scripting code inline, you can place
+        it in a file and reference that file as follows:</b>
+
+    <code caption="GroovyFileTrafficLightTest">
+        <include src="examples/groovyStepTrafficLightFileExample.xml"/>
+    </code>
+</post>
+
+

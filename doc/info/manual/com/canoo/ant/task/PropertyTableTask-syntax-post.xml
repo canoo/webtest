@@ -1,0 +1,30 @@
+<post>
+	<b>
+	Imagine an Excel file like this one:<n/>
+	<n/>
+			<img src="images/dataDriven/simpleExcelFile.png"/>
+	<n/>
+	<n/>
+	You can use <em>dataDriven</em> to execute a set of Ant tasks for each property set:
+	</b>
+    <code caption="dataDrivenEcho.xml">
+        <include src='examples/dataDrivenEcho.xml'/>
+    </code>
+    <b>
+    This will give you following output:
+<code>
+	[echo] Hello Denis N. Antonioli<n/>
+	[echo] Hello Dierk König<n/>
+	[echo] Hello Marc Guillemot<n/>
+	[echo] Hello Paul King<n/>
+	[echo] Hello Tomi Schütz<n/>
+</code>
+    
+    </b>
+    <b>
+    Naturally you can combine it with WebTest, lets say to register these persons to some event:
+    </b>
+    <code caption="dataDrivenWebtetst.xml">
+        <include src='examples/dataDrivenWebtest.xml'/>
+    </code>
+</post>

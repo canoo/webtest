@@ -1,0 +1,8 @@
+<steps>
+    <invoke method="POST" contentFile="AustralianPostcodeByLocationRequest.xml"
+        soapAction="http://www.webserviceX.NET/GetAustralianPostCodeByLocation"
+        url="http://httpwww.webservicex.com/AustralianPostCode.asmx?op=GetAustralianPostCodeByLocation"/>
+    <verifyText text="Karalee"/>
+    <verifyText text="QLD"/>
+    <verifyText text="4306"/>
+</steps>

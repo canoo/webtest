@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>For clicklink tests</title>
+</head>
+<body>
+
+<h1>Some links to test the &lt;clicklink...&gt; step...</h1>
+
+<a href="newPage.html" target="_blank">Link to new Window</a><br>
+<a href="newPage.html" target="_top">Link to top Window</a><br>
+<a href="newPage.html" target="some">Link to some other Window</a><br>
+
+1 2 3 4 5 6 7 8 9 10
+
+<p>
+button to new window
+<form action="newPage.html" target="_blank">
+    <input type="submit" name="button_to_new_window"/>
+</form>
+
+<p>
+button element
+<form action="newPage.html" >
+    <button name="button_element" type="submit">button element label</button>
+    <input type="button" name="input_button" onclick="location.href='dummy.html'">input button element label</button>
+</form>
+
+</body>
+</html>

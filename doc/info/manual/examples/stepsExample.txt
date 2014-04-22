@@ -1,0 +1,6 @@
+<webtest name="Visit all pages without update">
+	<config ... />
+	<steps>
+		...
+	</steps>
+</webtest>

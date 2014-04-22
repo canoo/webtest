@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE references SYSTEM "manpage.dtd">
+<references>
+    <ref id="CWT" title="Canoo WebTest" type="Home Page">
+        <link href="http://webtest.canoo.com/webtest"/>
+        <note>The Canoo WebTest distribution.</note>
+        <note>An Open Source tool to facilitate automatic functional testing
+            of html-bound web applications.</note>
+    </ref>
+    <ref id="mailingList" title="Canoo WebTest Mailing List" type="Home Page">
+        <link href="http://lists.canoo.com/mailman/listinfo/webtest"/>
+        <link href="news://news.gmane.org/gmane.comp.web.canoo.webtest"/>
+        <note>The Canoo WebTest moderated mailing list for community discussions and latest news.</note>
+        <note>The right place to post success stories, bugs and feature requests.</note>
+    </ref>
+    <ref id="WebTestCommunity" title="Canoo WebTest Community Site" type="Home Page">
+        <link href="http://webtest-community.canoo.com"/>
+        <note>The Canoo WebTest Community Site for FAQ,
+            sharing Contributions, Discussions, etc.</note>
+        <note>A Forum-like Wiki specialized on code sharing.</note>
+    </ref>
+    <ref id="Maven" title="Maven" type="Home Page">
+        <link href="http://maven.apache.org/"/>
+        <note>Maven is a Java project management and project comprehension tool that
+            provides a well defined model for your project.</note>
+    </ref>
+    <ref id="MavenPlugin" title="Maven Canoo WebTest Plugin" type="Home Page">
+        <link href="http://maven-plugins.sourceforge.net/maven-webtest-plugin/index.html"/>
+        <link href="http://jakarta.apache.org/turbine/maven/"/>
+        <note>Provided by Siegfried Goeschl.</note>
+        <note>Maven is a Java project management and project comprehension tool that
+            provides a well defined model for your project. The Canoo WebTest plugin comes into
+            play to model the acceptance tests. Typically Maven, that model is validated, run, and
+            results get visualized.</note>
+    </ref>
+    <ref id="Jira" title="Jira" type="Home Page">
+        <link href="http://www.atlassian.com/software/jira/"/>
+        <note>A Bug Tracking, Issue Tracking and Project Management Tool.</note>
+        <note>Thanks to the atlassian people for providing such an
+            excellent tool and for supporting Canoo WebTest with a free open source license.</note>
+    </ref>
+    <ref id="CLOVER" title="Clover" type="Home Page">
+        <link href="http://www.cenqua.com/clover/"/>
+        <note>A code coverage tool for Java.</note>
+        <note>Thanks to the clover people for providing such an
+            excellent tool and for supporting Canoo WebTest with a free license.</note>
+    </ref>
+    <ref id="Intellij" title="IntelliJ IDEA" type="Home Page">
+        <link href="http://www.jetbrains.com/idea/"/>
+        <note>An excellent Java, J2EE and XML (including WebTest scripts) refactoring IDE.</note>
+        <note>Thanks to the JetBrains people for providing such an
+            excellent tool and for supporting Canoo WebTest with a free open source license.</note>
+    </ref>
+    <ref id="OLS" title="Canoo Online Services" type="Home Page">
+        <link href="http://www.canoo.net"/>
+        <note>The Canoo Online Services for german language exploration.</note>
+        <note>Includes hundreds of pages with static, dynamic and mixed content.</note>
+    </ref>
+    <ref id="pdfbox" title="PDFBox" type="Home Page">
+        <link href="http://www.pdfbox.org"/>
+        <note>PDFBox is a free open-source Java PDF Library developed by Ben Litchfield.</note>
+        <author name="Ben Litchfield"/>
+    </ref>
+    <ref id="xls" title="XLS" type="Home Page">
+        <link href="http://office.microsoft.com/excel"/>
+        <note>File format used by Microsoft Excel to save spreadsheets.</note>
+    </ref>
+    <ref id="pdf" title="PDF" type="Home Page">
+        <link href="http://www.adobe.com/products/acrobat/adobepdf.html"/>
+        <note>Invented by Adobe, Portable Document Format (PDF) is the published specification
+            used around the world for secure, reliable electronic document distribution and exchange.</note>
+    </ref>
+    <ref id="regex" title="regular expression" type="Home Page">
+        <link href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html"/>
+        <note>Canoo WebTest uses the built in Regular Expression capacities of Java (since 1.4) with the dotall mode
+            enabled (allows "." to match any character including a line terminator, this is what Perl names the single
+            line mode).</note>
+    </ref>
+    <ref id="XPATH" title="XPath" type="Home Page">
+        <link href="http://www.w3.org/TR/xpath"/>
+        <link href="http://www.w3schools.com/xpath/"/>
+        <note>XML Path Language.</note>
+        <note>XPath defines a formal notation to reference parts of XML document structures.
+            Its main use is for XSLT and XPointer.</note>
+        <note>XPath expressions allow to query a document like you would query a database
+            by SQL. In combination with Canoo WebTest it enables queries on HTML documents.</note>
+    </ref>
+    <ref id="XPE" title="XPath Explorer" type="Home Page">
+        <link href="http://www.purpletech.com/xpe/index.jsp"/>
+        <note>Alex Chaffee's XPath Exploration tool.</note>
+        <note>It not only allows exploring XML/HTML using XPath, it also makes
+            creating XPath expressions a real pleasure, as you can select the node under test
+            and the expression will be created for you.</note>
+        <note>The XPath Explorer is the recommended companion to use with WebTest's
+            'verifyXPath' and 'storeXPath' steps.</note>
+    </ref>
+    <ref id="XPather" title="XPather" type="Home Page">
+        <link href="http://xpath.alephzarro.com/"/>
+        <note>Firefox plugin to evaluate and generate XPath expressions while browsing.</note>
+    </ref>
+    <ref id="dbunit" title="DbUnit" type="Home Page">
+        <link href="http://dbunit.sourceforge.net/"/>
+        <link href="http://dbunit.sourceforge.net/howto.html#canoo"/>
+        <note>A tool for testing all database related issues.</note>
+        <note>Beside testing your db queries and setup, it makes an excellent companion to
+            WebTest as it allows to safely populate your test db with the required test data.
+            Using the dbunit ANT task, this population can take place right before your
+            test, such that WebTest and test data go together. (See also SQLUnit)</note>
+    </ref>
+    <ref id="sqlunit" title="SQLUnit" type="Home Page">
+        <link href="http://sqlunit.sourceforge.net/"/>
+        <link href="http://sqlunit.sourceforge.net/x3931.html"/>
+        <note>A tool for testing all database related issues.</note>
+        <note>Besides testing your db stored procedures, queries and setup, it makes an excellent
+            companion to WebTest as it allows you to safely populate your test db with the required test data.
+            Using the sqlunit ANT task, this population can take place right before your
+            test, so that WebTest and the database test data are always in sync. Post test tidy up is also
+            supported. SQLUnit supports reporting using an XML file compatible with WebTest's
+            reporting format, so that you can generate HTML reports combining both sets of
+            information. (See also DbUnit)</note>
+    </ref>
+    <ref id="HTML" title="HTML" type="Home Page">
+        <link href="http://www.w3.org/MarkUp/"/>
+        <note>Hypertext Markup Language.</note>
+        <note>HTML is the lingua franca for publishing hypertext on the World Wide Web</note>
+        <note>Consider visiting the site of the world wide web consortium to find more
+            information about html variants, formats, parsers and validators.</note>
+    </ref>
+    <ref id="HTTP" title="HTTP" type="Home Page">
+        <link href="http://www.w3.org/Protocols/"/>
+        <link href="ftp://ftp.isi.edu/in-notes/rfc2616.txt"/>
+        <note>Hypertext Transfer Protocol.</note>
+        <note>The Hypertext Transfer Protocol (HTTP) is an application-level protocol for
+            distributed, collaborative, hypermedia information systems. HTTP is used by browsers
+            to request pages and images and submit forms. It is also used by RESTful Web Services
+            to access services.</note>
+    </ref>
+    <ref id="validator" title="HTML Validator" type="Home Page">
+        <link href="http://validator.w3.org/"/>
+        <link href="http://www.htmlhelp.com/tools/validator/"/>
+        <link href="http://www.htmlvalidator.com/"/>
+        <link href="http://arealvalidator.com/"/>
+        <note>A program that checks whether an HTML page conforms to the standard.</note>
+        <note>There are free validators on the web and commercial ones that can be run locally.</note>
+        <note>Use one! It's worth it!</note>
+    </ref>
+    <ref id="XML" title="XML" type="Home Page">
+        <link href="http://www.w3.org/xml"/>
+        <note>Extensible Markup Language</note>
+    </ref>
+    <ref id="xerces" title="Xerces" type="Home Page">
+        <link href="http://xerces.apache.org/xerces2-j/"/>
+        <note>Apache Xerces XML Parser</note>
+    </ref>
+    <ref id="ibmPL" title="IBM Public License" type="Home Page">
+        <link href="http://oss.software.ibm.com/developerworks/opensource/license10.html"/>
+        <note>IBM Public License conditions</note>
+    </ref>
+    <ref id="XSLT" title="XSLT" type="Home Page">
+        <link href="http://www.w3.org/TR/xslt"/>
+        <link href="http://www.w3.org/TR/xsl/"/>
+        <note>XSL Transformations</note>
+        <note>Uses the Extensible Stylesheet Language (XSL) for transformations
+            of XML trees into other tree structures like html, formatting objects
+            (that can be serialized as PDF) or XML again.</note>
+    </ref>
+    <ref id="jakarta" title="The Jakarta Project" type="Home Page">
+        <link href="http://jakarta.apache.org/"/>
+        <note>The leading Java open source software site.</note>
+        <note>Includes the Apache web server, Tomcat, ANT, Log4J,
+            Cactus, ORO, Struts and many more.</note>
+    </ref>
+    <ref id="ANT" title="ANT" type="Home Page">
+        <link href="http://ant.apache.org/"/>
+        <note>The leading build automation tool.</note>
+        <note>The platform independent replacement for &quot;make&quot;.</note>
+    </ref>
+    <ref id="ANTC" title="Ant-Contrib" type="Home Page">
+        <link href="http://ant-contrib.sourceforge.net/ant-contrib/manual/tasks/index.html"/>
+        <note>The Ant-Contrib project is a collection of tasks (and at one point maybe types and other tools) for Apache
+            Ant.</note>
+    </ref>
+    <ref id="BSF" title="Bean Scripting Framework (BSF)" type="Home Page">
+        <link href="http://jakarta.apache.org/bsf/"/>
+        <note>Bean Scripting Framework (BSF) is a set of Java classes which
+            provides scripting language support within Java applications.</note>
+    </ref>
+    <ref id="junit" title="JUnit" type="Home Page">
+        <link href="http://www.junit.org/"/>
+        <note>Home of the unit test community.</note>
+        <note>Points to articles, downloads and other on-line resources.</note>
+        <note>Unit test tools for other languages than Java are also available,
+            including Smalltalk, C++, Perl, Python, JavaScript and even VisualBasic.</note>
+    </ref>
+    <ref id="javascript" title="JavaScript" type="Home Page">
+        <link href="http://www.ecma-international.org/publications/standards/Ecma-262.htm"/>
+        <link href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/script56/html/js56jsoriJScript.asp"/>
+        <link href="http://www.mozilla.org/js/"/>
+        <note>The scripting language supported by most browsers.</note>
+    </ref>
+    <ref id="httpunit" title="HttpUnit" type="Home Page">
+        <link href="http://www.httpunit.org"/>
+        <note>The Open Source Web Site Testing tool for programmers.</note>
+        <note>Captures web site testing in JUnit TestCases.</note>
+        <author name="Gold" firstname="Russell"/>
+    </ref>
+    <ref id="htmlunit" title="HtmlUnit" type="Home Page">
+        <link href="http://htmlunit.sourceforge.net/"/>
+        <note>The Open Source java unit testing framework for testing web based applications.</note>
+        <note>This is the "browser" used to play webtest test suites.</note>
+    </ref>
+    <ref id="groovy" title="Groovy" type="Home Page">
+        <link href="http://groovy.codehaus.org/"/>
+        <note>Groovy is a powerful high-level scripting language for the Java platform
+            which compiles down to Java bytecode and utilises Java syntax and features.</note>
+    </ref>
+    <ref id="jtidy" title="JTidy" type="Home Page">
+        <link href="http://sourceforge.net/projects/jtidy"/>
+        <note>Small and lean Open Source HTML parser.</note>
+        <note>Is used in the HttpUnit package.</note>
+    </ref>
+    <ref id="nekohtml" title="NekoHTML" type="Home Page">
+        <link href="http://www.apache.org/~andyc/neko/doc/html/"/>
+        <note>NekoHTML is a simple HTML scanner/parser and tag balancer that enables application programmers to
+            parse HTML documents and access the information using standard XML interfaces.</note>
+        <note>NekoHTML is used in the HtmlUnit package.</note>
+    </ref>
+    <ref id="jemmy" title="Jemmy" type="Home Page">
+        <link href="http://jemmy.netbeans.org/"/>
+        <note>Jemmy is a library that is used to create automated tests for Java GUI applications.</note>
+        <note>Is used in the AppletRunner step.</note>
+    </ref>
+    <ref id="jetty" title="Jetty" type="Home Page">
+        <link href="http://jetty.mortbay.org/jetty/"/>
+        <note>Jetty is a 100% Java HTTP Server and Servlet Container.</note>
+        <note>Is used to preform selftest in a controlled environment during the build of webtest.</note>
+    </ref>
+    <ref id="cruisecontrol" title="CruiseControl" type="Home Page">
+        <link href="http://cruisecontrol.sourceforge.net/"/>
+        <note>The Open Source Continuous Integration facilitator.</note>
+        <note>The site also points to more information about continuous integration.</note>
+        <note>CruiseControl uses ANT to trigger new builds on any repository change
+            and reports the build result as email and on a website using JSP, XML and XSLT.</note>
+    </ref>
+    <ref id="ats" title="Automated Testing Specialists" type="Home Page">
+        <link href="http://www.sqa-test.com/"/>
+        <note>Points to a huge set of resources about automated testing.</note>
+        <note>Answers a lot of questions about testing.</note>
+        <note>Homepage of an independent consultants&apos; community.</note>
+    </ref>
+    <ref id="sourceforge" title="SourceForge.net" type="Home Page">
+        <link href="http://sourceforge.net/"/>
+        <note>The leading distribution page for open source software.</note>
+        <note>A regular must-visit for every developer.</note>
+    </ref>
+    <ref id="canoo" title="Canoo Engineering AG" type="Home Page">
+        <link href="http://www.canoo.com/"/>
+        <note>Owner of Canoo WebTest in Basel, Switzerland.</note>
+    </ref>
+    <ref id="seiberTEC" title="seiberTEC" type="Home Page">
+        <link href="http://www.seibertec.ch/"/>
+        <note>A high-profile software development company in Rueschlikon, Switzerland.</note>
+    </ref>
+    <ref id="cspb" title="Credit Suisse Private Banking" type="Home Page">
+        <link href="http://www.cspb.com/"/>
+        <note>Credit Suisse Private Banking</note>
+    </ref>
+    <ref id="csfs" title="Credit Suisse Financial Services" type="Home Page">
+        <link href="http://www.csfs.com/"/>
+        <note>Credit Suisse Fincancial Services</note>
+    </ref>
+    <ref id="data-driven" title="Totally Data-Driven Automated Testing" type="White Paper">
+        <link href="http://www.sqa-test.com/w_paper1.html"/>
+        <note>A must-read for the testing inclined developer.</note>
+        <author name="Keith Zambelich">
+            <occupation>Co-author of the WinRunner ATS Toolkit.</occupation>
+            <occupation>Sr. Software Quality Assurance Analyst</occupation>
+            <occupation>Automated Testing Evangelist</occupation>
+        </author>
+        <cite id="cost-effective">
+            Record/Playback is the least cost-effective method of automating test cases.
+        </cite>
+    </ref>
+    <ref id="pragmatic" title="The Pragmatic Programmer" type="Book">
+        <link href="http://www.pragmaticprogrammer.com"/>
+        <note>Addison-Wesley Oct 1999 ISBN: 020161622X</note>
+        <note>It covers topics ranging from personal responsibility and
+            career development to architectural techniques for keeping your code flexible,
+            easy to adapt and reuse.
+        </note>
+        <author name="Hunt" firstname="Andrew"/>
+        <author name="Thomas" firstname="David"/>
+        <cite id="plain-text">
+            The Power of Plain Text, section 14
+        </cite>
+        <cite>Design to Test.
+            Start thinking about testing before you write a line of code.
+        </cite>
+        <cite>Test Early. Test Often. Test Automatically.
+            Tests that run with every build are much more effective than test plans that sit on a shelf.
+        </cite>
+        <cite>
+            Coding Ain&apos;t Done &apos;Til All the Tests Run.
+        </cite>
+        <cite>Find Bugs Once.
+            Once a human tester finds a bug, it should be the last time a human tester finds that bug.
+            Automatic tests should check for it from then on.
+        </cite>
+    </ref>
+    <ref id="KatjaSchulze">
+        <author name="K.S.">
+            <occupation>Project Manager</occupation>
+        </author>
+        <cite id="ffo-success">
+            Initially we used WebTest only for one of our applications that has the main focus on data entry.
+            For the application has a quite complex data model and an elaborate business logic with many possible user
+            roles,
+            the usecase oriented tests tended to be very costly.
+            We then were looking for a way to automate our manual tests and decided to use Canoo WebTest.
+            After the initial effort for defining the testcases we had reproducable tests und furthermore an implicit
+            documentation of the user processes. With the automation we also could parametrise the test cases,
+            so that we became a kind of independent of the actual available test data.
+            This lead to less effort for the software developers and faster test runs,
+            what gave us a wider scope for covering special test cases.
+            Based on these experiences it was decided to broaden the usage of WebTest in CSPB,
+            on the one hand to more applications, on the other hand to more test levels.
+            Now WebTest is used for business critical functions with several thousand users.
+        </cite>
+    </ref>
+    <ref id="BryanDollery">
+        <author name="Bryan Dollery">
+            <occupation>Columnist at informIT</occupation>
+        </author>
+        <cite id="informit">
+            Of course, the enlightened use HTML for all their human/computer interaction needs.
+            It doesn't matter how you generate it - servlets, JSP, Struts, XML/XSLT, whatever - you're still
+            going to have to test that front end.
+            Common wisdom has it that HTTPUnit is fit for this task - but I disagree.
+            HTTPUnit is a powerful and useful tool, but if you're just going to test HTML forms then I recommend Canoo
+            WebTest.
+            (..)
+            The test script is in XML, and is extremely simple to write. A tag called invoke takes a URL as its
+            parameter.
+            This is a simple call to the web server.
+            You can use tags such as verifyTitle, setInputField, getInputField, clickButton, and so on.
+            It's all intuitively simple, and it works well.
+        </cite>
+    </ref>
+    <ref id="RaibleDesigns">
+        <author name="Matt Raible">
+            <occupation>Web Technology Expert at www.raibledesigns.com</occupation>
+        </author>
+        <cite id="raibleDesigns">
+            I used 2 very cool tools today.
+            The first is Canoo's WebTest.
+            (..)
+            It's fricken sweet as you don't have to really write any code, and it just worked for me
+            (..) my favorite feature in any software.
+        </cite>
+    </ref>
+    <ref id="all">
+        <author name="anonymous"/>
+        <cite id="free-quality">
+            Quality is for free, but only for those who are willing to pay heavily for it.
+        </cite>
+    </ref>
+</references>

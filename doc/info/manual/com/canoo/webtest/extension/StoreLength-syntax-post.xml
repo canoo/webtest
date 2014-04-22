@@ -1,0 +1,24 @@
+<post>
+
+    <b>The following example illustrates how to use the <em>storeLength</em> step (illustrating
+        the use of the nested table locator step):</b>
+
+    <code caption="storeLength example">
+        <include src='examples/storeLengthExample.xml'/>
+    </code>
+
+    <b>One of the ways to calculate the length value (so that you can write the test) is to use a
+        dummy value (e.g. '999') and then run the test. Then when it fails it will tell you what it was expecting.
+        Simply copy that value into your test. Eventually we may store length values in a file and populate the
+        file for you the first time the test is run or we may have a tool (e.g. Mozilla plug-in or one of the
+        other recorder tools) to pre-calculate length values for you.</b>
+
+    <b><em>See also</em>: the <stepref name="verifyContent"/>,
+        <stepref name="storeDigest"/>,
+        <stepref name="lineSeparatorFilter"/>,
+        <stepref name="replaceFilter"/>,
+        <stepref name="tagStripper"/> and
+        <stepref name="contentStripper"/> steps.
+    </b>
+
+</post>

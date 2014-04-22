@@ -1,0 +1,7 @@
+<message type="Simple" contentType="text/plain">
+    <header name="Subject" value="mailtest - multifiles - uu"/>
+    <header name="From" value="paul@asert.com.au"/>
+    <header name="To" value="paul@asert.com.au"/>
+    <part type="uuencoded" filename="ok.gif"/>
+    <part type="uuencoded" filename="testDocLinks.pdf"/>
+</message>

@@ -1,0 +1,12 @@
+<steps>
+    <invoke url="testDocBookmarks.pdf"/>
+    <pdfVerifyBookmark name="He.*One" regex="true"/>
+    <pdfVerifyBookmark name="Subheading"/>
+    <not description="expect to fail: unknown bookmark">
+        <pdfVerifyBookmark name="Heading Three" />
+    </not>
+    <invoke url="testDocForms.pdf"/>
+    <not description="expect to fail: document has no bookmarks">
+        <pdfVerifyBookmark name=".*" regex="true" />
+    </not>
+</steps>

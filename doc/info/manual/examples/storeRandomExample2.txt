@@ -1,0 +1,7 @@
+<steps>
+    <!-- previous steps ... -->
+    <!-- random level including out of range values to test server validation -->
+    <storeRandom description="choose level" property="level" from="0" to="9"/>
+    <setInputField name="level" value="#{level}"/>
+    <!-- additonal steps ... -->
+</steps>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE manpage SYSTEM "manpage.dtd" [
+<!ENTITY site                SYSTEM "WebTestSite.xml">
+<!ENTITY simpleTest          "<include src='examples/simpleTest.xml' />">
+<!ENTITY properties          "<include src='examples/properties.xml' />">
+<!ENTITY antcall             "<include src='examples/antcall.xml' />">
+<!ENTITY config              "<include src='examples/config.xml' />">
+<!ENTITY allLanguages        "<include src='examples/allLanguages.xml' />">
+<!ENTITY allUseCases         "<include src='examples/allUseCases.xml' />">
+<!ENTITY login               "<include src='examples/login.xml' />">
+<!ENTITY loginAndStep        "<include src='examples/loginAndStep.xml' />">
+<!ENTITY organize_main       "<include src='examples/samples_organize_main.xml' />">
+<!ENTITY organize_allTests   "<include src='examples/samples_organize_allTests.xml' />">
+<!ENTITY entities_goToLogin  "<include src='examples/samples_entities_goToLogin.xml' />">
+<!ENTITY entities_usage      "<include src='examples/samples_entities_usage.xml' />">
+<!ENTITY entities_dtd        "<include src='examples/samples_entities_dtd.xml' />">
+]>
+
+<manpage siteid="Samples">
+
+  &site;
+
+  <head title="Samples to give you a jump start">
+
+    <b>The samples should give you an easy jump start.
+	You can copy/paste them from this page into your editor.</b>
+
+    <b>We will start with the easiest examples and explain
+	more advanced topics as we proceed. The description of every
+	sample is based on the preceeding examples.</b>
+
+      <b>
+          This page only shows very few of the available steps that
+          can be used with Canoo WebTest. See the various Syntax Reference
+          pages (e.g. <pageref name="Syntax Reference - Core Steps"/>)
+          for more details about the steps. In particular,
+          <pageref name="Syntax Reference - PDF Steps"/> has
+          usage samples for the PDF Steps.
+      </b>
+
+      <b>
+          This page assumes that you have already followed the
+          <pageref name="Install"/> instructions.
+      </b>
+
+  </head>
+
+  <section title="Simple test">
+
+    <b>The first simple example shows how to connect to a webapplication
+		starting at
+      <example>http://www.myserver.com:8080/myApp/login</example>.
+    </b>
+
+    <code caption="SimpleTest.xml">
+      &simpleTest;
+    </code>
+
+    <b>Look above the <example>import</example> task.
+		It is crucial that you replace <example>C:/java/webtest</example> with your
+      <example>WEBTEST_HOME</example> installation directory. 
+      Otherwise, Canoo WebTest may not find its implementation. 
+      You can also provide this value as a relative path, e.g. a value of
+      <example>"../webtest"</example> is convenient if your
+      <example>SimpleText.xml</example> is stored in a directory next to your
+      <example>WEBTEST_HOME</example>.
+    </b>
+
+    <b>Put this file where you would like your tests to be, open a command shell in
+		that directory and type:</b>
+
+    <code>
+			webtest -buildfile SimpleTest.xml
+    </code>
+
+  </section>
+
+  <section title="Organize your tests">
+
+    <b>The <example>import</example> statement in the previous example should be executed only once and not be present in all test files
+     to avoid memory problems. For this reason it is wise to organize tests in a subfolder
+     as done in the sample project created by <em>wt.createProject</em> and call the real tests
+     from the main build file
+     </b>
+
+    <code caption="build.xml">
+      &organize_main;
+    </code>
+
+    <code caption="tests/allTests.xml">
+      &organize_allTests;
+    </code>
+   </section>
+
+  <section title="Include files">
+  	<b>It is important to avoid duplications to keep tests maintainable. 
+  	This can be achieved with the usage of entities (or with macros).
+  	Entities are standard XML features allowing to refer (external) xml fragments through a DTD.</b>
+  	<b><em>webtest.xml</em> provides facilities to make work with entities and DTD easier: a DTD file
+  	<em>dtd/Project.dtd</em> is automatically created to reference the files contained
+  	in the <em>includes</em> folder.</b>
+  	
+  	<b>This means that when your <em>includes></em> folder contains a file like this:</b>
+  	<code caption="includes/goToLogin.xml">
+  		&entities_goToLogin;
+  	</code>
+  	<b>WebTest will automatically generate <em>dtd/Project.dtd</em> containing a reference like:</b>
+  	<code>
+  		&entities_dtd;
+  	</code>
+  	<b>Referencing this DTD in your tests allows to make usage of the entities:</b>
+  	<code caption="tests/testSomething.xml">
+  		&entities_usage;
+  	</code>
+  </section>
+
+  <section title="Property Usage">
+    <b>You can use the full range of
+      <key>ANT</key> features to deal with
+		properties. A typical example is that you use a url that has some
+        common prefix but is extended with different parameters.
+        Using a property for describing the common prefix makes your tests
+        both: more readable and easier to adapt to changes.
+    </b>
+
+    <code caption="property usage">
+      &properties;
+    </code>
+
+    <b>This opens quite a number of possibilities.</b>
+      <dl>
+        <li>
+          <dt>Entity Modules</dt>
+          <dd>When extracting a block into an external file as shown above,
+				you can still use the ${property} syntax. This makes external files
+                more reusable in different contexts. They can effectively become
+                modules that capture the
+            <em>structure</em> of the steps you are
+				executing.
+          </dd>
+        </li>
+        <li>
+          <dt>Property Files</dt>
+          <dd>If you have a 'family' of properties that change values together,
+                e.g. label.a and label.b both for english and french, then you can create
+                two files: <em>english-labels.properties</em> and <em>french-label.properties</em> and
+                select it via <em>&lt;property file="english-labels.properties"&gt;</em>
+                in your webtest. The files themselves contain the properties in the
+				format <em>name=value</em> one at a line. See the
+            <key>ANT</key> documentation
+                for more details.
+          </dd>
+        </li>
+        <li>
+          <dt>Immutable Properties</dt>
+          <dd>The value of a property cannot change once it has been set.
+				While this is sometimes annoying it makes for quite a nice way to
+				reuse a test that depends on properties. In the above example
+                we could set the property "url" from a caller of the test target to a
+                different value. A caller can use the &lt;ant&gt; or &lt;antcall&gt;
+                tasks to do that (using nested property elements).
+                See the
+            <key>ANT</key> documentation
+                for more details.
+          </dd>
+        </li>
+
+      </dl>
+
+  </section>
+
+  <section title="Putting it all together">
+
+    <b>Let's stick to our login examle. Say we want to create a "Login" module.
+		It could look like this:</b>
+
+    <code caption="includes/login.xml">
+      &login;
+    </code>
+
+    <b>This should be reasonably self-explanatory. Note that you can use
+		xml comments at any time, but they do not get reported. Therefore, I like it better
+		to use the description for commenting. </b>
+    <b>There will be a lot of Use Cases using this module. Here is one.</b>
+
+    <code caption="tests/loginAndStep.xml">
+      &loginAndStep;
+    </code>
+
+    <b>Other Use Cases will be different in what they do after the login.
+			They are likely to share even more modules, e.g. "step". They will differ
+			in how they assemble the modules and what they do in between the
+			module calls. How do we make sure that all use cases get executed?
+			We collect them in a test suite:</b>
+
+    <code caption="tests/allUseCasesTestSuite.xml">
+      &allUseCases;
+    </code>
+
+    <b>However, the Use Cases do not change in structure for different languages.
+		Only the labels change. We put those languages in different property files.</b>
+
+    <code caption="properties/english.properties">
+			user=scott<n/>
+			login.ok.password=tiger<n/>
+			login.ok.title=Welcome<n/>
+    </code>
+    <code caption="properties/french.properties">
+			user=pascal<n/>
+			login.ok.password=fleur<n/>
+			login.ok.title=Bienvenue<n/>
+    </code>
+
+    <b>In Order to properly test all Use Cases for all languages, we build
+        a test suite that calls the AllUseCasesTestSuite for each language
+        property file.</b>
+
+    <code caption="tests/allLanguagesTestSuite.xml">
+      &allLanguages;
+    </code>
+
+    <b>For keeping the tests manageable, proper naming of your test files,
+        entities, and properties helps much. The same holds true for the
+        directory structure. The structure used above allows to use <em>webtest.xml</em>
+        propertly but it is in no way mandatory. In short it looks like this:</b>
+
+    <code caption="Test Directory Structure">
+		WebTestProject<n/>
+      	<t/>dtd<n/>
+      	<t/>includes<n/>
+        <t/>properties<n/>
+        <t/>tests<n/>
+    </code>
+
+    <b>Following the proposed strategy of removing duplication in the tests
+		will enable you to keep your tests managable and flexible enough to
+		keep up to speed with application development. The goal is to keep every file
+		understandable and comprehensive for its own, at its own level of abstraction.
+		Sure this goes at the price
+        of not having a flat view over the test "storybook". However, this can
+        be achieved 'after-the-fact' by using the builtin reporting features.
+		See the "Build Info"."Selftest Report" for an example.</b>
+
+    <b>You should now be able to tackle even more complicated scenarios
+        like different datasets in local, test, and integration environments.</b>
+
+  </section>
+
+  <section title="Rules of thumb">
+      <dl>
+        <li>
+          <dt>Strike Two - You're Out!</dt>
+          <dd>This is hardball. As soon as you find yourself using code a second
+						time, don't copy but refactor. Put it in a property, an own ant
+						file, a separate target, or a module (external entity).
+          </dd>
+        </li>
+        <li>
+          <dt>Keep targets short</dt>
+          <dd>Remember that you can call every target separately.
+						Putting all your tests in one target limits your options of
+						running selective tests.
+          </dd>
+        </li>
+        <li>
+          <dt>Use description</dt>
+          <dd>When writing the description think what message would help you
+						if this step fails.
+          </dd>
+        </li>
+        <li>
+          <dt>Fail first</dt>
+          <dd>Assure
+            <em>that</em> the test fails as expected and watch
+            <em>how</em> it fails, i.e. make it fail with a meaningful
+						message. This is a mean of "test-the-test".
+						Sometimes it is useful to even keep a negative
+						test in a "not" step. You will find lots of those in the
+						selftests of Canoo WebTest.
+          </dd>
+        </li>
+        <li>
+          <dt>One test at a time</dt>
+          <dd>Only write one test at a time. Make it fail, make it run.
+          </dd>
+        </li>
+        <li>
+          <dt>Use a proper editor</dt>
+          <dd>Take that little extra time to set up your editor such that it
+						recognizes the WebTest.dtd. This will payback multiple times.
+          </dd>
+        </li>
+        <li>
+          <dt>Learn XPATH</dt>
+          <dd>Make yourself familiar with the
+            <key>XPATH</key> syntax. This will
+						enhance the power, flexibility and clarity of your tests by far.
+						Use the
+            <key>XPE</key> to make your life easier.
+          </dd>
+        </li>
+        <li>
+          <dt>Database Setup</dt>
+          <dd>If your tests rely on a specific population in the
+						database, make sure, this population is reconstructed right
+						before the test. Look at
+            <key>dbunit</key> on how to achieve this.
+          </dd>
+        </li>
+
+      </dl>
+  </section>
+
+</manpage>

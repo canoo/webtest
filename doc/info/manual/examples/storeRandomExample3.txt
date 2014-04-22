@@ -1,0 +1,9 @@
+<steps>
+    <!-- previous steps ... -->
+    <!-- random font extracted from dropdown select list -->
+    <storeXPath property="numsel" xpath="count(//select[@name='font']/option)"/>
+    <storeRandom property="fontIndex" from="2" to="#{numsel}"/>
+    <storeXPath property="expectedFont" xpath="//select[@name='font']/option[#{fontIndex}]/@value"/>
+    <setSelectField name="font" value="#{expectedFont}"/>
+    <!-- additonal steps ... -->
+</steps>

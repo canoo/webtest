@@ -1,0 +1,20 @@
+<steps>
+    <emailSetConfig .../>
+
+    <!-- uuencoded message has 2 uuencoded attachments -->
+    <emailStoreMessageId subject="/mailtest.*uu/" property="mid1" messageIndex="0"/>
+    <emailStorePartFilename property="filename1_0" messageId="#{mid1}" partIndex="0"/>
+    <verifyProperty name="filename1_0" text="ok.gif"/>
+    <emailStorePartFilename property="filename1_1" messageId="#{mid1}" partIndex="1"/>
+    <verifyProperty name="filename1_1" text="testDocLinks.pdf"/>
+
+    <!-- MIME message has 1 plain body part plus gif and pdf attachment parts -->
+    <emailStoreMessageId subject="/mailtest.*mime/" property="mid2" messageIndex="0"/>
+    <not description="expected to fail: text part of message is inline and has no filename">
+        <emailStorePartFilename property="filename2_0" messageId="#{mid2}" partIndex="0"/>
+    </not>
+    <emailStorePartFilename property="filename2_1" messageId="#{mid2}" partIndex="1"/>
+    <verifyProperty name="filename2_1" text="ok.gif"/>
+    <emailStorePartFilename property="filename2_2" messageId="#{mid2}" partIndex="2"/>
+    <verifyProperty name="filename2_2" text="testDocLinks.pdf"/>
+</steps>

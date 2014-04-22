@@ -1,0 +1,64 @@
+<html>
+<head></head>
+<body>
+<applet
+	id="testSwingApplet"
+	code="com.canoo.webtest.extension.applet.swing.Applet.class"
+	archive="SwingApplet.jar"
+	height="300"
+	width="600"
+	>
+    <param name="InitialStatus" value="Status: Init">
+</applet>
+<applet
+	id="testAwtApplet"
+	code="com.canoo.webtest.extension.applet.awt.Applet.class"
+	archive="AwtApplet.jar"
+	height="300"
+	width="600"
+	>
+    <param name="InitialStatus" value="Status: Init">
+</applet>
+<object
+	id="testSwingObject"
+	codebase=""
+	height="300"
+	width="600"
+	>
+	<param name="code" value="com.canoo.webtest.extension.applet.swing.Applet"/>
+	<param name="cache_archive" value="SwingApplet.jar"/>
+	<param name="InitialStatus" value="Status: Init">
+	<param name="type" value="application/x-java-applet;" />
+</object>
+<applet
+	id="testWaiterApplet"
+	code="com.canoo.webtest.extension.applet.jemmy.Applet.class"
+	archive="JemmyApplet.jar"
+	height="300"
+	width="600">
+</applet>
+<applet
+	id="testWaiterAppletWithTarget"
+	code="com.canoo.webtest.extension.applet.jemmy.Applet.class"
+	archive="JemmyApplet.jar"
+	height="300"
+	width="600"
+	>
+	<param name="target" value="_blank"/>
+</applet>
+<applet
+    id="testCookieApplet"
+    code="com.canoo.webtest.extension.applet.cookie.Applet.class"
+    archive="CookieApplet.jar"
+    height="300"
+    width="600">
+</applet>
+<applet
+    id="testParameterApplet"
+    code="com.canoo.webtest.extension.applet.parameter.Applet.class"
+    archive="ParameterApplet.jar"
+    height="300"
+    width="600">
+</applet>
+</body>
+</html>

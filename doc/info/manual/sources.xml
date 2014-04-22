@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" 
+[
+	<!ENTITY site SYSTEM "WebTestSite.xml">
+]
+>
+
+<manpage siteid="Sources">
+
+	&site;
+
+	<section title="SVN Repository">
+
+		<b>You can connect to Canoo WebTest's public SVN via:
+			<n/>
+            <ext href="https://svn.canoo.com/trunk/webtest">https://svn.canoo.com/trunk/webtest</ext>
+        </b>
+    </section>
+    
+    <section title="Browse online">
+
+		<b>
+            For browsing and searching the repository online, use our
+			<ext href="http://webtest.canoo.com/fisheye/">Fisheye</ext> service. It also contains an RSS feed that
+            keeps you updated with every change to the repository.
+		</b>
+	</section>
+</manpage>

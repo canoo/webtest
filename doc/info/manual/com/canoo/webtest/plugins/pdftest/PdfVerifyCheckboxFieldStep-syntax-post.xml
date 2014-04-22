@@ -1,0 +1,11 @@
+<post>
+
+    <code caption="pdfVerifyCheckboxField Example 1">
+        <include src='pdfexamples/verifyCheckboxFieldExample1.xml'/>
+    </code>
+
+    <code caption="pdfVerifyCheckboxField Example 2">
+        <include src='pdfexamples/verifyCheckboxFieldExample2.xml'/>
+    </code>
+
+</post>

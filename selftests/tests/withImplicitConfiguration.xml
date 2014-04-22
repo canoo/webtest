@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<!-- 
+For test of runWebtest.{bat|sh}. Used in build.xml#testRunWebtestHelper 
+
+Following properties should have been placed as environment properties before executing this test:
+- webtest.host: the host where the selftest webapp runs
+- webtest.port: the port where the selftest webapp runs
+- webtest.basepath: the basepath of the selftest webapp runs
+-->
+<project name="webtest" default="simple" basedir=".">
+
+  <target name="simple">
+  	<property environment="env"/>
+    <webtest name="show how to test with implicit configuration">
+      <steps>
+        <invoke url="http://${env.webtest.host}:${env.webtest.port}/${env.webtest.basepath}/formTest"/>
+        <verifyTitle description="test against fully constant title" text="Canoo WebTest"/>
+      </steps>
+    </webtest>
+  </target>
+
+
+</project>

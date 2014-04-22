@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<project name="CustomSteps" default="testCustomSteps" basedir=".">
+
+    <target name="testCustomSteps">
+
+        <webtest name="customSteps: test sample Custom Step">
+	        <config
+		        host="${webtest.host}"
+	           port="${webtest.port}"
+	           protocol="${webtest.protocol}"
+	           basepath="selftest"
+	           haltonerror="false"
+	           haltonfailure="false"
+	           showhtmlparseroutput="false"
+	           autorefresh="true"
+		        />
+	        <steps>
+                <myCustomStep description="description is implicit" mymandatoryattribute="someValue"/>
+                <myCustomStep description="myFavoriteStepTwo" mymandatoryattribute="someValue" myoptionalattribute="theValue"/>
+                <group description="dynamic properties">
+                    <storeProperty description="test setting" name="selftest_servlet_name" value="formTest"/>
+                    <invoke description="invoke with dynamic property" url="#{selftest_servlet_name}"/>
+                </group>
+                <group description="export to ant property">
+                    <storeProperty name="new_prop" propertyType="ant" value="#{selftest_servlet_name}"/>
+                    <groovy>
+                        if (step.project.properties.new_prop != 'formTest'){
+                            throw new com.canoo.webtest.engine.StepFailedException("failed", step);
+                        }
+                    </groovy>
+                </group>
+            </steps>
+        </webtest>
+
+    </target>
+
+</project>

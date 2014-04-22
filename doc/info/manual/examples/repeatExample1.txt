@@ -1,0 +1,12 @@
+<webtest name="Create repetitively N user">
+	<config ... />
+	<steps>
+		<repeat count="2">
+			<invoke description="Create user"
+				url="addUser?name=TestUser#{count}"/>
+			<verifyText description="Check success message"
+				text="User successfully created" />
+		</repeat>
+		...
+	</steps>
+</webtest>

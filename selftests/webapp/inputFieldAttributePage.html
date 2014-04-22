@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>InputField Attribute Test Page</title>
+<script type="text/javascript">
+<!--
+function checkEmpty(button, element) {
+  if (element.value == "") button.disabled=true;
+  else button.disabled=false;
+}
+// -->
+</script>
+</head>
+<body>
+
+<h1>Form 1</h1>
+
+<form name="form1" action="dummy.html" >
+    Enter Value (then click outside box): <input name="value1" onchange="checkEmpty(button1, this)"><br>
+    <input type="submit" value="Click Me" name="button1" id="button1" disabled="true">
+    <input type="text" name="testField" value="form1" />
+</form>
+
+<h1>Form 2</h1>
+
+<form name="form2" action="dummy.html" >
+    Enter Value (auto checks): <input name="value2" onkeyup="checkEmpty(button2, this)"><br>
+    <input type="submit" value="Click Me" name="button2" id="button2" disabled="true">
+    <input type="submit" value="Click Me" name="button2" id="button2b" disabled="true">
+    <input type="text" name="testField" value="form2" />
+</form>
+
+</body>
+</html>

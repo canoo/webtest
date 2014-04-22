@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project default="mouseEvents" basedir=".">
+
+    <target name="mouseEvents">
+
+        <webtest name="mouseOver &amp; mouseOut">
+            &sharedConfiguration;
+			<invoke url="mouseEvents.html" />
+            <verifyTitle text="Mouse events tests"/>
+        	<verifyInputField name="lastEvent" value=""/>
+        	
+        	<mouseOver htmlId="div1"/>
+        	<verifyInputField name="lastEvent" value="over on div1"/>
+        	<mouseOut htmlId="div1"/>
+        	<verifyInputField name="lastEvent" value="out on div1"/>
+
+        	<mouseOver xpath="(//span)[1]"/>
+        	<verifyInputField name="lastEvent" value="over on span1"/>
+        	<mouseOut xpath="(//span)[1]"/>
+        	<verifyInputField name="lastEvent" value="out on span1"/>
+
+        </webtest>
+    </target>
+
+</project>

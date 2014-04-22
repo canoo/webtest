@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="javaScriptError" default="allTests" basedir=".">
+
+	<target name="allTests" depends="testBackgroundJSError, testBackgroundJSErrorIgnored" />
+
+	<target name="testBackgroundJSError">
+		<webtest name="[Should fail] JavaScript error: JS error in setTimeout task make step fail">
+			<config easyajax="true" haltonfailure="false"/>
+			<invoke url="JavaScriptErrors.html" />
+			<clickButton htmlId="setTimeoutWithJsError"/>
+		</webtest>
+	</target>
+
+	<target name="testBackgroundJSErrorIgnored">
+		<webtest name="JavaScript error: JS error in setTimeout but it is ignored">
+			<config easyajax="true" haltonfailure="false">
+				<option name="ThrowExceptionOnScriptError" value="false"/>
+			</config>
+			<invoke url="JavaScriptErrors.html" />
+			<clickButton htmlId="setTimeoutWithJsError"/>
+		</webtest>
+	</target>
+
+</project>

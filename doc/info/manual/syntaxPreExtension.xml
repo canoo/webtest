@@ -1,0 +1,9 @@
+<head title="Available Extension Steps">
+<b>This is the syntax documentation for the Extension steps.</b>
+<b>
+    These are steps which may have had less testing than the Core steps or
+    perhaps have minimal or incomplete documentation or alternatively might
+    be expected to change in the future. They are provided without warranty
+    and may be removed / changed from one build to the next one.
+</b>
+</head>

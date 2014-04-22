@@ -1,0 +1,16 @@
+<post>
+    <b>
+        Here is an example of using <em>pdfToTextFilter</em>:
+    </b>
+
+    <code caption='pdfToTextFilter example'>
+        <include src='pdfexamples/toTextFilterExample.xml'/>
+    </code>
+
+    <b>As a result of invoking the above steps a file would be created containing something like the following:</b>
+
+    <code caption='pdfToTextFilter output'>
+        <include src='pdfexamples/toTextFilterOutput.xml'/>
+    </code>
+
+</post>

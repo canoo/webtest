@@ -1,0 +1,7 @@
+<post>
+
+    <code caption="pdfVerifyEncryption Example">
+        <include src='pdfexamples/verifyEncryptionExample.xml' />
+    </code>
+
+</post>

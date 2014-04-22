@@ -1,0 +1,10 @@
+<pre>
+    <b>
+        Using the <em>eval</em> attribute indicates that the property should
+        be treated as numeric and any simple expressions within the value should
+        be evaluated. Brackets '(' and ')' as well as mathematical operators
+        '+', '-', '*', '/' and '%' are supported. The result is treated as a
+        double but converted back to a string before being stored into the
+        property.
+    </b>
+</pre>

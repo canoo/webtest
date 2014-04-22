@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="SimplePdfWebTests" basedir="." default="testPreviousResponseWorksWithPDF">
+
+    <target name="testPreviousResponseWorksWithPDF">
+        <webtest name="pdfPreviousResponse: Previous Response should work with trailing PDF steps">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="Go to overview page"
+                    url="pdf-index.html"/>
+                <clickLink
+                    label="Doku A"/>
+                <pdfVerifyTitle
+                    title="TestDokuA"/>
+                <previousResponse description="Go back to overview page"/>
+                <clickLink
+                    label="Doku B"/>
+                <pdfDecryptDocument
+                    password="mymaster"/>
+                <pdfVerifyTitle
+                    title="TestDokuB"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

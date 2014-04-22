@@ -1,0 +1,29 @@
+<project name="Sample: EncryptedPDFTest" basedir="." default="main">
+
+	<import file="${webtest.home}/lib/taskdef.xml"/>
+
+	<target name="main">
+		<webtest name="myPdfTest">
+			<config
+				host="www.myserver.com"
+				port="8080"
+				protocol="http"
+				basepath="myApp"
+				saveresponse="true"/>
+			<steps>
+				<invoke
+					description="get overview page"
+					url="overview.html" />
+				<invoke
+					description="get PDF document"
+					url="privateData.pdf"/>
+				<pdfDecryptDocument
+					password="mymaster"/>
+				<pdfVerifyText
+					startPage="2"
+					endPage="3"
+					text="All rights reserved."/>
+			</steps>
+		</webtest>
+	</target>
+</project>

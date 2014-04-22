@@ -1,0 +1,7 @@
+<post>
+
+    <code caption="excelVerifyCellValue">
+        <include src='excelExamples/verifyCellValueExample.xml' />
+    </code>
+
+</post>

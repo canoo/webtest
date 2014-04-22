@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE sqlunit SYSTEM "file:sqlunit/lib/sqlunit.dtd" [
+  <!ENTITY connection SYSTEM "file:sqlunitConnectionConfig.xml">
+  <!ENTITY data SYSTEM "file:sqlunitTestData.xml">
+]>
+
+<sqlunit>
+
+  &connection;
+
+  <setup>
+    &data;
+  </setup>
+
+  <test name="Looking up New Member created from Register page">
+    <sql>
+      <stmt>select Firstname,Surname from Client where UserID=?</stmt>
+      <param id="1" type="VARCHAR" inout="in">${test.newuser.id}</param>
+    </sql>
+    <result>
+      <resultset id="1">
+        <row id="1">
+          <col id="1" type="VARCHAR">Dummy</col>
+          <col id="2" type="VARCHAR">User</col>
+        </row>
+      </resultset>
+    </result>
+  </test>
+
+  <teardown>
+    <sql>
+      <stmt>delete from Client where UserID=?</stmt>
+      <param id="1" type="INTEGER" inout="in">${test.newuser.id}</param>
+    </sql>
+  </teardown>
+
+</sqlunit>

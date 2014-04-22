@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" [
+		<!ENTITY site SYSTEM "WebTestSite.xml">
+		]>
+<manpage siteid="Change Log">
+
+	&site;
+
+	<head title="Change Log">
+		<b>The most up-to-date list of changes is kept in
+			<key>Jira</key>
+			, our bug tracking system. The
+			<ext
+					href="browse/WT?report=com.atlassian.jira.plugin.system.project:roadmap-panel"
+					base="jira"
+					>Road-Map
+			</ext>
+			lists all the important changes since the last release.
+		</b>
+	</head>
+
+	<section title="Change Log">
+		<b>All tickets closed at the time of build
+			<buildNumber/>
+			are:
+		</b>
+		<!--
+				The value of the parameter fixfor must be changed by hand when new release are marked in jira.
+				10061 is "future work".
+				The href is jira's rss feed from the 'Road Map' of the desired version.
+				
+				Gets 300 'closed', 'fixed' items, sorted by issue number.
+				Lets jira sort the issues, it does it besser than xsl can do.
+				-->
+		<!--<jira href="secure/IssueNavigator.jspa?view=rss&amp;pid=10000&amp;fixfor=10021&amp;reset=true&amp;decorator=none&amp;tempMax=300&amp;resolution=1&amp;status=6&amp;sorter/field=issuekey&amp;sorter/order=ASC"/>-->
+		<jira href="secure/IssueNavigator.jspa?view=rss&amp;pid=10000&amp;resolution=1&amp;fixfor=10061&amp;status=6&amp;sorter/field=issuekey&amp;sorter/order=ASC&amp;sorter/field=updated&amp;sorter/order=DESC&amp;tempMax=25&amp;reset=true&amp;decorator=none"/>
+	</section>
+</manpage>

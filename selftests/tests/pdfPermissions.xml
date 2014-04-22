@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testPermissions" default="allTests" basedir=".">
+
+    <target name="allTests" depends="testPermissions"/>
+
+    <target name="testPermissions">
+        <webtest name="pdfPermissions: confirm PDF document permissions">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testDocPermissionsAll.pdf"/>
+                <pdfVerifyEncryptionPermissions
+                        allow="printing, degradedPrinting, modifyContents, copy, modifyAnnotations, fillIn, screenReaders, assembly"/>
+                <invoke url="testDocPermissionsNoPrint.pdf"/>
+                <pdfVerifyEncryptionPermissions
+                        deny="printing,degradedPrinting"/>
+                <invoke url="testDocPermissionsOnlyFillIn.pdf"/>
+                <pdfVerifyEncryptionPermissions
+                        allow="fillIn"
+                        deny="printing , degradedPrinting, modifyContents, copy, modifyAnnotations, screenReaders, assembly"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

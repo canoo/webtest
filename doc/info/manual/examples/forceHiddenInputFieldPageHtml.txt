@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Hidden Field Test Page</title>
+<script type="text/javascript">
+<!--
+function setField(id, value) {
+  var field = document.getElementById(id);
+  field.value = value;
+  return false;
+}
+// -->
+</script>
+</head>
+<body>
+
+<h1>Form</h1>
+
+<form method="GET" action="dummy.html" >
+    Enter Value (then click outside box): <input name="field1" onchange="setField('real', 'xxx')"><br>
+    Enter Value (auto checks): <input name="field2" onkeyup="setField('real', 'yyy')"><br>
+    <input type="hidden" id="real" name="hiddenField" value="zzz" />
+    <input type="submit" value="Click Me" name="button" >
+</form>
+
+</body>
+</html>

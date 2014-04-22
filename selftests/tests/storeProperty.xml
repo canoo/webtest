@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testVerifyProperty" default="all" basedir=".">
+
+    <target name="all" depends="storePropertyFile" />
+
+    <target name="storePropertyFile">
+        <webtest name="storeProperty: test for the existence and/or value of a dynamic property">
+        	<not description="verify that the properties are not set">
+    			<verifyProperty name="dynProp1" value="my prop 1"/>
+    			<verifyProperty name="dynProp2" value="my second property"/>
+    			<verifyProperty name="dynProp3" value="my third property"/>
+        	</not>
+			<storeProperty name="dynProp1" value="my old value" description="set a value to verify that it gets replaced"/>
+            <storeProperty description="load properties from a file" file="storeProperty.txt" />
+        	<group description="verify that the properties are set now">
+    			<verifyProperty name="dynProp1" value="my prop 1"/>
+    			<verifyProperty name="dynProp2" value="my second property"/>
+    			<verifyProperty name="dynProp3" value="my third property"/>
+        	</group>
+        </webtest>
+    </target>
+
+</project>

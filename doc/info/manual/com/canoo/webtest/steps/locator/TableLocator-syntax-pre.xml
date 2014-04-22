@@ -1,0 +1,32 @@
+<pre>
+	<b>This nested element is currently available for the following steps:</b>
+	<dl>
+		<li>
+			<dt>
+				<stepref name="verifyText"/>
+			</dt>
+			<dd>to verify the text in the cell, optionally using a
+				<key>regex</key>
+				.
+			</dd>
+		</li>
+		<li>
+			<dt>
+				<stepref name="storeDigest" category='Extension'/>
+			</dt>
+			<dd>To store a digest corresponding to the selected table cell.</dd>
+		</li>
+		<li>
+			<dt>
+				<stepref name="storeLength" category='Extension'/>
+			</dt>
+			<dd>To store the length of the content of the selected table cell.</dd>
+		</li>
+		<li>
+			<dt>
+				<stepref name="verifyContent" category='Extension'/>
+			</dt>
+			<dd>To compare a selected table cell with a previously saved content of that table cell.</dd>
+		</li>
+	</dl>
+</pre>

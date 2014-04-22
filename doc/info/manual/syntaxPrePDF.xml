@@ -1,0 +1,101 @@
+<head title="Available PDF Steps">
+
+    <b>This is the syntax documentation for the PDF steps.</b>
+
+    <b>
+        The PDF Steps allow various tests to be performed on PDF files that
+        may be referenced by your web pages. There are steps which let you verify
+        text content, verify fonts used, verify links, verify bookmarks,
+        verify security information, verify form information and document metadata
+        as well as various filters which allow you to further manipulate the extracted
+        information.
+    </b>
+
+    <section title="Simple Usage Example">
+
+        <b>
+            <key>CWT</key> automatically stores away web pages that you visit as the current response.
+            When you visit non-web page resources (such as PDFs) <key>CWT</key> doesn't automatically
+            store away the response unless the <example>saveresponse</example>
+            attribute of your <example>config</example> element is set to "true".
+            The PDF document to test will then become the current response by invoking a URL that refers to your
+            PDF document, or by submitting a form that will return the PDF document as its result, or by any other
+            scenario that generates a request and has the PDF document as its response. Once the PDF document is
+            available, you can perform different verifications on it using any of the available PDF or base steps.
+        </b>
+
+        <code caption="sampleSimpleUsageExample.xml">
+            <include src='pdfexamples/sampleSimpleUsageExample.xml'/>
+        </code>
+
+    </section>
+
+    <section title="Encrypted Document Example">
+
+        <b>
+            In order to test encrypted PDF documents you might want to decrypt it first. Otherwise,
+            some content cannot be verified properly, e.g. AcroForm fields.
+        </b>
+
+        <code caption="sampleEncryptedUsageExample.xml">
+            <include src='pdfexamples/sampleEncryptedUsageExample.xml'/>
+        </code>
+
+    </section>
+
+    <section title="Debugging PDF documents">
+
+        <b>
+            Sometimes it is helpful to debug PDF documents on a very low-level.
+            The included <em>pdfUnit</em> library comes with a Swing
+            <em>PDF Object Browser</em> allowing low-level analysis of PDF documents.
+        </b>
+
+        <code>
+            .../WEBTEST_HOME/lib/java -jar pdfUnit.jar
+        </code>
+
+        <b>
+            Note that when you start the <em>PDF Object Browser</em>, the
+            <em>log4j</em>, <em>pdfbox</em>, and <em>pdfUnit</em>
+            libraries must all be in the same directory.
+        </b>
+
+    </section>
+
+    <section title="Additional Setup Information">
+
+        <b>
+            You have three ways to incorporate the PDF steps into your tests:
+            <dl>
+                <li>
+                    <dt>Import all steps approach:</dt>
+                    <dd>
+                        Simply use <example>&lt;import file="${webtest.home}/lib/taskdef.xml"/&gt;</example>
+                        as illustrated in the <pageref name="Samples"/>.
+                    </dd>
+                </li>
+                <li>
+                    <dt>Specific plugins approach:</dt>
+                    <dd>You can explicitly define the base and PDF tasks:<example>
+                        &lt;taskdef resource="webtest_base_strict.taskdef" classpathref="webtest.all"
+                                 loaderref="webtest.loader"/&gt;
+                        &lt;taskdef resource="webtest_pdftest_relaxed.taskdef" classpathref="webtest.all"
+                                 loaderref="webtest.loader"/&gt;
+                    </example></dd>
+                </li>
+                <li>
+                    <dt>Antlib approach:</dt>
+                    <dd>You can use namespaces as follows:<example>
+                        &lt;target xmlns:pdftest="antlib:com.canoo.webtest.plugins.pdftest" name="main"&gt;
+                    </example>then simply refer to the steps using the namespace you defined, <em>pdftest</em>
+                        in this case, e.g.<example>
+                        &lt;pdftest:verifyPageCount count="1"/&gt;
+                        &lt;pdftest:verifyText text="Some text on page"/&gt;
+                    </example>Note that the <em>pdf</em> prefix is stripped off any tasks starting with <em>pdf</em>.</dd>
+                </li>
+            </dl>
+        </b>
+    </section>
+
+</head>

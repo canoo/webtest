@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testPdfFonts" default="allTests" basedir=".">
+
+    <target name="allTests" depends="testFonts, testFontsFilter"/>
+
+    <target name="testFonts">
+        <webtest name="pdfFonts: confirm existence of PDF fonts">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testDocFonts.pdf"/>
+                <pdfVerifyFont name="times-roman" type="type1"/>
+                <not description="expected to fail: wrong case">
+                    <pdfVerifyFont name="times-roman" matchCase="true"/>
+                </not>
+                <pdfVerifyFont page="2" name="ComicSansMS-Bold"/>
+                <pdfVerifyFont page="2" type="TrueType"/>
+                <pdfVerifyFont page="2" name="ComicSansMS-Bold" type="TrueType"/>
+                <not description="expect to fail: incorrect page">
+                    <pdfVerifyFont page="1" name="ComicSansMS-Bold"/>
+                </not>
+                <not description="expect to fail: incorrect type">
+                    <pdfVerifyFont name="ComicSansMS-Bold" type="Type1"/>
+                </not>
+                <not description="expect to fail: unknown font">
+                    <pdfVerifyFont name="invisible font"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testFontsFilter">
+        <webtest name="pdfFonts: confirm verifyContent extracting font information">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testDocFonts.pdf"/>
+                <verifyContent readFiltered="false" referenceFile="verifyContent/expectedPdfFonts.txt">
+                    <pdfToFontsFilter description="extract PDF font information"/>
+                    <lineSeparatorFilter description="normalise line separators"/>
+                </verifyContent>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testDescription" default="all" basedir=".">
+
+	<target name="all" depends="descriptionAsWebtestAttribute"/>
+
+
+    <target name="descriptionAsWebtestAttribute">
+        <webtest name="description: this webtest has a description attribute which value should appear in the report" 
+				description="this is the value of the 'description' attribute of the webtest task">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="get some page" url="${start.page}"/>
+            </steps>
+        </webtest>
+    </target>
+
+
+</project>

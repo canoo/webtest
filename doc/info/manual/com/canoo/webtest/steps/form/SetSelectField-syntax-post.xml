@@ -1,0 +1,20 @@
+<post>
+
+    <b>See the following example for selecting a single entry from a list by its value.</b>
+
+    <code caption="setSelectField 1">
+        <include src='examples/setselectfieldExample1.xml' />
+    </code>
+
+    <b>The next example illustrates the selection of multiple values.</b>
+
+    <code caption="setSelectField 2">
+        <include src='examples/setselectfieldExample2.xml' />
+    </code>
+
+    <b><em>Note:</em> If values are selected with <em>multiselect="true"</em> existing selections are preserved. This is also
+    true for items pre-selected in the <key>HTML</key> page using <em>&lt;option value="..." selected&gt;</em>.</b>
+
+    <b><em>See also</em>: the <stepref name="verifySelectField"/> and <stepref name="selectForm"/> steps.</b>
+
+</post>

@@ -1,0 +1,9 @@
+<post>
+
+    <b>The following example extracts a URL from a <key>javascript</key> statement associated with an <em>onclick</em> event handler.</b>
+
+    <code caption="storeRegEx">
+        <include src='examples/storeregexExample.xml'/>
+    </code>
+
+</post>

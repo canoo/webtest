@@ -1,0 +1,16 @@
+<post>
+    <b>
+        Here is an example of using <em>excelStructureFilter</em>:
+    </b>
+
+    <code caption='excelStructureFilter example'>
+        <include src='excelExamples/structureFilterExample.xml'/>
+    </code>
+
+    <b>As a result of invoking the above steps a file would be created containing something like the following:</b>
+
+    <code caption='excelStructureFilter output'>
+        <include src='excelExamples/structureFilterOutput.xml'/>
+    </code>
+
+</post>

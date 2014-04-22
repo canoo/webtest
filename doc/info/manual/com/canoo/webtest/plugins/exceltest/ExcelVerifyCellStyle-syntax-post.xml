@@ -1,0 +1,28 @@
+<post>
+
+    <b>
+        Here is an example using the <em>excelVerifyCellStyle</em> step:
+    </b>
+
+    <code caption="excelVerifyCellStyle Example">
+        <include src='excelExamples/verifyCellStyleExample.xml' />
+    </code>
+
+    <b>
+        For the <em>border</em> and <em>borderColor</em> properties, you can have fine grained control over what is
+        expected for the border on each side of the cell.  Here are some examples:
+    </b>
+            <code>border="thin"</code> <b>This tests for a thin border all the way around the cell.</b>
+            <code>borderColor="left:red"</code> <b>This tests for a red border on the left of the cell.  The other borders are ignored.</b>
+            <code>border="top,left:none;bottom:thin;right:dashed"</code> <b>This tests for no borders on the top and left of the cell, a thin border on bottom and a dashed one to the right</b>
+            <code>borderColor="#0000ff;top:none"</code> <b>This tests for a blue border on the left, right and top sides and no border on the top.</b>
+
+    <b>
+        For the <em>borderColor</em>, <em>textColor</em>, <em>fillColor</em> and <em>fillBackgroundColor</em> properties,
+        you can use the following standard color names instead of hex values: <em>aqua, black, blue, blue gray, bright green,
+        brown, coral, dark blue, dark green, dark purple, dark red, dark teal, dark yellow, gold, green, 25% gray, 40% gray,
+        50% gray, 80% gray, ice blue, indigo, ivory, lavender, light blue, light green, light orange, light turquoise,
+        light yellow, lime, maroon, ocean blue, olive green, orange, pale blue, periwinkle, pink, plum, red, rose, sea green,
+        sky blue, tan, teal, turquoise, violet, white, yellow.</em>
+    </b>
+</post>

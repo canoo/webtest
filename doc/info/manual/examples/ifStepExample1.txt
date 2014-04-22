@@ -1,0 +1,20 @@
+<target name="testNewUserOne" depends="init">
+  <echo message="Testing Creation of New Users (don't run on prod)" />
+  <property name="isOnProduction" value="true" />
+  <webtest name="testNewUser">
+    <config .../>
+    <steps>
+      <invoke .../>
+      <ifStep description="production tests" test="${isOnProduction}">
+        <not description="check DEBUG message not on prod">
+          <verifyText description="Find Debug statements" text="DEBUG:" />
+        </not>
+      </ifStep>
+      <ifStep description="non-production tests" unless="${isOnProduction}">
+        <verifyText description="Find Debug statements" text="DEBUG:" />
+        <!-- ... fill out form ... -->
+        <clickButton description="register new user" name="createButton" />
+      </ifStep>
+    </steps>
+  </webtest>
+</target>

@@ -1,0 +1,23 @@
+<post>
+
+    <b>This filter returns a pretty-printed version of an XML file. More technically, it calls the normalize()
+        method on the root DOM Node (see standard Java javadocs related to this if you are curious) and then serializes
+        the resultant Node tree using an output formatter. This can be useful when testing e.g. Web Services which
+        often compress whitespace of the output.</b>
+
+    <b>As an example, for the following XML input file:</b>
+
+    <code caption="normalizeXml input">
+        <include src='examples/normalizeXmlInput.xml'/>
+    </code>
+
+    <b>The normalized output would be:</b>
+
+    <code caption="normalizeXml output">
+        <include src='examples/normalizeXmlOutput.xml'/>
+    </code>
+
+    <b>See also the <stepref name="verifyContent"/> step for an example illustrating
+        the use of content filters.</b>
+
+</post>

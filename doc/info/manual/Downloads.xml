@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd"
+        [
+                <!ENTITY site SYSTEM "WebTestSite.xml">
+                ]
+        >
+<manpage siteid="Downloads">
+
+    &site;
+
+    <head title="Canoo WebTest Downloads">
+        <b>This page contains links to the artefacts for the latest Canoo WebTest version, as well as for
+previous releases.</b></head>
+
+    <section title="Latest Snapshot">
+
+        <b>Release class = development, build number = <buildNumber/></b>
+
+        <b>This latest snapshot represents the current stream of development.</b>
+
+        <b>All releases contain the same set of files. That is:</b>
+        <dl>
+            <li>
+                <dt>
+                    <file>build.zip</file>
+                </dt>
+                <dd>
+                    The latest build. Everything you need for running Canoo WebTest.
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <file>doc.zip</file>
+                </dt>
+                <dd>
+                    The comprehensive documentation, including the Canoo WebTest selftests. The selftests also serve as
+                    a convenient template
+                    for your own setup. You can reuse the directory structure, the separation
+                    of concerns and the generated WebTest.DTD.
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <file>src.zip</file>
+                </dt>
+                <dd>
+                    The java source files that make up the Canoo WebTest
+                    <key>ANT</key>
+                    tasks.<n/>
+                    Note that you should consult <pageref name="Building"/> if you want to build WebTest.
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <file>selftest.war</file>
+                </dt>
+                <dd>
+                    The Web Application that
+                    Canoo WebTest uses to test itself.
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <file>build-maven.zip</file>
+                </dt>
+                <dd>
+                    The latest build in maven format.
+                </dd>
+            </li>
+        </dl>
+    </section>
+
+    <section title="WebTest 3.0">
+
+        <b>The 3.0 Release consolidates all changes to Canoo WebTest since release 2.6 (see
+        <ext href="http://webtest-community.canoo.com/jira/browse/WT?report=com.atlassian.jira.plugin.system.project:changelog-panel">Change log</ext>)
+        </b>
+        <b>This is the recommended version of WebTest for beginners. Existing users are also encouraged to upgrade.
+        It offers many improvements over release 2.6 (bug fixes, speed improvements, better javascript support, ...)
+        </b>
+        <b>Contrary to earlier releases, release 3.0 requires Java 5.</b>
+        <b><em>Warning:</em> possible changes in XPath usage<n/>
+        Starting with build 1700, the HtmlUnit version used by WebTest has been upgraded to the latest 2.x release,
+        which doesn't use Jaxen anymore for XPath evaluation with a custom document navigator but standard DOM tools.
+        The consequence is that XPath expressions
+        now have to be "fully correct" and can't use shortcuts that were previously available.
+        For example an expression like "//tr[td='2.1']/td[3]" won't work
+        anymore and should be replaced with something like "//tr[td/text() = '2.1']/td[3]".
+        Additionally, spaces are no longer trimmed to respect XPath standards
+        (the function wt:cleanText can be used to ignore whitespaces).
+		</b>
+
+        <b>The release has the tag R_1758 in the repository.</b>
+
+        <b>Refer to
+            <ext href="https://svn.canoo.com/trunk/webtest-releases/3.0-1758">Download Release 3.0</ext>
+            Read the <em>readme.txt</em> and <em>releaseNotes.txt</em> for details.
+        </b>
+    </section>
+
+    <section title="WebTest 2.6">
+
+        <b>The 2.6 Release consolidates all changes to Canoo WebTest since release 2.5 (see 
+        <ext href="http://webtest-community.canoo.com/jira/browse/WT?report=com.atlassian.jira.plugin.system.project:changelog-panel">Change log</ext>)
+        </b>
+        <b>This is the latest version that targets Java 1.4.</b>
+        <b>The release has the tag R_1689 in the repository.</b>
+
+        <b>Refer to
+            <ext href="https://svn.canoo.com/trunk/webtest-releases/2.6-1689">Download Release 2.6</ext>
+            Read the <em>readme.txt</em> and <em>releaseNotes.txt</em> for details.
+        </b>
+    </section>
+
+    <section title="WebTest 2.5">
+
+        <b>The 2.5 Release consolidates all changes to Canoo WebTest since release 2.1 (see 
+        <ext href="http://webtest-community.canoo.com/jira/browse/WT?report=com.atlassian.jira.plugin.system.project:changelog-panel">Change log</ext>)
+        </b>
+        <b>The release has the tag R_1551 in the repository.</b>
+
+        <b>Refer to
+            <ext href="https://svn.canoo.com/trunk/webtest-releases/2.5-1551">Download Release 2.5</ext>
+            Read the <em>readme.txt</em> for details.
+        </b>
+    </section>
+
+    <section title="WebTest 2.1">
+
+        <b>The 2.1 Release consolidates all changes to Canoo WebTest since release 2.0.</b>
+        <b>The release has the tag R_1393 in the repository.</b>
+
+        <b>Refer to
+            <ext href="https://svn.canoo.com/trunk/webtest-releases/2.1-1393">Download Release 2.1</ext>
+            .
+            Read the
+            <em>readme.txt</em>
+            for details.
+        </b>
+
+    </section>
+    <section title="WebTest 2.0">
+
+        <b>The 2.0 Release is the first release of Canoo WebTest that is based on HtmlUnit.
+            It builds upon HtmlUnit version 1.8.
+        </b>
+        <b>The release has the tag R_1217 in the repository.</b>
+
+        <b>Refer to
+            <ext href="https://svn.canoo.com/trunk/webtest-releases/2.0-1217">Download Release 2.0</ext>
+            .
+            Read the
+            <em>readme.txt</em>
+            for details.
+        </b>
+
+    </section>
+    <section title="WebTest 1.6">
+
+        <b>The 1.6 Release is the last Release of Canoo WebTest that is based on HttpUnit.
+            It builds upon HttpUnit version 1.6.</b>
+        <b>The release has the tag R_544 in the repository.</b>
+
+        <b>Refer to
+            <ext href="https://svn.canoo.com/trunk/webtest-releases/1.6-544">Download Release 1.6</ext>
+            .
+            Read the
+            <em>readme.txt</em>
+            for details.
+        </b>
+
+
+    </section>
+    <section title="WebTest 1.5">
+
+        <b>The 1.5 Release is based on HttpUnit 1.5.4.</b>
+        <b>The release has the tag R_535 in the repository.</b>
+        <b>If you have any compatibility issues with your own custom steps or with contributions
+            from the community site, this release may be what you are looking for.
+        </b>
+
+        <b>Refer to
+            <ext href="https://svn.canoo.com/trunk/webtest-releases/1.5-535">Download Release 1.5</ext>
+            .
+            Read the
+            <em>readme.txt</em>
+            for details.
+        </b>
+    </section>
+</manpage>

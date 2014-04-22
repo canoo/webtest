@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" [
+<!ENTITY site                       SYSTEM "WebTestSite.xml">
+<!ENTITY dumpDOM             "<include src='examples/dumpDOM.xml' />">
+<!ENTITY debuggingWebConnection             "<include src='examples/debuggingWebConnection.xml' />">
+<!ENTITY taskdef					      "<include src='examples/taskdef.xml' />">
+]>
+
+<manpage siteid="Troubleshooting">
+
+&site;
+
+<head title="Troubleshooting WebTests">
+
+</head>
+    <section title="Issue Tracker">
+        <b>
+            When in trouble, you may want to visit Canoo WebTest's
+            <ext base="jira" href="">JIRA Issue Tracker</ext>.
+        </b>
+    </section>
+
+    <section title="Out of Memory">
+		<b>
+			<key>ANT</key> may eat up a lot of memory when started for
+            the use with Canoo WebTest. You can give it more space to live
+            in by specifying a higher "maximum heap size" through the
+            environment variable <example>ANT_OPTS</example>, e.g.:
+		</b>
+		<b>
+			<example>ANT_OPTS=-Xmx128m</example>
+		</b>
+		<b>
+			See the <key>ANT</key> documentation for more details.
+		</b>
+		<b>
+			In order to save memory avoid calling the
+            <example>taskdef</example> more than once. When your test suite
+            grows beyond some thousand steps consider using
+            more than one file for collecting the reports.
+		</b>
+	</section>
+
+	<section title="java.lang.VerifyError">
+		<b>
+			There may be non-compliant <key>ANT</key> version that
+			interferes with the <example>ant.jar</example>
+			provided in <example>&lt;WEBTESTHOME&gt;/lib</example>.
+		</b>
+		<b>
+			Consider to copy <example>&lt;WEBTESTHOME&gt;/lib/ant.jar</example>
+			to <example>&lt;ANT_HOME&gt;/lib</example>.
+		</b>
+		<b>
+			While <example>installTest.xml</example> reports this error
+			on some occasions, it cannot catch all possible cases.
+		</b>
+	</section>
+
+	<section title="Parsing issues">
+
+		<b>If it happens for instance that Canoo WebTest shows an error indicating that it
+		did not find a button that was referenced in a test although the button
+		is clearly visible in the browser (and works as well), one of the most
+		common reasons is incorrectly formatted <key>HTML</key> that isn't understood
+		by the parser.
+		</b>
+
+		<b>"Normal" browsers are able to cope with really messy <key>HTML</key> code.
+		WebTest too.. but not to the same extend.
+		</b>
+		
+		<b>An <key>validator</key> will be able to tell you if your HTML code is valid or not
+		and indicate how to fix it.
+		</b>
+
+		<b>To "see" the current state of a page (the DOM) in memory, you can dump it to the console
+		with a small step:
+		</b>
+		<code caption="Dump current DOM to the console">
+			&dumpDOM;
+		</code>
+
+	</section>
+
+	<section title="JavaScript Errors">
+
+	<b>
+		There are two types of JavaScript errors: "real" JavaScript errors occurring as well in a "real" browser and JavaScript errors
+		occurring only in WebTest due to insufficient/incorrect reproduction of the simulated browser's behavior.
+	</b>
+	<b>
+		If your test fails due to a "real" JavaScript error, it is wise to fix your application. If you can't do it, you can
+		choose to ignore JavaScript errors.
+	</b>
+	<b>
+		Following steps may help to understand the cause of a JavaScript error reported by WebTest:
+		</b>
+			<dl>
+				<li>
+					<dt>Verify in the "real" browser</dt>
+					<dd>The quality of the browser simulation including JavaScript execution is already very good and it often happens
+					that WebTest reports exactly the same JavaScript errors than the simulated browser (sometimes even with a better precision!).
+					To detect if you have encountered a real JavaScript error, you need to do exactly the same actions in your browser
+					than the ones done in your webtest. This requires high concentration! Be sure to really click the same links and buttons
+					as your WebTest and not any other than may appear in the page (even with same label).
+					In Firefox you can see JavaScript errors for instance in the JavaScript console. Other browsers have similar ways to acces
+					to JavaScript errors.  
+					</dd>
+				</li>
+				<li>
+					<dt>Ugrade to latest WebTest and HtmlUnit version</dt>
+					<dd>If no error occurs in the real browser that you want to simulate with your webtest, then it probably means that
+					WebTest's behavior is incorrect. Be sure to use the latest WebTest build (replacing as well the HtmlUnit
+					version contained in WebTest by the latest HtmlUnit snapshot when possible): it's possible that the problem you encounter
+					has already been fixed.
+					</dd>
+				</li>
+				<li>
+					<dt>Report the problem</dt>
+					<dd>If the problem still occurs with the most recent versions of WebTest (and HtmlUnit) then it means that you've
+					hint a new problem. In this case, please report it. Problems are sometimes fixed within a very short time.
+					A look at HtmlUnit's <ext href="http://htmlunit.sourceforge.net/submittingJSBugs.html">Submitting JavaScript bugs</ext>
+					documentation may help to find the best way to report a bug.
+					</dd>
+				</li>
+			</dl>
+    </section>
+    
+    	<section title="Button found more than once">
+
+	<b>For clicking on a button or a link, Canoo WebTest needs to locate that
+	button or that link on the page. The above message occurs if the reference
+	is not unique, which generally indicates an error in the test.</b>
+
+	<b>Consider using the <example>name</example> attribute or a locator element
+	to create a unique reference. Refer to the syntax description and the samples
+	on how to do this.</b>
+
+	<b>If the message still shows up, although the reference should be unique,
+	it is likely that the page's <key>HTML</key> source is invalid. A common
+	error is improper nesting of <example>form</example> elements with
+	table rows and cells, they cannot be mixed.
+	<sectionref number="4"/> may be helpful.</b>
+
+	</section>
+	
+	<section title="Inspect HTTP traffic">
+
+	<b>
+		It is sometimes interesting to inspect the HTTP traffic to compare 
+		the requests sent by WebTest and the responses received from the server(s)
+		when WebTest is running with the ones of the "real" browser being simulated.
+		Caution: remember that WebTest will do less requests than a normal browser, for instance
+		it won't download images and stylesheets unless it detects that they play a role in the
+		JavaScript execution.
+	</b>
+	<b>
+		There are different solutions to view the HTTP traffic, for instance these ones:
+	</b>
+		<dl>
+			<li>
+				<dt>Use DebuggingWebConnection in WebTest</dt>
+				<dd>
+				Following code instruments the web connection of the underlying
+				<example>WebClient</example>. This will generate 
+				a report of the HTTP traffic in the sub-folder named <example>mytest</example>
+				of your temporary directory for the rest of your webtest:
+					<code caption="Wrap HTMLUnit web connection to track HTTP traffic">
+						&debuggingWebConnection;
+					</code>
+				</dd>
+			</li>
+			<li>
+				<dt>Use Firebug in Firefox</dt>
+				<dd>
+				The Network monitoring features of the <ext href="www.getfirebug.com/">Firebug</ext> extension for Firefox
+				allow to track all HTTP requests.
+				</dd>
+			</li>
+			<li>
+				<dt>Use a proxy both for WebTest and your "normal" browser</dt>
+				<dd>
+				An other solution to track HTTP traffic both for WebTest and for a "normal" browser
+				is to use an HTTP proxy that can show you the request and responses.
+				Different proxies are available for this purpose. For Java developers
+				<ext href="http://www.parosproxy.org/index.shtml">Paros</ext> may be interesting
+				as it is Open Source and written in Java.
+				</dd>
+			</li>
+		</dl>
+	</section>
+
+	<section title="Getting more information">
+
+	<b>A test fails, but you don't know why? If that is because of the <key>ANT</key>
+	structure of the tests, unresolved properties or unexpected directory handling, you
+	should consider running your <key>ANT</key> tests with the <example>-v</example>
+	option. This gives additional verbose information about target sequence, unresolved
+	properties and attempts to override property values.</b>
+
+	<b>If it is a problem within the <key>HTML</key>, try to use the reporting as described
+	in <sectionref number="2"/>. It is often useful to inspect your page
+	with an <key>validator</key>.</b>
+
+	</section>
+	<section title="Debugging WebTest">
+
+	<b>The last ditch attempt to troubleshoot Canoo WebTest is to go for Java debugging
+	on the source code level. You are likely to need not only the Canoo WebTest sources
+	but also the source of the packages that Canoo WebTest is built on. That is <key>ANT</key>,
+	and <key>htmlunit</key>. You may need even more, e.g. when
+	stepping into the HTML parsing. But if you are so experienced, you probably know
+	how to do this.</b>
+
+	<b>You need a Java debugger, a class to start the debugger on, the command line parameters and
+	the proper classpath and sourcepath. We cannot help you with the debugger itself. You
+	probably have one within your IDE. The JDK contains the <example>jdb</example>, but that one
+	is not very comfortable. The remaining parameters can be determined from your ant starter
+	script that resides under <example>&lt;ANT_HOME&gt;/bin</example>. Put all jars on the
+	<example>CLASSPATH</example> that reside under <example>&lt;ANT_HOME&gt;/lib</example>
+	and <example>&lt;WEBTESTHOME&gt;/lib</example>. Put the sources on the
+	<example>-sourcepath</example>.
+	Provide the option
+	<example>-Dant.home="&lt;ANT_HOME&gt;"</example> and start the debugger on the class
+	<example>org.apache.tools.ant.Main</example>. Provide the command line parameters
+	<example>-buildfile &lt;file&gt;</example> and <example>&lt;target&gt;</example> as
+	necessary.</b>
+
+	<b>When debugging, a good thing to look for is implicit tags that the parser
+	inserts into incomplete <key>HTML</key>.</b>
+
+	</section>
+	<section title="Tests get messy">
+
+	<b>If your tests get messy, this is mostly because they contain duplication. Avoid
+	this at any costs.</b>
+
+	<b>Put all the references that occur more than once into an <key>ANT</key> property.
+	Consider putting shared properties into a properties file. Use the
+	<example>ant</example> and <example>antcall</example> tasks to
+	extract reusable logic into subbuild files and subtargets. Use <key>XML</key>
+	entities for textual includes. See the samples on how to do this. Also
+    consider using Macros - see the <key>ANT</key> documentation for more details.</b>
+
+	<b>Keep your targets short and avoid putting too many <example>webtest</example>s
+	into one target. </b>
+
+	<b>Make use of the <example>description</example> attribute for main targets and
+	use the <example>description</example> attribute for test steps.</b>
+
+	</section>
+	<section title="Weird Errors running your script">
+
+	<b>
+        If you get weird errors when running your script inside an IDE it could be that
+        your IDE is using a custom ant runner. For some reason this seems to sometimes
+        cause a conflict. If you find yourself in this situation, try to configure
+        your IDE to use a standard <key>ANT</key> runner.
+    </b>
+
+    <b>
+        Possible technical explanation: <key>CWT</key>
+        relies on <key>htmlunit</key> which parses <key>HTML</key> using <key>nekohtml</key>.
+        <key>nekohtml</key> is set up as a custom ContentHandler for the <key>xerces</key> XML Parser.
+        Your custom <key>ANT</key> runner may also have set itself up as a custom ContentHandler.
+        For some reason this seems to sometimes cause a conflict.
+    </b>
+
+    <b>
+        As an example, in IntelliJ, if you run a script which uses the standard embedded ant
+        then if you have a step which parses HTML you might see the following exception thrown:
+        <example>java.lang.AbstractMethodError: org.cyberneko.html.HTMLScanner.getCharacterOffset()I</example>.
+        This will occur if you for instance use an <stepref name="invoke" category="core"/> step.
+        The workaround is simply to configure
+        in your ant build settings to use an external ant rather than the embedded one.
+    </b>
+
+    </section>
+
+
+</manpage>

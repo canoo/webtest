@@ -1,0 +1,22 @@
+<post>
+
+    <b>
+        Here is an example of using the
+        <em>pdfVerifyEncryptionPermissions</em>
+        step:
+    </b>
+
+    <code caption="pdfVerifyEncryptionPermissions Example">
+        <include src='pdfexamples/verifyEncryptionPermissionsExample.xml'/>
+    </code>
+
+    <b>
+        Note: the document permissions don't always exactly match up with what
+        Acrobat Reader (or potentially other PDF browsers) display for you when
+        you examine document properties. Sometimes Acrobat Reader will
+        automatically prohibit one or more of the permissions and mask
+        the desired permission setting contained within the document.
+        This step only uses the value found within the document.
+    </b>
+
+</post>

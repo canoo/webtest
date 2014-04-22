@@ -1,0 +1,10 @@
+<webtest name="Visit all pages without update">
+	<config ... />
+	<steps>
+		<clickLink description="Follow the link to the next page"
+			label="Next Page"
+			save="myResultPage"
+			href="myParameter=myValue"/>
+		...
+	</steps>
+</webtest>

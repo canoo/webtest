@@ -1,0 +1,19 @@
+<steps>
+    <invoke url="testDocFonts.pdf"/>
+    <pdfVerifyFont name="times-roman" type="type1"/>
+    <not description="expected to fail: wrong case">
+        <pdfVerifyFont name="times-roman" matchCase="true"/>
+    </not>
+    <pdfVerifyFont page="2" name="ComicSansMS-Bold"/>
+    <pdfVerifyFont page="2" type="TrueType"/>
+    <pdfVerifyFont page="2" name="ComicSansMS-Bold" type="TrueType"/>
+    <not description="expect to fail: incorrect page">
+        <pdfVerifyFont page="1" name="ComicSansMS-Bold"/>
+    </not>
+    <not description="expect to fail: incorrect type">
+        <pdfVerifyFont name="ComicSansMS-Bold" type="Type1"/>
+    </not>
+    <not description="expect to fail: unknown font">
+        <pdfVerifyFont name="invisible font"/>
+    </not>
+</steps>

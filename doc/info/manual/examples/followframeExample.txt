@@ -1,0 +1,9 @@
+<webtest name="Follow target frame..">
+	<config ... />
+	<steps>
+		<followFrame description="Follow the frame"
+        	 name="myFrame"
+         	save="myResultPage"/>
+		...
+	</steps>
+</webtest>

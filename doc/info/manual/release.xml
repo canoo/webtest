@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" [ <!ENTITY site SYSTEM "WebTestSite.xml"> ] >
+<manpage siteid="Release">
+
+    &site;
+
+    <!-- TODO: improve, add a section on the release policy of WebTest, ... -->
+    
+    <head title="Release">
+        <b>This page outlines how to wrap-up a WebTest release.
+        </b>
+    </head>
+    <section title="Select a Build">
+        <b>Select a succesful build, and fetch all its artefacts (build.zip, doc.zip, src.zip, ...).</b>
+    </section>
+    <section title="Preparation work">
+        <b>Following tasks have to be accomplished in Jira:</b>
+        <b>First, identify, close and assign to the release project all issues that belong to the project.
+            Since this will be used for the release note, consider only the issues that have been fixed,
+            and do not the rejected issues (invalid, ...).</b>
+        <b>Then, mark the project as
+            <em>released</em>
+            in jira.
+        </b>
+        <b>Let jira generate the release note for the project, and saves it locally.
+            It may be necessary to correct the formatting, in particular when the subject line contains webtest step
+            names.</b>
+    </section>
+
+    <section title="Release">
+        <b>Check in subversion module
+            <ext href="https://svn.canoo.com/trunk/webtest-releases/">webtest-releases</ext>
+            all the artefacts, the release note and a small read-me file.
+        </b>
+    </section>
+    <section title="Website">
+        <b>Once the release is commited, publish it on the website, on the
+            <em>download</em>
+            page and in the
+            <em>news</em>
+            column.
+        </b>
+        <b>Further, adapt the project reference used in the
+            <em>changeLog</em>
+            to the new jira project.
+        </b>
+    </section>
+
+</manpage>

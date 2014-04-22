@@ -1,0 +1,12 @@
+<steps>
+    <invoke url="testDocPermissionsAll.pdf"/>
+    <pdfVerifyEncryptionPermissions
+            allow="printing, degradedPrinting, modifyContents, copy, modifyAnnotations, fillIn, screenReaders, assembly"/>
+    <invoke url="testDocPermissionsNoPrint.pdf"/>
+    <pdfVerifyEncryptionPermissions
+            deny="printing,degradedPrinting"/>
+    <invoke url="testDocPermissionsOnlyFillIn.pdf"/>
+    <pdfVerifyEncryptionPermissions
+            allow="fillIn"
+            deny="printing , degradedPrinting, modifyContents, copy, modifyAnnotations, screenReaders, assembly"/>
+</steps>

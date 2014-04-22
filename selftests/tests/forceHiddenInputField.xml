@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testHiddenInputFieldSteps" default="testHiddenInputFieldSteps" basedir=".">
+
+    <target name="testHiddenInputFieldSteps" depends="testHiddenInputFieldStepsError,testHiddenInputFieldStepsControl,testHiddenInputFieldStepsUsage"/>
+
+    <target name="testHiddenInputFieldStepsError">
+        <webtest name="forceHiddenInputField: Show forceHiddenInputField fails if field doesn't exist">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="getMainPage for forceHiddenInputField test"
+                    url="hiddenInputFieldPage.html"/>
+                <not>
+                    <forceHiddenInputField name="noFieldWithThisName" value="dummy"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testHiddenInputFieldStepsControl">
+        <webtest name="forceHiddenInputField: Show working javascript example that sets hidden field">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="getMainPage for forceHiddenInputField test"
+                    url="hiddenInputFieldPage.html"/>
+                <verifytitle description="check we are on the test page" text="Hidden Field Test Page" />
+                <verifyXPath description="check original value of hidden field"
+                    xpath="//form/input[@id='real']/@value" text="zzz" />
+                <setInputField description="anything here should change hidden field" name="field1" value="dummy" />
+                <verifyXPath description="check updated value of hidden field"
+                    xpath="//form/input[@id='real']/@value" text="xxx" />
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testHiddenInputFieldStepsUsage">
+        <webtest name="forceHiddenInputField: Show usage of forceHiddenInputField step for non-working javascript">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="getMainPage for forceHiddenInputField test"
+                    url="hiddenInputFieldPage.html"/>
+                <verifytitle description="check we are on the test page" text="Hidden Field Test Page" />
+                <verifyXPath description="check original value of hidden field"
+                    xpath="//form/input[@id='real']/@value" text="zzz" />
+                <setInputField description="set fields with onkeyup handler setting hidden field" name="field2" value="dummy" />
+                <verifyXPath description="check value of hidden field has been changed"
+                    xpath="//form/input[@id='real']/@value" text="yyy" />
+                <forceHiddenInputField name="hiddenField" value="ab">c</forceHiddenInputField>
+                <verifyXPath description="check updated value of hidden field"
+                    xpath="//form/input[@id='real']/@value" text="abc" />
+                <forceHiddenInputField description="try explicit use of form name"
+                    name="hiddenField" formName="formWithHiddenField">qqqq</forceHiddenInputField>
+                <verifyXPath description="check updated value of hidden field"
+                    xpath="//form/input[@id='real']/@value" text="qqqq" />
+                <!-- could now submit form to backend server expecting modified value -->
+            </steps>
+        </webtest>
+    </target>
+
+</project>

@@ -1,0 +1,14 @@
+<webtest name="testInputFieldAttributeSteps: Show usage of storeInputFieldAttribute step using disabled attribute">
+    <config ...>
+    <steps>
+        <invoke ...>
+        <verifytitle description="check we are on the test page" text="InputField Attribute Test Page" />
+        <storeInputFieldAttribute propertyName="isDisabled1a" name="button1" attributeName="disabled"/>
+        <verifyProperty description="check if button is disabled" name="isDisabled1a" text="true"/>
+        <clickButton description="Attempt submit but should be ignored as button is disabled" name="button1" />
+        <verifytitle description="check we are still on the test page" text="InputField Attribute Test Page" />
+        <setInputField description="set field value should enabled button" name="value1" value="someText" />
+        <clickButton description="Attempt submit should work as button is enabled" name="button1" />
+        <verifytitle description="check we are now on the dummy page" text="Dummy" />
+    </steps>
+</webtest>

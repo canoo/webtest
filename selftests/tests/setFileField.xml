@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testSetSelectField" default="all" basedir=".">
+
+	<property name="absoluteFilePathWebTestPng" location="setFileField/webtest.png"/>
+	<property name="absoluteFilePathTestFile" location="setFileField/testFile.txt"/>
+	<property name="absoluteFilePathSetFileField" location="setFileField.xml"/>
+
+    <target name="all" depends="testSetFileFieldByName,testSetFileFieldById"/>
+
+    <target name="testSetFileFieldByName">
+        <webtest name="setFileField: Show usage of setFileField using 'name' and related attributes">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="setFileField.jsp"/>
+                <setFileField fileName="setFileField/testFile.txt" name="myFileFieldName1"/>
+                <verifyInputField name="myFileFieldName1" fieldIndex="1" value="${absoluteFilePathTestFile}"/>
+                <setFileField formName="myForm" fileName="setFileField/webtest.png" name="myFileFieldName2"/>
+                <not>
+                    <setFileField fileName="setFileField.xml" name="willNotBeFound"/>
+                </not>
+                <verifyInputField name="myFileFieldName2" value="${absoluteFilePathWebTestPng}"/>
+                <clickButton name=""/>
+                <group description="verify uploaded text file">
+	                <verifyXPath xpath="//span[@id='cntType_myFileFieldName1']" description="Checks the content type of the uploaded file" text="text/plain"/>
+	                <verifyXPath xpath="//span[@id='fileSize_myFileFieldName1']" description="Checks the size of the uploaded file" text="71"/>
+	                <verifyXPath xpath="//span[@id='md5_myFileFieldName1']" description="Checks the MD5 checksum of the uploaded file" text="ab8a632ba2e5beb8fc9c99ab89e44972"/>
+                </group>
+                <group description="verify uploaded image">
+	                <verifyXPath xpath="//span[@id='cntType_myFileFieldName2']" description="Checks the content type of the uploaded file" text="image/png"/>
+	                <verifyXPath xpath="//span[@id='fileSize_myFileFieldName2']" description="Checks the size of the uploaded file" text="1706"/>
+	                <verifyXPath xpath="//span[@id='md5_myFileFieldName2']" description="Checks the MD5 checksum of the uploaded file" text="e82debc7321e2d6db85c57ae81493132"/>
+                </group>
+            	<!--
+                <group description="test with non existing file">
+	                <invoke url="setFileField.jsp"/>
+                	<setFileField fileName="this/doesntExist.txt" checkFileExists="false" name="myFileFieldName1"/>
+	                <clickButton name=""/>
+	                <verifyXPath xpath="//span[@id='fileSize_myFileFieldName1']" description="Checks the size of the uploaded file" text="0"/>
+	                <verifyXPath xpath="//span[@id='fileName_myFileFieldName1']" description="Checks the file name of the uploaded file" text="doesntExist.txt"/>
+                </group>
+                -->
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSetFileFieldById">
+        <webtest name="setFileField: Show usage of setFileField using 'htmlId' attribute">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="setFileField.jsp" />
+                <setFileField fileName="setFileField.xml" htmlId="myFileFieldId2" />
+                <not>
+                    <setFileField fileName="AllTests.xml" htmlId="willNotBeFound" />
+                </not>
+                <not>
+                    <setFileField fileName="AllTests.xml" htmlId="foundButWrongType" />
+                </not>
+                <verifyInputField name="myFileFieldName2" value="${absoluteFilePathSetFileField}"/>
+                <clickButton name=""/>
+                <verifyXPath xpath="//span[@id='fileName_myFileFieldName2']" description="Checks the name of the uploaded file" text="${absoluteFilePathSetFileField}"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

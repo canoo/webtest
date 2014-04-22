@@ -1,0 +1,7 @@
+<steps>
+    <invoke url="testDocLinks.pdf"/>
+    <compareToExpected saveFiltered="true" readFiltered="false" toFile="${expectedFile}">
+        <pdfToLinksFilter description="extract PDF links"/>
+        <lineSeparatorFilter description="normalise line separators"/>
+    </compareToExpected>
+</steps>

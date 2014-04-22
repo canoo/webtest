@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testCookie" default="all" basedir=".">
+
+    <target name="all"
+        depends="testVerifyCookieOnPage, testVerifyCookieOnPreviousPage, testStoreCookieOnPage,
+        testVisitCount, testRevisitCount, testRevisitCountWithInitialValueViaConfig"/>
+
+    <target name="testVerifyCookieOnPage">
+        <webtest name="cookie: Show usage of verifyCookie and test it">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="applet.html"/>
+                <not>
+                    <verifyCookie name="X-APPLET" text="YES"/>
+                </not>
+                <invoke url="setCookie.jsp"/>
+                <verifyCookie name="X-APPLET"/><!-- exists? -->
+                <verifyCookie name="X-APPLET" text="YES"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testStoreCookieOnPage">
+        <webtest name="cookie: Show usage of storeCookie and test it">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="applet.html"/>
+                <not>
+                    <verifyCookie name="X-APPLET" text="YES"/>
+                </not>
+                <invoke url="setCookie.jsp"/>
+                <storeCookie name="X-APPLET" property="myProp"/>
+                <verifyProperty name="myProp" text="YES"/>
+                <storeCookie name="X-APPLET"/>
+                <verifyProperty name="X-APPLET" text="YES"/>
+                <storeCookie name="X-APPLET" property="myAntProp" propertyType="ant"/>
+                <verifyProperty name="myAntProp" propertyType="ant" regex="true" text="Y.*S"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testVerifyCookieOnPreviousPage">
+        <webtest name="cookie: Show usage of verifyCookie and test it">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="applet.html"/>
+                <not>
+                    <verifyCookie name="X-APPLET" text="YES"/>
+                </not>
+                <invoke url="setCookie.jsp"/>
+                <clickLink label="Applet"/>
+                <verifyCookie name="X-APPLET" text="YES"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testVisitCount">
+        <webtest name="cookie: visit count test example">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="reset in case someone else has used this page"
+                    url="visitCount.jsp?reset=true"/>
+                <invoke description="expect cookie-based counter and server-side counter to be 0"
+                    url="visitCount.jsp"/>
+                <verifyTitle description="confirm we have the right page"
+                    regex="true" text="Visit Counter.*" />
+                <verifyXPath description="confirm server-based counter is working"
+                    xpath="//p[@id='totalinfo']"
+                    text="This page has been accessed a total of 1 time(s)." />
+                <storeCookie name="JSESSIONID" property="sid" />
+                <verifyCookie name="visitCount" text="1" />
+                <invoke description="session id shouldn't change, cookie-based counter should increment"
+                    url="visitCount.jsp"/>
+                <verifyCookie name="JSESSIONID" text="#{sid}" />
+                <verifyCookie name="visitCount" text="2" />
+                <invoke description="session id shouldn't change, cookie-based counter should increment"
+                    url="visitCount.jsp"/>
+                <verifyCookie name="JSESSIONID" text="#{sid}" />
+                <verifyCookie name="visitCount" text="3" />
+                <storeProperty description="save sessionid as ant property to retain across webtests"
+                    name="antSid" propertyType="ant" value="#{sid}" />
+                <verifyXPath description="confirm server-based counter also working"
+                    xpath="//p[@id='totalinfo']"
+                    text="This page has been accessed a total of 3 time(s)." />
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testRevisitCount">
+        <webtest name="cookie: revisit count test example">
+            &sharedConfiguration;
+            <steps>
+                <!-- cookies are cleared between webtests which results in new session -->
+                <invoke description="visit page expecting new session" url="visitCount.jsp"/>
+                <verifyTitle regex="true" text="Visit Counter.*" />
+                <storeCookie name="JSESSIONID" property="newSid" />
+                <not description="new session id should be different to previous one">
+                    <verifyProperty name="antSid" propertyType="ant" text="#{newSid}" />
+                </not>
+                <verifyCookie description="cookies were cleared so cookie-based counter should restart"
+                    name="visitCount" text="1" />
+                <verifyXPath description="confirm server-based counter still working"
+                    xpath="//p[@id='totalinfo']"
+                    text="This page has been accessed a total of 4 time(s)." />
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testRevisitCountWithInitialValueViaConfig">
+        <webtest name="cookie: revisit count test example with initial cookie value set">
+            <!-- same as sharedConfiguration but has explicit cookie value set -->
+            <config
+                host="${webtest.host}"
+                port="${webtest.port}"
+                protocol="${webtest.protocol}"
+                basepath="selftest"
+                saveresponse="${webtest.saveresponse}"
+                resultpath="${wt.config.resultpath}"
+                resultfile="${webtest.resultfile}"
+                haltonerror="false"
+                haltonfailure="false"
+                showhtmlparseroutput="false"
+                autorefresh="true">
+                <header name="Cookie" value="visitCount=100"/>
+            </config>
+            <steps>
+                <invoke description="visit initial page where cookie value has been preset at 100" url="visitCount.jsp"/>
+                <verifyTitle regex="true" text="Visit Counter.*" />
+                <verifyCookie description="cookie-based counter should have been incremented from preset value"
+                    name="visitCount" text="101" />
+                <verifyXPath description="confirm server-based counter still working"
+                    xpath="//p[@id='totalinfo']"
+                    text="This page has been accessed a total of 5 time(s)." />
+            </steps>
+        </webtest>
+    </target>
+    
+</project>

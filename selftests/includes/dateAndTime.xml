@@ -1,0 +1,14 @@
+<!--
+	define any needed global date & time properties for convenient use
+-->
+
+<tstamp>
+    <format property="timestamp" pattern="yyyy.MM.dd hh:mm:ss"/>
+
+    <format property="date.today" pattern="dd.MM.yyyy"/>
+    <format property="date.yesterday" pattern="dd.MM.yyyy" offset="-1" unit="day"/>
+    <format property="date.tomorrow" pattern="dd.MM.yyyy" offset="1" unit="day"/>
+
+    <format property="date.past.1.month" pattern="dd.MM.yyyy" offset="-1" unit="month"/>
+    <format property="date.future.13.month" pattern="dd.MM.yyyy" offset="13" unit="month"/>
+</tstamp>

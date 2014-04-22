@@ -1,0 +1,7 @@
+<steps>
+    <invoke ...>
+    <!-- random colour using tokens -->
+    <storeRandom description="choose colour" property="expectedColour" choice="red,green,blue,black"/>
+    <setSelectField name="colour" value="#{expectedColour}"/>
+    <!-- additonal steps ... -->
+</steps>

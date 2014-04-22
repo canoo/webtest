@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd"
+[
+	<!ENTITY site SYSTEM "WebTestSite.xml">
+]
+>
+<manpage siteid="Home">
+
+	&site;
+
+	<head title="Canoo WebTest">
+		<b>
+			Canoo WebTest is a free Open Source tool for automated testing of web applications
+			in a very effective way. 
+		</b>
+		<b>
+			Look at <pageref name="Key Characteristics"/> for a features' overview.
+		</b>
+	</head>
+
+	<section title="You write tests like this...">
+		<b>
+			<code caption="Simple Google Test in XML">
+				<include src='examples/webtestGoogle.xml' />
+			</code>
+			(yes, it's "just" Ant and therefore integrates smoothly in your Continuous Integration)
+		</b>
+	</section>
+	
+	<section title="or as Groovy code like this...">
+		<b>
+			<code caption="the same as Groovy code">
+<source>
+<tag>import</tag>&nbsp;com.canoo.webtest.WebtestCase<n/>
+<n/>
+<tag>class</tag> SimpleTest <tag>extends</tag> WebtestCase {<n/>
+&nbsp;&nbsp;<tag>void</tag> testWebtestOnGoogle() {<n/>
+&nbsp;&nbsp;&nbsp;&nbsp;webtest(<s>check that WebTest is Google's top 'WebTest' result</s>) {<n/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoke <s>http://www.google.com/ncr</s>, description: <s>Go to Google (in English)</s><n/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verifyTitle <s>Google</s><n/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setInputField name: <s>q</s>, value: <s>WebTest</s><n/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clickButton <s>I'm Feeling Lucky</s><n/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verifyTitle <s>Canoo WebTest</s><n/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<n/>
+&nbsp;&nbsp;}<n/>
+}<n/>
+</source>
+			</code>
+		</b>
+	</section>
+
+	<section title="... and get comprehensive results">
+		<b>
+			with all details and responses received from the server(s):
+			<img src="images/TestResult_GoogleWebTestTop.png"/>
+		</b>
+	</section>
+
+</manpage>

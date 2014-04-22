@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testVerifyProperty" default="all" basedir=".">
+
+    <target name="all" depends="dynamicTests,antTests,expansionTests,scopeTestsDynamic,scopeTestsAnt" />
+
+    <target name="dynamicTests">
+        <webtest name="verifyProperty: test for the existence and/or value of a dynamic property">
+            &sharedConfiguration;
+            <steps>
+                <storeProperty description="set up property"
+                    name="dynProp" propertyType="dynamic" value="The DynProp Value" />
+                <verifyProperty description="test the existence of the property"
+                    name="dynProp" />
+                <verifyProperty description="test for matching property value"
+                    name="dynProp" text="The DynProp Value"/>
+                <verifyProperty description="test the property value against a regex expression"
+                    name="dynProp" regex="true" text=".*Value"/>
+                <not description="expected to fail because of non-existent property">
+										<verifyProperty description="test the existence of some other property"
+												name="someOtherProp" />
+                </not>
+                <not description="expected to fail because of non-matching property value">
+										<verifyProperty description="test the property against some other value"
+												name="dynProp" text="Something completely different"/>
+                </not>
+                <storeProperty name="label" value="Next &gt;&gt;"/>
+                <verifyProperty name="label" value="Next >>"/>
+                <storeProperty name="label">Next &gt;&gt;</storeProperty>
+                <verifyProperty name="label" value="Next >>"/>
+                <storeProperty name="label"><![CDATA[Next >>]]></storeProperty>
+                <verifyProperty name="label" value="Next >>"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="antTests">
+        <property name="antProp" value="The AntProp Value" />
+        <webtest name="verifyProperty: test for the existence and/or value of an ant property">
+            &sharedConfiguration;
+            <steps>
+                <verifyProperty description="test the existence of the property"
+                    name="antProp" propertyType="ant" />
+                <verifyProperty description="test for matching property value"
+                    name="antProp" text="The AntProp Value" propertyType="ant" />
+                <verifyProperty description="test the property value against a regex expression"
+                    name="antProp" regex="true" text=".*Value" propertyType="ant" />
+                <not description="expected to fail because of non-existent property">
+										<verifyProperty description="test the existence of some other property"
+												name="someOtherProp" propertyType="ant" />
+                </not>
+                <not description="expected to fail because of non-matching property value">
+										<verifyProperty description="test the property against some other value"
+												name="antProp" propertyType="ant" text="Something completely different"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="expansionTests">
+        <antcall target="expansionTestsImpl">
+            <param name="webtest.defaultpropertytype" value="ant"/>
+        </antcall>
+    </target>
+    <target name="expansionTestsImpl">
+        <property name="antProp2" value="ImmutableValue" />
+        <webtest name="verifyProperty: test normal and late property expansion">
+            &sharedConfiguration;
+            <steps>
+                <storeProperty description="define dyn property"
+                    name="antProp2" propertyType="dynamic" value="ModifiedValue" />
+                <storeProperty description="try to modify ant property"
+                    name="antProp2" propertyType="antstrict" value="ModifiedValue" />
+                <storeProperty description="create new ant property using normal and late binding"
+                    name="antProp3" value="${antProp2}_#{antProp2}" />
+                <verifyProperty description="test for matching property value"
+                    name="antProp3" text="ImmutableValue_ModifiedValue" />
+
+            	<storeProperty description="create new dynamic property using normal and late binding"
+                    name="dynProp2" propertyType="dynamic" value="${antProp2}_#{antProp2}" />
+                <verifyProperty description="test for matching property value"
+                    name="dynProp2" text="ImmutableValue_ModifiedValue" propertyType="dynamic" />
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="scopeTestsDynamic">
+        <webtest name="verifyProperty: set up dynamic property for dynamic scope test">
+            &sharedConfiguration;
+            <steps>
+                <storeProperty description="set dynamic property"
+                    name="dynProp3" value="SomeValue" />
+            </steps>
+        </webtest>
+        <webtest name="verifyProperty: test property in different webtest">
+            &sharedConfiguration;
+            <steps>
+                <not>
+	                <verifyProperty description="test for matching property value"
+	                    name="dynProp3" text="SomeValue" />
+	              </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="scopeTestsAnt">
+        <antcall target="scopeTestsAntImpl">
+            <param name="webtest.defaultpropertytype" value="ant"/>
+        </antcall>
+    </target>
+    <target name="scopeTestsAntImpl">
+        <webtest name="verifyProperty: set up ant property for ant scope test">
+            &sharedConfiguration;
+            <steps>
+                <storeProperty description="set dynamic property"
+                    name="antProp4" value="SomeValue" />
+            </steps>
+        </webtest>
+        <webtest name="verifyProperty: test property in different webtest">
+            &sharedConfiguration;
+            <steps>
+              <verifyProperty description="test for matching property value"
+                  name="antProp4" text="SomeValue" />
+            </steps>
+        </webtest>
+    </target>
+
+</project>

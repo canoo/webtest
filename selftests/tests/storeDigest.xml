@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testStoreDigest" default="all" basedir=".">
+
+    <target name="all" depends="testStoreDigestSimple,testStoreDigestRegex"/>
+
+    <target name="testStoreDigestSimple">
+        <property name="variableNumberRegex" value="(?&lt;= )[0-9]+(?= time)"/>
+        <property name="visitCountDigest" value="c1 e2 29 ad d4 6b 2a 96 2f 18 18 f4 71 e6 bb 88 73 9a c7 62"/>
+        <webtest name="storeDigest: Show how to use storeDigest step">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="dummy.html"/>
+                <storeDigest property="dummyDigestSHA1">
+                    <lineSeparatorFilter/>
+                </storeDigest>
+                <verifyProperty name="dummyDigestSHA1" text="4e 7e c7 59 21 9 15 44 52 f3 45 70 76 b9 a1 93 e7 b3 78 f2"/>
+                <storeDigest property="dummyDigestMD5" type="MD5">
+                    <lineSeparatorFilter/>
+                </storeDigest>
+                <verifyProperty name="dummyDigestMD5" text="27 e2 37 6c ff d6 ac 13 65 8d 80 d9 94 0 f7 21"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testStoreDigestRegex">
+        <property name="variableNumberRegex" value="(?&lt;= )[0-9]+(?= time)"/>
+        <property name="visitCountDigest" value="c1 e2 29 ad d4 6b 2a 96 2f 18 18 f4 71 e6 bb 88 73 9a c7 62"/>
+        <webtest name="storeDigest: storeDigest step with regex replacement">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="visitCount.jsp"/>
+                <storeDigest property="visitDigestSHA1">
+                    <replaceFilter regex="(as at ).*(&lt;/title&gt;)" replacement="$1[DATE REMOVED]$2"/>
+                    <replaceFilter regex="${variableNumberRegex}"/>
+                    <lineSeparatorFilter/>
+                </storeDigest>
+                <verifyProperty name="visitDigestSHA1" text="${visitCountDigest}"/>
+                <invoke url="visitCount.jsp"/>
+                <storeDigest property="visitDigestSHA1">
+                    <replaceFilter regex="(as at ).*(&lt;/title&gt;)" replacement="$1[DATE REMOVED]$2"/>
+                    <replaceFilter regex="${variableNumberRegex}"/>
+                    <lineSeparatorFilter/>
+                </storeDigest>
+                <verifyProperty name="visitDigestSHA1" text="${visitCountDigest}"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

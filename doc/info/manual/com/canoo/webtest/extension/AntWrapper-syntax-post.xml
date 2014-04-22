@@ -1,0 +1,31 @@
+<post>
+
+    <b>The following example illustrates how to use the <em>antWrapper</em> step to invoke
+        an <key>ANT</key> task (in this case <em>loadFile</em>) within a <stepref name="webtest"
+            category="core"/> test specification:</b>
+
+    <code caption="antWrapper simple example">
+        <include src='examples/antWrapperSimpleExample.xml'/>
+    </code>
+
+    <b>If you need to test whether your application correctly stores information
+        in a database, you can use the <key>ANT</key> <em>sql</em>
+        task or the <key>sqlunit</key> task if you have more elaborate requirements.
+        Here is an example using <em>sql</em>:</b>
+
+    <code caption="antWrapper macro example">
+        <include src='examples/antWrapperSqlExample.xml'/>
+    </code>
+
+    <b>
+        You can also leave out the <em>antWrapper</em> step if you wish and one will be added for
+        you behind the scenes. You can also experiment with using <key>ANT</key> Macros. Here
+        is an example showing implicit <em>antWrapper</em> usage and Macros. See the <key>ANT</key>
+        documentation for more details on Macros.
+    </b>
+
+    <code caption="antWrapper macro example">
+        <include src='examples/antWrapperMacroExample.xml'/>
+    </code>
+
+</post>

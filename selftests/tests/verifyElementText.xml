@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testElementText" default="testElementText" basedir=".">
+
+    <target name="testElementText">
+        <webtest name="verifyElementText: Show how to find text within a specified html element">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page"
+                    url="${start.page}"/>
+                <verifyElementText description="test the constant text of the title element"
+                    type="title"
+                    text="Canoo WebTest"/>
+                <verifyElementText description="test part of the text of the title element"
+                    type="title"
+                    text="Canoo.*"
+                    regex="true"/>
+                <not description="expected to fail when the element is not unique">
+                    <verifyElementText description="textarea with multiple occurances"
+                        type="textarea"
+                        text="whatever"/>
+                </not>
+            	<group description="test with htmlid">
+	                <verifyElementText description="textarea by id" htmlid="textarea2" text="Wusi was here as well..."/>
+	                <not description="expected to fail when the element is not found">
+	                    <verifyElementText description="not existing element" htmlid="notExistingNode" text="whatever"/>
+	                </not>
+            	</group>
+                <not description="expected to fail when the element type is wrong">
+                    <verifyElementText description="wrong element type"
+                        type="XXX"
+                        text="whatever"/>
+                </not>
+                <!-- Note: Use &#n; notation to express a LF character (n=10) or CR character (n=13) -->
+                <verifyTextarea description="Check for CDATA in textarea with name"
+                    name="theArea"
+                    text="Wusi was here ...&#10;"/>
+                <verifyTextarea description="Check for CDATA in textarea with name using regex"
+                    name="theArea"
+                    text="Wusi was here .*"
+                    regex="true"/>
+                <not description="expected to fail, for the area does not exist">
+                    <verifyTextarea description="wrong textarea name"
+                        name="theAreaDoesNotExist"
+                        text="whatever"/>
+                </not>
+                <not description="expected to fail, for the match is wrong">
+                    <verifyTextarea description="Check for CDATA in textarea with name using regex"
+                        name="theOtherArea"
+                        text="this text is not contained.*"
+                        regex="true"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

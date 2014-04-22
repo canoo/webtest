@@ -1,0 +1,12 @@
+<webtest name="pdftest - verify checkbox field value">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyCheckboxField description="Checkbox field value"
+      page="2"
+      name="OK"
+      value="(Yes|Ja)"
+      regex="true"/>
+    ...
+  </steps>
+</webtest>

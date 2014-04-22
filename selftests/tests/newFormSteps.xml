@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testNewFormSteps" default="all" basedir=".">
+
+	<target name="all">
+		<antcall target="testNewFormSteps"/>
+		<antcall target="testStepsWithXpath"/>
+		<antcall target="testIdNotInputField"/>
+	</target>
+
+	<target name="testNewFormSteps">
+		<webtest name="newFormSteps: Tests the new form steps">
+			&sharedConfiguration;
+			<steps>
+
+				<invoke description="Open the page with form and JS" url="form.jsp"/>
+
+				<setInputField name="myTextField" value="blabla"/>
+				<setInputField forLabel="text field referenced by label" value="bli"/>
+				<setInputField formName="myForm" name="myTextField" value="blabla"/>
+				<setInputField name="myPasswordField" value="secret"/>
+				<setInputField name="myTextArea">Really interesting, isn't it?</setInputField>
+				<setCheckbox name="myCheckbox" checked="true"/>
+				<setCheckbox name="beer" checked="true" value="alcohol"
+				             description="identify checkbox with name and value alcohol"/>
+				<setCheckbox name="beer" checked="true" value="lemon"
+				             description="identify checkbox with name and value lemon"/>
+				<verifyCheckbox name="beer" checked="true" value="lemon"
+				                description="should not get confused from hidden decoy beer field"/>
+				<setSelectField name="mySelect1" value="1"/>
+				<setSelectField name="mySelect2" value="1b"
+				                description="select value that is available thanks JS since mySelect1 changed"/>
+
+				<clickButton name=""/>
+
+				<!-- text field and its echo -->
+				<verifyText description="Checks the received value from text" text="myTextField: blabla"/>
+				<verifyText description="Checks that value echoed with JS has been received too"
+				            text="myTextFieldEcho: blabla"/>
+
+				<!-- text field referenced by associated label -->
+				<verifyText description="Checks the received value from text" text="myTextFieldRefByLabel: bli"/>
+
+				<!-- password field and its echo -->
+				<verifyText description="Checks the received value from password" text="myPasswordField: secret"/>
+				<verifyText description="Checks that value echoed with JS has been received too"
+				            text="myPasswordFieldEcho: secret"/>
+
+				<!-- textarea field and its echo -->
+				<verifyText description="Checks the received value from textarea"
+				            text="myTextArea: Really interesting, isn't it?"/>
+				<verifyText description="Checks that value echoed with JS has been received too"
+				            text="myTextAreaEcho: Really interesting, isn't it?"/>
+
+				<!-- checkbox fields -->
+				<verifyText description="Checks the received value from checkbox" text="myCheckbox: yes, please"/>
+				<verifyText description="Checks the received value from the valued checkbox" text="beer: alcohol, lemon"/>
+
+				<!-- verifies that currentform is reset correctly and checks htmlId usage -->
+				<setInputField htmlId="textfieldId" value="blabla2"/>
+				<setCheckbox htmlId="checkboxId" checked="false"/>
+				<clickButton name=""/>
+				<verifyInputField name="myTextField" value="blabla2"/>
+				<verifyText description="Checks the received value from text" text="myTextField: blabla2"/>
+				<not description="expect not to match as field has no value">
+					<verifyInputField name="fieldWithNoValue" value="dummy"/>
+				</not>
+				<not description="should not be found as checkbox has been unset">
+					<verifyText description="Checks the received value from checkbox" text="myCheckbox: yes, please"/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testStepsWithXpath">
+		<webtest name="newFormSteps: Tests the new form steps with xpath">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="Open the page with form and JS" url="form.jsp"/>
+
+				<setInputField xpath="//form/input[@type='text'][@name='myTextField']" value="blabla"/>
+				<setInputField xpath="//form/input[@name='myPasswordField']" value="secret"/>
+				<setInputField xpath="//form/textarea[@name='myTextArea']" value="Really interesting, isn't it?"/>
+
+				<setCheckbox xpath="//form/input[@name='myCheckbox']" checked="true"/>
+				<setCheckbox xpath="//form/input[@name='beer'][@value='alcohol']" checked="true"
+				             description="identify checkbox with name and value alcohol"
+					/>
+				<setCheckbox xpath="//form/input[@name='beer'][@value='lemon']" checked="true"
+				             description="identify checkbox with name and value lemon"
+					/>
+				<verifyCheckbox name="beer" checked="true" value="lemon"
+				                description="should not get confused from hidden decoy beer field"/>
+				<setSelectField name="mySelect1" value="1"/>
+				<setSelectField name="mySelect2" value="1b"
+				                description="select value that is available thanks JS since mySelect1 changed"/>
+
+				<clickButton name=""/>
+
+				<!-- text field and its echo -->
+				<verifyText description="Checks the received value from text" text="myTextField: blabla"/>
+				<verifyText description="Checks that value echoed with JS has been received too"
+				            text="myTextFieldEcho: blabla"/>
+
+				<!-- password field and its echo -->
+				<verifyText description="Checks the received value from password" text="myPasswordField: secret"/>
+				<verifyText description="Checks that value echoed with JS has been received too"
+				            text="myPasswordFieldEcho: secret"/>
+
+				<!-- textarea field and its echo -->
+				<verifyText description="Checks the received value from textarea"
+				            text="myTextArea: Really interesting, isn't it?"/>
+				<verifyText description="Checks that value echoed with JS has been received too"
+				            text="myTextAreaEcho: Really interesting, isn't it?"/>
+
+				<!-- checkbox fields -->
+				<verifyText description="Checks the received value from checkbox" text="myCheckbox: yes, please"/>
+				<verifyText description="Checks the received value from the valued checkbox" text="beer: alcohol, lemon"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testIdNotInputField">
+		<webtest name="newFormSteps: Try to use htmlId for heading">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="getMainPage for checkbox test" url="${start.page}?mode=checkboxTest"/>
+				<not>
+					<setInputField description="Use heading id" htmlId="headingId" value="blabla"/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

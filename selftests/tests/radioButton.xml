@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="radioButtonSteps" default="all" basedir=".">
+
+	<target name="all">
+		<antcall target="testIdNotRadioButton"/>
+		<antcall target="testXPath"/>
+		<antcall target="withJavaScript"/>
+		<antcall target="withoutJavaScript"/>
+	</target>
+
+	<target name="testIdNotRadioButton">
+		<webtest name="radioButton: Try to use htmlId for heading">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="getMainPage for checkbox test" url="${start.page}?mode=checkboxTest"/>
+				<not>
+					<setRadioButton description="Use heading id" htmlId="headingId"/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testXPath">
+		<webtest name="radioButton: Tests access with xpath to radio buttons">
+			&sharedConfiguration;
+			<steps>
+				<enableJavaScript enable="true"/>
+
+				<invoke description="Open the page with form and JS" url="form.jsp"/>
+				<verifyXPath
+						xpath="not(//form/input[@name='myRadioButton']/@checked)"
+						text="true"
+						/>
+				<verifyXPath description="chocolateFlavor is initially disabled"
+							 xpath="boolean(//form/input[@name='chocolateFlavor']/@disabled)"
+							 text="true"/>
+
+				<setRadioButton xpath="//form/input[@name='myRadioButton']"/>
+				<verifyRadioButton xpath="//form/input[@name='myRadioButton']" checked="true"/>
+				<not>
+					<verifyRadioButton xpath="//form/input[@name='myRadioButton']"/>
+				</not>
+
+				<verifyXPath
+						xpath="count(//form/input[@name='myRadioButton']/@checked)"
+						text="1"
+						/>
+				<verifyXPath
+						xpath="//form/input[@name='myRadioButton'][@checked]/@value"
+						text="mint"
+						/>
+				<verifyXPath description="chocolateFlavor is still disabled"
+							 xpath="boolean(//form/input[@name='chocolateFlavor']/@disabled)"
+							 text="true"/>
+
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="withJavaScript">
+		<webtest name="radioButton: Tests related to radio buttons with JavaScript">
+			&sharedConfiguration;
+			<steps>
+				<enableJavaScript enable="true"/>
+
+				<invoke description="Open the page with form and JS" url="form.jsp"/>
+				<verifyXPath
+						xpath="not(//form/input[@name='myRadioButton']/@checked)"
+						text="true"
+						/>
+				<verifyXPath description="chocolateFlavor is initially disabled"
+							 xpath="boolean(//form/input[@name='chocolateFlavor']/@disabled)"
+							 text="true"/>
+
+				<setRadioButton name="myRadioButton" value="mint"/>
+				<verifyXPath
+						xpath="count(//form/input[@name='myRadioButton']/@checked)"
+						text="1"
+						/>
+				<verifyXPath
+						xpath="//form/input[@name='myRadioButton'][@checked]/@value"
+						text="mint"
+						/>
+				<verifyXPath description="chocolateFlavor is still disabled"
+							 xpath="boolean(//form/input[@name='chocolateFlavor']/@disabled)"
+							 text="true"/>
+
+				<clickButton name=""/>
+				<verifyText description="Checks the received value from radio button" text="myRadioButton: mint"/>
+				<verifyXPath
+						xpath="count(//form/input[@name='myRadioButton']/@checked)"
+						text="1"
+						/>
+				<verifyXPath
+						xpath="//form/input[@name='myRadioButton'][@checked]/@value"
+						text="mint"
+						/>
+
+				<setRadioButton name="myRadioButton" value="chocolate"/>
+				<verifyXPath
+						xpath="count(//form/input[@name='myRadioButton']/@checked)"
+						text="1"
+						/>
+				<verifyXPath
+						xpath="//form/input[@name='myRadioButton'][@checked]/@value"
+						text="chocolate"
+						/>
+				<verifyXPath description="chocolateFlavor is enabled"
+							 xpath="boolean(//form/input[@name='chocolateFlavor']/@disabled)"
+							 text="false"/>
+
+				<setRadioButton description="2nd click is a no-op" name="myRadioButton" value="chocolate"/>
+				<verifyXPath
+						xpath="count(//form/input[@name='myRadioButton']/@checked)"
+						text="1"
+						/>
+				<verifyXPath
+						xpath="//form/input[@name='myRadioButton'][@checked]/@value"
+						text="chocolate"
+						/>
+				<verifyXPath description="chocolateFlavor is still enabled"
+							 xpath="boolean(//form/input[@name='chocolateFlavor']/@disabled)"
+							 text="false"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="withoutJavaScript">
+		<webtest name="radioButton: Tests related to radio buttons without JavaScript">
+			&sharedConfiguration;
+			<steps>
+				<enableJavaScript enable="false"/>
+				<invoke description="Open the page with form and JS" url="form.jsp"/>
+				<verifyXPath
+						xpath="not(//form/input[@name='myRadioButton']/@checked)"
+						text="true"
+						/>
+
+				<setRadioButton name="myRadioButton" value="mint"/>
+				<verifyRadioButton name="myRadioButton" value="chocolate" checked="false" />
+				<verifyRadioButton name="myRadioButton" value="mint" checked="true" />
+				<verifyXPath
+						xpath="count(//form/input[@name='myRadioButton']/@checked)"
+						text="1"
+						/>
+				<verifyXPath
+						xpath="//form/input[@name='myRadioButton'][@checked]/@value"
+						text="mint"
+						/>
+
+				<clickButton name=""/>
+				<verifyText description="Checks the received value from radio button" text="myRadioButton: mint"/>
+				<verifyXPath
+						xpath="count(//form/input[@name='myRadioButton']/@checked)"
+						text="1"
+						/>
+				<verifyXPath
+						xpath="//form/input[@name='myRadioButton'][@checked]/@value"
+						text="mint"
+						/>
+
+				<setRadioButton name="myRadioButton" value="chocolate"/>
+				<verifyXPath
+						xpath="count(//form/input[@name='myRadioButton']/@checked)"
+						text="1"
+						/>
+				<verifyXPath
+						xpath="//form/input[@name='myRadioButton'][@checked]/@value"
+						text="chocolate"
+						/>
+
+				<setRadioButton name="myRadioButton" value="chocolate"/>
+				<verifyXPath
+						xpath="count(//form/input[@name='myRadioButton']/@checked)"
+						text="1"
+						/>
+				<verifyXPath
+						xpath="//form/input[@name='myRadioButton'][@checked]/@value"
+						text="chocolate"
+						/>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

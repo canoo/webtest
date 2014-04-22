@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testXPath" default="allTests" basedir=".">
+
+	<target name="allTests" depends="testXPath, testWebTestXPathGoodies, testBadHTML"/>
+	
+    <target name="testXPath">
+        <webtest name="verifyXPath: test xpath usage">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="getMainPage"
+                    url="${start.page}"/>
+                <verifyXPath description="simple match"
+                    xpath="/html/head/title"/>
+                <verifyXPath description="more complicated match"
+                    xpath="//img[@src='seibertec.jpg']"/>
+                <verifyXPath description="simple match with value"
+                    xpath="/html/head/title"
+                    text="Canoo WebTest"/>
+                <not description="expected to fail">
+                    <verifyXPath description="simple bad match"
+                        xpath="/bla"/>
+                    <verifyXPath description="good path bad match"
+                        xpath="/html/head/title"
+                        text="bla"/>
+                </not>
+
+                <invoke description="get dummy xml file"
+                    url="dummy.xml"/>
+                <verifyXPath description="simple match"
+                    xpath="/dummy/topnode"/>
+                <verifyXPath description="more complicated match"
+                    xpath="//topnode[@name='foo2']"/>
+                <verifyXPath description="simple match with value"
+                    xpath="/dummy/topnode/@name"
+                    text="foo"/>
+                <verifyXPath description="with count()"
+                    xpath="count(//topnode)"
+                    text="2"/>
+                <not description="expected to fail">
+                    <verifyXPath description="simple bad match"
+                        xpath="/bla"/>
+                </not>
+			</steps>
+        </webtest>
+	</target>
+
+
+	
+	<target name="testWebTestXPathGoodies">
+        <webtest name="verifyXPath: test WebTest xpath functions">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="get xpath test page" url="xpath.html"/>
+                <group description="test wt:matches">
+	                <group description="Tests adapted from XPath2 matches function definition">
+	                <!--
+	                Doesn't work with WebTest as text() already performs a minimal cleanup
+		                <verifyXPath xpath="wt:matches(//pre[@id='poem'], '^Kaum.*gesehen,$', 'm')" text="true"/>
+		                <verifyXPath xpath="wt:matches(//pre[@id='poem'], 'Kaum.*krähen')" text="false"/>
+		             -->
+		                <verifyXPath xpath="wt:matches(//pre[@id='poem'], '^Kaum.*gesehen,$')" text="false"/>
+		                <verifyXPath xpath="wt:matches(//pre[@id='poem'], 'Kaum.*krähen', 's')" text="true"/>
+		                <verifyXPath xpath="wt:matches(//pre[@id='poem'], 'kiki', 'i')" text="true"/>
+		            </group>
+		        </group>
+		        <group description="test wt:cleanText">
+		        	<verifyXPath xpath="wt:cleanText(//*[@id='cleantText1'])" text="some text with spaces and new lines"/>
+				</group>
+			</steps>
+		</webtest>
+    </target>
+
+    <target name="testBadHTML">
+        <webtest name="verifyXPath: test xpath usage">
+            <invoke url="badlyFormattedHtml.html"/>
+            <verifyXPath xpath="/html/body/div[@id = 'div1']"
+            	text="before end body and html"
+            	description="Sanity check (with awful absolute XPath expression)"/>
+            <verifyXPath xpath="/html/body/div[@id = 'div2']"
+            	text="after end body and html"
+            	description="Verify that the parser has reworked the DOM tree"/>
+        </webtest>
+	</target>
+</project>

@@ -1,0 +1,7 @@
+<webtest name="Check all links on current page">
+	<config ... />
+	<steps>
+		<invoke ... />
+		<verifyLinks description="Check Links"/>
+	</steps>
+</webtest>

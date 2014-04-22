@@ -1,0 +1,56 @@
+<head title="Available Excel Steps">
+
+    <b>This is the syntax documentation for the Excel steps.</b>
+
+    <b>
+        The Excel Steps allow various tests to be performed on Excel files that
+        may be referenced by your web pages. There are steps which let you verify
+        text content, verify styles used and verify sums
+        as well as a document structure filter which allows you to further manipulate the extracted
+        information.
+    </b>
+
+    <section title="Simple Usage Example">
+
+        <code caption="sampleSimpleUsageExample.xml">
+            <include src='excelExamples/sampleSimpleUsageExample.xml'/>
+        </code>
+
+    </section>
+
+    <section title="Additional Setup Information">
+
+        <b>
+            You have three ways to incorporate the Excel steps into your tests:
+            <dl>
+                <li>
+                    <dt>Import all steps approach:</dt>
+                    <dd>
+                        Simply use <example>&lt;import file="${webtest.home}/lib/taskdef.xml"/&gt;</example>
+                        as illustrated in the <pageref name="Samples"/>.
+                    </dd>
+                </li>
+                <li>
+                    <dt>Specific plugins approach:</dt>
+                    <dd>You can explicitly define the base and Excel tasks:<example>
+                        &lt;taskdef resource="webtest_base_strict.taskdef" classpathref="webtest.all"
+                                 loaderref="webtest.loader"/&gt;
+                        &lt;taskdef resource="webtest_exceltest_relaxed.taskdef" classpathref="webtest.all"
+                                 loaderref="webtest.loader"/&gt;
+                    </example></dd>
+                </li>
+                <li>
+                    <dt>Antlib approach:</dt>
+                    <dd>You can use namespaces as follows:<example>
+                        &lt;target xmlns:exceltest="antlib:com.canoo.webtest.plugins.exceltest" name="main"&gt;
+                    </example>then simply refer to the steps using the namespace you defined, <em>exceltest</em>
+                        in this case, e.g.<example>
+                        &lt;exceltest:verifyCellValue cell="A1" text="Test"/&gt;
+                        &lt;exceltest:verifyCellFormat cell="B3" borderColor="red"/&gt;
+                    </example>Note that the <em>excel</em> prefix is stripped off any tasks starting with <em>excel</em>.</dd>
+                </li>
+            </dl>
+        </b>
+    </section>
+
+</head>

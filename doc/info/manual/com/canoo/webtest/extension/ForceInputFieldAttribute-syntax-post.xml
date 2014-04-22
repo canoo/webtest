@@ -1,0 +1,24 @@
+<post>
+
+    <b>Consider the following <key>HTML</key> form:</b>
+
+    <code caption='inputFieldAttributePage.html'>
+    <include src='examples/forceInputFieldAttributePageHtml.xml' />
+    </code>
+
+    <b>This page contains some <key>javascript</key> validation. We would like to use the <stepref name="storeInputFieldAttribute"/>
+    step to check that the validation is working. When the form is first loaded, the "Click Me" button should
+    be disabled as the "value1" field is empty. We can then place some content into the field. However
+    because the onkeyup <key>javascript</key> event is not supported, we note that the "Click Me" button is still
+    disabled. We can use the <em>&lt;forceInputFieldAttribute&gt;</em> to force the button to become enabled.
+    For the enabled attribute, we need to remove the "disabled" attribute to enable the button. We do this
+    by setting the "attributeValue" to the empty string "".
+    Here is the script code:</b>
+
+    <code caption='forceInputFieldAttribute Example'>
+        <include src='examples/forceInputFieldAttributeExample.xml'/>
+    </code>
+
+    <b><em>See also</em>: the <stepref name="storeInputFieldAttribute"/> step.</b>
+
+</post>

@@ -1,0 +1,12 @@
+<webtest name="exceltest - select sheet">
+  <config .../>
+	<steps>
+		<invoke url="testExcel.xls"/>
+		<excelSelectSheet sheetName="Sheet1"/>
+		<excelVerifyCellValue cell="A1" text="Sheet 1 Cell"/>
+		...
+		<excelSelectSheet sheetIndex="1"/>
+		<excelVerifyCellValue cell="A1" text="Sheet 2 Cell"/>
+		...
+	</steps>
+</webtest>

@@ -1,0 +1,24 @@
+<pre>
+
+    <b>The input field to set will be determined by finding the appropriate form followed by
+    finding the appropriate field on that form.</b>
+
+    <b><em>Form Selection</em>: In many cases, your page will only have
+    one form - that form will be used - you don't need to worry about trying to select the form.
+    For tricky cases, you might need to do extra work to select the appropriate form.
+    See the <stepref name="setRadioButton"/> step for further details on how to do this.</b>
+
+    <b><em>Simple Field Selection</em>: in many cases, only one field will match the <em>name</em>
+    of the field you are interested in. In these cases, you don't need to worry about the remaining details
+    for selecting fields.</b>
+
+    <b><em>Tricky Field Selection:</em> if a suitable form is found, the field is chosen as follows:
+    </b><dl>
+        <li><dd>First find all potential fields on the selected form having the correct <em>name</em>.</dd></li>
+        <li><dd>Fail if no fields remain or if the specified <em>fieldIndex</em> doesn't correspond
+        to any of the found fields (i.e. is out of range).</dd></li>
+        <li><dd>If <em>fieldIndex</em> is specified, return the corresponding field.</dd></li>
+        <li><dd>Return the first field found.</dd></li>
+    </dl>
+
+</pre>

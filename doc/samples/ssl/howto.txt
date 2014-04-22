@@ -1,0 +1,24 @@
+        How to get the SSL sample to run
+        ================================
+
+1) Install Java Secure Socket Extension (JSSE) as described in the included API User's Guide
+   JSSE is included in jdk1.4. For earlier versions it is available from
+        http://java.sun.com/products/jsse
+
+        Installation steps for JSSE 1.0.2 (required for JDK1.3.X) include:
+        - copy jerct.jar, jnet.jar and jsse.jar to <JAVA_HOME>/jre/lib/ext
+	  (jars are included in the lib directory of the WebTest distribution)
+        - install security provider in <JAVA_HOME>/jre/lib/security/java.security
+          E.g.: security.provider.3=com.sun.net.ssl.internal.ssl.Provider
+
+2) Import the site certificate in the cacerts keystore in order to "trust" the site you want to test against. E.g.:
+   > keytool -keystore %JAVA_HOME%\jre\lib\security\cacerts -import -file canoo.cer -alias canoo
+        (The initial password for the keystore in JSSE 1.0.2 is "changeit")
+
+3) Adapt the sslTest.xml in order to use the correct site, username and password. Canooes should just add the
+   required username and password upon invocation:
+   > ant -verbose -buildfile sslTest.xml -Dusername=[theRealUsername] -Dpassword=[theRealPassword]
+
+Everything else is just pure magic ...
+
+15.3.2002/Carsten

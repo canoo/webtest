@@ -1,0 +1,10 @@
+<webtest name="pdftest - verify info property existence">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyInfoProperty description="Info property existence"
+      key="CreationDate"
+      exists="true"/>
+    ...
+  </steps>
+</webtest>

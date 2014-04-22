@@ -1,0 +1,11 @@
+<pre>
+
+    <b>
+        In general, PDF documents can place text in documents using a variety of mechanisms. They may contain
+        text as a stream of characters in an expected order, the order may not be expected but explicit
+        positioning will place it in the correct position or it may contain graphical representations
+        of the characters. For these reasons, this filter may not always produce what you expect.
+        You will have to experiment to see what will work for you.
+    </b>
+
+</pre>

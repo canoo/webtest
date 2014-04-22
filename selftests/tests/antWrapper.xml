@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testAntWrapper" default="full" basedir=".">
+
+ 	<target name="full"
+ 		depends="testAntCallExternalizedSteps_AntCall, testAntCallExternalizedSteps_Ant, testAntWrapper, testAntCall, testAntCallCoverage, testMacros, testMacrosRepeat"/>
+
+    <property name="testfile" location="${java.io.tmpdir}/antWrapperDummy.txt"/>
+    <property name="testurl" value="file://${testfile}"/>
+
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<target name="testAntCallExternalizedSteps_AntCall">
+		<webtest name="antWrapper: Test use of &lt;antcall ...&gt; to externalize steps for reuse">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="Open the page with form" url="form.jsp"/>
+
+				<antcall description="Description of antcall task" target="fillFormAndSubmit">
+					<param name="fieldValue" value="blabla"/>
+				</antcall>
+				<verifyText description="Checks the received value from text" text="myTextField: blabla"/>
+
+				<antcall target="fillFormAndSubmit">
+					<param name="fieldValue" value="another value"/>
+				</antcall>
+				<verifyText description="Checks the received value from text" text="myTextField: another value"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="fillFormAndSubmit" description="called from within a webtest with parameters">
+		<setInputField name="myTextField" value="${fieldValue}"/>
+		<clickButton name=""/>
+	</target>
+
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<target name="testAntCallExternalizedSteps_Ant">
+		<webtest name="antWrapper: Test use of &lt;ant file=...&gt; to externalize steps for reuse">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="Open the page with form" url="form.jsp"/>
+
+				<ant description="Description of ant task" antfile="antWrapper_helper.xml" target="fillFormAndSubmit">
+					<property name="fieldValue" value="blabla"/>
+				</ant>
+				<verifyText description="Checks the received value from text" text="myTextField: blabla"/>
+
+				<ant antfile="antWrapper_helper.xml" target="fillFormAndSubmit">
+					<property name="fieldValue" value="another value"/>
+				</ant>
+				<verifyText description="Checks the received value from text" text="myTextField: another value"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <target name="testAntWrapper">
+        <delete file="${testfile}" quiet="true"/>
+        <webtest name="antWrapper: test antWrapper step">
+            &sharedConfiguration;
+            <steps>
+                <antWrapper description="explicit wrapper">
+                    <echo description="task inside explicit wrapper" message="W" file="${testfile}"/>
+                </antWrapper>
+                <echo description="task will have implicit wrapper" append="true" message="X" file="${testfile}"/>
+                <repeat count="2">
+                    <echo description="implicit wrapper inside container" append="true" message="Y" file="${testfile}"/>
+                </repeat>
+                <repeat count="2">
+                    <antWrapper>
+                        <echo description="explicit wrapper inside container" message="Z" append="true" file="${testfile}"/>
+                    </antWrapper>
+                </repeat>
+                <antWrapper description="should be able to wrap a step">
+                    <antWrapper description="even a step inside a step">
+                        <invoke url="${testurl}"/>
+                        <invoke url="${testurl}"/>
+                    </antWrapper>
+                </antWrapper>
+                <storeLength property="testfilelength"/>
+                <verifyProperty name="testfilelength" text="6"/>
+                <verifyText text="WXYYZZ"/>
+            </steps>
+        </webtest>
+        <delete file="${testfile}" quiet="true"/>
+    </target>
+
+    <target name="-doEcho">
+        <echo append="true" message="${filename}" file="${filename}"/>
+    </target>
+
+    <target name="testAntCall">
+        <webtest name="antWrapper: test antWrapper with antcall">
+            <!-- dummy config for coverage purposes - not relevant to test -->
+            <config
+                    host="dummy"
+                    port="8080"
+                    protocol="http"
+                    basepath="dummy"
+                    saveresponse="false"
+                    >
+            </config>
+            <steps>
+                <repeat count="2">
+                    <storeProperty property="filename" propertyType="ant"
+                                   value="${testfile}#{count}"/>
+                    <antcall target="-doEcho"/>
+                </repeat>
+                <invoke url="${testurl}0"/>
+                <invoke url="${testurl}1"/>
+                <delete file="${testfile}0" quiet="true"/>
+                <delete file="${testfile}1" quiet="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testAntCallCoverage">
+        <webtest name="antWrapper: test antWrapper with antcall for coverage">
+            <!-- dummy config for coverage purposes - not relevant to test -->
+            <config
+                    host="dummy"
+                    port="8080"
+                    protocol="http"
+                    basepath="dummy"
+                    saveresponse="false"
+                    >
+                <header name="User-Agent" value="Netscape"/>
+            </config>
+            <steps>
+                <antcall target="-doEcho"/>
+                <delete file="${testfile}" quiet="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- macro containing an ant task -->
+    <macrodef name="echoMacro">
+        <attribute name="message" default="X"/>
+        <sequential>
+            <echo description="about to echo" append="true" message="@{message}" file="${testfile}"/>
+        </sequential>
+    </macrodef>
+
+    <!-- macro containing a webtest step -->
+    <macrodef name="verifyMacro">
+        <attribute name="text" default="X"/>
+        <attribute name="length" default="0"/>
+        <sequential>
+            <storeLength property="foundLength" />
+            <verifyProperty name="foundLength" text="@{length}"/>
+            <verifyText text="@{text}"/>
+        </sequential>
+    </macrodef>
+
+    <target name="testMacros">
+        <delete file="${testfile}" quiet="true"/>
+        <webtest name="antWrapper: test antWrapper with macros"
+                 description="This test calls the echo and verify Macros">
+            &sharedConfiguration;
+            <steps>
+                <echoMacro description="Echo default X"/>
+                <echoMacro description="Echo explicit Y" message="Y"/>
+                <repeat count="2">
+                    <echoMacro message="Z"/>
+                </repeat>
+                <echoMacro message="Y"/>
+                <invoke description="Invoke test url" url="${testurl}"/>
+                <verifyMacro description="Verify via macro" length="5" text="XYZZY"/>
+                <delete file="${testfile}" quiet="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testMacrosRepeat">
+	    <macrodef name="simpleWebtestMacro" description="a very simple macro containing a webtest step">
+	        <sequential>
+	            <storeProperty name="foo" value="foo"/>
+	            <storeProperty name="bar" value="bar"/>
+	        </sequential>
+	    </macrodef>
+        <webtest name="antWrapper: test use of macro with Webtest step in a repeat">
+            &sharedConfiguration;
+            <steps>
+                <repeat count="2">
+                    <simpleWebtestMacro/>
+                    <simpleWebtestMacro/>
+                </repeat>
+            </steps>
+        </webtest>
+    </target>
+</project>

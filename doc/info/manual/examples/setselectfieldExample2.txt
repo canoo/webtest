@@ -1,0 +1,27 @@
+<webtest name="Select 2 entries in a multi select list box">
+	<config ... />
+	<steps>
+		<invoke ... />
+        <setSelectField
+            description="Set 1st MultiSelect value to v1"
+            name="MultiSelect"
+            value="v1"
+            multiselect="true" />
+        <setSelectField
+            description="Set 2nd MultiSelect value to v2"
+            name="MultiSelect"
+            value="v2"
+            multiselect="true" />
+        <clickButton
+            description="submit the form to check parameter setting/resetting"
+            label="doIt"/>
+        <verifySelectField
+            description="check 1st value"
+            name="MultiSelect"
+            value="v1" />
+        <verifySelectField
+            description="check 2nd value"
+            name="MultiSelect"
+            value="v2" />
+	</steps>
+</webtest>

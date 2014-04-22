@@ -1,0 +1,11 @@
+<webtest name="pdftest - verify encrypt property value">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyEncryptProperty description="Encrypt property value"
+      key="Filter"
+      value="Stand.*"
+      regex="true"/>
+    ...
+  </steps>
+</webtest>

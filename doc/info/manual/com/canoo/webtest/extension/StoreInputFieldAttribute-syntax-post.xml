@@ -1,0 +1,23 @@
+<post>
+
+    <b>Consider the following <key>HTML</key> form:</b>
+
+    <code caption='inputFieldAttributePage.html'>
+    <include src='examples/storeInputFieldAttributePageHtml.xml' />
+    </code>
+
+    <b>This page contains some <key>javascript</key> validation. We can use the <em>storeInputFieldAttribute</em> step
+    to check that the validation is working. When the form is first loaded, the "Click Me" button should
+    be disabled as the "value1" field is empty. We can then place some content into the field. We should
+    then note that the "Click Me" button is now enabled (the onchange <key>javascript</key> event will do this).
+    Here is the script code:</b>
+
+    <code caption='storeInputFieldAttribute Example'>
+        <include src='examples/storeInputFieldAttributeExample.xml'/>
+    </code>
+
+    <b><em>See also</em>: the <stepref name="forceInputFieldAttribute"/> step in order to set an input field attribute,
+        and the <stepref name="storeElementAttribute"/> step to be able to store an attribute using an <key>XPATH</key>
+        expression or an <key>HTML</key> id.</b>
+
+</post>

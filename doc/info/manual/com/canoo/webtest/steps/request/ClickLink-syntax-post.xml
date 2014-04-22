@@ -1,0 +1,7 @@
+<post>
+
+    <code caption="clickLink">
+        <include src='examples/clicklinkExample.xml' />
+    </code>
+
+</post>

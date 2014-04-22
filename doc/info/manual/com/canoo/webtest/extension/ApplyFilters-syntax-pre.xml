@@ -1,0 +1,12 @@
+<pre>
+
+    <b>This step allows you to apply one or more filter(s) to the current response
+    and then perform some simple tests on the result as if the filtered result
+    is a new response.</b>
+    
+    <b>This step should be treated as experimental. It does a few hacks under the covers
+    but has been very useful for debugging purposes. If you use this step, a recommended
+    approach is to not perform subsequent invokes after this step, i.e. this step should
+    be near the end of your test sequence.</b>
+
+</pre>

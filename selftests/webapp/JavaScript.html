@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Test With JavaScript</TITLE>
+<script type="text/javascript">
+<!--
+function SetWindowPosition(x, y, w, h) {
+    if (history.length == 0) {
+        h1 = h > 0 ? h : screen.availHeight - y;
+        w1 = w;
+        if (w1 <= 0) {
+            if ((screen.width / screen.height) > 1.5) {
+                w1 = screen.width / 2 - (screen.width - screen.availWidth) - x;
+            } else {
+                w1 = screen.width - (screen.width - screen.availWidth) - x;
+            }
+        }
+        window.resizeTo(w1, h1);
+        window.moveTo(x + (screen.width - screen.availWidth), y);
+    }
+}
+//-->
+</script>
+<BODY onLoad="SetWindowPosition(0,0,0,0)">
+
+Original Text.
+
+</BODY>
+</HTML>

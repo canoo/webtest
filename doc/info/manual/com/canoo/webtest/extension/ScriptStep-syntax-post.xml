@@ -1,0 +1,160 @@
+<post>
+    <b>In order for the script to access its environment, the step sets some variables. These variables are set to
+        Java objects in WebTest model. The API of WebTest will tell what these objects provide, but the scripting
+        language
+        used determine how the objects are accessed.</b>
+        <dl>
+            <li>
+                <dt>step</dt>
+                <dd>The scriptStep enclosing the script.</dd>
+            </li>
+            <li>
+                <dt>response</dt>
+                <dd>The last response received from the server.</dd>
+            </li>
+            <li>
+                <dt>document</dt>
+                <dd>The html or xml DOM for the last response.</dd>
+            </li>
+        </dl>
+
+    <b>
+        <em>Order Example</em>
+    </b>
+
+    <b>Consider the following fictitious order information
+        embedded in an
+        <key>HTML</key>
+        page as follows:
+    </b>
+
+    <code caption='OrderPage'>
+        <include src='examples/scriptStepOrderPageHtml.xml'/>
+    </code>
+
+    <b>Suppose we are testing that this order
+        contains the correct information. For each line item,
+        we want to check that the quantity times the unit
+        price equals the total price for that line and that the total
+        quantity and total price values in the final row actually
+        agree with the values summed from previous line item rows.
+        Here is some code we might use to perform these checks:</b>
+
+    <code caption='JavascriptOrderTest'>
+        <include src='examples/scriptStepOrderJavaScriptExample.xml'/>
+    </code>
+
+    <b>We could have done most of this using
+        <key>XPATH</key>
+        but
+        the simple approach of hard-coding an
+        <key>XPATH</key>
+        statement for
+        each line item would make our tests brittle if the
+        number of line items could change in future tests.
+    </b>
+
+    <b>Here is the same example again using Groovy and making use of Groovy's <em>assert</em> functionality.</b>
+
+    <code caption='GroovyOrderTest'>
+        <include src='examples/scriptStepOrderGroovyExample.xml'/>
+    </code>
+
+    <b>
+        <em>Traffic Light Example</em>
+    </b>
+
+    <b>Here is an example which shows some script code used to
+        calculate what the alt text should be for a particular image.
+        It assumes your page has
+        <key>HTML</key>
+        similar to the following:
+    </b>
+
+    <code caption='TrafficLightPage'>
+        <include src='examples/scriptStepTrafficLightHtml.xml'/>
+    </code>
+
+    <b>We want to test that the correct alt text is used
+        for the correct image. Here is the test code using
+        <key>javascript</key>:
+    </b>
+
+    <code caption='JavascriptTrafficLightTest'>
+        <include src='examples/scriptStepTrafficLightJavaScriptExample.xml'/>
+    </code>
+
+    <b>In this case, scripting is not strictly necessary because we
+        could have used
+        <key>XPATH</key>
+        but it provides a useful simple example.
+    </b>
+
+    <b>Here is the same example using <key>groovy</key>:</b>
+
+    <code caption='GroovyTrafficLightTest'>
+        <include src='examples/scriptStepTrafficLightGroovyExample.xml'/>
+    </code>
+
+    <b>And the same again illustrating the <em>keep</em> attribute:</b>
+
+    <code caption='GroovyTrafficLightWithKeepTest'>
+        <include src='examples/scriptStepTrafficLightGroovyWithKeepExample.xml'/>
+    </code>
+
+    <b>Rather than having the scripting code inline, you can place
+        it in a file and reference that file as follows:</b>
+
+    <code caption='GroovyFileTrafficLightTest'>
+        <include src='examples/scriptStepTrafficLightGroovyFileExample.xml'/>
+    </code>
+
+    <b>
+        <em>Fibonacci Example</em>
+    </b>
+
+    <b>Consider an
+        <key>HTML</key>
+        page displaying mathematically significant
+        numbers with markup as follows:
+    </b>
+
+    <code caption='FibonacciPage'>
+        <include src='examples/scriptStepFibonacciHtml.xml'/>
+    </code>
+
+    <b>Here is a JRuby example
+        (requires
+        <em>jruby.jar</em>
+        in your CLASSPATH),
+        showing how to test that a web page
+        displaying a Fibonacci number does in fact display a correct value:
+    </b>
+
+    <code caption='RubyFibonacciTest'>
+        <include src='examples/scriptStepFibonacciRubyExample.xml'/>
+    </code>
+
+    <b>Here is the example again using Jython (requires
+        <em>jython.jar</em>
+        in your CLASSPATH):
+    </b>
+
+    <code caption='JythonFibonacciTest'>
+        <include src='examples/scriptStepFibonacciJythonExample.xml'/>
+    </code>
+
+    <b>Here is the example again using BeanShell (requires
+        <em>bsh-XX.YY.jar</em>
+        in your CLASSPATH):
+    </b>
+
+    <code caption='BeanShellFibonacciTest'>
+        <include src='examples/scriptStepFibonacciBeanShellExample.xml'/>
+    </code>
+
+    <b><em>See also:</em> the <stepref name="groovy" category="extension"/> step which offers
+        the same functionality but specifically for the <key>groovy</key> language. The
+        groovy functionality also allows test scripts to be written in groovy and
+        call back into <key>ANT</key> and WebTest.</b>
+</post>

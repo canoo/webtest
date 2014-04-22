@@ -1,0 +1,10 @@
+<post>
+    <b>
+        Here is an example of using <em>pdfVerifyFont</em>:
+    </b>
+
+    <code caption='pdfVerifyFont example'>
+        <include src='pdfexamples/verifyFontExample.xml'/>
+    </code>
+
+</post>

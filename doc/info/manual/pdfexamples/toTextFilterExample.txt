@@ -1,0 +1,7 @@
+<steps>
+    <invoke url="testDocBookmarks.pdf"/>
+    <compareToExpected saveFiltered="true" readFiltered="false" toFile="${expectedFile}">
+        <pdfToTextFilter mode="groupByLines" lineSep="\n" description="extract PDF text"/>
+        <lineSeparatorFilter description="normalise line separators"/>
+    </compareToExpected>
+</steps>

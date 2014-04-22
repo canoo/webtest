@@ -1,0 +1,9 @@
+<post>
+
+    <code caption="verifyProperty example">
+        <include src='examples/verifyPropertyExample.xml' />
+    </code>
+
+    <b><em>See also</em>: the <stepref name="storeProperty"/> step.</b>
+
+</post>

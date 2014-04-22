@@ -1,0 +1,12 @@
+<webtest name="forceHiddenInputField: Show working javascript example that sets hidden field">
+    <config ...>
+    <steps>
+        <invoke ...>
+        <verifytitle description="check we are on the test page" text="Hidden Field Test Page" />
+        <verifyXPath description="check original value of hidden field"
+            xpath="//form/input[@id='real']/@value" text="zzz" />
+        <setInputField description="anything here should change hidden field" name="field1" value="dummy" />
+        <verifyXPath description="check updated value of hidden field"
+            xpath="//form/input[@id='real']/@value" text="xxx" />
+    </steps>
+</webtest>

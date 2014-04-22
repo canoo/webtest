@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testStore" default="all" basedir=".">
+
+	<target name="all">
+		<antcall target="testStoreRegEx"/>
+		<antcall target="testStoreXPath"/>
+		<antcall target="testStoreXPathNoDocument"/>
+		<antcall target="testStoreBetweenWebtest"/>
+	</target>
+
+	<target name="testStoreRegEx">
+		<webtest name="store: Show usage of storeRegEx and test it">
+			&sharedConfiguration;
+			<steps>
+				<invoke
+					description="Show button test page"
+				   url="clickButton.jsp"
+				   save="debugPage"/>
+				<storeRegEx
+					description="Extract target location from javascript command"
+				   text=".*name=&quot;onClick&quot;.*onclick=&quot;window\.open\('(.*)'\)"
+				   group="1"
+				   property="targetLocation" propertyType="dynamic"/>
+				<invoke
+					description="Invoke target page specified in the javascript statement"
+				   url="#{targetLocation}"
+				   save="targetPage"/>
+				<verifyTitle
+					description="Check if the correct target page was reached"
+				   text="Canoo WebTest"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testStoreXPath">
+		<webtest name="store: Show usage of storeXPath and test it">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="Show start page" url="${start.page}"/>
+				<storeXPath
+					description="Extract href of first link on page"
+				   xpath="//a[1]/@href"
+				   property="uri"/>
+				<invoke description="Invoke target page specified in href" url="#{uri}"/>
+				<verifyInputField
+					description="Verify correct page was invoked"
+				   name="field1"
+				   value="MyLink"/>
+				<group description="storeXPath with default value">
+					<group description="first the same than previously but with attribute default">
+						<invoke description="Show start page" url="${start.page}"/>
+						<storeXPath
+							description="Extract href of first link on page"
+						   xpath="//a[1]/@href"
+						   property="uri" default="doesn't matter, won't be used"/>
+						<invoke description="Invoke target page specified in href" url="#{uri}"/>
+						<verifyInputField
+							description="Verify correct page was invoked"
+						   name="field1"
+						   value="MyLink"/>
+					</group>
+					<storeXPath xpath="//div[@id='doesntExist']" property="myProp" default="my default value"
+						description="extract (non existing) div content"/>
+					<verifyProperty name="myProp" text="my default value" 
+						description="verify that the default value has been used"/>
+					<not description="storeXPath without node and without attribute default should fail">
+						<storeXPath xpath="//div[@id='doesntExist']" property="myProp"
+							description="extract (non existing) div content"/>
+					</not>
+				</group>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testStoreXPathNoDocument">
+		<webtest name="store: storeXPath without a document - let's you use XPath for manipulating values">
+			&sharedConfiguration;
+			<steps>
+				<storeXPath description="extract day"
+				            xpath="substring-before('13/Jan/2000','/')" property="theDay"/>
+				<verifyProperty name="theDay" text="13"/>
+				<storeXPath description="extract year"
+				            xpath="substring-after(substring-after('13/Jan/2000','/'),'/')" property="theYear"/>
+				<verifyProperty name="theYear" text="2000"/>
+				<storeXPath description="extract month"
+				            xpath="substring-before(substring-after('13/Jan/2000','/'),'/')" property="theMonth"/>
+				<verifyProperty name="theMonth" text="Jan"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testStoreBetweenWebtest">
+		<webtest name="store: store to ant properties">
+			&sharedConfiguration;
+			<steps>
+				<storeXPath description="extract day"
+				            xpath="substring-before('13/Jan/2000','/')"
+				            property="theDay" propertyType="ant"
+					/>
+			</steps>
+		</webtest>
+		<webtest name="store: verify properties stored previously">
+			&sharedConfiguration;
+			<steps>
+				<verifyProperty name="theDay" propertyType="ant" text="13"/>
+				<verifyXPath xpath="'13'='${theDay}'" text="true"/>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

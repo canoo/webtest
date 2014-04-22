@@ -1,0 +1,11 @@
+<webtest name="pdftest - verify field read-only status">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyReadOnlyField description="Field read-only status"
+      page="2"
+      name="Amount"
+      readOnly="true"/>
+    ...
+  </steps>
+</webtest>

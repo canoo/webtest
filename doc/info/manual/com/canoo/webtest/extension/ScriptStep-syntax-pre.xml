@@ -1,0 +1,36 @@
+<pre>
+    <b><key>ANT</key> has a normal style requiring declarative specification
+        of your build tasks. If you find this too limiting in certain scenarios,
+        Ant provides a <em>script</em> task which lets you dive into
+        (non-declarative) scripting code. The same need occurs within your <key>CWT</key>
+        steps; perhaps you need to do something not supported by the standard
+        steps, or perhaps you wish to perform some tests in a way better-suited
+        to programmatic rather than declarative means.</b>
+    <b>This step helps in these scenarios by providing a wrapper around the
+        <key>ANT</key> <em>script</em> task. Before providing the supplied
+        script to the <key>ANT</key> script task, <em>scriptStep</em>
+        expands any WebTest dynamic properties and defines some useful variables.
+        Results from running the script can be made available for subsequent steps to use.
+    </b>
+
+    <b>
+        The language must be one of those supported by the
+        <key>BSF</key> which means one of
+        <key>javascript</key>, Python (using either Jython or JPython), Tcl (using Jacl), NetRexx,
+        <key>XSLT</key> Stylesheets, Java (using BeanShell), JRuby,
+        <key>groovy</key>, ObjectScript, and JudoScript. See also the BSF
+        documentation for other languages which BSF has supported in the past - you might
+        be able to get other languages working with a bit of work.
+    </b>
+
+    <b>WebTest has all the necessary files
+        to support <key>groovy</key> and <key>javascript</key>
+        natively (and also <key>XSLT</key> but it isn't usually
+        used directly). For other languages you will need to download the
+        necessary support files - usually just one jar - and update your classpath appropriately.
+    </b>
+
+    <b>Note: although <em>scriptStep</em> does support <key>javascript</key>, at the moment,
+    it doesn't provide the mechanism to call JavaScript functions in your
+        <key>HTML</key> pages under test.</b>
+</pre>

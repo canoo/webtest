@@ -1,0 +1,36 @@
+<pre>
+
+    <b>The radio button to set will be determined by finding the appropriate form followed by
+    finding the appropriate field on that form.</b>
+
+    <b><em>Simple Form Selection</em>: in many cases, your page will only have
+    one form - that form will be used - you don't need to worry about trying to select the form.</b>
+
+    <b><em>Tricky Form Selection</em>: if no last response is available, the step fails.
+    Otherwise, the form to use is chosen as follows:</b><dl>
+        <li><dd>If an explicit <em>formName</em> is given and the named form has a suitable field, that is used.</dd></li>
+        <li><dd>If the <em>current form</em> has been previously set and it has a suitable field, that is used.</dd></li>
+        <li><dd>All forms from the last response are searched until one is found with a suitable field.</dd></li>
+    </dl>
+	<b>If no such form is found, the step fails. If a form is found, it is then considered as the <em>current form</em>
+    for future steps.</b>
+
+    <b><em>Simple Field Selection</em>: in many cases, only one field will match the <em>name</em> and <em>value</em>
+    of the field you are interested in. In these cases, you don't need to worry about the remaining details
+    for selecting fields.</b>
+
+    <b><em>Tricky Field Selection:</em> if a suitable form is found, the field is chosen as follows:
+    </b><dl>
+        <li><dd>First find all potential fields on the selected form having the correct <em>name</em>.</dd></li>
+        <li><dd>Remove any fields which don't match the specified <em>value</em> (if specified).</dd></li>
+        <li><dd>Fail if no fields remain or if the specified <em>fieldIndex</em> doesn't correspond
+        to any of the found fields (i.e. is out of range).</dd></li>
+        <li><dd>If <em>fieldIndex</em> is specified, return the corresponding field.</dd></li>
+        <li><dd>Return the first field found.</dd></li>
+    </dl>
+
+    <b><em>NOTE</em>: if you need, you can verify the value of a radio button using the
+    <stepref name="storeInputFieldAttribute"/> step with <em>attributeName='checked'</em>.
+    It should return <em>checked</em> if the radio button is checked and <em>false</em> otherwise.</b>
+
+</pre>

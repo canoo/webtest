@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" 
+[
+	<!ENTITY site SYSTEM "WebTestSite.xml">
+]
+>
+
+<manpage siteid="Related Projects">
+
+	&site;
+
+	<head title="Related projects">
+		<b>Projects making WebTest use easier or extending it:</b>
+	</head>
+
+	<section title="WebTestRecorder">
+		<b>
+		WebTestRecorder is an open source Firefox plugin that helps working with WebTest. 
+		Like WebTest it is kindly hosted by Canoo.
+		</b>
+		<b>
+		WebTestRecorder website: <ext href="http://webtestrecorder.canoo.com">http://webtestrecorder.canoo.com</ext>
+		</b>
+	</section>
+	
+	<section title="Maven 2 WebTest plugin">
+		<b>
+		Integrates WebTest in Maven 2 projects
+		</b>
+		<b>
+		Maven 2 WebTest plugin website: <ext href="http://mojo.codehaus.org/webtest-maven-plugin/">http://mojo.codehaus.org/webtest-maven-plugin/</ext>
+		</b>
+	</section>
+
+	<section title="Maven 1 WebTest plugin">
+		<b>
+		Integrates WebTest in Maven 1 projects
+		</b>
+		<b>
+		Maven 1 WebTest plugin website: <ext href="http://maven-plugins.sourceforge.net/maven-webtest-plugin/">http://maven-plugins.sourceforge.net/maven-webtest-plugin/</ext>
+		</b>
+	</section>
+</manpage>

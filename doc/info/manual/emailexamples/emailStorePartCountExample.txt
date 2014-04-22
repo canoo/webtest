@@ -1,0 +1,13 @@
+<steps>
+    <emailSetConfig .../>
+
+    <!-- uuencoded message has 2 uuencoded attachments (parts) -->
+    <emailStoreMessageId subject="/mailtest.*uu/" property="mid1" messageIndex="0"/>
+    <emailStorePartCount property="prop1" messageId="#{mid1}" />
+    <verifyProperty name="prop1" text="2"/>
+
+    <!-- MIME message has 1 plain body part plus gif and pdf attachment parts -->
+    <emailStoreMessageId subject="/mailtest.*mime/" property="mid2" messageIndex="0"/>
+    <emailStorePartCount property="prop2" messageId="#{mid2}" />
+    <verifyProperty name="prop2" text="3"/>
+</steps>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<project default="testSuite">
+
+	<property name="start.page" value="myStartPage"/>
+
+	<target name="testSuite">
+		<ant antfile="loginAndStep.xml"/>
+		<ant antfile="useCase2.xml"/>
+	</target>
+</project>

@@ -1,0 +1,7 @@
+<pre>
+    <b>
+        Option elements belong to the config rather than to a specific invocation, because they
+        reflect browser settings. They are unlikely to change during a conversation.
+    </b>
+
+</pre>

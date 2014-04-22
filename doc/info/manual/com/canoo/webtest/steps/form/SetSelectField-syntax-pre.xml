@@ -1,0 +1,31 @@
+<pre>
+
+    <b>The select field to set will be determined by finding the appropriate form followed by
+    finding the appropriate field on that form unless an xpath or html id is provided for a direct access. 
+	Once the appropriate select field is chosen the appropriate option within the field to set is determined.</b>
+
+    <b><em>Form Selection</em>: In many cases, your page will only have
+    one form - that form will be used - you don't need to worry about trying to select the form.
+    For tricky cases, you might need to do extra work to select the appropriate form.
+    See the <stepref name="setRadioButton"/> step for further details on how to do this.</b>
+
+    <b><em>Field Selection</em>: in many cases, only one field will match the <em>name</em>
+    of the field you are interested in. In these cases, you don't need to worry about the remaining details
+    for selecting fields. For tricky cases, you might need to do extra work to select the appropriate field.
+    See the <stepref name="setInputField"/> step for further details on how to do this.
+	If <em>xpath</em> or <em>htmlId</em> identifies a select, then one of <em>value</em>, <em>text</em>, 
+	or <em>optionIndex</em> is required to identify the option within the select.
+	</b>
+
+    <b><em>Option Selection</em>: the option to set is selected as follows:
+    </b><dl>
+        <li><dd>If the <em>xpath</em> value identifies an option, set that option.</dd></li>
+        <li><dd>If the <em>htmlId</em> value identifies an option, set that option.</dd></li>
+        <li><dd>If an option in the chosen select field matches by <em>value</em>, set that option.</dd></li>
+        <li><dd>If an option in the chosen select field matches by its <em>text</em>, set that option.</dd></li>
+        <li><dd>If an option in the chosen select field matches by its <em>optionIndex</em>, set that option.</dd></li>
+    </dl>
+
+    <b><em>NOTE</em>: A <key>regex</key> can be specified if a particular option is selected by its text.</b>
+
+</pre>

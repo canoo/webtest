@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="https" default="all" basedir=".">
+
+    <target name="all" depends="callHttpsWithUntrustedCertificateButDontCare, callClientAuthHttpsNewConfigOptionsAndInsecureSSL"/>
+	<!--
+	TODO: upgrade to HtmlUnit-2.8-SNAPSHOT (which contains HttpClient 4 instead of commons-HttpClient-3) causes
+	callBaseHttps to fail with javax.net.ssl.SSLPeerUnverifiedException
+	==> need to be fixed... some day
+    <target name="all" depends="callHttpsWithUntrustedCertificateButDontCare, callBaseHttps"/>
+    -->
+	<!-- callHttpsButDontTrustCertificate should be run too but it causes problems together with callBaseHttps: no matter in which
+	order, it seems that they do some settings in some libraries that cause the other not to work with PKI as expected -->
+
+    <property name="keystore" location="../../jetty/keystore"/>
+    
+<!--callClientAuthHttps, -->
+    <target name="callBaseHttps">
+        <antcall target="https">
+            <param name="testTitle" value="https: Call Https using com.canoo.webtest.security.SunJsseClientAuthConnectionInitializer"/>
+            <param name="webtest.port" value="${webtest.ssl.port}"/>
+            <param name="webtest.protocol" value="https"/>
+            <param name="webtest.truststore.file" value="${keystore}"/>
+            <param name="webtest.truststore.passphrase" value="password"/>
+            <param name="webtest.connectioninitializer" value="com.canoo.webtest.security.SunJsseBaseConnectionInitializer"/>
+        </antcall>
+    </target>
+
+    <target name="callClientAuthHttps">
+        <antcall target="https">
+            <param name="testTitle" value="https: Call Https with client cert using com.canoo.webtest.security.SunJsseClientAuthConnectionInitializer"/>
+            <param name="webtest.port" value="${webtest.ssl2.port}"/>
+            <param name="webtest.protocol" value="https"/>
+            <param name="webtest.truststore.file" value="${keystore}"/>
+            <param name="webtest.truststore.passphrase" value="password"/>
+            <param name="webtest.connectioninitializer" value="com.canoo.webtest.security.SunJsseClientAuthConnectionInitializer"/>
+            <param name="webtest.keystore.file" value="${keystore}"/>
+            <param name="webtest.keystore.passphrase" value="password"/>
+            <param name="webtest.keystore.alias" value=""/>
+        </antcall>
+    </target>
+
+    <target name="callClientAuthHttpsNewConfigOptionsAndInsecureSSL">
+        <antcall target="https">
+            <param name="testTitle" value="https: Call Https with client cert using new config options for client auth. and useInsecureSSL."/>
+            <param name="webtest.port" value="${webtest.ssl2.port}"/>
+            <param name="webtest.protocol" value="https"/>
+            <param name="wt.config.sslKeyStore" value="${keystore}"/>
+            <param name="wt.config.sslKeyStorePassword" value="password"/>
+            <param name="wt.config.useInsecureSSL" value="true"/>
+        </antcall>
+    </target>
+
+    <target name="callHttpsButDontTrustCertificate">
+        <antcall target="https">
+            <param name="testTitle" value="Call https with untrusted self signed certificate [should fail]"/>
+            <param name="webtest.port" value="${webtest.ssl.port}"/>
+            <param name="webtest.protocol" value="https"/>
+        	<param name="webtest.haltonerror" value="false"/>
+        </antcall>
+    </target>
+
+    <target name="callHttpsWithUntrustedCertificateButDontCare">
+        <antcall target="https">
+            <param name="testTitle" value="Call https with untrusted self signed certificate AND accept it"/>
+            <param name="webtest.port" value="${webtest.ssl.port}"/>
+            <param name="webtest.protocol" value="https"/>
+            <param name="webtest.useInsecureSSL" value="true"/>
+        </antcall>
+    </target>
+
+    <target name="https">
+        <webtest name="https: ${testTitle}">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page"
+                    url="formTest?mode=https"
+                   />
+                <verifyTitle description="main page reached"
+                    text="Https Test Page"
+                    regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

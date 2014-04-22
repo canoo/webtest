@@ -1,0 +1,9 @@
+<pre>
+
+    <b>The actual repetition counter is made available to the steps included in the
+    <em>&lt;retry&gt;</em> step by a special property. Its default name
+    is &quot;count&quot; unless modified by the <em>counterName</em> attribute.
+    This property can be referenced within(!) steps included in the <em>&lt;retry&gt;
+    </em> step using this notation &quot;#{count}&quot; or the specified countername.</b>
+
+</pre>

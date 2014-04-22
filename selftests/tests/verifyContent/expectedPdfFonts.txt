@@ -1,0 +1,4 @@
+1|Type1|Symbol
+1|Type1|Times-Roman
+1|Type1|ZapfDingbats
+2|TrueType|ComicSansMS-Bold

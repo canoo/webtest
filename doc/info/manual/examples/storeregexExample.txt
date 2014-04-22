@@ -1,0 +1,16 @@
+<webtest name="Extract target location from Javascript command">
+	<config ... />
+	<steps>
+		<invoke ... />
+		<storeRegEx
+			description="Extract target location from javascript command"
+			text=".*name=&quot;onClick&quot;.*onclick=&quot; window\.open\('(.*)'\)"
+			group="1"
+			property="targetLocation" />
+		<invoke
+			description="Invoke target page specified in the javascript statement"
+			url="#{targetLocation}"
+			save="targetPage" />
+		...
+	</steps>
+</webtest>

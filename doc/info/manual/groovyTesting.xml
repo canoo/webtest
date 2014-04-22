@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd"
+        [
+                <!ENTITY site SYSTEM "WebTestSite.xml">
+                ]
+        >
+
+<manpage siteid="Groovy Testing">
+
+    &site;
+
+    <head title="Groovy Testing">
+        <b>Groovy is a scripting language that is executed as Java Byte Code.
+            <ext href="http://groovy.codehaus.org/">
+                Groovy Home</ext>
+        </b>
+
+
+        <b>This allows a Mix &amp; Match between Groovy and Java Code.</b>
+
+        <b>Groovy comes with an AntBuilder that allows execution of Ant scripts
+            from usual Groovy code. This capability allows executing WebTests, since
+            WebTests are usual Ant tasks.
+        </b>
+        <b>By executing WebTest from a Groovy script, you can fully leverage both
+            the variety of WebTest steps and the sophisticated language means of Groovy for
+            structuring your tests.</b>
+    </head>
+    <section title="Sample use">
+        <b>This example fetches a page and verifies that it contains the numbers 1 through 10.</b>
+        <code caption="test.groovy">
+            <include src="examples/groovyWithAntBuilder.xml"/>
+        </code>
+        <b>Like in ANT, there is a two-phase approach for TaskContainers like 'testSpec'.</b>
+        <dl>
+            <li>
+                <dt>first</dt>
+                <dd>steps are constructed and stored (creation time)</dd>
+            </li>
+            <li>
+                <dt>second</dt>
+                <dd>steps are executed (runtime)</dd>
+            </li>
+        </dl>
+        <b>Start with
+            <example>groovy -Dwebtest.home=your_webtest_home test.groovy</example>
+        </b>
+    </section>
+    <section title="More examples" >
+        <b>Please find more examples of how to use Canoo WebTest through Groovy
+            under <ext href="http://grails.codehaus.org/Functional+Testing">Grails</ext>.
+        </b>
+    </section>
+</manpage>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" [
+        <!ENTITY site SYSTEM "WebTestSite.xml">
+        ]>
+
+<manpage siteid="Integration with other Tools">
+
+    &site;
+
+    <head title="Integration with other Tools">
+        <b>A number of related technologies/tools can be used with WebTest:</b>
+
+        <dl>
+            <li>
+                <dt><pageref name="SQLUnit Integration"/></dt>
+                <dd>Can be used for testing in conjunction with a Database</dd>
+            </li>
+        </dl>
+
+    </head>
+</manpage>

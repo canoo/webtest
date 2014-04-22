@@ -1,0 +1,11 @@
+<post>
+
+    <code caption="Table Locator Example">
+        <include src='examples/tableLocatorExample.xml'/>
+    </code>
+
+    <b>
+        <em>See also</em>: the <stepref name="verifyText"/> step.
+    </b>
+
+</post>

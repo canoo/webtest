@@ -1,0 +1,17 @@
+<pre>
+
+    <b>If the URL starts with a protocol (e.g. http://...) then the URL is treated is being fully qualified
+    and invoked directly. Otherwise, the URL is treated as a relative suffix and the URL to invoke is
+    determined from the settings specified with the <stepref name="config"/> element, including
+    <em>port</em>, <em>protocol</em> and <em>basepath</em>.</b>
+
+    <b>The result of the request is internally stored and its contents can be
+    verified with one or more <em>&lt;verify...&gt;</em> steps.
+    If the <em>saveresponse</em> option in the <stepref name="config"/> element is
+    enabled, the result (<key>HTML</key> source) will be written to a file for later viewing.</b>
+
+    <b><em>Note:</em> If the URL contains an ampersand character (&amp;), e.g. for
+    parameter separation, it must be expressed using the XML element notion with
+    &quot;&amp;amp;&quot;.</b>
+
+</pre>

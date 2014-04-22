@@ -1,0 +1,11 @@
+<webtest name="pdftest - verify checkbox field existence">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyCheckboxField description="Checkbox field existence"
+      page="2"
+      name="OK"
+      exists="true"/>
+    ...
+  </steps>
+</webtest>

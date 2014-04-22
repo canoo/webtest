@@ -1,0 +1,7 @@
+<steps>
+    <invoke url="testDocFonts.pdf"/>
+    <compareToExpected saveFiltered="true" readFiltered="false" toFile="${expectedFile}">
+        <pdfToFontsFilter description="extract PDF font information"/>
+        <lineSeparatorFilter description="normalise line separators"/>
+    </compareToExpected>
+</steps>

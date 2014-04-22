@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testPdfText" default="allTests" basedir=".">
+
+    <target name="allTests" depends="testText"/>
+
+    <target name="testText">
+        <property name="expectedFile" value="verifyContent/expectedPdfText.txt"/>
+        <webtest name="pdfText: confirm verifyContent extracting text">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testDocBookmarks.pdf"/>
+                <verifyContent readFiltered="false" referenceFile="${expectedFile}">
+                    <pdfToTextFilter description="extract PDF text (default mode: normal)"/>
+                    <lineSeparatorFilter description="normalise line separators"/>
+                </verifyContent>
+                <verifyContent readFiltered="false" referenceFile="${expectedFile}">
+                    <pdfToTextFilter mode="groupByLines" description="extract PDF text"/>
+                    <lineSeparatorFilter description="normalise line separators"/>
+                </verifyContent>
+                <verifyContent readFiltered="false" referenceFile="${expectedFile}">
+                    <pdfToTextFilter pageSep="\n[+++ NEW PAGE +++]\n" description="extract PDF text"/>
+                    <lineSeparatorFilter description="normalise line separators"/>
+                </verifyContent>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

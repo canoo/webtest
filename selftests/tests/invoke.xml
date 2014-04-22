@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="invoke" default="all" basedir=".">
+
+    <target name="all" depends="invokeNormal,invokeDirect,protectedResource,invokeRest,invokeSoap"/>
+
+    <target name="invokeNormal">
+        <webtest name="invoke: normal invocation">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page" url="${start.page}" />
+                <not description="here it is normal to get an error page">
+	                <invoke description="a page causing an error 500" url="error500.jsp" />
+	            </not>
+            </steps>
+        </webtest>
+    </target>
+    
+    <target name="invokeDirect">
+        <webtest name="invoke: shows that invoke accepts a complete url ignoring config settings">
+
+        <!-- use configuration with bad values for host, part, protocol and basepath -->
+			<config
+			    host="something"
+			    port="123"
+			    protocol="http"
+			    basepath="/nonExisting"
+			    saveresponse="${webtest.saveresponse}"
+			    resultpath="${wt.config.resultpath}"
+			    resultfile="${webtest.resultfile}"
+			    haltonerror="${webtest.haltonerror}"
+			    errorproperty="${webtest.errorproperty}"
+			    haltonfailure="${webtest.haltonfailure}"
+			    failureproperty="${webtest.failureproperty}"
+			    defaultpropertytype="${webtest.defaultpropertytype}"
+			    showhtmlparseroutput="${webtest.showhtmlparseroutput}"
+			    />
+            <steps>
+                <invoke description="main page with complete url to skip config settings"
+                    url="${webtest.protocol}://${webtest.host}:${webtest.port}/${webtest.basepath}/${start.page}"
+                    />
+                <verifyTitle description="main page reached"
+                    text=".*WebT.*"
+                    regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="protectedResource">
+        <testSpec name="invoke: access protected resource">
+            &sharedConfiguration;
+            <steps>
+                <not>
+                    <invoke description="get entry page" url="passwordDummy.html" username="dummyUser"
+                            password="invalidPassword"/>
+                </not>
+                <invoke description="get entry page" url="passwordDummy.html" username="dummyUser" password="password"/>
+                <verifyTitle description="check we are on dummy page" text="Password Dummy"/>
+                <invoke description="try again - we can skip authentication this time - coverage will confirm this"
+                        url="passwordDummy.html" username="dummyUser" password="password"/>
+            </steps>
+        </testSpec>
+    </target>
+
+    <target name="invokeRest">
+        <webtest name="invoke: shows REST-like web service request">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page with POST form"
+                        url="${start.page}?mode=postTest"/>
+                <!-- emulate restful web service (or tricky form which can't be
+                     submitted via normal means) -->
+                <invoke method="POST" description="main page with POST form"
+                        content="field1=yyyy" url="${start.page}?mode=postTest"/>
+                <verifyText text="yyyy"/>
+
+				<group description="with nested content">
+	                <invoke method="POST" description="main page with POST form"
+	                	url="${start.page}?mode=postTest">field1=zzzz</invoke>
+	                <verifyText text="zzzz"/>
+                </group>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- real test is in invokePost.xml but so build won't break if 3rd party
+         web service is down, we emulate its output here -->
+    <target name="invokeSoap">
+        <webtest name="invoke: shows SOAP web service request">
+            &sharedConfiguration;
+            <steps>
+                <invoke method="POST" contentFile="AustralianPostcodeByLocationRequest.xml"
+                        soapAction="http://www.webserviceX.NET/GetAustralianPostCodeByLocation"
+                        url="/soapTest"/>
+                <verifyText text="Karalee"/>
+                <verifyText text="QLD"/>
+                <verifyText text="4306"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

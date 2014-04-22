@@ -1,0 +1,18 @@
+<pre>
+
+    <b>This is useful when you want some test to be repeated a given number of times.
+    To facilitate reporting, nested steps are wrapped in an "Iteration wrapper" step for each execution.</b>
+
+    <b>The actual repetition counter is made available to the steps included in the
+    <em>&lt;repeat&gt;</em> step by a dynamic property. Its default name
+    is &quot;count&quot; unless modified by the <em>countername</em> attribute.
+    This property can be referenced by steps nested in the <em>&lt;repeat&gt;</em> step 
+    using this notation &quot;#{count}&quot; (resp. the specified countername).</b>
+
+    <b>When used with <em>xpath</em>, <em>&lt;repeat&gt;</em> performs one iteration per node given by the evaluation of the XPath expression
+    and places the current node in the global variable context under the name specified by the <em>countername</em> attribute. 
+    This makes the current node availabe for xpath expressions in <em>&lt;repeat&gt;</em>'s nested steps with the syntax &quot;$count&quot; 
+    (resp. the specified countername).
+    </b>
+    
+</pre>

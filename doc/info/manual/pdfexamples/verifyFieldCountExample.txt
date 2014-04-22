@@ -1,0 +1,11 @@
+<webtest name="pdftest - verify field count">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyFieldCount description="Field count"
+      page="2"
+      count="8"
+      includeDuplicates="no"/>
+    ...
+  </steps>
+</webtest>

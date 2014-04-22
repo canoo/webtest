@@ -1,0 +1,7 @@
+<post>
+
+    <code caption="pdfVerifyReadOnlyField">
+        <include src='pdfexamples/verifyReadOnlyFieldExample.xml' />
+    </code>
+
+</post>

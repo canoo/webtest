@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+<project name="iframe" basedir="." default="main">
+
+
+    <target name="main">
+
+        <webtest name="iframeTest">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="welcomepage"
+                    url="iframe/start.html"/>
+                <verifyTitle description="this is the main form"
+                    text="Welcome"/>
+                <clicklink description="Click on link"
+                    htmlid="main:indexLink"/>
+                <followframe description="get into the child iframe"
+                     name="child"/>
+                <verifytext
+                    text="This is the child iframe"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

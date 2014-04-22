@@ -1,0 +1,12 @@
+<appletRunner ...>
+<parameterRef
+	regex="user.name.(\d+)"
+	name="name.\1"
+	propertyType="ant"
+	/>
+<parameterRef
+	regex="user.count.(\d+)"
+	name="count.\1"
+	propertyType="ant"
+	/>
+</appletRunner>	

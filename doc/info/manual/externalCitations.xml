@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" 
+[
+	<!ENTITY site SYSTEM "WebTestSite.xml">
+]
+>
+
+<manpage siteid="External Citations">
+
+	&site;
+
+	<head title="External Citations">
+		<b>They are talking about WebTest:</b>
+	</head>
+
+	<section title="Upcoming Conferences">
+		<dl>
+		</dl>
+	</section>
+
+	<section title="Articles">
+		<dl>
+			<li>
+				<dt>
+					<ext href="http://www.sigs-datacom.de/sd/publications/pub_article_show.htm?&amp;AID=2365&amp;Table=sd_article">Funktionales Testen von Rich Internet Applications</ext>
+					(German)
+				</dt>
+				<dd>by Michael Hüttermann</dd>
+				<dd>
+					<ext href="http://www.sigs-datacom.de/sd/publications/js/2008/05/index.htm">JavaSpektrum 05/2008</ext>
+				</dd>
+			</li>
+
+			<li>
+				<dt>
+					<ext href="http://www.inet.sk/clanok/5846/testovanie-webovych-aplikacii-pouzitim-canoo-webtest-cast-i/">Testovanie webových aplikácií použitím Canoo Webtest</ext>
+					(Slovak)
+				</dt>
+				<dd>by Roman Hesteric, 06.05.2008</dd>
+			</li>
+		
+			<li>
+				<dt>
+					<ext href="http://www.heise.de/kiosk/archiv/ix/2005/12/152">Champion unter Surfern</ext>
+					(German)
+				</dt>
+				<dd>by Benjamin Feiermann &amp; Marc Guillemot</dd>
+				<dd>
+					<ext href="http://www.heise.de/kiosk/archiv/ix/2005/12">iX 12/2005</ext>
+					p152
+				</dd>
+				<dd>
+					<ext href="http://www.heise.de/kiosk/special/ix/07/01">iX Special 01/2007</ext>
+					p92
+				</dd>
+			</li>
+
+			<li>
+				<dt>
+					<ext href="http://www.stickyminds.com/BetterSoftware/magazine.asp?fn=bisns&amp;ci=70">
+						A Look at Canoo WebTest
+					</ext>
+				</dt>
+				<dd>by Lisa Crispin</dd>
+				<dd>Better Software Magazine, November-December 2005</dd>
+			</li>
+
+			<li>
+				<dt>
+					<ext href="http://www.heise.de/kiosk/archiv/ix/2002/10/88">
+						Sklaventreiber - Automatische Akzeptanztests auf XML-Basis
+					</ext>
+					(German)
+				</dt>
+				<dd>by Dierk König</dd>
+				<dd>
+					<ext href="http://www.heise.de/kiosk/archiv/ix/2002/10">iX 10/2002</ext>
+					p88
+				</dd>
+			</li>
+		</dl>
+
+
+
+	</section>
+
+	<section title="Past Conferences">
+		<dl>
+			<li>
+				<dt>
+					24.04.2008:
+					<ext href="http://it-republik.de/jaxenter/jax/sessions.php?tid=687#session-11">
+						Nachhaltiges Testen von Web-Applikationen
+					</ext>
+					(German) 
+				</dt>
+				<dd>by Dierk König &amp; Marc Guillemot</dd>
+				<dd>
+					<ext href="http://www.jax.de">
+						JAX 2008
+					</ext>
+					Wiesbaden (Germany)
+				</dd>
+				<dd>
+				<ext href="externalCitations/WebTest@JAX08.pdf">Presentation<img src="images/pdficon_small.gif"/></ext> (mostly in English)
+				</dd>
+			</li>
+			<li>
+				<dt>
+					17.10.2007:
+					<ext href="http://www.grails-exchange.com/dierk-koenig#canoo-web-test">
+						Canoo Web Test and Grails
+					</ext>
+				</dt>
+				<dd>by Dierk König</dd>
+				<dd>
+					<ext href="http://skillsmatter.com/menu/372">
+						Grails eXchange 2007
+					</ext>
+					London
+				</dd>
+			</li>
+			<li>
+				<dt>
+					30.10.2007:
+					<ext href="http://verifyconference.com/content/view/133/41/">
+						Jumpstart Your Functional Test Automation with Canoo WebTest
+					</ext>
+				</dt>
+				<dd>by Nate Oster</dd>
+				<dd>
+					<ext href="http://verifyconference.com/">Verify 2007</ext>
+					Washington, D.C.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					26.09.2007:
+					<ext href="http://www.kruchten.org/agilevancouver/conference_files/oster.html">
+						Patterns for Continuous Functional Testing
+					</ext>
+				</dt>
+				<dd>by Nate Oster</dd>
+				<dd>
+					<ext href="http://www.kruchten.org/agilevancouver/conference.html">
+						Much Ado About Agile 2007
+					</ext>
+					Vancouver, BC
+				</dd>
+				<dd>
+				<ext href="externalCitations/AgileVancouver2007_PatternsForContinuousTestAutomation.pdf">Presentation<img src="images/pdficon_small.gif"/></ext>
+				</dd>
+			</li>
+			<li>
+				<dt>
+					26.04.2007:
+					<ext href="http://jax.de/konferenzen/jax07/overview_sessions.php?track=3&amp;_language=de#session-wa7">
+						Automatisiertes Testen von Webapplikationen
+					</ext>
+					(German) 
+				</dt>
+				<dd>by Dierk König &amp; Marc Guillemot</dd>
+				<dd>
+					<ext href="http://www.jax.de">
+						JAX 2007
+					</ext>
+					Wiesbaden (Germany)
+				</dd>
+				<dd>
+				<ext href="externalCitations/JAX2007_WebTestPresentation.pdf">Presentation<img src="images/pdficon_small.gif"/></ext> (mostly in English)
+				</dd>
+			</li>
+			<li>
+				<dt>
+					30.11.2006:
+					<ext href="http://www.ix-konferenz.de/showabstract.php?vid=811&amp;stylesheet=style/konf0502.php">
+						Tutorial: Automatisiertes Testen von Web-Applikationen
+					</ext>
+					(German) 
+				</dt>
+				<dd>by Marc Guillemot &amp; Dierk König</dd>
+				<dd>
+					<ext href="http://www.ix-konferenz.de/einstieg.php?konferenzid=11">
+						Bessere Software! iX Konferenz
+					</ext>
+					Frankfurt/Main (Germany)
+				</dd>
+				<dd>
+				<ext href="externalCitations/iXBessereSoftware2006_WebTestTutorial.pdf">Presentation <img src="images/pdficon_small.gif"/></ext> (mixed German/English)
+				</dd>
+			</li>
+
+			<li>
+				<dt>
+					24-26.10.2006:
+					<ext href="http://www.oopsla.org/2006/program/demonstrations/d03:_web_testing_made_easy.html">
+						Demo: Web Testing Made Easy
+					</ext>
+				</dt>
+				<dd>by Marc Guillemot &amp; Dierk König</dd>
+				<dd>
+					<ext href="http://www.oopsla.org/2006/">
+						OOPSLA 2006
+					</ext>
+					Portland, Oregon (USA)
+				</dd>
+				<dd>
+				<ext href="externalCitations/OOPSLA2006_WebTestAbstract.pdf">Abstract <img src="images/pdficon_small.gif"/></ext>, 
+				<ext href="externalCitations/OOPSLA2006_WebTestPresentation.pdf">presentation <img src="images/pdficon_small.gif"/></ext>
+				</dd>
+			</li>
+
+			<li>
+				<dt>
+					26.07.2006:
+					<ext href="http://www.agile2006.org/program/Program#_Toc137388228">
+						Agile Testing of Web Applications using WebTest
+					</ext>
+				</dt>
+				<dd>by Paul King</dd>
+				<dd>
+					<ext href="http://www.agile2006.org">Agile 2006 International Conference</ext>
+					Minneapolis (USA)
+				</dd>
+			</li>
+
+			<li>
+				<dt>
+					16.03.2006:
+					<ext href="http://www.swisstestingday.ch/de/programm.php">
+						Automatisiertes Testen von Webapplikationen mit WebTest
+					</ext>
+					(German)
+				</dt>
+				<dd>by Benjamin Feiermann</dd>
+				<dd>
+					<ext href="http://www.swisstestingday.ch">Swiss Testing Day 2006</ext>
+					Zürich (Switzerland)
+				</dd>
+			</li>
+
+			<li>
+				<dt>
+					14.05.2003:
+					<ext href="http://it-republik.de/konferenzen/rueckblick/jaxenter/jax2003/psecom,id,60,nodeid,2,_language,de.html">
+						Funktionaler Test mit HttpUnit und WebTest
+					</ext>
+					(German)
+				</dt>
+				<dd>by Peter Roßbach &amp; Michael Kloss</dd>
+				<dd>
+					<ext href="http://it-republik.de/konferenzen/rueckblick/jaxenter/jax2003/psecom,id,35,nodeid,35,_language,de.html">JAX 2003</ext>
+					Frankfurt am Main (Germany)
+				</dd>
+			</li>
+
+		</dl>
+	</section>
+
+	<section title="Book References">
+		<dl>
+			<li>
+				<dt>
+					<ext href="http://www.oreilly.de/catalog/agileentwger/">Agile Java-Entwicklung in der Praxis</ext>
+				</dt>
+				<dd>Michael Hüttermann. <ext href="http://www.oreilly.de">O'Reilly</ext>, 2007.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<ext href="http://www.apress.com/book/bookDisplay.html?bID=10205">The Definitive Guide to Grails</ext>
+				</dt>
+				<dd>Graeme Rocher. <ext href="http://www.apress.com">Apress</ext>, 2006.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<ext href="http://www.springer.com/3-540-26277-6">Extreme Programming and Agile Processes in Software Engineering: 6th International Conference, XP 2005</ext>
+				</dt>
+				<dd><ext href="http://www.springer.com">Springer</ext>, 2005.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<ext href="http://www.oreillynet.com/cs/gp/print/b/jakartastrutsckbk">Jakarta Struts Cookbook</ext>
+				</dt>
+				<dd>Bill Siggelkow. <ext href="http://www.oreillynet.com">O'Reilly</ext>, 2005.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<ext href="http://www.springer.com/dal/home?SGWID=1-102-22-31323239-0">Extreme Programming and Agile Processes in Software Engineering: 5th International Conference, XP 2004</ext>
+				</dt>
+				<dd><ext href="http://www.springer.com">Springer</ext>, 2004.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<ext href="http://www.sourcebeat.com/TitleAction.do?id=7">Spring Live</ext>
+				</dt>
+				<dd>Matt Raible. <ext href="http://www.sourcebeat.com">SourceBeat</ext>, 2004.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<ext href="http://books.mcgraw-hill.com/getbook.php?isbn=0072231319">Struts: The Complete Reference</ext>
+				</dt>
+				<dd>James Holmes. <ext href="http://books.mcgraw-hill.com/">McGraw-Hill Professional</ext>, 2004.
+				</dd>
+			</li>
+			
+			<li>
+				<dt>
+					<ext href="http://books.elsevier.com/us/mk/us/subindex.asp?isbn=1558608680">Unit Testing in Java: How Tests Drive the Code</ext>
+				</dt>
+				<dd>Johannes Link. <ext href="http://books.elsevier.com">Morgan Kaufmann</ext>, 2003.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<ext href="http://www.manning.com/hatcher/">Java Development With Ant</ext>
+				</dt>
+				<dd>Erik Hatcher, Steve Loughran, Matthew Robinson, Pavel Vorobiev. <ext href="http://www.manning.com">Manning Publications</ext>, 2002.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<ext href="http://www.awprofessional.com/bookstore/product.asp?isbn=0321113551&amp;rl=1">Testing Extreme Programming</ext>
+				</dt>
+				<dd>Lisa Crispin, Tip House. <ext href="http://www.awprofessional.com">Addison Wesley Professional</ext>, 2002.
+				</dd>
+			</li>
+		</dl>
+	</section>
+</manpage>

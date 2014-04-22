@@ -1,0 +1,9 @@
+<webtest name="setSelectField: Show usage of setFileField>
+    &sharedConfiguration;
+    <steps>
+        <invoke url="setFileField.jsp"/>
+        <setFileField formName="myForm" fileName="myFile.csv" name="myFileFieldName"/>
+        <clickButton name="myButton"/>
+        <verifyText text="myFile.csv was successfully uploaded"/>
+    </steps>
+</webtest>

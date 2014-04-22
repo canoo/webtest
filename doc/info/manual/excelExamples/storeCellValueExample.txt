@@ -1,0 +1,20 @@
+<webtest name="exceltest - store cell value">
+  <config .../>
+  <steps>
+    <invoke url="testExcel.xls"/>
+    ...
+    <!-- simple comparison -->
+    <excelStoreCellValue property="intValue" cell="B26"/>
+    <verifyProperty property="intValue" text="23"/>
+    ...
+    <!-- comparison with manipulation: cell contains '$9.50' -->
+    <excelStoreCellValue property="dollarValue" cell="C26"/>
+    <!-- remove '$' and account for rounding errors -->
+    <groovy>
+    junit.framework.Assert.assertEquals(9.5 as double,
+                                        '#{dollarValue}'.substring(1).toDouble(),
+                                        0.0000001 as double)
+    </groovy>
+    ...
+  </steps>
+</webtest>

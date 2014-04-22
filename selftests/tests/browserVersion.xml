@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="test" default="all" basedir=".">
+
+	<macrodef name="verifyBrowserData">
+		<attribute name="appName"/>
+		<attribute name="product"/>
+		<attribute name="userAgent"/>
+		<sequential>
+			<verifyXPath xpath="id('appName')" text="@{appName}"/>
+			<verifyXPath xpath="id('product')" text="@{product}"/>
+			<verifyXPath xpath="id('userAgent')" text="@{userAgent}" regex="true"/>
+			<verifyXPath xpath="id('userAgentHeader')" text="@{userAgent}" regex="true"/>
+		</sequential>
+	</macrodef>
+
+	<target name="all">
+        <webtest name="browser version: default is IE6">
+            <invoke url="browserVersion.jsp"/>
+        	<verifyBrowserData appName="Microsoft Internet Explorer" product="undefined" userAgent="Mozilla/4.0 .* MSIE 6.0.*"/>
+        </webtest>
+
+    	<webtest name="browser version: configure FF3">
+        	<config browser="FF3"/>
+            <invoke url="browserVersion.jsp"/>
+        	<verifyBrowserData appName="Netscape" product="Gecko" userAgent="Mozilla/5.0 .* Firefox/3.*"/>
+        </webtest>
+
+    	<webtest name="browser version: configure IE6">
+        	<config browser="IE6"/>
+            <invoke url="browserVersion.jsp"/>
+        	<verifyBrowserData appName="Microsoft Internet Explorer" product="undefined" userAgent="Mozilla/4.0 .* MSIE 6.0.*"/>
+        </webtest>
+
+    	<webtest name="browser version: configure IE7">
+        	<config browser="IE7"/>
+            <invoke url="browserVersion.jsp"/>
+        	<verifyBrowserData appName="Microsoft Internet Explorer" product="undefined" userAgent="Mozilla/4.0 .* MSIE 7.0.*"/>
+        </webtest>
+
+    	<webtest name="browser version: configure FF3.6 with custom User-Agent header">
+        	<config browser="FF3.6">
+                <header name="User-Agent" value="My Browser"/>
+    		</config>
+            <invoke url="browserVersion.jsp"/>
+        	<verifyBrowserData appName="Netscape" product="Gecko" userAgent="My Browser"/>
+        </webtest>
+    </target>
+
+
+</project>

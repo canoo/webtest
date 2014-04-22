@@ -1,0 +1,9 @@
+<property name="username" value="yourUsername"/>
+<property name="password" value="yourPassword"/>
+<property name="mailserver" value="your.mailserver.com"/>
+<property name="servertype" value="pop3"/>
+<steps>
+    <emailSetConfig server="${mailserver}" type="${servertype}"
+    password="${password}" username="${username}" delay="5"/>
+    <!-- ... email tests go here ... -->
+</steps>

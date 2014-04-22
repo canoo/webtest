@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Auto Select Form</title>
+<SCRIPT language="JavaScript1.2">
+function autoSubmit() {
+  document.forms[0].submit();
+}
+</SCRIPT>
+</head>
+<body>
+
+    <form action="dummy.html">
+        <select id="mySelect" name="mySelect" onChange="autoSubmit();" >
+            <option value="enter1" selected>Option 1</option>
+            <option value="enter2">Option 2</option>
+            <option value="enter3">Option 3</option>
+        </select>
+    </form>
+
+</body>
+</html>

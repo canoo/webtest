@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="sampleUse" default="sampleUse" basedir=".">
+
+    <target name="sampleUse">
+
+        <webtest name="sampleUse: Show how to use Canoo WebTest plainly">
+            &sharedConfiguration;
+            <invoke description="main page"
+                url="${start.page}"
+                username="some user"
+                password="some password"
+                save="mainpage"/>
+            <verifyTitle description="main page reached"
+                text=".*WebT.*"
+                regex="true"/>
+
+            <invoke description="main page with GET form"
+                url="${start.page}?mode=getTest"/>
+            <verifyElement description="input field present"
+                type="input"
+                text="mode"/>
+
+            <invoke description="main page"
+                url="${start.page}"/>
+            <clickLink description="show link clicking"
+                label="MyLink"/>
+            <verifyInputField description="show referrer"
+                name="field1"
+                value="MyLink"/>
+
+            <invoke description="main page with POST form"
+                url="${start.page}?mode=postTest"/>
+            <verifyInputField description="input field must be present and empty"
+                name="field1"
+                value=""/>
+            <setInputField description="fill in a value"
+                name="field1"
+                value="X"/>
+            <clickButton description="submit"
+                label="doIt"/>
+            <verifyInputField description="submitted value is shown"
+                name="field1"
+                value="X"/>
+
+            <sleep milliseconds="50" description="normal Ant sleep can be used"/>
+            <invoke description="main page"
+                url="${start.page}"/>
+            <verifyElementText description="variation of text detection"
+                type="title"
+                text=".*Canoo.*"
+                regex="true"/>
+            <verifyTextarea description="work with text area"
+                name="theArea"
+                text="Wusi was here .*"
+                regex="true"/>
+        </webtest>
+    </target>
+
+</project>

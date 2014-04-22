@@ -1,0 +1,15 @@
+<webtest name="Login with vaild user/password">
+	<config ... />
+	<steps>
+		<invoke ... />
+        <setInputField description="set user name"
+            name="username"
+            value="scott" />
+        <setInputField description="set password"
+            name="password"
+            value="tiger" />
+        <clickButton description="Click the submit button"
+            label="Login" />
+		...
+	</steps>
+</webtest>

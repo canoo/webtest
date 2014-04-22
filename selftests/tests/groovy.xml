@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testGroovy" default="full" basedir=".">
+
+    <target name="full" 
+    	depends="testBindingSurvival, testFileGroovy, testInlineGroovy, testGroovyAssertionError, testReplaceProperties"/>
+            <!-- testGroovyScript,  -->
+            
+    <target name="testInlineGroovy">
+        <property name="image_id" value="traffic_light" description="Set Ant property for use in Groovy script"/>
+        <webtest name="groovy: test Groovy step with inlined Script">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load Initial Page"
+                        url="trafficlight.html"/>
+                <group description="check image alt attribute accords to its src attribute">
+                    <storeXPath description="extract src attribute from image with id=${image_id}"
+                                xpath="//img[@id='${image_id}']/@src"
+                                property="imagesrc"/>
+                    <groovy description="calculate expected alt text for src=#{imagesrc}">
+                        def src2alt = ['red.gif':'stop', 'orange.gif':'wait', 'green.gif':'go']
+                        step.webtestProperties.image_alt = src2alt[step.webtestProperties.imagesrc]
+                    </groovy>
+                    <verifyXPath description="check alt value"
+                                 xpath="//img[@id='${image_id}']/@alt"
+                                 text="#{image_alt}"/>
+                </group>
+                <group description="same with one single xpath">
+                    <verifyXPath description="check image alt attribute accords to its src attribute"
+                                 xpath="
+						//img[@id='${image_id}'][@src='red.gif']   [@alt='stop'] |
+						//img[@id='${image_id}'][@src='orange.gif'][@alt='wait'] |
+						//img[@id='${image_id}'][@src='green.gif'] [@alt='go']"/>
+                </group>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testFileGroovy">
+        <property name="image_id" value="traffic_light" description="Set Ant property for use in Groovy script"/>
+        <webtest name="groovy: test Groovy Code from file">
+            &sharedConfiguration;
+            <steps>
+                <groovy description="usage"
+                        file="${basedir}/GPrintSampleUsage.groovy"/>
+            	<storeProperty name="imagesrc" value="green.gif" propertyType="dynamic" description="Set WebTest property for use in Groovy script"/>
+                <groovy description="use from file like a macro"
+                        file="${basedir}/GMacroSteps.groovy"/>
+            </steps>
+        </webtest>
+    </target>
+
+	<target name="testGroovyAssertionError">
+		<webtest name="groovy: test Groovy Assertion Error">
+			&sharedConfiguration;
+			<steps>
+                <not>
+                    <groovy description="groovy step with failing assertion">
+                        assert 3 == 4
+                    </groovy>
+                </not>
+			</steps>
+		</webtest>
+	</target>
+
+    <target name="testGroovyScript">
+        <java classname="groovy.lang.GroovyShell" failonerror="true" fork="true">
+            <classpath>
+				<fileset dir="${webtest.home}" includes="deploy/plain/*.jar"/>
+                <fileset dir="${webtest.home}" includes="lib/**/*.jar"/>
+            </classpath>
+            <!-- transfer all necessary webtest's setup information -->
+            <syspropertyset>
+                <propertyref prefix="webtest."/>
+            </syspropertyset>
+            <arg value="GScriptedWebtest.groovy"/>
+        </java>
+    </target>
+
+	<target name="testBindingSurvival">
+		<webtest name="groovy: test that the binding is reused among steps of a webtest">
+			&sharedConfiguration;
+			<steps>
+				<groovy description="define variable foo in the binding">
+					foo = 1
+				</groovy>
+				<groovy description="check that the variable is still accessible from an other step">
+					assert 1 == foo
+					foo += 3
+				</groovy>
+				<groovy description="check that the variable is still accessible from an other step (again)">
+					assert 4 == foo
+				</groovy>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testReplaceProperties">
+		<webtest name="groovy: test that properties are replaced in Groovy script when configured for it">
+			&sharedConfiguration;
+			<steps>
+				<storeProperty name="myProp" value="myPropOriginalValue"/>
+				<property name="myAntProp" value="myAntPropOriginalValue"/>
+				<group description="without replaceProperties">
+					<groovy description="properties should not be replaced if not specified">
+						step.webtestProperties['myProp_fromGroovy'] = '#{myProp}'
+						step.webtestProperties['myAntProp_fromGroovy'] = '${myAntProp}'
+					</groovy>
+					<verifyProperty name="myProp_fromGroovy" text="#[{]myProp}" regex="true" description="verify that the value doesn't come from the property (use regex to avoid replacement here)"/>
+					<verifyProperty name="myAntProp_fromGroovy" text="\$[{]myAntProp}" regex="true" description="verify that the value doesn't come from the property (use regex to avoid replacement here)"/>
+				</group>
+				<group description="with replaceProperties">
+					<groovy replaceProperties="true" description="properties should be expanded">
+						step.webtestProperties['myProp_fromGroovy'] = '#{myProp}'
+						step.webtestProperties['myAntProp_fromGroovy'] = '${myAntProp}'
+					</groovy>
+					<verifyProperty name="myProp_fromGroovy" text="myPropOriginalValue" description="verify that the value comes from the property"/>
+					<verifyProperty name="myAntProp_fromGroovy" text="myAntPropOriginalValue" description="verify that the value comes from the property"/>
+				</group>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

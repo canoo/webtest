@@ -1,0 +1,87 @@
+<head title="Available Core Steps">
+    <b>This is the syntax documentation for the Core steps.</b>
+
+    <b>
+        The <stepref name="webtest"/>
+        task includes all information about a test specification. It contains
+        the nested tasks <stepref name="config"/>
+        (soon to be optional) which defines configuration information and
+        <stepref name="steps"/>
+        (soon to be optional) which defines a sequence of test steps.
+    </b>
+
+    <b>
+        The <stepref name="steps"/>
+        element can contain any number of Core, Extension, PDF or grouping test steps.
+        A recent feature is that you can also mix in normal
+        <key>ANT</key> tasks as well. You can use the <stepref name="antWrapper" category="extension"/>
+        step or just add them in and an
+        <stepref name="antWrapper" category="extension"/> step will be added implicitly for you.
+        This is fairly new and hasn't had extensive testing yet - use with caution.
+    </b>
+
+    <b>The main Core steps provide the ability to invoke pages, store and verify various
+        information about visited pages, and manipulate <key>HTML</key> forms and include:
+        <stepref name="invoke"/>
+        <stepref name="clickLink"/>
+        <stepref name="clickButton"/>
+        <stepref name="followFrame"/>
+        <stepref name="previousResponse"/>
+        <stepref name="verifyTitle"/>
+        <stepref name="verifyText"/>
+        <stepref name="verifyElement"/>
+        <stepref name="verifyElementText"/>
+        <stepref name="verifyTextarea"/>
+        <stepref name="verifyInputField"/>
+        <stepref name="verifySelectField"/>
+        <stepref name="verifyLinks"/>
+        <stepref name="verifyXPath"/>
+        <stepref name="verifyCheckbox"/>
+        <stepref name="verifyCookie"/>
+        <stepref name="setCheckbox"/>
+        <stepref name="setInputField"/>
+        <stepref name="setRadioButton"/>
+        <stepref name="setSelectField"/>
+        <stepref name="storeRegEx"/>
+        <stepref name="storeProperty"/>
+        <stepref name="storeXPath"/>
+        <stepref name="storeDynamicProperty"/>
+        <stepref name="storeCookie"/>
+        <stepref name="storeHeader"/>
+        <stepref name="verifyProperty"/>
+
+    </b>
+
+    <b>Test steps can be further grouped (and even nested) using the following steps:
+        <stepref name="group"/>
+        <stepref name="not"/>
+        <stepref name="repeat"/>
+        <stepref category="Extension" name="ifStep"/>
+        <stepref category="Extension" name="timedGroup"/>
+        <stepref category="Extension" name="retry"/>
+    </b>
+
+		<b>In addition, there are special steps which help set appropriate context information,
+        e.g. <stepref name="selectForm"/> can be used to select a particular form as the <em>current form</em>
+            and <stepref name="verifyText"/> can contain the
+						<stepref name="table"/> locating step.
+		</b>
+
+
+		<b>Most of the steps work on the "current page" (actions like <stepref name="clickLink"/>, <stepref name="clickButton"/>, ... as well as verifications like <stepref name="verifyTitle"/>, <stepref name="verifyInputField"/>, ...).
+		The notion of "current page" is quite simple when no JavaScript is involved: it is the result of the last action step triggering a request (<stepref name="invoke"/>, <stepref name="clickLink"/> or <stepref name="clickButton"/>) or the frame followed by <stepref name="followFrame"/> or the response restored by <stepref name="previousResponse"/>.
+		It becomes more complicated when JavaScript is involved but it aims to be as "natural" as possible. A newly loaded page becomes the new "current response" if one of the following conditions applies:
+		</b>
+
+		<dl>
+		<li><dd>the page is loaded in the window of the current response</dd></li>
+		<li><dd>the page is loaded in a new window</dd></li>
+		<li><dd>the page is loaded in a frame which enclosing page is already loaded and the load was not triggered by JavaScript</dd></li>
+		</dl>
+
+		<b>Furthermore if the window containing the "current response" is closed, then the content of the last opened window becomes the "current response".
+		</b>
+
+	<b>Proxy settings configured with the ant <em>&lt;setproxy&gt;</em> task prior to <stepref name="webtest"/> are used to access the website to test.
+	</b>
+</head>

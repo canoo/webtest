@@ -1,0 +1,3 @@
+<dataDriven tableContainer="simple.xls">
+	<echo message="Hello ${FirstName} ${LastName}"/>
+</dataDriven>

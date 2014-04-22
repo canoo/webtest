@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testDeprecated" default="all" basedir=".">
+
+    <target name="all" depends="dynamicTests,testSpec" />
+
+    <target name="testSpec">
+        <testSpec name="deprecated: test that the webtest step can be called with its legacy step name: testSpec">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="get the main page"
+                    url="${start.page}"
+                    />
+                <verifyTitle description="main page reached"
+                    text=".*WebT.*"
+                    regex="true"/>
+            </steps>
+        </testSpec>
+    </target>
+
+    <target name="dynamicTests">
+        <webtest name="deprecated: test for storing to a dynamic property using legacy step name">
+            &sharedConfiguration;
+            <steps>
+                <storeDynamicProperty description="set up property"
+                    name="dynProp" value="The DynProp Value" />
+                <verifyProperty description="test for matching property value"
+                    name="dynProp" text="The DynProp Value"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

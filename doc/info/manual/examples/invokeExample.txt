@@ -1,0 +1,9 @@
+<webtest name="Visit all pages without update">
+	<config ... />
+	<steps>
+		<invoke	description="Start the main controller"
+			url="KycController?partnerId=012345678912&amp;portal=RM"
+			save="myResultPage"/>
+		...
+	</steps>
+</webtest>

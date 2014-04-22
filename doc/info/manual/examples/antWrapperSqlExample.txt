@@ -1,0 +1,26 @@
+<steps>
+  <antWrapper>
+    <echo>Using SQL to check precondition: test name doesn't exist</echo>
+    <sql ... output="items.txt">select * from names</sql>
+  </antWrapper>
+  <invoke url="items.txt"/>
+  <not description="should not be found">
+    <verifyText text="testvalue"/>
+  </not>
+
+  <invoke url="http://mysite/adduser.jsp"/>
+  <setInputField name="name" value="testvalue"/>
+  <clickButton name="add"/>
+
+  <antWrapper>
+    <echo>Using SQL to check name added</echo>
+    <sql ... output="items.txt">select * from names</sql>
+  </antWrapper>
+  <invoke url="items.txt"/>
+  <verifyText text="testvalue"/>
+
+  <antWrapper>
+    <echo>Using SQL to do post test cleanup (remove test name)</echo>
+    <sql ...>delete from names where name='testvalue'</sql>
+  </antWrapper>
+</steps>

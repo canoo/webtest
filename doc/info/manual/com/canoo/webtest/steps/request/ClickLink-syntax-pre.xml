@@ -1,0 +1,27 @@
+<pre>
+	<b>The different ways to locate a link are applied in this sequence:</b>
+	<dl>
+		<li>
+			<dd>If
+				<em>htmlid</em>
+				is set: the link with the given id is used (and the step fails if no link is found with this id)
+			</dd>
+		</li>
+		<li>
+			<dd>Else the first link containing the specified
+				<em>label</em>
+				(if specified) and
+				<em>href</em>
+				(if specified) is used
+			</dd>
+		</li>
+		<li>
+			<dd>If not found, the first link containing an image (IMG) tag with
+				<em>label</em>
+				as the ALT attribute is used (
+				<em>href</em>
+				is ignored)
+			</dd>
+		</li>
+	</dl>
+</pre>

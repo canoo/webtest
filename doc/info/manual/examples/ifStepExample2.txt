@@ -1,0 +1,24 @@
+<target name="testNewUserTwo" depends="init">
+  <echo message="Testing Creation of New Users (don't run on prod)" />
+  <webtest name="testNewUser">
+    <config .../>
+    <steps>
+      <invoke .../>
+      <ifStep description="production tests">
+        <condition>
+          <verifyXPath
+            description="Check for debug statements"
+            xpath="count(//span[@class='debug']) &gt; 0"
+            />
+        </condition>
+        <then>
+          <!-- ... fill out form ... -->
+          <clickButton description="register new user" name="createButton" />
+        </then>
+        <else>
+          <!-- do something else instead -->
+        </else>
+      </ifStep>
+    </steps>
+  </webtest>
+</target>

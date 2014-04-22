@@ -1,0 +1,16 @@
+<pre>
+    <b>
+        This step provides a mechanism to peek inside the state of
+        input elements inside your
+        <key>HTML</key>. It should be used with care as
+        the user (via their browser) typically wouldn't have direct access to these
+        states (but probably are given an alternative visual
+        representation, e.g. if the state is disabled, the element
+        will probably be greyed out). Because WebTest doesn't
+        represent the page graphically, peeking at the states
+        can be the next best thing to know what is going on.
+    </b>
+    <b>
+        Available states include: "checked" and "disabled".
+    </b>
+</pre>

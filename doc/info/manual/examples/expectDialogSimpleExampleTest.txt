@@ -1,0 +1,46 @@
+<webtest name="verifyDialogs: test simple dialog form validation example">
+    <config .../>
+    <steps>
+        <invoke description="Load Page" url="/simpleDialogExample.html"/>
+        <verifyTitle description="Confirm page" text="Simple Dialog Example"/>
+
+        <!-- try with both fields blank -->
+        <expectDialog dialogType="alert" saveProperty="simpleDialog" />
+        <clickButton description="Click Login button" name="submit" />
+        <verifyProperty name="simpleDialog" regex="true"
+            text=".*Username field must not be blank.*"/>
+        <verifyProperty name="simpleDialog" regex="true"
+            text=".*Password field must not be blank.*"/>
+        <verifyNoDialogs description="Check all dialogs were used" />
+
+        <!-- try with just password field blank -->
+        <expectDialog dialogType="alert" saveProperty="simpleDialog" />
+        <setInputField name="name" value="some username" />
+        <clickButton description="Click Login button" name="submit" />
+        <not>
+            <verifyProperty name="simpleDialog" regex="true"
+                text=".*Username field must not be blank.*"/>
+        </not>
+        <verifyProperty name="simpleDialog" regex="true"
+            text=".*Password field must not be blank.*"/>
+        <verifyNoDialogs description="Check all dialogs were used" />
+
+        <!-- try with just username field blank -->
+        <expectDialog dialogType="alert" saveProperty="simpleDialog" />
+        <setInputField name="name" value="" />
+        <setInputField name="password" value="some password" />
+        <clickButton description="Click Login button" name="submit" />
+        <verifyProperty name="simpleDialog" regex="true"
+            text=".*Username field must not be blank.*"/>
+        <not>
+            <verifyProperty name="simpleDialog" regex="true"
+                text=".*Password field must not be blank.*"/>
+        </not>
+        <verifyNoDialogs description="Check all dialogs were used" />
+
+        <!-- try with valid fields -->
+        <setInputField name="name" value="some username" />
+        <clickButton description="Click Login button" name="submit" />
+        <!-- would normally check we are on a new page here -->
+    </steps>
+</webtest>

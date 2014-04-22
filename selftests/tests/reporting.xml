@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testReporting" default="all" basedir=".">
+
+	<description>
+		This test suite generats specififc reports that will be used during the release tests to verify the
+		webtest reporting xsl.
+	</description>
+
+	<target name="all">
+		<antcall target="testErrorLink">
+			<param name="webtest.haltonerror" value="false"/>
+			<param name="webtest.haltonfailure" value="false"/>
+		</antcall>
+	</target>
+
+	<target name="testErrorLink">
+		<webtest name="reporting: Links from failing steps (should fail!)">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="get the main page" url="${start.page}"/>
+				<group description="">
+					<invoke description="get the main page" url="${start.page}"/>
+					<group>
+						<invoke description="get the main page" url="${start.page}"/>
+					</group>
+				</group>
+				<invoke description="get the main page" url="${start.page}"/>
+				<not description="Generates an error!">
+					<verifyTitle text=".*WebT.*" regex="true"/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

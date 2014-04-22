@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE log4j:eventSet [
+	<!ENTITY junit SYSTEM "junit_log.ixml">
+	<!ENTITY selftest_jetty SYSTEM "selftest_jetty.ixml">
+	<!ENTITY selftest SYSTEM "selftest.console.log.xml">
+	<!ENTITY webtest_jetty SYSTEM "webtest_jetty.ixml">
+	<!ENTITY webtest SYSTEM "webtest.console.log.xml">
+]
+>
+
+<log4j:eventSet version="1.2" xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<console name="junit">
+		&junit;
+	</console>
+	<console name="selftest jetty">
+		&selftest_jetty;
+	</console>
+	<console name="selftest">
+		&selftest;
+	</console>
+	<console name="releasetest jetty">
+		&webtest_jetty;
+	</console>
+	<console name="releasetest">
+		&webtest;
+	</console>
+</log4j:eventSet>

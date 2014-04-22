@@ -1,0 +1,11 @@
+<post>
+
+    <code caption="verifyText example1">
+        <include src='examples/verifytextExample1.xml'/>
+    </code>
+
+    <code caption="verifyText example2">
+        <include src='examples/verifytextExample2.xml'/>
+    </code>
+
+</post>

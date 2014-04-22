@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd"
+        [
+                <!ENTITY site SYSTEM "WebTestSite.xml">
+                ]
+        >
+<manpage siteid="Repository">
+
+    &site;
+
+    <head title="Repository">
+        <b>This page describes the directory layout in svn.</b>
+    </head>
+
+    <section title="Directory Layout">
+        <b>The layout of WebTest in svn does not follow the usual directory layout, but follows this set-up:</b>
+        <dl>
+            <li>
+                <dt>
+                    <ext href="https://svn.canoo.com/trunk/webtest">/trunk/webtest</ext>
+                </dt>
+                <dd>is the the head of the development;</dd>
+            </li>
+            <li>
+                <dt>
+                    <ext href="https://svn.canoo.com/versions/webtest">/versions/webtest</ext>
+                </dt>
+                <dd>contains the successive builds of WebTest;</dd>
+            </li>
+            <li>
+                <dt>
+                    <ext href="https://svn.canoo.com/releases/webtest">/releases/webtest</ext>
+                </dt>
+                <dd>contains the successive releases of WebTest.</dd>
+            </li>
+        </dl>
+    </section>
+</manpage>

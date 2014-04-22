@@ -1,0 +1,20 @@
+<post>
+    <b>
+        Here is an example of using <em>pdfToFontsFilter</em>:
+    </b>
+
+    <code caption='pdfToFontsFilter example'>
+        <include src='pdfexamples/toFontsFilterExample.xml'/>
+    </code>
+
+    <b>As a result of invoking the above steps a file would be created containing something like the following:</b>
+
+    <code caption='pdfToFontsFilter output'>
+        <include src='pdfexamples/toFontsFilterOutput.xml'/>
+    </code>
+
+    <b>
+        The first column is the page number, the second column is the font type
+        and the third column is the font name.
+    </b>
+</post>

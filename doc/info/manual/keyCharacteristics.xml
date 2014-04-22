@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd"
+[
+	<!ENTITY site       SYSTEM "WebTestSite.xml">
+]
+>
+
+<manpage siteid="Key Characteristics">
+
+	&site;
+
+	<head title="WebTest Key Characteristics">
+
+		<b>Here is a short overview of WebTest characteristics</b>
+
+	</head>
+
+	<section title="Pros">
+		<dl>
+			<li>
+				<dt style="smile">Simple</dt>
+			</li>
+			<li>
+				<dt style="smile">Fast</dt>
+			</li>
+			<li>
+				<dt style="smile">Excellent Reporting</dt>
+			</li>
+			<li>
+				<dt style="smile">Very low TCO</dt>
+			</li>
+			<li>
+				<dt style="smile">Runs everywhere</dt>
+			</li>
+			<li>
+				<dt style="smile">No display needed</dt>
+			</li>
+			<li>
+				<dt style="smile">Easy to extend</dt>
+			</li>
+			<li>
+				<dt style="smile">Straightforward integration</dt>
+			</li>
+			<li>
+				<dt style="smile">Doesn't accept (too) badly formed html</dt>
+			</li>
+		</dl>
+	</section>
+
+	<section title="Cons">
+		<dl>
+			<li>
+				<dt style="frown">Javascript support not as good as in "normal" browser</dt>
+			</li>
+			<li>
+				<dt style="frown">Doesn't accept (too) badly formed html</dt>
+			</li>
+		</dl>
+	</section>
+
+	<section title="Explanations">
+		<dl>
+			<li>
+				<dt>Simple</dt>
+				<dd>WebTest has an easy syntax with steps having meaningful names that can be understood even when you don't know WebTest.
+				Additionally, the recorder allows you to quickly generate a first draft of your tests that you can adapt and refactor 
+				to build robust tests suites.
+				Don't forget: capture/replay is the least cost-effective way of automating test cases! </dd>
+			</li>
+			<li>
+				<dt>Fast</dt>
+				<dd>WebTest doesn't download CSS or images and doesn't need to compute page rendering.</dd>
+			</li>
+			<li>
+				<dt>Excellent Reporting</dt>
+				<dd>Perhaps the most important feature. 
+				JUnit like reports are not enough to understand why a test fails and WebTest reports provide all information allowing you to quickly understand the failure cause.</dd>
+			</li>
+			<li>
+				<dt>Very low TCO</dt>
+				<dd>Some user testimonials say it better than long explanations: 
+				"the ROI on WebTest is many orders of magnitude higher than any other tool I've used",
+				"Support = good and $0", 
+				"It still Just Works", 
+				"It has been remarkably robust, mature, and bug-free", 
+				or "tests are much quicker to write and cheap to maintain".
+				</dd>
+			</li>
+			<li>
+				<dt>Runs everywhere</dt>
+				<dd>WebTest is plain Java and runs everywhere as long as you have a JDK for your operating system.</dd>
+			</li>
+			<li>
+				<dt>No display needed</dt>
+				<dd>This means that you can continue working on your computer while your test(s) run.</dd>
+			</li>
+			<li>
+				<dt>Easy to extend</dt>
+				<dd>
+				No matter which tool you use, you will reach its limits and need to extend it for your custom needs. It's only a question of time. 
+				With WebTest you can simply create your own steps without technology mix, exactly like WebTest's own steps in Java or in Groovy
+				and access the whole API of HtmlUnit, commons-httpclient, ... to enhance WebTest for your special requirements.
+				</dd>
+			</li>
+			<li>
+				<dt>Straightforward integration</dt>
+				<dd>
+				WebTest scripts ARE Ant scripts. This means that you have directly an easy integration in continuous integration tools like Cruise Control,
+				support in your favorite IDE, ...
+				</dd>
+			</li>
+			<li>
+				<dt>Doesn't accept (too) badly formed html</dt>
+				<dd>
+				"Real" browsers accept really badly formed html code what WebTest can only do to some extend. Good or bad? 
+				We (the WebTest developers) want to create correct web applications and we see this as a feature rather than as a disadvantage.
+				After all, testing should lead to better quality.
+				</dd>
+			</li>
+			<li>
+				<dt>Javascript support not as good as in "normal" browser</dt>
+				<dd>
+				WebTest simulates Firefox' or Internet Explorer's way to execute JavaScript. This behavior is simulated, which means that it 
+				doesn't work as good as in "real" browser. So, how bad is it? Not that bad at all, even complex js libraries like DWR or Google Maps already 
+				work and development in HtmlUnit (the underlying browser) progresses rapidly with the upcoming release supporting Prototype, GWT, etc.
+				</dd>
+			</li>
+		</dl>
+	</section>
+</manpage>

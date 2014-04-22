@@ -1,0 +1,37 @@
+    <property name="testfile" location="antWrapperDummy.txt"/>
+    <property name="testurl" value="file:///${testfile}"/>
+
+    <!-- macro containing an ant task -->
+    <macrodef name="echoMacro">
+        <attribute name="message" default="X"/>
+        <sequential>
+            <echo append="true" message="@{message}" file="${testfile}"/>
+        </sequential>
+    </macrodef>
+
+    <!-- macro containing webtest steps -->
+    <macrodef name="verifyMacro">
+        <attribute name="text" default="X"/>
+        <attribute name="length" default="0"/>
+        <sequential>
+            <storeLength property="foundLength"/>
+            <verifyProperty name="foundLength" text="@{length}"/>
+            <verifyText text="@{text}"/>
+        </sequential>
+    </macrodef>
+
+    <target name="testMacros">
+        <webtest name="antWrapper: test antWrapper with macros">
+            <steps>
+                <echoMacro/>
+                <echoMacro message="Y"/>
+                <repeat count="2">
+                    <echoMacro message="Z"/>
+                </repeat>
+                <echoMacro message="Y"/>
+                <invoke url="${testurl}"/>
+                <verifyMacro length="5" text="XYZZY"/>
+            </steps>
+        </webtest>
+        <delete file="${testfile}" quiet="true"/>
+    </target>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="us-ascii" ?>
+
+<project name="WebTest CC" basedir="." default="cruise">
+
+	<!-- refactor: this should go into shared properties file -->
+	<property name="svn.tag" value="https://svn.canoo.com/versions/webtest"/>
+	<property name="webTestReport.file" value="WebTestReport.xml"/>	<!-- 3 duplicates ! -->
+	<property name="svn.user" value="canoo.shared"/>
+
+	<!--
+	label is given by CruiseControl, provides a default value here for the case where
+	the user starts this script from hand.
+	-->
+	<property name="label" value="manualBuild"/>
+
+	<target name="delegate">
+		<echo message="*** Starting the WebTest specific build parts ***"/>
+		<ant antfile="build.xml" target="full">
+			<property name="buildnumber" value="${label}"/>
+			<property name="skip.clover" value="false"/>
+		</ant>
+		<echo message="*** WebTest build successfully ended          ***"/>
+		<!--		<copy file="resources/build/log4j_template.xml" tofile="build/log/log.xml" /> -->
+	</target>
+
+	<target name="tagLastBuild">
+        <exec executable="svn" failonerror="true" logError="true">
+            <arg line="--username ${svn.user} --non-interactive"/>
+            <arg line="copy -m '' . ${svn.tag}/${label}"/>
+        </exec>
+        <exec executable="svn" failonerror="true" logError="true">
+            <arg line="--username ${svn.user} --non-interactive"/>
+            <arg line="rm -m '' ${svn.tag}/LAST_BUILD"/>
+        </exec>
+        <exec executable="svn" failonerror="true" logError="true">
+            <arg line="--username ${svn.user} --non-interactive"/> 
+            <arg line="copy -m '' ${svn.tag}/${label} ${svn.tag}/LAST_BUILD"/>
+        </exec>
+    </target>
+
+	<target name="update">
+		<echo message="Getting the detected modifications...."/>
+		<!-- first a revert to avoid merge problems in update (some files are generated but under SVN!) -->
+        <exec executable="svn" failonerror="true" logError="true">
+            <arg line="-R"/>
+            <arg line="revert *"/>
+        </exec>
+        <exec executable="svn" failonerror="true" logError="true">
+            <arg line="--username ${svn.user} --non-interactive"/>
+            <arg line="update"/>
+        </exec>
+	</target>
+
+	<target name="cruise" depends="update, delegate, tagLastBuild"/>
+</project>

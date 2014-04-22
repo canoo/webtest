@@ -1,0 +1,12 @@
+<webtest name="Check freetext entry">
+	<config ... />
+	<steps>
+		<invoke ... />
+		<verifyElementText
+			description="Checks for the existence of an TEXTAREA element named FreetextComment enclosing TEST"
+			type="TEXTAREA"
+			name="FreetextComment"
+			text="TEST" />
+		...
+	</steps>
+</webtest>

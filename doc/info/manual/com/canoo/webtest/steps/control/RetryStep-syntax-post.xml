@@ -1,0 +1,15 @@
+<post>
+
+    <b>The following example illustrates re-loading a page with a visit counter several
+    times until a particular value is reached. A typical scenario would be to check that
+    some asynchronous task has completed.</b>
+
+    <code caption="Retry Example">
+        <include src='examples/retryExample.xml' />
+    </code>
+
+    <b>If you are using <key>XSLT</key> reporting, you might expect to see something like:</b>
+
+    <b><img src="images/retry_reporting.gif"/></b>
+
+</post>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="test" default="all" basedir=".">
+
+ 	<target name="all"
+ 		depends="simple"/>
+
+	<target name="simple">
+		<webtest name="test request.csv report">
+            <invoke url="frameset.jsp"/>
+            <groovy description="get the path to the requests.csv file for the current test">
+            	def f = new File(step.context.config.webTestResultDir, "requests.csv")
+            	step.setWebtestProperty("currentRequestsFile", "file://" + f.getAbsolutePath())
+            </groovy>
+			<invoke url="#{currentRequestsFile}" description="load requests.csv for current test"/>
+			<verifyContent referenceFile="requestsCsv.txt" mode="text">
+				<replaceFilter regex="(.*);\d+" replacement="$1;[DURATION REMOVED]"/>
+			</verifyContent>
+		</webtest>
+	</target>
+
+</project>

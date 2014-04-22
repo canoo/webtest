@@ -1,0 +1,41 @@
+<post>
+	<b>The following example illustrates how to use the type
+		<em>parameterRef</em>.
+	</b>
+	<b>Consider a web application that operates in a single session with many similar items, such as an ordering tool.
+		The test stores in the ant properties
+		<em>item.name.0</em>
+		,
+		<em>item.name.1</em>
+		,
+		<em>item.name.2</em>
+		,
+		<em>item.name.3</em>
+		and
+		<em>item.count.0</em>
+		,
+		<em>item.count.1</em>
+		,
+		<em>item.count.2</em>
+		,
+		<em>item.count.3</em>
+		names and count of items to use to fill forms in the test. At some point, the web application calls an applet
+		that shows the state of the order. Webtest must hence pass the six properties to the applet.
+	</b>
+
+	<code caption="parameterRef example">
+		<include src="examples/parameterRefExample.xml"/>
+	</code>
+
+	<b>This example defines the two
+		<em>parameterRef</em> that map ant properties to applet parameters. Their attribute
+		<em>regex</em>
+		defines a regular expression that match the words <em>item.name.</em> or
+		<em>item.count.</em> followed by a group of digits. Their attribute
+		<em>name</em>
+		defines a pattern that starts with the words <em>name.</em> or
+		<em>count.</em> and that ends with the first group of the regular expression, the digits.
+	</b>
+	<b>The applet scenario receives then the eight properties <em>name.0</em> ...  <em>name.3</em> and
+	<em>count.0</em> ... <em>count.3</em>, each one having the value of their corresping ant properties.</b>
+</post>

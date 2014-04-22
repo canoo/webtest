@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" [ <!ENTITY site SYSTEM "WebTestSite.xml"> ] >
+<manpage siteid="Building">
+
+	&site;
+
+	<head title="Building WebTest">
+		<b>This page describes how to build webtest from the sources.
+			The build file included with the source provides a complete and repeatable build process, which the second
+			section explains.
+			The build file is used by the build server to produces high quality deliveries but can, and should, also be
+			used to
+			develop WebTest. It is however convenient during development to build webtest from the comfort of an IDE,
+			and the third section gives a few hints on ow to set-up an IDE.
+		</b>
+	</head>
+
+	<section title="Prerequisites">
+		<dl>
+			<li>
+				<dt>A platform that is able to run Java.</dt>
+			</li>
+			<li>
+				<dt>An installed JDK version 6 or higher.</dt>
+			</li>
+			<li>
+				<dt>Ant, version 1.8.4 or newer.</dt>
+				<dd>The distributions of webtest contain the necessary part from ant 1.8.4 ready to run.</dd>
+			</li>
+		</dl>
+	</section>
+
+
+	<section title="Building WebTest with ant">
+
+		<b>Rebuilding the whole Canoo WebTest from the source may be
+			an option if you want to change it's behavior.
+		</b>
+
+		<b>First, checkout the latest version from the svn repository to
+			<example>&lt;WEBTEST_HOME&gt;</example>
+			:
+		</b>
+		<code>svn co https://svn.canoo.com/trunk/webtest</code>
+		<b>Then call the build script. Depending from your operating system, it may be necessary to fiddle
+			with the execution rights of the scripts in the directory
+			<example>bin/</example>
+			.
+		</b>
+		<b>The main build file in
+			<example>&lt;WEBTEST_HOME&gt;</example>
+			provides the following targets:
+		</b>
+		<dl>
+			<li>
+				<dt>clean</dt>
+				<dd>Deletes (most of) the results of a previous build.</dd>
+			</li>
+			<li>
+				<dt>develop</dt>
+				<dd>Compiles and tests webtest.</dd>
+			</li>
+			<li>
+				<dt>full</dt>
+				<dd>Compiles and tests webtest, then generates all kinds of documentations and reports.
+					<n/>
+					This is the target used by the build server.
+				</dd>
+			</li>
+			<li>
+				<dt>fetchDependencies</dt>
+				<dd>Lets maven fetch all the dependencies described in the pom.
+					This target needs only to be called explicitly if the build will occur offline.
+				</dd>
+			</li>
+		</dl>
+		<b>To generate a complete release, including the documentation, type:</b>
+		<code>
+			cd &lt;WEBTEST_HOME&gt;
+			<n/>
+			bin/webtest.sh full
+		</code>
+		<b>To get a clean build without documentation, type:</b>
+		<code>
+			cd &lt;WEBTEST_HOME&gt;
+			<n/>
+			bin/webtest clean develop
+		</code>
+	</section>
+	<section title="Building with an IDE">
+		<b>As there are too many possible IDEs, this section only outlines how to set-up an IDE.</b>
+		<b>Although webtest build is an ant script, it is taking advantage of
+			<key>Maven</key>
+			's (version 2) declarative
+			definition of dependencies: All dependencies required to build and run webtest are defined in the file
+			<em>pom.xml</em>
+			. The target
+			<em>fetchDependencies</em>
+			of the build script looks at the required dependencies, looks at maven's dependency cache (in the user's
+			home directory) and downloads the dependency jar files from one of the
+			maven repositories to the shared dependency cache.
+		</b>
+		<b>Since the actual dependency jar files are not part of the module, but potentially shared with other unrelated
+			projects, the difficulty is to tell the IDE which jar files it needs and where they are. The easiest
+			solution is to take advantage of maven's various plugins to convert webtest's
+			<em>pom.xml</em>
+			to a project file for an IDE. This requires of course maven (version 2!) to be available on the machine.
+		</b>
+		<b>Note that some dependencies are indeed part of webtest's module: these are jar files for versions that are
+			not (yet?) available on a public maven repository. These jar files are however organized as a local maven
+			repository and accessed like every other dependencies.
+		</b>
+	</section>
+	<section title="IntelliJ IDEA">
+		<b>To create an
+			<em>Idea project</em>, just use:
+		</b>
+		<code>
+			cd &lt;WEBTEST_HOME&gt;
+			<n/>
+			mvn idea:idea
+		</code>
+	</section>
+	<section title="Eclipse">
+		<b>To create an
+			<em>eclipse project</em>, just use:
+		</b>
+		<code>
+			cd &lt;WEBTEST_HOME&gt;
+			<n/>
+			mvn eclipse:eclipse
+		</code>
+		<b>Note that working with the generated project-files in eclipse requires to define a new classpath
+			variable named
+			<em>M2_REPO</em>
+			which leads to your local maven repository. It must be defined under
+			<example>preferences -&gt; java -&gt; build path</example>
+			.
+		</b>
+	</section>
+</manpage>

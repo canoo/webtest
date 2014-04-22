@@ -1,0 +1,8 @@
+# properties for tests in storeProperty.xml
+
+dynProp1=my prop 1
+
+# dynProp2=old value, now as comment
+dynProp2=my second property
+
+dynProp3=my third property

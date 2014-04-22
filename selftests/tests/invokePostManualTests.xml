@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="invoke" default="all" basedir=".">
+
+    <target name="all" depends="invokePost"/>
+
+    <!-- not included in TestSuite because we don't want build
+         to break if 3rd party web service is down -->
+    <!-- could be added to TestSuite if we found a light-weight web
+         service stack for testing purposes (XFire on Jetty?) -->
+    <target name="invokePost">
+        <webtest name="invokePostManualTests: shows SOAP request">
+            &sharedConfiguration;
+            <steps>
+                <invoke method="POST" contentFile="AustralianPostcodeByLocationRequest.xml"
+                    soapAction="http://www.webserviceX.NET/GetAustralianPostCodeByLocation"
+                    url="http://httpwww.webservicex.com/AustralianPostCode.asmx?op=GetAustralianPostCodeByLocation"/>
+                <verifyText text="Karalee"/>
+                <verifyText text="QLD"/>
+                <verifyText text="4306"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

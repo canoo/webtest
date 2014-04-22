@@ -1,0 +1,9 @@
+<webtest name="pdftest - verify encryption strength">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyEncryptionStrength description="Encryption strength"
+      strength="40"/>
+    ...
+  </steps>
+</webtest>

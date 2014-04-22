@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testLocatorOnTable" default="test" basedir=".">
+
+	<target name="test" depends="testLocatorOnTable, testTableLocatorDeprecation"/>
+
+    <target name="testLocatorOnTable">
+        <webtest name="tableLocator: Locating cells in tables">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="tableTest mode of the test servlet"
+                    url="${start.page}?mode=tableTest"/>
+                <verifyTitle description="verify page"
+                    text="TableTest"/>
+                <verifyElement description="table expected"
+                    type="table"
+                    text="test"/>
+                <verifyText description="verify text of located cell"
+                    text="1:1">
+                    <table row="1" column="1" htmlid="test"/>
+                </verifyText>
+                <not description="negative test if table not found">
+                    <verifyText description="unknown table"
+                        text="makes no difference">
+                        <table row="1" column="1" htmlid="unknown"/>
+                    </verifyText>
+                </not>
+                <not description="negative test if cell not found">
+                    <verifyText description="unknown cell indizes"
+                        text="makes no difference">
+                        <table row="3" column="3" htmlid="test"/>
+                    </verifyText>
+                </not>
+                <not description="negative test if text is wrong">
+                    <verifyText description="test for text content fails"
+                        text="some wrong text">
+                        <table row="1" column="1" htmlid="test"/>
+                    </verifyText>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testTableLocatorDeprecation">
+		<property name="row" value="1"/>
+		<property name="col" value="1"/>
+		<webtest name="tableLocator: test deprecated id attribute">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="tableTest mode of the test servlet"
+                    url="${start.page}?mode=tableTest"/>
+                <verifyText description="verify text of located cell"
+                    text="1:1">
+                    <table row="${row}" column="${col}" id="test"/>
+                </verifyText>
+            </steps>
+        </webtest>
+    </target>
+</project>

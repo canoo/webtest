@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+<!--
+Used by a webtest in antWrapper.xml to test use of <ant file="..." target="..."/> to externalize steps
+-->
+
+<project name="testAntWrapper" default="full" basedir=".">
+
+	<target name="fillFormAndSubmit" description="called from within a webtest with parameters">
+		<setInputField name="myTextField" value="${fieldValue}"/>
+		<clickButton name=""/>
+	</target>
+</project>

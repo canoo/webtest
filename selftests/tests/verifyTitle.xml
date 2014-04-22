@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testTitle" default="testTitle" basedir=".">
+
+    <target name="testTitle">
+        <webtest name="verifyTitle: Show how title tag can be tested">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Open main page of selftest webapp"
+                    url="${start.page}"/>
+                <verifyTitle description="test against fully constant title"
+                    text="Canoo WebTest"/>
+                <verifyTitle description="test against partly constant title"
+                    text=".*WebTest.*"
+                    regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

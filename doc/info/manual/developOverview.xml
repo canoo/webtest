@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" [ <!ENTITY site SYSTEM "WebTestSite.xml"> ] >
+
+<manpage siteid="Develop Overview">
+
+    &site;
+
+    <head title="Develop Overview">
+        <b>This section presents information relevant to change and build webtest.
+            It is optional and only for advanced users.</b>
+    </head>
+
+    <section title="Contents">
+        <dl>
+            <li>
+                <dt>
+                    <pageref name="Building"/>
+                </dt>
+                <dd>A short summary of the steps needed to build webtest.
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <pageref name="Repository"/>
+                </dt>
+                <dd>A description of the layout of the svn repository.
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <pageref name="Release"/>
+                </dt>
+                <dd>Outlines how to wrap-up a WebTest release
+                </dd>
+            </li>
+        </dl>
+    </section>
+
+</manpage>

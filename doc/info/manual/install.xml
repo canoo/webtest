@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd"
+		[
+				<!ENTITY site SYSTEM "WebTestSite.xml">
+				]
+		>
+<!-- you can use the comment area to temporarily disable the entity description above
+ -->
+
+<manpage siteid="Install">
+
+	&site;
+
+	<head title="Installing WebTest">
+
+	</head>
+
+	<section title="Prerequisites">
+		<dl>
+			<li>
+				<dt>A platform that is able to run Java.</dt>
+			</li>
+			<li>
+				<dt>An installed JDK version 6 or higher.</dt>
+			</li>
+			<li>
+				<dt>Ant version 1.8.4 or newer (optional)</dt>
+				<dd>WebTest's distribution contains the necessary part from ant 1.8.4 ready to run</dd>
+			</li>
+			<li>
+				<dt>A tool to unzip.</dt>
+			</li>
+		</dl>
+	</section>
+
+	<section title="Download">
+		<b>Download the latest build from: <pageref name="Downloads"/>.</b>
+		<b>Extract it to a directory of your choice. We refer to that directory as your <em>WebTest home</em>.
+		</b>
+	</section>
+
+	<section title="Configure system path">
+		<b>The sub-directory <example>lib/</example> of your <em>WebTest home</em> contains all the java libraries that make up WebTest's runtime.
+			The sub-directory <example>bin/</example> of your <em>WebTest home</em> contains shell scripts for Unix and Windows that start WebTest from
+			<example>lib/</example>.
+		</b>
+		<b>Set your path to run WebTest with one of the provided shell scripts:</b>
+		<dl>
+			<li>
+				<dt>On Windows</dt>
+				<dd>Add the <example>bin/</example> directory of your <em>WebTest home</em>
+					to your path, by opening up the System Properties (WinKey + Pause), selecting the
+					<em>Advanced</em>
+					tab, and the
+					<em>Environment Variables</em>
+					button, then editing the
+					<example>PATH</example>
+					variable in the <em>user variables</em>.<n/>
+					For example:<n/>
+					<example>"C:\Program Files\Webtest\bin";%PATH%</example>
+				</dd>
+			</li>
+			<li>
+				<dt>Unix-based Operating Systems</dt>
+				<dd>Add the <example>bin/</example> directory of your <em>WebTest home</em>
+					to your <example>PATH</example>.<n/>
+					For example:
+					<n/>
+					<example>setenv PATH ${PATH}:/usr/local/webtest/bin</example>
+					in
+					<example>.login</example>
+					(tcsh)<n/>
+					or<n/>
+					<example>export PATH=${PATH}:/usr/local/webtest/bin</example>
+					in
+					<example>.bashrc</example>
+					(bash).
+				</dd>
+			</li>
+		</dl>
+	</section>
+
+	<section title="Create a new WebTest project">
+		<b>WebTest contains a utility script able to create a new project with some examples ready to run.</b>
+		<b>Open a new shell and type:</b>
+		<code>
+			C:\&gt; webtest -f path\to\webtest\home\webtest.xml wt.createProject
+		</code>
+<b>(For shell users, the command name is <em>webtest.sh</em> instead of <em>webtest</em>)</b>
+
+		<b>You will be asked for the name of the new project to create. If you just hit [enter] the 
+		default name <example>myWebTestProject</example> will be used;</b>
+		<code>
+		C:\&gt; webtest -f WebTest\webtest.xml wt.createProject<n/>
+Buildfile: WebTest\webtest.xml<n/>
+<n/>
+wt.init:<n/>
+<n/>
+wt.createProject:<n/>
+    [input] Enter your WebTest project name: [myWebTestProject]<n/>
+<n/>
+     [echo]<n/>
+     [echo] Your WebTest project &gt;myWebTestProject&lt; has been successfully created with some demo<n/>
+     [echo] tests to get started.<n/>
+     [echo] You can now just go to &gt;c:\myWebTestProject&lt; and run ant.<n/>
+     [echo]<n/>
+<n/>
+BUILD SUCCESSFUL<n/>
+Total time: 7 seconds<n/>
+</code>
+
+	</section>
+
+	<section title="Run the demo tests">
+
+		<b>Your newly created project contains some web tests ready to run that you can use as templates. 
+		You can run them just by moving to the project directory and calling:</b>
+		<code>
+			C:\myWebTestProject&gt; webtest
+		</code>
+		<b>(if you're behind a proxy, edit the <example>build.xml</example> file to configure the proxy connection)</b>
+
+		<b>
+		You should see some activity in the shell window and after a few seconds something like:
+		</b>
+<code>
+....<n/>
+wt.openResultFile:<n/>
+     [echo] Opening result file C:\myWebTestProject\results\webtestResults.html with cmd<n/>
+<n/>
+wt.full:<n/>
+<n/>
+BUILD SUCCESSFUL<n/>
+Total time: 16 seconds<n/>
+</code>
+		<b>and an html report file like this one should be displayed in your favorite browser:
+		<img src="images/reportDemoTests.png"/>
+		</b>
+	</section>
+
+</manpage>

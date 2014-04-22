@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<antlib>
+    <XDtClass:forAllClasses type="org.apache.tools.ant.Task">
+        <XDtClass:ifIsClassNotAbstract>
+            <XDtClass:ifHasClassTag tagName="webtest.step" paramName="name" superclass="false">
+  <taskdef name="<XDtClass:classTagValue tagName='webtest.step' paramName='name'/>" classname="<XDtClass:fullClassName/>"/>
+            </XDtClass:ifHasClassTag>
+        </XDtClass:ifIsClassNotAbstract>
+    </XDtClass:forAllClasses>
+</antlib>

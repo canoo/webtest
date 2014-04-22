@@ -1,0 +1,9 @@
+<webtest name="pdftest - decrypt document">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfDecryptDocument description="Decrypt document"
+      password="mymaster"/>
+    ...
+  </steps>
+</webtest>

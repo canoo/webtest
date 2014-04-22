@@ -1,0 +1,12 @@
+<steps>
+    <invoke url="testDocLinks.pdf"/>
+    <pdfVerifyLink text=".*external.*" regex="true"/>
+    <pdfVerifyLink href="#top"/>
+    <not description="expect to fail: unknown link">
+        <pdfVerifyLink text="into the unknown" />
+    </not>
+    <invoke url="Bookmarks.pdf"/>
+    <not description="expect to fail: document has no links">
+        <pdfVerifyLink text=".*" regex="true" />
+    </not>
+</steps>

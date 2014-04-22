@@ -1,0 +1,42 @@
+<post>
+	<b>
+ The attribute
+		<kbd>accept</kbd> follows a subset of the description of the http-accept header in RFC 2616,
+ simplifying it where possible:
+		<n/>
+ The attribute value takes one or more
+		<em>media-range</em>, separated by a semi-colon.
+		<n/>
+ A media-range is a pair of mime
+		<em>type</em> and
+		<em>subtype</em> separated by a slash.
+ The special subtype
+		<kbd>*</kbd> accepts all of subtypes of the named type,
+ and the special media-range
+		<kbd>*/*</kbd> accepts any mime-type.
+	</b>
+	<b>The most simple usage of
+		<em>&lt;verifyLinkedContent&gt;</em> is to make sure that the server returns all resources.
+		Note that the simple xpath selects the <em>resources</em> to verify.
+	</b>
+
+	<code caption="Verify the existence of all stylesheet">
+		<include src='examples/verifyLinkedContentExample1.xml'/>
+	</code>
+
+	<b>In a middle level,
+		<em>&lt;verifyLinkedContent&gt;</em> can also enforce the mime-type returned by the server.
+	</b>
+
+	<code caption="Verify the existence and the mime-type of all stylesheet">
+		<include src='examples/verifyLinkedContentExample2.xml'/>
+	</code>
+
+	<b>In an example of advanced usage, the xpath selects all images in the page and makes sure
+ that the images are either gif or png.
+	</b>
+
+	<code caption="Verify the existence and the mime-type of all images">
+		<include src='examples/verifyLinkedContentExample3.xml'/>
+	</code>
+</post>

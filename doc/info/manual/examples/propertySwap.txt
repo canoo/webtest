@@ -1,0 +1,18 @@
+<steps>
+..
+    <!-- assumes defaultpropertytype not set in config -->
+    <storeProperty
+        description="convert dynamic to Ant"
+        name="ant_prop"
+        propertyType="ant"
+        value="#{dyn_prop}"/>
+    <storeProperty
+        description="convert Ant to dynamic"
+        name="dyn_prop"
+        value="${ant_prop}"/>
+    <storeProperty
+        description="convert combination to dynamic"
+        name="dyn_prop2"
+        value="text_mixed_with_${ant_prop}_and_#{dyn_prop1}"/>
+..
+</steps>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+    "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+
+<web-app>
+	<display-name>Selftest</display-name>
+
+	<servlet>
+		<servlet-name>form</servlet-name>
+		<servlet-class>com.canoo.webtest.self.FormTestServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>soap</servlet-name>
+		<servlet-class>com.canoo.webtest.self.SoapSimulatorServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>form</servlet-name>
+		<url-pattern>/formTest</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>soap</servlet-name>
+		<url-pattern>/soapTest</url-pattern>
+	</servlet-mapping>
+
+	<mime-mapping>
+		<extension>css</extension>
+		<mime-type>text/css</mime-type>
+	</mime-mapping>
+
+	<mime-mapping>
+		<extension>png</extension>
+		<mime-type>image/png</mime-type>
+	</mime-mapping>
+
+	<mime-mapping>
+		<extension>xml</extension>
+		<mime-type>text/xml</mime-type>
+	</mime-mapping>
+
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Protected Page</web-resource-name>
+            <url-pattern>/passwordDummy.html</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>dummyRole</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
+
+    <security-role>
+        <role-name>dummyRole</role-name>
+    </security-role>
+
+</web-app>

@@ -1,0 +1,16 @@
+<webtest name="Timed Group Example">
+    <config ... />
+    <steps>
+        <timedGroup description="performance test" maxSeconds="1">
+            ...      <!-- nested steps which performace some lengthy task
+                          and must take no more than 1 second to execute -->
+        </timedGroup>
+        <group ...>
+            ...      <!-- non time-critical steps could go here -->
+        </group>
+        <timedGroup description="load/stress test" maxMillis="500">
+            ...      <!-- nested steps which stress the system and must
+                          take no more than 1/2 second to execute -->
+        </timedGroup>
+    </steps>
+</webtest>

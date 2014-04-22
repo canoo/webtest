@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testRepeat" default="all" basedir=".">
+
+    <target name="all">
+        <antcall target="dynPropertiesExtension"/>
+        <antcall target="testRepeat"/>
+        <antcall target="testAntLoopCounter"/>
+        <antcall target="testAntStrictLoopCounter"/>
+        <antcall target="testRepeatAndGroup"/>
+        <antcall target="testRepeatXPath"/>
+    </target>
+
+    <target name="testRepeat">
+        <webtest name="repeat: Show usage of the repeat step">
+            &sharedConfiguration;
+            <steps>
+
+                <repeat description="simple invocation with parameter"
+                        count="2">
+                    <invoke description="Repetitive step" url="${start.page}?mode=buttonTest&amp;xxx=#{count}"/>
+                </repeat>
+
+                <repeat description="multiple contained steps with parameter"
+                        count="2">
+                    <invoke description="Repetitive invocation - step 1"
+                            url="${start.page}?mode=buttonTest&amp;xxx=#{count}"/>
+                    <invoke description="Repetitive invocation - step 2"
+                            url="${start.page}?mode=buttonTest&amp;xxx=#{count}"/>
+                </repeat>
+
+                <repeat description="0 repetitions (do not execute contained steps)"
+                        count="0">
+                    <invoke description="buttonTest mode of the test servlet" url="XXXX"/>
+                </repeat>
+
+                <repeat description="nested repeat with custom countername (outer loop)"
+                        count="2"
+                        counterName="rows">
+                    <repeat description="inner loop"
+                            count="2"
+                            counterName="columns">
+                        <invoke description="buttonTest mode of the test servlet"
+                                url="${start.page}?mode=buttonTest&amp;x=#{columns}&amp;y=#{rows}"/>
+                    </repeat>
+                </repeat>
+
+                <!-- Test dynamic property expansion in nested steps -->
+
+
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testAntLoopCounter">
+        <antcall target="testAntLoopCounterImpl">
+            <param name="webtest.defaultpropertytype" value="ant"/>
+        </antcall>
+    </target>
+
+    <target name="testAntLoopCounterImpl">
+        <webtest name="repeat: repeat step using ant for defaultPropertyType">
+            &sharedConfiguration;
+            <steps>
+                <repeat description="simple invocation with parameter"
+                        count="2">
+                    <invoke description="Repetitive step" url="${start.page}?mode=buttonTest&amp;xxx=#{count}"/>
+                </repeat>
+            </steps>
+        </webtest>
+        <echo message="${count}"/>
+    </target>
+
+    <target name="testAntStrictLoopCounter">
+        <antcall target="testAntStrictLoopCounterImpl">
+            <param name="webtest.defaultpropertytype" value="antstrict"/>
+        </antcall>
+    </target>
+
+    <target name="testAntStrictLoopCounterImpl">
+        <webtest name="repeat: repeat step using antstrict for defaultPropertyType">
+            &sharedConfiguration;
+            <steps>
+                <repeat description="simple invocation with parameter"
+                        count="2">
+                    <invoke description="Repetitive step" url="${start.page}?mode=buttonTest&amp;xxx=#{count}"/>
+                </repeat>
+            </steps>
+        </webtest>
+        <echo message="${count}"/>
+    </target>
+
+    <target name="testRepeatAndGroup">
+        <webtest name="repeat: WT-153, repeat step with embedded group">
+            &sharedConfiguration;
+            <steps>
+                <repeat count="2">
+                    <scriptStep language="groovy" description="outer">assert true</scriptStep>
+                    <group>
+                        <scriptStep language="groovy" description="inner">assert true</scriptStep>
+                    </group>
+                </repeat>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="dynPropertiesExtension">
+        <webtest name="repeat: test property extension (WT-239)">
+            &sharedConfiguration;
+            <steps>
+            	<invoke url="repeat.jsp?counter=0" description="get repeat test page"/>
+				<verifyXPath xpath="//div/text()" text="foo 0, 0"/>
+	            <repeat count="2">
+					<repeat count="2" counterName="inner_loop">
+						<verifyXPath xpath="//div/text()" text="foo #{count}, #{inner_loop}"/>
+						<clickLink htmlId="testLink" description="click link to next page"/>
+					</repeat>
+				</repeat>
+				<verifyXPath xpath="//div/text()" text="foo 2, 0"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testRepeatXPath">
+        <webtest name="repeat: test repeat with XPath (WT-239)">
+            &sharedConfiguration;
+            <steps>
+            	<invoke url="repeat.jsp" description="get repeat test page"/>
+            	<not description="ensure that this not already true and therefore a right goal for the test">
+            		<verifyText text="Link from this section clicked until now: 1stLink 2ndLink 3rdLink"/>
+            	</not>
+            	
+	            <repeat xpath="//*[@id = 'testRepeatXPath']//a" counterName="curLink" description="repeat on links from the bottom section">
+					<clickLink xpath="$curLink" description="click the link by selecting directly the node from the variable context"/>
+				</repeat>
+				<verifyText text="Link from this section clicked until now: 1stLink 2ndLink 3rdLink"/>
+            </steps>
+        </webtest>
+    </target>
+</project>

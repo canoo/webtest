@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<overview>
+	<folder name="001_SampleUseShowHow">
+		<summary duration='825' starttime='Fri Nov 09 11:31:47 CET 2007'
+			name='sampleUse: Show how to use Canoo WebTest plainly' successful='yes'>
+			<topsteps total='16' notexecuted='0' failed='0' successful='16'></topsteps>
+			<steps total='16' notexecuted='0' failed='0' successful='16'></steps>
+			<timingprofile number='7' average='103'>
+				<range to='1' number='7' from='0'></range>
+				<range to='3' number='0' from='1'></range>
+				<range to='5' number='0' from='3'></range>
+				<range to='10' number='0' from='5'></range>
+				<range to='30' number='0' from='10'></range>
+				<range number='0' from='30'></range>
+			</timingprofile>
+		</summary>
+	</folder>
+	<folder name="002_InvokeNormalInvo">
+		<summary duration='248' starttime='Fri Nov 09 11:31:47 CET 2007' name='invoke: normal invocation' successful='no'>
+			<topsteps total='2' notexecuted='0' failed='1' successful='2'></topsteps>
+			<steps total='3' notexecuted='0' failed='1' successful='2'></steps>
+			<timingprofile number='2' average='123'>
+				<range to='1' number='2' from='0'></range>
+				<range to='3' number='0' from='1'></range>
+				<range to='5' number='0' from='3'></range>
+				<range to='10' number='0' from='5'></range>
+				<range to='30' number='0' from='10'></range>
+				<range number='0' from='30'></range>
+			</timingprofile>
+		</summary>
+	</folder>
+	<folder name="003_InvokeShowsThatI">
+		<summary duration='25' starttime='Fri Nov 09 11:31:48 CET 2007'
+			name='invoke: shows that invoke accepts a complete url ignoring config settings' successful='yes'>
+			<topsteps total='2' notexecuted='0' failed='0' successful='2'></topsteps>
+			<steps total='2' notexecuted='0' failed='0' successful='2'></steps>
+			<timingprofile number='1' average='25'>
+				<range to='1' number='1' from='0'></range>
+				<range to='3' number='0' from='1'></range>
+				<range to='5' number='0' from='3'></range>
+				<range to='10' number='0' from='5'></range>
+				<range to='30' number='0' from='10'></range>
+				<range number='0' from='30'></range>
+			</timingprofile>
+		</summary>
+	</folder>
+</overview>

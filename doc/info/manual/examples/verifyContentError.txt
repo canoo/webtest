@@ -1,0 +1,8 @@
+<log>
+**** The last response and the expected file 'expected/expectedDummyWithChanges.html' differ.
+The differences are:
+[3] >> <title>Dummy</title>
+[3] << <title>Dummy with Changes</title>
+[7] >> Dummy page
+[7] << Altered Dummy page
+</log>

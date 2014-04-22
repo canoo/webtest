@@ -1,0 +1,11 @@
+<webtest name="cookie: visit count test example">
+    <config ...>
+        <header name="Cookie" value="visitCount=100"/>
+    </config>
+    <steps>
+        <invoke description="expect cookie-based counter to be 100" url="visitCount.jsp"/>
+        <verifyTitle description="confirm correct page" regex="true" text="Visit Counter.*" />
+        <verifyCookie description="cookie-based counter should have been incremented from preset value"
+            name="visitCount" text="101" />
+    </steps>
+</webtest>

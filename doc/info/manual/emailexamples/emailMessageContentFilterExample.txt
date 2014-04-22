@@ -1,0 +1,31 @@
+<steps>
+    <emailSetConfig .../>
+
+    <!-- plain message -->
+    <emailStoreMessageId subject="mailtest - multifiles - plain"
+        property="mid1" .../>
+    <emailMessageContentFilter save="plain" messageId="#{mid1}" />
+    <!-- text of message becomes current content -->
+    <verifyText text="plain body text"/>
+
+    <!-- MIME message -->
+    <emailStoreMessageId subject="mailtest - multifiles - mime"
+        property="mid2" .../>
+    <storeLength property="ok.gif.length">
+        <!-- attachment will become available to storeLength and
+             contentType will be checked against supplied value -->
+        <emailMessageContentFilter messageId="#{mid2}"
+            contentType="image/gif; name=ok.gif" partIndex="1"/>
+    </storeLength>
+
+    <!-- uuencoded message -->
+    <emailStoreMessageId subject="mailtest - multifiles - uu"
+        property="mid3" .../>
+    <storeLength property="ok.gif.length">
+        <!-- attachment will become available to storeLength and
+             contentType will be set to supplied value -->
+        <emailMessageContentFilter messageId="#{mid3}"
+            contentType="image/gif" partIndex="0"/>
+    </storeLength>
+
+</steps>

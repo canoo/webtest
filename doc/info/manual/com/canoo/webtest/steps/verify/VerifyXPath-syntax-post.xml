@@ -1,0 +1,12 @@
+<post>
+
+    <code>
+        <include src='examples/verifyxpathExample1.xml'/>
+    </code>
+
+    <b>
+        <em>See also</em>: the <stepref name="storeXPath"/> and <stepref name="selectForm"/> steps.
+    </b>
+
+</post>
+

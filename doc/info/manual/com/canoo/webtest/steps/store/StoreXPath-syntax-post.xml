@@ -1,0 +1,12 @@
+<post>
+
+    <b>The following example extracts the <em>href</em> attribute from the first anchor
+    element and uses it for the following <em>invoke</em>.</b>
+
+    <code caption="storeXPath example">
+        <include src='examples/storexpathExample.xml'/>
+    </code>
+
+    <b><em>See also</em>: the <stepref name="verifyXPath"/> step.</b>
+
+</post>

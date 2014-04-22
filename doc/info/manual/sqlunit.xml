@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" [
+        <!ENTITY site SYSTEM "WebTestSite.xml">
+        ]>
+
+<manpage siteid="SQLUnit Integration">
+
+    &site;
+
+    <head title="SQLUnit Integration">
+        <b>
+            <key>sqlunit</key>
+            is a technology for testing databases. It can be used for testing stored procedures
+            within a database or if you have a data-driven website, it can be used in conjunction
+            with WebTest to ensure that the web and database parts of the application are working well together.
+        </b>
+
+        <b>Here are some sample scenarios where
+            <key>sqlunit</key>
+            may be useful for your WebTest-tested applications:
+        </b>
+
+        <dl>
+            <li>
+                <dt>Integration Test Pre-condition Checking</dt>
+                <dd>You might be about to call a WebTest test
+                    which assumes a particular user is already valid within your system. <key>sqlunit</key> could help
+                    you check a precondition such as the user exists and is not disabled.</dd>
+            </li>
+            <li>
+                <dt>Integration Test Post-condition Checking</dt>
+                <dd>You can check integration between your web application and your
+                    model. E.g. create a new user using a form driven via WebTest and then
+                    check that the newly created user now exists in the database.</dd>
+            </li>
+            <li>
+                <dt>Database Data Manipulation and/or Cleanup</dt>
+                <dd>You may wish to run some tests using temporary data. You could create a user
+                    using <key>sqlunit</key>, run your WebTest steps, then remove the user again with <key>sqlunit</key>.</dd>
+            </li>
+        </dl>
+
+        <b>
+            <key>sqlunit</key>
+            supports several reporting formats including an XML format compatible
+            with WebTest's reporting format, so you can happily mix the two tools and generate combined
+            reporting.
+        </b>
+
+        <b>Here is an example of how you might invoke the <key>sqlunit</key> selftests (using WebTest formatting) from the command-line:</b>
+
+        <code caption='SQLUnit Command-line example'>
+        ant sqlunit-nested canoo2html -Dtestdir=mock -Dlog.format=canoo -Doutput.file=results.xml -Dwebtest.style=WebTestReport
+        </code>
+
+        <b>Here is an example of what the resulting report might look like:</b>
+
+        <b><img src="images/sqlunit.jpg"/></b>
+
+        <b>Here is an example of how you might use the <key>sqlunit</key> ant task from within your WebTest file:</b>
+
+        <code caption='SQLUnit Ant Task example'>
+            <include src='integrationexamples/sqlunitAntExample.xml'/>
+        </code>
+
+        <b>Here is an example of what your <key>sqlunit</key> test file might look like:</b>
+
+        <code caption='SQLUnit Ant Task example'>
+            <include src='integrationexamples/sqlunitTest.xml'/>
+        </code>
+
+    </head>
+</manpage>

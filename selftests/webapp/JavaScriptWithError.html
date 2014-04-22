@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<body>
+<h1>Buggy JavaScript</h1>
+<p>
+<script type="text/javascript">
+<!--
+  var reply = "answer";
+  var var="42"; // illegal use of keyword as variable name
+  document.write("The " + reply + " is: " + var);
+// -->
+</script>
+</p>
+</body>
+</html>

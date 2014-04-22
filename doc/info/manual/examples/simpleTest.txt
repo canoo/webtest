@@ -1,0 +1,16 @@
+<project name="SimpleTest" basedir="." default="wt.full">
+
+	<property name="webtest.home" location="C:/java/webtest" />
+	<import file="${webtest.home}/webtest.xml"/>
+
+	<target name="wt.testInWork">
+		<webtest name="my simple Test">
+			<invoke
+				url="http://www.myserver.com:8080/myApp/login"
+				description="get Login Page" />
+			<verifyTitle 
+				text="Login Page"
+				description="we should see the login title" />
+		</webtest>
+	</target>
+</project>

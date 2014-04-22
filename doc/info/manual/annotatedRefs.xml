@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" [
+<!ENTITY site                       SYSTEM "WebTestSite.xml">
+]>
+
+<manpage siteid="Annotated References">
+
+&site;
+
+<head title="Annotated References">
+<b>Some annotated references related to WebTest.</b>
+</head>
+
+	<section title="Annotated References"/>
+
+</manpage>

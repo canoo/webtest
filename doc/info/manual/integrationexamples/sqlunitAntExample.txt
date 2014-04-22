@@ -1,0 +1,27 @@
+...
+<taskdef name="sqlunit" classname="net.sourceforge.sqlunit.ant.SqlunitTask"/>
+...
+<!-- Testing SQLUnit using flat form of sqlunit call -->
+<target name="sqlunit-flat">
+   <sqlunit testfile="${testfile}" haltOnFailure="true" debug="${debug}"
+         logfile="${result.file}" logformat="${log.format}" />
+</target>
+
+<!-- Testing SQLUnit using nested form of sqlunit call -->
+<target name="sqlunit-nested">
+   <sqlunit haltOnFailure="false" debug="${debug}"
+         logfile="${result.file}" logformat="${log.format}">
+      <fileset dir="${test.dir}/${testdir}">
+         <include name="**/*.xml" />
+      </fileset>
+    </sqlunit>
+</target>
+...
+<!-- reporting -->
+<target name="canoo2html">
+   <delete file="${output.dir}/${output.file}.html" />
+   <xslt in="${result.file}"
+         out="${output.dir}/${output.file}.html"
+         style="${etc.dir}/${webtest.style}.xsl" />
+</target>
+...

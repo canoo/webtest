@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../WebTest.dtd">
+
+<project name="Debug" default="main" basedir=".">
+
+    <!--
+        Use  system property setting javax.net.debug=all to debug the SSL handshaking. Be careful to ensure
+        that ant recognizes the setting as system property and not as program argument!
+    -->
+
+    <property file="../../../server.properties"/>
+    <property name="report.path" value="${resultpath}" />
+    <property name="resultfile" value="sslTest.xml"/>
+    <property name="resultfile.html" value="sslTest.html"/>
+    <property name="style" value="../reportFromSummary.xsl"/>
+
+    <taskdef name="testSpec" classname="com.canoo.webtest.ant.TestSpecificationTask">
+		<classpath>
+            <pathelement location="../../../classes"/>
+			<fileset dir="../../.." includes="lib/*.jar"/>
+		</classpath>
+	</taskdef>
+
+    <target name="main" depends="cleanup,debug,report" />
+
+    <target name="debug" description="The current test/debug sequence">
+
+        <antcall target="connectHttpsNoClientAuthentication" />
+        <antcall target="connectHttpsWithClientAuthentication" />
+
+    </target>
+
+    <target name="connectHttpsNoClientAuthentication">
+
+        <property name="serverport" value="0" />
+
+        <!-- initial positive test with all settings correct -->
+        <property name="webtest.connectioninitializer" value="com.canoo.webtest.security.SunJsseBaseConnectionInitializer" />
+
+        <antcall target="verifyUser">
+            <param name="userAlias" value="user1" />
+            <param name="userName" value="no prinicipal" />
+            <param name="webtest.truststore.file" value="certs/trust.keystore" />
+        </antcall>
+
+        <!-- negative test with empty trust store (host is not trusted)-->
+        <antcall target="verifyUserFail">
+            <param name="userAlias" value="user1" />
+            <param name="userName" value="no prinicipal" />
+            <param name="webtest.truststore.file" value="certs/emptyTrust.keystore" />
+        </antcall>
+
+    </target>
+
+    <target name="connectHttpsWithClientAuthentication">
+
+        <property name="serverport" value="9091" />
+
+        <property name="webtest.connectioninitializer" value="com.canoo.webtest.security.SunJsseClientAuthConnectionInitializer" />
+        <property name="webtest.truststore.file" value="certs/trust.keystore" />
+        <property name="webtest.keystore.file" value="certs/client.keystore" />
+        <property name="webtest.keystore.passphrase" value="client" />
+
+        <antcall target="verifyUser">
+            <param name="userAlias" value="user1" />
+            <param name="userName" value="user1" />
+        </antcall>
+
+        <antcall target="verifyUser">
+            <param name="userAlias" value="user2" />
+            <param name="userName" value="user2" />
+        </antcall>
+
+        <antcall target="verifyUser">
+            <param name="userAlias" value="user3" />
+            <param name="userName" value="user3" />
+        </antcall>
+
+        <antcall target="verifyUserFail">
+            <param name="userAlias" value="user4" />
+            <param name="userName" value="user4" />
+        </antcall>
+
+    </target>
+
+    <target name="connectHttpsWithNewClientAuthentication">
+
+        <property name="serverport" value="9091" />
+
+        <property name="wt.config.sslKeyStore" value="certs/client.keystore" />
+        <property name="wt.config.sslKeyStorePassword" value="client" />
+        <property name="wt.config.useInsecureSSL" value="true" />
+
+        <antcall target="verifyUser">
+            <param name="userAlias" value="user1" />
+            <param name="userName" value="user1" />
+        </antcall>
+
+        <antcall target="verifyUser">
+            <param name="userAlias" value="user2" />
+            <param name="userName" value="user2" />
+        </antcall>
+
+        <antcall target="verifyUser">
+            <param name="userAlias" value="user3" />
+            <param name="userName" value="user3" />
+        </antcall>
+
+        <antcall target="verifyUserFail">
+            <param name="userAlias" value="user4" />
+            <param name="userName" value="user4" />
+        </antcall>
+
+    </target>
+
+    <target name="verifyUser">
+        <echo message="verifyUser(alias=&quot;${userAlias}&quot; name=&quot;${userName}&quot;)" />
+        <property name="webtest.keystore.alias" value="${userAlias}" />
+        <testSpec name="click image button" >
+			<config
+                host="localhost"
+                port="${serverport}"
+                protocol="https"
+                basepath="webtest"
+                saveresponse="true"
+                resultpath="${resultpath}"
+                resultfile="${resultfile}"
+                haltonfailure="true"
+                haltonerror="true"
+                showhtmlparseroutput="true"/>
+			<steps>
+				<invoke description="Access a https site"
+                    url="CertSnoop" />
+                <verifyText text="${userName}" />
+            </steps>
+        </testSpec>
+	</target>
+
+    <target name="verifyUserFail">
+        <echo message="verifyUserFail(alias=&quot;${userAlias}&quot; name=&quot;${userName}&quot;)" />
+        <property name="webtest.keystore.alias" value="${userAlias}" />
+        <testSpec name="invoke secure page" >
+			<config
+                host="localhost"
+                port="${serverport}"
+                protocol="https"
+                basepath="webtest"
+                saveresponse="true"
+                resultpath="${resultpath}"
+                resultfile="${resultfile}"
+                haltonfailure="true"
+                haltonerror="true"
+                showhtmlparseroutput="true"/>
+			<steps>
+                <not>
+				<invoke description="Access a https site"
+                    url="CertSnoop" />
+                </not>
+            </steps>
+        </testSpec>
+
+	</target>
+
+    <target name="cleanup">
+        <delete file="${resultpath}/${resultfile}" />
+    </target>
+
+	<target name="report">
+        <copy file="../report.css" todir="${report.path}"/>
+        <tstamp>
+            <format property="report.time" pattern="dd.MM.yyyy hh:mm:ss"/>
+        </tstamp>
+        <ant antfile="../ApplyXSL.xml" target="applySingle" />
+     </target>
+
+</project>

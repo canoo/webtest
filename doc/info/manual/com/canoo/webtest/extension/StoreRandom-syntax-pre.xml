@@ -1,0 +1,18 @@
+<pre>
+    <b>
+        Maintaining test data can be one of the biggest challenges
+        with keeping a test suite relevant and not too brittle as
+        environments, requirements and external factors change. Random
+        data provides another valuable tool to assist in maintaining test
+        data in complex systems.
+    </b>
+    <b>
+        Care must be exercised when using random data. If selecting test
+        data by hand, careful choices can be made to ensure that boundary
+        cases are covered by tests. Using purely random data may make this
+        harder to do. Having said that, random data
+        can simplify build scripts, can reduce the risk that poor
+        test cases are chosen and lends itself to being suitable for
+        load or stress testing with different data in multiple test runs.
+    </b>
+</pre>

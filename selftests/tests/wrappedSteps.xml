@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="wrappedSteps" default="allTests" basedir=".">
+
+	<macrodef name="clickButtonAndVerifyInputField">
+		<attribute name="buttonName" />
+		<attribute name="fieldName" />
+		<attribute name="fieldvalue" />
+		<sequential>
+			<clickButton name="@{buttonName}" />
+			<verifyInputField name="@{fieldName}"
+					value="@{fieldValue}" />
+			<not>
+				<verifyInputField name="@{fieldName}"
+						value="@{fieldValue}X" />
+				<verifyInputField name="@{fieldName}"
+						value="@{fieldValue}Y" />
+			</not>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="startAndClickButtonAndVerifyInputField">
+		<attribute name="buttonName" />
+		<attribute name="fieldName" />
+		<attribute name="fieldvalue" />
+		<sequential>
+			<invoke url="clickButton.jsp" />
+			<clickButtonAndVerifyInputField
+					buttonName="imageButton0" fieldName="lastForm" fieldValue="form1" />
+		</sequential>
+	</macrodef>
+
+	<target name="allTests" depends="testSimpleAntWrapper, testAntWrapperWithMacro, testDirectMacro, testSubMacro" />
+
+	<target name="testSimpleAntWrapper">
+		<webtest name="wrappedSteps: Test AntWrapper">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="clickButton.jsp" />
+				<antWrapper>
+					<clickButton name="imageButton0" />
+					<verifyInputField name="lastForm"
+						value="form1" />
+				</antWrapper>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testAntWrapperWithMacro">
+		<webtest name="wrappedSteps: Test AntWrapper with macro">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="clickButton.jsp" />
+				<antWrapper>
+					<clickButtonAndVerifyInputField
+					buttonName="imageButton0" fieldName="lastForm" fieldValue="form1" />
+				</antWrapper>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testDirectMacro">
+		<webtest name="wrappedSteps: Test macro without AntWrapper">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="clickButton.jsp" />
+				<clickButtonAndVerifyInputField
+					buttonName="imageButton0" fieldName="lastForm" fieldValue="form1" />
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testSubMacro">
+		<webtest name="wrappedSteps: Test nested macros">
+			&sharedConfiguration;
+			<steps>
+				<startAndClickButtonAndVerifyInputField
+					buttonName="imageButton0" fieldName="lastForm" fieldValue="form1" />
+			</steps>
+		</webtest>
+	</target>
+
+</project>

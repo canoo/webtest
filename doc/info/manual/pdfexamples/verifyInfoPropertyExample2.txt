@@ -1,0 +1,11 @@
+<webtest name="pdftest - verify info property value">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyInfoProperty description="Info property value"
+      key="Author"
+      value="Mac.*"
+      regex="true"/>
+    ...
+  </steps>
+</webtest>

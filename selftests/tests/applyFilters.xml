@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testApplyFilters" default="allTests" basedir=".">
+
+    <target name="allTests" depends="testApplyFilters, testApplyFiltersCustomConfig"/>
+
+    <target xmlns:pdf="antlib:com.canoo.webtest.plugins.pdftest" name="testApplyFilters">
+        <webtest name="applyFilters: confirm applyFilters changes response">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testDocBookmarks.pdf"/>
+                <applyFilters save="dontcare"
+                              description="empty list of filters should not break currentResponse"/>
+                <verifyPdfText text="Heading Two"/>
+                <applyFilters>
+                    <pdf:toTextFilter mode="groupByLines" description="extract PDF text (default mode: normal)"/>
+                    <lineSeparatorFilter description="normalise line separators"/>
+                </applyFilters>
+                <verifyText text="Heading Two"/>
+                <verifyText text="NEW PAGE"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testApplyFiltersCustomConfig">
+        <property name="variableNumberRegex" value="(?&lt;= )[0-9]+(?= time)"/>
+        <webtest name="applyFilters: confirm applyFilters changes response with default save set to off">
+            <config
+                    host="${webtest.host}"
+                    port="${webtest.port}"
+                    protocol="${webtest.protocol}"
+                    basepath="${webtest.basepath}"
+                    saveresponse="false"
+                    resultpath="${wt.config.resultpath}"
+                    resultfile="${webtest.resultfile}"
+                    haltonfailure="true"
+                    showhtmlparseroutput="false"
+                    />
+            <steps>
+                <invoke url="visitCount.jsp"/>
+                <applyFilters save="applyFilterResponse">
+                    <replaceFilter regex="(as at ).*(&lt;/title&gt;)" replacement="$1[DATE REMOVED]$2"/>
+                    <replaceFilter regex="${variableNumberRegex}"/>
+                    <lineSeparatorFilter/>
+                </applyFilters>
+                <verifyText text="DATE REMOVED"/>
+                <not description="expected to fail: id is not a table">
+                    <applyFilters>
+                        <table row="1" column="1" htmlid="totalinfo"/>
+                    </applyFilters>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

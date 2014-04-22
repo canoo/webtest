@@ -1,0 +1,12 @@
+<head title="Available Email Steps">
+
+    <b>This is the syntax documentation for the Email steps.</b>
+
+    <b>
+        The Email Steps allow various tests to be performed on emails that
+        might be sent from your applications under test. There are steps which let
+        you verify email message information, as well as various filters which allow
+        you to further manipulate the extracted information.
+    </b>
+
+</head>

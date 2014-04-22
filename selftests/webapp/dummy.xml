@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<dummy>
+	<topnode name="foo">
+		<leaf>blabla blabla</leaf>
+		<leaf>blabla blabla again</leaf>
+	</topnode>
+	<topnode name="foo2">
+	</topnode>
+</dummy>
+

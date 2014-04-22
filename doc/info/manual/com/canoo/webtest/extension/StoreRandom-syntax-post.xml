@@ -1,0 +1,52 @@
+<post>
+
+    <b>Consider the following JSP which allows user preference information to be gathered
+        in a form and produces a subsequent page based on the choices made:</b>
+
+    <code caption='storeRandom JSP under test'>
+        <include src='examples/favouriteJsp.xml'/>
+    </code>
+
+    <b>If a field value in our form takes on one of several values, e.g.
+        the colours in this example, we can randomly select a value to
+        use from that list of tokens:</b>
+
+    <code caption='storeRandom token Example'>
+        <include src='examples/storeRandomExample1.xml'/>
+    </code>
+
+    <b>Here is an example which selects a random number for a field
+        expecting a number between 1 and 6 (corresponding to setting
+        the heading level to be one of "H1" through "H6"). Note that we also allow
+        some numbers outside the desired range to test that server validation
+        is working (in our examples it rounds to the nearest valid value):</b>
+
+    <code caption='storeRandom number Example'>
+        <include src='examples/storeRandomExample2.xml'/>
+    </code>
+
+    <b>We can combine XPath with random selection to perform very powerful
+        operations, e.g. in this example we randomly select one of the "option"
+        values from a "select" element in the
+        <key>HTML</key> form (note that in this example we skip over the empty
+        option value by starting the random number at "2"):</b>
+
+    <code caption='storeRandom tricky number and XPath Example'>
+        <include src='examples/storeRandomExample3.xml'/>
+    </code>
+
+    <b>In this final example, we generate random first and last names. Each name
+        starts with a random uppercase character, and is followed by a random
+        number of random lowercase characters:</b>
+
+    <code caption='storeRandom string Example'>
+        <include src='examples/storeRandomExample4.xml'/>
+    </code>
+
+    <b>The full example (found in <em>storeRandom.xml</em> in the selftests) the test
+        then goes on to submit the form (by clicking its button) which causes a new page
+        to be created based on the preferences chosen in the form. The form is then tested
+        to ensure the actual attributes used to generate the form match the above
+        randomly generated expected values.</b>
+
+</post>

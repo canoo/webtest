@@ -1,0 +1,10 @@
+<webtest name="Sleep Example">
+	<config ... />
+	<steps>
+		<clickButton description="initiate asynchronous server task" ... />
+		<sleep description="pause for 1 sec" seconds="1"/>
+		...          <!-- check initial results -->
+		<sleep description="pause for another 1.5 sec" millis="1500"/>
+		...          <!-- check final results -->
+	</steps>
+</webtest>

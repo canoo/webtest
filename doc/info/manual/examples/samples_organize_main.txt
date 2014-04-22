@@ -1,0 +1,9 @@
+<project default="wt.full">
+
+	<property name="webtest.home" location="C:/java/webtest" />
+	<import file="${webtest.home}/webtest.xml"/>
+
+	<target name="wt.testInWork">
+		<ant dir="tests" file="allTests.xml"/>
+	</target>
+</project>

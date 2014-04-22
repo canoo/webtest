@@ -1,0 +1,14 @@
+<invoke
+	description="goto start page"
+	url="${start.page}" />
+<setInputField description="set user name"
+	name="username"
+	value="${user}" />
+<setInputField description="set password"
+	name="password"
+	value="${login.ok.password}" />
+<clickButton
+	label="login"
+	description="Click the submit button" />
+<verifyTitle description="Home Page follows if login ok"
+	text="${login.ok.title}"  />

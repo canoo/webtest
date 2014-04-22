@@ -1,0 +1,10 @@
+<pre>
+
+    <b>The <em>&lt;verifyNoDialogs&gt;</em> step is used after clicking on a link or button
+    which invokes some <key>javascript</key> that uses dialogs (Alert, Confirm or Prompt dialogs).
+    It is used in conjunction with the <stepref name="expectDialogs"/> step which sets up
+    dialog expectations prior to clicking the link or button. Invoking this step
+    after the click request allows you to check that all expected responses were
+    in fact used by the <key>javascript</key>.</b>
+
+</pre>

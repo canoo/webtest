@@ -1,0 +1,11 @@
+<post>
+
+    <b>
+        Here is an example of using the <em>emailStorePartFilename</em> step.
+    </b>
+
+    <code caption="emailStorePartFilename">
+        <include src='emailexamples/emailStorePartFilenameExample.xml'/>
+    </code>
+
+</post>

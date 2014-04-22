@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testVerifyCheckbox" default="all" basedir=".">
+
+	<target name="all">
+		<antcall target="testVerifySimplStates"/>
+		<antcall target="testVerifyNonUniqueNameDifferentValues"/>
+		<antcall target="testVerifyNonUniqueNameIdenticalValues"/>
+		<antcall target="testVerifyWithXpath"/>
+	</target>
+
+	<target name="testVerifySimplStates">
+		<webtest name="verifyCheckbox: Check simple states">
+			&sharedConfiguration;
+			<steps>
+				<invoke
+					save="debugTest"
+				   description="getMainPage for checkbox test"
+				   url="${start.page}?mode=checkboxTest&amp;c1=check1"/>
+				<verifyCheckbox
+					description="1) check simple checkbox by state, should be checked"
+				   name="c1"
+				   checked="true"/>
+				<not>
+					<verifyCheckbox
+						description="2) should fail since it should be checked"
+					   name="c1"
+					   checked="false"/>
+				</not>
+				<not>
+					<verifyCheckbox
+						description="3) must fail since name does not exist"
+					   name="cXXXX"
+					   checked="false"/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testVerifyNonUniqueNameDifferentValues">
+		<webtest name="verifyCheckbox: Check checkboxes with non-unique name but different values">
+			&sharedConfiguration;
+			<steps>
+				<invoke
+					save="debugTest"
+				   description="getMainPage for checkbox test"
+				   url="${start.page}?mode=checkboxTest&amp;c2=check2"/>
+				<verifyCheckbox
+					description="4)"
+				   name="c2"
+				   value="check2"
+				   checked="true"/>
+				<verifyCheckbox
+					description="5)"
+				   name="c2"
+				   value="check3"
+				   checked="false"/>
+				<verifyCheckbox
+					description="6) multiple checkboxes, no index, should default to first"
+				   name="c2"
+				   checked="true"/>
+				<verifyCheckbox
+					description="7) multiple checkboxes, with index, should use second"
+				   name="c2"
+				   fieldIndex="1"
+				   checked="false"/>
+				<not description="invalid index, should fail">
+					<verifyCheckbox
+						description="8) two checkboxes, index value would require 3"
+					   name="c2"
+					   fieldIndex="2"
+					   checked="false"/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testVerifyNonUniqueNameIdenticalValues">
+		<webtest name="verifyCheckbox: Check checkboxes with non-unique name and identical values">
+			&sharedConfiguration;
+			<steps>
+				<invoke
+					save="debugTest"
+				   description="getMainPage for checkbox test"
+				   url="${start.page}?mode=checkboxTest&amp;c2=check2&amp;c2=check3"/>
+				<verifyCheckbox
+					description="9)"
+				   name="c2"
+				   value="check2"
+				   checked="true"/>
+				<verifyCheckbox
+					description="10)"
+				   name="c2"
+				   value="check3"
+				   checked="true"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testVerifyWithXpath">
+		<webtest name="verifyCheckbox: Check checkboxes with non-unique name and identical values">
+			&sharedConfiguration;
+			<steps>
+				<invoke
+					save="debugTest"
+				   description="getMainPage for checkbox test"
+				   url="${start.page}?mode=checkboxTest&amp;c2=check2&amp;c2=check3"/>
+				<verifyCheckbox
+					description="11)"
+					xpath="//input[@type='checkbox'][@name='c1' and @value='check1']"
+				   checked="false"/>
+				<verifyCheckbox
+					description="12)"
+					xpath="//input[@type='checkbox'][@name='c2'][1]"
+				   checked="true"/>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

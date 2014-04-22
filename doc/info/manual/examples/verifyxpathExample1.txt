@@ -1,0 +1,17 @@
+<target name="testXPath">
+	<webtest name="xpath" >
+		&sharedConfiguration;
+		<steps>
+			..
+			<verifyXPath description="simple match"
+				xpath="/html/head/title"/>
+			<verifyXPath description="more complicated match"
+				xpath="//img[@src='seibertec.gif']"/>
+			<verifyXPath description="simple match with value"
+				xpath="/html/head/title"
+				text="Canoo WebTest"/>
+			<verifyXPath description="simple boolean expression"
+				xpath="1 &gt; 0"/>
+		</steps>
+	</webtest>
+</target>

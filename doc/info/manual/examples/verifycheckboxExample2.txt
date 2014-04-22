@@ -1,0 +1,15 @@
+<webtest name="Place order and verify">
+	<config ... />
+	<steps>
+		<invoke ... />
+        <verifyCheckbox description="Verify toppings - Mozzarella"
+            name="topping" value="Mozzarella"
+            checked="true" />
+        <verifyCheckbox description="Verify toppings - Gorgonzola"
+            name="topping" value="Gorgonzola"
+            checked="true" />
+        <verifyCheckbox description="Verify toppings - Anchovis not!"
+            name="topping" value="Anchovis"
+            checked="false" />
+	</steps>
+</webtest>

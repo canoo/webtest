@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="us-ascii" ?>
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testApplet" default="all">
+
+	<property name="scenarioLoc" location="../../build/AppletScenarii.jar"/>
+    <property name="junitLoc" location="${webtest.home}/lib/junit-3.8.2.jar"/>
+    <property name="keystore" location="../../jetty/keystore"/>
+
+	<target name="all">
+		<antcall target="test missing scenario">
+			<param name="webtest.haltonerror" value="false"/>
+			<param name="webtest.haltonfailure" value="false"/>
+		</antcall>
+		<antcall target="test scenario location"/>
+
+		<antcall target="test awt applet"/>
+		<antcall target="test swing applet"/>
+		<antcall target="test swing object"/>
+
+		<antcall target="test waiter"/>
+
+		<antcall target="test cookie"/>
+		<antcall target="test cookie">
+			<param name="webtest.port" value="${webtest.ssl.port}"/>
+			<param name="webtest.protocol" value="https"/>
+			<param name="webtest.truststore.file" value="${keystore}"/>
+			<param name="webtest.truststore.passphrase" value="password"/>
+			<param name="webtest.connectioninitializer"
+			       value="com.canoo.webtest.security.SunJsseBaseConnectionInitializer"/>
+		</antcall>
+		<antcall target="test parameter"/>
+	</target>
+
+	<target name="test missing scenario">
+		<webtest name="appletRunner: Report an error when the scenario is missing">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="applet.html"/>
+				<appletRunner
+					xpath="/html/body/applet[@id='testAwtApplet']"
+				   scenario="com.canoo.webtest.extension.applet.missing.Scenario"
+				   scenarioLocation="${scenarioLoc}"
+					/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="test scenario location">
+		<webtest name="appletRunner: start with complex location path">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="applet.html"/>
+				<appletRunner
+					description="grok missing un-used jar"
+				   xpath="/html/body/applet[@id='testAwtApplet']"
+				   scenario="com.canoo.webtest.extension.applet.awt.SuccessScenario"
+				   scenarioLocation="foo/bar.jar:${scenarioLoc}"
+					/>
+				<appletRunner
+					xpath="/html/body/applet[@id='testAwtApplet']"
+				   scenario="com.canoo.webtest.extension.applet.awt.JunitScenario"
+				   scenarioLocation="${scenarioLoc}:${junitLoc}"
+					/>
+				<invoke url="postApplet.html"/>
+				<verifyTitle text="After the applet"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="test awt applet">
+		<webtest name="appletRunner: start awt applet">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="applet.html"/>
+				<appletRunner
+					xpath="/html/body/applet[@id='testAwtApplet']"
+				   scenario="com.canoo.webtest.extension.applet.awt.SuccessScenario"
+				   scenarioLocation="${scenarioLoc}"
+					/>
+				<not>
+					<appletRunner
+						xpath="/html/body/applet[@id='testAwtApplet']"
+					   scenario="com.canoo.webtest.extension.applet.awt.FailScenario"
+					   scenarioLocation="${scenarioLoc}"
+						/>
+				</not>
+				<invoke url="postApplet.html"/>
+				<verifyTitle text="After the applet"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="test swing applet">
+		<webtest name="appletRunner: start swing applet">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="applet.html"/>
+				<appletRunner
+					xpath="/html/body/applet[@id='testSwingApplet']"
+				   scenario="com.canoo.webtest.extension.applet.swing.SuccessScenario"
+				   scenarioLocation="${scenarioLoc}"
+					/>
+				<not>
+					<appletRunner
+						xpath="/html/body/applet[@id='testSwingApplet']"
+					   scenario="com.canoo.webtest.extension.applet.swing.FailScenario"
+					   scenarioLocation="${scenarioLoc}"
+						/>
+				</not>
+				<invoke url="postApplet.html"/>
+				<verifyTitle text="After the applet"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="test swing object">
+		<webtest name="appletRunner: start swing object">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="applet.html"/>
+				<not description="check that the two properties are not defined">
+					<verifyProperty name="applet.result.ant" propertyType="ant"/>
+					<verifyProperty name="applet.result.dynamic" propertyType="dynamic"/>
+				</not>
+				<appletRunner
+					xpath="/html/body/object[@id='testSwingObject']"
+				   scenario="com.canoo.webtest.extension.applet.swing.SuccessScenario"
+				   scenarioLocation="${scenarioLoc}"
+					/>
+				<group description="check that the scenario returns two properties">
+					<verifyProperty name="applet.result.ant" propertyType="ant"/>
+					<verifyProperty name="applet.result.dynamic" propertyType="dynamic"/>
+				</group>
+				<invoke url="postApplet.html"/>
+				<verifyTitle text="After the applet"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="test waiter">
+		<webtest name="appletRunner: start scenario with wait">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="applet.html"/>
+				<appletRunner
+					xpath="/html/body/applet[@id='testWaiterApplet']"
+				   scenario="com.canoo.webtest.extension.applet.jemmy.SuccessScenario"
+				   scenarioLocation="${scenarioLoc}"
+				   target="_top"
+					/>
+				<verifyTitle text="After the applet"/>
+			</steps>
+		</webtest>
+
+		<webtest name="appletRunner: start scenario with wait and target">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="applet.html"/>
+				<appletRunner
+					xpath="/html/body/applet[@id='testWaiterAppletWithTarget']"
+				   scenario="com.canoo.webtest.extension.applet.jemmy.ShowInBlankSuccessScenario"
+				   scenarioLocation="${scenarioLoc}"
+				   target="_blank"
+					/>
+				<verifyTitle text="After the applet"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="test cookie">
+		<webtest name="appletRunner: start applet with cookie (${webtest.protocol})">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="setCookie.jsp"/>
+				<clickLink label="Applet"/>
+				<verifyCookie name="X-APPLET" text="YES"/>
+				<appletRunner
+					xpath="/html/body/applet[@id='testCookieApplet']"
+				   scenario="com.canoo.webtest.extension.applet.cookie.SuccessScenario"
+				   scenarioLocation="${scenarioLoc}"
+					>
+					<jvmarg value="-Dwebtest.truststore.file=${webtest.truststore.file}"/>
+					<jvmarg value="-Dwebtest.truststore.passphrase=${webtest.truststore.passphrase}"/>
+					<jvmarg value="-Dwebtest.connectioninitializer=${webtest.connectioninitializer}"/>
+					<param name="text" value="X-APPLET=YES"/>
+				</appletRunner>
+				<invoke url="postApplet.html"/>
+				<verifyTitle text="After the applet"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="test parameter">
+		<property name="ant.parameter.3" value="ant valeur trois"/>
+		<property name="ant.parameter.5" value="ant valeur cinq"/>
+		<property name="not.ant.parameter.7" value="ant valeur sept"/>
+		<webtest name="appletRunner: start applet with parameter">
+			&sharedConfiguration;
+			<steps>
+				<storeProperty name="dyn.parameter.4" value="wt valeur quatre" propertyType="dynamic"/>
+				<storeProperty name="dyn.parameter.6" value="wt valeur six" propertyType="dynamic"/>
+				<storeProperty name="not.dyn.parameter.8" value="wt valeur eight" propertyType="dynamic"/>
+
+				<invoke url="applet.html"/>
+				<appletRunner
+					xpath="/html/body/applet[@id='testParameterApplet']"
+				   scenario="com.canoo.webtest.extension.applet.parameter.SuccessScenario"
+				   scenarioLocation="${scenarioLoc}"
+				   target="_top"
+					>
+					<param name="oldTag" value="valeur 1"/>
+					<parameter name="newTag" value="valeur 2"/>
+					<parameterRef name="antTag.\1" regex="ant.parameter.(\d)" propertyType="ant"/>
+					<parameterRef name="dynamicTag.\1" regex="dyn.parameter.(\d)" propertyType="dynamic"/>
+				</appletRunner>
+				<verifyText text="oldTag = valeur 1"/>
+				<verifyText text="newTag = valeur 2"/>
+				<verifyText text="antTag.3 = ${ant.parameter.3}"/>
+				<verifyText text="antTag.5 = ${ant.parameter.5}"/>
+				<verifyText text="dynamicTag.4 = #{dyn.parameter.4}"/>
+				<verifyText text="dynamicTag.6 = #{dyn.parameter.6}"/>
+			</steps>
+		</webtest>
+	</target>
+</project>

@@ -1,0 +1,10 @@
+<webtest name="storePropertyEvalTest">
+  <config .../>
+  <steps>
+    <!-- steps which extract some values from the page ... -->
+    <storeProperty description="setting MyName=7.0" name="MyName" value="3+4" eval="true" />
+    <storeProperty name="tableSize" value="#{tableWidth} * #{tableHeight}" eval="true" />
+    <storeProperty name="gstAmount" value="#{totalAmount} / 11" eval="true" />
+    <storeProperty name="adjusted" value="(#{orig} - 1) * (${fudgeFactor} + 1)" eval="true" />
+  </steps>
+</webtest>

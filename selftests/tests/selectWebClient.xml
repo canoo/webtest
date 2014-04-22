@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testSelectWindow" default="all" basedir=".">
+
+    <target name="all" depends="testSelectWebClient"/>
+
+    <target name="testSelectWebClient">
+        <webtest name="selectWebClient: Show how to switch the web client">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="get the test page" url="selectWebClient.jsp"/>
+                <verifyTitle text="SelectWebClient Test"/>
+                <verifyText text="This is your visit number 1 to this page"/>
+                <invoke description="get the test page again" url="selectWebClient.jsp"/>
+                <verifyText text="This is your visit number 2 to this page"/>
+
+            	<selectWebClient name="second" description="use an other web client"/>
+                <invoke description="get the test page" url="selectWebClient.jsp"/>
+                <verifyText text="This is your visit number 1 to this page"/>
+            	
+            	<selectWebClient name="default" description="takes the default one again"/>
+                <verifyText text="This is your visit number 2 to this page"/>
+                <invoke description="get the test page again" url="selectWebClient.jsp"/>
+                <verifyText text="This is your visit number 3 to this page"/>
+	
+            	<selectWebClient name="second" description="takes the second one again"/>
+                <verifyText text="This is your visit number 1 to this page"/>
+                <invoke description="get the test page" url="selectWebClient.jsp"/>
+                <verifyText text="This is your visit number 2 to this page"/>
+
+            	<selectWebClient name="third" description="use a third web client"/>
+                <invoke description="get the test page" url="selectWebClient.jsp"/>
+                <verifyText text="This is your visit number 1 to this page"/>
+                
+                <group description="test usage as step container">
+	            	<selectWebClient name="default" description="takes the default one again"/>
+	                <verifyText text="This is your visit number 3 to this page"/>
+	                <selectWebClient name="fourth" description="with a new one">
+		                <invoke description="get the test page" url="selectWebClient.jsp"/>
+		                <verifyText text="This is your visit number 1 to this page"/>
+	                </selectWebClient>
+	                <verifyText text="This is your visit number 3 to this page" description="Check that we are by the default web client again"/>
+	            </group>
+                
+            </steps>
+        </webtest>
+    </target>
+</project>

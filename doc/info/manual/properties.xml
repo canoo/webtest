@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd"
+        [
+                <!ENTITY site SYSTEM "WebTestSite.xml">
+                ]
+        >
+
+<manpage siteid="Properties">
+
+    &site;
+
+    <head title="Properties">
+        <b>WebTest knows about two kinds of properties, <em>ant</em> properties and
+            <em>dynamic</em> properties. You typically select which kind you want to
+            store into using the <em>propertyType</em> attribute
+            of the storeXXX steps or by setting a <em>defaultpropertytype</em>
+            in your <stepref name="config" category="general"/>.
+            You select which kind you want to read from using the
+            <em>${}</em> or <em>#{}</em> syntax.
+            This section explains additional details about these
+            two kinds of properties.
+        </b>
+    </head>
+    <section title="Ant Properties">
+        <b>${} properties are normal
+            <key>ANT</key> properties. Given
+            <key>ANT</key>'s philosophy
+            of a declarative build process, these are normally immutable.
+            I.e. once you set a property its value normally can't be changed.
+            <key>ANT</key> property values are typically determined at the start of an
+            ant target. They are available to both
+            <key>ANT</key> tasks and WebTest steps.</b>
+    </section>
+    <section title="Dynamic Properties">
+        <b>
+            #{} properties are only available (currently) to webtest steps.
+            They are dynamic - you can use the same property and set it to
+            different things throughout your tests. #{} properties support
+            very simple expressions and there is support for accessing
+            scripting variables under special circumstances. Property values
+            are determined at the moment of use.
+        </b>
+    </section>
+    <section title="Nested Properties Expansion">
+        <b>
+            Contrary to normal Ant execution 
+            (see <ext href="http://issues.apache.org/bugzilla/show_bug.cgi?id=29347">Ant's enhancement issue</ext>), 
+            nested properties are evaluated during the execution of a WebTest.
+            This means for instance that something like <em>${myProp#{counter}}</em> will be evaluated 
+            just like <em>${myProp1}</em> if the current value of the dynamic property <em>counter</em> is <em>1</em>.
+            Both nested Ant properties and dynamic properties are evaluated.
+        </b>
+    </section>
+    <section title="Converting Properties">
+        <b>You can happily swap between them using
+            <stepref name="storeProperty" category='Core'/>
+            by setting the <em>propertyType</em>
+            attribute to the appropriate value.
+        </b>
+
+        <code caption="Examples showing property type conversion">
+            <include src='examples/propertySwap.xml'/>
+        </code>
+
+    </section>
+</manpage>

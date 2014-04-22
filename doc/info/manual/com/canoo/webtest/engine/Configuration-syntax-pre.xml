@@ -1,0 +1,249 @@
+<pre>
+
+    <b>The
+        <em>&lt;config&gt;</em> element is a nested element of
+        <stepref name="webtest"/> and is used
+		to configure the target host system to use for a particular webtest and several other feature like
+		reporting of test results and printing of debug information.
+    </b>
+
+    <b>Since the
+        <em>&lt;config&gt;</em> element can contain so many different attributes,
+		the description of the attributes is split over many tables.
+    </b>
+
+    <b>The first table describes the default URL parameter.</b>
+
+        <attributes>
+            <attribute>
+                <name>host</name>
+                <description>Defines the hostname to use for executing requests, e.g.
+                    &quot;localhost&quot; or &quot;www.myhost.com&quot;.</description>
+                <required>No, default is &quot;localhost&quot;</required>
+            </attribute>
+            <attribute>
+                <name>port</name>
+                <description>Defines the port number to use for executing requests, e.g.
+                    &quot;8080&quot;.</description>
+                <required>No, defaults is &quot;80&quot;</required>
+            </attribute>
+            <attribute>
+                <name>protocol</name>
+                <description>Defines the protocol to use for executing requests.
+                    &quot;http&quot;, &quot;https&quot;, and &quot;file&quot; are currently the only supported protocols.</description>
+                <required>No, defaults is &quot;http&quot;</required>
+            </attribute>
+            <attribute>
+                <name>basepath</name>
+                <description>Defines the constant base path used to construct request URLs, e.g. &quot;shop&quot;
+		can be considered a
+                    <em>basepath</em> in &quot;http:/www.myhost.com/shop/productlist&quot;
+		and &quot;http:/www.myhost.com/shop/checkout&quot;.
+                </description>
+                <required>No, defaults is empty</required>
+            </attribute>
+        </attributes>
+    <b>
+	    The next table describes the attributes responsible for WebTest's reporting and logging.
+        These attributes define
+        <em>if</em> and
+        <em>where</em> WebTest store logging information. Actual reporting is usually
+			performed by xsl transformation after the test complete.
+    </b>
+        <attributes>
+            <attribute>
+                <name>summary</name>
+                <description>Deprecated: not used anymore.</description>
+            </attribute>
+            <attribute>
+                <name>saveresponse</name>
+                <description>Defines whether the last response received from the target
+                host is saved into the file &quot;&lt;saveprefix&gt;&lt;uniqueId&gt;.html&quot;.
+                <em>saveprefix</em> is the value set in the &lt;saveprefix&gt; config element.<n/>
+                <em>uniqueId</em> is a timestamp at the time the file is saved.<n/>
+                This is especially helpful for debugging your tests.
+                </description>
+                <required>No, default is &quot;false&quot;</required>
+            </attribute>
+            <attribute>
+                <name>saveprefix</name>
+                <description>Sets the name to use if the current response received from the target
+                host is to be saved into a file. A unique id will also be appended after the prefix.
+                </description>
+                <required>No, default is &quot;response&quot;</required>
+            </attribute>
+            <attribute>
+                <name>resultpath</name>
+                <description>Defines the resultpath of saved responses (for example last response).</description>
+                <required>No, default is the subdirectory &quot;webtest-results&quot; of the project base directory.</required>
+            </attribute>
+            <attribute>
+                <name>resultfile</name>
+                <description>Deprecated: not used anymore.
+                </description>
+            </attribute>
+        </attributes>
+    <b>The next table describes the webtest's behaviour when encountering failures and errors.</b>
+        <attributes>
+            <attribute>
+                <name>haltonerror</name>
+                <description>Determines if the execution of the current &lt;webtest&gt; stops if a
+		program error (unhandled exception) is encountered in one of the test steps. An
+                    <key>ANT</key> BuildFailed exception will be raised
+		if it is set to &quot;Yes&quot;. This will terminate the execution of the
+                    <key>ANT</key> script.
+                    <n/>
+		Setting the option to &quot;false&quot; will stop the execution of the current &lt;webtest&gt; but continues with the
+		next
+                    <key>ANT</key> task, e.g. another &lt;webtest&gt;.
+                </description>
+                <required>No, default is &quot;true&quot;</required>
+            </attribute>
+            <attribute>
+                <name>errorproperty</name>
+                <description>Specifies the name of an ant property which is set to true if the execution
+					of the current &lt;webtest&gt; stops if a program error (unhandled exception) is encountered
+					in one of the test steps. When using this property, set &quot;haltonerror&quot; to &quot;false&quot;.
+					Then check the ant property after performing all of your tests and if set fail. This allows your tests to
+					continue running even if some experience execution errors (allowing you to catch multiple errors with one test run)
+					but still ultimately fails the build if anything went wrong.
+                </description>
+                <required>No</required>
+            </attribute>
+            <attribute>
+                <name>haltonfailure</name>
+                <description>Determines if the execution of the current test halts if a failure of one of the
+		test steps is detected, e.g. a &lt;verify...&gt; test did not pass. Even when set to &quot;false&quot;
+		all of the trailing &lt;step&gt;s of the current &lt;webtest&gt; will be skipped but processing will
+		continue with the next &lt;webtest&gt;.</description>
+                <required>No, default is &quot;true&quot;</required>
+            </attribute>
+            <attribute>
+                <name>failureproperty</name>
+                <description>Specifies the name of an ant property which is set to true if the test fails.
+					When using this property, set &quot;haltonfailure&quot; to &quot;false&quot;. Then check the
+					ant property after performing all of your tests and if set fail. This allows your tests to
+					continue running even if some fail (allowing you to catch multiple errors with one test run)
+					but still ultimately fails the build if anything went wrong.
+                </description>
+                <required>No</required>
+            </attribute>
+        </attributes>
+    <b>The next table groups miscellaneous configuration options.
+    </b>
+        <attributes>
+            <attribute>
+                <name>browser</name>
+                <description>Specifies the browser that should be simulated.
+                Allowed values are 
+                <example>Firefox3</example> (or <example>FF3</example>) (deprecated),
+                <example>Firefox3.6</example> (or <example>FF3.6</example>),
+                <example>Firefox10</example> (or <example>FF10</example>),
+                <example>InternetExplorer6</example> (or <example>IE6</example>),
+                <example>InternetExplorer7</example> (or <example>IE7</example>),
+                <example>InternetExplorer8</example> (or <example>IE8</example>).
+                </description>
+                <required>No, default is &quot;InternetExplorer6&quot;</required>
+            </attribute>
+            <attribute>
+                <name>useInsecureSSL</name>
+                <description>Specifies if WebTest should ignore insecure SSL certificates like self signed certificate that
+                have not been added to the truststore or expired certificates.
+                </description>
+                <required>No, default is &quot;false&quot;</required>
+            </attribute>
+            <attribute>
+                <name>sslKeyStore</name>
+                <description>Specifies a file system path or URL to a keystore or certificate file containing one or more
+                    client certificates. If present, WebTest is performing ssl authentication using client certificates.
+                    The file / keystore type is defined by &quot;sslKeyStoreType&quot;.
+                </description>
+                <required>No, default is &quot;null&quot;</required>
+            </attribute>
+            <attribute>
+                <name>sslKeyStoreType</name>
+                <description>Specifies type of the keystore or ssl certificate file defined by &quot;sslKeyStore&quot;.
+                    Can be &quot;pkcs12&quot; or &quot;jks&quot; (Java Key Store) ...
+                </description>
+                <required>No, default is &quot;jks&quot;</required>
+            </attribute>
+            <attribute>
+                <name>sslKeyStorePassword</name>
+                <description>Specifies the keystore password.
+                </description>
+                <required>No, default is &quot;null&quot;</required>
+            </attribute>
+            <attribute>
+                <name>sslTrustStore</name>
+                <description>Specifies the path or URL to a Java Key Store containing server certificates to be trusted.
+                </description>
+                <required>No, default is &quot;null&quot;</required>
+            </attribute>
+            <attribute>
+                <name>sslTrustStorePassword</name>
+                <description>Specifies the sslTrustStore password.
+                </description>
+                <required>No, default is &quot;null&quot;</required>
+            </attribute>
+            <attribute>
+                <name>timeout</name>
+                <description>Defines the timeout value in seconds for both connection and socket.<n/>
+                The connection timeout is the maximum allowed time until a connection is etablished.
+                The socket timeout is the timeout for waiting for data.<n/>
+                A timeout value of zero is interpreted as an infinite timeout.
+                </description>
+                <required>No, default is &quot;300&quot;</required>
+            </attribute>
+            <attribute>
+                <name>showhtmlparseroutput</name>
+                <description>Defines that the JTidy output of parsing resulting
+                    <key>HTML</key> pages shall be shown.
+		If enabled, the generated errors/warnings are collected as test step parameters and written into the report file.
+        The output is also written to stdout. The parser output can be used to
+		detect invalid
+                    <key>HTML</key> code in a particular page, unbalanced elements or invalid
+		nesting of elements (e.g. &lt;form&gt; and &lt;table&gt;).
+                    <n/>
+		Since the parser can generate a lot of warnings and these warnings need to be
+		manually analyzed, it is recommended to enable this option only on demand,
+		e.g. to initially verify the correctness of an
+                    <key>HTML</key> page or if a particular
+		test case does not work (e.g. a button can not be found in a page).
+                </description>
+                <required>No, default is &quot;false&quot;</required>
+            </attribute>
+            <attribute>
+                <name>defaultpropertytype</name>
+                <description>Determines the default storage used for properties. If set to &quot;dynamic&quot;, webtest dynamic properties are used.
+					If set to &quot;ant&quot;, properties are stored as ant variables. If set to &quot;antstrict&quot;, ant properties are
+					used but normal ant immutability is respected, i.e. if a property is already set, then it won't be over-written.
+                    <n/>
+					When setting this attribute to &quot;ant&quot; or &quot;antstrict&quot;, the #{propName} syntax allows late binding
+					to ant properties whereas the ${propName} syntax remains supported with normal binding.
+                    <n/>
+					If using ant properties to store webtest properties, the values of properties persist across &lt;webtest> tasks but
+					you run the risk of name clashes with other tasks using ant properties.
+                    <n/>
+					If using repeat steps, avoid using &quot;antstrict&quot; for this setting if you need access to the repeat loop
+					counter value. The repeat loop will execute as normal but the #{count} property will remain unchanged once set.
+                </description>
+                <required>No, default is &quot;dynamic&quot;,</required>
+            </attribute>
+            <attribute>
+                <name>autorefresh</name>
+                <description>Specifies whether the client should automatically follow page refresh requests (html:
+                    <em>&lt;meta http-equiv="refresh" ...&gt;</em>).
+                    <n/>
+                    If set to "true" or "false", this indicates if refresh requests should be followed or not.
+                    If set to an integer value only refresh request with a delay less or equal to the specified value will be executed. 
+                </description>
+                <required>No, default is &quot;false&quot;</required>
+            </attribute>
+        </attributes>
+
+    <code caption="config">
+        <include src='examples/configExample.xml' />
+    </code>
+
+    <b>The previous test code example will create URLs with the following prefix: "http://www.myhost.com:8080/shop/".</b>
+</pre>

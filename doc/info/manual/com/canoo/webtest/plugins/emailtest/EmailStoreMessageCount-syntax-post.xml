@@ -1,0 +1,19 @@
+<post>
+
+    <b>
+        See the <stepref name="emailDeleteMessage"/> documentation for an example of using this step.
+    </b>
+
+    <b>
+        Note that <em>subject</em> and the email address attributes
+        (<em>to</em>, <em>from</em>, <em>cc</em> and <em>replyTo</em>)
+        are used for matching purposes to select a subset of the available messages.
+        Each can be either plain text or a <key>regex</key>.
+        Simply start and end them with the "/" character to make them a <key>regex</key>.
+        If all of these are left blank, all messages will be selected for counting.
+        In addition, <em>to</em>, <em>cc</em> and <em>replyTo</em> may contain
+        a comma (",") separated list of email addresses. Each address must appear
+        in an email message for it to match - order is not important.
+    </b>
+
+</post>

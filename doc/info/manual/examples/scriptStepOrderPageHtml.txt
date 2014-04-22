@@ -1,0 +1,11 @@
+<html>
+...
+<h1>Your Order</h1>
+<table border='1' width='60%'>
+  <tr><th>Item</th><th>Qty</th><th>Unit Price</th><th>Amount</th></tr>
+  <tr class='lineitem'><td>Mouse Pad</td><td>3</td><td>5</td><td>15</td></tr>
+  <tr class='lineitem'><td>USB Memory Stick 512Mb</td><td>1</td><td>50</td><td>50</td></tr>
+  <tr class='total'><td>Total</td><td>4</td><td>&nbsp;</td><td>65</td></tr>
+</table>
+...
+</html>

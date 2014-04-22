@@ -1,0 +1,8 @@
+<webtest name="exceltest - find row">
+  <config .../>
+  <steps>
+    <invoke url="testExcel.xls"/>
+    <excelFindRow startRow="5" col="C" text="Total" property="totalRow"/>
+    ...
+  </steps>
+</webtest>

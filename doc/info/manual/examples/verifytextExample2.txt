@@ -1,0 +1,16 @@
+<webtest name="Check body tags">
+	<config ... />
+	<steps>
+		<invoke ... />
+		<verifyText description="Checks for the existence of HTML body tags"
+			text="&lt;BODY&gt;.*&lt;/BODY&gt;"
+			regex="true" />
+		...
+		<not description="the word 'error' should not appear in the page">
+			<verifyText description="search for the word 'error', case insensitiv"
+				text="(?i:error)"
+				regex="true" />
+		</not>
+		...
+		</steps>
+</webtest>

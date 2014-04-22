@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<project name="webtest" basedir="." default="wt.full">
+	<description>
+		This project script contains targets to run webtests.
+		More precisley, it takes advantage of the common webtest library.
+
+		The project shows how to extends webtest task definition without editing it:
+		the project use the same classloader (and the same classpath) to load every steps.
+		That way, it is possible to keep the webtest distribution completely separate from
+		your own test installation. That way, it is possible to update to new version of
+		webtest just by changing the distribution directory.
+	</description>
+
+	<!-- keeps a reference to own's resources (jar, ...) -->
+	<dirname file="${ant.file}" property="file.dir"/>
+	<property
+			description="Path of needed common resources"
+			name="testmodule.dir"
+			location="${file.dir}/../../../.."
+			/>
+	<echo message="testmodule.dir: ${testmodule.dir}"/>
+	<property file="../environment/server/localhost.properties"/>
+	<property name="wt.config.resultpath" location="${testmodule.dir}/target/webtest"/>
+	<property name="wt.testInWork" value="customSteps"/>
+	<property name="wt.headless" value="true"/>
+
+
+	<!-- Gets the common webtest library -->
+	<import file="${webtest.home}/webtest.xml"/>
+	<target name="wt.defineTasks.init" depends="wt.webtest.wt.defineTasks.init"
+			description="Adds our custom step to the path."
+			>
+		<path id="wt.defineTasks.classpath.customPrepend">
+			<fileset dir="${testmodule.dir}/target" includes="*.jar"/>
+		</path>
+	</target>
+
+	<target name="wt.defineTasks" depends="wt.webtest.wt.defineTasks"
+			description="Loads our own steps"
+			>
+		<taskdef name="myCustomStep" classname="com.canoo.webtest.extension.MyCustomStep"
+			 loaderref="wt.defineTasks.loader"
+			 classpathref="wt.defineTasks.classpath.id"/>
+	</target>
+</project>

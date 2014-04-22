@@ -1,0 +1,10 @@
+<webtest name="Verify user name in document title">
+	<config ... />
+	<steps>
+		<invoke ... />
+		<verifyTitle description="Title can include variable user name"
+			text="User .* - Main View"
+			regex="true" />
+		...
+	</steps>
+</webtest>

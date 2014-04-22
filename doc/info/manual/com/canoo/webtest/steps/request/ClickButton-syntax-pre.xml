@@ -1,0 +1,34 @@
+<pre>
+    <b>
+Currently tested and thus officially supported are the following variations of buttons:</b>
+        <dl>
+            <li>
+                <dd>
+                    <em>&lt;input type=&quot;submit&quot; .../&gt;</em>
+                </dd>
+            </li>
+            <li>
+                <dd>
+                    <em>&lt;input type=&quot;image&quot; .../&gt;</em>
+                </dd>
+            </li>
+            <li>
+                <dd>
+                    <em>&lt;input type=&quot;button&quot; .../&gt;</em>
+                </dd>
+            </li>
+            <li>
+                <dd>
+                    <em>&lt;input type=&quot;reset&quot; .../&gt;</em>
+                </dd>
+            </li>
+            <li>
+                <dd>
+                    <em>&lt;button .../&gt;</em>
+                </dd>
+            </li>
+        </dl>
+If neither 'label', 'name', 'htmlid', nor 'xpath' is specified, the first button found is clicked (in document order, looking first in the current
+form, if any).
+        
+</pre>

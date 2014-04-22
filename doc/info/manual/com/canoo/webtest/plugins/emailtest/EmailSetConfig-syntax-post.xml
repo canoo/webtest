@@ -1,0 +1,24 @@
+<post>
+
+    <b>
+        Here is an example of using <em>emailSetConfig</em>.
+    </b>
+
+    <code caption="emailSetConfig">
+        <include src='emailexamples/emailSetConfigExample.xml'/>
+    </code>
+
+    <b>
+        The <em>delay</em> attribute is a convenience mechanism
+        that has the same effect as putting a <stepref name="sleep" category="core"/>
+        in front of all of your <em>email</em> steps. This is
+        provided because many email servers have issues with
+        opening connections immediately after the previous one has
+        been closed. If you steps are failing in an unexpected fashion,
+        turn on debugging - if it shows that sometimes fewer messages
+        are on your email server than you expect, try increasing
+        the delay value. If that doesn't work, you can try placing your
+        step(s) within a <stepref name="retry" category="extension"/> loop.
+    </b>
+
+</post>

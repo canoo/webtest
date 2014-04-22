@@ -1,0 +1,9 @@
+<post>
+
+    <b>The following examples illustrate various expression calculations.</b>
+
+    <code caption="storePropertyEvalExamples">
+        <include src='examples/storePropertyEvalExamples.xml'/>
+    </code>
+
+</post>

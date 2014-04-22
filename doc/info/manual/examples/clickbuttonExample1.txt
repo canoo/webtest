@@ -1,0 +1,9 @@
+...
+<setInputField description="Set the input field"
+	name="field1" value="My simple value" />
+
+<clickButton description="Submit the simple form" name="doIt" />
+
+<verifyInputField description="Check echo of previous input"
+	name="field1" value="My simple value" />
+...

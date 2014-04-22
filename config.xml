@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<cruisecontrol>
+    <project name="Canoo WebTest" buildafterfailed="false">
+        <bootstrappers>
+            <svnbootstrapper file="cruise.xml"/>
+        </bootstrappers>
+        <modificationset quietperiod="120">
+            <svn localworkingcopy="."/>
+        </modificationset>
+        <schedule>
+            <ant
+                    buildfile="cruise.xml"
+                    antscript="/opt/webtest/webtestCC/CanooFunctionalTesting/bin/cruise.sh"
+                    antWorkingDir="/opt/webtest/webtestCC/CanooFunctionalTesting"
+                    uselogger="true"
+                    />
+        </schedule>
+        <log dir="/opt/webtest/webtestCC/logs">
+            <merge dir="build/log"/>
+        </log>
+        <publishers>
+            <!-- plain email used for explicit subscribers and for commiters -->
+            <email
+                    buildresultsurl="http://webtest.canoo.com/buildservlet/BuildServlet"
+                    mailhost="mail.canoo.com"
+                    returnaddress="Cruiser@mail.canoo.com"
+                    spamwhilebroken="false"
+                    >
+                <propertiesmapper file="emailmap.properties"/>
+                <success address="dierkSMS"/>
+                <success address="carstenSMS"/>
+                <success address="torben"/>
+                <success address="etienne"/>
+            </email>
+            <!-- htmlemail is used only for explicit subscribers -->
+            <htmlemail
+                    buildresultsurl="http://webtest.canoo.com/buildservlet/BuildServlet"
+                    mailhost="mail.canoo.com"
+                    returnaddress="Cruiser@mail.canoo.com"
+                    spamwhilebroken="false"
+                    skipusers="true"
+                    logdir="/opt/webtest/webtestCC/logs"
+                    xslfile="/opt/webtest/webtestCC/CanooFunctionalTesting/WebtestCCHtmlMail.xsl"
+                    >
+                <propertiesmapper file="emailmap.properties"/>
+                <always address="marcG"/>
+                <success address="paul"/>
+                <success address="dierk"/>
+            </htmlemail>
+            <XSLTLogPublisher
+                    directory="/opt/webtest/webtest.canoo.com/ROOT"
+                    outfilename="buildstatus.rss"
+                    xsltfile="buildstatus.xsl"
+                    />
+        </publishers>
+        <labelincrementer defaultLabel="R_604" separator="_"/>
+    </project>
+</cruisecontrol>

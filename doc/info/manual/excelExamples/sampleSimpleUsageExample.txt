@@ -1,0 +1,37 @@
+<project name="Sample: SimpleExcelTest" basedir="." default="main">
+
+	<import file="${webtest.home}/lib/taskdef.xml"/>
+
+	<target name="main">
+		<webtest name="myExcelTest">
+			<config
+				host="www.myserver.com"
+				port="8080"
+				protocol="http"
+				basepath="myApp"
+				saveresponse="true"/>
+			<steps>
+				<invoke
+					description="get overview page"
+					url="overview.html" />
+				<invoke
+					description="get PDF document"
+					url="publicData.xls"/>
+				<excelVerifyCellValue cell="B2" text="Report"/>
+				<excelFindRow col="C" startRow="5"
+				    text="TOTAL" property="totalRow"/>
+				<storeProperty property="lastRow" value="#{totalRow}-1" eval="true"/>
+				<repeat counterName="row"
+				            startCount="5" endCount="#{lastRow}">
+					<excelVerifyCellStyle cell="D#{row}"
+					    border="left,bottom:thin,top:dashed"
+					    borderColor="left:red"/>
+					<excelVerifyCellStyle cell="E#{row}"
+					    type="formula"/>
+					<excelVerifyCellValue cell="E#{row}"
+					    text="/SUM\(.*\)/"/>
+				</repeat>
+			</steps>
+		</webtest>
+	</target>
+</project>

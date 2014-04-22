@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure 1.2//EN" "http://jetty.mortbay.org/configure_1_2.dtd">
+<Configure class="org.mortbay.jetty.Server">
+    <Call name="addListener">
+        <Arg>
+            <New class="org.mortbay.http.SocketListener">
+                <Set name="Port">
+                    <SystemProperty name="jetty.port" default="8180"/>
+                </Set>
+            </New>
+        </Arg>
+    </Call>
+
+    <!--    Base https service with server authentication only-->
+    <Call name="addListener">
+        <Arg>
+            <New class="org.mortbay.http.SunJsseListener">
+                <Set name="Port">
+                    <SystemProperty name="jetty.selftest.sslport" default="8181"/>
+                </Set>
+                <Set name="Keystore">
+                    <SystemProperty name="jetty.home" default="."/>/keystore
+                </Set>
+                <Set name="Password">password</Set>
+                <Set name="KeyPassword">password</Set>
+            </New>
+        </Arg>
+    </Call>
+
+    <!--    Https service with client certificate needed-->
+    <Call name="addListener">
+        <Arg>
+            <New class="org.mortbay.http.SunJsseListener">
+                <Set name="Port">
+                    <SystemProperty name="jetty.selftest.ssl2port" default="8182"/>
+                </Set>
+                <Set name="Keystore">
+                    <SystemProperty name="jetty.home" default="."/>/keystore
+                </Set>
+                <Set name="Password">password</Set>
+                <Set name="KeyPassword">password</Set>
+                <Set name="NeedClientAuth">true</Set>
+            </New>
+        </Arg>
+    </Call>
+
+    <!--  Basic http proxy -->
+    <Call name="addListener">
+        <Arg>
+            <New class="org.mortbay.http.SocketListener">
+                <Set name="Port">
+                    <SystemProperty name="jetty.proxyport" default="8183"/>
+                </Set>
+                <Set name="HttpHandler">
+                    <New class="org.mortbay.http.handler.ProxyHandler"/>
+                </Set>
+            </New>
+        </Arg>
+    </Call>
+
+    <Call name="addWebApplication">
+        <Arg>/selftest</Arg>
+        <Arg>
+            <SystemProperty name="webapp.dir" default="./webapps"/>/selftest.war
+        </Arg>
+    </Call>
+
+    <Call name="addWebApplication">
+        <Arg>/ajaxtags</Arg>
+        <Arg>
+            <SystemProperty name="webapp.dir" default="./webapps"/>/ajaxtags
+        </Arg>
+    </Call>
+
+    <Call name="addRealm">
+        <Arg>
+            <New class="org.mortbay.http.HashUserRealm">
+                <Arg>WebTest Realm</Arg>
+                <Put name="dummyUser">password</Put>
+                <Call name="addUserToRole">
+                    <Arg>dummyUser</Arg>
+                    <Arg>dummyRole</Arg>
+                </Call>
+            </New>
+        </Arg>
+    </Call>
+
+</Configure>

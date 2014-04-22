@@ -1,0 +1,30 @@
+<post>
+
+    <b>
+        Here is an example of using the <em>emailMessageStructureFilter</em> step.
+    </b>
+
+    <code caption="emailMessageStructureFilter">
+        <include src='emailexamples/emailMessageStructureFilterExample.xml'/>
+    </code>
+
+    <b>
+        The resulting files will be as follows:
+    </b>
+
+    <code caption="plainStructure.txt">
+        <include src='emailexamples/plainStructure.xml'/>
+    </code>
+
+    <code caption="uuStructure.txt">
+        <include src='emailexamples/uuStructure.xml'/>
+    </code>
+
+    <code caption="mimeStructure.txt">
+        <include src='emailexamples/mimeStructure.xml'/>
+    </code>
+
+    <b>Note in the above example the XML structure descriptions were saved
+    away for later comparison. An alternative would be to perform
+    <stepref name="verifyXPath" category="core"/> tests on the resulting current content.</b>
+</post>

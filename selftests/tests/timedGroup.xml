@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testTimedGroup" default="testTimedGroup" basedir=".">
+
+    <target name="testTimedGroup">
+        <webtest name="timedGroup: Show how to use the timedGroup step">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="the first step in the group" url="${start.page}"/>
+                <timedGroup maxSeconds="1" description="some simple example of the group step">
+                    <invoke description="the first step in the group" url="${start.page}"/>
+                    <verifyText description="some other step" text="html"/>
+                </timedGroup>
+
+                <timedGroup maxMillis="100" description="empty group">
+                </timedGroup>
+
+                <timedGroup maxSeconds="5" description="outermost group">
+                    <timedGroup maxSeconds="3" description="outer group">
+                        <timedGroup maxSeconds="1" description="most inner group">
+                            <verifyText description="some other step" text="html"/>
+                        </timedGroup>
+                    </timedGroup>
+                    <timedGroup maxSeconds="7" description="inner group">
+                        <verifyText description="some other step" text="html"/>
+                    </timedGroup>
+                </timedGroup>
+
+                <timedGroup maxSeconds="5" description="timed group with nested not">
+                    <not>
+                        <verifyText description="some other step" text="you will not find this"/>
+                    </not>
+                </timedGroup>
+
+                <not description="not with nested group which should fail because of time">
+                    <timedGroup maxMillis="1">
+                        <invoke description="the first step in the group" url="${start.page}"/>
+                        <invoke description="the first step in the group" url="${start.page}"/>
+                        <verifyText description="some other step" text="html"/>
+                    </timedGroup>
+                </not>
+
+                <not description="not with nested group which should fail because of inner step">
+                    <timedGroup maxMillis="200">
+                        <invoke description="the first step in the group" url="${start.page}"/>
+                        <verifyText text="you will not find this"/>
+                    </timedGroup>
+                </not>
+
+            </steps>
+        </webtest>
+    </target>
+</project>

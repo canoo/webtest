@@ -1,0 +1,23 @@
+<steps>
+    <emailSetConfig .../>
+    <emailStoreMessageId subject="/mailtest.*mime/"
+        property="mid2" messageIndex="0"/>
+    <!-- MIME message with plain body and gif and pdf attachments -->
+
+    <emailStoreHeader headerName="Content-Type"
+        property="ct2" messageId="#{mid2}" />
+    <verifyProperty name="ct2" text="multipart/mixed" regex="true"/>
+
+    <emailStoreHeader headerName="Content-Type" partIndex="0"
+        property="ct2pt0" messageId="#{mid2}" />
+    <verifyProperty name="ct2pt0" text="text/plain" regex="true"/>
+
+    <emailStoreHeader headerName="Content-Type" partIndex="1"
+        property="ct2pt1" messageId="#{mid2}" />
+    <verifyProperty name="ct2pt1" text="image/gif" regex="true"/>
+
+    <emailStoreHeader headerName="Content-Type" partIndex="2"
+        property="ct2pt2" messageId="#{mid2}" />
+    <verifyProperty name="ct2pt2" text="application/octet-stream"
+        regex="true"/>
+</steps>

@@ -1,0 +1,15 @@
+<webtest name="cookie: visit count test example">
+    <config ...>
+    <steps>
+        <invoke description="reset in case someone else has used this page"
+            url="visitCount.jsp?reset=true"/>
+        <invoke description="expect cookie-based counter to be 0" url="visitCount.jsp"/>
+        <verifyTitle description="confirm correct page" regex="true" text="Visit Counter.*" />
+        <storeCookie name="JSESSIONID" property="sessid" />
+        <verifyCookie name="VISITCOUNT" text="1" />
+        <invoke description="session id shouldn't change, cookie-based counter should increment"
+            url="visitCount.jsp"/>
+        <verifyCookie name="JSESSIONID" text="#{sessid}" />
+        <verifyCookie name="VISITCOUNT" text="2" />
+    </steps>
+</webtest>

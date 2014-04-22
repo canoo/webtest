@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="test" default="all" basedir=".">
+
+	<target name="all"/>
+<!-- 
+TODO: reactivate once CC server's behaves better
+	<target name="all" depends="simpleTest"/>
+ -->
+
+    <target name="simpleTest">
+        <webtest name="dragAndDrop: example with scriptaculous Drag &amp; Drop support">
+            <config easyajax="true" easyajaxdelay="10000"/> <!-- CC server seems quite busy since some time and default value of 2000 is not enough anymore, even 5000 caused problems -->
+            <invoke url="scriptaculous/dragdrop.html"/>
+            <verifyTitle text="Simple script.aculo.us Drag and drop example"/>
+            
+            <verifyElementText htmlid="log" text="" description="check that nothing is logged"/>
+
+            <dragAndDrop fromHtmlId="handle1" toHtmlId="droptarget1"/>
+            <verifyElementText htmlid="log" text="drop: box1"/>
+            <dragAndDrop fromXPath="//span[text()='2nd drag here']" toXPath="//div[text()='drop zone']"/>
+            <verifyElementText htmlid="log" text="drop: box2"/>
+        </webtest>
+    </target>
+
+
+</project>

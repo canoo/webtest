@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testAjax" default="all" basedir=".">
+
+ 	<target name="all"
+ 		depends="testAjaxCompletion, testAjaxSelect"/>
+
+	<target name="testAjaxCompletion">
+		<webtest name="ajax: Test input field autocompletion">
+            <config
+                host="${webtest.host}"
+                port="${webtest.port}"
+                protocol="${webtest.protocol}"
+                basepath="/ajaxtags"
+                saveresponse="true"
+                resultpath="${wt.config.resultpath}"
+                resultfile="${webtest.resultfile}"
+                haltonfailure="true"
+                showhtmlparseroutput="false"/>
+            <steps>
+                <invoke description="Open the page with field" url="autocomplete.jsp"/>
+                <verifytitle text="AJAX JSP Tag Library Examples"/>
+                <verifyText text="Autocomplete Demo"/>
+                <setInputField name="model" value="E"/>
+                <!-- need to be able to check dynamically modified div here -->
+            </steps>
+		</webtest>
+	</target>
+
+	<target name="testAjaxSelect">
+		<webtest name="ajax: Test Ajaxified select">
+            <config
+                host="${webtest.host}"
+                port="${webtest.port}"
+                protocol="${webtest.protocol}"
+                basepath="/ajaxtags"
+                saveresponse="true"
+                resultpath="${wt.config.resultpath}"
+                resultfile="${webtest.resultfile}"
+                haltonfailure="true"
+                showhtmlparseroutput="false"/>
+            <steps>
+            <invoke description="Open the page with field" url="dropdown.jsp"/>
+                <verifytitle text="AJAX JSP Tag Library Examples"/>
+                <verifyText text="Select Tag Demo"/>
+                <storeElementAttribute propertyName="initialModelState" htmlId="model" attributeName="disabled"/>
+                <verifyProperty description="initially disabled" name="initialModelState" text="disabled"/>
+                <setSelectField htmlId="make" value="Ford"/>
+                <verifySelectField htmlId="make" value="Ford"/>
+                <storeElementAttribute propertyName="finalModelState" htmlId="model" attributeName="disabled"/>
+                <!-- HtmlUnit should update the state here and this should break -->
+                <verifyProperty description="initially disabled" name="finalModelState" text="disabled"/>
+            </steps>
+		</webtest>
+	</target>
+
+</project>

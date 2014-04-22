@@ -1,0 +1,6 @@
+<invoke
+	url="http://www.myserver.com:8080/myApp/login"
+	description="get Login Page" />
+<verifyTitle 
+	text="Login Page"
+	description="we should see the login title" />

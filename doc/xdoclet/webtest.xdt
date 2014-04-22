@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<webtest-doc>
+<nested>
+<name>step</name>
+<category>General</category>
+<description>A step is a single command to be executed by webtest.</description>
+<pre>
+	<b>Test steps are grouped into three major categories:</b>
+	<dl>
+		<li>
+			<dt>Action</dt>
+			<dd>Issue an HTTP request and store the result, e.g. invoke the URL
+				&quot;http://www.seibertec.ch/wiki&quot;.</dd>
+		</li>
+		<li>
+			<dt>Verification</dt>
+			<dd>Verify the correctness of the latest result, e.g. ensure
+				that a particular text string occurs in the page title.</dd>
+		</li>
+		<li>
+			<dt>Manipulation</dt>
+			<dd>Prepare the next request, e.g. by setting parameter values.</dd>
+		</li>
+	</dl>
+</pre>
+</nested>
+<nested>
+<name>condition</name>
+<category>Extension</category>
+<description>A condition is a group of step to be executed by webtest.</description>
+<pre>
+    <b>A condition is a <stepref name="group" category="Core"/> of steps.
+    The condition is true if all the first-level steps succeed.</b>
+</pre>
+</nested>
+	<XDtClass:forAllClasses type="java.lang.Object">
+        <XDtClass:ifIsClassNotAbstract>
+            <XDtClass:ifHasClassTag tagName="webtest.step" paramName="name" superclasses="false" >
+                <step>
+                    <class><XDtClass:fullClassName/></class>
+                    <name><XDtClass:classTagValue tagName="webtest.step" paramName="name"/></name>
+                    <category><XDtClass:classTagValue tagName="webtest.step" paramName="category"/></category>
+                    <description><![CDATA[<XDtClass:classTagValue tagName="webtest.step" paramName="description"/>]]></description>
+                    <XDtMerge:merge file="{0}-syntax-pre.xml" generateMergedFile="false">
+                    </XDtMerge:merge>
+                    <parameter>
+                        <name>description</name>
+                        <required>no</required>
+                        <default></default>
+                        <description><![CDATA[The description of this test step.]]></description>
+                    </parameter>
+                    <XDtMethod:forAllMethods>
+                        <XDtMethod:ifHasMethodTag tagName="webtest.parameter">
+                            <parameter>
+                                <name><XDtMethod:propertyName/></name>
+                                <required><XDtMethod:methodTagValue tagName="webtest.parameter" paramName="required" values="true,false,yes,no,yes/no"/></required>
+                                <default><XDtMethod:methodTagValue tagName="webtest.parameter" paramName="default"/></default>
+                                <description><![CDATA[<XDtMethod:methodTagValue tagName="webtest.parameter" paramName="description"/>]]></description>
+                            </parameter>
+                        </XDtMethod:ifHasMethodTag>
+                        <XDtMethod:ifHasMethodTag tagName="webtest.nested.parameter">
+                            <nestedParameter>
+                                <name><XDtMethod:methodName/></name>
+                                <required><XDtMethod:methodTagValue tagName="webtest.nested.parameter" paramName="required" values="true,false,yes,no,yes/no"/></required>
+                                <default><XDtMethod:methodTagValue tagName="webtest.nested.parameter" paramName="default"/></default>
+                                <description><![CDATA[<XDtMethod:methodTagValue tagName="webtest.nested.parameter" paramName="description"/>]]></description>
+                            </nestedParameter>
+                        </XDtMethod:ifHasMethodTag>
+                    </XDtMethod:forAllMethods>
+                    <XDtMerge:merge file="{0}-syntax-post.xml" generateMergedFile="false">
+                    </XDtMerge:merge>
+                </step>
+            </XDtClass:ifHasClassTag>
+            <XDtClass:ifHasClassTag tagName="webtest.nested" paramName="name" superclasses="false">
+                <nested>
+                    <class><XDtClass:fullClassName/></class>
+                    <name><XDtClass:classTagValue tagName="webtest.nested" paramName="name"/></name>
+                    <category><XDtClass:classTagValue tagName="webtest.nested" paramName="category"/></category>
+                    <description><![CDATA[<XDtClass:classTagValue tagName="webtest.nested" paramName="description"/>]]></description>
+                    <XDtMerge:merge file="{0}-syntax-pre.xml" generateMergedFile="false">
+                    </XDtMerge:merge>
+                    <XDtMethod:forAllMethods>
+                        <XDtMethod:ifHasMethodTag tagName="webtest.parameter">
+                            <parameter>
+                                <name><XDtMethod:propertyName/></name>
+                                <required><XDtMethod:methodTagValue tagName="webtest.parameter" paramName="required" values="true,false,yes,no,yes/no"/></required>
+                                <default><XDtMethod:methodTagValue tagName="webtest.parameter" paramName="default"/></default>
+                                <description><![CDATA[<XDtMethod:methodTagValue tagName="webtest.parameter" paramName="description"/>]]></description>
+                            </parameter>
+                        </XDtMethod:ifHasMethodTag>
+                        <XDtMethod:ifHasMethodTag tagName="webtest.nested.parameter">
+                            <nestedParameter>
+                                <name><XDtMethod:methodName/></name>
+                                <required><XDtMethod:methodTagValue tagName="webtest.nested.parameter" paramName="required" values="true,false,yes,no,yes/no"/></required>
+                                <default><XDtMethod:methodTagValue tagName="webtest.nested.parameter" paramName="default"/></default>
+                                <description><![CDATA[<XDtMethod:methodTagValue tagName="webtest.nested.parameter" paramName="description"/>]]></description>
+                            </nestedParameter>
+                        </XDtMethod:ifHasMethodTag>
+                    </XDtMethod:forAllMethods>
+                    <XDtMerge:merge file="{0}-syntax-post.xml" generateMergedFile="false">
+                    </XDtMerge:merge>
+                </nested>
+            </XDtClass:ifHasClassTag>
+	    </XDtClass:ifIsClassNotAbstract>
+	</XDtClass:forAllClasses>
+</webtest-doc>

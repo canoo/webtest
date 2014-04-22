@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="showI18n" default="showI18n" basedir=".">
+
+	<target name="showI18n">
+		<webtest name="showI18n: Show internalization with WebTest">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="i18n.html"/>
+				<verifyTitle text="i18n Sample Page"/>
+				<verifyText text="Sample Internalization Page"/>
+                <!--
+                VerifyText works on the raw html page, as sent by the server.
+                You must hence check for the entity.
+                Note that, as ant parses this file before calling webtest, we must trick the system out:
+                ant will recognizes the entity &amp; and transform it to just an ampersand.
+                -->
+                <verifyText text="&amp;#x4f60;"/>
+				<verifyXPath xpath="//tbody/tr[3]/td[2] = //tbody/tr[3]/td[3]"/>
+                <!--
+                VerifyXPath works on a DOM of the html page, as parsed and build by the htmlunit.
+                You must hence check for the numerical value.
+                -->
+                <verifyXPath xpath="//tbody/tr[3]/td[2] = '&#x597d;'"/>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

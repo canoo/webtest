@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testRedirect" default="all" basedir=".">
+
+    <target name="all" depends="testRedirectServer"/>
+
+    <target name="testRedirectServer">
+        <webtest name="redirect: test various server-side Redirect methods">
+            &sharedConfiguration;
+            <steps>
+
+                <invoke description="test servlet for redirect test (via sendRedirect())"
+                    url="formTest?mode=redirectTest"/>
+                <verifyText description="check text for redirection target 1"
+                    text="Redirect AbstractTargetAction Page"/>
+
+                <invoke description="test servlet for redirect test (via form post)"
+                    url="formTest?mode=redirectPage"/>
+                <clickButton description="click button for post and redirect"
+                    name="submitPost"/>
+                <verifyText description="check text for redirection target 2"
+                    text="Redirect AbstractTargetAction Page"/>
+
+                <invoke description="test servlet for redirect test (via form get)"
+                    url="formTest?mode=redirectPage"/>
+                <clickButton description="click button for get and redirect"
+                    name="submitGet"/>
+                <verifyText description="check text for redirection target 3"
+                    text="Redirect AbstractTargetAction Page"/>
+
+            </steps>
+        </webtest>
+    </target>
+</project>

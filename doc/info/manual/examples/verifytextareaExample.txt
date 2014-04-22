@@ -1,0 +1,12 @@
+<webtest name="Check freetext entry">
+	<config ... />
+	<steps>
+		<invoke ... />
+		<verifyTextarea
+			description="Checks for at least one character in the textarea named FreetextComment"
+			name="FreetextComment"
+			text=".+"
+			regex="true" />
+		...
+	</steps>
+</webtest>

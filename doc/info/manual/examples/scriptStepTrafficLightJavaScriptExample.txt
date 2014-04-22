@@ -1,0 +1,23 @@
+<target name="testInlineJavaScript">
+	<property name="image_id" value="traffic_light"/>
+	<webtest name="scriptStep: test scriptStep with inlined JavaScript script">
+		&sharedConfiguration;
+		<steps>
+			<invoke description="Load Initial Page"
+				url="trafficlight.html"/>
+				<storeXPath description="extract src attribute from image with id=${image_id}"
+					xpath="//img[@id='${image_id}']/@src"
+					property="imagesrc"/>
+				<scriptStep description="calculate expected alt text for src=#{imagesrc}" language="javascript">
+					var src2alt = new Array();
+					src2alt["red.gif"] = "stop";
+					src2alt["orange.gif"] = "wait";
+					src2alt["green.gif"] = "go";
+					step.setWebtestProperty('image_alt', src2alt["#{imagesrc}"]);
+				</scriptStep>
+				<verifyXPath description="check alt value"
+					xpath="//img[@id='${image_id}']/@alt"
+					text="#{image_alt}"/>
+		</steps>
+	</webtest>
+</target>

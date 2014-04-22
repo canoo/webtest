@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd"
+        [
+                <!ENTITY site             SYSTEM "WebTestSite.xml">
+                ]
+        >
+
+<manpage siteid="Acknowledgments">
+
+    &site;
+
+    <head title="Acknowledgments">
+
+    </head>
+
+    <section title="Contributors and Authors">
+        <b>Thanks to</b>
+        <dl>
+            <li>
+                <dt>Carsten Seibert,
+                    <key>seiberTEC</key>
+                </dt>
+                <dd>for his excellent development work.</dd>
+            </li>
+            <li>
+                <dt>Etienne Studer,
+                    <key>canoo</key>
+                </dt>
+                <dd>for contributing the PDF test steps.</dd>
+            </li>
+            <li>
+                <dt>Marcel R&#xfc;edi,
+                    <key>canoo</key>
+                </dt>
+                <dd>for patching
+                    <key>httpunit</key>
+                    for use with HTTPS and ENTRUST.
+                </dd>
+            </li>
+            <li>
+                <dt>Marc Guillemot,</dt>
+                <dd>for numerous contributions.</dd>
+            </li>
+            <li>
+                <dt>Paul King,</dt>
+                <dd>for numerous contributions.</dd>
+            </li>
+            <li>
+                <dt>Denis N. Antonioli
+                    <key>canoo</key>
+                </dt>
+                <dd>for numerous contributions.</dd>
+            </li>
+            <li>
+                <dt>Rob Nielsen,</dt>
+                <dd>for the Excel steps.</dd>
+            </li>
+            <li>
+                <dt>Stefan Ruff,</dt>
+                <dd>for providing and excellent stylesheet and other contributions on the mailinglist.</dd>
+            </li>
+            <li>
+                <dt>Matt Raible,</dt>
+                <dd>for his Sleep task and work on the mailinglist.</dd>
+            </li>
+            <li>
+                <dt>Richard Hill,</dt>
+                <dd>for the first version of the Sleep task.</dd>
+            </li>
+            <li>
+                <dt>Christopher Painter-Wakefield,</dt>
+                <dd>for his help on several issues.</dd>
+            </li>
+            <li>
+                <dt>Aatish Arora,</dt>
+                <dd>for his support on the mailinglist and providing patches for clickbutton.</dd>
+            </li>
+            <li>
+                <dt>Siegfried Goeschl</dt>
+                <dd>for providing the Maven plugin.</dd>
+            </li>
+            <li>
+                <dt>Walter Rumsby</dt>
+                <dd>for introducing StoreXPath.</dd>
+            </li>
+            <li>
+                <dt>Torben Tretau</dt>
+                <dd>for introducing FollowFrame.</dd>
+            </li>
+            <li>
+                <dt>Ben Cox</dt>
+                <dd>for his help in the
+                    <key>mailingList</key>
+                    .
+                </dd>
+            </li>
+            <li>
+                <dt>Erik Ostermueller</dt>
+                <dd>for his care on the JavaScript issue.</dd>
+            </li>
+            <li>
+                <dt>Charles Massey</dt>
+                <dd>for submitting StoreRegexMatch.</dd>
+            </li>
+            <li>
+                <dt>Donald Ball</dt>
+                <dd>for introducing the VerifyXPath.</dd>
+            </li>
+            <li>
+                <dt>Eric Pugh</dt>
+                <dd>for his care about clean structures.</dd>
+            </li>
+            <li>
+                <dt>Katja Schulze,
+                    <key>cspb</key>
+                </dt>
+                <dd>for pilot using Canoo WebTest.</dd>
+            </li>
+            <li>
+                <dt>Sara Camponovo,
+                    <key>cspb</key>
+                </dt>
+                <dd>for relentlessly hunting bugs with Canoo WebTest.</dd>
+            </li>
+            <li>
+                <dt>Pascal St&#xf6;ckli,
+                    <key>csfs</key>
+                </dt>
+                <dd>for his bug reports and pilot use</dd>
+            </li>
+            <li>
+                <dt>Hans-Dirk Walter,
+                    <key>canoo</key>
+                </dt>
+                <dd>for starting the project.</dd>
+            </li>
+            <li>
+                <dt>Martin Huber,
+                    <key>canoo</key>
+                </dt>
+                <dd>for his requirements contributions.</dd>
+            </li>
+            <li>
+                <dt>Stephan Huber,
+                    <key>canoo</key>
+                </dt>
+                <dd>for the first complex usage scenarios.</dd>
+            </li>
+            <li>
+                <dt>Dieter Holz,
+                    <key>canoo</key>
+                </dt>
+                <dd>for providing feedback on the install, setup and documentation.</dd>
+            </li>
+            <li>
+                <dt>Satish Verma</dt>
+                <dd>for starting the reporting implementation.</dd>
+            </li>
+            <li>
+                <dt>Urs-Peter H&#xe4;ss,
+                    <key>canoo</key>
+                </dt>
+                <dd>for implementing verifyLinks.</dd>
+            </li>
+            <li>
+                <dt>Peter Rossbach</dt>
+                <dd>for providing a Apache Tomcat/4.0.2 compliant web.xml</dd>
+            </li>
+            <li>
+                <dt>Dierk K&#xf6;nig,
+                    <key>canoo</key>
+                </dt>
+                <dd>for writing this section.</dd>
+            </li>
+            <li>
+                <dt>all the others that I just forgot to mention...</dt>
+                <dd></dd>
+            </li>
+        </dl>
+    </section>
+
+    <section title="Third Party Authors">
+        <b>Thanks to the authors of</b>
+        <dl>
+            <li>
+                <dt>
+                    <key>ANT</key>
+                </dt>
+                <dd>This product includes software developed by the
+                    Apache Software Foundation (http://www.apache.org/).</dd>
+            </li>
+            <li>
+                <dt>
+                    <key>junit</key>
+                </dt>
+                <dd>released under the
+                    <key>ibmPL</key>
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <key>htmlunit</key>
+                </dt>
+                <dd>the "browser" used by webtest</dd>
+            </li>
+            <li>
+                <dt>
+                    <key>httpunit</key>
+                </dt>
+                <dd>the "browser" used by webtest before the switch to htmlunit</dd>
+            </li>
+            <li>
+                <dt>
+                    <key>jtidy</key>
+                </dt>
+            </li>
+            <li>
+                <dt>
+                    <key>pdfbox</key>
+                </dt>
+                <dd>PDFBox is released under the BSD license (http://www.opensource.org/licenses/bsd-license.php)</dd>
+            </li>
+            <li>
+                <dt>
+                    <key>jakarta</key>
+                </dt>
+            </li>
+        </dl>
+
+        <b>Their license restrictions apply.</b>
+
+    </section>
+
+    <section title="Sponsors">
+        <b>Follwing companies contributed licenses or resources:</b>
+        <dl>
+            <li>
+                <dt>
+                    <ext href="http://www.atlassian.com/">Atlassian Software Systems</ext>
+                </dt>
+                <dd>for
+                    <key>Jira</key>.
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <ext href="http://www.canoo.com">Canoo</ext>
+                </dt>
+                <dd>for the infrastructure (build server, repository)</dd>
+            </li>
+            <li>
+                <dt>
+                    <ext href="http://www.cenqua.com/">cenqua</ext>
+                </dt>
+                <dd>for
+                    <key>CLOVER</key>
+                    and for FishEye.
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <ext href="http://www.jetbrains.com/">JetBrains</ext>
+                </dt>
+                <dd>for
+                    <key>Intellij</key>
+                    and for TMate.
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <ext href="http://www.yourkit.com/">YourKit</ext>
+                </dt>
+                <dd>for YourKit Java Profiler.
+                </dd>
+            </li>
+            <li>
+                <dt>
+                    <ext href="http://www.denic.de/">DENIC eG</ext>
+                </dt>
+                <dd>for upgrading WebTest to Ant 1.8.4.
+                </dd>
+            </li>
+        </dl>
+    </section>
+</manpage>

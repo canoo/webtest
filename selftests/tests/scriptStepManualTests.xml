@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testScriptStepOptional" default="full" basedir=".">
+
+    <!-- not included in TestSuite because we don't currently
+         include optional jruby.jar and jython.jar in distribution -->
+
+    <target name="full" depends="testFibonacciJython,testFibonacciRuby,testFibonacciBeanShell"/>
+
+<target name="testFibonacciJython">
+	<webtest name="scriptStepManualTests: test numbers page with inlined jython Script">
+		&sharedConfiguration;
+		<steps>
+			<invoke description="Load Initial Page" url="numbers.html"/>
+			<storexpath description="extract number to check"
+				xpath="//span[@id='fibonacci']/text()"
+				property="number"/>
+			<scriptStep description="check if number is indeed in Fibonacci series" language="jython"> <![CDATA[
+def isFib(n):
+	a,b = 0,1
+	while b < n:
+		a,b = b,a+b
+	if b == n: return 1
+	return 0
+
+if isFib(#{number}): step.setWebtestProperty("found", "true")
+]]>
+			</scriptStep>
+			<verifyProperty name="found" text="true" />
+		</steps>
+	</webtest>
+</target>
+
+<target name="testFibonacciRuby">
+	<webtest name="scriptStepManualTests: test numbers page with inlined ruby Script">
+		&sharedConfiguration;
+		<steps>
+			<invoke description="Load Initial Page" url="numbers.html"/>
+			<storexpath description="extract number to check"
+				xpath="//span[@id='fibonacci']/text()"
+				property="number"/>
+			<scriptStep description="check if number is indeed in Fibonacci series" language="ruby"> <![CDATA[
+def isFib(n)
+    a = 0
+    b = 1
+    while b < n
+      tempa = a
+      a = b
+      b = tempa + b
+    end
+    return b == n
+end
+
+if isFib(#{number})
+  $bsf.lookupBean("step").setWebtestProperty("found", "true")
+end
+]]>
+			</scriptStep>
+			<verifyProperty name="found" text="true" />
+		</steps>
+	</webtest>
+</target>
+
+<target name="testFibonacciBeanShell">
+	<webtest name="scriptStepManualTests: test numbers page with inlined beanshell Script">
+		&sharedConfiguration;
+		<steps>
+			<invoke description="Load Initial Page" url="numbers.html"/>
+			<storexpath description="extract number to check"
+				xpath="//span[@id='fibonacci']/text()"
+				property="number"/>
+			<scriptStep description="check if number is indeed in Fibonacci series" language="beanshell"> <![CDATA[
+isFib(n) {
+    a = 0;
+    b = 1;
+    while (b < n) {
+      tempa = a;
+      a = b;
+      b = tempa + b;
+    }
+    return b == n;
+}
+
+if (isFib(#{number})) step.setWebtestProperty("found", "true");
+]]>
+			</scriptStep>
+			<verifyProperty name="found" text="true" />
+		</steps>
+	</webtest>
+</target>
+
+</project>

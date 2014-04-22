@@ -1,0 +1,9 @@
+<webtest>
+  <steps>
+    <antWrapper>
+      <loadFile property="message" srcFile="message.txt"/>
+    </antWrapper>
+    <invoke url="http://mysite/news/"/>
+    <setInputField name="message" value="${message}/>
+  </steps>
+</webtest>

@@ -1,0 +1,16 @@
+<post>
+    <b>
+        Here is an example of using <em>pdfToLinksFilter</em>:
+    </b>
+
+    <code caption='pdfToLinksFilter example'>
+        <include src='pdfexamples/toLinksFilterExample.xml'/>
+    </code>
+
+    <b>As a result of invoking the above steps a file would be created containing something like the following:</b>
+
+    <code caption='pdfToLinksFilter output'>
+        <include src='pdfexamples/toLinksFilterOutput.xml'/>
+    </code>
+
+</post>

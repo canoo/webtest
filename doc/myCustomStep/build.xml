@@ -1,0 +1,97 @@
+<?xml version="1.0" ?>
+<project
+        name="myCustomStep" default="all"
+        xmlns:artifact="urn:maven-artifact-ant"
+        >
+	<description>
+		Build and test a webtest step.
+		This project follows maven's 2.0 project organization.
+
+		This is a very minimal project designed to show how to write, build and run custom steps.
+
+		The main points demonstrated here are:
+
+		(1) How to write a very simple step.
+		(2) How to build a custom step against the webtest.jar and webtest_T.jar distributed on the web.
+		(3) How to set-up a project to let ant use the custom step along the standard step.
+
+		Note that this module make uses of a jar file that isn't distributed with webtest, maven-ant-tasks-2.1.3.custom.jar.
+	</description>
+
+	<property environment="env"/>
+	<property name="webtest.home" location="${env.WEBTEST_HOME}"/>
+
+	<import file="${webtest.home}/webtest.xml"/>
+
+    <typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="urn:maven-artifact-ant">
+        <classpath>
+            <pathelement location="lib/maven-ant-tasks-2.1.3.custom.jar"/>
+        </classpath>
+    </typedef>
+    <artifact:pom file="pom.xml" id="maven.project"/>
+
+    <target name="fetchDependencies"
+            description="Fetch dependencies described in the POM."
+            >
+        <artifact:dependencies useScope="test" pathId="path.pom.test.id">
+            <pom refid="maven.project"/>
+        </artifact:dependencies>
+    </target>
+
+    <target name="all" depends="build, webtest"/>
+
+
+	<target name="build" depends="wt.defineTasks, fetchDependencies" description="build, test and jar the custom step.">
+		<property name="build.prod.dir" location="target/classes"/>
+		<property name="build.test.dir" location="target/test-classes"/>
+		<property name="junit.test.dir" location="target/test-reports"/>
+
+		<delete dir="target" quiet="true"/>
+
+		<mkdir dir="${build.prod.dir}"/>
+		<javac srcdir="src/main/java" destdir="${build.prod.dir}"
+			   encoding="ISO-8859-1"
+			   source="1.4">
+			<classpath>
+				<path refid="wt.defineTasks.classpath.id"/>
+			</classpath>
+		</javac>
+
+		<jar
+			destfile="target/myCustomStep.jar"
+		   filesonly="true"
+		   basedir="${build.prod.dir}"
+			/>
+
+		<mkdir dir="${build.test.dir}"/>
+		<javac srcdir="src/test/java" destdir="${build.test.dir}"
+			   encoding="ISO-8859-1"
+			   source="1.4">
+			<classpath>
+				<path refid="wt.defineTasks.classpath.id"/>
+				<pathelement location="${webtest.home}/lib/webtest_T.jar"/>
+				<pathelement path="${build.prod.dir}"/>
+                <path refid="path.pom.test.id"/>
+            </classpath>
+		</javac>
+
+
+		<mkdir dir="${junit.test.dir}"/>
+		<junit printsummary="false" haltonfailure="yes" includeantruntime="no">
+			<test name="com.canoo.webtest.extension.MyCustomStepTest" todir="${junit.test.dir}"/>
+			<formatter type="brief" usefile="false"/>
+			<classpath>
+				<path refid="wt.defineTasks.classpath.id"/>
+				<pathelement location="${webtest.home}/lib/webtest_T.jar"/>
+				<pathelement path="target/myCustomStep.jar:${build.test.dir}"/>
+                <path refid="path.pom.test.id"/>
+            </classpath>
+		</junit>
+	</target>
+
+	<target name="webtest" description="runs all webtest">
+		<ant dir="src/test/webtest/tests" antfile="build.xml">
+			<property name="wt.headless" value="true"/>
+		</ant>
+	</target>
+</project>

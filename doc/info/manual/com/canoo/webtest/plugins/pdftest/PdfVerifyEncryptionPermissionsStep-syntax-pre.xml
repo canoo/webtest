@@ -1,0 +1,15 @@
+<pre>
+
+    <b>
+        Valid permission names include:
+        <em>printing</em>,
+        <em>degradedPrinting</em>,
+        <em>modifyContents</em>,
+        <em>copy</em>,
+        <em>modifyAnnotations</em>,
+        <em>fillIn</em>,
+        <em>screenReaders</em> and
+        <em>assembly</em>.
+    </b>
+
+</pre>

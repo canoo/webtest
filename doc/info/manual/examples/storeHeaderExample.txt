@@ -1,0 +1,10 @@
+<webtest name="httpHeader: confirm usage of storeHeader">
+    <config ...>
+    <steps>
+        <invoke description="Load Image" url="ok.gif"/>
+        <storeHeader description="store content-type"
+            name="Content-Type" property="contentType" />
+        <verifyProperty description="should be a gif image"
+            name="contentType" text="image/gif"/>
+    </steps>
+</webtest>

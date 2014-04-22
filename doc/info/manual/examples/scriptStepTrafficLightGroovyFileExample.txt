@@ -1,0 +1,10 @@
+<target name="testFileGroovy">
+	<property name="image_id" value="traffic_light"/>
+	<webtest name="scriptStep: test Groovy Code from file">
+		&sharedConfiguration;
+		<steps>
+			<scriptStep description="use from file like a macro"
+				language="groovy" src="${basedir}/GMacroSteps.groovy"/>
+		</steps>
+	</webtest>
+</target>

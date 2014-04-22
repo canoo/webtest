@@ -1,0 +1,81 @@
+<post>
+
+    <b>Normally only one <em>&lt;expectDialog&gt;</em> step will be required but if you have
+    complex <key>javascript</key>, it may require the user to respond to multiple dialogs associated
+    with one form or link click. If this is the case (as in the complex example below) you should
+    use multiple <em>&lt;expectDialog&gt;</em> steps in the same order that the user would respond
+    to them in or consider using the enhanced <stepref name="expectDialogs"/> step. If you want to
+    check that no dialogs were in fact used, you <em>must</em> use the <stepref name="expectDialogs"/> step.
+    Only one <stepref name="verifyNoDialogs"/> is ever required after the click event
+    to check that everything worked as planned.</b>
+
+    <b>If you were expecting the <key>javascript</key> to invoke 2 dialog but only one was in fact
+    invoked, the <stepref name="verifyNoDialogs"/> step will fail with an appropriate error message.
+    Similarly, if you expected only one dialog interaction but more occurred, the intervening click
+    request step will fail.
+    </b>
+
+    <b><em>Simple Example</em></b>
+
+    <b>Consider the following <key>HTML</key> form:</b>
+
+    <b><img src="images/dialog_simpleapp.gif"/></b>
+
+    <b>If the user leaves fields blank, we want to pop up an alert as follows:</b>
+
+    <b><img src="images/dialog_simplealert.gif"/></b>
+
+    <b>The <key>HTML</key> might look something like:</b>
+
+    <code caption='Simple dialog example HTML'>
+     <include src='examples/dialogSimpleExampleHtml.xml' />
+    </code>
+
+    <b>The test might look something like:</b>
+
+    <code caption='Simple dialog example Test'>
+     <include src='examples/expectDialogSimpleExampleTest.xml' />
+    </code>
+
+<b><em>Complex Example</em></b>
+
+    <b>Consider an application which performs some disk administration (the samples below
+    don't actual do anything but show the kind of <key>javascript</key> messages that such
+    an application would need to use).</b>
+
+    <b><img src="images/dialog_app.gif"/></b>
+
+    <b>When the user clicks the clean button they receive a <key>javascript</key> confirm dialog:</b>
+
+    <b><img src="images/dialog_confirm.gif"/></b>
+
+    <b>If the user selects "Cancel" they receive the following alert:</b>
+
+    <b><img src="images/dialog_alert1.gif"/></b>
+
+    <b>If the user selects "OK" they receive the following prompt dialog as a precaution:</b>
+
+    <b><img src="images/dialog_prompt.gif"/></b>
+
+    <b>If the user then clicks "Cancel" or enters incorrect text, e.g. "No" in the prompt, they receive the following alert dialog:</b>
+
+    <b><img src="images/dialog_alert2.gif"/></b>
+
+    <b>If the user enters the correct "YES" text and clicks "OK", they receive the following alert dialog (<em>NOTE</em>: nothing happens despite the message - this is just a hypothetical demo):</b>
+
+    <b><img src="images/dialog_alert3.gif"/></b>
+
+
+    <b>Here is the relevant part of the build.xml:</b>
+
+    <code caption='Complex example test'>
+     <include src='examples/expectDialogComplexExampleTest.xml' />
+    </code>
+
+    <b>This assumes you have some <key>HTML</key> containing a form and some <key>javascript</key> something like the following:</b>
+
+    <code caption='Complex example HTML/JavaScript'>
+     <include src='examples/dialogComplexExampleHtml.xml' />
+    </code>
+
+</post>

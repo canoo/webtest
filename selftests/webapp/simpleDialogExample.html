@@ -1,0 +1,49 @@
+<HTML>
+<HEAD><TITLE>Simple Dialog Example</TITLE>
+<SCRIPT LANGUAGE='JAVASCRIPT'>
+function isEmpty(thefield) {
+    var re = /^\s{1,}$/g; //match any white space including space, tab, form-feed, etc.
+    if ((thefield.value.length==0) || (thefield.value==null) || ((thefield.value.search(re)) > -1)) {
+        return true;
+    }
+    return false;
+}
+function validate(theForm) {
+    var message = "Validation errors in form:\n";
+    var errorFound = false;
+    if (isEmpty(theForm.name)) {
+        message += "Username field must not be blank!\n";
+        theForm.name.focus();
+        errorFound = true;
+    }
+    if (isEmpty(theForm.password)) {
+        message += "Password field must not be blank!\n";
+        if (!errorFound) {
+            theForm.password.focus();
+            errorFound = true;
+        }
+    }
+    if (errorFound) {
+        alert(message);
+        return false;
+    }
+    return true;
+}
+
+function testSetTimeoutAlert()
+{
+	setTimeout("alert('started from setTimout', 0)");
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<FORM name='myForm' action='' method='post'>
+   Username: <INPUT type='text' NAME='name' value='' SIZE='30'><br>
+   Password: <INPUT type='password' NAME='password' value='' SIZE='30'><br>
+   <INPUT type='button' name='submit' value=' Login ' onClick='return validate(myForm);'>
+   <INPUT type='reset' name='reset' value=' Clear '>
+</FORM>
+
+<div id="setTimeoutAlert" onclick="testSetTimeoutAlert()">click me for an alert with setTimeout</div>
+</BODY>
+</HTML>

@@ -1,0 +1,50 @@
+<webtest name="verifyDialogs: test simple dialog form validation example">
+    <config .../>
+    <steps>
+        <invoke description="Load Page" url="/simpleDialogExample.html"/>
+        <verifyTitle description="Confirm page" text="Simple Dialog Example"/>
+        <!-- Interaction 1: try with both fields blank -->
+        <expectDialogs description="set up dialog expectations">
+            <alert description="expect alert with save of dialog message"
+                saveProperty="simpleDialog" />
+        </expectDialogs>
+        <clickButton description="Click Login button" name="submit" />
+        <!-- check that both of our error messages were present -->
+        <verifyProperty name="simpleDialog" regex="true"
+            text=".*Username field must not be blank.*"/>
+        <verifyProperty name="simpleDialog" regex="true"
+            text=".*Password field must not be blank.*"/>
+        <verifyNoDialogs description="Check alert dialog was used" />
+
+        <!-- Interaction 2: try with just password field blank -->
+        <expectDialogs description="set up dialog expectations">
+            <alert description="expect alert with save of dialog message"
+                saveProperty="simpleDialog" />
+        </expectDialogs>
+        <setInputField name="name" value="some username" />
+        <clickButton description="Click Login button" name="submit" />
+        <not>
+            <verifyProperty name="simpleDialog" regex="true"
+                text=".*Username field must not be blank.*"/>
+        </not>
+        <verifyProperty name="simpleDialog" regex="true"
+            text=".*Password field must not be blank.*"/>
+        <verifyNoDialogs description="Check alert dialog was used" />
+
+        <!-- Interaction 3: try with just username field blank -->
+        <expectDialogs description="set up dialog expectations">
+            <alert description="expect alert with inline check"
+                text=".*Username field must not be blank.*" regex="true" />
+        </expectDialogs>
+        <setInputField name="name" value="" />
+        <setInputField name="password" value="some password" />
+        <clickButton description="Click Login button" name="submit" />
+        <verifyNoDialogs description="Check alert dialog was used" />
+
+        <!-- Interaction 4: try with correct fields -->
+        <expectDialogs description="expect no dialogs - will fail if one occurs"/>
+        <setInputField name="name" value="some username" />
+        <clickButton description="Click Login button" name="submit" />
+        <!-- would normally check we are on a new page here -->
+    </steps>
+</webtest>

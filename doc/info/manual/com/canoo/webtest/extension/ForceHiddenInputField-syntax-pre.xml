@@ -1,0 +1,20 @@
+<pre>
+    <b>
+        This step provides a mechanism to alter the value of a hidden input field.
+        Hidden input fields are often used within forms to help with state management
+        of a web application. They are often set using <key>javascript</key> and because
+        not all features of <key>javascript</key> are supported by <key>CWT</key>,
+        it can sometimes be useful to mimic what the <key>javascript</key> would
+        do with a manual step.
+    </b>
+    <b>
+        If you have a very sophisticated web application that makes use of a lot of
+        hidden input fields for your state management, this step can assist you in
+        partitioning your tests into their functional and "unit" aspects. Firstly,
+        you write "unit" tests where you manipulate your application in various
+        ways and check that the hidden fields are set appropriately. These don't
+        require invoking the server application so they run fast. Then you run
+        some functional tests which check that for a given set of values of
+        the hidden fields, your application performs as expected.
+    </b>
+</pre>

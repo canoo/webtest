@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testClickElement" default="all" basedir=".">
+
+    <target name="all" depends="testClickElement, testClickElementRespectVisibility" />
+
+    <target name="testClickElement">
+        <webtest name="clickElement: Click Table Cell">
+            <invoke description="start" url="colorChange.html"/>
+            <!-- first row tests -->
+            <storeElementAttribute htmlId="red" attributeName="style" propertyName="colorBefore1"/>
+            <verifyProperty name="colorBefore1" text=".*background-color:[ ]*red.*" regex="true"/>
+            <clickElement description="toggle color of first row" htmlId="red"/>
+            <storeElementAttribute htmlId="red" attributeName="style" propertyName="colorAfter1"/>
+            <verifyProperty name="colorAfter1" text=".*background-color:[ ]*yellow.*" regex="true"/>
+            <clickElement description="toggle color of first row back" htmlId="red"/>
+            <storeElementAttribute htmlId="red" attributeName="style" propertyName="colorFinal1"/>
+            <verifyProperty name="colorFinal1" text=".*background-color:[ ]*red.*" regex="true"/>
+            <!-- second row tests -->
+            <storeElementAttribute xpath="//tr[2]" attributeName="style" propertyName="colorBefore2"/>
+            <verifyProperty name="colorBefore2" text=".*background-color:[ ]*green.*" regex="true"/>
+            <clickElement description="toggle color of second row" xpath="//tr[2]"/>
+            <storeElementAttribute xpath="//tr[2]" attributeName="style" propertyName="colorAfter2"/>
+            <verifyProperty name="colorAfter2" text=".*background-color:[ ]*yellow.*" regex="true"/>
+            <!-- failing test -->
+            <not description="expect to fail">
+                <clickElement description="can't click on a title" xpath="/html/head/title"/>
+            </not>
+        	<group description="click not visible elements (due to CSS)">
+                <clickElement htmlId="withCSSdisplayNone"/>
+        		<verifyXPath xpath="id('lastClicked')" text="withCSSdisplayNone"/>
+                <clickElement htmlId="withCSSvisibilityHidden"/>
+        		<verifyXPath xpath="id('lastClicked')" text="withCSSvisibilityHidden"/>
+        	</group>
+        </webtest>
+    </target>
+
+    <target name="testClickElementRespectVisibility">
+        <webtest name="clickElement: only 'visible' elements are clickable">
+        	<config respectVisibility="true"/>
+            <invoke description="start" url="colorChange.html"/>
+
+        	<group description="verify that some elements are clickable">
+                <clickElement htmlId="withCSSdisplayBlock"/>
+        		<verifyXPath xpath="id('lastClicked')" text="withCSSdisplayBlock"/>
+        	</group>
+
+        	<not description="expect to fail, element is not visible">
+                <clickElement htmlId="withCSSdisplayNone"/>
+            </not>
+            <not description="expect to fail, element is not visible">
+                <clickElement htmlId="withCSSvisibilityHidden"/>
+            </not>
+        </webtest>
+    </target>
+</project>

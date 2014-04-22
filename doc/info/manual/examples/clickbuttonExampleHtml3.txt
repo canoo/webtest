@@ -1,0 +1,9 @@
+...
+<form name="form1" action="formTest?mode=YYYY">
+	Text:
+	<input type="text" name="field1" value=""/>
+	<input type="submit" name="doIt" value="doItThisWay"/>
+	<input type="submit" name="doIt" value="doItThisOtherWay" />
+</form>
+...
+

@@ -1,0 +1,11 @@
+<webtest name="pdftest - verify encryption">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyEncryption description="Verify encryption"
+      encrypted="yes"
+      userpassword="mysecret"
+      ownerpassword="mymaster"/>
+    ...
+  </steps>
+</webtest>

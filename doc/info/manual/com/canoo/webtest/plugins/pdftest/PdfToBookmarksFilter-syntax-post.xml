@@ -1,0 +1,16 @@
+<post>
+    <b>
+        Here is an example of using <em>pdfToBookmarksFilter</em>:
+    </b>
+
+    <code caption='pdfToBookmarksFilter example'>
+        <include src='pdfexamples/toBookmarksFilterExample.xml'/>
+    </code>
+
+    <b>As a result of invoking the above steps a file would be created containing something like the following:</b>
+
+    <code caption='pdfToBookmarksFilter output'>
+        <include src='pdfexamples/toBookmarksFilterOutput.xml'/>
+    </code>
+
+</post>

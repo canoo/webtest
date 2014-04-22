@@ -1,0 +1,3 @@
+<groovy>
+    println step.context.currentResponse.asXml()
+</groovy>

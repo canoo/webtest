@@ -1,0 +1,22 @@
+<html>
+<title>Mock Disk Admin Page - for dialog handling tests</title>
+<body>
+<script type="text/javascript">
+function doubleCheck() {
+var x=confirm("Are you sure?")
+if (x) {
+    var y=prompt("Are you very sure? Type 'YES' to confirm")
+    if (y=="YES")
+       alert("Hard disk erased!")
+    else
+       alert("Operation aborted!")
+} else
+    alert("Operation cancelled!")
+}
+</script>
+<h3>Clean Disk?</h3>
+<form method="POST">
+<p><input type="button" name="CleanButton" value="OK" onclick="doubleCheck()"></p>
+</form>
+</body>
+</html>

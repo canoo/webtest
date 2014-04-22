@@ -1,0 +1,21 @@
+<webtest name="clickElement: Click Table Cell">
+	<config ... />
+    <steps>
+        <invoke description="start" url="colorChange.html"/>
+        <!-- first row tests -->
+        <storeElementAttribute htmlId="red" attributeName="style" propertyName="colorBefore1"/>
+        <verifyProperty name="colorBefore1" text=".*backgroundColor:[ ]*red.*" regex="true"/>
+        <clickElement description="toggle color of first row" htmlId="red"/>
+        <storeElementAttribute htmlId="red" attributeName="style" propertyName="colorAfter1"/>
+        <verifyProperty name="colorAfter1" text=".*backgroundColor:[ ]*yellow.*" regex="true"/>
+        <clickElement description="toggle color of first row back" htmlId="red"/>
+        <storeElementAttribute htmlId="red" attributeName="style" propertyName="colorFinal1"/>
+        <verifyProperty name="colorFinal1" text=".*backgroundColor:[ ]*red.*" regex="true"/>
+        <!-- second row tests -->
+        <storeElementAttribute xpath="//tr[2]" attributeName="style" propertyName="colorBefore2"/>
+        <verifyProperty name="colorBefore2" text=".*backgroundColor:[ ]*green.*" regex="true"/>
+        <clickElement description="toggle color of second row" xpath="//tr[2]"/>
+        <storeElementAttribute xpath="//tr[2]" attributeName="style" propertyName="colorAfter2"/>
+        <verifyProperty name="colorAfter2" text=".*backgroundColor:[ ]*yellow.*" regex="true"/>
+    </steps>
+</webtest>

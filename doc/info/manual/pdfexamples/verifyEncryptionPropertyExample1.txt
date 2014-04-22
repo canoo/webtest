@@ -1,0 +1,10 @@
+<webtest name="pdftest - verify encrypt property existence">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyEncryptionProperty description="Encrypt property existence"
+      key="SubFilter"
+      exists="false"/>
+    ...
+  </steps>
+</webtest>

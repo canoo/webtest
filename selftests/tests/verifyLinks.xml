@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testLinkCheck" default="testLinkCheck" basedir=".">
+
+    <target name="testLinkCheck">
+        <webtest name="verifyLinks: linkcheck">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="getMainPage"
+                    url="${start.page}"/>
+                <verifyLinks description="normal case, two links expected, depth=1 by default"/>
+                <verifyLinks description="depth=2,onsiteonly"
+                    onsiteonly="true"
+                    depth="2"/>
+                <!-- not working currently
+                <verifyText text="Wusi is the greatest" description="Check that previous step haven't changed the current response"/>
+                -->
+                <invoke description="getMainPage"
+                    url="${start.page}?brokenlink=true"/>
+                <not description="broken link test">
+                    <verifyLinks description="two links ok, one broken"/>
+                </not>
+                <invoke description="getMainPage"
+                    url="${start.page}?brokenlink=true"/>
+                <verifyLinks excludes=".*notfind.*" description="two links ok, one broken"/>
+                <invoke description="getMainPage"
+                    url="${start.page}?brokenlink=true"/>
+                <not description="broken link test">
+                    <verifyLinks includes=".*\\*.html" description="two links ok, one broken"/>
+                </not>
+                <invoke description="getMainPage"
+                    url="${start.page}?brokenlink=true"/>
+                <verifyLinks includes=".*formTest.*" description="two links ok, one broken"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

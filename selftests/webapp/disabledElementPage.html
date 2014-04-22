@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head><title>Disabled Element Test Page</title></head>
+
+<body onload="initialise()">
+<p>You can search for a team. The search can be </p>
+<ul>
+    <li>just a plain text search, or</li>
+    <li>plain text restricted by the kind of the team, or</li>
+    <li>plain text restricted by the country of origin of the team</li>
+</ul>
+
+<form name="formName" method="POST" action="formTest">
+    <script type="text/javascript" language="JavaScript">
+        function initialise() {
+            document.formName.teamKind.disabled = true;
+            document.formName.teamKindOther.disabled = true
+            document.formName.teamCountry.disabled = true;
+            document.formName.teamCountryOther.disabled = true
+        }
+
+        function fieldDisableCheck(checkFld, alternateFld, escapeFld) {
+            if (!checkFld.disabled)
+                ;
+            else if (!alternateFld.disabled)
+                alternateFld.focus();
+            else
+                escapeFld.focus();
+
+            return checkFld.disabled;
+        }
+
+        function selectFieldDisableCheck(checkFld, alternateFld, textFld) {
+            if (!fieldDisableCheck(checkFld, alternateFld, null))
+                textFieldDisableCheck(checkFld, textFld);
+        }
+
+        function textFieldDisableCheck(selectFld, textFld) {
+            textFld.disabled = (selectFld.options[selectFld.selectedIndex].text != "Other");
+        }
+
+        function teamKindActivate() {
+            document.formName.teamKind.disabled = false;
+            document.formName.teamCountry.disabled = true;
+            document.formName.teamCountryOther.disabled = true;
+            document.formName.teamKind.focus();
+        }
+
+        function teamCountryActivate() {
+            document.formName.teamKind.disabled = true;
+            document.formName.teamKindOther.disabled = true;
+            document.formName.teamCountry.disabled = false;
+            document.formName.teamCountry.focus();
+        }
+    </script>
+    Team
+    <input name="team" size="10" type="text"><br>
+
+    <input name="subSelection" value="teamKind" onclick="teamKindActivate()" type="radio">Team Kind
+    <select disabled name="teamKind"
+            onfocus="selectFieldDisableCheck(this,document.formName.teamCountry,document.formName.teamKindOther)"
+            onchange="textFieldDisableCheck(this,document.formName.teamKindOther)">
+        <option value="All" selected="selected">All</option>
+        <option value="Student">ETH/Uni Student</option>
+        <option value="Employee">ETH/Uni Employee</option>
+        <option value="Alumni">Alumni</option>
+        <option>Other</option>
+    </select>
+    Other
+    <input disabled name="teamKindOther" size="10" type="text"><br>
+
+    <input name="subSelection" value="teamCountry" onclick="teamCountryActivate()" type="radio">Team origin
+    <select disabled name="teamCountry"
+            onfocus="selectFieldDisableCheck(this,document.formName.teamKind,document.formName.teamCountryOther)"
+            onchange="textFieldDisableCheck(this,document.formName.teamCountryOther)">
+        <option value="All" selected="selected">All</option>
+        <option value="CH">Suisse, Schweiz, Svizzera</option>
+        <option value="DE">Deutschland</option>
+        <option value="FR">France</option>
+        <option>Other</option>
+    </select>
+    Other
+    <input disabled name="teamCountryOther" size="10" type="text"><br>
+
+    <input name="search" value="Search" type="submit">
+</form>
+</body></html>

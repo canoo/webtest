@@ -1,0 +1,11 @@
+<post>
+
+    <b>
+        Here is an example of using the <em>emailStorePartCount</em> step.
+    </b>
+
+    <code caption="emailStorePartCount">
+        <include src='emailexamples/emailStorePartCountExample.xml'/>
+    </code>
+
+</post>

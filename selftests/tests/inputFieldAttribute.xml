@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testInputFieldAttributeSteps" default="testInputFieldAttributeSteps" basedir=".">
+
+    <target name="testInputFieldAttributeSteps"
+        depends="testStoreInputFieldAttributeError,testStoreInputFieldAttributeDisabled,testForceInputFieldAttribute,testStoreInputFieldAttributeChecked,testInputFieldAttributeDisabledMultiForm"/>
+
+    <target name="testStoreInputFieldAttributeError">
+        <webtest name="inputFieldAttribute: Show storeInputFieldAttribute fails if inputField doesn't exist">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="getMainPage for inputFieldAttribute test"
+                    url="inputFieldAttributePage.html"/>
+                <not>
+                    <storeInputFieldAttribute propertyName="isFound" name="noButtonWithThisName" attributeName="disabled"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testStoreInputFieldAttributeDisabled">
+        <webtest name="inputFieldAttribute: Show usage of storeInputFieldAttribute step using disabled attribute">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="getMainPage for inputFieldAttribute test"
+                    url="inputFieldAttributePage.html"/>
+                <verifytitle description="check we are on the test page" text="InputField Attribute Test Page" />
+                <storeInputFieldAttribute propertyName="isDisabled1a" formName="form1" name="button1" attributeName="disabled"/>
+                <verifyProperty description="check if button is disabled" name="isDisabled1a" text="true"/>
+                <clickButton description="Attempt submit but should be ignored as button is disabled" name="button1" />
+                <verifytitle description="check we are still on the test page" text="InputField Attribute Test Page" />
+                <setInputField description="set field value should enabled button" name="value1" value="someText" />
+                <clickButton description="Attempt submit should work as button is enabled" name="button1" />
+                <verifytitle description="check we are now on the dummy page" text="Dummy" />
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testForceInputFieldAttribute">
+        <webtest name="inputFieldAttribute: Show usage of forceInputFieldAttribute step using disabled attribute">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="getMainPage for inputFieldAttribute test"
+                    url="inputFieldAttributePage.html"/>
+                <verifytitle description="check we are on the test page" text="InputField Attribute Test Page" />
+                <storeInputFieldAttribute propertyName="isDisabled2a" name="button2" attributeName="disabled"/>
+                <verifyProperty description="check if button is disabled" name="isDisabled2a" text="true"/>
+                <clickButton description="Attempt submit but should be ignored as button is disabled" name="button2" />
+                <verifytitle description="check we are still on the test page" text="InputField Attribute Test Page" />
+                <setInputField description="set field value would enabled button if onkeyup() was supported event in htmlunit"
+                    name="value2" value="someText" />
+                <clickButton description="Attempt submit should fail because of onkeyup() limitation" name="button2" />
+                <verifytitle description="check we are still on the test page" text="InputField Attribute Test Page" />
+                <forceInputFieldAttribute name="button2" attributeName="disabled" attributeValue="false"/>
+                <clickButton description="Attempt submit fail because setting disabled=false is insufficient as per HTML standard" name="button2" />
+                <verifytitle description="check we are still on the test page" text="InputField Attribute Test Page" />
+                <not>
+                    <forceInputFieldAttribute name="button2" attributeName="disabled" attributeValue="false" value="shouldNotFind"/>
+                </not>
+                <forceInputFieldAttribute
+                    description="enable by removing disabled attribute"
+                    name="button2" value="Click Me" attributeName="disabled" attributeValue=""/>
+                <storeInputFieldAttribute propertyName="isDisabled2b" name="button2" attributeName="disabled"/>
+                <verifyProperty name="isDisabled2b" text="false"/>
+                <clickButton description="Attempt submit should work as button is enabled" name="button2" />
+                <verifytitle description="check we are now on the dummy page" text="Dummy" />
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testInputFieldAttributeDisabledMultiForm">
+        <webtest name="inputFieldAttribute: test tricky form cases">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="getMainPage for multiForm test"
+                    url="multiFormPage.html"/>
+                <verifytitle description="check we are on the test page" text="Multi Form Test Page" />
+                <forceInputFieldAttribute description="explicit form name" formName="bogusName" name="hidden1" attributeName="disabled" attributeValue=""/>
+                <storeInputFieldAttribute propertyName="isDisabled2" name="hidden2" attributeName="disabled"/>
+                <verifyProperty description="check if button is disabled" name="isDisabled2" text="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testStoreInputFieldAttributeChecked">
+        <webtest name="inputFieldAttribute: Show usage of storeInputFieldAttribute tests using checked attribute">
+            &sharedConfiguration;
+            <steps>
+                <!--
+                    Check simple states
+                -->
+                <invoke
+                    save="debugTest"
+                    description="getMainPage for checkbox test"
+                    url="${start.page}?mode=checkboxTest&amp;c1=check1"/>
+                <!-- first try normal verifyCheckbox -->
+                <verifyCheckbox
+                    description="1a) check simple checkbox by state, should be checked"
+                    name="c1"
+                    checked="true"/>
+                <!-- now try same thing again using more generic inputField attribute steps
+                     you wouldn't normally do this but it checks our step -->
+                <storeInputFieldAttribute
+                    description="1b) check same thing using storeInputFieldAttribute"
+                    propertyName="isChecked1" name="c1" attributeName="checked"/>
+                <verifyProperty
+                    description="1b) should be checked"
+                    name="isChecked1" text="true"/>
+                <!--
+                    Check checkboxes with non-unique name but different values
+                -->
+                <invoke
+                    save="debugTest"
+                    description="getMainPage for checkbox test"
+                    url="${start.page}?mode=checkboxTest&amp;c2=check2"/>
+                <!-- first try normal verifyCheckbox then e;ementAttribute steps -->
+                <verifyCheckbox
+                    description="2a) verify value, should be true"
+                    name="c2" value="check2" checked="true"/>
+                <storeInputFieldAttribute
+                    description="2b) store value"
+                    propertyName="isChecked2" name="c2" value="check2" attributeName="checked"/>
+                <verifyProperty
+                    description="2b) check value, should be true"
+                    name="isChecked2" text="true"/>
+                <verifyCheckbox
+                    description="3a) verify value, should be false"
+                    name="c2" value="check3" checked="false"/>
+                <storeInputFieldAttribute
+                    description="3b) store value"
+                    propertyName="isChecked3" name="c2" value="check3" attributeName="checked"/>
+                <verifyProperty
+                    description="3b) check value, should be false"
+                    name="isChecked3" text="false"/>
+                <storeInputFieldAttribute
+                    description="4a) try to store inputField with duplicate values, should select first"
+                    propertyName="isChecked4" name="c2" attributeName="checked"/>
+                <verifyProperty
+                    description="4b) check value, should be true"
+                    name="isChecked4" text="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

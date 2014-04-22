@@ -1,0 +1,10 @@
+<post>
+
+    <b>This content filter can be useful in environments where the tags stay the same but content may
+        change, e.g. a home page with a fixed number of news items - the content of news items change
+        but the tags and other document structure stay the same. This tag removes content hence removes the
+    part of the response subject to change. The remaining characters can then be safely compared to an expected value.</b>
+
+    <b>See the <stepref name="verifyContent"/> step for an example of using this content filter.</b>
+
+</post>

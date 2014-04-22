@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testLinkReporting" default="testLinkReporting" basedir=".">
+
+	<target name="testLinkReporting">
+		<property name="resultfile" value="MainLinks.tsl"/>
+		<webtest name="linkReporting">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="linkReportMainPage.html"/>
+				<reportLinks file="${resultfile}" depth="1" visitpattern="/Page/i"/>
+
+				<group description="verify the generated file">
+					<groovy description="retrieve the output folder path for this test for later use">
+						step.setWebtestProperty 'thisTestResultFolder', step.context.config.webTestResultDir.absolutePath
+					</groovy>
+					<invoke url="file://#{thisTestResultFolder}/${resultfile}" description="get the generated file"/>
+					<verifyText text="0&#x09;Label 1&#x09;&#x09;&#x09;linkpage.html"/>
+					<verifyText text="1&#x09;Link to new Window&#x09;&#x09;&#x09;newPage.html"/>
+					<verifyText text="0&#x09;Label &quot;4&quot;&#x09;class1&#x09;Title 4&#x09;/foo?detail=name&amp;MenuId=MID_foo&amp;bar=Xxxxxxx"/>
+				</group>
+			</steps>
+		</webtest>
+	</target>
+</project>

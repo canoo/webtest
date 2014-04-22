@@ -1,0 +1,21 @@
+<post>
+
+    <b>See the following example for plain vanilla checkbox selection. The resulting request submitted by
+    &lt;clickButton&gt; will contain a parameter with the checkbox name and as value the default checkbox
+    parameter value <em>&quot;on&quot;</em>.</b>
+
+    <code caption="setCheckbox example1">
+        <include src='examples/setcheckboxExample1.xml' />
+    </code>
+
+    <b>The next example provides explicit values for a checkbox parameter to be submitted with the request.
+    Note that a single parameter can have multiple values. This is the case here. The <em>cheese</em> parameter
+    has the values <em>&quot;Gorgonzola&quot;</em> and <em>&quot;Mozzarella&quot;</em>.</b>
+
+    <code caption="setCheckbox example2">
+        <include src='examples/setcheckboxExample2.xml' />
+    </code>
+
+    <b><em>See also</em>: the <stepref name="verifyCheckbox"/> and <stepref name="selectForm"/> steps.</b>
+
+</post>

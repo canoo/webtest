@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testSetSelectField" default="all" basedir=".">
+
+    <target name="all" depends="testSetSelectFieldNormal, testSetSelectFieldWithComboBox, testSetSelectFieldOnChange, testSetSelectFieldNoValueAttribute"/>
+
+    <target name="testSetSelectFieldNormal">
+        <webtest name="setSelectField: Show usage of setSelectField and test it">
+            &sharedConfiguration;
+            <steps>
+                <!--
+                    Check multivalue list (multiple selection)
+                -->
+                <invoke
+                    description="getMainPage for checkbox and multiselection list tests"
+                    url="${start.page}?mode=checkboxTest"
+                    save="debugTest"/>
+
+                <!-- Nothing should initially be selected -->
+                <not description="Ensure v1 is not selected">
+                    <verifySelectField name="MultiSelect" value="v1"/>
+                </not>
+                <not description="Ensure v2 is not selected">
+                    <verifySelectField name="MultiSelect" value="v2"/>
+                </not>
+                <not description="Check text not in list">
+                    <verifySelectField name="MultiSelect" text="Not in List"/>
+                </not>
+                <not description="Check value not in list">
+                    <verifySelectField name="MultiSelect" value="v77"/>
+                </not>
+
+                <!-- Select 1st entry, submit and verify -->
+                <setSelectField
+                    description="Set 1st MultiSelect value to v1"
+                    name="MultiSelect"
+                    value="v1"/>
+                <clickButton
+                    description="submit the form to check parameter setting/resetting"
+                    label="doIt"/>
+                <verifySelectField
+                    description="check 1st selection"
+                    name="MultiSelect"
+                    value="v1"/>
+                <not>
+                    <verifySelectField
+                        description="check 1st selection"
+                        name="MultiSelect"
+                        value="v2"/>
+                </not>
+
+                <!--
+                    Select 2nd entry, submit and verify that
+                    the previously selected value is still selected as well.
+                -->
+                <setSelectField
+                    description="Set 2nd MultiSelect value to v2"
+                    name="MultiSelect"
+                    value="v2"
+                    multiselect="true"/>
+                <clickButton
+                    description="submit the form to check parameter setting/resetting"
+                    label="doIt"/>
+                <verifySelectField
+                    description="check 1st value"
+                    name="MultiSelect"
+                    value="v1"/>
+                <verifySelectField
+                    description="check 2nd value"
+                    name="MultiSelect"
+                    value="v2"/>
+
+                <!--
+                    Select 1st entry again but without multiselect (selection preservation).
+                -->
+                <setSelectField
+                    description="Set MultiSelect value to v1"
+                    name="MultiSelect"
+                    value="v1"/>
+                <clickButton
+                    description="submit the form to check parameter setting/resetting"
+                    label="doIt"/>
+                <verifySelectField
+                    description="check 1st value"
+                    name="MultiSelect"
+                    value="v1"/>
+                <not description="2nd value should not be selected">
+                    <verifySelectField
+                        description="check 2nd value"
+                        name="MultiSelect"
+                        value="v2"/>
+                </not>
+                
+                <group description="check option identification per xpath">
+	                <invoke description="getMainPage for checkbox and multiselection list tests"
+	                    url="${start.page}?mode=checkboxTest"/>
+	                <setSelectField
+	                    description="Set 1st MultiSelect value to v1"
+	                    xpath="//option[@value='v1']"/>
+	                <clickButton
+	                    description="submit the form to check parameter setting/resetting"
+	                    label="doIt"/>
+	                <verifySelectField 
+	                    description="check 1st selection"
+	                    name="MultiSelect"
+	                    value="v1"/>
+	            </group>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSetSelectFieldWithComboBox">
+        <webtest name="setSelectField: Show usage of setSelectField with a combobox">
+            &sharedConfiguration;
+            <steps>
+
+                <!--
+                    Check single value list
+                -->
+                <invoke
+                        description="getMainPage for checkbox and multiselection list tests"
+                        url="${start.page}?mode=checkboxTest"
+                        save="debugTest"/>
+
+                <!-- Nothing should initially be selected -->
+                <not description="Ensure v1 is not selected">
+                    <verifySelectField name="CBoxSelect" value="v1"/>
+                </not>
+                <not description="Ensure v2 is not selected">
+                    <verifySelectField name="CBoxSelect" value="v2"/>
+                </not>
+                <not description="Ensure v3 is not selected">
+                    <verifySelectField name="CBoxSelect" value="v3"/>
+                </not>
+                <not description="Ensure v4 is not selected">
+                    <verifySelectField name="CBoxSelect" value="v4"/>
+                </not>
+
+                <!-- Select 3st entry, submit and verify -->
+                <setSelectField
+                        description="Set CBoxSelect value to v3"
+                        name="CBoxSelect"
+                        value="v3"/>
+                <clickButton
+                        description="submit the form to check parameter setting/resetting"
+                        label="doIt"/>
+                <verifySelectField
+                        description="check selection"
+                        name="CBoxSelect"
+                        value="v3"/>
+                <not description="check 2nd item not selected">
+                    <verifySelectField
+                            description="check 2nd item"
+                            name="CBoxSelect"
+                            value="v2"/>
+                </not>
+
+                <!--
+                    Select 2nd entry, submit and verify that
+                    the previously selected value is no more selected.
+                    Use the text attribute to do the selection and the checking
+                -->
+                <setSelectField
+                        description="Set selection to v2"
+                        name="CBoxSelect"
+                        text="Name for v2"/>
+                <clickButton
+                        description="submit the form to check parameter setting/resetting"
+                        label="doIt"/>
+                <not>
+                    <verifySelectField
+                            description="check 3rd value not selected"
+                            name="CBoxSelect"
+                            text="Name for v3"/>
+                </not>
+                <verifySelectField
+                        description="check 2nd value is selected"
+                        name="CBoxSelect"
+                        text="Name for v2"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSetSelectFieldNoValueAttribute">
+        <webtest name="setSelectField: Test various edge cases">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="setSelectFieldNoValueAttribute.html"/>
+                <setSelectField description="option with no value attribute edge case (WT-69)" value="Visa" name="cardType" />
+                <not description="expect to fail: no option having this value">
+                    <setSelectField value="willNotBeFound" name="cardType" />
+                </not>
+                <not description="expect to fail: id is not a select">
+                    <setSelectField value="dummy" htmlId="formId" />
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSetSelectFieldOnChange">
+        <webtest name="setSelectField: onchange loads an iframe">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="setSelectFieldOnchange.html"/>
+				<verifyTitle text="setSelectField onchange tests"/>
+                <setSelectField value="city2" name="city" description="select the 2nd value"/>
+				<verifyTitle text="setSelectField onchange tests" description="Verify that current page still is the original one"/>
+            </steps>
+        </webtest>
+    </target>
+</project>

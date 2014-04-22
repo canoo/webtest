@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd"> 
+
+<project name="testClickLink" default="suite" basedir=".">
+
+    <target name="suite" depends="testClickLink, testClickLinkWithTarget" />
+
+    <target name="testClickLink">
+        <webtest name="clickLink: Show how to click on hyperlinks in a page">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page"
+                    url="links.jsp"/>
+                <clickLink description="click on MyLink"
+                    label="MyLink"/>
+				<verifyText description="verify transmitted values"
+                    text="Request param 'linkClicked': MyLink"/>
+
+                <clickLink description="click on image"
+                    label="imagelink"/>
+				<verifyText description="verify transmitted values"
+                    text="Request param 'linkClicked': image"/>
+
+                <clickLink description="click on a link specified by its id attribute"
+                    htmlid="myLinkId"/>
+				<verifyText description="verify transmitted values"
+                    text="Request param 'linkClicked': linkWithId"/>
+
+                <clickLink description="click on a js submitting a form"
+                    htmlid="myJsLink"/>
+				<verifyText description="verify transmitted values"
+                    text="Request param 'linkClicked': fromForm"/>
+
+                <not description="cannot click on non-existing links">
+                    <clickLink description="bad link"
+                        label="thereIsNoLinkLikeThis"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testClickLinkWithTarget">
+        <webtest name="clickLink: Clicklink with Target">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="start"
+                    url="linkpage.html"/>
+                <clickLink label="Link to new Window"/>
+				<verifyText text="new almost empty page"/>
+                <previousResponse/>
+                <clickLink label="Link to some other Window"/>
+				<verifyText text="new almost empty page"/>
+                <previousResponse/>
+                <clickLink label="Link to top Window"/>
+				<verifyText text="new almost empty page"/>
+                <previousResponse/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

@@ -1,0 +1,19 @@
+<post>
+
+    <b>Consider the following <key>HTML</key> page:</b>
+
+    <code caption="clickElement HTML">
+        <include src='examples/clickElementExampleHtml.xml' />
+    </code>
+
+    <b>The page contains no links or buttons but we want to be able to
+    activate and check the onclick <key>javascript</key>. We can do this
+    using the <em>&lt;clickElement&gt;</em> step as follows:</b>
+
+    <code caption="clickElement Example">
+        <include src='examples/clickElementExample.xml' />
+    </code>
+
+    <b><em>See also:</em> the <stepref name='storeElementAttribute'/> step.</b>
+
+</post>

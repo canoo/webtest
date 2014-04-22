@@ -1,0 +1,9 @@
+<steps>
+    <invoke url="testDocBookmarks.pdf"/>
+    <applyFilters>
+        <pdfToTextFilter mode="groupByLines" description="extract PDF text (default mode: normal)"/>
+        <lineSeparatorFilter description="normalise line separators"/>
+    </applyFilters>
+    <verifyText text="Heading Two"/>
+    <verifyText text="NEW PAGE"/>
+</steps>

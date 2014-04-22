@@ -1,0 +1,24 @@
+<post>
+
+    <b>Here is a simple example for verifying that a particular checkbox is not selected. The checkbox is uniquely
+    identified by its name.</b>
+
+    <code caption="verifyCheckbox 1">
+        <include src='examples/verifycheckboxExample1.xml' />
+    </code>
+
+    <b>A more complex scenario would allow multiple checkboxes that all have the same name but different values.
+    The resulting request would also contain multiple value for one parameter (the checkbox name). Each of the
+    parameter values corresponds to the value of a checked checkbox.
+        <n/>
+    In order to uniquely identify checkboxes like this for verification, an optional value attribute can be
+    specified as shown in the next example.
+    </b>
+
+    <code caption="verifyCheckbox 2">
+        <include src='examples/verifycheckboxExample2.xml' />
+    </code>
+
+    <b><em>See also</em>: the <stepref name="setCheckbox"/> and <stepref name="selectForm"/> steps.</b>
+
+</post>

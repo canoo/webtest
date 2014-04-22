@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testFollowFrame" default="testFollowFrame" basedir=".">
+
+    <target name="testFollowFrame">
+        <webtest name="followFrame: Show how to follow frames in a page">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page" url="frameset.jsp"/>
+            	<verifyTitle text="Simple frameset"/>
+
+            	<followFrame description="follow frame" name="right"/>
+            	<verifyTitle text="Frame for right"/>
+
+                <followFrame description="follow nested frame" name="bar"/>
+            	<verifyTitle text="Dummy"/>
+
+                <followFrame description="follow one frame" name="foo"/>
+            	<verifyTitle text="FrameTest"/>
+
+                <followFrame description="follow second nested frame from the first one"
+                    name="bar" relative="true"/>
+            	<verifyTitle text="Dummy"/>
+
+                <followFrame description="go to the top window again"
+                    name="_top"/>
+            	<verifyTitle text="Simple frameset"/>
+
+            	<followFrame description="follow frame by html id" htmlId="right"/>
+            	<verifyTitle text="Frame for right"/>
+
+            	<not description="cannot follow non-existing frame">
+                    <followFrame description="non-existing frame"
+                        name="noSuchFrame"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+</project>

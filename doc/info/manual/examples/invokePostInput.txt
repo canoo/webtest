@@ -1,0 +1,11 @@
+<soap:Envelope
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <GetAustralianPostCodeByLocation
+        xmlns="http://www.webserviceX.NET">
+      <Location>Karalee</Location>
+    </GetAustralianPostCodeByLocation>
+  </soap:Body>
+</soap:Envelope>

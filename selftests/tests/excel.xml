@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testExcelSteps" default="allTests" basedir=".">
+
+    <target name="allTests" depends="sampleUsage, testExcelFindRow, testExcelSelectSheet, testExcelStoreCellValue, testExcelVerifyCellValue, testExcelVerifyCellSum, testExcelVerifyCellFormat, testExcelStructureFilterWithCompare, testExcelStructureFilterWithApplyFilters, testCrystalExcelFile"/>
+
+    <target name="sampleUsage">
+        <webtest name="excel: sample usage">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testExcel.xls"/>
+                <excelFindRow col="B" startRow="5" text="TOTAL" property="totalRow"/>
+                <storeProperty property="lastRow" value="#{totalRow}-1" eval="true"/>
+                <repeat counterName="row" startCount="4" endCount="#{lastRow}">
+                    <excelVerifyCellValue cell="C#{row}" text="/\d+/"/>
+                    <excelVerifyCellStyle cell="C#{row}" type="numeric" format="&quot;$&quot;#,##0.00"/>
+                </repeat>
+            </steps>
+        </webtest>
+    </target>
+    <target name="testExcelFindRow">
+        <webtest name="excel: find row">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testExcel.xls"/>
+                <excelFindRow col="B" text="TOTAL" property="row" description="No start row"/>
+                <verifyProperty property="row" text="4"/>
+                <excelFindRow col="B" text="TOTAL" startRow="5" property="row" propertyType="ant" description="Start row"/>
+                <verifyProperty property="row" propertyType="ant" text="8"/>
+                <excelFindRow col="B" text="/This is a very/" startRow="5" property="row" propertyType="dynamic" description="Regex"/>
+                <verifyProperty property="row" propertyType="dynamic" text="10"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testExcelSelectSheet">
+        <webtest name="excel: select sheet">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testExcel.xls"/>
+                <excelSelectSheet sheetName="Sheet2"/>
+                <excelVerifyCellValue cell="B2" text="Border Styles" description="Item on sheet 2"/>
+                <excelSelectSheet sheetName="Sheet1"/>
+                <excelVerifyCellValue cell="B2" text="Totals" description="Item on sheet 1"/>
+                <excelSelectSheet sheetIndex="2"/>
+                <excelVerifyCellValue cell="B2" text="This is the third sheet." description="Item on sheet 3"/>
+                <invoke url="testExcel.xls"/>
+                <excelVerifyCellValue cell="B2" text="Totals" description="Back to sheet 0"/>
+            </steps>
+        </webtest>
+    </target>
+
+     <target name="testExcelStoreCellValue">
+        <webtest name="excel: store cell value">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testExcel.xls"/>
+                <excelStoreCellValue cell="G12" property="default" description="Default Store property"/>
+                <verifyProperty property="default" text="This is another fairly long" regex="true"/>
+                <excelStoreCellValue cell="F8" property="ant" propertyType="ant" description="Ant Store property"/>
+                <verifyProperty property="ant" propertyType="ant" text="72"/>
+                <excelStoreCellValue cell="B17" property="dynamic" propertyType="dynamic" description="Dynamic Store property"/>
+                <verifyProperty property="dynamic" propertyType="dynamic" text="\d+" regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testExcelVerifyCellValue">
+        <webtest name="excel: verify cell value">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testExcel.xls"/>
+                <excelVerifyCellValue cell="B2" text="Totals" description="Straight Verify"/>
+                <excelVerifyCellValue cell="E8" text="/SUM\(.*\)/" description="Verify Formula"/>
+                <excelVerifyCellValue cell="B14" text="12345" description="General"/>
+                <excelVerifyCellValue cell="B15" text="12345" description="Number"/>
+                <excelVerifyCellValue cell="B16" text="12345" description="Currency"/>
+                <excelVerifyCellValue cell="B17" text="12345" description="Accounting"/>
+                <excelVerifyCellValue cell="B18" text="12345" description="Date"/>
+                <excelVerifyCellValue cell="B19" text="12345" description="Time"/>
+                <excelVerifyCellValue cell="B20" text="12345" description="Fraction"/>
+                <excelVerifyCellValue cell="B21" text="12345" description="Scientific"/>
+                <excelVerifyCellValue cell="B22" text="12345" description="Text"/>
+
+                <excelSelectSheet sheetIndex="1"/>
+
+                <excelVerifyCellValue cell="N20" text="text" description="string"/>
+                <excelVerifyCellValue cell="N21" text="4.2" description="numeric"/>
+                <excelVerifyCellValue cell="N22" text="" description="blank"/>
+                <excelVerifyCellValue cell="N23" text="true" description="boolean"/>
+                <excelVerifyCellValue cell="N24" text="SUM(L28:L32)" description="formula"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testExcelVerifyCellSum">
+        <webtest name="excel: verify cell sum">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testExcel.xls"/>
+                <excelVerifyCellSum cell="C8" range="C4:C7" description="Literal Sum"/>
+                <excelVerifyCellSum cell="D8" range="D2:D7" description="Literal Sum with Blanks"/>
+                <excelVerifyCellSum cell="E8" range="E4:E7" description="Formula"/>
+                <excelVerifyCellSum cell="F4" range="C4:E4" description="Horizontal Literal Sum"/>
+                <excelVerifyCellSum cell="F5" range="C5:E5" description="Horizontal Formula Sum"/>
+                <excelVerifyCellSum cell="F8" range="C4:E7" description="Sum spanning rows and columns"/>
+            </steps>
+        </webtest>
+    </target>
+    <target name="testExcelVerifyCellFormat">
+        <webtest name="excel: verify cell format">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testExcel.xls"/>
+                <excelSelectSheet sheetName="Sheet2"/>
+
+                <excelVerifyCellStyle cell="B37" border="top:thick; bottom:dash dot; left:none; right:medium dash dot"
+                                      borderColor="top:auto; bottom:plum; left:none; right:bright green"
+                                      fillColor="tan" fillBackgroundColor="red" textColor="green"
+                                      fontName="Arial" fontSize="12" fontStyle="strikethrough bold italic underline"
+                                      align="center" valign="top" fillPattern="thin diagonal stripe"
+                                      description="A bit of everything"/>
+
+                <excelVerifyCellStyle cell="A1" border="none" description="Border on a non existant cell"/>
+                <excelVerifyCellStyle cell="D36" borderColor="#ff0000" description="Colour by #rrggbb"/>
+                <excelVerifyCellStyle cell="B5" border="top:thin;bottom:dotted;left,right:none" description="Specific borders"/>
+                <excelVerifyCellStyle cell="C22" border="left:medium dash dot;right:thick;top,bottom:none"
+                                      borderColor="left:auto;right:orange;top,bottom:none" description="Specific borders and border colors"/>
+
+                <repeat counterName="row" startCount="4" endCount="30" step="2" description="Check Border Styles">
+                    <excelStoreCellValue property="value" cell="B#{row}"/>
+                    <excelVerifyCellStyle cell="B#{row}" border="#{value}"/>
+                </repeat>
+
+                <repeat counterName="row" startCount="4" endCount="96" step="2" description="Check Border and Text Colors">
+                    <excelStoreCellValue property="color" cell="D#{row}"/>
+                    <excelVerifyCellStyle cell="D#{row}" borderColor="#{color}" textColor="#{color}"/>
+                    <excelVerifyCellStyle cell="F#{row}" fillColor="#{color}"/>
+                    <excelVerifyCellStyle cell="G#{row}" fillBackgroundColor="#{color}"/>
+                </repeat>
+
+                <repeat counterName="row" startCount="4" endCount="38" step="2" description="Check Fills">
+                    <excelStoreCellValue property="pattern" cell="I#{row}"/>
+                    <excelVerifyCellStyle cell="J#{row}" fillPattern="#{pattern}"/>
+                </repeat>
+
+                <repeat counterName="row" startCount="4" endCount="14" description="Check Font Styles">
+                    <excelStoreCellValue property="style" cell="L#{row}"/>
+                    <excelVerifyCellStyle cell="L#{row}" fontStyle="#{style}"/>
+                </repeat>
+
+                <repeat counterName="row" startCount="20" endCount="22" description="Check Font Names">
+                    <excelStoreCellValue property="name" cell="L#{row}"/>
+                    <excelVerifyCellStyle cell="L#{row}" fontName="#{name}"/>
+                </repeat>
+
+                <repeat counterName="row" startCount="28" endCount="32" description="Check Font Sizes">
+                    <excelStoreCellValue property="size" cell="L#{row}"/>
+                    <excelVerifyCellStyle cell="L#{row}" fontSize="#{size}"/>
+                </repeat>
+
+                <repeat counterName="row" startCount="4" endCount="10" description="Check Alignments">
+                    <excelStoreCellValue property="pattern" cell="M#{row}"/>
+                    <excelVerifyCellStyle cell="M#{row}" align="#{pattern}"/>
+                </repeat>
+
+                <repeat counterName="row" startCount="12" endCount="15" description="Check Vertical Alignments">
+                    <excelStoreCellValue property="pattern" cell="M#{row}"/>
+                    <excelVerifyCellStyle cell="M#{row}" valign="#{pattern}"/>
+                </repeat>
+
+                <repeat counterName="row" startCount="20" endCount="24" description="Check Cell Type">
+                    <excelStoreCellValue property="type" cell="M#{row}"/>
+                    <excelVerifyCellStyle cell="N#{row}" type="#{type}"/>
+                </repeat>
+
+                <repeat counterName="row" startCount="28" endCount="31" description="Check Cell Format">
+                    <excelStoreCellValue property="format" cell="M#{row}"/>
+                    <excelVerifyCellStyle cell="N#{row}" format="#{format}"/>
+                </repeat>
+
+                <excelVerifyCellStyle cell="O4" locked="true"/>
+                <excelVerifyCellStyle cell="O5" locked="false"/>
+                <excelVerifyCellStyle cell="O7" wrap="true"/>
+                <excelVerifyCellStyle cell="O8" wrap="false"/>
+
+            </steps>
+        </webtest>
+    </target>
+
+    <target xmlns:xls="antlib:com.canoo.webtest.plugins.exceltest" name="testExcelStructureFilterWithCompare">
+        <webtest name="excel: structure filter w/ compare to expected">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testExcel.xls"/>
+                <verifyContent readFiltered="false" referenceFile="verifyContent/expectedExcelStructure.xml">
+                    <xls:structureFilter description="extract XLS structure"/>
+                    <lineSeparatorFilter description="normalise line separators"/>
+                </verifyContent>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testExcelStructureFilterWithApplyFilters">
+        <webtest name="excel: structure filter w/ apply filters">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testExcel.xls"/>
+                <applyFilters>
+                    <excelStructureFilter description="extract XLS structure"/>
+                </applyFilters>
+                <verifyXPath xpath="/excelWorkbook/@numberOfFonts" text="73"/>
+                <verifyXPath xpath="/excelWorkbook/sheets/sheet[2]/@name" text="Sheet2"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testCrystalExcelFile">
+        <webtest name="excel: test crystal excel file">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testDocCrystal.xls"/>
+                <excelVerifyCellValue row="1" col="1" text="1"/>
+            </steps>
+        </webtest>
+    </target>
+</project>

@@ -1,0 +1,10 @@
+<webtest name="httpResponseCode: confirm error page">
+    <config ...>
+        <option name="ThrowExceptionOnFailingStatusCode" value="false"/>
+    </config>
+    <steps>
+        <invoke description="Load Image" url="missing.gif"/>
+        <storeResponseCode description="store response code" property="status" />
+        <verifyProperty description="should be error" name="status" text="404"/>
+    </steps>
+</webtest>

@@ -1,0 +1,6 @@
+<message type="MIME" contentType="multipart/mixed">
+    <header name="Subject" value="mailtest - multifiles - mime"/>
+    <part type="inline" contentType="text/plain"/>
+    <part type="attachment" filename="ok.gif" contentType="image/gif"/>
+    <part type="attachment" filename="testDocLinks.pdf" contentType="application/octet-stream"/>
+</message>

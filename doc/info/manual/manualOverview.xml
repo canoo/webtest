@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd"
+		[
+				<!ENTITY site SYSTEM "WebTestSite.xml">
+				]
+		>
+
+<manpage siteid="Manual Overview">
+
+	&site;
+
+	<head title="Manual Overview">
+		<b>This section provides extensive documentation on the use of WebTest.</b>
+	</head>
+
+	<section title="Contents">
+		<dl>
+			<li>
+				<dt>
+					<pageref name="Samples"/>
+				</dt>
+				<dd>An introduction to webtest.
+					This page show the stepwise development of a first test suite.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<pageref name="Properties"/>
+				</dt>
+				<dd>Introduction to webtest property types.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<pageref name="Syntax Reference - Core Steps"/>
+				</dt>
+				<dd>Reference pages for the steps. The core steps are all the basic steps of webetest.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<pageref name="Syntax Reference - Extension Steps"/>
+				</dt>
+				<dd>Reference pages for the extension steps. Extension steps are part of the distribution,
+					but have been less heavily used and are less well documented than the Core steps
+					and are also more likely to change.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<pageref name="Syntax Reference - Filter Steps"/>
+				</dt>
+				<dd>Reference pages for the filter steps. Filter steps allow the content of web responses
+					to be manipulated (or
+					<em>filtered</em>
+					) for the purposes of making the response
+					content more suitable for testing purposes. Filter steps are part of the distribution,
+					but have been less heavily used and are less well documented than the Core steps
+					and are also more likely to change.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<pageref name="Syntax Reference - PDF Steps"/>
+				</dt>
+				<dd>Reference pages for the PDF steps that let webtest verify the
+					content and properties of PDF documents.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<pageref name="Syntax Reference - Excel Steps"/>
+				</dt>
+				<dd>Reference pages for the Excel steps that let webtest verify the
+					content and properties of XLS documents.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<pageref name="Syntax Reference - Email Steps"/>
+				</dt>
+				<dd>Reference pages for the Email steps that let webtest verify the
+					content and properties of Email messages and Email attachments.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<pageref name="Step Index"/>
+				</dt>
+				<dd>An alphabetical index to all the steps.
+				</dd>
+			</li>
+			<li>
+				<dt>
+					<pageref name="Groovy Testing"/>
+				</dt>
+				<dd>Tutorial page to show how to use Canoo WebTest trough Groovy.</dd>
+			</li>
+		</dl>
+	</section>
+
+	<section title="Further Resources">
+		<b>The page
+			<sidebar name="sidebar"/>
+			is a simple index of all steps. It can be used as a sidebar!
+			Installation in Firefox and Opera should be automatic, please consult your browser's documentation for
+			installation on other browsers.
+		</b>
+	</section>
+</manpage>

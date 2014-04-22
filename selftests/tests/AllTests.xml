@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="All Tests" basedir="." default="suite">
+
+	<target name="suite.init">
+		<condition property="isBatchTest">
+			<equals arg1="TestSuite" arg2="${testScript}"/>
+		</condition>
+	</target>
+
+	<target name="suite" depends="suite.init,suite.single,suite.batch" description="Test Implementations"/>
+
+	<target name="suite.single" unless="isBatchTest">
+		<fail>
+			<condition>
+				<available file="${testScript}.xml" type="dir"/>
+			</condition>
+			The testScript ${testScript}.xml does not exist.
+		</fail>
+		<ant antfile="${testScript}.xml"/>
+	</target>
+
+	<target name="suite.batch" if="isBatchTest">
+		<ant antfile="requestsCsv.xml"/>
+		<ant antfile="storeProperty.xml"/>
+		<ant antfile="javaScriptError.xml"/>
+		<ant antfile="browserVersion.xml"/>
+
+		<ant antfile="sampleUse.xml"/>
+		<ant antfile="invoke.xml"/>
+
+		<ant antfile="description.xml"/>
+		<ant antfile="testInfo.xml"/>
+		<ant antfile="verifyText.xml"/>
+		<ant antfile="verifyElementText.xml"/>
+		<ant antfile="tableLocator.xml"/>
+		<ant antfile="verifyElement.xml"/>
+		<ant antfile="verifyTitle.xml"/>
+		<ant antfile="verifyCheckbox.xml"/>
+		<ant antfile="verifyXPath.xml"/>
+		<ant antfile="verifyLinks.xml"/>
+		<ant antfile="verifyImages.xml"/>
+		<ant antfile="verifyProperty.xml"/>
+		<ant antfile="verifyDialogs.xml"/>
+		<ant antfile="verifyLinkedContent.xml"/>
+		<ant antfile="verifyDocumentURL.xml"/>
+
+		<ant antfile="setCheckbox.xml"/>
+		<ant antfile="setSelectField.xml"/>
+		<ant antfile="setFileField.xml"/>
+		<ant antfile="autoSubmitExample.xml"/>
+		<ant antfile="newFormSteps.xml"/>
+		<ant antfile="radioButton.xml"/>
+		<ant antfile="selectForm.xml"/>
+		<ant antfile="forceHiddenInputField.xml"/>
+
+		<ant antfile="clickLink.xml"/>
+		<ant antfile="clickButton.xml"/>
+		<ant antfile="clickElement.xml"/>
+		<ant antfile="multiplePostsAndPreviousResponse.xml"/>
+		<ant antfile="followFrame.xml"/>
+		<ant antfile="mouseEvents.xml"/>
+
+		<ant antfile="pdfPreviousResponse.xml"/>
+		<ant antfile="pdfBookmarks.xml"/>
+		<ant antfile="pdfLinks.xml"/>
+		<ant antfile="pdfFonts.xml"/>
+		<ant antfile="pdfText.xml"/>
+		<ant antfile="pdfPermissions.xml"/>
+
+		<ant antfile="excel.xml"/>
+
+		<ant antfile="config_autorefresh.xml"/>
+		<ant antfile="redirect.xml"/>
+		<ant antfile="configuration.xml"/>
+		<ant antfile="antWrapper.xml"/>
+		<ant antfile="wrappedSteps.xml"/>
+
+		<ant antfile="cookie.xml"/>
+		<ant antfile="httpHeader.xml"/>
+		<ant antfile="httpResponseCode.xml"/>
+		<ant antfile="store.xml"/>
+		<ant antfile="storeLinkParameter.xml"/>
+		<ant antfile="storeElementAttribute.xml"/>
+		<ant antfile="storeRandom.xml"/>
+		<ant antfile="storeDigest.xml"/>
+		<ant antfile="storeLength.xml"/>
+		<ant antfile="inputFieldAttribute.xml"/>
+		<ant antfile="verifyContent.xml"/>
+		<ant antfile="applyFilters.xml"/>
+
+		<ant antfile="not.xml"/>
+		<ant antfile="repeat.xml"/>
+		<ant antfile="group.xml"/>
+		<ant antfile="timedGroup.xml"/>
+		<ant antfile="iframe.xml"/>
+		<ant antfile="ifstep.xml"/>
+		<ant antfile="retry.xml"/>
+
+		<ant antfile="problemCases.xml"/>
+		<ant antfile="javascript.xml"/>
+		<ant antfile="dragAndDrop.xml"/>
+		<ant antfile="closeWindow.xml"/>
+		<ant antfile="selectWindow.xml"/>
+		<ant antfile="selectWebClient.xml"/>
+
+		<ant antfile="proxy.xml"/>
+		<ant antfile="https.xml"/>
+		<ant antfile="deprecated.xml"/>
+
+		<ant antfile="groovy.xml"/>
+		<ant antfile="scriptStep.xml"/>
+
+		<ant antfile="reportLinks.xml"/>
+		<ant antfile="reportSite.xml"/>
+
+		<ant antfile="forceInputFieldAttribute.xml"/>
+
+		<ant antfile="showI18n.xml"/>
+
+		<ant antfile="reporting.xml"/>
+	</target>
+
+	<target name="out-of-suite" description="not for automatic execution">
+	</target>
+
+	<target name="start-for-profiling">
+		<exec command="cmd.exe /c start pause"/>
+		<!-- use pause to capture snapshots via yourkit gui-->
+		<ant antfile="sampleUse.xml"/>
+		<exec command="cmd.exe /c start pause"/>
+		<!-- use pause to capture snapshots via yourkit gui-->
+		<ant antfile="sampleUse.xml"/>
+		<exec command="cmd.exe /c start pause"/>
+		<!-- use pause to capture snapshots via yourkit gui-->
+	</target>
+
+	<target name="experimental">
+	</target>
+
+</project>

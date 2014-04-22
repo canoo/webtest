@@ -1,0 +1,9 @@
+<webtest name="Check all links on current page and on subpages except on foreign hosts">
+	<config ... />
+	<steps>		
+		<invoke ... />
+		<verifyLinks description="Check Links" 
+			depth="1" 
+			onsiteonly="true"/>
+	</steps>
+</webtest>

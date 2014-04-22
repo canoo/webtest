@@ -1,0 +1,20 @@
+<webtest name="testInputFieldAttributeSteps: Show usage of forceInputFieldAttribute step using disabled attribute">
+    <config ...>
+    <steps>
+        <invoke ...>
+        <verifytitle description="check we are on the test page" text="InputField Attribute Test Page" />
+        <storeInputFieldAttribute propertyName="isDisabled2a" name="button2" attributeName="disabled"/>
+        <verifyProperty description="check if button is disabled" name="isDisabled2a" text="true"/>
+        <clickButton description="Attempt submit but should be ignored as button is disabled" name="button2" />
+        <verifytitle description="check we are still on the test page" text="InputField Attribute Test Page" />
+        <setInputField description="set field value would enabled button if onkeyup() was supported event in htmlunit"
+            name="value2" value="someText" />
+        <clickButton description="Attempt submit should fail because of onkeyup() limitation" name="button2" />
+        <verifytitle description="check we are still on the test page" text="InputField Attribute Test Page" />
+        <forceInputFieldAttribute name="button2" attributeName="disabled" attributeValue=""/>
+        <storeInputFieldAttribute propertyName="isDisabled2b" name="button2" attributeName="disabled"/>
+        <verifyProperty name="isDisabled2b" text="false"/>
+        <clickButton description="Attempt submit should work as button is enabled" name="button2" />
+        <verifytitle description="check we are now on the dummy page" text="Dummy" />
+    </steps>
+</webtest>

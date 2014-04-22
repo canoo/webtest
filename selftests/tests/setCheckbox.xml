@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testSetCheckbox" default="all" basedir=".">
+    <target name="all">
+        <antcall target="testSettingSimpleStates"/>
+        <antcall target="testSettingMultipleCheckboxes"/>
+        <antcall target="testSettingCheckboxesWithValues"/>
+        <antcall target="testSettingMultivaluedCheckboxes"/>
+        <antcall target="testSettingMultivaluedCheckboxesWithoutValue"/>
+        <antcall target="testPreservesAlreadyCheckedCheckboxes"/>
+        <antcall target="testResetCheckedCheckbox"/>
+        <antcall target="testResetNonExistingCheckbox"/>
+        <antcall target="testIdNotCheckbox"/>
+        <antcall target="withJavaScript"/>
+        <antcall target="withoutJavaScript"/>
+    </target>
+
+
+    <target name="testSettingSimpleStates">
+        <webtest name="setCheckbox: Check setting simple states">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                        save="debugTest"
+                        description="getMainPage for checkbox test"
+                        url="${start.page}?mode=checkboxTest&amp;c1=check1"/>
+                <setCheckbox
+                        description="Reset the checkbox"
+                        name="c1"
+                        checked="false"/>
+                <clickButton
+                        description="submit the form to check parameter setting/resetting"
+                        label="doIt"/>
+                <verifyCheckbox
+                        description="Verify unchecking a previously checked checkbox"
+                        checked="false"
+                        name="c1"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSettingMultipleCheckboxes">
+        <webtest name="setCheckbox: Check setting multiple checkboxes">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                        save="debugTest"
+                        description="getMainPage for checkbox test"
+                        url="${start.page}?mode=checkboxTest&amp;c1=check1"/>
+                <setCheckbox
+                        description="Reset the checkbox"
+                        name="c1"
+                        checked="false"/>
+                <setCheckbox
+                        description="Set the checkbox"
+                        name="c3NoValue"
+                        checked="true"/>
+                <clickButton
+                        description="submit the form to check parameter setting/resetting"
+                        label="doIt"/>
+                <verifyCheckbox
+                        description="Verify unchecking a previously checked checkbox"
+                        checked="false"
+                        name="c1"/>
+                <verifyCheckbox
+                        description="Verify checking a previously unchecked checkbox"
+                        checked="true"
+                        name="c3NoValue"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSettingCheckboxesWithValues">
+        <webtest name="setCheckbox: Check setting checkboxes with values">
+            &sharedConfiguration;
+            <steps>
+
+                <!--
+                    Check setting checkboxes with values
+                    Attribute checked is not required if a value is provided since value makes
+                    only sense for setting a particular checkbox.
+                -->
+                <invoke
+                        save="debugTest"
+                        description="getMainPage for checkbox test"
+                        url="${start.page}?mode=checkboxTest"/>
+                <setCheckbox
+                        description="Set the checkbox by value"
+                        name="c2"
+                        value="check2"/>
+                <clickButton
+                        description="submit the form to check parameter setting/resetting"
+                        label="doIt"/>
+                <verifyCheckbox
+                        description="Verify checking a previously unchecked checkbox"
+                        name="c2"
+                        checked="true"
+                        value="check2"/>
+                <not>
+                    <verifyCheckbox
+                            description="Verify checking a previously unchecked checkbox with wrong state"
+                            name="c2"
+                            checked="false"
+                            value="check2"/>
+                </not>
+                <not>
+                    <verifyCheckbox
+                            description="Verify checking a previously unchecked checkbox with wrong value"
+                            name="c2"
+                            checked="true"
+                            value="check2XXX"/>
+                </not>
+                <verifyCheckbox
+                        description="Verify a previously unchecked checkbox remains unchecked"
+                        name="c2"
+                        checked="false"
+                        value="check3"/>
+                <not>
+                    <verifyCheckbox
+                            description="Verify a previously unchecked checkbox remains unchecked"
+                            name="c2"
+                            checked="true"
+                            value="check3"/>
+                </not>
+                <invoke
+                        save="debugTest"
+                        description="set both values"
+                        url="${start.page}?mode=checkboxTest&amp;c2=check2&amp;c2=check3"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value 1"
+                        name="c2"
+                        checked="true"
+                        value="check2"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value 2"
+                        name="c2"
+                        checked="true"
+                        value="check3"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSettingMultivaluedCheckboxes">
+        <webtest name="setCheckbox: Check multivalue checkboxes (same name but different values).">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                        save="debugTest"
+                        description="getMainPage for checkbox test"
+                        url="${start.page}?mode=checkboxTest"/>
+                <setCheckbox
+                        description="1)"
+                        name="c2"
+                        value="check2"/>
+                <setCheckbox
+                        description="2)"
+                        name="c2"
+                        value="check3"/>
+                <clickButton
+                        description="submit the form to check parameter setting/resetting"
+                        label="doIt"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value 1"
+                        name="c2"
+                        checked="true"
+                        value="check2"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value 2"
+                        name="c2"
+                        checked="true"
+                        value="check3"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testSettingMultivaluedCheckboxesWithoutValue">
+        <webtest name="setCheckbox: Check multivalue checkboxes without specifying value works with first">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                        save="debugTest"
+                        description="getMainPage for checkbox test"
+                        url="${start.page}?mode=checkboxTest"/>
+                <setCheckbox
+                        description="1)"
+                        name="c2"/>
+                <clickButton
+                        description="submit the form to check parameter setting/resetting"
+                        label="doIt"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value 1"
+                        name="c2"
+                        checked="true"
+                        value="check2"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testPreservesAlreadyCheckedCheckboxes">
+        <webtest name="setCheckbox: Check preservation of already checked checkboxes">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                        save="debugTest"
+                        description="Check preservation of already checked checkboxes"
+                        url="${start.page}?mode=checkboxTest&amp;c2=check2&amp;c2=check3"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value 1"
+                        name="c2"
+                        checked="true"
+                        value="check2"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value 2"
+                        name="c2"
+                        checked="true"
+                        value="check3"/>
+                <clickButton
+                        description="submit the form to check preservation of already checked items"
+                        label="doIt"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value 1"
+                        name="c2"
+                        checked="true"
+                        value="check2"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value 2"
+                        name="c2"
+                        checked="true"
+                        value="check3"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testResetCheckedCheckbox">
+        <webtest name="setCheckbox: Reset a checked checkbox">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                        save="debugTest"
+                        description="Check preservation of already checked checkboxes"
+                        url="${start.page}?mode=checkboxTest&amp;c1=check1&amp;c2=check2"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value"
+                        name="c1"
+                        checked="true"
+                        value="check1"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value"
+                        name="c2"
+                        checked="true"
+                        value="check2"/>
+                <setCheckbox
+                        description="Reset the previously enabled checkbox"
+                        name="c1"
+                        checked="false"/>
+                <clickButton
+                        description="submit the form to check if checkbox is reset (unchecked)"
+                        label="doIt"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value"
+                        name="c1"
+                        checked="false"/>
+                <verifyCheckbox
+                        description="Verify a checked checkbox by value"
+                        name="c2"
+                        checked="true"
+                        value="check2"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testResetNonExistingCheckbox">
+        <webtest name="setCheckbox: Try to set or reset non existing checkbox">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                        save="debugTest"
+                        description="getMainPage for checkbox test"
+                        url="${start.page}?mode=checkboxTest&amp;c1=check1"/>
+                <not>
+                    <setCheckbox
+                            description="Check an unknown checkbox should fail"
+                            name="XX"
+                            checked="true"/>
+                </not>
+                <not>
+                    <setCheckbox
+                            description="Check an unknown checkbox value should fail"
+                            name="c2"
+                            value="dummy"
+                            checked="true"/>
+                </not>
+                <not>
+                    <setCheckbox
+                            description="Uncheck an unknown checkbox should fail"
+                            name="XX"
+                            checked="false"/>
+                </not>
+                <selectForm name="checkboxForm"/>
+                <not>
+                    <setCheckbox
+                            description="Setting unknown checkbox on selected form should fail"
+                            name="r2d2"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testIdNotCheckbox">
+        <webtest name="setCheckbox: Try to use htmlId for heading">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="getMainPage for checkbox test" url="${start.page}?mode=checkboxTest"/>
+                <not>
+                    <setCheckbox description="Use heading id" htmlId="headingId" checked="true"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="withJavaScript">
+        <webtest name="setCheckbox: Tests related to checkbox with JavaScript">
+            &sharedConfiguration;
+            <steps>
+                <enableJavaScript enable="true"/>
+
+                <invoke description="Open the page with form and JS" url="form.jsp"/>
+                <verifyXPath
+                        xpath="not(//form/input[@name='beer'][@value='alcohol']/@checked)"
+                        text="true"
+                        />
+                <verifyXPath description="beerDegree is initially disabled"
+                             xpath="boolean(//form/input[@name='beerDegree']/@disabled)"
+                             text="true"/>
+
+                <group description="first click activates">
+                    <setCheckbox name="beer" value="alcohol" checked="true"/>
+                    <verifyXPath
+                            xpath="boolean(//form/input[@name='beer'][@value='alcohol']/@checked)"
+                            text="true"
+                            />
+                    <verifyXPath description="beerDegree is checked"
+                                 xpath="not(//form/input[@name='beerDegree']/@disabled)"
+                                 text="true"/>
+                </group>
+                <group description="2nd click does nothing">
+                    <setCheckbox name="beer" value="alcohol" checked="true"/>
+                    <verifyXPath
+                            xpath="count(//form/input[@name='beer'][@value='alcohol']/@checked)"
+                            text="1"
+                            />
+                    <verifyXPath description="beerDegree is checked"
+                                 xpath="not(//form/input[@name='beerDegree']/@disabled)"
+                                 text="true"/>
+                </group>
+                <clickButton name=""/>
+                <group description="Uncheck">
+                    <setCheckbox name="beer" value="alcohol" checked="false"/>
+                    <verifyXPath
+                            xpath="boolean(//form/input[@name='beer'][@value='alcohol']/@checked)"
+                            text="false"
+                            />
+                    <verifyXPath description="beerDegree is checked"
+                                 xpath="boolean(//form/input[@name='beerDegree']/@disabled)"
+                                 text="true"/>
+                </group>
+                <group description="2nd click does nothing">
+                    <setCheckbox name="beer" value="alcohol" checked="false"/>
+                    <verifyXPath
+                            xpath="boolean(//form/input[@name='beer'][@value='alcohol']/@checked)"
+                            text="false"
+                            />
+                    <verifyXPath description="beerDegree is checked"
+                                 xpath="boolean(//form/input[@name='beerDegree']/@disabled)"
+                                 text="true"/>
+                </group>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="withoutJavaScript">
+        <webtest name="setCheckbox: Tests related to checkbox with JavaScript">
+            &sharedConfiguration;
+            <steps>
+                <enableJavaScript enable="false"/>
+
+                <invoke description="Open the page with form and JS" url="form.jsp"/>
+                <verifyXPath
+                        xpath="not(//form/input[@name='beer'][@value='alcohol']/@checked)"
+                        text="true"
+                        />
+
+                <group description="first click activates">
+                    <setCheckbox name="beer" value="alcohol" checked="true"/>
+                    <verifyXPath
+                            xpath="boolean(//form/input[@name='beer'][@value='alcohol']/@checked)"
+                            text="true"
+                            />
+                </group>
+                <group description="2nd click does nothing">
+                    <setCheckbox name="beer" value="alcohol" checked="true"/>
+                    <verifyXPath
+                            xpath="count(//form/input[@name='beer'][@value='alcohol']/@checked)"
+                            text="1"
+                            />
+                </group>
+                <clickButton name=""/>
+                <group description="Uncheck">
+                    <setCheckbox name="beer" value="alcohol" checked="false"/>
+                    <verifyXPath
+                            xpath="boolean(//form/input[@name='beer'][@value='alcohol']/@checked)"
+                            text="false"
+                            />
+                </group>
+                <group description="2nd click does nothing">
+                    <setCheckbox name="beer" value="alcohol" checked="false"/>
+                    <verifyXPath
+                            xpath="boolean(//form/input[@name='beer'][@value='alcohol']/@checked)"
+                            text="false"
+                            />
+                </group>
+            </steps>
+        </webtest>
+    </target>
+
+
+</project>

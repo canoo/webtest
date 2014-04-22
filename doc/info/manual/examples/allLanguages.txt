@@ -1,0 +1,18 @@
+<project default="testSuite">
+
+	<property name="suite.xml" value="allUseCases.xml" />
+
+	<target name="testSuite" depends="testSuiteFrench,testSuiteEnglish" />
+
+	<target name="testSuiteFrench">
+		<ant antfile="${suite.xml}">
+			<property file="properties/french.properties"/>
+		</ant>
+	</target>
+	<target name="testSuiteEnglish">
+		<ant antfile="${suite.xml}">
+			<property file="properties/english.properties"/>
+		</ant>
+	</target>
+
+</project>

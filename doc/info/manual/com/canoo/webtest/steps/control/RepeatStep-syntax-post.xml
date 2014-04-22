@@ -1,0 +1,22 @@
+<post>
+
+    <b>The following example illustrates the most simple usage of a <em>&lt;repeat&gt;</em> step and shows
+    how to reference the repetition counter via its default name.</b>
+
+    <code caption="repeat 1">
+        <include src='examples/repeatExample1.xml' />
+    </code>
+
+    <b>This example shows two nested <em>&lt;repeat&gt;</em> steps where each uses a specific countername
+    in order to access within the innermost <em>&lt;repeat&gt;</em> step both values.</b>
+
+    <code caption="repeat 2">
+        <include src='examples/repeatExample2.xml' />
+    </code>
+
+    <b>This example shows how the <em>xpath</em> attribute allows a compact syntax</b>
+
+    <code caption="repeat with xpath">
+        <include src='examples/repeatExample3.xml' />
+    </code>
+</post>

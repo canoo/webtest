@@ -1,0 +1,17 @@
+<target name="testInlineGroovy">
+	<property name="image_id" value="traffic_light"/>
+	<webtest name="groovy: test groovy with inlined script">
+		<invoke description="Load Initial Page"
+			url="trafficlight.html"/>
+		<storeXPath description="extract src attribute from image with id=${image_id}"
+			xpath="//img[@id='${image_id}']/@src"
+			property="imagesrc"/>
+		<groovy description="calculate expected alt text for src=#{imagesrc}" >
+			def src2alt = ['red.gif':'stop', 'orange.gif':'wait', 'green.gif':'go']
+			step.setWebtestProperty('image_alt', src2alt[step.webtestProperties.imagesrc])
+		</groovy>
+		<verifyXPath description="check alt value"
+			xpath="//img[@id='${image_id}']/@alt"
+			text="#{image_alt}"/>
+	</webtest>
+</target>

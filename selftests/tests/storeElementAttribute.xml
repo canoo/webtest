@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testStoreElementAttribute" default="all" basedir=".">
+
+    <target name="all" depends="testStoreElementAttribute" />
+
+    <target name="testStoreElementAttribute">
+        <webtest name="storeElementAttribute: Click Table Cell with errors">
+            &sharedConfiguration;
+            <steps>
+                <!-- see also: clickElement.xml for valid cases -->
+                <invoke description="start" url="colorChange.html"/>
+                <not description="expect to fail">
+                    <storeElementAttribute description="attempt to set with non-existent htmlId"
+                                           htmlId="wontBeFound" attributeName="style" property="dummy"/>
+                </not>
+                <storeElementAttribute description="attempt to set with unknown attribute"
+                                       htmlId="red" attributeName="wontBeFound" property="wontBeFoundResult"/>
+                <verifyProperty name="wontBeFoundResult" text="undefined"/>
+                <storeElementAttribute description="attempt to set with unknown attribute"
+                                       htmlId="emptyStyle" attributeName="style" property="emptyStyle"/>
+                <verifyProperty name="emptyStyle" text="empty"/>
+                <not description="expect to fail">
+                    <storeElementAttribute description="attempt to set with non-existent xpath"
+                                           xpath="//tr[99]" attributeName="style" property="dummy"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

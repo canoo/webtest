@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE project SYSTEM "WebTest.dtd">
+
+<project name="FullSuite" default="testSuite" basedir=".">
+
+	<property name="suite.xml" value="TestSuite.xml" />
+
+	<target name="testSuite" depends="testSuiteFrench,testSuiteEnglish" />
+
+	<target name="testSuiteFrench">
+		<ant antfile="${suite.xml}">
+			<property file="properties/french.properties"/>
+		</ant>
+	</target>
+	<target name="testSuiteEnglish">
+		<ant antfile="${suite.xml}">
+			<property file="properties/english.properties"/>
+		</ant>
+	</target>
+
+</project>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testHttpHeader" default="all" basedir=".">
+
+    <target name="all" depends="testHttpHeaderBasics,testUserAgentSettings,testStoreHeaderImageLoop" />
+
+    <target name="testHttpHeaderBasics">
+        <!-- default start page displays header fields at the end -->
+        <webtest name="httpHeader: default value for Accept-Language http header">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="getMainPage" url="${start.page}"/>
+                <verifyText description="header subtitle present" text="Header names and values"/>
+                 <verifyText description="header value" text="[Aa]ccept-[Ll]anguage = en-us,en;q=0.5" regex="true"/>
+            </steps>
+        </webtest>
+
+        <webtest name="httpHeader: confirm custom setting of http headers">
+            <config
+                host="${webtest.host}"
+                port="${webtest.port}"
+                protocol="${webtest.protocol}"
+                basepath="${webtest.basepath}"
+                saveresponse="true"
+                resultpath="${wt.config.resultpath}"
+                resultfile="${webtest.resultfile}"
+                haltonfailure="true"
+                showhtmlparseroutput="true"
+                >
+                <header name="Accept-Language" value="fr-fr,de;q=0.8,en-us;q=0.5,en;q=0.3"/>
+                <header name="User-Agent" value="totoBrowser"/>
+            </config>
+            <steps>
+                <invoke description="getMainPage"
+                    url="${start.page}"/>
+                <verifyText description="Check submitted Accept-Language header"
+                    text=".ccept-.anguage = fr-fr,de;q=0.8,en-us;q=0.5,en;q=0.3"
+                    regex="true"/>
+                <verifyText description="check send User-Agent header, case may differ per server"
+                    text="[Uu]ser-[Aa]gent = totoBrowser"
+                    regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <!-- TODO: make browser/user agent specific tests below do something specialised to that browser -->
+    <target name="testUserAgentSettings">
+        <webtest name="httpHeader: test common user agent settings - default case (IE6)">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="getMainPage"
+                    url="${start.page}"/>
+                <verifyText description="check send User-Agent header, case may differ per server"
+                    text="[Uu]ser-[Aa]gent = .*MSIE 6"
+                    regex="true"/>
+            </steps>
+        </webtest>
+        <webtest name="httpHeader: test common user agent settings - legacy Netscape">
+            <config
+                host="${webtest.host}"
+                port="${webtest.port}"
+                protocol="${webtest.protocol}"
+                basepath="${webtest.basepath}"
+                saveresponse="true"
+                resultpath="${wt.config.resultpath}"
+                resultfile="${webtest.resultfile}"
+                haltonfailure="true"
+                showhtmlparseroutput="true"
+                >
+                <header name="User-Agent" value="Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US;rv:0.9.4.1) Gecko/20020508 Netscape6/6.2.3"/>
+            </config>
+            <steps>
+                <invoke description="getMainPage"
+                    url="${start.page}"/>
+                <verifyText description="check send User-Agent header, case may differ per server"
+                    text="[Uu]ser-[Aa]gent = Mozilla/5"
+                    regex="true"/>
+            </steps>
+        </webtest>
+        <webtest name="httpHeader: test common user agent settings - recent Mozilla/Firefox">
+            <config
+                host="${webtest.host}"
+                port="${webtest.port}"
+                protocol="${webtest.protocol}"
+                basepath="${webtest.basepath}"
+                saveresponse="true"
+                resultpath="${wt.config.resultpath}"
+                resultfile="${webtest.resultfile}"
+                haltonfailure="true"
+                showhtmlparseroutput="true"
+                >
+                <header name="User-Agent" value="Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.0.0) Gecko/20020530"/>
+            </config>
+            <steps>
+                <invoke description="getMainPage"
+                    url="${start.page}"/>
+                <verifyText description="check send User-Agent header, case may differ per server"
+                    text="[Uu]ser-[Aa]gent = .*Gecko"
+                    regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testStoreHeaderImageLoop">
+        <webtest name="httpHeader: confirm usage of storeHeader (re-load image test)">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load Image" url="ok.gif"/>
+            	<group description="storeHeader">
+                    <storeHeader description="store content-type" name="Content-Type"
+                        property="contentType" />
+                    <verifyProperty description="should be a gif image"
+                        name="contentType" text="image/gif"/>
+                	
+                    <storeHeader description="store content-type" name="Content-Type" />
+                    <verifyProperty description="should be a gif image"
+                        name="Content-Type" text="image/gif"/>
+                    <storeHeader description="store content-length" name="Content-Length"
+                        property="initContentLength" propertyType="dynamic" />
+                    <verifyProperty description="should find this header if server is working correctly"
+                        name="initContentLength" regex="true" text=".*"/>
+            	</group>
+            	<group description="verifyHeader">
+                    <verifyHeader description="should be a gif image" name="Content-Type" text="image/gif"/>
+                    <verifyHeader description="with nested text">Content-Type: image/gif</verifyHeader>
+                    <verifyHeader description="with regex" regex="true">Content-Type: image/.*</verifyHeader>
+            	</group>
+                <repeat description="re-check content-length under repeated calls" count="4">
+                    <invoke description="Load Image - iteration #{count}" url="ok.gif"/>
+                    <storeHeader description="store content-length"
+                        name="Content-Length" property="loopContentLength"/>
+                    <verifyProperty description="compare loop value to initial value"
+                        name="loopContentLength" text="#{initContentLength}"/>
+                </repeat>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

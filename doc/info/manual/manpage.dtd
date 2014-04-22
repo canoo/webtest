@@ -1,0 +1,132 @@
+<!ENTITY % inline 'key|em|example|n|pageref|sectionref|stepref|sidebar|ext|buildNumber|today|file|img|posted' >
+
+<!ENTITY nbsp "&#160;">
+
+<!-- dtd for manual pages -->
+<!ELEMENT manpage (site, head,(section)+)>
+<!ATTLIST manpage siteid CDATA #IMPLIED>
+
+<!ELEMENT head (b)+>
+<!ATTLIST head title CDATA #REQUIRED>
+
+<!ELEMENT code (#PCDATA|tag|att|val|n|t|include)*>
+<!ATTLIST code caption CDATA #IMPLIED>
+
+<!ELEMENT include EMPTY>
+<!ATTLIST include src CDATA #REQUIRED>
+
+<!ELEMENT buildNumber EMPTY>
+<!ELEMENT today EMPTY>
+
+<!ELEMENT tag (#PCDATA)>
+<!ELEMENT att (#PCDATA)>
+<!ELEMENT val (#PCDATA)>
+
+<!ELEMENT n EMPTY>
+<!ELEMENT t EMPTY>
+<!ELEMENT file (#PCDATA)>
+
+<!ELEMENT example (#PCDATA)*>
+<!ELEMENT em (#PCDATA)*>
+<!ELEMENT citeref (#PCDATA)*>
+<!ELEMENT key (#PCDATA)*>
+<!ELEMENT b (#PCDATA|%inline;)*>
+
+<!ELEMENT pageref EMPTY>
+<!ATTLIST pageref name CDATA #REQUIRED>
+
+<!ELEMENT sidebar EMPTY>
+<!ATTLIST sidebar name CDATA #REQUIRED>
+
+<!ELEMENT stepref EMPTY>
+<!ATTLIST stepref
+    name CDATA #REQUIRED
+    category CDATA #REQUIRED
+    >
+
+<!ELEMENT attributes (attribute)* >
+<!ELEMENT attribute (name, description, required) >
+
+<!ELEMENT name (#PCDATA)* >
+<!ELEMENT description (#PCDATA|em|n|key|example)* >
+<!ELEMENT required (#PCDATA)* >
+
+<!ELEMENT section (b|code|citeref|attributes|dl|jira)* >
+<!ATTLIST section title CDATA #REQUIRED>
+
+<!ELEMENT ext (#PCDATA|img)*>
+<!ATTLIST ext
+	href CDATA #REQUIRED
+	base (jira) #IMPLIED
+	>
+
+<!ELEMENT jira EMPTY>
+<!ATTLIST jira href CDATA #REQUIRED>
+
+<!ELEMENT img (#PCDATA)*>
+<!ATTLIST img src CDATA #REQUIRED>
+
+<!ELEMENT occupation (#PCDATA)*>
+
+<!ELEMENT sectionref EMPTY>
+<!ATTLIST sectionref
+	number CDATA ""
+	title CDATA ""
+	>
+
+<!ELEMENT dl (li)+>
+<!ELEMENT li (dt?,dd?)+>
+<!ELEMENT dt (#PCDATA|%inline;)*>
+<!ATTLIST dt
+	style (frown|smile) #IMPLIED
+	>
+<!ELEMENT dd (#PCDATA|%inline;)*>
+
+<!-- dtd for references.xml -->
+<!ELEMENT references (ref)+>
+
+<!ELEMENT ref ((link|note|author|cite)*)>
+<!ATTLIST ref
+	id ID #REQUIRED
+	title CDATA ""
+	type CDATA ""
+	>
+
+<!ELEMENT link EMPTY>
+<!ATTLIST link href CDATA #REQUIRED>
+
+<!ELEMENT note (#PCDATA)*>
+
+<!ELEMENT author (occupation)*>
+<!ATTLIST author
+	name CDATA #REQUIRED
+	firstname CDATA ""
+	>
+
+<!ELEMENT cite (#PCDATA)*>
+<!ATTLIST cite id CDATA "">
+
+<!-- dtd for site -->
+<!ELEMENT site (level1)*>
+<!ATTLIST site name CDATA #REQUIRED>
+
+<!ELEMENT level1 (level2)*>
+<!ATTLIST level1
+	name CDATA #REQUIRED
+	url CDATA #REQUIRED
+	>
+
+<!ELEMENT level2 (level3)*>
+<!ATTLIST level2
+	name CDATA #REQUIRED
+	url CDATA #REQUIRED
+	>
+
+<!ELEMENT level3 (#PCDATA)*>
+<!ATTLIST level3
+	name CDATA #REQUIRED
+	url CDATA #REQUIRED
+	>
+<!-- dtd for news -->
+<!ELEMENT news (b)*>
+<!ELEMENT posted (#PCDATA|%inline;)*>

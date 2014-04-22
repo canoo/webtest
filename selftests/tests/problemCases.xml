@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="problem cases" default="all" basedir=".">
+
+    <target name="all" depends="testCacheBug, badNesting"/>
+
+    <target name="testCacheBug">
+        <!--
+            The following sequence reproduces a bug where the internal parameter cache is
+            not reset correctly after a submit and an error is caused in a subsequent
+            submit because the particular parameter does not exist (anymore).
+
+            The first form contains an input field "field2". This is set with a value
+            and the form (request) is submitted.
+            As response is a page with a different form displayed. This form does not contain
+            an input field "field2" but an input field "field1". This is populated and
+            the form is submitted.
+
+            This bug should no longer be present - it was related to HttpUnit usage - but
+            no harm in testing it still.
+          -->
+        <webtest name="problemCases: Reset parameter cache bug">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Open multiple form page"
+                    url="${start.page}?mode=postTest&amp;forms=multiple"/>
+                <setInputField description="Parameter in first form"
+                    name="field2"
+                    value="X"/>
+                <clickButton description="Click the submit button"
+                    label="doItAgain3"/>
+                <setInputField description="Parameter in second form"
+                    name="field1"
+                    value="XX"/>
+                <clickButton description="Click the submit button"
+                    label="doIt"/>
+            </steps>
+        </webtest>
+    </target>
+
+
+    <target name="badNesting">
+        <webtest name="problemCases: test for bad html - form in table not properly nested in td tags">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Open multiple form page"
+                    url="${start.page}?mode=formNestingWrong"/>
+                <!--<not description="fails, for button is found twice when form nesting is wrong">-->
+                <clickButton description="Click the submit button"
+                    label="doIt"
+                    name="clickme"/>
+                <!--</not>-->
+            </steps>
+        </webtest>
+    </target>
+
+</project>

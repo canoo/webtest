@@ -1,0 +1,10 @@
+<webtest name="Check all links on current page, on subpages and on their subpages">
+	<config ... />
+	<steps>
+		<invoke ... />
+        <verifyCheckbox
+            description="Verify that option is not selected"
+            name="anchovis"
+            checked="false"/>
+	</steps>
+</webtest>

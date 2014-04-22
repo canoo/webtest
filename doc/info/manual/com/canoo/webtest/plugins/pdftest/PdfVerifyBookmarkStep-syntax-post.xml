@@ -1,0 +1,10 @@
+<post>
+    <b>
+        Here is an example of using <em>pdfVerifyBookmark</em>:
+    </b>
+
+    <code caption='pdfVerifyBookmark example'>
+        <include src='pdfexamples/verifyBookmarkExample.xml'/>
+    </code>
+
+</post>

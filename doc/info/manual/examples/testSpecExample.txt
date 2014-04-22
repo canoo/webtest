@@ -1,0 +1,3 @@
+<webtest name="Visit all pages without update">
+	...
+</webtest>

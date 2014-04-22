@@ -1,0 +1,7 @@
+#;Method;URL;Response code;Response Message;Content Type;Duration
+1;GET;http://localhost:19090/selftest/frameset.jsp;200;OK;text/html;1593
+2;GET;http://localhost:19090/selftest/frame_left.jsp;200;OK;text/html;157
+3;GET;http://localhost:19090/selftest/nestedFrameset.html;200;OK;text/html;3
+4;GET;http://localhost:19090/selftest/dummy.html;200;OK;text/html;3
+5;GET;http://localhost:19090/selftest/dummy.xml;200;OK;text/xml;3
+6;GET;http://localhost:19090/selftest/frame_right.jsp;200;OK;text/html;140

@@ -1,0 +1,25 @@
+<html>
+<head>
+<script type="text/JavaScript">
+<!--
+function flipColor(obj) {
+  var color=(obj.style.backgroundColor==obj.id) ? "yellow" : obj.id;
+  obj.style.backgroundColor=color;
+}
+// -->
+</script>
+</head>
+<body>
+<table cellspacing="1" border="1">
+    <tr style="backgroundColor:red;background:red" id="red" onclick="flipColor(this)">
+        <td width="150" height="30"></td><td width="150"></td><td width="150"></td>
+    </tr>
+    <tr style="backgroundColor:green;background:green" id="green" onclick="flipColor(this)">
+        <td width="150" height="30"></td><td width="150"></td><td width="150"></td>
+    </tr>
+    <tr style="backgroundColor:blue;background:blue" id="blue" onclick="flipColor(this)">
+        <td width="150" height="30"></td><td width="150"></td><td width="150"></td>
+    </tr>
+</table>
+</body>
+</html>

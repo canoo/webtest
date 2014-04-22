@@ -1,0 +1,26 @@
+<target name="testFibonacciBeanShell">
+  <webtest name="scriptStepManualTests: test numbers page with inlined BeanShell Script">
+    &sharedConfiguration;
+    <steps>
+      <invoke description="Load Initial Page" url="numbers.html"/>
+      <storeXPath description="extract number to check"
+        xpath="//span[@id='fibonacci']/text()"
+        property="number"/>
+      <scriptStep description="check if number is indeed in Fibonacci series" language="beanshell"><![CDATA[
+isFib(n) {
+    a = 0;
+    b = 1;
+    while (b < n) {
+      tempa = a;
+      a = b;
+      b = tempa + b;
+    }
+    return b == n;
+}
+
+if (isFib(#{number})) step.setWebtestProperty("found", "true");
+      ]]></scriptStep>
+      <verifyProperty name="found" text="true" />
+    </steps>
+  </webtest>
+</target>

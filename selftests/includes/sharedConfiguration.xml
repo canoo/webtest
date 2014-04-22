@@ -1,0 +1,15 @@
+<config
+    host="${webtest.host}"
+    port="${webtest.port}"
+    protocol="${webtest.protocol}"
+    basepath="${webtest.basepath}"
+    saveresponse="${webtest.saveresponse}"
+    resultpath="${wt.config.resultpath}"
+    haltonerror="${webtest.haltonerror}"
+    errorproperty="${webtest.errorproperty}"
+    haltonfailure="${webtest.haltonfailure}"
+    failureproperty="${webtest.failureproperty}"
+    defaultpropertytype="${webtest.defaultpropertytype}"
+    showhtmlparseroutput="${webtest.showhtmlparseroutput}"
+    useInsecureSSL="${webtest.useInsecureSSL}"
+    />

@@ -1,0 +1,5 @@
+<webtest name="testInfo: simple usage scenario">
+	<testInfo type="issueNumber" info="WT-250"
+		description="the related issue number in WebTest tracking system"/>
+	... the 'real' steps here...
+</webtest>

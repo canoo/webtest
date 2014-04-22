@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+<project name="SimpleDemo" basedir="." default="main">
+    <target name="main">
+        <webtest name="autoSelectForm: check that JavaScript can submit upon select change">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="get entry page" url="autoSelectForm.html"/>
+                <verifyTitle description="this is the main form" text="Auto Select Form"/>
+                <setSelectField description="select option" name="mySelect" text="Option 2"/>
+                <verifyTitle description="check we are on new page" text="Dummy"/>
+            </steps>
+        </webtest>
+        <webtest name="autoSelectForm: check again with custom config-based saveResponse name">
+            <config
+                host="${webtest.host}"
+                port="${webtest.port}"
+                protocol="${webtest.protocol}"
+                basepath="${webtest.basepath}"
+                saveresponse="true"
+                saveprefix="selectConfigResponse"
+                resultpath="${wt.config.resultpath}"
+                resultfile="${webtest.resultfile}"
+                haltonfailure="true"
+                showhtmlparseroutput="false" />
+            <steps>
+                <invoke description="get entry page" url="autoSelectForm.html"/>
+                <verifyTitle description="this is the main form" text="Auto Select Form"/>
+                <setSelectField description="select option" name="mySelect" text="Option 2"/>
+                <verifyTitle description="check we are on new page" text="Dummy"/>
+            </steps>
+        </webtest>
+        <!-- TODO: check created response file(s) starts with 'selectConfigResponse' -->
+        <webtest name="autoSelectForm: check again with custom step-based saveResponse name">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="get entry page" url="autoSelectForm.html"/>
+                <verifyTitle description="this is the main form" text="Auto Select Form"/>
+                <setSelectField description="select option" name="mySelect" text="Option 2" save="selectStepResponse"/>
+                <verifyTitle description="check we are on new page" text="Dummy"/>
+            </steps>
+        </webtest>
+        <!-- TODO: check created response file for setSelectField step starts with 'selectStepResponse' -->
+    </target>
+</project>

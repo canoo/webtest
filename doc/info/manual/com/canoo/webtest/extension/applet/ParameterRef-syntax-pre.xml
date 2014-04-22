@@ -1,0 +1,7 @@
+<pre>
+
+	<b>This type allows you to select a set of properties by their name and pass them to
+		an applet's scenario. The selection occurs with regular expression.</b>
+	<b>The type further maps the selected (ant or dynamic) property names
+		to any scenario names. The scenario name can be set with regular expression's group.</b>
+</pre>

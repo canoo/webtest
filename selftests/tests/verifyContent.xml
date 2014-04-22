@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testVerifyContent" default="all" basedir=".">
+
+    <target name="all" depends="testVerifyContentSimple,testVerifyContentXpath,
+            testVerifyContentHtmlId,testVerifyContentRegex, testVerifyContentNewWindow, testVerifyContentRegExPerLine"/>
+
+    <target name="testVerifyContentSimple">
+        <webtest name="verifyContent: Show simple usage of verifyContent step">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="dummy.html"/>
+                <verifyContent description="will check against saved version" referenceFile="verifyContent/expectedDummy.html">
+                    <lineSeparatorFilter/>
+                </verifyContent>
+                <verifyContent description="compare removing tags" readFiltered="false" referenceFile="verifyContent/expectedDummyNoTags.html">
+                    <lineSeparatorFilter/>
+                    <tagStripper description="remove tags leaving only content"/>
+                </verifyContent>
+                <verifyContent description="compare removing content" readFiltered="false" referenceFile="verifyContent/expectedDummyOnlyTags.html">
+                    <lineSeparatorFilter/>
+                    <contentStripper description="remove content leaving only tags"/>
+                </verifyContent>
+                <not description="should fail because changes were made to expected file">
+                    <verifyContent referenceFile="verifyContent/expectedDummyWithMods.html">
+                        <lineSeparatorFilter/>
+                    </verifyContent>
+                </not>
+                <not description="should fail because file doesn't exist">
+                    <verifyContent referenceFile="notExisting.html">
+                        <lineSeparatorFilter/>
+                    </verifyContent>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testVerifyContentXpath">
+        <webtest name="verifyContent: verifyContent of xpath selection">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="numbers.html"/>
+                <verifyContent xpath="//span[@id='fibonacci']" referenceFile="verifyContent/expectedFibonacci.html">
+                    <lineSeparatorFilter/>
+                </verifyContent>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testVerifyContentHtmlId">
+        <webtest name="verifyContent: verifyContent of htmlId selection">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="numbers.html"/>
+                <verifyContent htmlId="prime" referenceFile="verifyContent/expectedPrime.html">
+                    <lineSeparatorFilter/>
+                </verifyContent>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testVerifyContentRegex">
+        <property name="variableNumberRegex" value="(?&lt;= )[0-9]+(?= time)"/>
+        <webtest name="verifyContent: verifyContent with regex replace">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="visitCount.jsp"/>
+                <verifyContent referenceFile="verifyContent/expectedVisitCount.html">
+                    <replaceFilter regex="(as at ).*(&lt;/title&gt;)" replacement="$1[DATE REMOVED]$2"/>
+                    <replaceFilter regex="${variableNumberRegex}"/>
+                    <lineSeparatorFilter/>
+                </verifyContent>
+                <invoke description="load page again - content will change" url="visitCount.jsp"/>
+                <verifyContent referenceFile="verifyContent/expectedVisitCount.html">
+	                <replaceFilter regex="(as at ).*(&lt;/title&gt;)" replacement="$1[DATE REMOVED]$2"/>
+                    <replaceFilter regex="${variableNumberRegex}"/>
+                    <lineSeparatorFilter/>
+                </verifyContent>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testVerifyContentNewWindow">
+        <webtest name="verifyContent: check that it works correctly when more than one window is used (WT-293)">
+            &sharedConfiguration;
+            <steps>
+            	<invoke url="verifyContent.html"/>
+            	<verifyTitle text="VerifyContent Main Page"/>
+            	<clickLink label="Open visitCount in new window"/>
+            	<verifyTitle text="Visit Counter Information" regex="true"/>
+                <verifyContent referenceFile="verifyContent/expectedVisitCount.html">
+                    <replaceFilter regex="(as at ).*(&lt;/title&gt;)" replacement="$1[DATE REMOVED]$2"/>
+                    <replaceFilter regex="${variableNumberRegex}"/>
+                    <lineSeparatorFilter/>
+                </verifyContent>
+            	<closeWindow/>
+            	<verifyTitle text="VerifyContent Main Page" description="check that we are back on the main page"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testVerifyContentRegExPerLine">
+        <webtest name="verifyContent: show usage of regexPerLine mode">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="dummy.html"/>
+                <verifyContent description="will check against saved version with regex" 
+                	referenceFile="verifyContent/expectedDummyRegEx.txt"
+                	mode="regexPerLine"/>
+            	<invoke url="verifyContent.html"/>
+                <not description="nested step should fail because file doesn't match">
+                    <verifyContent description="will fail" 
+                    	referenceFile="verifyContent/expectedDummyRegEx.txt"
+                    	mode="regexPerLine"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+</project>

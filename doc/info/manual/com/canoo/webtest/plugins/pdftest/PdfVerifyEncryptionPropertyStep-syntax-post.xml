@@ -1,0 +1,15 @@
+<post>
+
+    <b>
+        Here are some examples using the <em>pdfVerifyEncryptProperty</em> step:
+    </b>
+
+    <code caption="pdfVerifyEncryptProperty 1">
+        <include src='pdfexamples/verifyEncryptionPropertyExample1.xml' />
+    </code>
+
+    <code caption="pdfVerifyEncryptProperty 2">
+        <include src='pdfexamples/verifyEncryptionPropertyExample2.xml' />
+    </code>
+
+</post>

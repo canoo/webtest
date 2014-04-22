@@ -1,0 +1,10 @@
+<post>
+
+    <b>This content filter can be useful in environments where the content stays the same but tags or tag
+        attributes may change, e.g. a simple portal with presentation preferences depicted in CSS or other
+        presentation-oriented tags. This tag removes the tags (and any attributes) hence removes the
+    part of the response subject to change. The remainder can then be safely compared to an expected value.</b>
+
+    <b>See the <stepref name="verifyContent"/> step for an example of using this content filter.</b>
+
+</post>

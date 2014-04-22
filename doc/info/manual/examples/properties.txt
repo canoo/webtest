@@ -1,0 +1,19 @@
+..
+	<property name="url" value ="login?scott="/>
+	
+	<target name="main">
+		<webtest name="myTest">
+			&config;
+			<steps>
+				<invoke
+					description="bad login"
+					url="${url}wolf" />
+				<verifyTitle text="Sorry, bad login" />
+				<invoke
+					description="proper login"
+					url="${url}tiger" />
+				<verifyTitle text="Welcome" />
+			</steps>
+		</webtest>
+	</target>
+..

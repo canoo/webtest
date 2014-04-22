@@ -1,0 +1,20 @@
+<target name="testFibonacciRuby">
+  <webtest name="scriptStepManualTests: test numbers page with inlined ruby Script">
+    &sharedConfiguration;
+    <steps>
+      <invoke description="Load Initial Page" url="numbers.html"/>
+      <storeXPath description="extract number to check"
+        xpath="//span[@id='fibonacci']/text()"
+        property="number"/>
+      <scriptStep description="check if number is indeed in Fibonacci series" language="ruby"><![CDATA[
+        def isFib(n)
+          a, b = 0, 1
+          a, b = b, a + b while b < n
+          return n == 0 || b == n
+        end
+        $bsf.lookupBean("step").setWebtestProperty("found", "true") if isFib(#{number})
+      ]]></scriptStep>
+      <verifyProperty name="found" text="true" />
+    </steps>
+  </webtest>
+</target>

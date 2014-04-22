@@ -1,0 +1,11 @@
+<post>
+
+    <code caption="pdfVerifyInfoProperty 1">
+        <include src='pdfexamples/verifyInfoPropertyExample1.xml' />
+    </code>
+
+    <code caption="pdfVerifyInfoProperty 2">
+        <include src='pdfexamples/verifyInfoPropertyExample2.xml' />
+    </code>
+
+</post>

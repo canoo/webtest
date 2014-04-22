@@ -1,0 +1,13 @@
+<steps>
+    <!-- previous steps ... -->
+    <!-- random two-word name (firstname up to 10 chars, lastname up to 20 chars) -->
+    <storeRandom description="first name first letter" property="firstStart" chars="${UCCHARS}" length="1"/>
+    <storeRandom description="first name num remaining chars" property="firstSizeRest" from="3" to="9"/>
+    <storeRandom description="first name remaining chars" property="firstRest" chars="${LCCHARS}" length="#{firstSizeRest}"/>
+    <storeRandom description="last name first letter" property="lastStart" chars="${UCCHARS}" length="1"/>
+    <storeRandom description="last name num remaining chars" property="lastSizeRest" from="3" to="19"/>
+    <storeRandom description="last name remaining chars" property="lastRest" chars="${LCCHARS}" length="#{lastSizeRest}"/>
+    <storeProperty name="expectedName" value="#{firstStart}#{firstRest} #{lastStart}#{lastRest}" />
+    <setInputField name="name" value="#{expectedName}"/>
+    <!-- additonal steps ... -->
+</steps>

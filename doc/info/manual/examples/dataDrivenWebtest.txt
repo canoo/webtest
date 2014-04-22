@@ -1,0 +1,9 @@
+<dataDriven tableContainer="simple.xls">
+	<webtest name="Register ${FirstName} ${LastName}">
+		... go to registration page ...
+		<setInputField forLabel="First name" value="${FirstName}"/>
+		<setInputField forLabel="Last name" value="${LastName}"/>
+		<clickButton label="Register"/>
+		<verifyText text="${FirstName} ${LastName} has been registered"/>
+	</webtest>
+</dataDriven>

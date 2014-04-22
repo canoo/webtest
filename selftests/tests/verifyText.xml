@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="verifyText" default="all" basedir=".">
+
+    <target name="all" depends="testText, testRegEx, testTable"/>
+
+    <target name="testText">
+        <webtest name="verifyText: Show how to test against arbitrary text on the page">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page"
+                    url="${start.page}"/>
+                <verifyText description="Some text somewhere in the page"
+                    text="Wusi is the greatest"/>
+                <not description="expected to fail for text is not included">
+                    <verifyText description="unknown text"
+                        text="this text is not on the page"/>
+                </not>
+                <not description="expected to fail for text is case sensitive">
+                    <verifyText description="Text is checked case sensitive"
+                        text="WUSI IS THE GREATEST"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testRegEx">
+        <webtest name="verifyText: Show how to use regular expressions on the whole page">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page" url="${start.page}"/>
+                <verifyText description="fixed text without wildcards"
+                    text="Wusi is the greatest"
+                    regex="true"/>
+                <verifyText description="one line plain text with wildcards"
+                    text="W.si \w\w the\sg.{6}t"
+                    regex="true"/>
+                <verifyText description="multi line text"
+                    text="Wusi was here.*and here.*was here as well"
+                    regex="true"/>
+                <verifyText description="html text: assert hr in body"
+                    text="&lt;body&gt;.*&lt;hr&gt;.*&lt;/body&gt;.*"
+                    regex="true"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testTable">
+        <webtest name="verifyText: Try table locator">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="tableTest mode of the test servlet"
+                        url="${start.page}?mode=tableTest"/>
+                <verifyText text="1:1">
+                    <table row="1" column="1" htmlid="test"/>
+                </verifyText>
+                <verifyText text="2:2">
+                    <table description="defaults to first table found" row="2" column="2"/>
+                </verifyText>
+                <invoke description="main page" url="${start.page}" saveResponse="false"/>
+                <not description="expect to fail - no tables on this page">
+                    <verifyText text=".*" regex="true">
+                        <table description="defaults to first table found" row="1" column="1"/>
+                    </verifyText>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

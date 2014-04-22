@@ -1,0 +1,12 @@
+<pre>
+
+    <b>This is useful when checking that something should not occur,
+    e.g. in order to verify that a particular button or combo box is <em>not</em>
+    present in the current page or that a particular value is <em>not</em> in an input field
+    after the resetting the form.</b>
+
+    <b>If more than one step is included in the <em>&lt;not&gt;</em> test step,
+    <em>all</em> included steps must fail. The <em>&lt;not&gt;</em> test step can
+    include other <em>&lt;not&gt;</em> test steps.</b>
+
+</pre>

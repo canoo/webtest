@@ -1,0 +1,20 @@
+<target name="testVerifyContentRegex">
+    <property name="variableNumberRegex" value="(?&lt;= )[0-9]+(?= time)"/>
+    <webtest name="verifyContent: verifyContent with regex replace">
+        <config ... />
+        <steps>
+            <invoke url="visitCount.jsp"/>
+            <verifyContent referenceFile="verifyContent/expectedVisitCount.html">
+                <replaceFilter regex="(as at ).*(&lt;/title&gt;)" replacement="$1[DATE REMOVED]$2"/>
+                <replaceFilter regex="${variableNumberRegex}"/>
+                <lineSeparatorFilter/>
+            </verifyContent>
+            <invoke description="load page again - content will change" url="visitCount.jsp"/>
+            <verifyContent referenceFile="verifyContent/expectedVisitCount.html">
+                <replaceFilter regex="(as at ).*(&lt;/title&gt;)" replacement="$1[DATE REMOVED]$2"/>
+                <replaceFilter regex="${variableNumberRegex}"/>
+                <lineSeparatorFilter/>
+            </verifyContent>
+        </steps>
+    </webtest>
+</target>

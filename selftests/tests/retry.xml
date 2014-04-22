@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="until" default="all" basedir=".">
+
+    <target name="all" depends="successCases,failCases,dynPropertiesExtension" />
+<!-- mayFailNestedContainer, -->
+	<target name="successCases">
+		<webtest name="retry: illustrate RETRY of nested steps until they succeed">
+			&sharedConfiguration;
+			<steps>
+                <invoke description="reset in case someone else has used this page"
+                    url="visitCount.jsp?reset=true"/>
+				<retry description="retry nested steps until the visit count is 3" maxcount="10">
+                    <invoke description="Open page which increments visit count" url="visitCount.jsp"/>
+                    <sleep description="it is typically wise to include a sleep" seconds="1"/>
+                    <verifyXPath description="confirm server-based counter is working - iteration #{count}"
+                        xpath="//p[@id='totalinfo']"
+                        text="This page has been accessed a total of 3 time(s)." />
+                </retry>
+			</steps>
+		</webtest>
+    </target>
+
+    <target name="failCases">
+        <webtest name="retry: test RETRY nested steps fail scenarios">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="reset in case someone else has used this page"
+                    url="visitCount.jsp?reset=true"/>
+                <not description="must fail if maxcount is reached before nested steps succeed">
+                    <retry description="execute nested steps until the visit count is 2 but stop prematurely"
+                        maxcount="2" counterName="myCount">
+                        <invoke description="Open page which increments visit count" url="visitCount.jsp"/>
+                        <sleep description="it is typically wise to include a sleep" seconds="1"/>
+                        <verifyXPath description="confirm server-based counter is working"
+                            xpath="//p[@id='totalinfo']"
+                            text="This page has been accessed a total of 3 time(s)." />
+                    </retry>
+                </not>
+                <not description="a maxcount of 0 is an implicit fail">
+                    <retry description="fail early" maxcount="0" >
+                        <invoke url="dummy.xxx"/>
+                    </retry>
+                </not>
+
+            </steps>
+        </webtest>
+    </target>
+
+
+    <target name="dynPropertiesExtension">
+        <webtest name="retry: test property extension (WT-249)">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="retry.html" description="get start page for this test"/>
+				<retry maxcount="2">
+					<verifyXPath xpath="//div/text()" text="foo #{count}" description="loop #{count}"/>
+				</retry>
+            </steps>
+        </webtest>
+    </target>
+
+	<target name="mayFailNestedContainer">
+		<webtest name="retry: illustrate RETRY with the mayfail nested steps container">
+			&sharedConfiguration;
+			<steps>
+                <invoke description="reset in case someone else has used this page"
+                    url="visitCount.jsp?reset=true"/>
+				<retry description="retry nested steps until the visit count is 3" maxcount="10">
+                    <invoke description="Open page which increments visit count" url="visitCount.jsp"/>
+                    <sleep description="it is typically wise to include a sleep" seconds="1"/>
+                    <mayfail>
+	                    <verifyXPath description="confirm server-based counter is working - iteration #{count}"
+	                        xpath="//p[@id='totalinfo']"
+	                        text="This page has been accessed a total of 3 time(s)." />
+	                </mayfail>
+                </retry>
+                <not description="Retry should fail if it contains a mayfail but the failing step is outside this container">
+					<retry description="retry nested steps until the visit count is 3" maxcount="10">
+	                    <invoke description="Open page which increments visit count" url="nonExisting.jsp"/>
+	                    <sleep description="it is typically wise to include a sleep" seconds="1"/>
+	                    <mayfail>
+		                    <verifyXPath description="confirm server-based counter is working - iteration #{count}"
+		                        xpath="//p[@id='totalinfo']"
+		                        text="This page has been accessed a total of 3 time(s)." />
+		                </mayfail>
+	                </retry>
+	             </not>
+			</steps>
+		</webtest>
+    </target>
+</project>

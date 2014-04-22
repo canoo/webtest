@@ -1,0 +1,7 @@
+<post>
+
+    <code caption="emailStoreHeader">
+        <include src='emailexamples/emailStoreHeaderExample.xml' />
+    </code>
+
+</post>

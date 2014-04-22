@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testTestInfo" default="all" basedir=".">
+
+	<target name="all" depends="simpleTest"/>
+
+	<target name="simpleTest">
+		<webtest name="testInfo: simple usage scenario">
+			&sharedConfiguration;
+			<steps>
+				<testInfo type="issueNumber" info="WT-250" description="the related issue number in WebTest tracking system"/>
+				<testInfo type="summary" info="someInfo" description="displayed in overview as type='summary'"/>
+				<group description="testInfo can be grouped to take 'less' place as report steps">
+					<testInfo type="longDescription" description="a long description">
+						Interest of such a step
+						is described in detail
+						on the issue in the tracking system
+						therefore that's now enough to test it ;-)
+					</testInfo>
+				</group>
+				<invoke url="${start.page}" description="get a page even if it is not the purpose here as a WebTest without request is quite strange ;-)"/>
+				<testInfo type="someType" info="a testInfo may appear at any position within a webTest"/>
+				<testInfo type="summary" info="someOtherInfo" description="displayed in overview as well"/>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

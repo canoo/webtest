@@ -1,0 +1,9 @@
+<webtest name="Checks for proper application error">
+	<config ... />
+	<steps>
+		<invoke ... />
+		<verifyText	description="Error text must be present"
+			text="An application error occurred!" />
+		...
+		</steps>
+</webtest>

@@ -1,0 +1,13 @@
+<post>
+
+		<code caption="Don't forget invoke before verification">
+			<include src='examples/verifylinksExample1.xml' />
+		</code>
+		<code>
+			<include src='examples/verifylinksExample2.xml' />
+		</code>
+		<code>
+			<include src='examples/verifylinksExample3.xml' />
+		</code>
+
+</post>

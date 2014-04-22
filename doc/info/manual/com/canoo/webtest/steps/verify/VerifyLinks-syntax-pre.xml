@@ -1,0 +1,9 @@
+<pre>
+
+    <b>You can use this test recursively, so you can also check the links on the pages,
+    which are linked on the current page and so on. For this reason, you can specify the <em>depth</em> parameter.</b>
+
+    <b>To avoid scanning sub-links on other hosts, you can set the <em>onsiteonly</em> parameter.
+    If it is set to &quot;true&quot;, only the first link on a foreign host is checked for validity.</b>
+
+</pre>

@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Test With JavaScript errors</title>
+<script type="text/javascript">
+function functionWithError()
+{
+	var a = nonExisting.foo;
+}
+function setTimeoutWithJsError()
+{
+	window.setTimeout(functionWithError, 5)
+}
+</script>
+<body>
+
+<button id="setTimeoutWithJsError" onclick="setTimeoutWithJsError()">click to start setTimeout with JS error</button> 
+
+</body>
+</html>

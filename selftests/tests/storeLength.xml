@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testStoreLength" default="all" basedir=".">
+
+    <target name="all"
+            depends="testStoreLengthSimple,testStoreLengthRegex,testStoreLengthTable,testStoreLengthXPath,testStoreLengthHtmlId"/>
+
+    <target name="testStoreLengthSimple">
+        <webtest name="storeLength: Simple usage">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="dummy.html"/>
+                <storeLength property="lengthSimple">
+                    <lineSeparatorFilter/>
+                </storeLength>
+                <verifyProperty name="lengthSimple" text="78"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testStoreLengthRegex">
+        <property name="variableNumberRegex" value="(?&lt;= )[0-9]+(?= time)"/>
+        <webtest name="storeLength: Applied to content filtered with regex replace filter">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="visitCount.jsp"/>
+                <storeLength property="lengthRegexInitial">
+                    <replaceFilter regex="(as at ).*(&lt;/title&gt;)" replacement="$1[DATE REMOVED]$2"/>
+                    <replaceFilter regex="${variableNumberRegex}"/>
+                    <lineSeparatorFilter/>
+                </storeLength>
+                <verifyProperty name="lengthRegexInitial" text="291"/>
+                <invoke description="load page again - content will change" url="visitCount.jsp"/>
+                <storeLength property="lengthRegexFinal">
+                    <replaceFilter regex="(as at ).*(&lt;/title&gt;)" replacement="$1[DATE REMOVED]$2"/>
+                    <replaceFilter regex="${variableNumberRegex}"/>
+                    <lineSeparatorFilter/>
+                </storeLength>
+                <verifyProperty name="lengthRegexFinal" text="291"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testStoreLengthTable">
+        <webtest name="storeLength: Applied to content selected with table selector">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="tableTest mode of the test servlet"
+                        url="${start.page}?mode=tableTest"/>
+                <verifyElement description="table expected"
+                               type="table"
+                               text="test"/>
+                <storeLength property="lengthTable">
+                    <table row="1" column="1" htmlid="test"/>
+                </storeLength>
+                <verifyProperty name="lengthTable" text="3"/>
+                <not description="won't be found due to incorrect column">
+                    <storeLength property="lengthTable">
+                        <table description="only has 3 columns" row="1" column="100" htmlid="test"/>
+                    </storeLength>
+                </not>
+                <not description="won't be found due to unknown table">
+                    <storeLength property="lengthTable">
+                        <table row="1" column="1" htmlid="unknownid"/>
+                    </storeLength>
+                </not>
+                <not description="won't be found due to not a table">
+                    <storeLength property="lengthTable">
+                        <table row="1" column="1" htmlid="headingId"/>
+                    </storeLength>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testStoreLengthXPath">
+        <webtest name="storeLength: Applied to content selected with XPath">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="start" url="colorChange.html"/>
+                <storeLength property="lengthXpath" XPath="//span[1]">
+                    <lineSeparatorFilter/>
+                </storeLength>
+                <verifyProperty name="lengthXpath" text="40"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testStoreLengthHtmlId">
+        <webtest name="storeLength: Applied to content selected with htmlId">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="start" url="colorChange.html"/>
+                <storeLength property="lengthHtmlId" htmlId="emptyStyle">
+                    <lineSeparatorFilter/>
+                </storeLength>
+                <verifyProperty name="lengthHtmlId" text="40"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

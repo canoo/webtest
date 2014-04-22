@@ -1,0 +1,21 @@
+<target name="login" > 
+	<webtest name="normal" >
+		&config;
+		<steps>
+			<invoke        description="get Login Page"
+				url="login.jsp"   />
+			<verifyTitle   description="we should see the login title" 
+				text="Login Page" />
+			<setInputField description="set user name" 
+				name="username"
+				value="scott"     />
+			<setInputField description="set password" 
+				name="password"
+				value="tiger"     />
+			<clickButton   description="Click the submit button" 
+				label="let me in" />
+			<verifyTitle   description="Home Page follows if login ok"
+				text="Home Page"  />
+		</steps>
+	</webtest>
+</target>

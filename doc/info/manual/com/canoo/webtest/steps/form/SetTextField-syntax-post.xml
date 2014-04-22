@@ -1,0 +1,10 @@
+<post>
+
+    <b>The following simple example illustrates how to fill in the fields of a login form.</b>
+    <code caption="setInputField">
+        <include src='examples/setinputfieldExample.xml' />
+    </code>
+
+    <b><em>See also</em>: the <stepref name="verifyInputField"/> and <stepref name="selectForm"/> steps.</b>
+
+</post>

@@ -1,0 +1,12 @@
+<post>
+
+    <b><em>NOTE</em>: the <em>ThrowExceptionOnFailingStatusCode</em> option setting
+    in the <stepref name="config"/> element needs to be set to <em>false</em>. You don't
+    need to set this option if you want to test for return status codes of '200' but if
+    the step doesn't fail, you already know it is a '200' status code.</b>
+
+    <code caption='storeResponseCode Example'>
+        <include src='examples/storeResponseCodeExample.xml'/>
+    </code>
+
+</post>

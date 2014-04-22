@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testPdfBookmarks" default="allTests" basedir=".">
+
+    <target name="allTests" depends="testBookmarks, testBookmarksFilter"/>
+
+    <target name="testBookmarks">
+        <webtest name="pdfBookmarks: confirm existence of PDF bookmarks">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testDocBookmarks.pdf"/>
+                <pdfVerifyBookmark name="He.*One" regex="true"/>
+                <pdfVerifyBookmark name="Subheading"/>
+                <not description="expect to fail: unknown bookmark">
+                    <pdfVerifyBookmark name="Heading Three"/>
+                </not>
+                <invoke url="testDocForms.pdf"/>
+                <not description="expect to fail: document has no bookmarks">
+                    <pdfVerifyBookmark name=".*" regex="true"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target xmlns:pdf="antlib:com.canoo.webtest.plugins.pdftest" name="testBookmarksFilter">
+        <webtest name="pdfBookmarks: confirm verifyContent extracting bookmarks">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testDocBookmarks.pdf"/>
+                <verifyContent readFiltered="false" referenceFile="verifyContent/expectedPdfBookmarks.txt">
+                    <pdf:toBookmarksFilter description="extract PDF bookmarks"/>
+                    <lineSeparatorFilter description="normalise line separators"/>
+                </verifyContent>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

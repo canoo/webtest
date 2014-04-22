@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testPdfLinks" default="allTests" basedir=".">
+
+    <target name="allTests" depends="testLinks, testLinksFilter"/>
+
+    <target name="testLinks">
+        <webtest name="pdfLinks: confirm existence of PDF links">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testDocLinks.pdf"/>
+                <pdfVerifyLink text=".*external.*" regex="true"/>
+                <pdfVerifyLink page="2" href="#top"/>
+                <not description="expect to fail: incorrect page">
+                    <pdfVerifyLink page="1" href="#top"/>
+                </not>
+                <not description="expect to fail: unknown page">
+                    <pdfVerifyLink page="3" href="#top"/>
+                </not>
+                <not description="expect to fail: unknown link">
+                    <pdfVerifyLink text="into the unknown"/>
+                </not>
+                <invoke url="testDocBookmarks.pdf"/>
+                <not description="expect to fail: document has no links">
+                    <pdfVerifyLink text=".*" regex="true"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testLinksFilter">
+        <webtest name="pdfLinks: confirm verifyContent extracting links">
+            &sharedConfiguration;
+            <steps>
+                <invoke url="testDocLinks.pdf"/>
+                <verifyContent readFiltered="false" referenceFile="verifyContent/expectedPdfLinks.txt">
+                    <pdfToLinksFilter description="extract PDF links"/>
+                    <lineSeparatorFilter description="normalise line separators"/>
+                </verifyContent>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

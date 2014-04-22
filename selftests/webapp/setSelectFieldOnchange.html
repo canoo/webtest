@@ -1,0 +1,14 @@
+<html>
+<head><title>setSelectField onchange tests</title>
+<body>
+<form action="dummy.html" name='MyForm'>
+<select name="city" onchange="document.getElementById('citypartsFrame').src = 'dummy.html?city=' + this.value">
+  <option>city1</option>
+  <option>city2</option>
+  <option>city3</option>
+</select>
+</form>
+
+<iframe src="dummy.html" id="citypartsFrame"></iframe>
+</body>
+</html>

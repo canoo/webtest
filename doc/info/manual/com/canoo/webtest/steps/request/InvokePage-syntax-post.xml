@@ -1,0 +1,35 @@
+<post>
+
+    <b>Here is an example of a normal invoke:</b>
+
+    <code caption="invoke">
+        <include src='examples/invokeExample.xml'/>
+    </code>
+
+    <b>Here is an example of a SOAP invoke:</b>
+
+    <code caption="invoke">
+        <include src='examples/invokePostExample.xml'/>
+    </code>
+
+    <b>
+        Note: the <em>soapAction</em> attribute is only needed for
+        SOAP Web Service requests. For RESTful web services or to do an
+        invoke of a tricky form normally submitted through JavaScript
+        you can leave it out.
+    </b>
+
+    <b>Here is what the <em>AustralianPostcodeByLocationRequest.xml</em> file
+    contents might look like:</b>
+
+    <code caption="invoke">
+        <include src='examples/invokePostInput.xml'/>
+    </code>
+
+    <b>And the result might look something like:</b>
+
+    <code caption="invoke">
+        <include src='examples/invokePostOutput.xml'/>
+    </code>
+
+</post>

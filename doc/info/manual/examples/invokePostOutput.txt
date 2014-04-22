@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<soap:Body>
+<GetAustralianPostCodeByLocationResponse
+    xmlns="http://www.webserviceX.NET">
+<GetAustralianPostCodeByLocationResult>
+&lt;NewDataSet&gt;
+  &lt;Table&gt;
+    &lt;Location&gt;Karalee&lt;/Location&gt;
+    &lt;PostCode&gt; QLD 4306&lt;/PostCode&gt;
+  &lt;/Table&gt;
+&lt;/NewDataSet&gt;
+</GetAustralianPostCodeByLocationResult>
+</GetAustralianPostCodeByLocationResponse>
+</soap:Body>
+</soap:Envelope>

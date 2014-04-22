@@ -1,0 +1,7 @@
+...
+<form method="post" action="formTest">
+	<br/>Text:
+	<input type="text" name="field1" value="" />
+	<input type="submit" name="doIt" />
+</form>
+...

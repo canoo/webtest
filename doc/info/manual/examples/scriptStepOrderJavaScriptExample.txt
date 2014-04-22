@@ -1,0 +1,34 @@
+<webtest name="scriptStep: test fictitious order page with inlined JavaScript script">
+&sharedConfiguration;
+<steps>
+<invoke description="Load Initial Page"
+ url="order.html"/>
+<scriptStep description="calculate qty and price" language="javascript">
+   calc_qty = 0;
+   calc_price = 0;
+   items = document.getHtmlElementsByAttribute('tr', 'class', 'lineitem').iterator();
+   while (items.hasNext()) {
+       table_cells = items.next().getHtmlElementsByTagName('td');
+       qty = parseInt(table_cells.get(1).asText());
+       unit_price = parseInt(table_cells.get(2).asText());
+       total_line_price = parseInt(table_cells.get(3).asText());
+       calc_qty += qty;
+       calc_price += total_line_price;
+       if (qty * unit_price != total_line_price) {
+         step.setWebtestProperty('calc_error_found', 'true');
+       }
+   }
+   step.setWebtestProperty('calc_qty', calc_qty);
+   step.setWebtestProperty('calc_price', calc_price);
+</scriptStep>
+<not>
+   <verifyProperty name="calc_error_found" text="true" />
+</not>
+<verifyXPath description="check total qty"
+   xpath="//tr[@class='total']/td[2]"
+   text="#{calc_qty}"/>
+<verifyXPath description="check total price"
+   xpath="//tr[@class='total']/td[4]"
+   text="#{calc_price}"/>
+</steps>
+</webtest>

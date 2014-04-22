@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE news SYSTEM "manpage.dtd">
+
+<news>
+	<b>Latest build:
+		<buildNumber/>
+		<posted>
+			<today/>
+		</posted>
+	</b>
+	<b>
+		WebTest 3.0 released, featuring upgrades to Java 5, Groovy 1.6, and
+		HtmlUnit 2.4. <n/>
+		The release includes support for maven integration, IDE-integration
+        like for unit tests, capturing of background JavaScript errors, new steps
+        for mouseOver and mouseOut events, better parallel execution of tests
+		and - as usual - lots of handling improvements.
+
+		<posted>5 March 2009</posted>
+	</b>
+	<b>
+		WebTest @ JavaOne<n/>
+		Dierk König presented "Functional testing of web applications:
+scaling with Java" on Wed May 7, 13:30 at <ext href="http://java.sun.com/javaone/sf/index.jsp">JavaOne 2008</ext> in the Tools and Scripting
+Languages track.
+		<posted>8 May 2008</posted>
+	</b>
+	<b>
+		New WebTest screencast available:<n/>
+		<ext href="http://opensource.basehaus.com/webtest/screencasts/data-driven-webtest.htm">Data Driven WebTest</ext>
+		<posted>13 November 2007</posted>
+	</b>
+	<b>
+		First WebTest screencast available:<n/>
+		<ext href="http://opensource.basehaus.com/webtest/screencasts/creating-a-first-webtest-project.htm">Creating a first Webtest Project</ext>
+	</b>
+	<b>
+		Extend WebTest with Groovy!
+		<ext href="http://groovy.canoo.com/gina">Groovy in Action</ext>
+		is available in every good bookstore.
+		<n/>
+		<ext href="http://groovy.canoo.com/gina">
+			<img src="images/gina.jpg">Groovy in Action</img>
+		</ext>
+		<posted>29 January 2007</posted>
+	</b>
+</news>

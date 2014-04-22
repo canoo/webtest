@@ -1,0 +1,48 @@
+<head title="Available Filter Steps">
+
+    <b>
+        This is the syntax documentation for the Filter steps.
+    </b>
+
+    <b>
+        These are steps that are used to manipulate (or <em>filter</em>) the current response.
+        They are typically used to change the content into a more suitable
+        form for testing, for example, perhaps you wish to check the contents
+        of a page which contains the current date. You can use a filter to remove
+        the date from the page - hence the ever changing date part of the page
+        will be gone and you will be left with a static page for testing purposes.
+        The Filter steps are less tested than some of the Core steps and only
+        have minimal documentation. They are subject to change in future builds.
+    </b>
+
+    <b>
+        To give you an example of a use case for filters, you may have a PDF file.
+        You can use a filter to convert the content from a binary PDF file into
+        extracted text. You could then select a portion of lines using a line
+        selecting filter - perhaps something that matches a table.
+        You could then use a <key>regex</key> filter to select a particular
+        column of text from the table - perhaps a column of figures.
+        You could then use <stepref name="scriptStep" category="Extension"/> or
+        <stepref name="groovy" category="Extension"/> to add up the figures.
+        You could then compare the result of ading up figures to some value
+        extracted from somewhere else, e.g. elsewhere within the PDF, or
+        from a web page or from a database table.
+    </b>
+
+    <b>
+        The main steps which make use of filters (in addition to the <stepref name="applyFilters"/>
+        step included here) are:
+        <stepref name="verifyContent" category="Extension"/>,
+        <stepref name="storeLength" category="Extension"/> and
+        <stepref name="storeDigest" category="Extension"/>.
+    </b>
+    <b>
+        In addition to the filter steps mentioned here, see also the following
+        PDF filters:
+        <stepref name="pdfToTextFilter" category="PDF"/>,
+        <stepref name="pdfToFontsFilter" category="PDF"/>,
+        <stepref name="pdfToBookmarksFilter" category="PDF"/> and
+        <stepref name="pdfToLinksFilter" category="PDF"/>.
+    </b>
+
+</head>

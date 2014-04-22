@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Buggy Color Finder</title>
+<script type="text/javascript">
+<!--
+function findColor(field) {
+  var words = [ "Blue", "Green", "Red" ];
+  field.value = words[5];
+  return false;
+}
+// -->
+</script>
+</head>
+<body>
+<h1>Buggy Color Finder - wrong function name</h1>
+<form method="POST">
+<p>Your Favourite Color: <input type="text" id="myField" name="colorField" value="?"/></p>
+<p><input type="button" name="DoButton" value="Choose for me..." onclick="findColour(colorField)"></p>
+</form>
+</body>
+</html>

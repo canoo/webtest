@@ -1,0 +1,7 @@
+<post>
+
+    <code caption="pdfVerifyTitle">
+        <include src='pdfexamples/verifyTitleExample.xml' />
+    </code>
+
+</post>

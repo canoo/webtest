@@ -1,0 +1,23 @@
+<steps>
+    <invoke description="Load Order Page"
+        url="order.html"/>
+    <scriptStep description="check qty and price" language="groovy">
+        calc_qty = 0
+        calc_price = 0
+        document.getHtmlElementsByAttribute('tr', 'class', 'lineitem').each{
+            table_cells = it.getHtmlElementsByTagName('td')
+            qty = table_cells.get(1).asText().toInteger()
+            unit_price = table_cells.get(2).asText().toInteger()
+            total_line_price = table_cells.get(3).asText().toInteger()
+            calc_qty += qty
+            calc_price += total_line_price
+            assert qty * unit_price == total_line_price
+        }
+        root = new XmlSlurper().parseText(document.asXml())
+        totalCols = root.depthFirst().findAll{ it.name() == "tr" }.find{ it['@class'] == 'total' }.td
+        // slightly shorter alternative to above if you don't mind explicitly specifying tr
+        // totalCols = root.body.table.tbody.tr.find { it['@class'] == 'total' }.td
+        assert calc_qty == totalCols[1].text().trim().toInteger()
+        assert calc_price == totalCols[3].text().trim().toInteger()
+    </scriptStep>
+</steps>

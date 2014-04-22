@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+    For effective use when writing webtests, we need a DTD that covers
+    Ant tasks, WebTests tasks and project specific entities.
+    This DTD is a holder for these.
+    WebTest.dtd is generated at build time with antstructure,
+    and Project.dtd with a groovy script.
+
+    Future versions may use antstructure calls to generate only
+    the ant specific entries,  while the webtest.dtd may be constructed
+    with xdoclet.
+-->
+
+<!-- all elements known to ant when /build/selftests/build.xml is called -->
+<!ENTITY % webtest  SYSTEM "../config/WebTest.dtd" >
+<!-- project specific entities -->
+<!ENTITY % project  SYSTEM "../config/Project.dtd">
+
+%webtest;
+%project;

@@ -1,0 +1,24 @@
+<html>
+  <head>
+  <title>Mouse events tests</title>
+  <script>
+  function log(_node, _action)
+  {
+	  var oField = document.getElementById("lastEvent")
+	  oField.value = _action + " on " + _node.id
+  }
+  </script>
+  </head>
+  <body>
+  
+<div id="div1" onmouseover="log(this, 'over')" onmouseout="log(this, 'out')">div 1</div> 
+	<span id="span1" onmouseover="log(this, 'over')" onmouseout="log(this, 'out')">span 1</span>
+
+<div id="div2" onmouseover="log(this, 'over')" onmouseout="log(this, 'out')">div 2</div>
+<span id="span2" onmouseover="log(this, 'over')" onmouseout="log(this, 'out')">span 2</span>
+</div>
+<form>
+Last action: <input name="lastEvent" id="lastEvent" value="">
+</form>
+  </body>
+</html>

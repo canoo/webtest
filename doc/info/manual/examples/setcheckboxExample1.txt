@@ -1,0 +1,12 @@
+<webtest name="Choose all desired pizza toppings by checking them">
+	<config ... />
+	<steps>
+		<invoke ... />
+			<setCheckbox description="Select the cheese option"
+				name="Cheese"
+				checked="true" />
+			<clickButton description="Submit the selected options"
+				label="Choose" />
+		...
+	</steps>
+</webtest>

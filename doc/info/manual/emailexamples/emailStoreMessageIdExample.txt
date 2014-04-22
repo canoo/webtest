@@ -1,0 +1,10 @@
+<property name="testaddress" value="your_address@your.emailaddress.com"/>
+...
+<steps>
+    <emailSetConfig .../>
+    <emailStoreMessageId subject="mailtest - multifiles - plain"
+            from="${testaddress}" to="/${testaddress}/"
+            replyto="/${testaddress}/" cc="/${testaddress}/"
+            property="mid1"/>
+    <!-- further email test steps using messageId #{mid1} -->
+</steps>

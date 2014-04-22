@@ -1,0 +1,11 @@
+<pre>
+	<b>Normally, you can safely ignore <key>HTTP</key> response codes while using <key>CWT</key>.
+    Simply try to use web resources normally in your tests. Any which can't be retrieved normally
+    (i.e. which don't return <key>HTTP</key> status code of '200') will cause your steps to fail.</b>
+
+    <b>Sometimes however, it is useful to retrieve the response code, e.g. to distinguish
+    between server errors (typically code '500'), missing resources (code '404') and security
+    issues (typically codes 401 or 403). Or perhaps to verify the messages which these kind of errors
+     display to the user. This step allows you to achieve this requirement. In order for <key>CWT</key>
+    to not report non-'200' status codes as an error, you need to set an option (see below).</b>
+</pre>

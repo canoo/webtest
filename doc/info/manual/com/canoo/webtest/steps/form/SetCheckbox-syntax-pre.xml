@@ -1,0 +1,16 @@
+<pre>
+
+    <b>The checkbox to set/unset will be determined by finding the appropriate form followed by
+    finding the appropriate field on that form.</b>
+
+    <b><em>Form Selection</em>: in many cases, your page will only have
+    one form - that form will be used - you don't need to worry about trying to select the form.
+    For tricky cases, you might need to do extra work to select the appropriate form.
+    See the <stepref name="setRadioButton"/> step for further details on how to do this.</b>
+
+    <b><em>Field Selection</em>: in many cases, only one field will match the <em>name</em> and <em>value</em>
+    of the field you are interested in. In these cases, you don't need to worry about the remaining details
+    for selecting fields. For tricky cases, you might need to do extra work to select the appropriate field.
+    See the <stepref name="setRadioButton"/> step for further details on how to do this.</b>
+
+</pre>

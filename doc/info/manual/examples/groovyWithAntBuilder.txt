@@ -1,0 +1,27 @@
+def ant = new AntBuilder()
+
+def webtest_home = System.properties.'webtest.home'
+
+ant.taskdef(resource:'webtest.taskdef'){
+    classpath(){
+           pathelement(location:"$webtest_home/lib")
+           fileset(dir:"$webtest_home/lib", includes:"**/*.jar")
+    }
+}
+
+
+def config_map = [:]
+['protocol','host','port','basepath','resultfile',
+'resultpath', 'saveresponse','defaultpropertytype'].each{
+    config_map[it] = System.properties['webtest.'+it]
+}
+
+ant.testSpec(name:'groovy: Test Groovy Scripting at creation time'){
+    config(config_map)
+    steps(){
+        invoke(url:'linkpage.html')
+        for (i in 1..10){
+            verifyText(description:"verify number ${i} is on pages", text:"${i}")
+        }
+    }
+}

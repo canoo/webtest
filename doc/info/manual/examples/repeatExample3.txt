@@ -1,0 +1,17 @@
+<webtest name="Verify details of each client">
+	<config ... />
+	<steps>
+		<invoke description="get the client list" url="/myClientsList"/>
+
+		<repeat xpath="//table[@id='clientList']//tr" counterName="curRow" 
+				description="iterate on all rows of the table">
+			<storeXPath xpath="$curRow/td[4]" property="lastName" 
+				description="store client's last name"/>
+			<clickLink xpath="$curRow//a[@class='detailPopup']" 
+				description="open the detail popup"/>
+			<verifyText text="#{lastName}"
+				description="Check that the detail of the selected client are displayed"/>
+		</repeat>
+		...
+	</steps>
+</webtest>

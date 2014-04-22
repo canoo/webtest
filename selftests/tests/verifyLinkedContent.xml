@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="verifyLinkedContent" default="all">
+
+	<target name="all">
+		<antcall target="testVerifyLinkedContentWithError"/>
+		<antcall target="testVerifyLinkedContentWithoutLink"/>
+		<antcall target="testVerifyLinkedContentWithMimeType"/>
+	</target>
+
+	<target name="testVerifyLinkedContentWithError">
+		<webtest name="verifyLinkedContent: testVerifyLinkedContentWithError">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="linkReportMainPage.html"/>
+				<not description="one link is dead">
+					<verifyLinkedContent xpath="//a/@href"/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testVerifyLinkedContentWithoutLink">
+		<webtest name="verifyLinkedContent: testVerifyLinkedContentWithoutLink">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="linkReportMainPage.html"/>
+				<verifyLinkedContent xpath="//img/src"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testVerifyLinkedContentWithMimeType">
+		<webtest name="verifyLinkedContent: testVerifyLinkedContentWithoutLink">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="linkpage.html"/>
+				<verifyLinkedContent xpath="//a/@href" accept="text/html"/>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

@@ -1,0 +1,30 @@
+<steps>
+    <emailSetConfig .../>
+
+    <!-- plain message -->
+    <emailStoreMessageId subject="mailtest - multifiles - plain"
+        property="mid1" .../>
+    <compareToExpected saveFiltered="true" readFiltered="false"
+            toFile="plainStructure.txt">
+        <emailMessageStructureFilter messageId="#{mid1}"/>
+    </compareToExpected>
+
+    <!-- MIME message -->
+    <emailStoreMessageId subject="mailtest - multifiles - mime"
+        property="mid2" .../>
+    <compareToExpected saveFiltered="true" readFiltered="false"
+            toFile="mimeStructure.txt">
+        <emailMessageStructureFilter messageId="#{mid2}"
+                headers="subject"/>
+    </compareToExpected>
+
+    <!-- uuencoded message -->
+    <emailStoreMessageId subject="mailtest - multifiles - uu"
+        property="mid3" .../>
+    <compareToExpected saveFiltered="true" readFiltered="false"
+            toFile="uuStructure.txt">
+        <emailMessageStructureFilter headers="subject,from,to"
+                messageId="#{mid3}"/>
+    </compareToExpected>
+
+</steps>

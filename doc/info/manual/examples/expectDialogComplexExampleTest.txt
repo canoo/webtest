@@ -1,0 +1,50 @@
+<webtest name="testHardDiskErase">
+  <config .../>
+  <steps>
+    <invoke description="Load Initial Page" url="/diskadmin.jsp"/>
+    <verifytitle description="Should be disk admin page" text="Disk Admin Page"/>
+    <!-- check for initial cancel -->
+    <expectDialog description="Save first JavaScript Response"
+        dialogType="confirm" response="false" saveProperty="initialDialog" />
+    <expectDialog description="Save second JavaScript Response"
+        dialogType="alert" saveProperty="resultDialog" />
+    <clickbutton description="Click Clean button" name="CleanButton" />
+    <verifyProperty description="Check text from first JavaScript Dialog"
+        property="initialDialog" text="Are you sure?" />
+    <verifyProperty description="Check text from second JavaScript Dialog"
+        property="resultDialog" text="Operation cancelled!" />
+    <verifyNoDialogs description="Check all dialogs were used" />
+
+    <!-- check for initial OK but then cancel instead of confirm -->
+    <expectDialog description="Save first JavaScript Response"
+        dialogType="confirm" response="true" saveProperty="initialDialog" />
+    <expectDialog description="Save second JavaScript Response"
+        dialogType="prompt" response="false" saveProperty="confirmDialog" />
+    <expectDialog description="Save third JavaScript Response"
+        dialogType="alert" saveProperty="resultDialog" />
+    <clickbutton description="Click Clean button" name="CleanButton" />
+    <verifyProperty description="Check text from first JavaScript Dialog"
+        property="initialDialog" text="Are you sure?" />
+    <verifyProperty description="Check text from second JavaScript Dialog"
+        property="confirmDialog" regex="true" text=".*very sure.*YES.*" />
+    <verifyProperty description="Check text from third JavaScript Dialog"
+        property="resultDialog" text="Operation aborted!" />
+    <verifyNoDialogs description="Check all dialogs were used" />
+
+    <!-- check for initial OK followed by confirm -->
+    <expectDialog description="Save first JavaScript Response"
+        dialogType="confirm" response="true" saveProperty="initialDialog" />
+    <expectDialog description="Save second JavaScript Response"
+        dialogType="prompt" response="YES" saveProperty="confirmDialog" />
+    <expectDialog description="Save third JavaScript Response"
+        dialogType="alert" saveProperty="resultDialog" />
+    <clickbutton description="Click Clean button" name="CleanButton" />
+    <verifyProperty description="Check text from first JavaScript Dialog"
+        property="initialDialog" text="Are you sure?" />
+    <verifyProperty description="Check text from second JavaScript Dialog"
+        property="confirmDialog" regex="true" text=".*very sure.*YES.*" />
+    <verifyProperty description="Check text from third JavaScript Dialog"
+        property="resultDialog" text="Hard disk erased!" />
+    <verifyNoDialogs description="Check all dialogs were used" />
+  </steps>
+</webtest>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testPostMultipleAndBack" default="all" basedir=".">
+
+	<target name="all">
+		<antcall target="testPostMultipleAndBack"/>
+		<!--
+		<antcall target="postInvokingJavaScript"/>
+		-->
+	</target>
+
+	<target name="testPostMultipleAndBack">
+		<webtest name="multiplePostsAndPreviousResponse: Show POST usage with multiple forms and back navigation">
+			&sharedConfiguration;
+			<steps>
+				<invoke
+					description="multiple forms page to show use of select boxes, radio buttons, checkboxes and named buttons"
+				   url="${start.page}?mode=postTest&amp;forms=multiple"/>
+				<verifySelectField description="find select element by value"
+				                   name="select1"
+				                   value="v1"/>
+				<verifySelectField description="find select box by its text"
+				                   name="select1"
+				                   text="Name for v1"/>
+				<setSelectField description="choose a value"
+				                name="select1"
+				                value="v2"/>
+				<verifyInputField description="text for radiobuttons must be the value and must be checked"
+				                  name="radio"
+				                  value="r1"/>
+				<setRadioButton description="radios must be set by value"
+				                name="radio"
+				                value="r2"/>
+				<verifyCheckbox
+					description="text for checkboxes must be the value and must be checked"
+				   name="check"
+				   checked="false"/>
+				<setCheckbox description="check boxes must be set by value"
+				             name="check"
+				             value="c1"/>
+				<clickButton description="there are two buttons with label doItAgain, so a name attribute must be specified"
+				             label="doItAgain"
+				             name="first"/>
+				<verifyText description="select was submitted"
+				            text="select1 = v2"/>
+				<verifyText description="radio was submitted"
+				            text="radio = r2"/>
+				<verifyText description="checkbox was submitted"
+				            text="check = c1"/>
+
+				<previousResponse description="back to multiple forms page"/>
+				<verifySelectField description="find select box in named form, check text and value"
+				                   name="select1"
+				                   formName="2"
+				                   value="v2"
+				                   text="Name for v2"/>
+				<setSelectField description="prerequsite to clickButton"
+				                name="select1"
+				                text="Name for v3"/>
+				<clickButton description="submit second buttons"
+				             label="doItAgain"
+				             name="second"/>
+				<verifyText description="button ok, select was submitted"
+				            text="select1 = v3"/>
+
+				<previousResponse description="back to multiple forms page to test multiple link handling"/>
+				<clickLink description="click first found link with label = link"
+				           label="link"/>
+				<verifyText description="link parameter was submitted"
+				            text="link = l1"/>
+
+				<previousResponse description="back to multiple forms page to test second link"/>
+				<clickLink description="click link with label=link and name parameters"
+				           label="link"
+				           href="link=l2"/>
+				<verifyText description="link parameter was submitted"
+				            text="link = l2"/>
+
+				<previousResponse description="back to multiple forms page to test non-html link"/>
+				<clickLink description="click pdf link"
+				           label="pdf document"
+				           save="adobe"/>
+
+				<previousResponse description="back to multiple forms page"/>
+				<clickLink description="click word link"
+				           label="word document"
+				           save="word"/>
+
+				<!--
+										  Select options using regular expressions
+									 -->
+				<invoke
+					description="Invoke post test page"
+				   url="${start.page}?mode=postTest&amp;forms=multiple"/>
+				<setSelectField
+					description="Select an option via a text specified by a regular expression"
+				   name="select1"
+				   text=".*v3"
+				   regex="true"/>
+				<clickButton
+					description="Submit the form in order to verify correct parameter setting"
+				   name="first"/>
+				<verifyText
+					description="Ensure that the parameter was set to the correct option value"
+				   text="select1 = v3"/>
+
+				<invoke
+					description="Invoke post test page"
+				   url="${start.page}?mode=postTest&amp;forms=multiple"/>
+				<not description="Must fail since regex pattern does not exists">
+					<setSelectField
+						description="Use a non-existing pattern"
+					   name="select1"
+					   text=".*v3XX"
+					   regex="true"/>
+				</not>
+
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="postInvokingJavaScript">
+		<webtest name="multiplePostsAndPreviousResponse: Test previousResponse without JavaScript">
+			&sharedConfiguration;
+			<steps>
+				<enableJavaScript description="Show correct behaviour without JavaScript" enable="false"/>
+				<invoke description="main page" url="links.jsp"/>
+				<verifyTitle text="For clicklink tests"/>
+				<clickButton name="onClickSubmit"/>
+				<verifyTitle text="Canoo WebTest"/>
+				<previousResponse description="Come back to the form"/>
+				<verifyTitle text="For clicklink tests"/>
+			</steps>
+		</webtest>
+		<webtest name="multiplePostsAndPreviousResponse: Test previousResponse with JavaScript">
+			&sharedConfiguration;
+			<steps>
+				<enableJavaScript description="Show correct behaviour with JavaScript" enable="true"/>
+				<invoke description="main page" url="links.jsp"/>
+				<verifyTitle text="For clicklink tests"/>
+				<clickButton name="onClickSubmit"/>
+				<verifyTitle text="Canoo WebTest"/>
+				<previousResponse description="Come back to the form"/>
+				<verifyTitle text="For clicklink tests"/>
+			</steps>
+		</webtest>
+	</target>
+</project>

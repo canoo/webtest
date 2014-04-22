@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" 
+[
+	<!ENTITY site SYSTEM "WebTestSite.xml">
+]
+>
+
+<manpage siteid="License"> 
+
+&site;  
+ 
+<head title="Canoo WebTest">
+
+</head>
+
+<section title="Software License">
+
+<b>
+ Copyright 2002-2008 Canoo Engineering AG, Basel, Switzerland<n/>
+ <n/>
+ Licensed under the Apache License, Version 2.0 (the "License").<n/>
+ <n/>
+ You may obtain a copy of the License at<n/>
+  <ext href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</ext>
+</b>
+
+<b>  
+ Unless required by applicable law or agreed to in writing, software distributed under the License
+ is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express 
+ or implied. See the License for the specific language governing permissions and limitations under the License. 
+</b>
+
+</section>
+
+</manpage>

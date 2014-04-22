@@ -1,0 +1,14 @@
+<webtest name="exceltest - verify cell style">
+	<config .../>
+	<steps>
+		<invoke url="testExcel.xls"/>
+		<excelVerifyCellStyle cell="B37" border="top:thick; bottom:dash dot; left:none; right:medium dash dot"
+							  borderColor="top:auto; bottom:plum; left:none; right:bright green"
+							  fillColor="tan" fillBackgroundColor="red" textColor="green"
+							  fontName="Arial" fontSize="12" fontStyle="strikethrough bold italic underline"
+							  align="center" valign="top" fillPattern="thin diagonal stripe"
+							  description="A bit of everything"/>
+
+		<excelVerifyCellStyle cell="A6" border="left:thin"/>
+	</steps>
+</webtest>

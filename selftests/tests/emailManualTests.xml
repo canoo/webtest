@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testEmailSteps" default="allTests" basedir=".">
+
+    <!-- not included in TestSuite because we don't currently assume
+         access to SMTP/POP3 servers from within the build environment -->
+
+    <!-- change these variables before running in your environment -->
+    <property name="smtphost" value="your.smtpserver.com"/>
+    <property name="testaddress" value="your_address@your.emailaddress.com"/>
+    <property name="username" value="your.username"/>
+    <property name="password" value="secret.password"/>
+    <property name="mailserver" value="your.pop3server.com"/>
+    <property name="servertype" value="pop3"/>
+
+    <target name="allTests" depends="assertPrecondition,sendTestEmails,awaitArrival,testEmailSteps,cleanupMessages">
+        <fail if="emailTestsFailed"/>
+    </target>
+
+    <target name="sendTestEmails">
+        <property name="attachmentdir" location="${path.to.home}/selftests/webapp"/>
+        <mail from="${testaddress}" replyto="${testaddress}" bcclist="${testaddress}"
+              tolist="${testaddress}" cclist="${testaddress}"
+              mailhost="${smtphost}" encoding="plain"
+              message="Here is some plain body text"
+              subject="mailtest - multifiles - plain"/>
+        <mail from="${testaddress}" tolist="${testaddress}"
+              mailhost="${smtphost}" encoding="uu"
+              files="${attachmentdir}/ok.gif,${attachmentdir}/testDocLinks.pdf"
+              message="2 attachments within using uu encoding"
+              subject="mailtest - multifiles - uu"/>
+        <mail from="${testaddress}" tolist="${testaddress}"
+              mailhost="${smtphost}" encoding="mime"
+              files="${attachmentdir}/ok.gif,${attachmentdir}/testDocLinks.pdf"
+              message="2 attachments within using MIME encoding"
+              subject="mailtest - multifiles - mime"/>
+    </target>
+
+    <target name="assertPrecondition">
+        <webtest name="emailManualTests: assertPrecondition">
+            &sharedConfiguration;
+            <steps>
+                <emailSetConfig server="${mailserver}" type="${servertype}" password="${password}" username="${username}"/>
+                <emailStoreMessageCount subject="/mailtest - multifiles/" property="emailcount"/>
+                <verifyProperty name="emailcount" text="0"/>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="awaitArrival">
+        <sleep seconds="15"/><!-- initial delay to wait for messages to arrive -->
+        <webtest name="emailManualTests: awaitArrival">
+            <steps>
+                &sharedConfiguration;
+                <emailSetConfig server="${mailserver}" type="${servertype}" password="${password}" username="${username}"/>
+                <retry maxcount="15">
+                    <sleep seconds="5"/>
+                    <emailStoreMessageCount subject="/mailtest - multifiles/" property="emailcount"/>
+                    <verifyXPath xpath="#{emailcount}>=3" text="true"/>
+                </retry>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="cleanupMessages">
+        <webtest name="emailManualTests: cleanupMessages">
+            <steps>
+                <emailSetConfig server="${mailserver}" type="${servertype}" password="${password}" username="${username}" delay="5"/>
+                <retry maxcount="10">
+                    <emailStoreMessageId subject="/mailtest - multifiles/" property="mid" messageIndex="0"/>
+                    <emailDeleteMessage messageId="#{mid}" />
+                    <emailStoreMessageCount subject="/mailtest - multifiles/" property="emailcount"/>
+                    <verifyProperty name="emailcount" text="0"/>
+                </retry>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testEmailSteps">
+        <webtest name="emailManualTests: check step usage">
+            <config
+                    host="${webtest.host}"
+                    port="${webtest.port}"
+                    protocol="${webtest.protocol}"
+                    basepath="${webtest.basepath}"
+                    saveresponse="true"
+                    resultpath="${wt.config.resultpath}"
+                    resultfile="${webtest.resultfile}"
+                    haltonfailure="false"
+                    failureproperty="emailTestsFailed"
+                    showhtmlparseroutput="false"
+                    />
+            <steps>
+                <emailSetConfig server="${mailserver}" type="${servertype}" password="${password}" username="${username}" delay="15"/>
+
+                <emailStoreMessageId subject="/mailtest.*uu/" property="mid1" messageIndex="0"/>
+                <emailStoreMessageType property="type1" messageId="#{mid1}"/>
+                <verifyProperty name="type1" text="Simple"/>
+                <emailStorePartCount property="prop1" messageId="#{mid1}" />
+                <verifyProperty name="prop1" text="2"/>
+                <emailStorePartFilename property="filename1_0" messageId="#{mid1}" partIndex="0"/>
+                <verifyProperty name="filename1_0" text="ok.gif"/>
+                <emailStorePartFilename property="filename1_1" messageId="#{mid1}" partIndex="1"/>
+                <verifyProperty name="filename1_1" text="testDocLinks.pdf"/>
+
+                <emailStoreMessageId subject="/mailtest.*mime/" property="mid2" messageIndex="0"/>
+                <emailStoreMessageType property="type2" messageId="#{mid2}"/>
+                <verifyProperty name="type2" text="MultiPart"/>
+                <emailStorePartCount property="prop2" messageId="#{mid2}" />
+                <verifyProperty name="prop2" text="3"/>
+                <emailStoreHeader headerName="Content-Type" property="ct2" messageId="#{mid2}" />
+                <verifyProperty name="ct2" text="multipart/mixed" regex="true"/>
+                <emailStoreHeader headerName="Content-Type" partIndex="0" property="ct2pt0" messageId="#{mid2}" />
+                <verifyProperty name="ct2pt0" text="text/plain" regex="true"/>
+                <emailStoreHeader headerName="Content-Type" partIndex="1" property="ct2pt1" messageId="#{mid2}" />
+                <verifyProperty name="ct2pt1" text="image/gif" regex="true"/>
+                <emailStoreHeader headerName="Content-Type" partIndex="2" property="ct2pt2" messageId="#{mid2}" />
+                <verifyProperty name="ct2pt2" text="application/octet-stream" regex="true"/>
+                <not description="expected to fail: text part of message is inline and has no filename">
+                    <emailStorePartFilename property="filename2_0" messageId="#{mid2}" partIndex="0"/>
+                </not>
+                <emailStorePartFilename property="filename2_1" messageId="#{mid2}" partIndex="1"/>
+                <verifyProperty name="filename2_1" text="ok.gif"/>
+                <emailStorePartFilename property="filename2_2" messageId="#{mid2}" partIndex="2"/>
+                <verifyProperty name="filename2_2" text="testDocLinks.pdf"/>
+
+                <emailStoreMessageId subject="mailtest - multifiles - plain" from="${testaddress}"
+                                     to="/${testaddress}/" replyto="/${testaddress}/"
+                                     cc="/${testaddress}/" property="mid"/>
+                <emailMessageContentFilter save="plain" messageId="#{mid}" />
+                <verifyText text="plain body text"/>
+                <verifyContent readFiltered="false" referenceFile="verifyContent/plainStructure.txt">
+                    <emailMessageStructureFilter messageId="#{mid}"/>
+                </verifyContent>
+
+                <emailStoreMessageId subject="mailtest - multifiles - mime" from="${testaddress}"
+                                     to="/${testaddress}/" property="mid"/>
+                <storeLength property="ok.gif.length">
+                    <emailMessageContentFilter messageId="#{mid}" contentType="image/gif; name=ok.gif" partIndex="1"/>
+                </storeLength>
+                <verifyProperty name="ok.gif.length" text="275"/>
+                <verifyContent readFiltered="false" referenceFile="verifyContent/mimeStructure.txt">
+                    <emailMessageStructureFilter messageId="#{mid}" headers="subject"/>
+                </verifyContent>
+
+                <emailStoreMessageId subject="mailtest - multifiles - uu" from="${testaddress}"
+                                     to="/${testaddress}/" property="mid"/>
+                <storeLength property="ok.gif.length">
+                    <emailMessageContentFilter messageId="#{mid}" contentType="image/gif" partIndex="0"/>
+                </storeLength>
+                <verifyProperty name="ok.gif.length" text="275"/>
+                <verifyContent readFiltered="false" referenceFile="verifyContent/uuStructure.txt">
+                    <emailMessageStructureFilter headers="subject,from,to" messageId="#{mid}"/>
+                </verifyContent>
+
+            </steps>
+        </webtest>
+    </target>
+
+</project>

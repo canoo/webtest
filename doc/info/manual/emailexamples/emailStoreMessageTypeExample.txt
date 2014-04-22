@@ -1,0 +1,9 @@
+<steps>
+    <emailSetConfig .../>
+    <emailStoreMessageId subject="/mailtest.*uu/" property="mid1" messageIndex="0"/>
+    <emailStoreMessageType property="type1" messageId="#{mid1}"/>
+    <verifyProperty name="type1" text="Simple"/>
+    <emailStoreMessageId subject="/mailtest.*mime/" property="mid2" messageIndex="0"/>
+    <emailStoreMessageType property="type2" messageId="#{mid2}"/>
+    <verifyProperty name="type2" text="MultiPart"/>
+</steps>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testNot" default="testNot" basedir=".">
+
+    <target name="testNot">
+        <webtest name="not: Show how NOT can be used to assert the absence of page properties">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Open main page of selftest webapp"
+                    url="${start.page}"/>
+                <not description="single NOT: the delivered page should not be the error page">
+                    <verifyTitle description="error page title"
+                        text=".*Error.*Page.*"
+                        regex="true"/>
+                </not>
+                <not description="multiple steps can be negated">
+                    <verifyTitle description="first step fails"
+                        text="this text is not the title"/>
+                    <verifyTitle description="second step fails"
+                        text="this text is not the title"/>
+                </not>
+                <not description="not steps can be nested">
+                    <not description="nested not step">
+                        <verifyTitle description="do not fail"
+                            text=".*"
+                            regex="true"/>
+                    </not>
+                </not>
+                <not description="all negated steps must fail">
+                    <not description="expected to fail, for second nested step does not fail">
+                        <verifyTitle description="first step fails"
+                            text="this text is not the title"/>
+                        <verifyTitle description="second step DOES NOT fail"
+                            text=".*"
+                            regex="true"/>
+                    </not>
+                </not>
+                <not description="single NOT: invoking wrong url fails instantly">
+                    <invoke description="some wrong url" url="XXX"/>
+                </not>
+                <not description="test not with button locator">
+                    <clickButton description="no such button" label="no such button"/>
+                </not>
+                <not description="test not with form locator">
+                    <clickButton description="no such button" name="no such button"/>
+                </not>
+                <not description="test not with verifyInputField">
+                    <verifyInputField description="no such input field" name="no such field" value="no such value"/>
+                </not>
+                <clickLink description="prepare for trailing tests" label="Multiple forms"/>
+
+                <clickButton description="setting x,y positions on non-image button" x="1" y="1" label="doIt"/>
+
+                <not description="bad parameter in form must fail">
+	                <setInputField name="no such field" value="whatever"/>
+                </not>
+                
+                <invoke url="not.html"/>
+                <not description="test with clickLink on a link that returns a 404">
+                	<clickLink description="use broken link" label="non existing page"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

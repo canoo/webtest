@@ -1,0 +1,12 @@
+<webtest name="retry: illustrate RETRY of nested steps until they succeed">
+    <config .../>
+    <steps>
+        <retry description="retry nested steps until the visit count is 3" maxcount="10">
+            <invoke description="Open page which increments visit count" url="visitCount.jsp"/>
+            <sleep description="it is typically wise to include a sleep" seconds="1"/>
+            <verifyXPath description="confirm server-based counter is working - iteration #{count}"
+                xpath="//p[@id='totalinfo']"
+                text="This page has been accessed a total of 3 time(s)." />
+        </retry>
+    </steps>
+</webtest>

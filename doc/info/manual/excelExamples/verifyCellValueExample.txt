@@ -1,0 +1,9 @@
+<webtest name="exceltest - verify cell value">
+	<config .../>
+	<steps>
+		<invoke url="testExcel.xls"/>
+		...
+		<excelVerifyCellValue cell="O99" text="/\d+/" description="Check number"/>
+		...
+	</steps>
+</webtest>

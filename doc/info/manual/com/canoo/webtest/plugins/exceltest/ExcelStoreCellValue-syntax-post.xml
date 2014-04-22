@@ -1,0 +1,13 @@
+<post>
+
+    <b>
+        Here is an example of using the
+        <em>excelStoreCellValue</em>
+        step illustrating both a simple and more complex comparison:
+    </b>
+
+    <code caption="excelStoreCellValue Example">
+        <include src='excelExamples/storeCellValueExample.xml'/>
+    </code>
+
+</post>

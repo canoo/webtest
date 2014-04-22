@@ -1,0 +1,10 @@
+<webtest name="exceltest - verify cell sum">
+	<config .../>
+	<steps>
+		<invoke url="testExcel.xls"/>
+		...
+		<excelVerifyCellSum cell="C8" range="C4:C7"/>
+		...
+
+	</steps>
+</webtest>

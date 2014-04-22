@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testElements" default="testElements" basedir=".">
+
+    <target name="testElements">
+        <webtest name="verifyElement: Show how arbitrary html elements can be tested">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Open main page with input elements"
+                    url="${start.page}?mode=getTest"/>
+                <verifyElement description="there must be an input element (tag) with this text"
+                    type="input"
+                    text="mode"/>
+                <not description="expected to fail when text is wrong">
+                    <verifyElement description="text is wrong"
+                        type="input"
+                        text="this text is not contained"/>
+                </not>
+                <not description="expected to fail when element is wrong">
+                    <verifyElement description="element is wrong"
+                        type="unknownElement"
+                        text="mode"/>
+                </not>
+                <verifyElement description="Elements can be specified case insensitive"
+                    type="INPUT"
+                    text="mode"/>
+                <not description="expected to fail for text is case sensitive">
+                    <verifyElement description="Text in wrong case"
+                        type="input"
+                        text="MODE"/>
+                </not>
+                <verifyElement description="text works with regex"
+                    type="input"
+                    text="m..e"
+                    regex="true"/>
+                <not description="expected to fail for text is case sensitive even with regex">
+                    <verifyElement description="text works with reg ex"
+                        type="input"
+                        text="M..E"
+                        regex="true"/>
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

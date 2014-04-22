@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE project SYSTEM "../dtd/Project.dtd">
+
+<project default="test">
+	
+	<target name="test">
+		<webtest name="loginAndStep">
+			&login;
+			&step;
+		</webtest>
+	</target>
+</project>

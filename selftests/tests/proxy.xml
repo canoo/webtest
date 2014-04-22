@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testClickButton" default="allTests" basedir=".">
+    <property file="../environment/server/localhost.properties"/>
+    <property name="webtest.proxy.host" value="localhost"/>
+
+    <target name="allTests" depends="testSetProxyUsed"/>
+
+    <target name="testSetProxyUsed">
+    	<setproxy proxyhost="${webtest.proxy.host}" proxyport="${webtest.proxy.port}" description="Configure proxy through normal ant task"/>
+        <webtest name="test Load a page through proxy configured by standard &lt;setproxy../&gt; task">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="main page via proxy" url="${start.page}"/>
+                <verifyTitle description="main page reached" text=".*WebT.*" regex="true"/>
+                <verifyHeader description="proxy header in response" name="Via" text=".*jetty.*" regex="true"/>
+            </steps>
+        </webtest>
+    	<setproxy proxyhost="" description="Remove the proxy settings"/>
+    </target>
+</project>

@@ -1,0 +1,26 @@
+<post>
+
+    <b>The following example illustrates how to use the <em>verifyContent</em> step (illustrating the use of the
+        nested regular expression replacement filters to remove dynamically changing content which would otherwise make
+        the comparison fail):</b>
+
+    <code caption="verifyContent example">
+        <include src='examples/verifyContentExample.xml'/>
+    </code>
+
+    <b>If the files differ, you should see a message indicating the differences in your logs (depending
+    on what logging levels you have set), for example:</b>
+
+    <code caption="verifyContent error">
+        <include src='examples/verifyContentError.xml'/>
+    </code>
+
+    <b><em>See also</em>: the <stepref name="storeDigest"/>,
+        <stepref name="storeLength"/>,
+        <stepref name="lineSeparatorFilter"/>,
+        <stepref name="replaceFilter"/>,
+        <stepref name="tagStripper"/> and
+        <stepref name="contentStripper"/> steps.
+    </b>
+
+</post>

@@ -1,0 +1,23 @@
+<post>
+
+    <b>The following example illustrates how to use the <em>applyFilters</em> step:</b>
+
+    <code caption="applyFilters example">
+        <include src='examples/applyFiltersExample.xml'/>
+    </code>
+
+    <b>Remember that the resulting filtered response doesn't correspond to what
+    your application is actually producing so keep your usage of this step
+    to a minimum.</b>
+
+    <b><em>See also</em>: the
+        <stepref name="verifyContent"/>,
+        <stepref name="storeDigest"/>,
+        <stepref name="storeLength"/>,
+        <stepref name="lineSeparatorFilter"/>,
+        <stepref name="replaceFilter"/>,
+        <stepref name="tagStripper"/> and
+        <stepref name="contentStripper"/> steps.
+    </b>
+
+</post>

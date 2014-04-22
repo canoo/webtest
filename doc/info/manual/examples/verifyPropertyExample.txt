@@ -1,0 +1,23 @@
+<webtest name="dynamic property test">
+	<config ... />
+	<steps>
+		<invoke ... />
+		<verifyProperty description="Verify dynamic property dynProp contains the word 'Warning'"
+			name="dynProp"
+			text=".*Warning.*"
+			regex="true" />
+	</steps>
+</webtest>
+
+<webtest name="ant property test">
+	<config ... />
+	... ant tasks which may set ant property ...
+	<steps>
+		... script or groovy statements which may set ant property ...
+		<verifyProperty description="Verify ant property antProp contains the word 'Warning'"
+			name="antProp"
+			propertyType="ant"
+			text=".*Warning.*"
+			regex="true" />
+	</steps>
+</webtest>

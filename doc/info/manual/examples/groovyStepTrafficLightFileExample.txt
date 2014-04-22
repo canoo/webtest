@@ -1,0 +1,7 @@
+<target name="testFileGroovy">
+	<property name="image_id" value="traffic_light"/>
+	<webtest name="groovy: test Groovy code from file">
+		<groovy description="use from file like a macro"
+			src="${basedir}/GMacroSteps.groovy"/>
+	</webtest>
+</target>

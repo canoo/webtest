@@ -1,0 +1,11 @@
+<post>
+
+    <code caption="pdfVerifyTextField 1">
+        <include src='pdfexamples/verifyTextFieldExample1.xml' />
+    </code>
+
+    <code caption="pdfVerifyTextField 2">
+        <include src='pdfexamples/verifyTextFieldExample2.xml' />
+    </code>
+
+</post>

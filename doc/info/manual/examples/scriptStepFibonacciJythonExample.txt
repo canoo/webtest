@@ -1,0 +1,22 @@
+<target name="testFibonacciJython">
+  <webtest name="scriptStepManualTests: test numbers page with inlined jython Script">
+    &sharedConfiguration;
+    <steps>
+      <invoke description="Load Initial Page" url="numbers.html"/>
+      <storeXPath description="extract number to check"
+        xpath="//span[@id='fibonacci']/text()"
+        property="number"/>
+      <scriptStep description="check if number is indeed in Fibonacci series" language="jython"><![CDATA[
+        def isFib(n):
+          a,b = 0,1
+          while b < n:
+            a,b = b,a+b
+          if b == n: return 1
+          return 0
+
+        if isFib(#{number}): step.setWebtestProperty("found", "true")
+      ]]></scriptStep>
+      <verifyProperty name="found" text="true" />
+    </steps>
+  </webtest>
+</target>

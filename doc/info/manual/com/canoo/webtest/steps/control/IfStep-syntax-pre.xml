@@ -1,0 +1,16 @@
+<pre>
+<b>
+Provides the ability for conditional testing. The step takes either one of the two attributes
+<em>test</em> and <em>unless</em>, or a single nested element <em>condition</em>.
+Exactly one of these must have a value.</b>
+<b>If the <em>test</em> attribute is set and evaluates to <em>true</em>, the
+encapsulated steps will be executed. If the <em>unless</em> attribute is set
+and evaluates to <em>false</em>, the intermediate steps will be executed.
+</b>
+<b>If there is a nested element <em>condition</em>, the intermediate steps will be executed
+if all steps nested inside the <em>condition</em> are successful.</b>
+<b>
+<em>NOTE</em>: using this step too frequently can lead to overly
+complicated and difficult to understand test scripts.
+</b>
+</pre>

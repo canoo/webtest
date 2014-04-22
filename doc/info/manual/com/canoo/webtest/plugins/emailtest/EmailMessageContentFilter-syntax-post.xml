@@ -1,0 +1,11 @@
+<post>
+
+    <b>
+        Here is an example of using the <em>emailMessageContentFilter</em> step.
+    </b>
+
+    <code caption="emailMessageContentFilter">
+        <include src='emailexamples/emailMessageContentFilterExample.xml'/>
+    </code>
+
+</post>

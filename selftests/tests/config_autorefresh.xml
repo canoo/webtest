@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testRedirect" default="all" basedir=".">
+
+    <target name="all" depends="testAutoRefresh"/>
+
+	<macrodef name="testAutoRefresh">
+		<attribute name="delay" description="the refresh delay in html page"/>
+		<attribute name="setting" description="the config setting to use"/>
+		<attribute name="verifyTitleDescription"/>
+		<attribute name="verifyTitleText"/>
+		<sequential>
+	        <webtest name="autorefresh: meta-equiv refresh with delay @{delay} working using config autorefresh=@{setting}">
+	            <config autorefresh="@{setting}" />
+                <invoke description="Open page with an &lt;meta http-equiv='refresh' content='@{delay}; .../&gt;" url="autoRefresh1.jsp?delay=@{delay}"/>
+                <verifyTitle text="@{verifyTitleText}" description="@{verifyTitleDescription}"/>
+	        </webtest>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="testAutoRefreshDone">
+		<attribute name="delay" description="the refresh delay in html page"/>
+		<attribute name="setting" description="the config setting to use"/>
+		<sequential>
+			<testAutoRefresh delay="@{delay}" setting="@{setting}"
+				verifyTitleDescription="verify that it is the second page" verifyTitleText="Refresh test second page"/>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="testAutoRefreshSkipped">
+		<attribute name="delay" description="the refresh delay in html page"/>
+		<attribute name="setting" description="the config setting to use"/>
+		<sequential>
+			<testAutoRefresh delay="@{delay}" setting="@{setting}"
+				verifyTitleDescription="verify that it is the first page" verifyTitleText="Refresh test first page"/>
+		</sequential>
+	</macrodef>
+
+    <target name="testAutoRefresh">
+        <webtest name="autorefresh meta-equiv refresh with delay 0 failing when using default config">
+            <invoke url="autoRefresh1.jsp" description="Open page with an &lt;meta http-equiv='refresh' .../&gt;"/>
+            <verifyTitle description="verify that it is the first page" text="Refresh test first page"/>
+        </webtest>
+        
+        <testAutoRefreshSkipped delay="0" setting="-1"/>
+        <testAutoRefreshSkipped delay="0" setting="false"/>
+        <testAutoRefreshDone delay="0" setting="true"/>
+        <testAutoRefreshDone delay="0" setting="0"/>
+        <testAutoRefreshDone delay="0" setting="5"/>
+
+        <testAutoRefreshSkipped delay="2" setting="-1"/>
+        <testAutoRefreshSkipped delay="2" setting="false"/>
+        <testAutoRefreshSkipped delay="2" setting="1"/>
+        <testAutoRefreshDone delay="2" setting="true"/>
+        <testAutoRefreshDone delay="2" setting="2"/>
+        <testAutoRefreshDone delay="2" setting="5"/>
+    </target>
+
+</project>

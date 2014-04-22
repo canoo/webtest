@@ -1,0 +1,7 @@
+<post>
+
+    <code caption="pdfVerifyPageCount">
+        <include src='pdfexamples/verifyPageCountExample.xml' />
+    </code>
+
+</post>

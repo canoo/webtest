@@ -1,0 +1,30 @@
+<post>
+
+    <b>Consider the following <key>HTML</key> form:</b>
+
+    <code caption='hiddenInputFieldPage.html'>
+    <include src='examples/forceHiddenInputFieldPageHtml.xml' />
+    </code>
+
+    <b>This page contains some <key>javascript</key> functionality which sets a hidden field.
+    We would like to use the <em>&lt;forceHiddenInputField&gt;</em> step to check that the hidden
+    field is being set correctly. When the form is first loaded, the hidden field should
+    be set to 'zzz'. We can then place some content into 'field1'. We can then check that the
+    hidden field was successfully changed to 'xxx'. Here is an example test script:</b>
+
+    <code caption='hiddenInputField Example1'>
+        <include src='examples/forceHiddenInputFieldExample1.xml'/>
+    </code>
+
+    <b>We can try to do the same thing for 'field2', however because the <em>onkeyup</em> <key>javascript</key>
+    event is not supported, the hidden field remains unchanged. We can then use the
+    <em>&lt;forceHiddenInputField&gt;</em> to force the hidden field change to 'yyy'.
+    Here is the script code:</b>
+
+    <code caption='hiddenInputField Example2'>
+        <include src='examples/forceHiddenInputFieldExample2.xml'/>
+    </code>
+
+    <b><em>See also</em>: the <stepref name="storeXPath" category="Core"/> and <stepref name="verifyXPath" category="Core"/> steps which can be used to read/verify hidden fields.</b>
+
+</post>

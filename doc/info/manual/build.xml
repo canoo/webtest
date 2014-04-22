@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="generateDoc" default="full" basedir=".">
+	<description>
+		The generation of the documentation is a multi-step process:
+		(0) generate xml markup from xdoclet
+		(1) convert sample from text to simple xml markup
+		(2) convert the xml markup and hand-written documentation to html
+		(3) check the html with webtest
+	</description>
+
+	<!-- properties are to be overridden by caller  -->
+	<property name="src.dir" location="${webtest.home}/src/main/java"/>
+	<property name="dest.dir" location="."/>
+	<property name="generated.dir" location="."/>
+	<property name="webtest.home" value="../../.."/>
+	<property name="manuals.witness" location="manualsRunning.txt"/>
+
+	<!-- internal properties -->
+	<property name="extracted.name" value="extractedDoc.xml"/>
+	<property name="extracted.dir" value="${generated.dir}/xdoclet"/>
+	<property name="extracted.file" location="${extracted.dir}/${extracted.name}"/>
+	<property name="extensions.xml.prefix" location="${extracted.dir}/syntax"/>
+	<property name="extensions.html.prefix" location="${dest.dir}/syntax"/>
+	<property name="available.categories" value="General,Core,Extension,Filter,PDF,Excel,Email"/>
+
+	<taskdef resource="webtest.taskdef"/>
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+
+	<target name="init">
+		<tstamp>
+			<format property="now" pattern="dd-MMM-yyyy HH:mm"/>
+		</tstamp>
+		<echo message="Manuals build (${buildnumber}) starting: ${now}"/>
+		<touch file="${manuals.witness}"/>
+		<uptodate property="extract.notRequired" targetfile="${extracted.file}">
+			<srcfiles dir="${src.dir}" includes="**/*.java" excludes="**/*Test.java"/>
+			<srcfiles dir="${webtest.home}/doc/info/manual" includes="**/*-syntax-p*.xml"/>
+		</uptodate>
+	</target>
+
+	<target name="full" depends="markupAllExamples, xml2html, styleDoc">
+		<antcall target="verifyAllDocuments"/>
+		<delete file="${manuals.witness}" quiet="true" failonerror="false"/>
+		<echo message="Manuals available at ${dest.dir}/WebTestHome.html"/>
+	</target>
+
+	<target name="extractDoc" depends="init" unless="extract.notRequired"
+			description="extracts the documentation from the xdoclet tags in the java files">
+		<delete quiet="true" failonerror="false" dir="${extracted.dir}"/>
+		<mkdir dir="${extracted.dir}"/>
+		<taskdef name="templatedoclet" classname="xdoclet.DocletTask">
+			<classpath>
+				<fileset dir="${webtest.home}" includes="lib/build/*.jar"/>
+			</classpath>
+		</taskdef>
+
+		<templatedoclet destdir="${extracted.dir}"
+						mergedir="${webtest.home}/doc/info/manual"
+						excludedtags="@version,@author"
+						encoding="UTF-8" docencoding="UTF-8">
+			<fileset dir="${src.dir}">
+				<include name="**/*.java"/>
+				<exclude name="**/*Test.java"/>
+			</fileset>
+
+			<template
+					havingClassTag="webtest.step"
+					templateFile="${webtest.home}/doc/xdoclet/webtest.xdt"
+					destinationfile="${extracted.name}"
+					/>
+		</templatedoclet>
+	</target>
+
+	<target name="initStyle" depends="extractDoc">
+		<uptodate property="style.notRequired" targetfile="${extensions.html.prefix}*.html">
+			<srcfiles dir="${extracted.dir}" includes="${extracted.name}"/>
+		</uptodate>
+	</target>
+
+	<target name="styleDoc" depends="initStyle,styleIndex" unless="style.notRequired"
+			description="turns the extracted xdoclet info into HTML.">
+		<for list="${available.categories}" param="category">
+			<sequential>
+				<antcall target="styleDocCategory">
+					<param name="category" value="@{category}"/>
+				</antcall>
+			</sequential>
+		</for>
+		<xslt
+				basedir="${extracted.dir}"
+				includes="*.xml"
+				destdir="${dest.dir}" extension=".html"
+				reloadstylesheet="true"
+				style="WhitePaperStyle.xsl"
+				>
+			<param name="today" expression="${now}"/>
+			<param name="include.dir" expression="${generated.dir}"/>
+			<param name="buildnumber" expression="${buildnumber}"/>
+		</xslt>
+		<xslt
+				in="${extracted.file}"
+				out="${webtest.home}/selftests/config/WebTest.dtd"
+				reloadstylesheet="true"
+				style="doctype.xsl"
+				force="true"
+
+				>
+			<param name="today" expression="${now}"/>
+			<param name="buildnumber" expression="${buildnumber}"/>
+		</xslt>
+	</target>
+
+	<target name="styleDocCategory">
+		<delete file="${extensions.xml.prefix}${category}*.xml" quiet="true" failonerror="false"/>
+		<xslt
+				in="${extracted.file}"
+				out="${extensions.xml.prefix}${category}.xml"
+				style="syntax.xsl"
+				>
+			<param name="category" expression="${category}"/>
+		</xslt>
+	</target>
+
+	<target name="styleIndex">
+		<delete file="${extracted.dir}/stepIndex.xml" quiet="true" failonerror="false"/>
+		<delete file="${dest.dir}/stepIndex.html" quiet="true" failonerror="false"/>
+
+		<xslt
+				in="${extracted.file}"
+				out="${extracted.dir}/stepIndex.xml"
+				style="index.xsl">
+		</xslt>
+		<xslt
+				in="${extracted.dir}/stepIndex.xml"
+				out="${dest.dir}/stepIndex.html"
+				style="WhitePaperStyle.xsl"
+				>
+			<param name="today" expression="${now}"/>
+			<param name="include.dir" expression="${generated.dir}"/>
+			<param name="buildnumber" expression="${buildnumber}"/>
+		</xslt>
+		<xslt
+				in="${extracted.dir}/stepIndex.xml"
+				out="${dest.dir}/sidebar.html"
+				style="sidebar.xsl"
+				>
+			<param name="today" expression="${now}"/>
+			<param name="include.dir" expression="${generated.dir}"/>
+			<param name="buildnumber" expression="${buildnumber}"/>
+		</xslt>
+	</target>
+
+	<target name="markupAllExamples" depends="init">
+		<copy todir="examples">
+			<fileset dir="${webtest.home}/lib" includes="taskdef.xml,classpath.xml"/>
+			<mapper type="glob" from="*.xml" to="*.txt"/>
+		</copy>
+		<for list="examples,pdfexamples,emailexamples,excelExamples,integrationexamples" param="exampledir">
+			<sequential>
+				<antcall target="markupExampleDir">
+					<param name="dir.name" value="@{exampledir}"/>
+				</antcall>
+			</sequential>
+		</for>
+	</target>
+
+	<target name="markupExampleDir">
+		<echo message="Processing examples in ${dir.name}/..."/>
+		<mkdir dir="${generated.dir}/${dir.name}"/>
+
+		<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy"/>
+		<groovy
+				src="convertExamples.groovy"
+				description="Convert examples from ${dir.name}/*.txt to ${generated.dir}/${dir.name}/*.xml"
+				/>
+		<copy todir="${generated.dir}/${dir.name}">
+			<fileset dir="${dir.name}" includes="*.xml"/>
+		</copy>
+	</target>
+
+	<target name="failIfBadPath">
+		<fail>
+			<condition>
+				<not>
+					<and>
+						<available classname="org.apache.xerces.jaxp.DocumentBuilderImpl"/>
+						<available classname="org.apache.xalan.processor.TransformerFactoryImpl"/>
+					</and>
+				</not>
+			</condition>
+			Xalan missing on classpath. Put xalan.jar and xerces.jar to ant/lib.
+		</fail>
+		<!-- note: classpath attribute or element does not work in style task -->
+	</target>
+
+	<target name="clean">
+		<mkdir dir="${dest.dir}"/>
+		<delete>
+			<fileset dir="${dest.dir}" includes="*.html"/>
+		</delete>
+	</target>
+
+	<target name="checkForXmlChanges">
+		<!--  Since it is assured that ALL html files get rebuilt if any source file -->
+		<!--  changes, it is safe to compare against a sample html file.             -->
+		<uptodate property="no.xml.changes" targetfile="${dest.dir}/WebTestHome.html">
+			<srcfiles dir="." includes="**/*"/>
+		</uptodate>
+	</target>
+
+	<target name="callStarXml2Html" unless="no.xml.changes">
+		<echo message="transformation sources changed, doing transformation..."/>
+		<antcall target="clean"/>
+		<antcall target="style">
+			<param name="includes" value="*.xml"/>
+			<param name="force" value="false"/>
+		</antcall>
+	</target>
+
+	<!--    todo: make a good depends on buildnumber.txt changes-->
+	<target name="callBuildNumberXml2Html" if="no.xml.changes">
+		<echo message="rebuilding Downloads.html only"/>
+		<antcall target="style">
+			<param name="includes" value="Downloads.xml"/>
+			<param name="force" value="true"/>
+		</antcall>
+	</target>
+
+	<target name="xml2html" depends="init, checkForXmlChanges, callBuildNumberXml2Html, callStarXml2Html">
+		<!-- not strictly necessary, but allow to browse the generated documentation locally -->
+		<copy todir="${dest.dir}">
+			<fileset dir=".">
+				<include name="*.css"/>
+				<include name="images/**/*"/>
+				<include name="externalCitations/"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="style">
+		<antcall target="failIfBadPath"/>
+		<xslt
+				basedir="."
+				destdir="${dest.dir}"
+				extension=".html"
+				includes="${includes}"
+				force="${force}"
+				excludes="build.xml, syntaxPre*.xml, references.xml, WebTestSite.xml, *_news.xml"
+				style="WhitePaperStyle.xsl"
+				reloadstylesheet="true"
+				>
+			<param name="today" expression="${now}"/>
+			<param name="include.dir" expression="${generated.dir}"/>
+			<param name="buildnumber" expression="${buildnumber}"/>
+		</xslt>
+	</target>
+
+	<target name="verifyAllDocuments">
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="whitepaper"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="license"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="acknowledgments"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="externalCitations"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="relatedProjects"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="troubleshooting"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="install"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="stepIndex"/>
+		</antcall>
+		<for list="${available.categories}" param="category">
+			<sequential>
+				<antcall target="verifyDocument">
+					<param name="doc.file" value="syntax@{category}"/>
+				</antcall>
+			</sequential>
+		</for>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="samples"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="WebTestHome"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="buildOverview"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="Downloads"/>
+		</antcall>
+		<antcall target="verifyDocument">
+			<param name="doc.file" value="changeLog"/>
+		</antcall>
+	</target>
+
+	<!-- implementation -->
+
+	<!--
+			 Verify a given static HTML document specified in ${doc.file} if it
+			 contains an error message generated by the example conversion
+			 script.
+			 The document has to reside in the ${dest.dir} subdirectory.
+	
+			 This test also illustrates the usage of protocol "file" in test scripts.
+			 For more information of the different usage patterns see TestConfigTest.
+	-->
+	<target name="verifyDocument"
+			description="Verify the generated HTML files for messages regarding missing sample files">
+		<echo message="Document : ${dest.dir}/${doc.file}"/>
+		<webtest name="VerifyDocument ${doc.file}">
+			<config
+					host=""
+					port="0"
+					protocol="file"
+					basepath="/"
+					saveresponse="false"
+					haltonfailure="true"/>
+			<steps>
+				<invoke description="Check ${doc.file}"
+						url="${dest.dir}/${doc.file}.html"/>
+				<not description="Should not find any error messages">
+					<verifyText description="Check for error message due to missing sample file"
+								text="No such file or directory"/>
+				</not>
+				<not description="Should not find any unresolved keys">
+					<verifyText description="Check for unresolved keys"
+								text="NO KEYREF FOUND FOR"/>
+				</not>
+				<verifyText description="Check for copyright statement"
+							text="Copyright.*?Canoo.*?All Rights Reserved."
+							regex="true"/>
+				<verifyImages/>
+			</steps>
+		</webtest>
+	</target>
+</project>

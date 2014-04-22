@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testSelectFormSteps" default="testSelectFormSteps" basedir=".">
+
+    <target name="testSelectFormSteps">
+        <webtest name="selectForm: Test selectForm usage and error cases">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="Get main pPage for testSelectFormSteps test"
+                    url="inputFieldAttributePage.html"/>
+                <verifyInputField description="1) no form selected - checking initial value" name="testField" value="form1" />
+                <selectForm index="0"/>
+                <setInputField name="testField" value="blah1" />
+                <verifyXPath description="2a) form 1 selected - check testField value" xpath="//form[@name='form1']/input[@name='testField']/@value" text="blah1" />
+                <selectForm index="1"/>
+                <setInputField name="testField" value="blah2" />
+                <verifyXPath description="2b) form 2 selected - check testField value" xpath="//form[@name='form2']/input[@name='testField']/@value" text="blah2" />
+                <selectForm index="0"/>
+                <setInputField name="testField" value="blah3" />
+                <verifyXPath description="2c) form 1 reselected - check testField value" xpath="//form[@name='form1']/input[@name='testField']/@value" text="blah3" />
+                <selectForm name="form2"/>
+                <setInputField name="testField" value="foo1" />
+                <verifyXPath description="3a) form 2 selected - check testField value" xpath="//form[@name='form2']/input[@name='testField']/@value" text="foo1" />
+                <selectForm name="form1"/>
+                <setInputField name="testField" value="foo2" />
+                <verifyXPath description="3b) form 1 selected - check testField value" xpath="//form[@name='form1']/input[@name='testField']/@value" text="foo2" />
+                <selectForm name="form2"/>
+                <setInputField name="testField" value="foo3" />
+                <verifyXPath description="3c) form 2 reselected - check testField value" xpath="//form[@name='form2']/input[@name='testField']/@value" text="foo3" />
+                <not description="unknown form name should fail">
+                    <selectForm name="form99"/>
+                </not>
+                <not description="invalid form index should fail">
+                    <selectForm index="99" />
+                </not>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

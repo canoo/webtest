@@ -1,0 +1,13 @@
+...
+<form name="form1" action="formTest?mode=YYYY">
+	<br/> Text:
+	<input type="text" name="field1" value=""/>
+	<input type="submit" name="doIt"/>
+</form>
+
+<form name="form2" action="formTest?mode=XXXX">
+	<br/> Text:
+	<input type="text" name="field1" value=""/>
+	<input type="submit" name="doIt" />
+</form>
+...

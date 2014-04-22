@@ -1,0 +1,11 @@
+<webtest name="pdftest - verify field existence">
+  <config .../>
+  <steps>
+    <invoke .../>
+    <pdfVerifyField description="field existence"
+      page="2"
+      name="BirthDate"
+      exists="false"/>
+    ...
+  </steps>
+</webtest>

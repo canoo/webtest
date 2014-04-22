@@ -1,0 +1,13 @@
+<!DOCTYPE project SYSTEM "../dtd/Project.dtd">
+
+<project default="test">
+	<target name="test">
+		<webtest name="my simple Test">
+			&goToLogin;
+			<setInputField forLabel="Login" text="John"/>
+			<setInputField forLabel="Password" text="secret"/>
+			<clickButton label="Login"/>
+			...
+		</webtest>
+	</target>
+</project>

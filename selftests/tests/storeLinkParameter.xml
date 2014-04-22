@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="storeLinkParameter" default="all" basedir=".">
+
+    <target name="all" depends="testStoreInvalid, testStoreValid"/>
+
+    <target name="testStoreInvalid">
+        <webtest name="storeLinkParameter: invalid usage of storeLinkParameter">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="load test page"
+                    url="trafficlight.html"/>
+                <not description="expected to fail">
+									<storeLinkParameter
+											description="Try to extract non-existent param"
+											htmlid="changeid" parameter="badname"
+											property="badprop"/>
+								</not>
+                <not description="expected to fail">
+									<storeLinkParameter
+											description="Try to extract non-existent param"
+											htmlid="badid" parameter="from"
+											property="badprop"/>
+								</not>
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testStoreValid">
+        <webtest name="storeLinkParameter: Show usage of storeLinkParameter and test it">
+            &sharedConfiguration;
+            <steps>
+                <invoke
+                    description="load test page"
+                    url="trafficlight.html"/>
+								<storeLinkParameter
+										description="Try to extract non-existent param"
+										htmlid="changeid" parameter="from" propertyType="ant"/>
+								<verifyProperty name="from" text="green" propertyType="ant"/>
+								<storeLinkParameter
+										description="Try to extract non-existent param"
+										htmlid="changeid" parameter="to"
+										property="toParam"/>
+								<verifyProperty name="toParam" text="amber"/>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

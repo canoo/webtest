@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="testScriptStep" default="full" basedir=".">
+
+ 	<target name="full" depends="testInlineGroovy, testAssertionError, testInlineJavaScript,
+ 	    testInlineJavaScriptWithKeep, testOrderInlineJavaScript, testOrderInlineGroovy,
+ 	    testFileGroovy, testXmlGroovy, testOtherGroovy, testAssertionErrorInsideMacrodef"/>
+
+	<target name="testInlineGroovy">
+		<property name="image_id" value="traffic_light"/>
+		<webtest name="scriptStep: test scriptStep with inlined groovy Script">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="Load Initial Page"
+					url="trafficlight.html"/>
+                <storeXPath description="extract src attribute from image with id=${image_id}"
+                    xpath="//img[@id='${image_id}']/@src"
+                    property="imagesrc"/>
+                <scriptStep description="calculate expected alt text for src=#{imagesrc}" language="groovy">
+                    src2alt = ['red.gif':'stop', 'orange.gif':'wait', 'green.gif':'go']
+                    step.setWebtestProperty('image_alt', src2alt[step.webtestProperties.imagesrc])
+                </scriptStep>
+                <verifyXPath description="check alt value"
+                    xpath="//img[@id='${image_id}']/@alt"
+                    text="#{image_alt}"/>
+			</steps>
+		</webtest>
+    </target>
+
+    <target name="testAssertionError">
+        <webtest name="scriptStep: test scriptStep with groovy assert failure">
+            &sharedConfiguration;
+            <steps>
+                <scriptStep description="passing assertion" language="groovy">
+                    someText = "this is some text"
+                    someRegex = /some text/
+                    assert someText =~ someRegex
+                </scriptStep>
+                <not description="expected to fail">
+                    <scriptStep description="failing assertion" language="groovy">
+                        someText = "this is some text"
+                        someRegex = /other text/
+                        assert someText =~ someRegex
+                    </scriptStep>
+                </not>
+            </steps>
+        </webtest>
+	</target>
+
+    <target name="testAssertionErrorInsideMacrodef">
+        <macrodef name="invokeScriptStep">
+            <attribute name="regexText"/>
+            <sequential>
+                <scriptStep description="assertion using scriptStep" language="groovy">
+                    someText = "this is some text"
+                    someRegex = /@{regexText}/
+                    assert someText =~ someRegex
+                </scriptStep>
+            </sequential>
+        </macrodef>
+        <webtest name="scriptStep: test scriptStep with groovy assert failure using macrodef">
+            &sharedConfiguration;
+            <steps>
+                <invokeScriptStep regexText="some text"/>
+                <not description="expected to fail">
+                    <invokeScriptStep regexText="other text"/>
+                </not>
+            </steps>
+        </webtest>
+	</target>
+
+    <target name="testInlineJavaScript">
+		<property name="image_id" value="traffic_light"/>
+		<webtest name="scriptStep: test scriptStep with inlined JavaScript script">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="Load Traffic Light Page"
+					url="trafficlight.html"/>
+                <storeXPath description="extract src attribute from image with id=${image_id}"
+                    xpath="//img[@id='${image_id}']/@src"
+                    property="imagesrc"/>
+                <scriptStep description="calculate expected alt text for src=#{imagesrc}" language="javascript">
+                    var src2alt = new Array();
+                    src2alt["red.gif"] = "stop";
+                    src2alt["orange.gif"] = "wait";
+                    src2alt["green.gif"] = "go";
+                    step.setWebtestProperty('image_alt', src2alt["#{imagesrc}"]);
+                </scriptStep>
+                <verifyXPath description="check alt value"
+                    xpath="//img[@id='${image_id}']/@alt"
+                    text="#{image_alt}"/>
+			</steps>
+		</webtest>
+	</target>
+
+    <target name="testInlineJavaScriptWithKeep">
+		<property name="image_id" value="traffic_light"/>
+		<webtest name="scriptStep: test scriptStep with inlined JavaScript script">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="Load Traffic Light Page"
+					url="trafficlight.html"/>
+                <storeXPath description="extract src attribute from image with id=${image_id}"
+                    xpath="//img[@id='${image_id}']/@src"
+                    property="imagesrc"/>
+                <scriptStep description="calculate expected alt text for src=#{imagesrc}"
+                            keep="true" language="javascript">
+                    var src2alt = new Array();
+                    src2alt["red.gif"] = "stop";
+                    src2alt["orange.gif"] = "wait";
+                    src2alt["green.gif"] = "go";
+                    step.setWebtestProperty('image_alt', src2alt["#{imagesrc}"]);
+                </scriptStep>
+                <verifyXPath description="check alt value"
+                    xpath="//img[@id='${image_id}']/@alt"
+                    text="#{image_alt}"/>
+                <scriptStep description="test variables are persistent when using keep"
+                            keep="true" language="javascript">
+                    step.setWebtestProperty('stopvar', src2alt["red.gif"]);
+                </scriptStep>
+                <verifyProperty name="stopvar" text="stop"/>
+                <storeProperty name="waitvar" value="#{script:src2alt['orange.gif']}"/>
+                <verifyProperty name="waitvar" text="wait"/>
+                <storeProperty name="govar" value="#{script:src2alt['green.gif'].toUpperCase()}"/>
+                <verifyProperty name="govar" text="GO"/>
+            </steps>
+		</webtest>
+	</target>
+
+	<target name="testOrderInlineJavaScript">
+		<webtest name="scriptStep: test fictitious order page with inlined JavaScript script">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="Load Order Page"
+					url="order.html"/>
+				<scriptStep description="calculate qty and price" language="javascript">
+				    calc_qty = 0;
+				    calc_price = 0;
+					items = document.getElementsByAttribute('tr', 'class', 'lineitem').iterator();
+					while (items.hasNext()) {
+                        table_cells = items.next().getHtmlElementsByTagName('td');
+                        qty = parseInt(table_cells.get(1).asText());
+                        unit_price = parseInt(table_cells.get(2).asText());
+                        total_line_price = parseInt(table_cells.get(3).asText());
+                        calc_qty += qty;
+                        calc_price += total_line_price;
+                        if (qty * unit_price != total_line_price) {
+                            step.setWebtestProperty('calc_error_found', 'true');
+                        }
+                    }
+                    step.setWebtestProperty('calc_qty', calc_qty);
+                    step.setWebtestProperty('calc_price', calc_price);
+				</scriptStep>
+				<not>
+				    <verifyProperty name="calc_error_found" text="true" />
+				</not>
+				<verifyXPath description="check total qty"
+						xpath="//tr[@class='total']/td[2]"
+						text="#{calc_qty}"/>
+				<verifyXPath description="check total price"
+						xpath="//tr[@class='total']/td[4]"
+						text="#{calc_price}"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testOrderInlineGroovy">
+		<webtest name="scriptStep: test fictitious order page with inlined Groovy script">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="Load Order Page"
+					url="order.html"/>
+				<scriptStep description="check qty and price" language="groovy">
+				    calc_qty = 0
+				    calc_price = 0
+					document.getElementsByAttribute('tr', 'class', 'lineitem').each{
+                        table_cells = it.getHtmlElementsByTagName('td')
+                        qty = table_cells.get(1).asText().toInteger()
+                        unit_price = table_cells.get(2).asText().toInteger()
+                        total_line_price = table_cells.get(3).asText().toInteger()
+                        calc_qty += qty
+                        calc_price += total_line_price
+                        assert qty * unit_price == total_line_price
+                    }
+                    root = new XmlSlurper().parseText(document.asXml())
+                    totalCols = root.depthFirst().findAll{ it.name() == "tr" }.find{ it['@class'] == 'total' }.td
+                    // slightly shorter alternative to above if you don't mind explicitly specifying tr
+                    // totalCols = root.body.table.tbody.tr.find { it['@class'] == 'total' }.td
+                    assert calc_qty == totalCols[1].text().trim().toInteger()
+                    assert calc_price == totalCols[3].text().trim().toInteger()
+				</scriptStep>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testFileGroovy">
+        <property name="image_id" value="traffic_light" description="Set Ant property for use in Groovy script"/>
+		<webtest name="scriptStep: test Groovy Code from file">
+			&sharedConfiguration;
+			<steps>
+            	<storeProperty name="imagesrc" value="green.gif" propertyType="dynamic" description="Set WebTest property for use in Groovy script"/>
+				<scriptStep description="use from file"
+					language="groovy" src="GMacroSteps.groovy"/>
+                <scriptStep description="combined file and inline use"
+                    language="groovy" src="GMacroSteps.groovy">
+                    // dummy comment
+                </scriptStep>
+			</steps>
+		</webtest>
+	</target>
+
+    <target name="testXmlGroovy">
+        <webtest name="scriptStep: test Groovy Scripting after load of XML file">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load XML Page"
+                    url="dummy.xml"/>
+                <scriptStep description="xml usage" language="groovy">
+					nodes = document.getElementsByTagName('leaf');
+                    step.setWebtestProperty('num_leaf_nodes', "" + nodes.length);
+                </scriptStep>
+                <verifyProperty description="check number of nodes" name="num_leaf_nodes" text="2" />
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="testOtherGroovy">
+        <webtest name="scriptStep: test Groovy Scripting after load of gif">
+            &sharedConfiguration;
+            <steps>
+                <invoke description="Load Gif" url="ok.gif"/>
+                <scriptStep description="dummy script" language="groovy">
+					//
+                </scriptStep>
+            </steps>
+        </webtest>
+    </target>
+
+</project>

@@ -1,0 +1,7 @@
+<post>
+
+    <b>See the <stepref name="clickElement"/> step for an example which uses the <em>&lt;storeElementAttribute&gt;</em> step.
+    See also the <stepref name="storeInputFieldAttribute"/> step to store an attribute of a <key>HTML</key> form input element
+        using form-related criteria.</b>
+
+</post>

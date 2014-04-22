@@ -1,0 +1,19 @@
+<post>
+
+    <b><em>NOTE</em>: there is no facility to <em>unset</em> a radio button. This is not normally needed.
+    When you set a radio button, all radio buttons with the same name in the same form are
+    'unset' automatically. So either no radio buttons have been selected (if your application
+    didn't provide a default) or exactly one is set. The only time you need to worry about
+    the no radio button case is if your application doesn't provide a default. If this is the
+    case, simply load the page in question, don't explicitly set any radio buttons, and
+    perform your tests.</b>
+
+    <b><em>Advanced Note</em>: strictly speaking it is possible that via greasemonkey scripts, proxies
+    or other means, someone could maliciously (or via accident) remove a checked setting on a radio button
+    even if your application always provided a default. So you should make your application do something
+    graceful in those cases and we may need to eventually provide an <em>&lt;forceUnsetRadioButton&gt;</em>
+    step to allow testing of this very rare scenario.</b>
+
+    <b><em>See also</em>: the <stepref name="storeInputFieldAttribute"/> and <stepref name="selectForm"/> steps.</b>
+
+</post>

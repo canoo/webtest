@@ -1,0 +1,31 @@
+<post>
+
+    <b>The following example illustrates how to use the <em>storeDigest</em> step (illustrating the use of the nested
+        line separator content filter which ensures that differences in line separator which may occur in different
+        environments don't influence the digest value):</b>
+
+    <code caption="storeDigest example">
+        <include src='examples/storeDigestExample.xml'/>
+    </code>
+
+    <b>Note that both <em>SHA-1</em> (the default) and <em>MD5</em> digest are shown. These are the most commonly
+    used digests with Java (because they are built in) but about 20 different kinds of digests are available
+    in various cryptography packages for Java and may be available to you if someone has downloaded an appropriate
+    class library and configured your systems to use it. You may also have heard of the related terms checksum
+    and/or hash (sometimes loosely means a digest, sometimes meaning a weaker algorithm which can be
+    used to detect some forms of content change) or digital signature (a digest value can be part of this).</b>
+
+    <b>At the moment the best way to calculate the digest value (so that you can write the test) is to use a
+        dummy value (e.g. 'xxxxx') and then run the test. Then when it fails it will tell you what it was expecting.
+        Simply copy that value into your test. Eventually we may store digest values in a file and populate the
+        file for you the first time the test is run or we may have a tool (e.g. Mozilla plug-in or one of the
+        other recorder tools) to pre-calculate digest values for you.</b>
+
+    <b><em>See also</em>: the <stepref name="verifyContent"/>,
+        <stepref name="storeLength"/>,
+        <stepref name="lineSeparatorFilter"/>,
+        <stepref name="replaceFilter"/>,
+        <stepref name="tagStripper"/> and
+        <stepref name="contentStripper"/> steps.</b>
+
+</post>

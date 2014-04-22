@@ -1,0 +1,17 @@
+<webtest name="forceHiddenInputField: Show usage of forceHiddenInputField step for non-working javascript">
+    <config ...>
+    <steps>
+        <invoke ...>
+        <verifytitle description="check we are on the test page" text="Hidden Field Test Page" />
+        <verifyXPath description="check original value of hidden field"
+            xpath="//form/input[@id='real']/@value" text="zzz" />
+        <setInputField description="javascript limitations inhibit change to hidden field"
+            name="field2" value="dummy" />
+        <verifyXPath description="check value of hidden field remains the same"
+            xpath="//form/input[@id='real']/@value" text="zzz" />
+        <forceHiddenInputField name="hiddenField" value="yyy"/>
+        <verifyXPath description="check updated value of hidden field"
+            xpath="//form/input[@id='real']/@value" text="yyy" />
+        <!-- could now submit form to backend server expecting modified value -->
+    </steps>
+</webtest>

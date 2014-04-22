@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE manpage SYSTEM "manpage.dtd" 
+[
+	<!ENTITY site SYSTEM "WebTestSite.xml">
+]
+>
+
+<manpage siteid="Support">
+
+	&site;
+
+	<section title="Online documentation">
+		<b>
+		The online documentation contains a lot of information about WebTest with numerous examples. 
+		The documentation of the steps is generated directly from the Java sources and therefore always up to date.
+		</b>
+		<b>
+		Additionally you can look at WebTest's <pageref name="Self Test Report"/> to see how steps are used.
+		</b>
+	</section>
+
+	<section title="Mailing list">
+		WebTest's <pageref name="Mailing list"/> is the right place for all questions concerning WebTest. 
+		Most of the time you will get a very helpful answer within a short time.
+	</section>
+	
+	<section title="Commercial support">
+		<b>Nearly every qualified Java developer with web knowledge should be able
+		to understand how WebTest works within a short time and could be able to use and customize it as he/she needs.
+		</b>
+		<b>Nevertheless the best commercial support for WebTest is surely the one provided by the people behind WebTest.
+		With many years of experience in efficient web testing automation, they are the ideal source for the success of your
+		WebTest projects.
+		</b>
+		<b>
+		Have a look at <ext href="http://www.efficient-webtesting.com/">http://www.efficient-webtesting.com/</ext> if you're
+		looking for training, consulting or support with guaranteed response time.
+		</b>
+	</section>
+</manpage>

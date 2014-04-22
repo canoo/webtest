@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd">
+
+<project name="configuration tests" default="all" basedir=".">
+
+	<target name="all" depends="testConfigInitializedFromProperties,
+		testTimeout, 
+		testSetWebtestVersion, 
+		testNoHaltOnFailure, 
+		testNoHaltOnError, 
+		testSetPropertyOnFailure,
+		testSetPropertyOnError,
+		testWebtestPropertyUsesDynamic, 
+		testWebtestPropertyUsesAnt, 
+		testWebtestPropertyUsesAntStrict,
+		testWarningsForBadHtml,
+		testPlainTextReporter,
+		testUnknownOption,
+		testBadOption,
+		testNoResultPathOrFile">
+	</target>
+
+	<target name="testConfigInitializedFromProperties">
+		<antcall target="testConfigInitializedFromProperties_body">
+			<param name="wt.config.host" value="someFunnyHost"/>
+			<param name="wt.config.port" value="123456"/>
+			<param name="wt.config.protocol" value="https"/>
+			<param name="wt.config.basepath" value="/foo"/>
+			<param name="wt.config.saveresponse" value="true"/>
+			<param name="wt.config.haltonfailure" value="false"/>
+			<param name="wt.config.showhtmlparseroutput" value="true"/>
+			<param name="wt.config.timeout" value="123"/>
+		</antcall>
+	</target>
+
+	<target name="testConfigInitializedFromProperties_body">
+		<webtest name="configuration: test that wt.config.* properties are used">
+			<config
+				resultpath="${wt.config.resultpath}"
+				resultfile="${webtest.resultfile}"
+			/>
+
+			<groovy description="verify config values">
+				def cfg = step.context.config
+				assert "someFunnyHost" == cfg.host
+				assert 123456 == cfg.port
+				assert "https" == cfg.protocol
+				assert "/foo" == cfg.basePath
+				assert cfg.saveResponse
+				assert !cfg.haltOnFailure
+				assert cfg.showHtmlParserOutput
+				assert 123 == cfg.timeout
+			</groovy>
+		</webtest>
+	</target>
+
+	<target name="testTimeout">
+		<webtest name="configuration: test timeout value">
+			<config
+				host="${webtest.host}"
+				port="${webtest.port}"
+				protocol="${webtest.protocol}"
+				basepath="${webtest.basepath}"
+				saveresponse="${webtest.saveresponse}"
+				resultpath="${wt.config.resultpath}"
+				resultfile="${webtest.resultfile}"
+				haltonfailure="${webtest.haltonfailure}"
+				showhtmlparseroutput="${webtest.showhtmlparseroutput}"
+				timeout="5"
+			/>
+			<steps>
+				<invoke description="Open the start page that will be delivered without waiting"
+				        url="${start.page}?mode=timeoutTest"/>
+				<invoke description="Open the start page that will be delivered waiting a bit (less than the timeout)"
+				        url="${start.page}?mode=timeoutTest&amp;wait=2"/>
+				<not>
+					<invoke description="Open the start page that will be delivered waiting too long (more than the timeout)"
+				        url="${start.page}?mode=timeoutTest&amp;wait=10"/>
+				</not>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testSetWebtestVersion">
+		<webtest name="configuration: Webtest sets version">
+			&sharedConfiguration;
+			<steps>
+				<verifyProperty
+					description="Is the ant property defined?"
+					name="webtest.version" propertyType="ant"
+				   regex="true" text=".*\.$"
+					/>
+			</steps>
+		</webtest>
+		<fail unless="webtest.version">The ant property webtest.version is not defined.</fail>
+	</target>
+
+	<!--
+     This sequence tests the haltonfailure attribute by setting it to false
+     and forcing a failure in the test step sequence.
+     It also shows how to override the shared configuration settings.
+ -->
+	<target name="testNoHaltOnFailure">
+		<antcall target="testNoHaltOnFailureImpl">
+			<param name="webtest.haltonfailure" value="false"/>
+		</antcall>
+	</target>
+	<target name="testNoHaltOnFailureImpl">
+		<webtest name="configuration: Expected to fail without breaking the build.">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="invoking an unknown page will not work"
+				        url="youWillNotFindThis"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<!--
+	  This sequence tests the holtonerror attribute by setting it to false
+	  and forcing an error in the test step sequence.
+ -->
+	<target name="testNoHaltOnError">
+		<antcall target="testNoHaltOnErrorImpl">
+			<param name="webtest.haltonerror" value="false"/>
+		</antcall>
+	</target>
+	<target name="testNoHaltOnErrorImpl">
+		<webtest name="configuration: Report an Error without stopping the build">
+			&sharedConfiguration;
+			<steps>
+				<clickButton description="intentionally bad attributes"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<!--
+	  This sequence tests the failureProperty attribute by forcing a non-fatal
+	  failure in the test step sequence and checking the specified property is set.
+	  It also shows how to override the shared configuration settings.
+ -->
+	<target name="testSetPropertyOnFailure">
+		<antcall target="testSetPropertyOnFailureImpl">
+			<param name="webtest.haltonfailure" value="false"/>
+			<param name="webtest.failureproperty" value="failureProp"/>
+		</antcall>
+	</target>
+	<target name="testSetPropertyOnFailureImpl">
+		<webtest name="configuration: fail without breaking build and set property.">
+			&sharedConfiguration;
+			<steps>
+				<not>
+					<verifyProperty name="failureProp" propertyType="ant"/>
+				</not>
+				<invoke description="invoking an unknown page will not work"
+				        url="youWillNotFindThis"/>
+			</steps>
+		</webtest>
+		<webtest name="configuration: check the failure property was set as expected.">
+			&sharedConfiguration;
+			<steps>
+				<verifyProperty name="failureProp" propertyType="ant" text="true"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<!--
+	  This sequence tests the failureProperty attribute by forcing a non-fatal
+	  failure in the test step sequence and checking the specified property is set.
+	  It also shows how to override the shared configuration settings.
+ -->
+	<target name="testSetPropertyOnError">
+		<antcall target="testSetPropertyOnErrorImpl">
+			<param name="webtest.haltonerror" value="false"/>
+			<param name="webtest.errorproperty" value="errorProp"/>
+		</antcall>
+	</target>
+	<target name="testSetPropertyOnErrorImpl">
+		<webtest name="configuration: error without breaking build and set property.">
+			&sharedConfiguration;
+			<steps>
+				<not>
+					<verifyProperty name="errorProp" propertyType="ant"/>
+				</not>
+				<clickButton description="intentionally bad attributes"/>
+			</steps>
+		</webtest>
+		<webtest name="configuration: check the error property was set as expected.">
+			&sharedConfiguration;
+			<steps>
+				<verifyProperty name="errorProp" propertyType="ant" text="true"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<!--
+	  This sequence tests storing an ant property.
+ -->
+	<target name="testWebtestPropertyUsesDynamic">
+		<property name="testProp" value="zzzz"/>
+		<antcall target="testWebtestPropertyUsesDynamicImpl">
+			<param name="webtest.defaultpropertytype" value="dynamic"/>
+		</antcall>
+	</target>
+	<target name="testWebtestPropertyUsesDynamicImpl">
+		<webtest name="configuration: test storing properties with defaultPropertyType set to 'dynamic'">
+			&sharedConfiguration;
+			<steps>
+				<storeProperty name="testProp" value="xxxx"/>
+				<storeProperty name="testProp" value="yyyy"/>
+				<verifyProperty name="testProp" propertyType="dynamic" text="yyyy"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<!--
+	  This sequence tests storing an ant property.
+ -->
+	<target name="testWebtestPropertyUsesAnt">
+		<antcall target="testWebtestPropertyUsesAntImpl">
+			<param name="webtest.defaultpropertytype" value="ant"/>
+		</antcall>
+	</target>
+	<target name="testWebtestPropertyUsesAntImpl">
+		<webtest name="configuration: test storing properties with defaultPropertyType set to 'ant'">
+			&sharedConfiguration;
+			<steps>
+				<storeProperty name="testProp" value="xxxx"/>
+				<storeProperty name="testProp" value="yyyy"/>
+				<verifyProperty name="testProp" propertyType="ant" text="yyyy"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<!--
+	  This sequence tests storing an ant property with strict behaviour.
+ -->
+	<target name="testWebtestPropertyUsesAntStrict">
+		<antcall target="testWebtestPropertyUsesAntStrictImpl">
+			<param name="webtest.defaultpropertytype" value="antstrict"/>
+		</antcall>
+	</target>
+	<target name="testWebtestPropertyUsesAntStrictImpl">
+		<webtest name="configuration: test storing properties with defaultPropertyType set to 'antstrict'">
+			&sharedConfiguration;
+			<steps>
+				<storeProperty name="testProp2" value="xxxx"/>
+				<storeProperty name="testProp2" value="yyyy"/>
+				<verifyProperty name="testProp2" propertyType="ant" text="xxxx"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<!--
+		 This sequence invokes a page containing invalid HTML statements and the ant
+		 output contains the appropriate warnings from JTidy.
+		 Starting from Pandora build 51x the warnings appear in the IDEA ant console
+		 but they are interpreted as errors in IDEA's final ant summary, even if
+		 the build is successful.
+	  -->
+	<target name="testWarningsForBadHtml">
+		<antcall target="testWarningsForBadHtmlImpl">
+			<param name="webtest.showhtmlparseroutput" value="true"/>
+		</antcall>
+	</target>
+	<target name="testWarningsForBadHtmlImpl">
+		<webtest name="configuration: Show warnings for invalid HTML">
+			&sharedConfiguration;
+			<steps>
+				<invoke description="Open invalid html page"
+				        url="${start.page}?mode=invalidHtml"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testPlainTextReporter">
+		<antcall target="testPlainTextReporterImpl">
+			<param name="webtest.resultreporterclass" value="com.canoo.webtest.reporting.PlainTextReporter"/>
+		</antcall>
+	</target>
+	<target name="testPlainTextReporterImpl">
+		<webtest name="configuration: startPlainTextReporter">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="${start.page}"/>
+			</steps>
+		</webtest>
+		<webtest name="configuration: appendToPlainTextReporter">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="${start.page}"/>
+			</steps>
+		</webtest>
+		<!-- todo dk: automatic test for the contents of the result file ? -->
+	</target>
+
+	<target name="testUnknownOption">
+		<webtest name="configuration: try bad option name">
+			<config
+				host="${webtest.host}"
+			   port="${webtest.port}"
+			   protocol="${webtest.protocol}"
+			   basepath="${webtest.basepath}"
+			   saveresponse="true"
+			   resultpath="${wt.config.resultpath}"
+			   resultfile="${webtest.resultfile}"
+			   haltonfailure="true"
+			   showhtmlparseroutput="false"
+				>
+				<option name="BadOptionName" value="false"/>
+			</config>
+			<steps>
+				<invoke url="${start.page}"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testBadOption">
+		<webtest name="configuration: try bad option value">
+			<config
+				host="${webtest.host}"
+			   port="${webtest.port}"
+			   protocol="${webtest.protocol}"
+			   basepath="${webtest.basepath}"
+			   saveresponse="true"
+			   resultpath="${wt.config.resultpath}"
+			   resultfile="${webtest.resultfile}"
+			   haltonfailure="true"
+			   showhtmlparseroutput="false"
+				>
+				<option name="ThrowExceptionOnFailingStatusCode" value="badValue"/>
+			</config>
+			<steps>
+				<invoke url="${start.page}"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="testNoResultPathOrFile">
+		<webtest name="configuration: test default values for resultpath and resultfile">
+			<config
+				host="${webtest.host}"
+			   port="${webtest.port}"
+			   protocol="${webtest.protocol}"
+			   basepath="${webtest.basepath}"
+			   saveresponse="true"
+			   haltonfailure="true"
+			   showhtmlparseroutput="false"/>
+			<steps>
+				<invoke url="${start.page}"/>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

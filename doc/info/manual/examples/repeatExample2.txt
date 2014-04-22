@@ -1,0 +1,14 @@
+<webtest name="Iterate over all cells in a table">
+	<config ... />
+	<steps>
+		<repeat count="2" countername="row">
+			<repeat count="2" countername="column">			
+				<invoke description="Show a particular table cell"
+					url="showCell?column=#{column}&amp;row=#{row}"/>
+				<verifyText description="Check cell contents"
+					... />
+			</repeat>
+		</repeat>
+		...
+	</steps>
+</webtest>

@@ -1,0 +1,44 @@
+<post>
+
+    <b>The most simple usage of <em>&lt;clickButton&gt;</em> is to submit a
+    simple <key>HTML</key> form back to the server. Consider the following <key>HTML</key> form snippet:</b>
+
+    <code caption="HTML">
+        <include src='examples/clickbuttonExampleHtml1.xml' />
+    </code>
+
+    <b>The following test code sets a value for the input field and submits the
+    form. It assumes that the form is shown again with the input field echoing the
+    previously entered value:</b>
+
+    <code caption="clickButton 1">
+        <include src='examples/clickbuttonExample1.xml' />
+    </code>
+
+    <b>A more complex sample uses the <stepref name="selectForm"/> step to select a form in which the submit button shall be located. This could be
+    helpful if all forms on a page have a submit button called &quot;send&quot;. See the following <key>HTML</key> code:</b>
+
+    <code caption="HTML">
+        <include src='examples/clickbuttonExampleHtml2.xml' />
+    </code>
+
+    <b>The submit button in the second form can be located using the following test step:</b>
+
+    <code caption="clickButton 2">
+        <include src='examples/clickbuttonExample2.xml' />
+    </code>
+
+    <b>For cases where a form has many buttons that can't be easily differentiated, it is possible to resolve the ambiguity by using the index property. This specifies which instance of the button appearing in the form shall be taken. The following example shows how to click the second button of the form:</b>
+
+    <code caption="HTML">
+        <include src='examples/clickbuttonExampleHtml3.xml' />
+    </code>
+
+    <code caption="clickButton 3">
+        <include src='examples/clickbuttonExample3.xml' />
+    </code>
+
+    <b><em>Note:</em> The value must be &quot;1&quot; in order to specify the 2nd button. It has the index &quot;1&quot; whereas the first button has the index
+    &quot;0&quot;.</b>
+
+</post>

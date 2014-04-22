@@ -1,0 +1,9 @@
+<pre>
+	<b>
+      This step provides a mechanism to verify the availability of the resources linked from a page.
+		The step tries to fetch all the resources referenced on the page that the <kbd>xpath</kbd> attribute selects.
+		With this step, the availability of any kind of resources can be ensured, such as images, css stylesheets,
+		linked javascripts, ...
+	</b>
+	<b>Further, the step can verify that the webserver provides the resources with the correct mime-type.</b>
+</pre>
