@@ -4,5 +4,4 @@ getJmxPort.sh
 listCruiseControl.sh
 restartCruiseControl.sh
 startCruiseControl.sh
-
-
+crucruiisecontrol.log
