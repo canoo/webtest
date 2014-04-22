@@ -10,8 +10,8 @@
         <schedule>
             <ant
                     buildfile="cruise.xml"
-                    antscript="/opt/webtest/webtestCC/CanooFunctionalTesting/bin/cruise.sh"
-                    antWorkingDir="/opt/webtest/webtestCC/CanooFunctionalTesting"
+                    antscript="/opt/webtest/webtestCC/checkout/bin/cruise.sh"
+                    antWorkingDir="/opt/webtest/webtestCC/checkout"
                     uselogger="true"
                     />
         </schedule>
@@ -40,7 +40,7 @@
                     spamwhilebroken="false"
                     skipusers="true"
                     logdir="/opt/webtest/webtestCC/logs"
-                    xslfile="/opt/webtest/webtestCC/CanooFunctionalTesting/WebtestCCHtmlMail.xsl"
+                    xslfile="/opt/webtest/webtestCC/checkout/WebtestCCHtmlMail.xsl"
                     >
                 <propertiesmapper file="emailmap.properties"/>
                 <always address="marcG"/>
