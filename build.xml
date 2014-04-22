@@ -943,7 +943,7 @@
 						so that the directory contains the plain version.
 						-->
 			<zipfileset dir="${deploy.dir}/plain" prefix="lib" includes="*.jar" />
-			<zipfileset dir="${build.runtime}/lib/" prefix="lib" excludes="webtest.jar"/>
+			<zipfileset dir="${build.runtime}/lib/" prefix="lib" excludes="webtest.jar, webtest_T.jar"/>
 			<zipfileset dir="bin/" prefix="bin" filemode="755" includes="webtest.sh, runWebtest.sh" />
 			<zipfileset dir="bin/" prefix="bin" includes="webtest.bat, runWebtest.bat" />
 			<!-- include some resources used by bin/runWebest.{sh|bat} -->
