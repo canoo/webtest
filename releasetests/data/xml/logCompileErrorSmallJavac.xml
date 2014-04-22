@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build error="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:57: Compile failed, messages should have been provided." time="32 seconds">
+	<target name="modificationcheck" time="29 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:30: " name="Tstamp" time="0 seconds"></task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:31: " name="Taskdef" time="0 seconds"></task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:32: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Checking repository for modifications...]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:34: " name="UnknownElement" time="29 seconds">
+			<message priority="info"><![CDATA[Executing: cvs -d :pserver:guest:guest@gate.canoo.com:24000/repositories/cvs/public -q log -N "-d>2001-10-25 08:17:00 GMT"]]></message>
+			<message priority="info"><![CDATA[[modificationset] Too much repository activity...sleeping for: 29.236 seconds.]]></message>
+			<message priority="info"><![CDATA[Executing: cvs -d :pserver:guest:guest@gate.canoo.com:24000/repositories/cvs/public -q log -N "-d>2001-10-25 08:17:00 GMT"]]></message>
+		</task>
+	</target>
+	<target name="update" time="1 second">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:21: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Getting the detected modifications....]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:22: " name="Cvs" time="1 second">
+			<message priority="info"><![CDATA[? TestReport.xml]]></message>
+			<message priority="info"><![CDATA[? TestReport.xml.xml]]></message>
+			<message priority="info"><![CDATA[? build]]></message>
+			<message priority="info"><![CDATA[? build.xml]]></message>
+			<message priority="info"><![CDATA[? buildcycleinfo]]></message>
+			<message priority="info"><![CDATA[? cruise.cmd]]></message>
+			<message priority="info"><![CDATA[? cruise.xml]]></message>
+			<message priority="info"><![CDATA[? cruisecontrol.properties]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away ./build.xml; it is in the way]]></message>
+			<message priority="info"><![CDATA[? deploy]]></message>
+			<message priority="info"><![CDATA[? emailmap.properties]]></message>
+			<message priority="info"><![CDATA[? forget.tmp]]></message>
+			<message priority="info"><![CDATA[? listCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? log.xml]]></message>
+			<message priority="info"><![CDATA[? modificationset.xml]]></message>
+			<message priority="info"><![CDATA[? opt]]></message>
+			<message priority="info"><![CDATA[? server.properties]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away ./cruise.cmd; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away ./cruise.xml; it is in the way]]></message>
+			<message priority="info"><![CDATA[? startCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? stopCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? temp.txt]]></message>
+			<message priority="info"><![CDATA[? doc/api]]></message>
+			<message priority="info"><![CDATA[? doc/samples/ffo/AllLanguagesTestSuite.xml]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away ./cruisecontrol.properties; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away ./emailmap.properties; it is in the way]]></message>
+			<message priority="info"><![CDATA[? doc/samples/ffo/InitPss.xml]]></message>
+			<message priority="info"><![CDATA[? doc/samples/ffo/OfflineTestSuite.xml]]></message>
+			<message priority="info"><![CDATA[? doc/samples/ffo/TestSuite.xml]]></message>
+			<message priority="info"><![CDATA[? doc/samples/ffo/lastResponse.html]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away ./server.properties; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away doc/samples/ffo/AllLanguagesTestSuite.xml; it is in the way]]></message>
+			<message priority="info"><![CDATA[? doc/samples/ffo/startFfoTest.cmd]]></message>
+			<message priority="info"><![CDATA[? doc/samples/ffo/startant.cmd]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/AbstractTestStepSpecification.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away doc/samples/ffo/InitPss.xml; it is in the way]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/ClickButton.java]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/ClickLink.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away doc/samples/ffo/OfflineTestSuite.xml; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away doc/samples/ffo/TestSuite.xml; it is in the way]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/FailWrapper.java]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/InvokePage.java]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/LabelTestStepSpecification.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away doc/samples/ffo/lastResponse.html; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away doc/samples/ffo/startFfoTest.cmd; it is in the way]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/PreviousResponse.java]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/SetInputField.java]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/Setup.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away doc/samples/ffo/startant.cmd; it is in the way]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/Target.java]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/TearDown.java]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/Verify.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/AbstractTestStepSpecification.java; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/ClickButton.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/VerifyElementText.java]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/VerifyFormFields.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/ClickLink.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/VerifyHtmlElementNamed.java]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/VerifyInputField.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/FailWrapper.java; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/InvokePage.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/VerifySelectField.java]]></message>
+			<message priority="info"><![CDATA[? src/com/canoo/webtest/steps/VerifyText.java]]></message>
+			<message priority="info"><![CDATA[C build.xml]]></message>
+			<message priority="info"><![CDATA[C cruise.cmd]]></message>
+			<message priority="info"><![CDATA[C cruise.xml]]></message>
+			<message priority="info"><![CDATA[C cruisecontrol.properties]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/LabelTestStepSpecification.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[C emailmap.properties]]></message>
+			<message priority="info"><![CDATA[C server.properties]]></message>
+			<message priority="info"><![CDATA[C doc/samples/ffo/AllLanguagesTestSuite.xml]]></message>
+			<message priority="info"><![CDATA[C doc/samples/ffo/InitPss.xml]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/PreviousResponse.java; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/SetInputField.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[C doc/samples/ffo/OfflineTestSuite.xml]]></message>
+			<message priority="info"><![CDATA[C doc/samples/ffo/TestSuite.xml]]></message>
+			<message priority="info"><![CDATA[C doc/samples/ffo/lastResponse.html]]></message>
+			<message priority="info"><![CDATA[C doc/samples/ffo/startFfoTest.cmd]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/Setup.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[C doc/samples/ffo/startant.cmd]]></message>
+			<message priority="info"><![CDATA[U src/com/canoo/webtest/ant/TestSpecificationTask.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/Target.java; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/TearDown.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/AbstractTestStepSpecification.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/ClickButton.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/ClickLink.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/Verify.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/FailWrapper.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/InvokePage.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/VerifyElementText.java; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/VerifyFormFields.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/LabelTestStepSpecification.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/PreviousResponse.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/SetInputField.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/VerifyHtmlElementNamed.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/Setup.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/Target.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/TearDown.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/VerifyInputField.java; it is in the way]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/VerifySelectField.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/Verify.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/VerifyElementText.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/VerifyFormFields.java]]></message>
+			<message priority="warn"><![CDATA[cvs update: move away src/com/canoo/webtest/steps/VerifyText.java; it is in the way]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/VerifyHtmlElementNamed.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/VerifyInputField.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/VerifySelectField.java]]></message>
+			<message priority="info"><![CDATA[C src/com/canoo/webtest/steps/VerifyText.java]]></message>
+		</task>
+	</target>
+	<target name="delegate" time="1 second">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:10: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** Starting the WebTest specific build parts ***]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:11: " name="Ant" time="1 second">
+			<target name="checkForNewSources" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:32: " name="UpToDate" time="0 seconds"></task>
+			</target>
+			<target name="prepare" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:42: " name="Tstamp" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:43: " name="Echo" time="0 seconds">
+					<message priority="warn"><![CDATA[jar is not up to date: needs rebuild ]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:44: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:45: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:46: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:47: " name="Delete" time="0 seconds">
+					<message priority="info"><![CDATA[Deleting directory /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build/classes]]></message>
+				</task>
+			</target>
+			<target name="compile" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:55: " name="Mkdir" time="0 seconds">
+					<message priority="info"><![CDATA[Created dir: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build/classes]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:57: " name="javac" time="1 second">
+					<message priority="info"><![CDATA[Compiling 37 source files to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build/classes]]></message>
+					<message priority="warn"><![CDATA[/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/src/com/canoo/webtest/ant/TestSpecificationTask.java:18: '{' expected]]></message>
+					<message priority="warn"><![CDATA[public class TestSpecificationTask extend Task]]></message>
+					<message priority="warn"><![CDATA[                                   ^]]></message>
+					<message priority="warn"><![CDATA[/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/src/com/canoo/webtest/ant/TestSpecificationTask.java:95: '}' expected]]></message>
+					<message priority="warn"><![CDATA[}]]></message>
+					<message priority="warn"><![CDATA[ ^]]></message>
+					<message priority="warn"><![CDATA[2 errors]]></message>
+				</task>
+			</target>
+		</task>
+	</target>
+<modifications>
+   <modification type="modified">
+     <filename>src/com/canoo/webtest/ant/TestSpecificationTask.java</filename>
+     <project></project>
+     <date>2001-Oct-25 10:20:24</date>
+     <user>dierk</user>
+     <comment><![CDATA[fore broken build]]></comment>
+   </modification>
+</modifications><testsuite errors="0" failures="0" name="com.canoo.webtest.AllTests" tests="7" time="0.73">
+  <testcase name="testCtorBasePath" time="0.007"></testcase>
+  <testcase name="testCtorDefaultPage" time="0.001"></testcase>
+  <testcase name="testStandard" time="0.001"></testcase>
+  <testcase name="testUrlFromHostPort" time="0"></testcase>
+  <testcase name="testUrlFromHostPortBasePath" time="0.001"></testcase>
+  <testcase name="testAddStep" time="0.02"></testcase>
+  <testcase name="testCtor" time="0"></testcase>
+</testsuite><label>Rel.48</label><today>October 25 2001</today></build>

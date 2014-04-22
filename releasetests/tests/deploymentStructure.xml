@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd" [
+		<!ENTITY commonVerification SYSTEM "../includes/commonVerification.xml" >
+		<!ENTITY reportVerification '
+<verifyxpath
+		description="No empty anchor"
+		xpath="not(//a[not(*) and not(text())])"
+		/>
+<verifyxpath
+		description="No attribute in the root (could happen with xsl extension!)"
+		xpath="count(/html/@*)=1 and /html/@lang=&apos;en&apos;"
+		/>
+		'
+				>
+		]>
+<project name="deploymentStructure" default="all">
+
+	<target name="all">
+		<antcall target="deploymentStructure"/>
+		<antcall target="checkResources"/>
+		<!--
+		Looks like we have a problem on the build server...
+		The verification of the link to jax.de always fails!
+		<antcall target="checkHomeLinks"/>
+		<antcall target="checkBuildLinks"/>
+		-->
+	</target>
+
+	<target name="deploymentStructure">
+		<webtest name="deploymentStructure: Verify the structure of the generated site">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="index.html"/>
+				&commonVerification;
+				&reportVerification;
+				<verifyTitle text="Canoo WebTest"/>
+
+
+				<clickLink label="Build Info"/>
+				&commonVerification;
+				<verifyTitle text="Build Overview"/>
+
+				<clickLink label="Unit Test Report"/>
+				&commonVerification;
+				<verifyTitle text="Unit Test Results."/>
+				<previousResponse description="Back to Build Info"/>
+
+				<enableJavaScript enable="false" description="Support for string.replace(regexp) missing?"/>
+				<clickLink label="Self Test Report"/>
+				&commonVerification;
+				<verifyTitle text="WebTest Functional Selftests - Test Result Overview"/>
+				<previousResponse description="Back to Build Info"/>
+				<enableJavaScript enable="true"/>
+				<!--
+				Release Test Report will be generated after the execution of this TestSuite.
+				-->
+
+				<clickLink label="API Doc"/>
+				&commonVerification;
+				<verifyTitle text="Canoo WebTest API" regex="true"/>
+				<previousResponse description="Back to Build Info"/>
+<!--
+				<clickLink label="Test Coverage"/>
+				&commonVerification;
+				<verifyTitle text="Canoo WebTest"/>
+				-->
+			</steps>
+		</webtest>
+	</target>
+
+
+	<target name="checkHomeLinks">
+		<webtest name="deploymentStructure: Verify the links on the home page">
+			&sharedConfiguration;
+			<steps>
+				<invoke url="index.html"/>
+				<verifyTitle text="Canoo WebTest"/>
+				<!--
+				If the next step fails with an external link, it may be necessary to log onto webtest.canoo.com
+				and perform manually a ping of the host.
+				-->
+				<verifyLinks description="This may fail if the dns lookup takes too long" depth="0" onsiteonly="true"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="checkBuildLinks">
+		<webtest name="deploymentStructure: Verify the links on the build information page">
+			&sharedConfiguration;
+			<steps>
+				<enableJavaScript enable="false"/>
+
+				<invoke url="index.html"/>
+				<clickLink label="Build Info"/>
+				<verifyTitle text="Build Overview"/>
+				<verifyLinks description="This may fail if the dns lookup takes too long" depth="0" onsiteonly="true"/>
+			</steps>
+		</webtest>
+	</target>
+
+	<target name="checkResources">
+		<webtest name="deploymentStructure: Verify some of the required resources">
+			&sharedConfiguration;
+			<steps>
+				<enableJavaScript enable="false"/>
+				<invoke url="reports/selftest/resources/showHide.js"/>
+				<invoke url="reports/selftest/resources/responseBrowser.html"/>
+				<invoke url="reports/selftest/resources/report.css"/>
+				<invoke url="reports/selftest/resources/images/ok.gif"/>
+			</steps>
+		</webtest>
+	</target>
+
+</project>

@@ -1,0 +1,12 @@
+<config
+	host="${webtest.host}"
+	port="${webtest.port}"
+	protocol="${webtest.protocol}"
+	basepath="webtest"
+	saveresponse="${webtest.saveresponse}"
+    resultpath="${wt.config.resultpath}"
+	haltonerror="true"
+	haltonfailure="true"
+	showhtmlparseroutput="false"
+	autorefresh="true"
+	/>

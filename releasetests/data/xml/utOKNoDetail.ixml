@@ -1,0 +1,9 @@
+<testsuite errors="0" failures="0" name="com.canoo.webtest.AllTests" tests="7" time="0.763">
+	<testcase name="testCtorBasePath" time="0.006"></testcase>
+	<testcase name="testCtorDefaultPage" time="0.001"></testcase>
+	<testcase name="testStandard" time="0.001"></testcase>
+	<testcase name="testUrlFromHostPort" time="0"></testcase>
+	<testcase name="testUrlFromHostPortBasePath" time="0.001"></testcase>
+	<testcase name="testAddStep" time="0.022"></testcase>
+	<testcase name="testCtor" time="0.001"></testcase>
+</testsuite>

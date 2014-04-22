@@ -1,0 +1,126 @@
+<?xml version="1.0" ?>
+<!DOCTYPE project SYSTEM "../config/MyWebTest.dtd" [
+	<!ENTITY commonVerification SYSTEM "../includes/commonVerification.xml" >
+	<!ENTITY sharedConfig "
+<config
+	host=''
+	port='0'
+	protocol='file'
+	basepath='${webtest.resultpath}/data/html'
+	saveresponse='${webtest.saveresponse}'
+    resultpath='${wt.config.resultpath}'
+	haltonerror='false'
+	haltonfailure='false'
+	showhtmlparseroutput='false'
+	autorefresh='true'
+	/>
+">
+	]>
+<project name="cruiseControl" default="all">
+
+	<target name="all">
+		<!--
+		<antcall target="logNoModifications"/>
+		<antcall target="logModificationsCC1"/>
+		<antcall target="logModificationsCC2"/>
+		-->
+		<antcall target="logNoTests"/>
+		<antcall target="logTestFailed"/>
+		<antcall target="logTestError"/>
+
+		<antcall target="log7UTNoFT1ZIP"/>
+		<antcall target="logUTokFT"/>
+	</target>
+
+	<target name="applyXsl">
+		<mkdir dir="${webtest.resultpath}/data/html"/>
+		<copy todir="${webtest.resultpath}/data/html/">
+			<fileset dir="../../doc/info/manual">
+				<include name="*.css"/>
+				<include name="images/"/>
+			</fileset>
+		</copy>
+		<style
+			basedir="../data/xml"
+		   destdir="${webtest.resultpath}/data/html/"
+			includes="*.xml"
+		   style="../data/xsl/webtestCC_wrapper.xsl"
+			>
+		</style>
+	</target>
+
+	<target name="log7UTNoFT1ZIP" depends="applyXsl">
+		<testSpec name="log7UTNoFT1ZIP">
+			&sharedConfig;
+			<steps>
+				<invoke description="generated page"
+				        url="log7UTNoFT1ZIP.html"/>
+				<verifytitle description="title as page indicator"
+				             text="Build Info"/>
+				<verifytext description="functional test table not collapsed on 0 tests"
+				            text="table.*?ftests.*?nbsp.*?table"
+				            regex="true"/>
+				<verifytext description="unit test table looks same as functional tests"
+				            text="table.*?utests.*?nbsp.*?table"
+				            regex="true"/>
+				<verifytext description="unit tests are green"
+				            text="table.*?utests.*?bgcolor=&quot;green&quot;.*?table"
+				            regex="true"/>
+			</steps>
+		</testSpec>
+	</target>
+
+	<target name="logNoTests" depends="applyXsl">
+		<testSpec name="logNoTests">
+			&sharedConfig;
+			<steps>
+				<invoke description="generated page"
+				        url="logNoTests.html"/>
+				<verifytext description="unit tests are white"
+				            text="table.*?utests.*?bgcolor=&quot;white&quot;.*?table"
+				            regex="true"/>
+			</steps>
+		</testSpec>
+	</target>
+
+	<target name="logTestFailed" depends="applyXsl">
+		<testSpec name="logTestFailed">
+			&sharedConfig;
+			<steps>
+				<invoke description="generated page"
+				        url="logTestFailed.html"/>
+				<verifytext description="unit tests are red"
+				            text="table.*?utests.*?bgcolor=&quot;red&quot;.*?table"
+				            regex="true"/>
+			</steps>
+		</testSpec>
+	</target>
+
+	<target name="logTestError" depends="applyXsl">
+		<testSpec name="logTestError">
+			&sharedConfig;
+			<steps>
+				<invoke description="generated page"
+				        url="logTestError.html"/>
+				<verifytext description="unit tests are red"
+				            text="table.*?utests.*?bgcolor=&quot;red&quot;.*?table"
+				            regex="true"/>
+			</steps>
+		</testSpec>
+	</target>
+
+
+	<target name="logUTokFT" depends="applyXsl">
+		<testSpec name="logUTokFT">
+			&sharedConfig;
+			<steps>
+				<invoke description="generated page"
+				        url="logUTokFT.html"/>
+				<verifytext description="functional test appearance: green and x% yellow"
+				            text="table.*?ftests.*green.*?FFFFA0.*?6\.25%.*?table"
+				            regex="true"/>
+			</steps>
+		</testSpec>
+	</target>
+
+</project>

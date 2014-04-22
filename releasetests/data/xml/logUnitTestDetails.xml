@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<build error="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/ApplyXSL.xml:26: Xalan missing on classpath. Put xalan.jar and xerces.jar to ant/lib." time="9 seconds">
+	<target name="modificationcheck" time="0 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:30: " name="tstamp" time="0 seconds"></task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:31: " name="taskdef" time="0 seconds"></task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:32: " name="echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Checking repository for modifications...]]></message>
+		</task>
+		<message priority="info"><![CDATA[Executing: cvs -d :pserver:guest:guest@gate.canoo.com:24000/repositories/cvs/public -q log -N "-d>2001-11-27 12:22:24 GMT"]]></message>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:34: " name="modificationset" time="0 seconds"></task>
+	</target>
+	<target name="update" time="1 second">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:21: " name="echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Getting the detected modifications....]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:22: " name="cvs" time="1 second">
+			<message priority="info"><![CDATA[? Appended.xml]]></message>
+			<message priority="info"><![CDATA[? TestReport.xml]]></message>
+			<message priority="info"><![CDATA[? build]]></message>
+			<message priority="info"><![CDATA[? buildcycleinfo]]></message>
+			<message priority="info"><![CDATA[? deploy]]></message>
+			<message priority="info"><![CDATA[? forget.tmp]]></message>
+			<message priority="info"><![CDATA[? listCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? log.xml]]></message>
+			<message priority="info"><![CDATA[? modificationset.xml]]></message>
+			<message priority="info"><![CDATA[? old]]></message>
+			<message priority="info"><![CDATA[? opt]]></message>
+			<message priority="info"><![CDATA[? startCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? stopCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? temp.txt]]></message>
+			<message priority="info"><![CDATA[? doc/api]]></message>
+			<message priority="info"><![CDATA[P build.xml]]></message>
+			<message priority="info"><![CDATA[U webtestCC.xsl]]></message>
+			<message priority="info"><![CDATA[U doc/samples/ApplyXSL.xml]]></message>
+			<message priority="info"><![CDATA[P doc/samples/buildReports.xml]]></message>
+			<message priority="info"><![CDATA[P doc/samples/report.xsl]]></message>
+			<message priority="info"><![CDATA[P doc/samples/selfTest.xml]]></message>
+		</task>
+	</target>
+	<target name="delegate" time="5 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:10: " name="echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** Starting the WebTest specific build parts ***]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:11: " name="ant" time="5 seconds">
+			<target name="checkForNewSources" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:33: " name="uptodate" time="0 seconds"></task>
+			</target>
+			<target name="prepare" time="0 seconds"></target>
+			<target name="compile" time="0 seconds"></target>
+			<target name="unitTest" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:75: " name="junit" time="1 second">
+					<message priority="info"><![CDATA[Running com.canoo.webtest.AllTests]]></message>
+					<message priority="info"><![CDATA[Tests run: 15, Failures: 0, Errors: 0, Time elapsed: 0.891 sec]]></message>
+				</task>
+			</target>
+			<target name="selfTestWar" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:104: " name="war" time="0 seconds">
+					<message priority="info"><![CDATA[Building war: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/selftest.war]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:109: " name="copy" time="0 seconds">
+					<message priority="info"><![CDATA[Copying 1 file to /opt/dev/sharedPlan/webapps]]></message>
+				</task>
+			</target>
+			<target name="mayUnWarSelftest" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:113: " name="mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:114: " name="unwar" time="0 seconds">
+					<message priority="info"><![CDATA[Expanding: /opt/dev/sharedPlan/webapps/selftest.war into /opt/dev/sharedPlan/webapps/selftest]]></message>
+				</task>
+			</target>
+			<target name="deploySelf" time="0 seconds"></target>
+			<target name="mayRestart" time="0 seconds"></target>
+			<target name="functionalTest" time="3 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:85: " name="delete" time="0 seconds">
+					<message priority="info"><![CDATA[Deleting 154 files from /opt/dev/sharedPlan/webapps/selftest/results]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:89: " name="ant" time="3 seconds">
+					<target name="prepareResultDir" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:23: " name="delete" time="0 seconds">
+							<message priority="info"><![CDATA[Deleting: /opt/dev/sharedPlan/webapps/selftest/results/AllResults.xml]]></message>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:24: " name="delete" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:25: " name="delete" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:26: " name="delete" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:27: " name="delete" time="0 seconds"></task>
+					</target>
+					<target name="main" time="2 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:52: " name="testSpec" time="1 second"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:156: " name="testSpec" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:182: " name="testSpec" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:200: " name="testSpec" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:218: " name="testSpec" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:272: " name="testSpec" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:326: " name="testSpec" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:345: " name="testSpec" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:369: " name="testSpec" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:386: " name="property" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:387: " name="testSpec" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:404: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="CreateSummaryReport" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:428: " name="move" time="0 seconds">
+							<message priority="info"><![CDATA[Moving 1 files to /opt/dev/sharedPlan/webapps/selftest/results]]></message>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:429: " name="copy" time="0 seconds">
+							<message priority="info"><![CDATA[Copying 1 file to /opt/dev/sharedPlan/webapps/selftest/results]]></message>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:430: " name="copy" time="0 seconds">
+							<message priority="info"><![CDATA[Copying 1 file to /opt/dev/sharedPlan/webapps/selftest/results]]></message>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:431: " name="tstamp" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:434: " name="ant" time="0 seconds">
+							<target name="onPath" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/ApplyXSL.xml:17: " name="condition" time="0 seconds"></task>
+							</target>
+							<target name="failIfBadPath" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/ApplyXSL.xml:26: " name="fail" time="0 seconds"></task>
+							</target>
+						</task>
+					</target>
+				</task>
+			</target>
+		</task>
+	</target>
+<modifications>
+   <modification type="modified">
+     <filename>build.xml</filename>
+     <project></project>
+     <date>2001-Nov-28 19:24:59</date>
+     <user>dierk</user>
+     <comment><![CDATA[embed selftest output in CC info]]></comment>
+   </modification>
+   <modification type="modified">
+     <filename>webtestCC.xsl</filename>
+     <project></project>
+     <date>2001-Nov-28 19:23:17</date>
+     <user>dierk</user>
+     <comment><![CDATA[embed selftest output in CC info]]></comment>
+   </modification>
+   <modification type="added">
+     <filename>doc/samples/ApplyXSL.xml</filename>
+     <project></project>
+     <date>2001-Nov-28 19:25:11</date>
+     <user>dierk</user>
+     <comment><![CDATA[embed selftest output in CC info]]></comment>
+   </modification>
+   <modification type="modified">
+     <filename>doc/samples/buildReports.xml</filename>
+     <project></project>
+     <date>2001-Nov-28 19:24:43</date>
+     <user>dierk</user>
+     <comment><![CDATA[embed selftest output in CC info]]></comment>
+   </modification>
+   <modification type="modified">
+     <filename>doc/samples/report.xsl</filename>
+     <project></project>
+     <date>2001-Nov-28 19:24:33</date>
+     <user>dierk</user>
+     <comment><![CDATA[embed selftest output in CC info]]></comment>
+   </modification>
+   <modification type="modified">
+     <filename>doc/samples/selfTest.xml</filename>
+     <project></project>
+     <date>2001-Nov-28 19:24:24</date>
+     <user>dierk</user>
+     <comment><![CDATA[embed selftest output in CC info]]></comment>
+   </modification>
+</modifications>
+	<testsuite errors="0" failures="0" name="com.canoo.webtest.AllTests" tests="15" time="0.891">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc."></property>
+    <property name="server.restart.command" value="/opt/dev/sharedPlan/stopServer.sh"></property>
+    <property name="docs.dir" value="doc"></property>
+    <property name="os.name" value="Linux"></property>
+    <property name="modificationset.snapshottimestamp" value="20011128192902"></property>
+    <property name="sun.boot.class.path" value="/usr/local/java/jdk1.3.1/jre/lib/rt.jar:/usr/local/java/jdk1.3.1/jre/lib/i18n.jar:/usr/local/java/jdk1.3.1/jre/lib/sunrsasign.jar:/usr/local/java/jdk1.3.1/jre/classes"></property>
+    <property name="TODAY" value="November 28 2001"></property>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."></property>
+    <property name="java.runtime.version" value="1.3.1-b24"></property>
+    <property name="label" value="Rel.74"></property>
+    <property name="testReport.file" value="TestReport"></property>
+    <property name="CURRENT_INSTANCE" value="&apos;/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting&apos;"></property>
+    <property name="user.name" value="dierk"></property>
+    <property name="deploy.dir" value="deploy"></property>
+    <property name="build.dir" value="build"></property>
+    <property name="user.language" value="en"></property>
+    <property name="modificationset.file" value="modificationset.xml"></property>
+    <property name="sun.boot.library.path" value="/usr/local/java/jdk1.3.1/jre/lib/i386"></property>
+    <property name="ant.project.name" value="CanooWebTest"></property>
+    <property name="DSTAMP" value="20011128"></property>
+    <property name="webtest.server.check.url" value="http://services-dev.canoo.com/webtest"></property>
+    <property name="java.version" value="1.3.1"></property>
+    <property name="user.timezone" value=""></property>
+    <property name="lastGoodBuildTime" value="20011127132224"></property>
+    <property name="deploy.jar.file" value="deploy/lib/webtest.jar"></property>
+    <property name="sun.cpu.isalist" value=""></property>
+    <property name="port" value="80"></property>
+    <property name="file.encoding.pkg" value="sun.io"></property>
+    <property name="file.separator" value="/"></property>
+    <property name="java.specification.name" value="Java Platform API Specification"></property>
+    <property name="java.class.version" value="47.0"></property>
+    <property name="webtest.server.check.file" value="./forget.tmp"></property>
+    <property name="java.home" value="/usr/local/java/jdk1.3.1/jre"></property>
+    <property name="java.vm.info" value="mixed mode"></property>
+    <property name="ant.file" value="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml"></property>
+    <property name="os.version" value="2.2.19-6.2.1enterprise"></property>
+    <property name="modificationset.users" value="dierk"></property>
+    <property name="java.awt.fonts" value=""></property>
+    <property name="path.separator" value=":"></property>
+    <property name="java.vm.version" value="1.3.1-b24"></property>
+    <property name="java.awt.printerjob" value="sun.awt.motif.PSPrinterJob"></property>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"></property>
+    <property name="lastBuildAttemptTime" value="20011127132224"></property>
+    <property name="selftest.server.webapp.dir" value="/opt/dev/sharedPlan/webapps"></property>
+    <property name="user.home" value="/home/dierk"></property>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."></property>
+    <property name="protocol" value="http"></property>
+    <property name="java.library.path" value="/usr/local/java/jdk1.3.1/jre/lib/i386:/usr/local/java/jdk1.3.1/jre/lib/i386/native_threads/:/usr/local/java/jdk1.3.1/jre/lib/i386/client:/usr/local/java/jdk1.3.1/jre/../lib/i386:/usr/local/java/jdk1.3.1/jre/lib/i386:/usr/local/java/jdk1.3.1/jre/lib/i386/native_threads/:/usr/local/java/jdk1.3.1/jre/lib/i386/client:/usr/local/java/jdk1.3.1/jre/../lib/i386"></property>
+    <property name="java.vendor.url" value="http://java.sun.com/"></property>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."></property>
+    <property name="cvs.repository" value=":pserver:guest:guest@gate.canoo.com:24000/repositories/cvs/public"></property>
+    <property name="webtest.deploy" value="true"></property>
+    <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition"></property>
+    <property name="java.class.path" value="/opt/dev/cruiseControl/lib/junit_3.7.jar:/opt/dev/cruiseControl/lib/ant.jar:/opt/dev/cruiseControl/lib/jakarta-ant-1.4-optional.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/Tidy.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/ant.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/httpunit.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/jakarta-ant-1.4-optional.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/jakarta-oro-2.0.4.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/jsdk23.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/xerces.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/xalan.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/junit_3.7.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/lib/webtest.jar"></property>
+    <property name="ant.version" value="1.4alpha"></property>
+    <property name="TSTAMP" value="1929"></property>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"></property>
+    <property name="server.unwar" value="true"></property>
+    <property name="cruiseTestReport.file" value="TestReport.xml"></property>
+    <property name="java.vm.specification.version" value="1.0"></property>
+    <property name="build.classes" value="build/classes"></property>
+    <property name="sun.cpu.endian" value="little"></property>
+    <property name="java.io.tmpdir" value="/tmp"></property>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"></property>
+    <property name="os.arch" value="i386"></property>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"></property>
+    <property name="basepath" value="selftest"></property>
+    <property name="java.ext.dirs" value="/usr/local/java/jdk1.3.1/jre/lib/ext"></property>
+    <property name="build.compiler.emacs" value="true"></property>
+    <property name="modificationset.invoked" value="true"></property>
+    <property name="user.dir" value="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting"></property>
+    <property name="omit" value="true"></property>
+    <property name="line.separator" value="
+"></property>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"></property>
+    <property name="cvs.package" value="CanooFunctionalTesting"></property>
+    <property name="basedir" value="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting"></property>
+    <property name="ant.java.version" value="1.3"></property>
+    <property name="server.restart.dir" value="/opt/dev/sharedPlan"></property>
+    <property name="webtest.server.webapp.dir" value="/opt/dev/sharedPlan/webapps"></property>
+    <property name="user.region" value="US"></property>
+    <property name="file.encoding" value="ISO-8859-1"></property>
+    <property name="resultpath" value="/opt/dev/sharedPlan/webapps/selftest/results"></property>
+    <property name="host" value="services-dev.canoo.com"></property>
+    <property name="java.specification.version" value="1.3"></property>
+    <property name="src.dir" value="src"></property>
+    <property name="javadoc.dir" value="doc/api"></property>
+  </properties>
+  <testcase name="testOneSimpleFile" time="0.075"></testcase>
+  <testcase name="testNoSelfAppend" time="0.011"></testcase>
+  <testcase name="testCtorBasePath" time="0.0060"></testcase>
+  <testcase name="testCtorDefaultPage" time="0.0010"></testcase>
+  <testcase name="testStandard" time="0.0010"></testcase>
+  <testcase name="testUrlFromHostPort" time="0.0"></testcase>
+  <testcase name="testUrlFromHostPortBasePath" time="0.0"></testcase>
+  <testcase name="testAddStep" time="0.027"></testcase>
+  <testcase name="testCtor" time="0.0010"></testcase>
+  <testcase name="testGotoTargetByRequest" time="0.018"></testcase>
+  <testcase name="testGotoTargetByUrl" time="0.0"></testcase>
+  <testcase name="testGotoTargetByNullUrl" time="0.0"></testcase>
+  <testcase name="testIsStartedIsCompleted" time="0.0030"></testcase>
+  <testcase name="testIsStartCompletedOnFailure" time="0.0010"></testcase>
+  <testcase name="testIsStartCompletedOnError" time="0.0010"></testcase>
+  <system-out></system-out>
+  <system-err></system-err>
+</testsuite>
+	<label>Rel.74</label><today>November 28 2001</today></build>

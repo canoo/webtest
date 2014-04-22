@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE build [
+	<!ENTITY modificationCheckAndUpdate SYSTEM "modificationCheckAndUpdate.ixml" >
+	<!ENTITY smallModifications1 SYSTEM "smallModifications1.ixml" >
+	]>
+<build time="14 seconds">
+	&modificationCheckAndUpdate;
+	<target name="delegate" time="1 second">
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:9: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** Starting the WebTest specific build parts ***]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:10: " name="Ant" time="1 second">
+			<target name="checkForNewSources" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:25: " name="UpToDate" time="0 seconds"></task>
+			</target>
+			<target name="prepare" time="0 seconds"></target>
+			<target name="compile" time="0 seconds"></target>
+			<target name="unitTest" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:61: " name="JUnitTask" time="1 second">
+					<message priority="info"><![CDATA[Running com.canoo.webtest.AllTests]]></message>
+					<message priority="info"><![CDATA[Tests run: 7, Failures: 0, Errors: 0, Time elapsed: 0.759 sec]]></message>
+				</task>
+			</target>
+			<target name="test" time="0 seconds"></target>
+			<target name="full" time="0 seconds"></target>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:11: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** WebTest build successfully ended          ***]]></message>
+		</task>
+	</target>
+	<target name="cruise" time="0 seconds"></target>
+	&smallModifications1;
+	<label>Rel.17</label><today>September 24 2001</today>
+</build>

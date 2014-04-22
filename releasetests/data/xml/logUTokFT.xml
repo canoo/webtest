@@ -1,0 +1,3223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<build time="41 seconds">
+	<target name="modificationcheck" time="3 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:32: " name="tstamp" time="0 seconds"></task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:33: " name="taskdef" time="0 seconds"></task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:34: " name="echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Checking repository for modifications...]]></message>
+		</task>
+		<message priority="info"><![CDATA[Executing: cvs -d :pserver:guest:guest@gate.canoo.com:24000/repositories/cvs/public -q log -N "-d>2002-02-05 19:51:51 GMT"]]></message>
+		<message priority="info"><![CDATA[[modificationset] Too much repository activity...sleeping for: 2.419 seconds.]]></message>
+		<message priority="info"><![CDATA[Executing: cvs -d :pserver:guest:guest@gate.canoo.com:24000/repositories/cvs/public -q log -N "-d>2002-02-05 19:51:51 GMT"]]></message>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:36: " name="modificationset" time="3 seconds"></task>
+	</target>
+	<target name="update" time="2 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:23: " name="echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Getting the detected modifications....]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:24: " name="cvs" time="2 seconds">
+			<message priority="info"><![CDATA[? Appended.xml]]></message>
+			<message priority="info"><![CDATA[? TestReport.xml]]></message>
+			<message priority="info"><![CDATA[? TestReport.xml.xml]]></message>
+			<message priority="info"><![CDATA[? WebTestResults.xml]]></message>
+			<message priority="info"><![CDATA[? build]]></message>
+			<message priority="info"><![CDATA[? buildcycleinfo]]></message>
+			<message priority="info"><![CDATA[? deploy]]></message>
+			<message priority="info"><![CDATA[? forget.tmp]]></message>
+			<message priority="info"><![CDATA[? listCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? log.xml]]></message>
+			<message priority="info"><![CDATA[? modificationset.xml]]></message>
+			<message priority="info"><![CDATA[? old]]></message>
+			<message priority="info"><![CDATA[? opt]]></message>
+			<message priority="info"><![CDATA[? startCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? stopCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? temp.txt]]></message>
+			<message priority="info"><![CDATA[? doc/api]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/WebTestHome.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/acknowledgments.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/install.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/license.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/syntax.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/troubleshooting.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/whitepaper.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExample1.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExample2.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExample3.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExample4.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExampleHtml1.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExampleHtml2.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clicklinkExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/configExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/htmlDebuggingConfigExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/invokeExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/notExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/repeatExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/repeatExample1.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/repeatExample2.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/setinputfieldExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/stepsExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/tableLocatorExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/taskdef.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/testSpecExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifyelementExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifyelementtextExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifytextExample1.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifytextExample2.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifytextareaExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifytitleExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/whitepaperExample.xml]]></message>
+			<message priority="info"><![CDATA[U doc/info/manual/WebTestHome.xml]]></message>
+			<message priority="info"><![CDATA[P doc/info/manual/WhitePaperStyle.xsl]]></message>
+			<message priority="info"><![CDATA[U doc/info/manual/acknowledgments.xml]]></message>
+			<message priority="info"><![CDATA[P doc/info/manual/references.xml]]></message>
+		</task>
+	</target>
+	<target name="delegate" time="34 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:12: " name="echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** Starting the WebTest specific build parts ***]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:13: " name="ant" time="34 seconds">
+			<target name="clean" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:25: " name="tstamp" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:26: " name="echo" time="0 seconds">
+					<message priority="warn"><![CDATA[jar is not up to date: needs rebuild ]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:27: " name="mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:28: " name="mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:29: " name="mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:30: " name="delete" time="0 seconds">
+					<message priority="info"><![CDATA[Deleting directory /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build/classes]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:31: " name="delete" time="0 seconds">
+					<message priority="info"><![CDATA[Deleting: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/TestReport.xml]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:32: " name="delete" time="0 seconds">
+					<message priority="info"><![CDATA[Deleting: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/WebTestResults.xml]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:33: " name="delete" time="0 seconds">
+					<message priority="info"><![CDATA[Deleting: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/lib/webtest.jar]]></message>
+				</task>
+			</target>
+			<target name="compile" time="2 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:46: " name="mkdir" time="0 seconds">
+					<message priority="info"><![CDATA[Created dir: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build/classes]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:48: " name="javac" time="2 seconds">
+					<message priority="info"><![CDATA[Compiling 90 source files to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build/classes]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:53: " name="jar" time="0 seconds">
+					<message priority="info"><![CDATA[Building jar: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/lib/webtest.jar]]></message>
+				</task>
+			</target>
+			<target name="clean_compile" time="0 seconds"></target>
+			<target name="unitTest" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:66: " name="junit" time="1 second">
+					<message priority="info"><![CDATA[Running com.canoo.webtest.AllTests]]></message>
+					<message priority="info"><![CDATA[Tests run: 49, Failures: 0, Errors: 0, Time elapsed: 0.986 sec]]></message>
+				</task>
+			</target>
+			<target name="selfTestWar" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:99: " name="war" time="0 seconds">
+					<message priority="info"><![CDATA[Building war: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/selftest.war]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:104: " name="copy" time="0 seconds">
+					<message priority="info"><![CDATA[Copying 1 file to /opt/dev/sharedPlan/webapps]]></message>
+				</task>
+			</target>
+			<target name="mayUnWarSelftest" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:108: " name="mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:109: " name="unwar" time="0 seconds">
+					<message priority="info"><![CDATA[Expanding: /opt/dev/sharedPlan/webapps/selftest.war into /opt/dev/sharedPlan/webapps/selftest]]></message>
+				</task>
+			</target>
+			<target name="mayRestart" time="0 seconds"></target>
+			<target name="deploySelf" time="0 seconds"></target>
+			<target name="functionalTest" time="5 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:78: " name="delete" time="0 seconds">
+					<message priority="info"><![CDATA[Deleting 54 files from /opt/dev/sharedPlan/webapps/selftest/results]]></message>
+					<message priority="info"><![CDATA[Deleting 47 files from /opt/dev/sharedPlan/webapps/selftest]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:82: " name="ant" time="5 seconds">
+					<message priority="warn"><![CDATA[Overriding previous definition of reference to test]]></message>
+					<message priority="warn"><![CDATA[Overriding previous definition of reference to test]]></message>
+					<target name="prepareResultDir" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:744: " name="delete" time="0 seconds">
+							<message priority="info"><![CDATA[Deleting: /opt/dev/sharedPlan/webapps/selftest/results/WebTestResults.xml]]></message>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:745: " name="delete" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:746: " name="delete" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:747: " name="delete" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:748: " name="delete" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:749: " name="delete" time="0 seconds"></task>
+					</target>
+					<target name="sampleUse" time="1 second">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:35: " name="testSpec" time="1 second"></task>
+					</target>
+					<target name="testTitle" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:87: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testNot" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:102: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testElements" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:142: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testText" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:183: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testRegEx" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:203: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testElementText" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:225: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testClickLink" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:391: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testClickButton" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:275: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testLocatorOnTable" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:354: " name="testSpec" time="0 seconds">
+							<message priority="warn"><![CDATA[Overriding previous definition of reference to test]]></message>
+							<message priority="warn"><![CDATA[Overriding previous definition of reference to unknown]]></message>
+							<message priority="warn"><![CDATA[Overriding previous definition of reference to test]]></message>
+							<message priority="warn"><![CDATA[Overriding previous definition of reference to test]]></message>
+						</task>
+					</target>
+					<target name="testRepeat" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:502: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testPostMultipleAndBack" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:410: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testCacheBug" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:564: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testNoHaltOnFailure" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:589: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testWarningsForBadHtml" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:616: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="troubleSample" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:711: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="testNoHaltOnError" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:668: " name="property" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:669: " name="testSpec" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:691: " name="testSpec" time="0 seconds"></task>
+					</target>
+					<target name="main" time="0 seconds"></target>
+					<target name="CreateSummaryReport" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:732: " name="copy" time="0 seconds">
+							<message priority="info"><![CDATA[Copying 1 file to /opt/dev/sharedPlan/webapps/selftest/results]]></message>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:733: " name="tstamp" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:736: " name="ant" time="0 seconds">
+							<target name="onPath" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/ApplyXSL.xml:17: " name="condition" time="0 seconds"></task>
+							</target>
+							<target name="failIfBadPath" time="0 seconds"></target>
+							<target name="applySingle" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/ApplyXSL.xml:47: " name="style" time="0 seconds">
+									<message priority="info"><![CDATA[Processing /opt/dev/sharedPlan/webapps/selftest/results/WebTestResults.xml to /opt/dev/sharedPlan/webapps/selftest/results/TestResultOverview.html]]></message>
+									<message priority="info"><![CDATA[Loading stylesheet /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/reportFromSummary.xsl]]></message>
+								</task>
+							</target>
+						</task>
+					</target>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:87: " name="copy" time="0 seconds">
+					<message priority="info"><![CDATA[Copying 51 files to /opt/dev/sharedPlan/webapps/selftest]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:90: " name="copy" time="0 seconds">
+					<message priority="info"><![CDATA[Copying 1 file to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:91: " name="ant" time="0 seconds">
+					<target name="prepare" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/Appender/AppendUse.xml:21: " name="delete" time="0 seconds">
+							<message priority="info"><![CDATA[Deleting: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/Appended.xml]]></message>
+						</task>
+					</target>
+					<target name="appendAll" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/Appender/AppendUse.xml:15: " name="append" time="0 seconds">
+							<message priority="info"><![CDATA[Appending 2 files to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/Appended.xml]]></message>
+						</task>
+					</target>
+					<target name="checkForFile" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/Appender/AppendUse.xml:25: " name="available" time="0 seconds"></task>
+					</target>
+					<target name="assert" time="0 seconds"></target>
+					<target name="full" time="0 seconds"></target>
+				</task>
+			</target>
+			<target name="test" time="0 seconds"></target>
+			<target name="manuals" time="16 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:120: " name="ant" time="16 seconds">
+					<target name="clean" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:11: " name="delete" time="0 seconds">
+							<message priority="info"><![CDATA[Deleting 7 files from /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual]]></message>
+						</task>
+					</target>
+					<target name="whitePaper" time="1 second">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:17: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:20: " name="antcall" time="1 second">
+							<target name="whitepaperXSL" time="1 second">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:146: " name="antcall" time="1 second">
+									<target name="onPath" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:154: " name="condition" time="0 seconds"></task>
+									</target>
+									<target name="failIfBadPath" time="0 seconds"></target>
+									<target name="applyXsl" time="1 second">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:141: " name="style" time="1 second">
+											<message priority="info"><![CDATA[Processing /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/whitepaper.xml to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/whitepaper.html]]></message>
+											<message priority="info"><![CDATA[Loading stylesheet /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/WhitePaperStyle.xsl]]></message>
+										</task>
+									</target>
+								</task>
+							</target>
+						</task>
+					</target>
+					<target name="syntax" time="10 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:56: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:59: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:62: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:65: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:68: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:71: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:74: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:77: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:80: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:83: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:86: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:89: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:92: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:95: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:98: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:101: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:104: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:107: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:110: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:113: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:116: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:119: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:122: " name="antcall" time="7 seconds">
+							<target name="whitepaperXSL" time="7 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:146: " name="antcall" time="7 seconds">
+									<target name="onPath" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:154: " name="condition" time="0 seconds"></task>
+									</target>
+									<target name="failIfBadPath" time="0 seconds"></target>
+									<target name="applyXsl" time="7 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:141: " name="style" time="7 seconds">
+											<message priority="info"><![CDATA[Processing /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/syntax.xml to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/syntax.html]]></message>
+											<message priority="info"><![CDATA[Loading stylesheet /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/WhitePaperStyle.xsl]]></message>
+										</task>
+									</target>
+								</task>
+							</target>
+						</task>
+					</target>
+					<target name="troubleshooting" time="1 second">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:38: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:41: " name="antcall" time="0 seconds">
+							<target name="markupExample" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:171: " name="exec" time="0 seconds"></task>
+							</target>
+						</task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:44: " name="antcall" time="0 seconds">
+							<target name="whitepaperXSL" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:146: " name="antcall" time="0 seconds">
+									<target name="onPath" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:154: " name="condition" time="0 seconds"></task>
+									</target>
+									<target name="failIfBadPath" time="0 seconds"></target>
+									<target name="applyXsl" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:141: " name="style" time="0 seconds">
+											<message priority="info"><![CDATA[Processing /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/troubleshooting.xml to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/troubleshooting.html]]></message>
+											<message priority="info"><![CDATA[Loading stylesheet /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/WhitePaperStyle.xsl]]></message>
+										</task>
+									</target>
+								</task>
+							</target>
+						</task>
+					</target>
+					<target name="install" time="1 second">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:50: " name="antcall" time="1 second">
+							<target name="whitepaperXSL" time="1 second">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:146: " name="antcall" time="1 second">
+									<target name="onPath" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:154: " name="condition" time="0 seconds"></task>
+									</target>
+									<target name="failIfBadPath" time="0 seconds"></target>
+									<target name="applyXsl" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:141: " name="style" time="0 seconds">
+											<message priority="info"><![CDATA[Processing /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/install.xml to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/install.html]]></message>
+											<message priority="info"><![CDATA[Loading stylesheet /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/WhitePaperStyle.xsl]]></message>
+										</task>
+									</target>
+								</task>
+							</target>
+						</task>
+					</target>
+					<target name="license" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:26: " name="antcall" time="0 seconds">
+							<target name="whitepaperXSL" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:146: " name="antcall" time="0 seconds">
+									<target name="onPath" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:154: " name="condition" time="0 seconds"></task>
+									</target>
+									<target name="failIfBadPath" time="0 seconds"></target>
+									<target name="applyXsl" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:141: " name="style" time="0 seconds">
+											<message priority="info"><![CDATA[Processing /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/license.xml to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/license.html]]></message>
+											<message priority="info"><![CDATA[Loading stylesheet /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/WhitePaperStyle.xsl]]></message>
+										</task>
+									</target>
+								</task>
+							</target>
+						</task>
+					</target>
+					<target name="acknowledgments" time="1 second">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:32: " name="antcall" time="1 second">
+							<target name="whitepaperXSL" time="1 second">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:146: " name="antcall" time="1 second">
+									<target name="onPath" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:154: " name="condition" time="0 seconds"></task>
+									</target>
+									<target name="failIfBadPath" time="0 seconds"></target>
+									<target name="applyXsl" time="1 second">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:141: " name="style" time="1 second">
+											<message priority="info"><![CDATA[Processing /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/acknowledgments.xml to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/acknowledgments.html]]></message>
+											<message priority="info"><![CDATA[Loading stylesheet /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/WhitePaperStyle.xsl]]></message>
+										</task>
+									</target>
+								</task>
+							</target>
+						</task>
+					</target>
+					<target name="home" time="0 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:128: " name="antcall" time="0 seconds">
+							<target name="whitepaperXSL" time="0 seconds">
+								<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:146: " name="antcall" time="0 seconds">
+									<target name="onPath" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:154: " name="condition" time="0 seconds"></task>
+									</target>
+									<target name="failIfBadPath" time="0 seconds"></target>
+									<target name="applyXsl" time="0 seconds">
+										<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/build.xml:141: " name="style" time="0 seconds">
+											<message priority="info"><![CDATA[Processing /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/WebTestHome.xml to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/WebTestHome.html]]></message>
+											<message priority="info"><![CDATA[Loading stylesheet /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/info/manual/WhitePaperStyle.xsl]]></message>
+										</task>
+									</target>
+								</task>
+							</target>
+						</task>
+					</target>
+					<target name="full" time="0 seconds"></target>
+				</task>
+			</target>
+			<target name="checkForChanges" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:218: " name="uptodate" time="0 seconds"></task>
+			</target>
+			<target name="apidoc" time="0 seconds"></target>
+			<target name="zip" time="3 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:158: " name="zip" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:160: " name="zip" time="1 second">
+					<message priority="info"><![CDATA[Building zip: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/doc.zip]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:164: " name="zip" time="1 second">
+					<message priority="info"><![CDATA[Building zip: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/build.zip]]></message>
+				</task>
+			</target>
+			<target name="webTestWar" time="3 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:178: " name="war" time="3 seconds">
+					<message priority="info"><![CDATA[Building war: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/webtest.war]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:187: " name="copy" time="0 seconds">
+					<message priority="info"><![CDATA[Copying 1 file to /opt/dev/sharedPlan/webapps]]></message>
+				</task>
+			</target>
+			<target name="mayUnWarWebtest" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:191: " name="mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:193: " name="unwar" time="0 seconds">
+					<message priority="info"><![CDATA[Expanding: /opt/dev/sharedPlan/webapps/webtest.war into /opt/dev/sharedPlan/webapps/webtest]]></message>
+				</task>
+			</target>
+			<target name="checkWebServerDeployment" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:202: " name="get" time="0 seconds">
+					<message priority="info"><![CDATA[Getting: http://services-dev.canoo.com/webtest]]></message>
+				</task>
+			</target>
+			<target name="deployWeb" time="0 seconds"></target>
+			<target name="deploy" time="0 seconds"></target>
+			<target name="full" time="0 seconds"></target>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:14: " name="echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** WebTest build successfully ended          ***]]></message>
+		</task>
+	</target>
+	<target name="tagLastBuild" time="0 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:18: " name="echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Todo: remove the old tag to prevent trouble with deleted files]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:19: " name="cvs" time="0 seconds">
+			<message priority="info"><![CDATA[? Appended.xml]]></message>
+			<message priority="info"><![CDATA[? TestReport.xml]]></message>
+			<message priority="info"><![CDATA[? TestReport.xml.xml]]></message>
+			<message priority="info"><![CDATA[? WebTestResults.xml]]></message>
+			<message priority="info"><![CDATA[? build]]></message>
+			<message priority="info"><![CDATA[? buildcycleinfo]]></message>
+			<message priority="info"><![CDATA[? deploy]]></message>
+			<message priority="info"><![CDATA[? forget.tmp]]></message>
+			<message priority="info"><![CDATA[? listCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? log.xml]]></message>
+			<message priority="info"><![CDATA[? modificationset.xml]]></message>
+			<message priority="info"><![CDATA[? old]]></message>
+			<message priority="info"><![CDATA[? opt]]></message>
+			<message priority="info"><![CDATA[? startCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? stopCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? temp.txt]]></message>
+			<message priority="info"><![CDATA[? doc/api]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/WebTestHome.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/acknowledgments.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/install.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/license.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/syntax.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/troubleshooting.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/whitepaper.html]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExample1.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExample2.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExample3.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExample4.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExampleHtml1.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clickbuttonExampleHtml2.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/clicklinkExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/configExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/htmlDebuggingConfigExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/invokeExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/notExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/repeatExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/repeatExample1.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/repeatExample2.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/setinputfieldExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/stepsExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/tableLocatorExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/taskdef.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/testSpecExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifyelementExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifyelementtextExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifytextExample1.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifytextExample2.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifytextareaExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/verifytitleExample.xml]]></message>
+			<message priority="info"><![CDATA[? doc/info/manual/examples/whitepaperExample.xml]]></message>
+		</task>
+	</target>
+	<target name="cruise" time="0 seconds"></target>
+<modifications>
+   <modification type="modified">
+     <filename>doc/info/manual/WebTestHome.xml</filename>
+     <project></project>
+     <date>2002-Feb-06 14:51:48</date>
+     <user>dierk</user>
+     <comment><![CDATA[minor changes and use of doctype for html]]></comment>
+   </modification>
+   <modification type="modified">
+     <filename>doc/info/manual/WhitePaperStyle.xsl</filename>
+     <project></project>
+     <date>2002-Feb-06 14:51:48</date>
+     <user>dierk</user>
+     <comment><![CDATA[minor changes and use of doctype for html]]></comment>
+   </modification>
+   <modification type="modified">
+     <filename>doc/info/manual/acknowledgments.xml</filename>
+     <project></project>
+     <date>2002-Feb-06 14:51:48</date>
+     <user>dierk</user>
+     <comment><![CDATA[minor changes and use of doctype for html]]></comment>
+   </modification>
+   <modification type="modified">
+     <filename>doc/info/manual/references.xml</filename>
+     <project></project>
+     <date>2002-Feb-06 14:51:48</date>
+     <user>dierk</user>
+     <comment><![CDATA[minor changes and use of doctype for html]]></comment>
+   </modification>
+</modifications>
+	<testsuite errors="0" failures="0" name="com.canoo.webtest.AllTests" tests="49" time="0.986">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition"></property>
+    <property name="sun.boot.library.path" value="/usr/local/java/jdk1.3.1/jre/lib/i386"></property>
+    <property name="java.vm.version" value="1.3.1-b24"></property>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."></property>
+    <property name="java.vendor.url" value="http://java.sun.com/"></property>
+    <property name="path.separator" value=":"></property>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"></property>
+    <property name="file.encoding.pkg" value="sun.io"></property>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"></property>
+    <property name="user.dir" value="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting"></property>
+    <property name="java.runtime.version" value="1.3.1-b24"></property>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"></property>
+    <property name="os.arch" value="i386"></property>
+    <property name="java.io.tmpdir" value="/tmp"></property>
+    <property name="line.separator" value="
+"></property>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."></property>
+    <property name="java.awt.fonts" value=""></property>
+    <property name="os.name" value="Linux"></property>
+    <property name="java.library.path" value="/usr/local/java/jdk1.3.1/jre/lib/i386:/usr/local/java/jdk1.3.1/jre/lib/i386/native_threads/:/usr/local/java/jdk1.3.1/jre/lib/i386/client:/usr/local/java/jdk1.3.1/jre/../lib/i386:/usr/local/java/jdk1.3.1/jre/lib/i386:/usr/local/java/jdk1.3.1/jre/lib/i386/native_threads/:/usr/local/java/jdk1.3.1/jre/lib/i386/client:/usr/local/java/jdk1.3.1/jre/../lib/i386"></property>
+    <property name="java.specification.name" value="Java Platform API Specification"></property>
+    <property name="java.class.version" value="47.0"></property>
+    <property name="os.version" value="2.2.19-6.2.1enterprise"></property>
+    <property name="user.home" value="/root"></property>
+    <property name="user.timezone" value=""></property>
+    <property name="java.awt.printerjob" value="sun.awt.motif.PSPrinterJob"></property>
+    <property name="file.encoding" value="ISO-8859-1"></property>
+    <property name="java.specification.version" value="1.3"></property>
+    <property name="user.name" value="root"></property>
+    <property name="java.class.path" value="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/Tidy.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/ant.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/httpunit.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/jakarta-ant-1.4-optional.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/jakarta-oro-2.0.4.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/jsdk23.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/xerces.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/xalan.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/lib/junit_3.7.jar:/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/lib/webtest.jar"></property>
+    <property name="java.vm.specification.version" value="1.0"></property>
+    <property name="java.home" value="/usr/local/java/jdk1.3.1/jre"></property>
+    <property name="user.language" value="en"></property>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."></property>
+    <property name="java.vm.info" value="mixed mode"></property>
+    <property name="java.version" value="1.3.1"></property>
+    <property name="java.ext.dirs" value="/usr/local/java/jdk1.3.1/jre/lib/ext"></property>
+    <property name="sun.boot.class.path" value="/usr/local/java/jdk1.3.1/jre/lib/rt.jar:/usr/local/java/jdk1.3.1/jre/lib/i18n.jar:/usr/local/java/jdk1.3.1/jre/lib/sunrsasign.jar:/usr/local/java/jdk1.3.1/jre/classes"></property>
+    <property name="java.vendor" value="Sun Microsystems Inc."></property>
+    <property name="file.separator" value="/"></property>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"></property>
+    <property name="sun.cpu.endian" value="little"></property>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"></property>
+    <property name="user.region" value="US"></property>
+    <property name="sun.cpu.isalist" value=""></property>
+  </properties>
+  <testcase name="testOneSimpleFile" time="0.07"></testcase>
+  <testcase name="testNoSelfAppend" time="0.011"></testcase>
+  <testcase name="testCtorBasePath" time="0.0050"></testcase>
+  <testcase name="testCtorDefaultPage" time="0.0010"></testcase>
+  <testcase name="testStandard" time="0.0010"></testcase>
+  <testcase name="testUrlFromHostPort" time="0.0"></testcase>
+  <testcase name="testUrlFromHostPortBasePath" time="0.0010"></testcase>
+  <testcase name="testAddStep" time="0.019"></testcase>
+  <testcase name="testCtor" time="0.0"></testcase>
+  <testcase name="testGotoTargetByRequest" time="0.021"></testcase>
+  <testcase name="testGotoTargetByUrl" time="0.0010"></testcase>
+  <testcase name="testGotoTargetByNullUrl" time="0.0"></testcase>
+  <testcase name="testIsStartedIsCompleted" time="0.0020"></testcase>
+  <testcase name="testIsStartCompletedOnFailure" time="0.0020"></testcase>
+  <testcase name="testIsStartCompletedOnError" time="0.0"></testcase>
+  <testcase name="testDynamicProperties" time="0.0010"></testcase>
+  <testcase name="testLocatorChoiceNameOnly" time="0.014"></testcase>
+  <testcase name="testLocatorChoiceValueOnly" time="0.0020"></testcase>
+  <testcase name="testLocatorChoiceValueAndName" time="0.0020"></testcase>
+  <testcase name="testLocatorChoiceInvalid" time="0.0010"></testcase>
+  <testcase name="testFormLocator" time="0.0"></testcase>
+  <testcase name="testIndexLocator" time="0.0020"></testcase>
+  <testcase name="testButtonLocatorByNameLocateRequestByIndex" time="0.012"></testcase>
+  <testcase name="testLocatorChoiceNameOnly" time="0.0"></testcase>
+  <testcase name="testLocatorChoiceValueOnly" time="0.0"></testcase>
+  <testcase name="testLocatorChoiceValueAndName" time="0.0"></testcase>
+  <testcase name="testLocatorChoiceInvalid" time="0.0"></testcase>
+  <testcase name="testFormLocator" time="0.0"></testcase>
+  <testcase name="testIndexLocator" time="0.0"></testcase>
+  <testcase name="testButtonLocatorByNameLocateRequestByIndex" time="0.0"></testcase>
+  <testcase name="testVerifyParameterValid" time="0.014"></testcase>
+  <testcase name="testZeroCount" time="0.0"></testcase>
+  <testcase name="testVerifyParameterInvalid" time="0.0010"></testcase>
+  <testcase name="testStepExpansion" time="0.0010"></testcase>
+  <testcase name="testDefaultParameterSubtitutionValue" time="0.0010"></testcase>
+  <testcase name="testNestedRepeatInvocation" time="0.071"></testcase>
+  <testcase name="testClone" time="0.0020"></testcase>
+  <testcase name="testDynamicPropertyExpansion" time="0.0090"></testcase>
+  <testcase name="testDynamicPropertyExpansion" time="0.0010"></testcase>
+  <testcase name="testDynamicPropertyExpansion" time="0.0030"></testcase>
+  <testcase name="testAntCall" time="0.0030"></testcase>
+  <testcase name="testLocatorUsage" time="0.0020"></testcase>
+  <testcase name="testDynamicPropertyExpansion" time="0.0020"></testcase>
+  <testcase name="testDynamicPropertyExpansion" time="0.0030"></testcase>
+  <testcase name="testDynamicPropertyExpansion" time="0.0"></testcase>
+  <testcase name="testDynamicPropertyExpansion" time="0.0010"></testcase>
+  <testcase name="testDynamicPropertyExpansion" time="0.0010"></testcase>
+  <testcase name="testDynamicPropertyExpansion" time="0.0020"></testcase>
+  <testcase name="testDynamicPropertyExpansion" time="0.0030"></testcase>
+  <system-out></system-out>
+  <system-err></system-err>
+</testsuite>
+	<summary>     <testresult
+        endtime="Wed Feb 06 14:52:28 CET 2002"
+        starttime="Wed Feb 06 14:52:27 CET 2002"
+        successful="yes"
+        testspecname="Show how to use Canoo WebTest plainly">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003547935.html"/>
+                    <parameter name="stepId"
+                value="main page"/>
+                    <result>
+                        <completed
+                    duration="772"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytitle"/>
+                    <parameter name="type"
+                value="title"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value=".*WebT.*"/>
+                    <parameter name="stepId"
+                value="main page reached"/>
+                    <result>
+                        <completed
+                    duration="179"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest?mode=getTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548136.html"/>
+                    <parameter name="stepId"
+                value="main page wirh GET form"/>
+                    <result>
+                        <completed duration="13"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyelement"/>
+                    <parameter name="type"
+                value="input"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="mode"/>
+                    <parameter name="stepId"
+                value="input field present"/>
+                    <result>
+                        <completed duration="13"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548177.html"/>
+                    <parameter name="stepId"
+                value="main page"/>
+                    <result>
+                        <completed duration="29"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clicklink"/>
+                    <parameter name="label"
+                value="MyLink"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548192.html"/>
+                    <parameter name="stepId"
+                value="show link clicking"/>
+                    <result>
+                        <completed duration="14"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="field1"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="MyLink"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="show referrer"/>
+                    <result>
+                        <completed duration="41"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest?mode=postTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548241.html"/>
+                    <parameter name="stepId"
+                value="main page with POST form"/>
+                    <result>
+                        <completed duration="8"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="field1"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value=""/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="input field must be present and empty"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="setinputfield"/>
+                    <parameter name="name"
+                value="field1"/>
+                    <parameter name="value"
+                value="X"/>
+                    <parameter name="stepId"
+                value="fill in a value"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="label"
+                value="doIt"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548303.html"/>
+                    <parameter name="stepId"
+                value="submit"/>
+                    <result>
+                        <completed duration="60"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="field1"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="X"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="submitted value is shown"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548311.html"/>
+                    <parameter name="stepId"
+                value="main page"/>
+                    <result>
+                        <completed duration="7"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyelementtext"/>
+                    <parameter name="type"
+                value="title"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value=".*Canoo.*"/>
+                    <parameter name="stepId"
+                value="variation of text detection"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytextarea"/>
+                    <parameter name="name"
+                value="theArea"/>
+                    <parameter name="type"
+                value="textarea"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value="Wusi was here .*"/>
+                    <parameter name="stepId"
+                value="work with text area"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:28 CET 2002"
+        starttime="Wed Feb 06 14:52:28 CET 2002"
+        successful="yes"
+        testspecname="Show how title tag can be tested">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548368.html"/>
+                    <parameter name="stepId"
+                value="Open main page of selftest webapp"/>
+                    <result>
+                        <completed duration="8"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytitle"/>
+                    <parameter name="type"
+                value="title"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="Canoo WebTest"/>
+                    <parameter name="stepId"
+                value="test against fully constant title"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytitle"/>
+                    <parameter name="type"
+                value="title"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value=".*WebTest.*"/>
+                    <parameter name="stepId"
+                value="test against partly constant title"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:28 CET 2002"
+        starttime="Wed Feb 06 14:52:28 CET 2002"
+        successful="yes"
+        testspecname="Show how NOT can be used to assert the absence of page properties">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548401.html"/>
+                    <parameter name="stepId"
+                value="Open main page of selftest webapp"/>
+                    <result>
+                        <completed duration="8"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="single NOT: the delivered page should not be the error page"/>
+                    <result>
+                        <completed duration="2"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifytitle"/>
+                        <parameter name="type"
+                    value="title"/>
+                        <parameter name="regex"
+                    value="true"/>
+                        <parameter name="text"
+                    value=".*Error.*Page.*"/>
+                        <parameter name="stepId"
+                    value="error page title"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="multiple steps can be negated"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifytitle"/>
+                        <parameter name="type"
+                    value="title"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="this text is not the title"/>
+                        <parameter name="stepId"
+                    value="first step fails"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>                 <step>
+                        <parameter name="stepType"
+                    value="verifytitle"/>
+                        <parameter name="type"
+                    value="title"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="this text is not the title"/>
+                        <parameter name="stepId"
+                    value="second step fails"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="not steps can be nested"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="not"/>
+                        <parameter name="stepId"
+                    value="nested not step"/>
+                        <result>
+                        <failed/>
+                    </result>
+                        <step>
+                         <parameter
+                         name="stepType"
+                        value="verifytitle"/>
+                         <parameter name="type"
+                        value="title"/>
+                         <parameter
+                         name="regex"
+                        value="true"/>
+                         <parameter name="text"
+                        value=".*"/>
+                         <parameter
+                         name="stepId"
+                        value="do not fail"/>
+                         <result>
+                         <completed
+                         duration="0"/>
+                        </result>
+                    </step>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="all negated steps must fail"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="not"/>
+                        <parameter name="stepId"
+                    value="expected to fail, for second nested step does not fail"/>
+                        <result>
+                        <failed/>
+                    </result>
+                        <step>
+                         <parameter
+                         name="stepType"
+                        value="verifytitle"/>
+                         <parameter name="type"
+                        value="title"/>
+                         <parameter
+                         name="regex"
+                        value="false"/>
+                         <parameter name="text"
+                        value="this text is not the title"/>
+                         <parameter
+                         name="stepId"
+                        value="first step fails"/>
+                         <result>
+                         <failed/>
+                        </result>
+                    </step>
+                        <step>
+                         <parameter
+                         name="stepType"
+                        value="verifytitle"/>
+                         <parameter name="type"
+                        value="title"/>
+                         <parameter
+                         name="regex"
+                        value="true"/>
+                         <parameter name="text"
+                        value=".*"/>
+                         <parameter
+                         name="stepId"
+                        value="second step DOES NOT fail"/>
+                         <result>
+                         <completed
+                         duration="0"/>
+                        </result>
+                    </step>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="single NOT: invoking wrong url fails instantly"/>
+                    <result>
+                        <completed duration="8"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="invoke"/>
+                        <parameter name="url"
+                    value="XXX"/>
+                        <parameter name="stepId"
+                    value="some wrong url"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:28 CET 2002"
+        starttime="Wed Feb 06 14:52:28 CET 2002"
+        successful="yes"
+        testspecname="Show how arbitrary html elements can be tested">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest?mode=getTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548477.html"/>
+                    <parameter name="stepId"
+                value="Open main page with input elements"/>
+                    <result>
+                        <completed duration="25"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyelement"/>
+                    <parameter name="type"
+                value="input"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="mode"/>
+                    <parameter name="stepId"
+                value="there must be an input element (tag) with this text"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="expected to fail when text is wrong"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifyelement"/>
+                        <parameter name="type"
+                    value="input"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="this text is not contained"/>
+                        <parameter name="stepId"
+                    value="text is wrong"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="expected to fail when element is wrong"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifyelement"/>
+                        <parameter name="type"
+                    value="unknownElement"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="mode"/>
+                        <parameter name="stepId"
+                    value="element is wrong"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyelement"/>
+                    <parameter name="type"
+                value="INPUT"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="mode"/>
+                    <parameter name="stepId"
+                value="Elements can be specified case insensitive"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="expected to fail for text is case sensitive"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifyelement"/>
+                        <parameter name="type"
+                    value="input"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="MODE"/>
+                        <parameter name="stepId"
+                    value="Text in wrong case"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyelement"/>
+                    <parameter name="type"
+                value="input"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value="m..e"/>
+                    <parameter name="stepId"
+                value="text works with regex"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="expected to fail for text is case sensitive even with regex"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifyelement"/>
+                        <parameter name="type"
+                    value="input"/>
+                        <parameter name="regex"
+                    value="true"/>
+                        <parameter name="text"
+                    value="M..E"/>
+                        <parameter name="stepId"
+                    value="text works with reg ex"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:28 CET 2002"
+        starttime="Wed Feb 06 14:52:28 CET 2002"
+        successful="yes"
+        testspecname="Show how to test against arbitrary text on the page">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548546.html"/>
+                    <parameter name="stepId"
+                value="main page"/>
+                    <result>
+                        <completed duration="23"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="Wusi is the greatest"/>
+                    <parameter name="stepId"
+                value="Some text somewhere in the page"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="expected to fail for text is not included"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifytext"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="this text is not on the page"/>
+                        <parameter name="stepId"
+                    value="unknown text"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="expected to fail for text is case sensitive"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifytext"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="WUSI IS THE GREATEST"/>
+                        <parameter name="stepId"
+                    value="Text is checked case sensitive"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:28 CET 2002"
+        starttime="Wed Feb 06 14:52:28 CET 2002"
+        successful="yes"
+        testspecname="Show how to use regular expressions on the whole page">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548606.html"/>
+                    <parameter name="stepId"
+                value="main page"/>
+                    <result>
+                        <completed duration="9"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value="Wusi is the greatest"/>
+                    <parameter name="stepId"
+                value="fixed text without wildcards"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value="W.si \w\w the\sg.{6}t"/>
+                    <parameter name="stepId"
+                value="one line plain text with wildcards"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value="Wusi was here.*and here.*was here as well"/>
+                    <parameter name="stepId"
+                value="multi line text"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value="&lt;body&gt;.*&lt;hr&gt;.*&lt;/body&gt;.*"/>
+                    <parameter name="stepId"
+                value="html text: assert hr in body"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:28 CET 2002"
+        starttime="Wed Feb 06 14:52:28 CET 2002"
+        successful="yes"
+        testspecname="Show how to find text within a specified html element">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548680.html"/>
+                    <parameter name="stepId"
+                value="main page"/>
+                    <result>
+                        <completed duration="7"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyelementtext"/>
+                    <parameter name="type"
+                value="title"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="Canoo WebTest"/>
+                    <parameter name="stepId"
+                value="test the constant text of the title element"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyelementtext"/>
+                    <parameter name="type"
+                value="title"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value="Canoo.*"/>
+                    <parameter name="stepId"
+                value="test part of the text of the title element"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="expected to fail when the element is not unique"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifyelementtext"/>
+                        <parameter name="type"
+                    value="textarea"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="whatever"/>
+                        <parameter name="stepId"
+                    value="textarea with multiple occurances"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="expected to fail when the element type is wrong"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifyelementtext"/>
+                        <parameter name="type"
+                    value="XXX"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="whatever"/>
+                        <parameter name="stepId"
+                    value="wrong element type"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyelementtext"/>
+                    <parameter name="name"
+                value="theArea"/>
+                    <parameter name="type"
+                value="textarea"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="Wusi was here ... "/>
+                    <parameter name="stepId"
+                value="Check for CDATA in textarea with name"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyelementtext"/>
+                    <parameter name="name"
+                value="theArea"/>
+                    <parameter name="type"
+                value="textarea"/>
+                    <parameter name="regex"
+                value="true"/>
+                    <parameter name="text"
+                value="Wusi was here .*"/>
+                    <parameter name="stepId"
+                value="Check for CDATA in textarea with name using regex"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="expeted to fail, for the area does not exist"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifyelementtext"/>
+                        <parameter name="name"
+                    value="theAreaDoesNotExist"/>
+                        <parameter name="type"
+                    value="textarea"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="whatever"/>
+                        <parameter name="stepId"
+                    value="wrong textarea name"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="expeted to fail, for the match is wrong"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifyelementtext"/>
+                        <parameter name="name"
+                    value="theOtherArea"/>
+                        <parameter name="type"
+                    value="textarea"/>
+                        <parameter name="regex"
+                    value="true"/>
+                        <parameter name="text"
+                    value="this text is not contained.*"/>
+                        <parameter name="stepId"
+                    value="Check for CDATA in textarea with name using regex"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:28 CET 2002"
+        starttime="Wed Feb 06 14:52:28 CET 2002"
+        successful="yes"
+        testspecname="Show how to click on hyperlinks in the page">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548743.html"/>
+                    <parameter name="stepId"
+                value="main page"/>
+                    <result>
+                        <completed duration="7"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clicklink"/>
+                    <parameter name="label"
+                value="MyLink"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548766.html"/>
+                    <parameter name="stepId"
+                value="click on MyLink"/>
+                    <result>
+                        <completed duration="23"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="field1"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="MyLink"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="Verify field1 shows referrer"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="cannot click on non-existing links"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="clicklink"/>
+                        <parameter name="label"
+                    value="thereIsNoLinkLikeThis"/>
+                        <parameter name="stepId"
+                    value="bad link"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:28 CET 2002"
+        starttime="Wed Feb 06 14:52:28 CET 2002"
+        successful="yes"
+        testspecname="Locating submit buttons and submitting the respective forms">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest?mode=buttonTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548837.html"/>
+                    <parameter name="stepId"
+                value="buttonTest mode of the test servlet"/>
+                    <result>
+                        <completed duration="11"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="name"
+                value="imageButton0"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548871.html"/>
+                    <parameter name="stepId"
+                value="Locate a image button with unique name in the whole page (no locator)"/>
+                    <result>
+                        <completed duration="35"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="lastForm"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="form1"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="&lt;unknown&gt;"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="Not"/>
+                    <result>
+                        <completed duration="3"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="clickbutton"/>
+                        <parameter name="name"
+                    value="imageButton1"/>
+                        <parameter name="stepId"
+                    value="Locate a image button with non-unique name appearing in two forms"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="Not"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="clickbutton"/>
+                        <parameter name="name"
+                    value="imageButton2"/>
+                        <parameter name="stepId"
+                    value="Locate a image button with non-unique name appearing twice in the same form"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="label"
+                value="myImageButtonValue"/>
+                    <parameter name="name"
+                value="imageButton2"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548892.html"/>
+                    <parameter name="stepId"
+                value="Locate a image button with non-unique name but unique label (value) attribute"/>
+                    <result>
+                        <completed duration="17"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="lastForm"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="form2"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="&lt;unknown&gt;"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="name"
+                value="imageButton1"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548904.html"/>
+                    <parameter name="stepId"
+                value="Locate a image button with non-unique name (using a locator). Button exists once in this form"/>
+                    <result>
+                        <completed duration="11"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="lastForm"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="form1"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="&lt;unknown&gt;"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="name"
+                value="imageButton1"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548915.html"/>
+                    <parameter name="stepId"
+                value="Locate a image button with non-unique name (using a locator). Button exists also once in this form"/>
+                    <result>
+                        <completed duration="10"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="lastForm"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="form2"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="&lt;unknown&gt;"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="name"
+                value="imageButton2"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548926.html"/>
+                    <parameter name="stepId"
+                value="Locate a image button with non-unique name (using a locator). Button exists twice!"/>
+                    <result>
+                        <completed duration="11"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="lastForm"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="form2"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="&lt;unknown&gt;"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="name"
+                value="imageButton1"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548938.html"/>
+                    <parameter name="stepId"
+                value="Locate a image button with non-unique name appearing twice in different forms using an index locator"/>
+                    <result>
+                        <completed duration="11"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="lastForm"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="form1"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="&lt;unknown&gt;"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="name"
+                value="imageButton1"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003548951.html"/>
+                    <parameter name="stepId"
+                value="Locate a image button with non-unique name appearing twice in different forms using an index locator"/>
+                    <result>
+                        <completed duration="12"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="lastForm"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="form2"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="&lt;unknown&gt;"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:29 CET 2002"
+        starttime="Wed Feb 06 14:52:29 CET 2002"
+        successful="yes"
+        testspecname="Locating cells in tables">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest?mode=tableTest"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003549050.html"/>
+                    <parameter name="stepId"
+                value="tableTest mode of the test servlet"/>
+                    <result>
+                        <completed duration="23"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytitle"/>
+                    <parameter name="type"
+                value="title"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="TableTest"/>
+                    <parameter name="stepId"
+                value="verify page"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyelement"/>
+                    <parameter name="type"
+                value="table"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="test"/>
+                    <parameter name="stepId"
+                value="table expected"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="1:1"/>
+                    <parameter name="stepId"
+                value="verify text of located cell"/>
+                    <result>
+                        <completed duration="59"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="negative test if table not found"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifytext"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="makes no difference"/>
+                        <parameter name="stepId"
+                    value="unknown table"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="negative test if cell not found"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifytext"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="makes no difference"/>
+                        <parameter name="stepId"
+                    value="unknown cell indizes"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="negative test if text is wrong"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifytext"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="text"
+                    value="some wrong text"/>
+                        <parameter name="stepId"
+                    value="test for text content fails"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:29 CET 2002"
+        starttime="Wed Feb 06 14:52:29 CET 2002"
+        successful="yes"
+        testspecname="Show usage of the repeat step">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="repeat"/>
+                    <parameter name="countername"
+                value="count"/>
+                    <parameter name="count"
+                value="2"/>
+                    <parameter name="stepId"
+                value="simple invocation with parameter"/>
+                    <result>
+                        <completed duration="33"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="invoke"/>
+                        <parameter name="url"
+                    value="formTest?mode=buttonTest&amp;xxx=0"/>
+                        <parameter
+                        name="resultfilename"
+                    value="lastResponse1013003549238.html"/>
+                        <parameter name="stepId"
+                    value="Repetitive step"/>
+                        <result>
+                         <completed
+                        duration="23"/>
+                    </result>
+                </step>                 <step>
+                        <parameter name="stepType"
+                    value="invoke"/>
+                        <parameter name="url"
+                    value="formTest?mode=buttonTest&amp;xxx=1"/>
+                        <parameter
+                        name="resultfilename"
+                    value="lastResponse1013003549248.html"/>
+                        <parameter name="stepId"
+                    value="Repetitive step"/>
+                        <result>
+                         <completed
+                        duration="10"/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="repeat"/>
+                    <parameter name="countername"
+                value="count"/>
+                    <parameter name="count"
+                value="2"/>
+                    <parameter name="stepId"
+                value="multiple contained steps with parameter"/>
+                    <result>
+                        <completed duration="82"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="invoke"/>
+                        <parameter name="url"
+                    value="formTest?mode=buttonTest&amp;xxx=0"/>
+                        <parameter
+                        name="resultfilename"
+                    value="lastResponse1013003549268.html"/>
+                        <parameter name="stepId"
+                    value="Repetitive invocation - step 1"/>
+                        <result>
+                         <completed
+                        duration="21"/>
+                    </result>
+                </step>                 <step>
+                        <parameter name="stepType"
+                    value="invoke"/>
+                        <parameter name="url"
+                    value="formTest?mode=buttonTest&amp;xxx=0"/>
+                        <parameter
+                        name="resultfilename"
+                    value="lastResponse1013003549288.html"/>
+                        <parameter name="stepId"
+                    value="Repetitive invocation - step 2"/>
+                        <result>
+                         <completed
+                        duration="20"/>
+                    </result>
+                </step>                 <step>
+                        <parameter name="stepType"
+                    value="invoke"/>
+                        <parameter name="url"
+                    value="formTest?mode=buttonTest&amp;xxx=1"/>
+                        <parameter
+                        name="resultfilename"
+                    value="lastResponse1013003549308.html"/>
+                        <parameter name="stepId"
+                    value="Repetitive invocation - step 1"/>
+                        <result>
+                         <completed
+                        duration="20"/>
+                    </result>
+                </step>                 <step>
+                        <parameter name="stepType"
+                    value="invoke"/>
+                        <parameter name="url"
+                    value="formTest?mode=buttonTest&amp;xxx=1"/>
+                        <parameter
+                        name="resultfilename"
+                    value="lastResponse1013003549329.html"/>
+                        <parameter name="stepId"
+                    value="Repetitive invocation - step 2"/>
+                        <result>
+                         <completed
+                        duration="21"/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="repeat"/>
+                    <parameter name="countername"
+                value="count"/>
+                    <parameter name="count"
+                value="0"/>
+                    <parameter name="stepId"
+                value="0 repetitions (do not execute contained steps)"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="invoke"/>
+                        <parameter name="url"
+                    value="XXXX"/>
+                        <parameter name="stepId"
+                    value="buttonTest mode of the test servlet"/>
+                        <result>
+                        <notexecuted/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="repeat"/>
+                    <parameter name="countername"
+                value="rows"/>
+                    <parameter name="count"
+                value="2"/>
+                    <parameter name="stepId"
+                value="nested repeat with custom countername (outer loop)"/>
+                    <result>
+                        <completed
+                    duration="120"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="repeat"/>
+                        <parameter
+                        name="countername"
+                    value="columns"/>
+                        <parameter name="count"
+                    value="2"/>
+                        <parameter name="stepId"
+                    value="inner loop"/>
+                        <result>
+                         <completed
+                        duration="64"/>
+                    </result>
+                        <step>
+                         <parameter
+                         name="stepType"
+                        value="invoke"/>
+                         <parameter name="url"
+                        value="formTest?mode=buttonTest&amp;x=0&amp;y=0"/>
+                         <parameter
+                         name="resultfilename"
+                        value="lastResponse1013003549388.html"/>
+                         <parameter
+                         name="stepId"
+                        value="buttonTest mode of the test servlet"/>
+                         <result>
+                         <completed
+                         duration="43"/>
+                        </result>
+                    </step>
+                        <step>
+                         <parameter
+                         name="stepType"
+                        value="invoke"/>
+                         <parameter name="url"
+                        value="formTest?mode=buttonTest&amp;x=1&amp;y=0"/>
+                         <parameter
+                         name="resultfilename"
+                        value="lastResponse1013003549408.html"/>
+                         <parameter
+                         name="stepId"
+                        value="buttonTest mode of the test servlet"/>
+                         <result>
+                         <completed
+                         duration="21"/>
+                        </result>
+                    </step>
+                </step>                 <step>
+                        <parameter name="stepType"
+                    value="repeat"/>
+                        <parameter
+                        name="countername"
+                    value="columns"/>
+                        <parameter name="count"
+                    value="2"/>
+                        <parameter name="stepId"
+                    value="inner loop"/>
+                        <result>
+                         <completed
+                        duration="41"/>
+                    </result>
+                        <step>
+                         <parameter
+                         name="stepType"
+                        value="invoke"/>
+                         <parameter name="url"
+                        value="formTest?mode=buttonTest&amp;x=0&amp;y=1"/>
+                         <parameter
+                         name="resultfilename"
+                        value="lastResponse1013003549440.html"/>
+                         <parameter
+                         name="stepId"
+                        value="buttonTest mode of the test servlet"/>
+                         <result>
+                         <completed
+                         duration="31"/>
+                        </result>
+                    </step>
+                        <step>
+                         <parameter
+                         name="stepType"
+                        value="invoke"/>
+                         <parameter name="url"
+                        value="formTest?mode=buttonTest&amp;x=1&amp;y=1"/>
+                         <parameter
+                         name="resultfilename"
+                        value="lastResponse1013003549449.html"/>
+                         <parameter
+                         name="stepId"
+                        value="buttonTest mode of the test servlet"/>
+                         <result>
+                         <completed
+                         duration="10"/>
+                        </result>
+                    </step>
+                </step>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:30 CET 2002"
+        starttime="Wed Feb 06 14:52:29 CET 2002"
+        successful="yes"
+        testspecname="Show POST usage with multiple forms and back navigation">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest?mode=postTest&amp;forms=multiple"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003550032.html"/>
+                    <parameter name="stepId"
+                value="multiple forms page to show use of select boxes, radio buttons, checkboxes and named buttons"/>
+                    <result>
+                        <completed
+                    duration="484"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyselectfield"/>
+                    <parameter name="name"
+                value="select1"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="v1"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="find select element by value"/>
+                    <result>
+                        <completed duration="3"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyselectfield"/>
+                    <parameter name="name"
+                value="select1"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="v2"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="find select box that has more than one value"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyselectfield"/>
+                    <parameter name="name"
+                value="select1"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="Name for v2"/>
+                    <parameter name="stepId"
+                value="find select box by its text"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="setinputfield"/>
+                    <parameter name="name"
+                value="select1"/>
+                    <parameter name="value"
+                value="v2"/>
+                    <parameter name="stepId"
+                value="choose a value"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="radio"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="r1"/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="text for radiobuttons must be the value and must be checked"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="setinputfield"/>
+                    <parameter name="name"
+                value="radio"/>
+                    <parameter name="value"
+                value="r2"/>
+                    <parameter name="stepId"
+                value="radios must be set by value"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyinputfield"/>
+                    <parameter name="name"
+                value="check"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value=""/>
+                    <parameter name="text"
+                value="null"/>
+                    <parameter name="stepId"
+                value="text for checkboxes must be the value and must be checked"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="setinputfield"/>
+                    <parameter name="name"
+                value="check"/>
+                    <parameter name="value"
+                value="c1"/>
+                    <parameter name="stepId"
+                value="check boxes must be set by value"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="label"
+                value="doItAgain"/>
+                    <parameter name="name"
+                value="first"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003550049.html"/>
+                    <parameter name="stepId"
+                value="there are two buttons with label doItAgain, so a name attribute must be specified"/>
+                    <result>
+                        <completed duration="10"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="select1 = v2"/>
+                    <parameter name="stepId"
+                value="select was submitted"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="radio = r2"/>
+                    <parameter name="stepId"
+                value="radio was submitted"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="check = c1"/>
+                    <parameter name="stepId"
+                value="checkbox was submitted"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="previousresponse"/>
+                    <parameter name="stepId"
+                value="back to multiple forms page"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyselectfield"/>
+                    <parameter name="name"
+                value="select1"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="formname"
+                value="2"/>
+                    <parameter name="text"
+                value="Name for v3"/>
+                    <parameter name="stepId"
+                value="find select box in named form, check text"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifyselectfield"/>
+                    <parameter name="name"
+                value="select1"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="value"
+                value="v3"/>
+                    <parameter name="formname"
+                value="2"/>
+                    <parameter name="text"
+                value="Name for v3"/>
+                    <parameter name="stepId"
+                value="find select box in named form, check text and value"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType" value="not"/>
+                    <parameter name="stepId"
+                value="fails, if value and text are not matching"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>                 <step>
+                        <parameter name="stepType"
+                    value="verifyselectfield"/>
+                        <parameter name="name"
+                    value="select1"/>
+                        <parameter name="regex"
+                    value="false"/>
+                        <parameter name="value"
+                    value="v2"/>
+                        <parameter name="formname"
+                    value="2"/>
+                        <parameter name="text"
+                    value="Name for v3"/>
+                        <parameter name="stepId"
+                    value="text and value do not match"/>
+                        <result>
+                        <failed/>
+                    </result>
+                </step>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="setinputfield"/>
+                    <parameter name="name"
+                value="select1"/>
+                    <parameter name="text"
+                value="Name for v3"/>
+                    <parameter name="stepId"
+                value="prerequsite to clickbutton"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="label"
+                value="doItAgain"/>
+                    <parameter name="name"
+                value="second"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003550063.html"/>
+                    <parameter name="stepId"
+                value="submit second buttons"/>
+                    <result>
+                        <completed duration="9"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="select1 = v3"/>
+                    <parameter name="stepId"
+                value="button ok, select was submitted"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="previousresponse"/>
+                    <parameter name="stepId"
+                value="back to multiple forms page to test multiple link handling"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clicklink"/>
+                    <parameter name="label"
+                value="link"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003550072.html"/>
+                    <parameter name="stepId"
+                value="click first found link with label = link"/>
+                    <result>
+                        <completed duration="8"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="link = l1"/>
+                    <parameter name="stepId"
+                value="link parameter was submitted"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="previousresponse"/>
+                    <parameter name="stepId"
+                value="back to multiple forms page to test second link"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clicklink"/>
+                    <parameter name="href"
+                value="link=l2"/>
+                    <parameter name="label"
+                value="link"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003550096.html"/>
+                    <parameter name="stepId"
+                value="click link with label=link and name parameters"/>
+                    <result>
+                        <completed duration="23"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="verifytext"/>
+                    <parameter name="regex"
+                value="false"/>
+                    <parameter name="text"
+                value="link = l2"/>
+                    <parameter name="stepId"
+                value="link parameter was submitted"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="previousresponse"/>
+                    <parameter name="stepId"
+                value="back to multiple forms page to test non-html link"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clicklink"/>
+                    <parameter name="label"
+                value="pdf document"/>
+                    <parameter
+                    name="resultfilename"
+                value="adobe1013003550122.pdf"/>
+                    <parameter name="save"
+                value="adobe"/>
+                    <parameter name="stepId"
+                value="click pdf link"/>
+                    <result>
+                        <completed duration="25"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="previousresponse"/>
+                    <parameter name="stepId"
+                value="back to multiple forms page"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clicklink"/>
+                    <parameter name="label"
+                value="word document"/>
+                    <parameter
+                    name="resultfilename"
+                value="word1013003550155.txt"/>
+                    <parameter name="save"
+                value="word"/>
+                    <parameter name="stepId"
+                value="click word link"/>
+                    <result>
+                        <completed duration="33"/>
+                </result>             </step>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:30 CET 2002"
+        starttime="Wed Feb 06 14:52:30 CET 2002"
+        successful="yes"
+        testspecname="Reset parameter cache bug">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest?mode=postTest&amp;forms=multiple"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003550281.html"/>
+                    <parameter name="stepId"
+                value="Open multiple form page"/>
+                    <result>
+                        <completed duration="10"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="setinputfield"/>
+                    <parameter name="name"
+                value="field2"/>
+                    <parameter name="value"
+                value="X"/>
+                    <parameter name="stepId"
+                value="Parameter in first form"/>
+                    <result>
+                        <completed duration="1"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="label"
+                value="doItAgain3"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003550290.html"/>
+                    <parameter name="stepId"
+                value="Click the submit button"/>
+                    <result>
+                        <completed duration="9"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="setinputfield"/>
+                    <parameter name="name"
+                value="field1"/>
+                    <parameter name="value"
+                value="XX"/>
+                    <parameter name="stepId"
+                value="Parameter in second form"/>
+                    <result>
+                        <completed duration="0"/>
+                </result>             </step>
+                <step>                 <parameter
+                    name="stepType"
+                value="clickbutton"/>
+                    <parameter name="label"
+                value="doIt"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003550300.html"/>
+                    <parameter name="stepId"
+                value="Click the submit button"/>
+                    <result>
+                        <completed duration="9"/>
+                </result>             </step>
+        </results>     </testresult> <testresult
+        starttime="Wed Feb 06 14:52:30 CET 2002"
+        successful="no"
+        testspecname="Expected to fail without breaking the build.">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="no"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="no"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="youWillNotFindThis"/>
+                    <parameter name="stepId"
+                value="invoking an unknown page will not work"/>
+                    <result>
+                    <failed/>
+                </result>             </step>
+                <failure
+            message="Expected to fail without breaking the build.(com.canoo.webtest.engine.ConfigurableTestCase): Step &quot;invoking an unknown page will not work&quot; (2/3): Page not found: http://services-dev.canoo.com:80/selftest/youWillNotFindThis"/>
+        </results>     </testresult> <testresult
+        endtime="Wed Feb 06 14:52:30 CET 2002"
+        starttime="Wed Feb 06 14:52:30 CET 2002"
+        successful="yes"
+        testspecname="Show warnings for invalid HTML">
+            <config>             <parameter
+                name="haltonerror" value="yes"/>
+                <parameter name="defaultpage"
+            value="null"/>             <parameter
+                name="port" value="80"/>
+                <parameter name="resultpath"
+            value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+                <parameter name="verbose"
+            value="yes"/>             <parameter
+                name="resultfile"
+            value="WebTestResults.xml"/>
+                <parameter name="haltonfailure"
+            value="yes"/>             <parameter
+                name="basepath" value="selftest"/>
+                <parameter name="summary"
+            value="yes"/>             <parameter
+                name="showhtmlparseroutput"
+            value="yes"/>             <parameter
+                name="saveresponse" value="yes"/>
+                <parameter name="protocol"
+            value="http"/>             <parameter
+                name="host"
+            value="services-dev.canoo.com"/>
+        </config>         <results>
+                <step>                 <parameter
+                    name="stepType"
+                value="invoke"/>
+                    <parameter name="url"
+                value="formTest?mode=invalidHtml"/>
+                    <parameter
+                    name="resultfilename"
+                value="lastResponse1013003550599.html"/>
+                    <parameter name="stepId"
+                value="Open invalid html page"/>
+                    <result>
+                        <completed duration="21"/>
+                </result>             </step>
+        </results>
+</testresult> <testresult
+        endtime="Wed Feb 06 14:52:30 CET 2002"
+        starttime="Wed Feb 06 14:52:30 CET 2002"
+        successful="yes" testspecname="bad html: form in table not properly nested in td tags">
+        <config>
+            <parameter name="haltonerror" value="yes"/>
+            <parameter name="defaultpage" value="null"/>
+            <parameter name="port" value="80"/>
+            <parameter name="resultpath" value="/opt/dev/sharedPlan/webapps/selftest/results"/>
+            <parameter name="verbose" value="yes"/>
+            <parameter name="resultfile" value="WebTestResults.xml"/>
+            <parameter name="haltonfailure" value="yes"/>
+            <parameter name="basepath" value="selftest"/>
+            <parameter name="summary" value="yes"/>
+            <parameter name="showhtmlparseroutput" value="no"/>
+            <parameter name="saveresponse" value="yes"/>
+            <parameter name="protocol" value="http"/>
+            <parameter name="host" value="services-dev.canoo.com"/>
+        </config>
+        <results>
+            <step>
+                <parameter name="stepType" value="invoke"/>
+                <parameter name="url" value="formTest?mode=formNestingWrong"/>
+                <parameter name="resultfilename" value="lastResponse1013003550780.html"/>
+                <parameter name="stepId" value="Open multiple form page"/>
+                <result>
+                    <completed duration="22"/>
+                </result>
+            </step>
+            <step>
+                <parameter name="stepType" value="not"/>
+                <parameter name="stepId" value="fails, for button is found twice when form nesting is wrong"/>
+                <result>
+                    <completed duration="1"/>
+                </result>
+                <step>
+                    <parameter name="stepType" value="clickbutton"/>
+                    <parameter name="label" value="doIt"/>
+                    <parameter name="name" value="clickme"/>
+                    <parameter name="stepId" value="Click the submit button"/>
+                    <result>
+                        <failed/>
+                    </result>
+                </step>
+            </step>
+        </results>
+    </testresult>
+</summary>
+	<label>Rel.141</label><today>February 6 2002</today></build>

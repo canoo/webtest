@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="us-ascii"?>
+
+<project name="All Release Tests" default="suite">
+
+	<target name="suite" description="Test Implementations">
+		<ant antfile="deploymentStructure.xml"/>
+	</target>
+
+	<target name="out-of-suite" description="not for automatic execution">
+		<ant antfile="cruiseControl.xml"/>
+	</target>
+
+</project>

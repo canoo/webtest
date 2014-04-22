@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="us-ascii" ?>
+
+<project name="WebTest release tests" default="wt.full">
+	<description>
+    The ANT-Build file to validate a release of the Canoo Web Test.
+	</description>
+
+	<!-- the build number is set by the build server in cruise.xml -->
+	<property name="buildnumber" value="development"/>
+	<property name="webtest.module.home" location=".." description="Location of webtest sources" />
+	<property name="webtest.home" location="${webtest.module.home}" description="The webtest deployed installation under test"/>
+	<property file="${webtest.module.home}/selftests/environment/installation.properties"/>
+	<property name="webtest.server.webapp.dir" location="${webtest.module.home}/build/releasetest/deploy"/>
+	<property name="selftest.witness" location="selftestRunning.txt"/>
+
+	<property  name="wt.htmlReports.report.title" value="${ant.project.name}"/>			
+
+	<import file="${webtest.home}/webtest.xml"/>
+
+	<target name="wt.testInWork">
+		<property file="${webtest.module.home}/selftests/environment/server/localhost.properties"/>
+		<property file="${webtest.module.home}/selftests/environment/mode/main-build.properties"/>
+
+		<touch file="${selftest.witness}"/>
+		<ant antfile="TestSuite.xml" dir="tests"/>
+		<delete file="${selftest.witness}"/>
+	</target>
+</project>

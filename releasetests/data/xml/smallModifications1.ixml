@@ -1,0 +1,16 @@
+<modifications>
+	<modification type="modified">
+		<filename>src/com/canoo/webtest/ant/TestSpecificationTask.java</filename>
+		<project></project>
+		<date>2001-Sep-24 17:03:15</date>
+		<user>dierk</user>
+		<comment><![CDATA[changed layout a little - showing CC to Etienne]]></comment>
+	</modification>
+	<modification type="modified">
+		<filename>src/com/canoo/webtest/ant/SpecificationTask.java</filename>
+		<project></project>
+		<date>2001-Sep-24 17:05:15</date>
+		<user>dierk</user>
+		<comment><![CDATA[changed layout a little - showing CC to Etienne]]></comment>
+	</modification>
+</modifications>

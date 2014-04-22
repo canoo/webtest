@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build time="14 seconds">
+	<target name="modificationcheck" time="10 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:24: " name="Tstamp" time="0 seconds"></task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:25: " name="Taskdef" time="0 seconds"></task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:26: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Checking repository for modifications...]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:28: " name="UnknownElement" time="10 seconds">
+			<message priority="info"><![CDATA[Executing: cvs -d :pserver:guest:guest@gate.canoo.com:24000/repositories/cvs/public -q log -N "-d>2001-09-24 14:15:38 GMT"]]></message>
+			<message priority="info"><![CDATA[[modificationset] Too much repository activity...sleeping for: 9.505 seconds.]]></message>
+			<message priority="info"><![CDATA[Executing: cvs -d :pserver:guest:guest@gate.canoo.com:24000/repositories/cvs/public -q log -N "-d>2001-09-24 14:15:38 GMT"]]></message>
+		</task>
+	</target>
+	<target name="update" time="1 second">
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:15: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Getting the detected modifications...]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:16: " name="Cvs" time="1 second">
+			<message priority="warn"><![CDATA[cvs server: Updating .]]></message>
+			<message priority="info"><![CDATA[? TestReport.xml]]></message>
+			<message priority="info"><![CDATA[? build]]></message>
+			<message priority="info"><![CDATA[? buildcycleinfo]]></message>
+			<message priority="info"><![CDATA[? deploy]]></message>
+			<message priority="info"><![CDATA[? listCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? log.xml]]></message>
+			<message priority="info"><![CDATA[? modificationset.xml]]></message>
+			<message priority="info"><![CDATA[? opt]]></message>
+			<message priority="info"><![CDATA[? startCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? stopCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[P build.xml]]></message>
+			<message priority="info"><![CDATA[P cruisecontrol.properties]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com/canoo]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com/canoo/test]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com/canoo/test/test]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com/canoo/webtest]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com/canoo/webtest/self]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating bin]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/samples]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/samples/ffo]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/samples/ffo/NatPerSingle]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/samples/ffo/includes]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/samples/ffo/properties]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating lib]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating res]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/test]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/test/ant]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/test/engine]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/test/steps]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/test/test]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/tools]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/tools/build]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/tools/ftest]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/webtest]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/webtest/ant]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/webtest/engine]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/webtest/self]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/webtest/steps]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec/autotest]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec/autotest/ant]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec/autotest/engine]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec/autotest/steps]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec/autotest/test]]></message>
+		</task>
+	</target>
+	<target name="delegate" time="1 second">
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:9: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** Starting the WebTest specific build parts ***]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:10: " name="Ant" time="1 second">
+			<target name="checkForNewSources" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:25: " name="UpToDate" time="0 seconds"></task>
+			</target>
+			<target name="prepare" time="0 seconds"></target>
+			<target name="compile" time="0 seconds"></target>
+			<target name="unitTest" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:61: " name="JUnitTask" time="1 second">
+					<message priority="info"><![CDATA[Running com.canoo.webtest.AllTests]]></message>
+					<message priority="info"><![CDATA[Tests run: 7, Failures: 0, Errors: 0, Time elapsed: 0.759 sec]]></message>
+				</task>
+			</target>
+			<target name="test" time="0 seconds"></target>
+			<target name="full" time="0 seconds"></target>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:11: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** WebTest build successfully ended          ***]]></message>
+		</task>
+	</target>
+	<target name="cruise" time="0 seconds"></target>
+<label>Rel.17</label><today>September 24 2001</today></build>

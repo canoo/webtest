@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE build [
+	<!ENTITY modificationCheckAndUpdate SYSTEM "modificationCheckAndUpdate.ixml" >
+	<!ENTITY smallModifications1 SYSTEM "smallModifications1.ixml" >
+	<!ENTITY utOKNoDetail SYSTEM "utOKNoDetail.ixml" >
+	]>
+<build error="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:166: Execute failed: java.io.IOException: stopServer.sh: not found" time="12 seconds">
+	&modificationCheckAndUpdate;
+	<target name="delegate" time="1 second">
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:10: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** Starting the WebTest specific build parts ***]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:11: " name="Ant" time="1 second">
+			<target name="checkForNewSources" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:32: " name="UpToDate" time="0 seconds"></task>
+			</target>
+			<target name="prepare" time="0 seconds"></target>
+			<target name="compile" time="0 seconds"></target>
+			<target name="unitTest" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:72: " name="JUnitTask" time="1 second">
+					<message priority="info"><![CDATA[Running com.canoo.webtest.AllTests]]></message>
+					<message priority="info"><![CDATA[Tests run: 7, Failures: 0, Errors: 0, Time elapsed: 0.764 sec]]></message>
+				</task>
+			</target>
+			<target name="selfTestWar" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:91: " name="War" time="0 seconds"></task>
+			</target>
+			<target name="deploySelf" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:86: " name="Copy" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:87: " name="Chmod" time="0 seconds"></task>
+			</target>
+			<target name="checkServer" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:166: " name="ExecTask" time="0 seconds"></task>
+			</target>
+		</task>
+	</target>
+	&smallModifications1;
+	&utOKNoDetail;
+	<label>Rel.27</label><today>October 2 2001</today></build>

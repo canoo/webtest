@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE build [
+		<!ENTITY modificationCheckAndUpdate SYSTEM "modificationCheckAndUpdate.ixml" >
+		<!ENTITY smallModifications1 SYSTEM "smallModifications1.ixml" >
+		<!ENTITY utOKNoDetail SYSTEM "utOKNoDetail.ixml" >
+		]>
+<build time="32 seconds">
+	&modificationCheckAndUpdate;
+	<target name="delegate" time="5 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:10: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** Starting the WebTest specific build parts ***]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:11: " name="Ant" time="5 seconds">
+			<target name="checkForNewSources" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:25: " name="UpToDate" time="0 seconds"></task>
+			</target>
+			<target name="prepare" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:34: " name="Tstamp" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:35: " name="Echo" time="0 seconds">
+					<message priority="warn"><![CDATA[jar is not up to date: needs rebuild ]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:36: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:37: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:38: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:39: " name="Delete" time="0 seconds">
+					<message priority="info"><![CDATA[Deleting directory /opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build/classes]]></message>
+				</task>
+			</target>
+			<target name="compile" time="3 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:46: " name="Mkdir" time="0 seconds">
+					<message priority="info"><![CDATA[Created dir: /opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build/classes]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:48: " name="Javac" time="3 seconds">
+					<message priority="info"><![CDATA[Compiling 47 source files to /opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build/classes]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:54: " name="Jar" time="0 seconds">
+					<message priority="info"><![CDATA[Building jar: /opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/deploy/lib/webtest.jar]]></message>
+				</task>
+			</target>
+			<target name="unitTest" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/build.xml:61: " name="JUnitTask" time="1 second">
+					<message priority="info"><![CDATA[Running com.canoo.webtest.AllTests]]></message>
+					<message priority="info"><![CDATA[Tests run: 7, Failures: 0, Errors: 0, Time elapsed: 1.05 sec]]></message>
+				</task>
+			</target>
+			<target name="test" time="0 seconds"></target>
+			<target name="full" time="0 seconds"></target>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtest/WEB-INF/cc/CanooFunctionalTesting/cruise.xml:12: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** WebTest build successfully ended          ***]]></message>
+		</task>
+	</target>
+	<target name="cruise" time="0 seconds"></target>
+	&smallModifications1;
+	&utOKNoDetail;
+	<label>Rel.21</label><today>September 24 2001</today>
+	</build>

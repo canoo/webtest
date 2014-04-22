@@ -1,0 +1,19 @@
+<group description="common verification">
+	<verifyLinkedContent
+		xpath="/html/head/link[@rel='stylesheet']/@href"
+		accept="text/css"
+		/>
+	<verifyLinkedContent
+		xpath="//img/@src"
+		accept="image/*"
+		/>
+	<verifyLinkedContent
+		xpath="/html/head/link[contains(@rel, 'icon')]/@href"
+		accept="image/*"
+		/>
+	<verifyLinkedContent
+		description="Show how to handle alternative mime-types"
+		xpath="//script/@src"
+		accept="text/javascript;application/x-javascript"
+		/>
+</group>

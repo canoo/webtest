@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build time="29 seconds">
+	<target name="modificationcheck" time="11 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:29: " name="Tstamp" time="0 seconds"></task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:30: " name="Taskdef" time="0 seconds"></task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:31: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Checking repository for modifications...]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:33: " name="UnknownElement" time="11 seconds">
+			<message priority="info"><![CDATA[Executing: cvs -d :pserver:guest:guest@gate.canoo.com:24000/repositories/cvs/public -q log -N "-d>2001-10-03 13:31:35 GMT"]]></message>
+			<message priority="info"><![CDATA[[modificationset] Too much repository activity...sleeping for: 11.397 seconds.]]></message>
+			<message priority="info"><![CDATA[Executing: cvs -d :pserver:guest:guest@gate.canoo.com:24000/repositories/cvs/public -q log -N "-d>2001-10-03 13:31:35 GMT"]]></message>
+		</task>
+	</target>
+	<target name="update" time="1 second">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:20: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[Getting the detected modifications...]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:21: " name="Cvs" time="1 second">
+			<message priority="info"><![CDATA[? TestReport.xml]]></message>
+			<message priority="info"><![CDATA[? TestReport.xml.xml]]></message>
+			<message priority="info"><![CDATA[? build]]></message>
+			<message priority="info"><![CDATA[? buildcycleinfo]]></message>
+			<message priority="info"><![CDATA[? deploy]]></message>
+			<message priority="info"><![CDATA[? forget.tmp]]></message>
+			<message priority="info"><![CDATA[? listCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? log.xml]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating .]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest]]></message>
+			<message priority="info"><![CDATA[? modificationset.xml]]></message>
+			<message priority="info"><![CDATA[? opt]]></message>
+			<message priority="info"><![CDATA[? startCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? stopCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? doc/api]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes]]></message>
+			<message priority="info"><![CDATA[P doc/info/changes.txt]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com/canoo]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com/canoo/test]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com/canoo/test/test]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com/canoo/webtest]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating MOVE-THIS-TO-WEBAPPS-DIR/autoTest/WEB-INF/classes/com/canoo/webtest/self]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating bin]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/info]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/package-lists]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/package-lists/ant]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/package-lists/java2]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/package-lists/junit]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/samples]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/samples/ffo]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/samples/ffo/NatPerSingle]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/samples/ffo/includes]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/samples/ffo/properties]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/webapp-info]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating doc/webapp-info/sample-docs]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating lib]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating res]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/test]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/test/ant]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/test/engine]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/test/steps]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/test/test]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/tools]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/tools/build]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/tools/ftest]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/webtest]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/webtest/ant]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/webtest/engine]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/webtest/self]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/canoo/webtest/steps]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec/autotest]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec/autotest/ant]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec/autotest/engine]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec/autotest/steps]]></message>
+			<message priority="warn"><![CDATA[cvs server: Updating src/com/seibertec/autotest/test]]></message>
+		</task>
+	</target>
+	<target name="delegate" time="16 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:10: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** Starting the WebTest specific build parts ***]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:11: " name="Ant" time="16 seconds">
+			<target name="checkForNewSources" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:32: " name="UpToDate" time="1 second"></task>
+			</target>
+			<target name="prepare" time="0 seconds"></target>
+			<target name="compile" time="0 seconds"></target>
+			<target name="unitTest" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:72: " name="JUnitTask" time="1 second">
+					<message priority="info"><![CDATA[Running com.canoo.webtest.AllTests]]></message>
+					<message priority="info"><![CDATA[Tests run: 7, Failures: 0, Errors: 0, Time elapsed: 0.738 sec]]></message>
+				</task>
+			</target>
+			<target name="selfTestWar" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:90: " name="War" time="0 seconds">
+					<message priority="info"><![CDATA[Building war: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/selftest.war]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:95: " name="Copy" time="0 seconds">
+					<message priority="info"><![CDATA[Copying 1 file to /opt/dev/sharedPlan/webapps]]></message>
+				</task>
+			</target>
+			<target name="mayUnWarSelftest" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:99: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:100: " name="Expand" time="0 seconds">
+					<message priority="info"><![CDATA[Expanding: /opt/dev/sharedPlan/webapps/selftest.war into /opt/dev/sharedPlan/webapps/selftest]]></message>
+				</task>
+			</target>
+			<target name="deploySelf" time="0 seconds"></target>
+			<target name="mayRestart" time="0 seconds"></target>
+			<target name="functionalTest" time="5 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:82: " name="Ant" time="5 seconds">
+					<target name="main" time="4 seconds">
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:32: " name="TestSpecificationTask" time="3 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:135: " name="TestSpecificationTask" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:160: " name="TestSpecificationTask" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:177: " name="TestSpecificationTask" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:194: " name="TestSpecificationTask" time="0 seconds"></task>
+						<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/samples/selfTest.xml:247: " name="TestSpecificationTask" time="0 seconds"></task>
+					</target>
+				</task>
+			</target>
+			<target name="test" time="0 seconds"></target>
+			<target name="apidoc" time="5 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:110: " name="Echo" time="0 seconds">
+					<message priority="warn"><![CDATA[make the webapp api doc]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:111: " name="Delete" time="0 seconds">
+					<message priority="info"><![CDATA[Deleting directory /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/api]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:112: " name="Mkdir" time="0 seconds">
+					<message priority="info"><![CDATA[Created dir: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/doc/api]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:113: " name="Property" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:114: " name="Property" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:119: " name="Javadoc" time="5 seconds">
+					<message priority="info"><![CDATA[Generating Javadoc]]></message>
+					<message priority="info"><![CDATA[Javadoc execution]]></message>
+					<message priority="info"><![CDATA[Loading source files for package com.canoo.tools.ftest...]]></message>
+					<message priority="info"><![CDATA[Loading source files for package com.canoo.webtest...]]></message>
+					<message priority="info"><![CDATA[Loading source files for package com.canoo.webtest.ant...]]></message>
+					<message priority="info"><![CDATA[Loading source files for package com.canoo.webtest.self...]]></message>
+					<message priority="info"><![CDATA[Loading source files for package com.canoo.webtest.engine...]]></message>
+					<message priority="info"><![CDATA[Loading source files for package com.canoo.webtest.steps...]]></message>
+					<message priority="info"><![CDATA[Constructing Javadoc information...]]></message>
+					<message priority="info"><![CDATA[Building tree for all the packages and classes...]]></message>
+					<message priority="info"><![CDATA[Building index for all the packages and classes...]]></message>
+					<message priority="info"><![CDATA[Building index for all classes...]]></message>
+				</task>
+			</target>
+			<target name="zip" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:137: " name="Zip" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:139: " name="Zip" time="0 seconds">
+					<message priority="info"><![CDATA[Building zip: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/doc.zip]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:141: " name="Zip" time="0 seconds"></task>
+			</target>
+			<target name="webTestWar" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:152: " name="War" time="1 second">
+					<message priority="info"><![CDATA[Building war: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/deploy/webtest.war]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:161: " name="Copy" time="0 seconds">
+					<message priority="info"><![CDATA[Copying 1 file to /opt/dev/sharedPlan/webapps]]></message>
+				</task>
+			</target>
+			<target name="mayUnWarWebtest" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:165: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:167: " name="Expand" time="0 seconds">
+					<message priority="info"><![CDATA[Expanding: /opt/dev/sharedPlan/webapps/webtest.war into /opt/dev/sharedPlan/webapps/webtest]]></message>
+				</task>
+			</target>
+			<target name="checkWebServerDeployment" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:176: " name="Get" time="0 seconds">
+					<message priority="info"><![CDATA[Getting: http://services-dev.canoo.com/webtest]]></message>
+				</task>
+			</target>
+			<target name="deployWeb" time="0 seconds"></target>
+			<target name="deploy" time="0 seconds"></target>
+			<target name="full" time="0 seconds"></target>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:12: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** WebTest build successfully ended          ***]]></message>
+		</task>
+	</target>
+	<target name="tagLastBuild" time="0 seconds">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:16: " name="Cvs" time="0 seconds">
+			<message priority="info"><![CDATA[? TestReport.xml]]></message>
+			<message priority="info"><![CDATA[? TestReport.xml.xml]]></message>
+			<message priority="info"><![CDATA[? build]]></message>
+			<message priority="info"><![CDATA[? buildcycleinfo]]></message>
+			<message priority="info"><![CDATA[? deploy]]></message>
+			<message priority="info"><![CDATA[? forget.tmp]]></message>
+			<message priority="info"><![CDATA[? listCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? log.xml]]></message>
+			<message priority="info"><![CDATA[? modificationset.xml]]></message>
+			<message priority="info"><![CDATA[? opt]]></message>
+			<message priority="info"><![CDATA[? startCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? stopCruiseControl.sh]]></message>
+			<message priority="info"><![CDATA[? doc/api]]></message>
+		</task>
+	</target>
+	<target name="cruise" time="0 seconds"></target>
+<modifications>
+   <modification type="modified">
+     <filename>doc/info/changes.txt</filename>
+     <project></project>
+     <date>2001-Oct-03 16:12:04</date>
+     <user>dierk</user>
+     <comment><![CDATA[moved]]></comment>
+   </modification>
+</modifications><testsuite errors="0" failures="0" name="com.canoo.webtest.AllTests" tests="7" time="0.763">
+  <testcase name="testCtorBasePath" time="0.006"></testcase>
+  <testcase name="testCtorDefaultPage" time="0.001"></testcase>
+  <testcase name="testStandard" time="0.001"></testcase>
+  <testcase name="testUrlFromHostPort" time="0"></testcase>
+  <testcase name="testUrlFromHostPortBasePath" time="0.001"></testcase>
+  <testcase name="testAddStep" time="0.022"></testcase>
+  <testcase name="testCtor" time="0.001"></testcase>
+</testsuite><label>Rel.36</label><today>October 3 2001</today></build>

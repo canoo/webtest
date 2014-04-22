@@ -1,0 +1,23 @@
+<modifications>
+	<modification type="cvs">
+		<file action="modified">
+			<revision>1.55</revision>
+			<filename>config.xml</filename>
+		</file>
+		<date>02/12/2005 16:05:24</date>
+		<user>dna</user>
+		<comment><![CDATA[Change the notification address]]></comment>
+		<revision>1.55</revision>
+	</modification>
+	<modification type="cvs">
+		<file action="modified">
+			<revision>1.55</revision>
+			<filename>AllTests.java</filename>
+			<project>src/java</project>
+		</file>
+		<date>02/12/2005 16:06:24</date>
+		<user>dna</user>
+		<comment><![CDATA[Suppress constructor.]]></comment>
+		<revision>1.1</revision>
+	</modification>
+</modifications>

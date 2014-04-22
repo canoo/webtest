@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE build [
+	<!ENTITY modificationCheckAndUpdate SYSTEM "modificationCheckAndUpdate.ixml" >
+	<!ENTITY smallModifications1 SYSTEM "smallModifications1.ixml" >
+	<!ENTITY utOKNoDetail SYSTEM "utOKNoDetail.ixml" >
+	]>
+<build error="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:57: Compile failed, messages should have been provided." time="32 seconds">
+	&modificationCheckAndUpdate;
+	<target name="delegate" time="1 second">
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:10: " name="Echo" time="0 seconds">
+			<message priority="warn"><![CDATA[*** Starting the WebTest specific build parts ***]]></message>
+		</task>
+		<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/cruise.xml:11: " name="Ant" time="1 second">
+			<target name="checkForNewSources" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:32: " name="UpToDate" time="0 seconds"></task>
+			</target>
+			<target name="prepare" time="0 seconds">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:42: " name="Tstamp" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:43: " name="Echo" time="0 seconds">
+					<message priority="warn"><![CDATA[jar is not up to date: needs rebuild ]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:44: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:45: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:46: " name="Mkdir" time="0 seconds"></task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:47: " name="Delete" time="0 seconds">
+					<message priority="info"><![CDATA[Deleting directory /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build/classes]]></message>
+				</task>
+			</target>
+			<target name="compile" time="1 second">
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:55: " name="Mkdir" time="0 seconds">
+					<message priority="info"><![CDATA[Created dir: /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build/classes]]></message>
+				</task>
+				<task location="/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build.xml:57: " name="Javac" time="1 second">
+					<message priority="info"><![CDATA[Compiling 37 source files to /opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/build/classes]]></message>
+					<message priority="warn"><![CDATA[/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/src/com/canoo/webtest/ant/TestSpecificationTask.java:18: '{' expected]]></message>
+					<message priority="warn"><![CDATA[public class TestSpecificationTask extend Task]]></message>
+					<message priority="warn"><![CDATA[                                   ^]]></message>
+					<message priority="warn"><![CDATA[/opt/dev/sharedPlan/webapps/webtestCC/CanooFunctionalTesting/src/com/canoo/webtest/ant/TestSpecificationTask.java:95: '}' expected]]></message>
+					<message priority="warn"><![CDATA[}]]></message>
+					<message priority="warn"><![CDATA[ ^]]></message>
+					<message priority="warn"><![CDATA[2 errors]]></message>
+				</task>
+			</target>
+		</task>
+	</target>
+	&smallModifications1;
+	&utOKNoDetail;
+	<label>Rel.48</label><today>October 25 2001</today></build>
