@@ -27,6 +27,9 @@
         <exec executable="git" failonerror="true" logError="true">
             <arg line="tag -m 'successful cc build' ${label}"/>
         </exec>
+        <exec executable="git" failonerror="true" logError="true">
+            <arg line="push origin --tags"/>
+        </exec>
     </target>
 
 	<target name="update">
