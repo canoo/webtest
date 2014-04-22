@@ -19,4 +19,5 @@ webtestRunning.txt
 junit*.properties
 dummy
 spiderman.txt
-
+.idea/
+*.iml
