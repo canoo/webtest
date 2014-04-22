@@ -1,51 +1,79 @@
-<?xml version="1.0" encoding="us-ascii"?><!--Generated on 24-Feb-2011 19:44 for build R_1811-->
-<!ENTITY % step "(pdfVerifyFieldCount | verifyProperty | verifyElement | steps | emailSetConfig | pdfToTextFilter | excelVerifyCellSum | verifyRadioButton | setCheckbox | pdfVerifyPageCount | pdfVerifyField | storeHeader | pdfToLinksFilter | followFrame | contentStripper | setFileField | excelVerifyCellValue | pdfVerifyText | storeXPath | verifyInputField | verifyCheckbox | emailStoreMessageId | retry | storeInputFieldAttribute | pdfVerifyTitle | invoke | verifyDocumentURL | not | emailStorePartFilename | verifyElementText | verifyImages | excelVerifyCellStyle | pdfVerifyInfoProperty | excelStructureFilter | storeRegEx | storeDigest | closeWindow | storeProperty | storeLength | lineSeparatorFilter | pdfVerifyEncryptionPermissions | config | expectDialog | confirm | expectDialogs | forceHiddenInputField | clickButton | selectWebClient | pdfVerifyReadOnlyField | matchLinesFilter | applyFilters | setSelectField | countWebtestResults | pdfVerifyCheckboxField | previousResponse | verifyContent | selectLinesFilter | scriptStep | verifyXPath | antWrapper | enableJavaScript | emailStoreMessageType | emailStoreHeader | dataDriven | setInputField | reportLinks | excelStoreCellValue | verifyNoDialogs | pdfVerifyFont | verifyTextarea | clickElement | forceInputFieldAttribute | dragAndDrop | prompt | emailStorePartCount | verifyCookie | webtest | pdfVerifyBookmark | selectForm | group | mouseOut | verifyTitle | setRadioButton | testInfo | mouseOver | tagStripper | verifyText | emailMessageContentFilter | pdfDecryptDocument | alert | excelSelectSheet | timedGroup | verifySelectField | pdfVerifyLink | storeRandom | reportSite | storeCookie | ifStep | pdfVerifyTextField | emailStoreMessageCount | verifyLinks | pdfVerifyEncryptionStrength | storeElementAttribute | clickLink | emailMessageStructureFilter | pdfToFontsFilter | selectWindow | verifyLinkedContent | emailDeleteMessage | repeat | storeLinkParameter | pdfVerifyEncryptionProperty | excelFindRow | normalizeXml | storeResponseCode | verifyHeader | pdfVerifyEncryption | replaceFilter | pdfToBookmarksFilter | groovy)" >
+<?xml version="1.0" encoding="us-ascii"?><!--Generated on 22-Apr-2014 16:46 for build R_1824-->
+<!ENTITY % step "(matchLinesFilter | storeCookie | verifyLinkedContent | storeLength | storeDigest | setFileField | setRadioButton | dragAndDrop | excelVerifyCellSum | clickLink | storeRegEx | verifyElementText | verifyContent | storeProperty | pdfVerifyEncryptionProperty | previousResponse | verifyInputField | emailStorePartCount | expectDialogs | verifyXPath | setCheckbox | emailStorePartFilename | storeXPath | excelStoreCellValue | emailStoreMessageCount | verifyTextarea | testInfo | emailStoreHeader | pdfDecryptDocument | webtest | emailDeleteMessage | config | alert | antWrapper | timedGroup | ifStep | pdfToBookmarksFilter | verifyCheckbox | contentStripper | selectWebClient | lineSeparatorFilter | dataDriven | pdfVerifyBookmark | pdfVerifyEncryptionStrength | excelFindRow | verifyNoDialogs | emailStoreMessageType | verifySelectField | pdfVerifyLink | prompt | scriptStep | verifyElement | verifyDocumentURL | storeElementAttribute | mouseOver | closeWindow | reportSite | group | retry | excelVerifyCellStyle | pdfVerifyPageCount | not | reportLinks | pdfToTextFilter | applyFilters | storeLinkParameter | setSelectField | selectWindow | pdfToFontsFilter | emailMessageContentFilter | setInputField | clickElement | verifyRadioButton | excelStructureFilter | pdfVerifyEncryption | storeRandom | steps | pdfVerifyReadOnlyField | expectDialog | excelVerifyCellValue | verifyCookie | invoke | emailStoreMessageId | pdfVerifyCheckboxField | verifyLinks | verifyTitle | pdfVerifyEncryptionPermissions | followFrame | forceInputFieldAttribute | storeHeader | storeResponseCode | pdfVerifyTitle | pdfVerifyField | forceHiddenInputField | storeInputFieldAttribute | excelSelectSheet | verifyText | enableJavaScript | mouseOut | emailMessageStructureFilter | pdfVerifyInfoProperty | selectLinesFilter | repeat | pdfToLinksFilter | clickButton | pdfVerifyTextField | countWebtestResults | tagStripper | normalizeXml | pdfVerifyText | groovy | emailSetConfig | replaceFilter | confirm | selectForm | verifyHeader | pdfVerifyFont | verifyProperty | pdfVerifyFieldCount | verifyImages)" >
 <!ELEMENT step EMPTY >
 <!ELEMENT condition EMPTY >
-<!ELEMENT pdfVerifyFieldCount EMPTY >
-<!ATTLIST pdfVerifyFieldCount
-	count CDATA #REQUIRED
+<!ELEMENT matchLinesFilter EMPTY >
+<!ATTLIST matchLinesFilter
 	description CDATA #IMPLIED
-	includeDuplicates CDATA #IMPLIED
-	page CDATA #IMPLIED
+	regex CDATA #REQUIRED
+	remove CDATA #IMPLIED
 >
-<!ELEMENT verifyProperty EMPTY >
-<!ATTLIST verifyProperty
+<!ELEMENT storeCookie EMPTY >
+<!ATTLIST storeCookie
 	description CDATA #IMPLIED
-	name CDATA #IMPLIED
+	name CDATA #REQUIRED
 	property CDATA #IMPLIED
 	propertyType CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	text CDATA #IMPLIED
-	value CDATA #IMPLIED
 >
-<!ELEMENT verifyElement EMPTY >
-<!ATTLIST verifyElement
+<!ELEMENT verifyLinkedContent EMPTY >
+<!ATTLIST verifyLinkedContent
+	accept CDATA #IMPLIED
 	description CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	text CDATA #REQUIRED
-	type CDATA #REQUIRED
+	xpath CDATA #REQUIRED
 >
-<!ELEMENT steps ( %step; )* >
-<!ATTLIST steps
+<!ELEMENT storeLength ( table | %step; )* >
+<!ATTLIST storeLength
 	description CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	property CDATA #REQUIRED
+	propertyType CDATA #IMPLIED
+	xpath CDATA #IMPLIED
 >
-<!ELEMENT emailSetConfig EMPTY >
-<!ATTLIST emailSetConfig
-	delay CDATA #IMPLIED
+<!ELEMENT storeDigest ( table | %step; )* >
+<!ATTLIST storeDigest
 	description CDATA #IMPLIED
-	password CDATA #IMPLIED
-	server CDATA #REQUIRED
+	htmlId CDATA #IMPLIED
+	property CDATA #REQUIRED
+	propertyType CDATA #IMPLIED
 	type CDATA #IMPLIED
-	username CDATA #IMPLIED
+	xpath CDATA #IMPLIED
 >
-<!ELEMENT pdfToTextFilter EMPTY >
-<!ATTLIST pdfToTextFilter
+<!ELEMENT setFileField EMPTY >
+<!ATTLIST setFileField
+	checkFileExists CDATA #IMPLIED
 	description CDATA #IMPLIED
-	fragSep CDATA #IMPLIED
-	lineSep CDATA #IMPLIED
-	mode CDATA #IMPLIED
-	pageSep CDATA #IMPLIED
+	fieldIndex CDATA #IMPLIED
+	fileName CDATA #IMPLIED
+	forLabel CDATA #IMPLIED
+	formName CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	name CDATA #IMPLIED
+	save CDATA #IMPLIED
+	savePrefix CDATA #IMPLIED
+	saveResponse CDATA #IMPLIED
+	xpath CDATA #IMPLIED
+>
+<!ELEMENT setRadioButton ( #PCDATA )* >
+<!ATTLIST setRadioButton
+	description CDATA #IMPLIED
+	fieldIndex CDATA #IMPLIED
+	forLabel CDATA #IMPLIED
+	formName CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	name CDATA #IMPLIED
+	save CDATA #IMPLIED
+	savePrefix CDATA #IMPLIED
+	saveResponse CDATA #IMPLIED
+	value CDATA #IMPLIED
+	xpath CDATA #IMPLIED
+>
+<!ELEMENT dragAndDrop EMPTY >
+<!ATTLIST dragAndDrop
+	description CDATA #IMPLIED
+	fromHtmlId CDATA #IMPLIED
+	fromXPath CDATA #IMPLIED
+	toHtmlId CDATA #IMPLIED
+	toXPath CDATA #IMPLIED
 >
 <!ELEMENT excelVerifyCellSum EMPTY >
 <!ATTLIST excelVerifyCellSum
@@ -57,15 +85,105 @@
 	sheetIndex CDATA #IMPLIED
 	sheetName CDATA #IMPLIED
 >
-<!ELEMENT verifyRadioButton EMPTY >
-<!ATTLIST verifyRadioButton
-	checked CDATA #REQUIRED
+<!ELEMENT clickLink ( #PCDATA )* >
+<!ATTLIST clickLink
+	description CDATA #IMPLIED
+	href CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	label CDATA #IMPLIED
+	password CDATA #IMPLIED
+	save CDATA #IMPLIED
+	savePrefix CDATA #IMPLIED
+	saveResponse CDATA #IMPLIED
+	username CDATA #IMPLIED
+	xpath CDATA #IMPLIED
+>
+<!ELEMENT storeRegEx EMPTY >
+<!ATTLIST storeRegEx
+	description CDATA #IMPLIED
+	group CDATA #IMPLIED
+	property CDATA #IMPLIED
+	propertyType CDATA #IMPLIED
+	text CDATA #IMPLIED
+>
+<!ELEMENT verifyElementText EMPTY >
+<!ATTLIST verifyElementText
+	description CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	name CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	text CDATA #REQUIRED
+	type CDATA #IMPLIED
+>
+<!ELEMENT verifyContent ( table | %step; )* >
+<!ATTLIST verifyContent
+	description CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	mode CDATA #IMPLIED
+	readFiltered CDATA #IMPLIED
+	referenceFile CDATA #REQUIRED
+	xpath CDATA #IMPLIED
+>
+<!ELEMENT table EMPTY >
+<!ATTLIST table
+	column CDATA #REQUIRED
+	description CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	id CDATA #IMPLIED
+	row CDATA #REQUIRED
+>
+<!ELEMENT storeProperty ( #PCDATA )* >
+<!ATTLIST storeProperty
+	description CDATA #IMPLIED
+	eval CDATA #IMPLIED
+	file CDATA #IMPLIED
+	name CDATA #IMPLIED
+	property CDATA #IMPLIED
+	propertyType CDATA #IMPLIED
+	value CDATA #IMPLIED
+>
+<!ELEMENT pdfVerifyEncryptionProperty EMPTY >
+<!ATTLIST pdfVerifyEncryptionProperty
+	description CDATA #IMPLIED
+	exists CDATA #IMPLIED
+	key CDATA #REQUIRED
+	regex CDATA #IMPLIED
+	value CDATA #IMPLIED
+>
+<!ELEMENT previousResponse EMPTY >
+<!ATTLIST previousResponse
+	description CDATA #IMPLIED
+	save CDATA #IMPLIED
+	savePrefix CDATA #IMPLIED
+	saveResponse CDATA #IMPLIED
+>
+<!ELEMENT verifyInputField EMPTY >
+<!ATTLIST verifyInputField
 	description CDATA #IMPLIED
 	fieldIndex CDATA #IMPLIED
 	formName CDATA #IMPLIED
 	htmlId CDATA #IMPLIED
 	name CDATA #REQUIRED
+	regex CDATA #IMPLIED
 	value CDATA #IMPLIED
+	xpath CDATA #IMPLIED
+>
+<!ELEMENT emailStorePartCount EMPTY >
+<!ATTLIST emailStorePartCount
+	description CDATA #IMPLIED
+	messageId CDATA #REQUIRED
+	property CDATA #REQUIRED
+	propertyType CDATA #IMPLIED
+>
+<!ELEMENT expectDialogs ( %step; )* >
+<!ATTLIST expectDialogs
+	description CDATA #IMPLIED
+>
+<!ELEMENT verifyXPath EMPTY >
+<!ATTLIST verifyXPath
+	description CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	text CDATA #IMPLIED
 	xpath CDATA #IMPLIED
 >
 <!ELEMENT setCheckbox ( #PCDATA )* >
@@ -83,80 +201,13 @@
 	value CDATA #IMPLIED
 	xpath CDATA #IMPLIED
 >
-<!ELEMENT pdfVerifyPageCount EMPTY >
-<!ATTLIST pdfVerifyPageCount
-	count CDATA #REQUIRED
+<!ELEMENT emailStorePartFilename EMPTY >
+<!ATTLIST emailStorePartFilename
 	description CDATA #IMPLIED
->
-<!ELEMENT pdfVerifyField EMPTY >
-<!ATTLIST pdfVerifyField
-	description CDATA #IMPLIED
-	exists CDATA #IMPLIED
-	name CDATA #REQUIRED
-	page CDATA #IMPLIED
->
-<!ELEMENT storeHeader EMPTY >
-<!ATTLIST storeHeader
-	description CDATA #IMPLIED
-	name CDATA #REQUIRED
-	property CDATA #IMPLIED
+	messageId CDATA #REQUIRED
+	partIndex CDATA #IMPLIED
+	property CDATA #REQUIRED
 	propertyType CDATA #IMPLIED
->
-<!ELEMENT pdfToLinksFilter EMPTY >
-<!ATTLIST pdfToLinksFilter
-	description CDATA #IMPLIED
->
-<!ELEMENT followFrame ( #PCDATA )* >
-<!ATTLIST followFrame
-	description CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	name CDATA #IMPLIED
-	relative CDATA #IMPLIED
-	save CDATA #IMPLIED
-	savePrefix CDATA #IMPLIED
-	saveResponse CDATA #IMPLIED
->
-<!ELEMENT contentStripper EMPTY >
-<!ATTLIST contentStripper
-	description CDATA #IMPLIED
->
-<!ELEMENT setFileField EMPTY >
-<!ATTLIST setFileField
-	checkFileExists CDATA #IMPLIED
-	description CDATA #IMPLIED
-	fieldIndex CDATA #IMPLIED
-	fileName CDATA #IMPLIED
-	forLabel CDATA #IMPLIED
-	formName CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	name CDATA #IMPLIED
-	save CDATA #IMPLIED
-	savePrefix CDATA #IMPLIED
-	saveResponse CDATA #IMPLIED
-	xpath CDATA #IMPLIED
->
-<!ELEMENT excelVerifyCellValue EMPTY >
-<!ATTLIST excelVerifyCellValue
-	cell CDATA #IMPLIED
-	col CDATA #IMPLIED
-	description CDATA #IMPLIED
-	row CDATA #IMPLIED
-	sheetIndex CDATA #IMPLIED
-	sheetName CDATA #IMPLIED
-	text CDATA #REQUIRED
->
-<!ELEMENT pdfVerifyText EMPTY >
-<!ATTLIST pdfVerifyText
-	description CDATA #IMPLIED
-	endPage CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	startPage CDATA #IMPLIED
-	text CDATA #REQUIRED
->
-<!ELEMENT option EMPTY >
-<!ATTLIST option
-	name CDATA #REQUIRED
-	value CDATA #REQUIRED
 >
 <!ELEMENT storeXPath EMPTY >
 <!ATTLIST storeXPath
@@ -166,16 +217,99 @@
 	propertyType CDATA #IMPLIED
 	xpath CDATA #REQUIRED
 >
-<!ELEMENT verifyInputField EMPTY >
-<!ATTLIST verifyInputField
+<!ELEMENT excelStoreCellValue EMPTY >
+<!ATTLIST excelStoreCellValue
+	cell CDATA #IMPLIED
+	col CDATA #IMPLIED
 	description CDATA #IMPLIED
-	fieldIndex CDATA #IMPLIED
-	formName CDATA #IMPLIED
+	property CDATA #REQUIRED
+	propertyType CDATA #IMPLIED
+	row CDATA #IMPLIED
+	sheetIndex CDATA #IMPLIED
+	sheetName CDATA #IMPLIED
+>
+<!ELEMENT emailStoreMessageCount EMPTY >
+<!ATTLIST emailStoreMessageCount
+	cc CDATA #IMPLIED
+	description CDATA #IMPLIED
+	from CDATA #IMPLIED
+	property CDATA #REQUIRED
+	propertyType CDATA #IMPLIED
+	replyTo CDATA #IMPLIED
+	subject CDATA #IMPLIED
+	to CDATA #IMPLIED
+>
+<!ELEMENT verifyTextarea EMPTY >
+<!ATTLIST verifyTextarea
+	description CDATA #IMPLIED
 	htmlId CDATA #IMPLIED
-	name CDATA #REQUIRED
+	name CDATA #IMPLIED
 	regex CDATA #IMPLIED
-	value CDATA #IMPLIED
-	xpath CDATA #IMPLIED
+	text CDATA #REQUIRED
+	type CDATA #IMPLIED
+>
+<!ELEMENT testInfo ( #PCDATA )* >
+<!ATTLIST testInfo
+	description CDATA #IMPLIED
+	info CDATA #IMPLIED
+	type CDATA #REQUIRED
+>
+<!ELEMENT emailStoreHeader EMPTY >
+<!ATTLIST emailStoreHeader
+	description CDATA #IMPLIED
+	headerName CDATA #REQUIRED
+	messageId CDATA #REQUIRED
+	partIndex CDATA #IMPLIED
+	property CDATA #REQUIRED
+	propertyType CDATA #IMPLIED
+>
+<!ELEMENT pdfDecryptDocument EMPTY >
+<!ATTLIST pdfDecryptDocument
+	description CDATA #IMPLIED
+	password CDATA #REQUIRED
+>
+<!ELEMENT webtest ( config | steps )* >
+<!ATTLIST webtest
+	description CDATA #IMPLIED
+	name CDATA #REQUIRED
+>
+<!ELEMENT emailDeleteMessage EMPTY >
+<!ATTLIST emailDeleteMessage
+	description CDATA #IMPLIED
+	messageId CDATA #REQUIRED
+>
+<!ELEMENT config ( header | option )* >
+<!ATTLIST config
+	description CDATA #IMPLIED
+>
+<!ELEMENT alert EMPTY >
+<!ATTLIST alert
+	description CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	response CDATA #IMPLIED
+	saveProperty CDATA #IMPLIED
+	savePropertyType CDATA #IMPLIED
+	text CDATA #REQUIRED
+>
+<!ELEMENT antWrapper ( %step; )* >
+<!ATTLIST antWrapper
+	description CDATA #IMPLIED
+>
+<!ELEMENT timedGroup ( %step; )* >
+<!ATTLIST timedGroup
+	description CDATA #IMPLIED
+	maxMillis CDATA #IMPLIED
+	maxSeconds CDATA #IMPLIED
+>
+<!ELEMENT ifStep ( condition | then | else | otherwise | %step; )* >
+<!ATTLIST ifStep
+	description CDATA #IMPLIED
+	test CDATA #IMPLIED
+	unless CDATA #IMPLIED
+>
+<!ELEMENT pdfToBookmarksFilter EMPTY >
+<!ATTLIST pdfToBookmarksFilter
+	description CDATA #IMPLIED
 >
 <!ELEMENT verifyCheckbox EMPTY >
 <!ATTLIST verifyCheckbox
@@ -188,55 +322,108 @@
 	value CDATA #IMPLIED
 	xpath CDATA #IMPLIED
 >
-<!ELEMENT emailStoreMessageId EMPTY >
-<!ATTLIST emailStoreMessageId
-	cc CDATA #IMPLIED
+<!ELEMENT contentStripper EMPTY >
+<!ATTLIST contentStripper
 	description CDATA #IMPLIED
-	from CDATA #IMPLIED
-	messageIndex CDATA #IMPLIED
+>
+<!ELEMENT selectWebClient ( %step; )* >
+<!ATTLIST selectWebClient
+	description CDATA #IMPLIED
+	name CDATA #REQUIRED
+>
+<!ELEMENT lineSeparatorFilter EMPTY >
+<!ATTLIST lineSeparatorFilter
+	description CDATA #IMPLIED
+>
+<!ELEMENT dataDriven ( task )* >
+<!ATTLIST dataDriven
+	description CDATA #IMPLIED
+	failASAP CDATA #IMPLIED
+	filterclass CDATA #IMPLIED
+	replaceProperties CDATA #IMPLIED
+	table CDATA #IMPLIED
+	tableContainer CDATA #REQUIRED
+>
+<!ELEMENT pdfVerifyBookmark EMPTY >
+<!ATTLIST pdfVerifyBookmark
+	description CDATA #IMPLIED
+	name CDATA #REQUIRED
+	regex CDATA #IMPLIED
+>
+<!ELEMENT pdfVerifyEncryptionStrength EMPTY >
+<!ATTLIST pdfVerifyEncryptionStrength
+	description CDATA #IMPLIED
+	strength CDATA #REQUIRED
+>
+<!ELEMENT excelFindRow EMPTY >
+<!ATTLIST excelFindRow
+	col CDATA #IMPLIED
+	description CDATA #IMPLIED
 	property CDATA #REQUIRED
 	propertyType CDATA #IMPLIED
-	replyTo CDATA #IMPLIED
-	subject CDATA #IMPLIED
-	to CDATA #IMPLIED
+	sheetIndex CDATA #IMPLIED
+	sheetName CDATA #IMPLIED
+	startRow CDATA #IMPLIED
+	text CDATA #REQUIRED
 >
-<!ELEMENT retry ( %step; )* >
-<!ATTLIST retry
-	counterName CDATA #IMPLIED
+<!ELEMENT verifyNoDialogs EMPTY >
+<!ATTLIST verifyNoDialogs
 	description CDATA #IMPLIED
-	maxcount CDATA #REQUIRED
 >
-<!ELEMENT storeInputFieldAttribute EMPTY >
-<!ATTLIST storeInputFieldAttribute
-	attributeName CDATA #REQUIRED
+<!ELEMENT emailStoreMessageType EMPTY >
+<!ATTLIST emailStoreMessageType
+	description CDATA #IMPLIED
+	messageId CDATA #REQUIRED
+	property CDATA #REQUIRED
+	propertyType CDATA #IMPLIED
+>
+<!ELEMENT verifySelectField EMPTY >
+<!ATTLIST verifySelectField
 	description CDATA #IMPLIED
 	fieldIndex CDATA #IMPLIED
 	formName CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
 	name CDATA #REQUIRED
-	property CDATA #IMPLIED
-	propertyName CDATA #IMPLIED
-	propertyType CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	text CDATA #IMPLIED
 	value CDATA #IMPLIED
+	xpath CDATA #IMPLIED
 >
-<!ELEMENT pdfVerifyTitle EMPTY >
-<!ATTLIST pdfVerifyTitle
+<!ELEMENT pdfVerifyLink EMPTY >
+<!ATTLIST pdfVerifyLink
+	description CDATA #IMPLIED
+	href CDATA #IMPLIED
+	page CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	text CDATA #IMPLIED
+>
+<!ELEMENT prompt EMPTY >
+<!ATTLIST prompt
 	description CDATA #IMPLIED
 	regex CDATA #IMPLIED
-	title CDATA #REQUIRED
+	response CDATA #IMPLIED
+	saveProperty CDATA #IMPLIED
+	savePropertyType CDATA #IMPLIED
+	text CDATA #REQUIRED
 >
-<!ELEMENT invoke ( #PCDATA )* >
-<!ATTLIST invoke
-	content CDATA #IMPLIED
-	contentFile CDATA #IMPLIED
+<!ELEMENT scriptStep ( #PCDATA )* >
+<!ATTLIST scriptStep
 	description CDATA #IMPLIED
-	method CDATA #IMPLIED
-	password CDATA #IMPLIED
-	save CDATA #IMPLIED
-	savePrefix CDATA #IMPLIED
-	saveResponse CDATA #IMPLIED
-	soapAction CDATA #IMPLIED
-	url CDATA #REQUIRED
-	username CDATA #IMPLIED
+	keep CDATA #IMPLIED
+	language CDATA #IMPLIED
+	src CDATA #IMPLIED
+>
+<!ELEMENT verifyElement EMPTY >
+<!ATTLIST verifyElement
+	description CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	text CDATA #REQUIRED
+	type CDATA #REQUIRED
+>
+<!ELEMENT header EMPTY >
+<!ATTLIST header
+	name CDATA #REQUIRED
+	value CDATA #REQUIRED
 >
 <!ELEMENT verifyDocumentURL ( #PCDATA )* >
 <!ATTLIST verifyDocumentURL
@@ -244,30 +431,41 @@
 	regex CDATA #IMPLIED
 	text CDATA #REQUIRED
 >
-<!ELEMENT not ( %step; )* >
-<!ATTLIST not
-	description CDATA #IMPLIED
->
-<!ELEMENT emailStorePartFilename EMPTY >
-<!ATTLIST emailStorePartFilename
-	description CDATA #IMPLIED
-	messageId CDATA #REQUIRED
-	partIndex CDATA #IMPLIED
-	property CDATA #REQUIRED
-	propertyType CDATA #IMPLIED
->
-<!ELEMENT verifyElementText EMPTY >
-<!ATTLIST verifyElementText
+<!ELEMENT storeElementAttribute EMPTY >
+<!ATTLIST storeElementAttribute
+	attributeName CDATA #REQUIRED
 	description CDATA #IMPLIED
 	htmlId CDATA #IMPLIED
-	name CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	text CDATA #REQUIRED
-	type CDATA #IMPLIED
+	property CDATA #IMPLIED
+	propertyName CDATA #IMPLIED
+	propertyType CDATA #IMPLIED
+	xpath CDATA #IMPLIED
 >
-<!ELEMENT verifyImages EMPTY >
-<!ATTLIST verifyImages
+<!ELEMENT mouseOver EMPTY >
+<!ATTLIST mouseOver
 	description CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	xpath CDATA #IMPLIED
+>
+<!ELEMENT closeWindow EMPTY >
+<!ATTLIST closeWindow
+	description CDATA #IMPLIED
+>
+<!ELEMENT reportSite ( %step; )* >
+<!ATTLIST reportSite
+	depth CDATA #IMPLIED
+	description CDATA #IMPLIED
+	file CDATA #IMPLIED
+>
+<!ELEMENT group ( %step; )* >
+<!ATTLIST group
+	description CDATA #IMPLIED
+>
+<!ELEMENT retry ( %step; )* >
+<!ATTLIST retry
+	counterName CDATA #IMPLIED
+	description CDATA #IMPLIED
+	maxcount CDATA #REQUIRED
 >
 <!ELEMENT excelVerifyCellStyle EMPTY >
 <!ATTLIST excelVerifyCellStyle
@@ -293,147 +491,31 @@
 	valign CDATA #IMPLIED
 	wrap CDATA #IMPLIED
 >
-<!ELEMENT pdfVerifyInfoProperty EMPTY >
-<!ATTLIST pdfVerifyInfoProperty
-	description CDATA #IMPLIED
-	exists CDATA #IMPLIED
-	key CDATA #REQUIRED
-	regex CDATA #IMPLIED
-	value CDATA #IMPLIED
->
-<!ELEMENT excelStructureFilter EMPTY >
-<!ATTLIST excelStructureFilter
-	description CDATA #IMPLIED
->
-<!ELEMENT storeRegEx EMPTY >
-<!ATTLIST storeRegEx
-	description CDATA #IMPLIED
-	group CDATA #IMPLIED
-	property CDATA #IMPLIED
-	propertyType CDATA #IMPLIED
-	text CDATA #IMPLIED
->
-<!ELEMENT table EMPTY >
-<!ATTLIST table
-	column CDATA #REQUIRED
-	description CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	id CDATA #IMPLIED
-	row CDATA #REQUIRED
->
-<!ELEMENT storeDigest ( table | %step; )* >
-<!ATTLIST storeDigest
-	description CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	property CDATA #REQUIRED
-	propertyType CDATA #IMPLIED
-	type CDATA #IMPLIED
-	xpath CDATA #IMPLIED
->
-<!ELEMENT closeWindow EMPTY >
-<!ATTLIST closeWindow
-	description CDATA #IMPLIED
->
-<!ELEMENT storeProperty ( #PCDATA )* >
-<!ATTLIST storeProperty
-	description CDATA #IMPLIED
-	eval CDATA #IMPLIED
-	file CDATA #IMPLIED
-	name CDATA #IMPLIED
-	property CDATA #IMPLIED
-	propertyType CDATA #IMPLIED
-	value CDATA #IMPLIED
->
-<!ELEMENT storeLength ( table | %step; )* >
-<!ATTLIST storeLength
-	description CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	property CDATA #REQUIRED
-	propertyType CDATA #IMPLIED
-	xpath CDATA #IMPLIED
->
-<!ELEMENT lineSeparatorFilter EMPTY >
-<!ATTLIST lineSeparatorFilter
-	description CDATA #IMPLIED
->
-<!ELEMENT pdfVerifyEncryptionPermissions EMPTY >
-<!ATTLIST pdfVerifyEncryptionPermissions
-	allow CDATA #IMPLIED
-	deny CDATA #IMPLIED
-	description CDATA #IMPLIED
->
-<!ELEMENT config ( header | option )* >
-<!ATTLIST config
-	description CDATA #IMPLIED
->
-<!ELEMENT expectDialog EMPTY >
-<!ATTLIST expectDialog
-	description CDATA #IMPLIED
-	dialogType CDATA #IMPLIED
-	response CDATA #IMPLIED
-	saveProperty CDATA #IMPLIED
-	savePropertyType CDATA #IMPLIED
->
-<!ELEMENT confirm EMPTY >
-<!ATTLIST confirm
-	description CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	response CDATA #IMPLIED
-	saveProperty CDATA #IMPLIED
-	savePropertyType CDATA #IMPLIED
-	text CDATA #REQUIRED
->
-<!ELEMENT expectDialogs ( %step; )* >
-<!ATTLIST expectDialogs
-	description CDATA #IMPLIED
->
-<!ELEMENT forceHiddenInputField ( #PCDATA )* >
-<!ATTLIST forceHiddenInputField
-	description CDATA #IMPLIED
-	fieldIndex CDATA #IMPLIED
-	forLabel CDATA #IMPLIED
-	formName CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	name CDATA #IMPLIED
-	save CDATA #IMPLIED
-	savePrefix CDATA #IMPLIED
-	saveResponse CDATA #IMPLIED
+<!ELEMENT option EMPTY >
+<!ATTLIST option
+	name CDATA #REQUIRED
 	value CDATA #REQUIRED
-	xpath CDATA #IMPLIED
 >
-<!ELEMENT clickButton ( #PCDATA )* >
-<!ATTLIST clickButton
+<!ELEMENT pdfVerifyPageCount EMPTY >
+<!ATTLIST pdfVerifyPageCount
+	count CDATA #REQUIRED
 	description CDATA #IMPLIED
-	fieldIndex CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	label CDATA #IMPLIED
-	name CDATA #IMPLIED
-	password CDATA #IMPLIED
-	save CDATA #IMPLIED
-	savePrefix CDATA #IMPLIED
-	saveResponse CDATA #IMPLIED
-	username CDATA #IMPLIED
-	x CDATA #IMPLIED
-	xpath CDATA #IMPLIED
-	y CDATA #IMPLIED
 >
-<!ELEMENT selectWebClient ( %step; )* >
-<!ATTLIST selectWebClient
+<!ELEMENT not ( %step; )* >
+<!ATTLIST not
 	description CDATA #IMPLIED
-	name CDATA #REQUIRED
 >
-<!ELEMENT pdfVerifyReadOnlyField EMPTY >
-<!ATTLIST pdfVerifyReadOnlyField
+<!ELEMENT reportLinks EMPTY >
+<!ATTLIST reportLinks
 	description CDATA #IMPLIED
-	name CDATA #REQUIRED
-	page CDATA #IMPLIED
-	readOnly CDATA #IMPLIED
 >
-<!ELEMENT matchLinesFilter EMPTY >
-<!ATTLIST matchLinesFilter
+<!ELEMENT pdfToTextFilter EMPTY >
+<!ATTLIST pdfToTextFilter
 	description CDATA #IMPLIED
-	regex CDATA #REQUIRED
-	remove CDATA #IMPLIED
+	fragSep CDATA #IMPLIED
+	lineSep CDATA #IMPLIED
+	mode CDATA #IMPLIED
+	pageSep CDATA #IMPLIED
 >
 <!ELEMENT applyFilters ( table | %step; )* >
 <!ATTLIST applyFilters
@@ -443,6 +525,14 @@
 	savePrefix CDATA #IMPLIED
 	saveResponse CDATA #IMPLIED
 	xpath CDATA #IMPLIED
+>
+<!ELEMENT storeLinkParameter EMPTY >
+<!ATTLIST storeLinkParameter
+	description CDATA #IMPLIED
+	htmlId CDATA #REQUIRED
+	parameter CDATA #REQUIRED
+	property CDATA #IMPLIED
+	propertyType CDATA #IMPLIED
 >
 <!ELEMENT setSelectField ( #PCDATA )* >
 <!ATTLIST setSelectField
@@ -464,96 +554,26 @@
 	value CDATA #IMPLIED
 	xpath CDATA #IMPLIED
 >
-<!ELEMENT countWebtestResults EMPTY >
-<!ATTLIST countWebtestResults
+<!ELEMENT selectWindow EMPTY >
+<!ATTLIST selectWindow
 	description CDATA #IMPLIED
-	failOnError CDATA #IMPLIED
-	failureProperty CDATA #IMPLIED
-	resultFile CDATA #REQUIRED
-	successProperty CDATA #IMPLIED
+	index CDATA #IMPLIED
+	name CDATA #IMPLIED
+	title CDATA #IMPLIED
 >
-<!ELEMENT pdfVerifyCheckboxField EMPTY >
-<!ATTLIST pdfVerifyCheckboxField
+<!ELEMENT pdfToFontsFilter EMPTY >
+<!ATTLIST pdfToFontsFilter
 	description CDATA #IMPLIED
-	exists CDATA #IMPLIED
-	name CDATA #REQUIRED
-	page CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	value CDATA #IMPLIED
 >
-<!ELEMENT previousResponse EMPTY >
-<!ATTLIST previousResponse
+<!ELEMENT emailMessageContentFilter EMPTY >
+<!ATTLIST emailMessageContentFilter
+	contentType CDATA #IMPLIED
 	description CDATA #IMPLIED
+	messageId CDATA #REQUIRED
+	partIndex CDATA #IMPLIED
 	save CDATA #IMPLIED
 	savePrefix CDATA #IMPLIED
 	saveResponse CDATA #IMPLIED
->
-<!ELEMENT verifyContent ( table | %step; )* >
-<!ATTLIST verifyContent
-	description CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	mode CDATA #IMPLIED
-	readFiltered CDATA #IMPLIED
-	referenceFile CDATA #REQUIRED
-	xpath CDATA #IMPLIED
->
-<!ELEMENT selectLinesFilter EMPTY >
-<!ATTLIST selectLinesFilter
-	description CDATA #IMPLIED
-	includeStart CDATA #IMPLIED
-	includeStop CDATA #IMPLIED
-	remove CDATA #IMPLIED
-	repeat CDATA #IMPLIED
-	startRegex CDATA #IMPLIED
-	stopRegex CDATA #IMPLIED
->
-<!ELEMENT scriptStep ( #PCDATA )* >
-<!ATTLIST scriptStep
-	description CDATA #IMPLIED
-	keep CDATA #IMPLIED
-	language CDATA #IMPLIED
-	src CDATA #IMPLIED
->
-<!ELEMENT verifyXPath EMPTY >
-<!ATTLIST verifyXPath
-	description CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	text CDATA #IMPLIED
-	xpath CDATA #IMPLIED
->
-<!ELEMENT antWrapper ( %step; )* >
-<!ATTLIST antWrapper
-	description CDATA #IMPLIED
->
-<!ELEMENT enableJavaScript EMPTY >
-<!ATTLIST enableJavaScript
-	description CDATA #IMPLIED
-	enable CDATA #IMPLIED
->
-<!ELEMENT emailStoreMessageType EMPTY >
-<!ATTLIST emailStoreMessageType
-	description CDATA #IMPLIED
-	messageId CDATA #REQUIRED
-	property CDATA #REQUIRED
-	propertyType CDATA #IMPLIED
->
-<!ELEMENT emailStoreHeader EMPTY >
-<!ATTLIST emailStoreHeader
-	description CDATA #IMPLIED
-	headerName CDATA #REQUIRED
-	messageId CDATA #REQUIRED
-	partIndex CDATA #IMPLIED
-	property CDATA #REQUIRED
-	propertyType CDATA #IMPLIED
->
-<!ELEMENT dataDriven ( task )* >
-<!ATTLIST dataDriven
-	description CDATA #IMPLIED
-	failASAP CDATA #IMPLIED
-	filterclass CDATA #IMPLIED
-	replaceProperties CDATA #IMPLIED
-	table CDATA #IMPLIED
-	tableContainer CDATA #REQUIRED
 >
 <!ELEMENT setInputField ( #PCDATA )* >
 <!ATTLIST setInputField
@@ -569,47 +589,6 @@
 	value CDATA #REQUIRED
 	xpath CDATA #IMPLIED
 >
-<!ELEMENT reportLinks EMPTY >
-<!ATTLIST reportLinks
-	description CDATA #IMPLIED
->
-<!ELEMENT excelStoreCellValue EMPTY >
-<!ATTLIST excelStoreCellValue
-	cell CDATA #IMPLIED
-	col CDATA #IMPLIED
-	description CDATA #IMPLIED
-	property CDATA #REQUIRED
-	propertyType CDATA #IMPLIED
-	row CDATA #IMPLIED
-	sheetIndex CDATA #IMPLIED
-	sheetName CDATA #IMPLIED
->
-<!ELEMENT header EMPTY >
-<!ATTLIST header
-	name CDATA #REQUIRED
-	value CDATA #REQUIRED
->
-<!ELEMENT verifyNoDialogs EMPTY >
-<!ATTLIST verifyNoDialogs
-	description CDATA #IMPLIED
->
-<!ELEMENT pdfVerifyFont EMPTY >
-<!ATTLIST pdfVerifyFont
-	description CDATA #IMPLIED
-	matchCase CDATA #IMPLIED
-	name CDATA #IMPLIED
-	page CDATA #IMPLIED
-	type CDATA #IMPLIED
->
-<!ELEMENT verifyTextarea EMPTY >
-<!ATTLIST verifyTextarea
-	description CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	name CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	text CDATA #REQUIRED
-	type CDATA #IMPLIED
->
 <!ELEMENT clickElement EMPTY >
 <!ATTLIST clickElement
 	description CDATA #IMPLIED
@@ -620,6 +599,141 @@
 	saveResponse CDATA #IMPLIED
 	username CDATA #IMPLIED
 	xpath CDATA #IMPLIED
+>
+<!ELEMENT verifyRadioButton EMPTY >
+<!ATTLIST verifyRadioButton
+	checked CDATA #REQUIRED
+	description CDATA #IMPLIED
+	fieldIndex CDATA #IMPLIED
+	formName CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	name CDATA #REQUIRED
+	value CDATA #IMPLIED
+	xpath CDATA #IMPLIED
+>
+<!ELEMENT excelStructureFilter EMPTY >
+<!ATTLIST excelStructureFilter
+	description CDATA #IMPLIED
+>
+<!ELEMENT pdfVerifyEncryption EMPTY >
+<!ATTLIST pdfVerifyEncryption
+	description CDATA #IMPLIED
+	encrypted CDATA #IMPLIED
+	ownerPassword CDATA #IMPLIED
+	userPassword CDATA #IMPLIED
+>
+<!ELEMENT storeRandom EMPTY >
+<!ATTLIST storeRandom
+	chars CDATA #IMPLIED
+	choice CDATA #IMPLIED
+	description CDATA #IMPLIED
+	from CDATA #IMPLIED
+	length CDATA #IMPLIED
+	property CDATA #IMPLIED
+	propertyType CDATA #IMPLIED
+	to CDATA #IMPLIED
+>
+<!ELEMENT steps ( %step; )* >
+<!ATTLIST steps
+	description CDATA #IMPLIED
+>
+<!ELEMENT pdfVerifyReadOnlyField EMPTY >
+<!ATTLIST pdfVerifyReadOnlyField
+	description CDATA #IMPLIED
+	name CDATA #REQUIRED
+	page CDATA #IMPLIED
+	readOnly CDATA #IMPLIED
+>
+<!ELEMENT expectDialog EMPTY >
+<!ATTLIST expectDialog
+	description CDATA #IMPLIED
+	dialogType CDATA #IMPLIED
+	response CDATA #IMPLIED
+	saveProperty CDATA #IMPLIED
+	savePropertyType CDATA #IMPLIED
+>
+<!ELEMENT excelVerifyCellValue EMPTY >
+<!ATTLIST excelVerifyCellValue
+	cell CDATA #IMPLIED
+	col CDATA #IMPLIED
+	description CDATA #IMPLIED
+	row CDATA #IMPLIED
+	sheetIndex CDATA #IMPLIED
+	sheetName CDATA #IMPLIED
+	text CDATA #REQUIRED
+>
+<!ELEMENT verifyCookie EMPTY >
+<!ATTLIST verifyCookie
+	description CDATA #IMPLIED
+	name CDATA #REQUIRED
+	regex CDATA #IMPLIED
+	text CDATA #IMPLIED
+>
+<!ELEMENT invoke ( #PCDATA )* >
+<!ATTLIST invoke
+	content CDATA #IMPLIED
+	contentFile CDATA #IMPLIED
+	description CDATA #IMPLIED
+	method CDATA #IMPLIED
+	password CDATA #IMPLIED
+	save CDATA #IMPLIED
+	savePrefix CDATA #IMPLIED
+	saveResponse CDATA #IMPLIED
+	soapAction CDATA #IMPLIED
+	url CDATA #REQUIRED
+	username CDATA #IMPLIED
+>
+<!ELEMENT emailStoreMessageId EMPTY >
+<!ATTLIST emailStoreMessageId
+	cc CDATA #IMPLIED
+	description CDATA #IMPLIED
+	from CDATA #IMPLIED
+	messageIndex CDATA #IMPLIED
+	property CDATA #REQUIRED
+	propertyType CDATA #IMPLIED
+	replyTo CDATA #IMPLIED
+	subject CDATA #IMPLIED
+	to CDATA #IMPLIED
+>
+<!ELEMENT pdfVerifyCheckboxField EMPTY >
+<!ATTLIST pdfVerifyCheckboxField
+	description CDATA #IMPLIED
+	exists CDATA #IMPLIED
+	name CDATA #REQUIRED
+	page CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	value CDATA #IMPLIED
+>
+<!ELEMENT verifyLinks EMPTY >
+<!ATTLIST verifyLinks
+	depth CDATA #IMPLIED
+	description CDATA #IMPLIED
+	excludes CDATA #IMPLIED
+	ignoreForeignJSErrors CDATA #IMPLIED
+	includes CDATA #IMPLIED
+	onsiteonly CDATA #IMPLIED
+>
+<!ELEMENT verifyTitle ( #PCDATA )* >
+<!ATTLIST verifyTitle
+	description CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	text CDATA #REQUIRED
+>
+<!ELEMENT pdfVerifyEncryptionPermissions EMPTY >
+<!ATTLIST pdfVerifyEncryptionPermissions
+	allow CDATA #IMPLIED
+	deny CDATA #IMPLIED
+	description CDATA #IMPLIED
+>
+<!ELEMENT followFrame ( #PCDATA )* >
+<!ATTLIST followFrame
+	description CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	name CDATA #IMPLIED
+	relative CDATA #IMPLIED
+	save CDATA #IMPLIED
+	savePrefix CDATA #IMPLIED
+	saveResponse CDATA #IMPLIED
 >
 <!ELEMENT forceInputFieldAttribute ( #PCDATA )* >
 <!ATTLIST forceInputFieldAttribute
@@ -638,72 +752,34 @@
 	value CDATA #REQUIRED
 	xpath CDATA #IMPLIED
 >
-<!ELEMENT dragAndDrop EMPTY >
-<!ATTLIST dragAndDrop
+<!ELEMENT storeHeader EMPTY >
+<!ATTLIST storeHeader
 	description CDATA #IMPLIED
-	fromHtmlId CDATA #IMPLIED
-	fromXPath CDATA #IMPLIED
-	toHtmlId CDATA #IMPLIED
-	toXPath CDATA #IMPLIED
+	name CDATA #REQUIRED
+	property CDATA #IMPLIED
+	propertyType CDATA #IMPLIED
 >
-<!ELEMENT prompt EMPTY >
-<!ATTLIST prompt
+<!ELEMENT storeResponseCode EMPTY >
+<!ATTLIST storeResponseCode
 	description CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	response CDATA #IMPLIED
-	saveProperty CDATA #IMPLIED
-	savePropertyType CDATA #IMPLIED
-	text CDATA #REQUIRED
->
-<!ELEMENT emailStorePartCount EMPTY >
-<!ATTLIST emailStorePartCount
-	description CDATA #IMPLIED
-	messageId CDATA #REQUIRED
 	property CDATA #REQUIRED
 	propertyType CDATA #IMPLIED
 >
-<!ELEMENT verifyCookie EMPTY >
-<!ATTLIST verifyCookie
-	description CDATA #IMPLIED
-	name CDATA #REQUIRED
-	regex CDATA #IMPLIED
-	text CDATA #IMPLIED
->
-<!ELEMENT webtest ( config | steps )* >
-<!ATTLIST webtest
-	description CDATA #IMPLIED
-	name CDATA #REQUIRED
->
-<!ELEMENT pdfVerifyBookmark EMPTY >
-<!ATTLIST pdfVerifyBookmark
-	description CDATA #IMPLIED
-	name CDATA #REQUIRED
-	regex CDATA #IMPLIED
->
-<!ELEMENT selectForm ( #PCDATA )* >
-<!ATTLIST selectForm
-	description CDATA #IMPLIED
-	index CDATA #IMPLIED
-	name CDATA #IMPLIED
->
-<!ELEMENT group ( %step; )* >
-<!ATTLIST group
-	description CDATA #IMPLIED
->
-<!ELEMENT mouseOut EMPTY >
-<!ATTLIST mouseOut
-	description CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	xpath CDATA #IMPLIED
->
-<!ELEMENT verifyTitle ( #PCDATA )* >
-<!ATTLIST verifyTitle
+<!ELEMENT pdfVerifyTitle EMPTY >
+<!ATTLIST pdfVerifyTitle
 	description CDATA #IMPLIED
 	regex CDATA #IMPLIED
-	text CDATA #REQUIRED
+	title CDATA #REQUIRED
 >
-<!ELEMENT setRadioButton ( #PCDATA )* >
-<!ATTLIST setRadioButton
+<!ELEMENT pdfVerifyField EMPTY >
+<!ATTLIST pdfVerifyField
+	description CDATA #IMPLIED
+	exists CDATA #IMPLIED
+	name CDATA #REQUIRED
+	page CDATA #IMPLIED
+>
+<!ELEMENT forceHiddenInputField ( #PCDATA )* >
+<!ATTLIST forceHiddenInputField
 	description CDATA #IMPLIED
 	fieldIndex CDATA #IMPLIED
 	forLabel CDATA #IMPLIED
@@ -713,54 +789,20 @@
 	save CDATA #IMPLIED
 	savePrefix CDATA #IMPLIED
 	saveResponse CDATA #IMPLIED
+	value CDATA #REQUIRED
+	xpath CDATA #IMPLIED
+>
+<!ELEMENT storeInputFieldAttribute EMPTY >
+<!ATTLIST storeInputFieldAttribute
+	attributeName CDATA #REQUIRED
+	description CDATA #IMPLIED
+	fieldIndex CDATA #IMPLIED
+	formName CDATA #IMPLIED
+	name CDATA #REQUIRED
+	property CDATA #IMPLIED
+	propertyName CDATA #IMPLIED
+	propertyType CDATA #IMPLIED
 	value CDATA #IMPLIED
-	xpath CDATA #IMPLIED
->
-<!ELEMENT testInfo ( #PCDATA )* >
-<!ATTLIST testInfo
-	description CDATA #IMPLIED
-	info CDATA #IMPLIED
-	type CDATA #REQUIRED
->
-<!ELEMENT mouseOver EMPTY >
-<!ATTLIST mouseOver
-	description CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	xpath CDATA #IMPLIED
->
-<!ELEMENT tagStripper EMPTY >
-<!ATTLIST tagStripper
-	description CDATA #IMPLIED
->
-<!ELEMENT verifyText ( #PCDATA | table )* >
-<!ATTLIST verifyText
-	description CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	text CDATA #REQUIRED
->
-<!ELEMENT emailMessageContentFilter EMPTY >
-<!ATTLIST emailMessageContentFilter
-	contentType CDATA #IMPLIED
-	description CDATA #IMPLIED
-	messageId CDATA #REQUIRED
-	partIndex CDATA #IMPLIED
-	save CDATA #IMPLIED
-	savePrefix CDATA #IMPLIED
-	saveResponse CDATA #IMPLIED
->
-<!ELEMENT pdfDecryptDocument EMPTY >
-<!ATTLIST pdfDecryptDocument
-	description CDATA #IMPLIED
-	password CDATA #REQUIRED
->
-<!ELEMENT alert EMPTY >
-<!ATTLIST alert
-	description CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	response CDATA #IMPLIED
-	saveProperty CDATA #IMPLIED
-	savePropertyType CDATA #IMPLIED
-	text CDATA #REQUIRED
 >
 <!ELEMENT excelSelectSheet EMPTY >
 <!ATTLIST excelSelectSheet
@@ -768,117 +810,21 @@
 	sheetIndex CDATA #IMPLIED
 	sheetName CDATA #IMPLIED
 >
-<!ELEMENT timedGroup ( %step; )* >
-<!ATTLIST timedGroup
+<!ELEMENT verifyText ( #PCDATA | table )* >
+<!ATTLIST verifyText
 	description CDATA #IMPLIED
-	maxMillis CDATA #IMPLIED
-	maxSeconds CDATA #IMPLIED
->
-<!ELEMENT verifySelectField EMPTY >
-<!ATTLIST verifySelectField
-	description CDATA #IMPLIED
-	fieldIndex CDATA #IMPLIED
-	formName CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	name CDATA #REQUIRED
 	regex CDATA #IMPLIED
-	text CDATA #IMPLIED
-	value CDATA #IMPLIED
-	xpath CDATA #IMPLIED
+	text CDATA #REQUIRED
 >
-<!ELEMENT pdfVerifyLink EMPTY >
-<!ATTLIST pdfVerifyLink
+<!ELEMENT enableJavaScript EMPTY >
+<!ATTLIST enableJavaScript
 	description CDATA #IMPLIED
-	href CDATA #IMPLIED
-	page CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	text CDATA #IMPLIED
+	enable CDATA #IMPLIED
 >
-<!ELEMENT storeRandom EMPTY >
-<!ATTLIST storeRandom
-	chars CDATA #IMPLIED
-	choice CDATA #IMPLIED
-	description CDATA #IMPLIED
-	from CDATA #IMPLIED
-	length CDATA #IMPLIED
-	property CDATA #IMPLIED
-	propertyType CDATA #IMPLIED
-	to CDATA #IMPLIED
->
-<!ELEMENT reportSite ( %step; )* >
-<!ATTLIST reportSite
-	depth CDATA #IMPLIED
-	description CDATA #IMPLIED
-	file CDATA #IMPLIED
->
-<!ELEMENT storeCookie EMPTY >
-<!ATTLIST storeCookie
-	description CDATA #IMPLIED
-	name CDATA #REQUIRED
-	property CDATA #IMPLIED
-	propertyType CDATA #IMPLIED
->
-<!ELEMENT ifStep ( condition | then | else | otherwise | %step; )* >
-<!ATTLIST ifStep
-	description CDATA #IMPLIED
-	test CDATA #IMPLIED
-	unless CDATA #IMPLIED
->
-<!ELEMENT pdfVerifyTextField EMPTY >
-<!ATTLIST pdfVerifyTextField
-	description CDATA #IMPLIED
-	exists CDATA #IMPLIED
-	name CDATA #REQUIRED
-	page CDATA #IMPLIED
-	regex CDATA #IMPLIED
-	value CDATA #IMPLIED
->
-<!ELEMENT emailStoreMessageCount EMPTY >
-<!ATTLIST emailStoreMessageCount
-	cc CDATA #IMPLIED
-	description CDATA #IMPLIED
-	from CDATA #IMPLIED
-	property CDATA #REQUIRED
-	propertyType CDATA #IMPLIED
-	replyTo CDATA #IMPLIED
-	subject CDATA #IMPLIED
-	to CDATA #IMPLIED
->
-<!ELEMENT verifyLinks EMPTY >
-<!ATTLIST verifyLinks
-	depth CDATA #IMPLIED
-	description CDATA #IMPLIED
-	excludes CDATA #IMPLIED
-	ignoreForeignJSErrors CDATA #IMPLIED
-	includes CDATA #IMPLIED
-	onsiteonly CDATA #IMPLIED
->
-<!ELEMENT pdfVerifyEncryptionStrength EMPTY >
-<!ATTLIST pdfVerifyEncryptionStrength
-	description CDATA #IMPLIED
-	strength CDATA #REQUIRED
->
-<!ELEMENT storeElementAttribute EMPTY >
-<!ATTLIST storeElementAttribute
-	attributeName CDATA #REQUIRED
+<!ELEMENT mouseOut EMPTY >
+<!ATTLIST mouseOut
 	description CDATA #IMPLIED
 	htmlId CDATA #IMPLIED
-	property CDATA #IMPLIED
-	propertyName CDATA #IMPLIED
-	propertyType CDATA #IMPLIED
-	xpath CDATA #IMPLIED
->
-<!ELEMENT clickLink ( #PCDATA )* >
-<!ATTLIST clickLink
-	description CDATA #IMPLIED
-	href CDATA #IMPLIED
-	htmlId CDATA #IMPLIED
-	label CDATA #IMPLIED
-	password CDATA #IMPLIED
-	save CDATA #IMPLIED
-	savePrefix CDATA #IMPLIED
-	saveResponse CDATA #IMPLIED
-	username CDATA #IMPLIED
 	xpath CDATA #IMPLIED
 >
 <!ELEMENT emailMessageStructureFilter EMPTY >
@@ -890,27 +836,23 @@
 	savePrefix CDATA #IMPLIED
 	saveResponse CDATA #IMPLIED
 >
-<!ELEMENT pdfToFontsFilter EMPTY >
-<!ATTLIST pdfToFontsFilter
+<!ELEMENT pdfVerifyInfoProperty EMPTY >
+<!ATTLIST pdfVerifyInfoProperty
 	description CDATA #IMPLIED
+	exists CDATA #IMPLIED
+	key CDATA #REQUIRED
+	regex CDATA #IMPLIED
+	value CDATA #IMPLIED
 >
-<!ELEMENT selectWindow EMPTY >
-<!ATTLIST selectWindow
+<!ELEMENT selectLinesFilter EMPTY >
+<!ATTLIST selectLinesFilter
 	description CDATA #IMPLIED
-	index CDATA #IMPLIED
-	name CDATA #IMPLIED
-	title CDATA #IMPLIED
->
-<!ELEMENT verifyLinkedContent EMPTY >
-<!ATTLIST verifyLinkedContent
-	accept CDATA #IMPLIED
-	description CDATA #IMPLIED
-	xpath CDATA #REQUIRED
->
-<!ELEMENT emailDeleteMessage EMPTY >
-<!ATTLIST emailDeleteMessage
-	description CDATA #IMPLIED
-	messageId CDATA #REQUIRED
+	includeStart CDATA #IMPLIED
+	includeStop CDATA #IMPLIED
+	remove CDATA #IMPLIED
+	repeat CDATA #IMPLIED
+	startRegex CDATA #IMPLIED
+	stopRegex CDATA #IMPLIED
 >
 <!ELEMENT repeat ( %step; )* >
 <!ATTLIST repeat
@@ -922,42 +864,94 @@
 	step CDATA #IMPLIED
 	xpath CDATA #IMPLIED
 >
-<!ELEMENT storeLinkParameter EMPTY >
-<!ATTLIST storeLinkParameter
+<!ELEMENT pdfToLinksFilter EMPTY >
+<!ATTLIST pdfToLinksFilter
 	description CDATA #IMPLIED
-	htmlId CDATA #REQUIRED
-	parameter CDATA #REQUIRED
-	property CDATA #IMPLIED
-	propertyType CDATA #IMPLIED
 >
-<!ELEMENT pdfVerifyEncryptionProperty EMPTY >
-<!ATTLIST pdfVerifyEncryptionProperty
+<!ELEMENT clickButton ( #PCDATA )* >
+<!ATTLIST clickButton
+	description CDATA #IMPLIED
+	fieldIndex CDATA #IMPLIED
+	htmlId CDATA #IMPLIED
+	label CDATA #IMPLIED
+	name CDATA #IMPLIED
+	password CDATA #IMPLIED
+	save CDATA #IMPLIED
+	savePrefix CDATA #IMPLIED
+	saveResponse CDATA #IMPLIED
+	username CDATA #IMPLIED
+	x CDATA #IMPLIED
+	xpath CDATA #IMPLIED
+	y CDATA #IMPLIED
+>
+<!ELEMENT pdfVerifyTextField EMPTY >
+<!ATTLIST pdfVerifyTextField
 	description CDATA #IMPLIED
 	exists CDATA #IMPLIED
-	key CDATA #REQUIRED
+	name CDATA #REQUIRED
+	page CDATA #IMPLIED
 	regex CDATA #IMPLIED
 	value CDATA #IMPLIED
 >
-<!ELEMENT excelFindRow EMPTY >
-<!ATTLIST excelFindRow
-	col CDATA #IMPLIED
+<!ELEMENT countWebtestResults EMPTY >
+<!ATTLIST countWebtestResults
 	description CDATA #IMPLIED
-	property CDATA #REQUIRED
-	propertyType CDATA #IMPLIED
-	sheetIndex CDATA #IMPLIED
-	sheetName CDATA #IMPLIED
-	startRow CDATA #IMPLIED
-	text CDATA #REQUIRED
+	failOnError CDATA #IMPLIED
+	failureProperty CDATA #IMPLIED
+	resultFile CDATA #REQUIRED
+	successProperty CDATA #IMPLIED
+>
+<!ELEMENT tagStripper EMPTY >
+<!ATTLIST tagStripper
+	description CDATA #IMPLIED
 >
 <!ELEMENT normalizeXml EMPTY >
 <!ATTLIST normalizeXml
 	description CDATA #IMPLIED
 >
-<!ELEMENT storeResponseCode EMPTY >
-<!ATTLIST storeResponseCode
+<!ELEMENT pdfVerifyText EMPTY >
+<!ATTLIST pdfVerifyText
 	description CDATA #IMPLIED
-	property CDATA #REQUIRED
-	propertyType CDATA #IMPLIED
+	endPage CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	startPage CDATA #IMPLIED
+	text CDATA #REQUIRED
+>
+<!ELEMENT groovy ( #PCDATA )* >
+<!ATTLIST groovy
+	description CDATA #IMPLIED
+	file CDATA #IMPLIED
+	replaceProperties CDATA #IMPLIED
+>
+<!ELEMENT emailSetConfig EMPTY >
+<!ATTLIST emailSetConfig
+	delay CDATA #IMPLIED
+	description CDATA #IMPLIED
+	password CDATA #IMPLIED
+	server CDATA #REQUIRED
+	type CDATA #IMPLIED
+	username CDATA #IMPLIED
+>
+<!ELEMENT replaceFilter EMPTY >
+<!ATTLIST replaceFilter
+	description CDATA #IMPLIED
+	regex CDATA #REQUIRED
+	replacement CDATA #IMPLIED
+>
+<!ELEMENT confirm EMPTY >
+<!ATTLIST confirm
+	description CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	response CDATA #IMPLIED
+	saveProperty CDATA #IMPLIED
+	savePropertyType CDATA #IMPLIED
+	text CDATA #REQUIRED
+>
+<!ELEMENT selectForm ( #PCDATA )* >
+<!ATTLIST selectForm
+	description CDATA #IMPLIED
+	index CDATA #IMPLIED
+	name CDATA #IMPLIED
 >
 <!ELEMENT verifyHeader ( #PCDATA )* >
 <!ATTLIST verifyHeader
@@ -966,26 +960,32 @@
 	regex CDATA #IMPLIED
 	text CDATA #REQUIRED
 >
-<!ELEMENT pdfVerifyEncryption EMPTY >
-<!ATTLIST pdfVerifyEncryption
+<!ELEMENT pdfVerifyFont EMPTY >
+<!ATTLIST pdfVerifyFont
 	description CDATA #IMPLIED
-	encrypted CDATA #IMPLIED
-	ownerPassword CDATA #IMPLIED
-	userPassword CDATA #IMPLIED
+	matchCase CDATA #IMPLIED
+	name CDATA #IMPLIED
+	page CDATA #IMPLIED
+	type CDATA #IMPLIED
 >
-<!ELEMENT replaceFilter EMPTY >
-<!ATTLIST replaceFilter
+<!ELEMENT verifyProperty EMPTY >
+<!ATTLIST verifyProperty
 	description CDATA #IMPLIED
-	regex CDATA #REQUIRED
-	replacement CDATA #IMPLIED
+	name CDATA #IMPLIED
+	property CDATA #IMPLIED
+	propertyType CDATA #IMPLIED
+	regex CDATA #IMPLIED
+	text CDATA #IMPLIED
+	value CDATA #IMPLIED
 >
-<!ELEMENT pdfToBookmarksFilter EMPTY >
-<!ATTLIST pdfToBookmarksFilter
+<!ELEMENT pdfVerifyFieldCount EMPTY >
+<!ATTLIST pdfVerifyFieldCount
+	count CDATA #REQUIRED
 	description CDATA #IMPLIED
+	includeDuplicates CDATA #IMPLIED
+	page CDATA #IMPLIED
 >
-<!ELEMENT groovy ( #PCDATA )* >
-<!ATTLIST groovy
+<!ELEMENT verifyImages EMPTY >
+<!ATTLIST verifyImages
 	description CDATA #IMPLIED
-	file CDATA #IMPLIED
-	replaceProperties CDATA #IMPLIED
 >

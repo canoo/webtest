@@ -5,3 +5,14 @@ listCruiseControl.sh
 restartCruiseControl.sh
 startCruiseControl.sh
 cruisecontrol.log
+antBuilderOutput.log
+build/
+deploy/
+doc/info/manual/examples/classpath.txt
+doc/info/manual/examples/taskdef.txt
+doc/info/manual/webtest-results/
+doc/samples/results/
+releasetests/dtd/
+selftests/dtd/
+webtest-results/
+webtestRunning.txt
