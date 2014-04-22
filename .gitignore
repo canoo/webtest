@@ -1,1 +1,8 @@
 .svn
+Canoo WebTest.ser
+getJmxPort.sh
+listCruiseControl.sh
+restartCruiseControl.sh
+startCruiseControl.sh
+
+
