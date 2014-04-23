@@ -14,8 +14,8 @@
         </license>
     </licenses>
     <scm>
-        <connection>scm:svn:https://svn.canoo.com/trunk/webtest</connection>
-        <url>http://webtest.canoo.com/fisheye/</url>
+        <connection>scm:git:git://git@github.com:canoo/webtest.git</connection>
+        <url>https://github.com/canoo/webtest</url>
     </scm>
     <build>
 		<directory>build</directory>
