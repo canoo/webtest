@@ -751,7 +751,7 @@
 				classname="org.apache.tools.ant.launch.Launcher"
 				fork="true"
 				dir="${test.suite}"
-				maxmemory="128m"
+				maxmemory="256m"
 				failonerror="true"
 			>
 			<classpath>
