@@ -9,20 +9,12 @@
 
 	&site;
 
-	<section title="SVN Repository">
+	<section title="GIT Repository">
 
-		<b>You can connect to Canoo WebTest's public SVN via:
+		<b>You can connect to Canoo WebTest's public git repository or browse the files on GitHub via:
 			<n/>
-            <ext href="https://svn.canoo.com/trunk/webtest">https://svn.canoo.com/trunk/webtest</ext>
+            <ext href="https://github.com/canoo/webtest">https://github.com/canoo/webtest</ext>
         </b>
     </section>
-    
-    <section title="Browse online">
 
-		<b>
-            For browsing and searching the repository online, use our
-			<ext href="http://webtest.canoo.com/fisheye/">Fisheye</ext> service. It also contains an RSS feed that
-            keeps you updated with every change to the repository.
-		</b>
-	</section>
 </manpage>
