@@ -1,5 +1,21 @@
 package com.canoo.ant.task;
 
+import com.canoo.ant.filter.ITableFilter;
+import com.canoo.ant.table.APropertyTable;
+import com.canoo.ant.table.CSVPropertyTable;
+import com.canoo.ant.table.ExcelPropertyTable;
+import com.canoo.ant.table.IPropertyTable;
+import com.canoo.ant.table.TableFactory;
+import com.canoo.webtest.ant.WebtestPropertyHelper;
+import org.apache.log4j.Logger;
+import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.RuntimeConfigurable;
+import org.apache.tools.ant.Target;
+import org.apache.tools.ant.Task;
+import org.apache.tools.ant.TaskContainer;
+import org.apache.tools.ant.UnknownElement;
+import org.apache.tools.ant.taskdefs.MacroInstance;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Enumeration;
@@ -10,24 +26,9 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
-import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.RuntimeConfigurable;
-import org.apache.tools.ant.Target;
-import org.apache.tools.ant.Task;
-import org.apache.tools.ant.TaskContainer;
-import org.apache.tools.ant.UnknownElement;
-import org.apache.tools.ant.taskdefs.MacroInstance;
-
-import com.canoo.ant.filter.ITableFilter;
-import com.canoo.ant.table.APropertyTable;
-import com.canoo.ant.table.ExcelPropertyTable;
-import com.canoo.ant.table.IPropertyTable;
-import com.canoo.ant.table.TableFactory;
-
 /**
  * 
- * @author Dierk König
+ * @author Dierk KÃ¶nig
  * @author Marc Guillemot
  * @webtest.step
  *   category="Extension"
@@ -124,60 +125,73 @@ public class PropertyTableTask extends Task implements TaskContainer {
         final IPropertyTable table;
         final ITableFilter filter;
         try {
-            table = TableFactory.createTable(fProps, ExcelPropertyTable.class.getName());
-            filter = TableFactory.createFilter(fProps);
-        } 
-        catch (final Exception e) {
-            throw new BuildException("cannot create container", e, getLocation());
-        }
+            // register custom property helper to support dynamic property replacement
+            WebtestPropertyHelper.configureWebtestPropertyHelper(getProject());
 
-        TableFactory.initOrDefault(table, filter, fProps, fTableContainer, fName);
-
-        final List propertiesList = table.getPropertiesList(fValue, null);
-        LOG.debug("propertiesList.size() = " + propertiesList.size());
-        if (propertiesList.isEmpty()) {
-            LOG.warn("no match found in table " + table.getClass().getName() +
-                    " with filter " + table.getFilter().getClass().getName() +
-                    " and settings " + fProps.toString() +
-                    " raw data:" + ((APropertyTable) table).getRawTable());
-        }
-
-        int nbFailures = 0;
-        int nbRuns = 0;
-        for (final Iterator eachPropSet = propertiesList.iterator(); eachPropSet.hasNext();) {
-        	++nbRuns;
-            final Properties propSet = (Properties) eachPropSet.next();
-            for (final Iterator eachKey = propSet.keySet().iterator(); eachKey.hasNext();) {
-                final String key = (String) eachKey.next();
-                String value = propSet.getProperty(key);
-                if (replaceProperties) {
-                    value = getProject().replaceProperties(value);
+            try {
+                String defaultContainerType = CSVPropertyTable.class.getName();
+                if( fTableContainer.getName().endsWith(".xls") ) {
+                    defaultContainerType = ExcelPropertyTable.class.getName();
                 }
-                LOG.debug("setting key/value " + key + "/" + value);
-                getProject().setInheritedProperty(key, value);
+                table = TableFactory.createTable(fProps, defaultContainerType);
+                filter = TableFactory.createFilter(fProps);
             }
-            
-            for (final Iterator eachTask = fTasks.iterator(); eachTask.hasNext();) {
-            	Task task = (Task) eachTask.next();
-                // It's probably allways the case
-                if (task instanceof UnknownElement)
-                {
-                	task = copy((UnknownElement) task);
+            catch (final Exception e) {
+                throw new BuildException("cannot create container", e, getLocation());
+            }
+
+            TableFactory.initOrDefault(table, filter, fProps, fTableContainer, fName);
+
+            final List propertiesList = table.getPropertiesList(fValue, null);
+            LOG.debug("propertiesList.size() = " + propertiesList.size());
+            if (propertiesList.isEmpty()) {
+                LOG.warn("no match found in table " + table.getClass().getName() +
+                        " with filter " + table.getFilter().getClass().getName() +
+                        " and settings " + fProps.toString() +
+                        " raw data:" + ((APropertyTable) table).getRawTable());
+            }
+
+            int nbFailures = 0;
+            int nbRuns = 0;
+            for (final Iterator eachPropSet = propertiesList.iterator(); eachPropSet.hasNext();) {
+                ++nbRuns;
+                final Properties propSet = (Properties) eachPropSet.next();
+                for (final Iterator eachKey = propSet.keySet().iterator(); eachKey.hasNext();) {
+                    final String key = (String) eachKey.next();
+                    String value = propSet.getProperty(key);
+                    if (replaceProperties) {
+                        value = getProject().replaceProperties(value);
+                    }
+                    LOG.debug("setting key/value " + key + "/" + value);
+                    getProject().setInheritedProperty(key, value);
                 }
-                try {
-                	task.perform();
-                }
-                catch (final BuildException e)
-                {
-                	if (fFailASAP)
-                		throw e;
-                	else
-                		nbFailures++;
+
+                for (final Iterator eachTask = fTasks.iterator(); eachTask.hasNext();) {
+                    Task task = (Task) eachTask.next();
+                    // It's probably allways the case
+                    if (task instanceof UnknownElement)
+                    {
+                        task = copy((UnknownElement) task);
+                    }
+                    try {
+                        task.perform();
+                    }
+                    catch (final BuildException e)
+                    {
+                        if (fFailASAP)
+                            throw e;
+                        else
+                            nbFailures++;
+                    }
                 }
             }
-        }
-        if (nbFailures > 0) {
-        	throw new BuildException("" + nbFailures + "/" + nbRuns + " executions of nested tasks failed");
+            if (nbFailures > 0) {
+                throw new BuildException("" + nbFailures + "/" + nbRuns + " executions of nested tasks failed");
+            }
+        } catch (BuildException be) {
+            throw be;
+        } finally {
+            WebtestPropertyHelper.cleanWebtestPropertyHelper(getProject());
         }
     }
 

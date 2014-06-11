@@ -216,6 +216,11 @@
             </li>
             <li>
                 <dt>
+                    <key>opencsv</key>
+                </dt>
+            </li>
+            <li>
+                <dt>
                     <key>pdfbox</key>
                 </dt>
                 <dd>PDFBox is released under the BSD license (http://www.opensource.org/licenses/bsd-license.php)</dd>
