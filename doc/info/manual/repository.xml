@@ -17,21 +17,27 @@
         <dl>
             <li>
                 <dt>
-                    <ext href="https://svn.canoo.com/trunk/webtest">/trunk/webtest</ext>
+                    <ext href="https://github.com/canoo/webtest">https://github.com/canoo/webtest</ext>
                 </dt>
-                <dd>is the the head of the development;</dd>
+                <dd>is the the head of the development in GitHub;</dd>
             </li>
             <li>
                 <dt>
-                    <ext href="https://svn.canoo.com/versions/webtest">/versions/webtest</ext>
+                    <ext href="https://github.com/canoo/webtest/releases">https://github.com/canoo/webtest/releases</ext>
                 </dt>
-                <dd>contains the successive builds of WebTest;</dd>
+                <dd>contains the last successive builds of WebTest in GitHub;</dd>
             </li>
             <li>
                 <dt>
-                    <ext href="https://svn.canoo.com/releases/webtest">/releases/webtest</ext>
+                    <ext href="https://svn.canoo.com/versions/webtest">https://svn.canoo.com/versions/webtest</ext>
                 </dt>
-                <dd>contains the successive releases of WebTest.</dd>
+                <dd>contains the earlier successive builds of WebTest in Subversion;</dd>
+            </li>
+            <li>
+                <dt>
+                    <ext href="https://svn.canoo.com/releases/webtest">https://svn.canoo.com/releases/webtest</ext>
+                </dt>
+                <dd>contains the successive releases of WebTest in Subversion.</dd>
             </li>
         </dl>
     </section>

@@ -21,3 +21,5 @@ dummy
 spiderman.txt
 .idea/
 *.iml
+*.ipr
+*.iws

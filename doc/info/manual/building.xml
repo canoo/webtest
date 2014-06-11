@@ -41,7 +41,9 @@
 			<example>&lt;WEBTEST_HOME&gt;</example>
 			:
 		</b>
-		<code>svn co https://svn.canoo.com/trunk/webtest</code>
+        <code>git clone git@github.com:canoo/webtest.git</code>
+        or
+        <code>git clone https://github.com/canoo/webtest.git</code>
 		<b>Then call the build script. Depending from your operating system, it may be necessary to fiddle
 			with the execution rights of the scripts in the directory
 			<example>bin/</example>
