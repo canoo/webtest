@@ -1,16 +1,5 @@
-// Copyright © 2002-2007 Canoo Engineering AG, Switzerland.
+// Copyright ï¿½ 2002-2007 Canoo Engineering AG, Switzerland.
 package com.canoo.webtest.engine;
-
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
 
 import com.canoo.webtest.boundary.HtmlUnitBoundary;
 import com.canoo.webtest.boundary.UrlBoundary;
@@ -19,6 +8,16 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebConnection;
 import com.gargoylesoftware.htmlunit.WebResponse;
 import com.gargoylesoftware.htmlunit.WebWindow;
+import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
+
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 
 /**
  * Utility class for {@link Context}.
@@ -70,15 +69,16 @@ public final class ContextHelper
             final MockWebConnection mockConnection = new MockWebConnection();
             webClient.setWebConnection(mockConnection);
             mockConnection.setDefaultResponse(responseBytes, 200, "ok", contentType);
-            
-            // htmlUnit does't currently follow the "current window"
-            // check that our faked content will be loaded in what WebTest considers as the "current window"
-            // cf WT-293
-            final WebWindow currentTopWindow = context.getCurrentResponse().getEnclosingWindow().getTopWindow();
-            // with the <previousResponse/> it may happen that the window is not registerd anymore
-            if (webClient.getWebWindows().contains(currentTopWindow)) 
-            {
-            	webClient.setCurrentWindow(currentTopWindow);
+
+            if ( context.getCurrentResponse() != null ) {
+                // htmlUnit does't currently follow the "current window"
+                // check that our faked content will be loaded in what WebTest considers as the "current window"
+                // cf WT-293
+                final WebWindow currentTopWindow = context.getCurrentResponse().getEnclosingWindow().getTopWindow();
+                // with the <previousResponse/> it may happen that the window is not registerd anymore
+                if (webClient.getWebWindows().contains(currentTopWindow)) {
+                    webClient.setCurrentWindow(currentTopWindow);
+                }
             }
             
             final URL url = UrlBoundary.tryCreateUrl(urlStr);
