@@ -1,9 +1,8 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
 
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-
 import com.canoo.webtest.engine.StepExecutionException;
+import org.apache.poi.ss.usermodel.Sheet;
 
 /**
  * Base class for steps that deal with an individual sheet of an Excel spreadsheet.<p>
@@ -14,16 +13,16 @@ public abstract class AbstractExcelSheetStep extends AbstractExcelStep {
     private String fSheetName;
     private String fSheetIndex;
 
-    protected void setCurrentSheet(final HSSFSheet sheet) {
+    protected void setCurrentSheet(final Sheet sheet) {
         getContext().put(KEY_CURRENT_SHEET, sheet);
     }
 
-    protected HSSFSheet getExcelSheet() {
+    protected Sheet getExcelSheet() {
         final int numberOfSheets = getExcelWorkbook().getNumberOfSheets();
         if (numberOfSheets == 0) {
             throw new StepExecutionException("This spreadsheet has no sheets", this);
         }
-        HSSFSheet sheet = null;
+        Sheet sheet = null;
         if (fSheetName != null) {
             sheet = getExcelWorkbook().getSheet(fSheetName);
             if (sheet == null) {
@@ -38,7 +37,7 @@ public abstract class AbstractExcelSheetStep extends AbstractExcelStep {
             sheet = getExcelWorkbook().getSheetAt(sheetIndex);
         }
         if (sheet == null) {
-            sheet = (HSSFSheet) getContext().get(KEY_CURRENT_SHEET);
+            sheet = (Sheet) getContext().get(KEY_CURRENT_SHEET);
         }
         if (sheet == null) {
             sheet = getExcelWorkbook().getSheetAt(0);

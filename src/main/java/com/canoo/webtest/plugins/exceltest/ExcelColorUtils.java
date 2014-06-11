@@ -1,10 +1,14 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Color;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFColor;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import org.apache.poi.hssf.util.HSSFColor;
 
 /**
  * Util class for converting a color index to a string in an Excel Spreadsheet.<p>
@@ -69,13 +73,42 @@ public class ExcelColorUtils {
         if (borderColor == AUTOMATIC_COLOR) {
             return "auto";
         }
-        final HSSFColor color = step.getExcelWorkbook().getCustomPalette().getColor(borderColor);
+
+        Color color;
+        Workbook workbook = step.getExcelWorkbook();
+        if ( workbook instanceof HSSFWorkbook ) {
+            color = ((HSSFWorkbook)step.getExcelWorkbook()).getCustomPalette().getColor(borderColor);
+        } else {
+            color = new XSSFColor();
+            ((XSSFColor)color).setIndexed(borderColor);
+        }
+        return getColorName(step, color);
+    }
+
+    public static String getColorName(final AbstractExcelStep step, final Color color) {
         if (color == null) {
             return "none";
         }
-        final short[] triplet = color.getTriplet();
-        final String colorString = "#"+toHex(triplet[0]) +toHex(triplet[1])+toHex(triplet[2]);
-        return lookupStandardColorName(colorString);
+        if ( color instanceof HSSFColor ) {
+            HSSFColor hssfcolor = (HSSFColor)color;
+
+            if (hssfcolor.getIndex() == AUTOMATIC_COLOR) {
+                return "auto";
+            }
+            final short[] triplet = hssfcolor.getTriplet();
+            final String colorString = "#"+toHex(triplet[0]) +toHex(triplet[1])+toHex(triplet[2]);
+            return lookupStandardColorName(colorString);
+        } else {
+            XSSFColor xssfcolor = (XSSFColor)color;
+
+            if (xssfcolor.isAuto()) {
+                return "auto";
+            }
+            final byte[] triplet = xssfcolor.getRgb();
+            final String colorString = "#"+toHex(triplet[0]) +toHex(triplet[1])+toHex(triplet[2]);
+            return lookupStandardColorName(colorString);
+
+        }
     }
 
     public static String lookupStandardColorName(final String colorString) {

@@ -1,10 +1,10 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
 
 import com.canoo.webtest.engine.StepFailedException;
-import org.apache.poi.hssf.util.CellReference;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.util.CellReference;
 
 /**
  * @author Rob Nielsen
@@ -104,10 +104,10 @@ public class ExcelFindRow extends AbstractExcelSheetStep {
 
     public void doExecute() {
         final CellReference cellReference = ExcelCellUtils.getCellReference(this, null, getStartRow(), getCol());
-        final HSSFSheet excelSheet = getExcelSheet();
+        final Sheet excelSheet = getExcelSheet();
         int row = cellReference.getRow();
         while(row <= excelSheet.getLastRowNum()) {
-            final HSSFCell excelCellAt = ExcelCellUtils.getExcelCellAt(this, row, cellReference.getCol());
+            final Cell excelCellAt = ExcelCellUtils.getExcelCellAt(this, row, cellReference.getCol());
             if (verifyText(ExcelCellUtils.getCellValueAt(excelCellAt))) {
                 setWebtestProperty(getProperty(), String.valueOf(row + 1), getPropertyType());
                 return;

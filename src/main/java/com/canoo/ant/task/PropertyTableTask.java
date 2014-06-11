@@ -130,7 +130,7 @@ public class PropertyTableTask extends Task implements TaskContainer {
 
             try {
                 String defaultContainerType = CSVPropertyTable.class.getName();
-                if( fTableContainer.getName().endsWith(".xls") ) {
+                if( fTableContainer.getName().endsWith(".xls") || fTableContainer.getName().endsWith(".xlsx") ) {
                     defaultContainerType = ExcelPropertyTable.class.getName();
                 }
                 table = TableFactory.createTable(fProps, defaultContainerType);

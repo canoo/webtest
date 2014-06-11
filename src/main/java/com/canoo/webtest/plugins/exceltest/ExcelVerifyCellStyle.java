@@ -1,14 +1,18 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
 
 import com.canoo.webtest.engine.StepExecutionException;
 import com.canoo.webtest.engine.StepFailedException;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.hssf.util.CellReference;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.util.CellReference;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * @author Rob Nielsen
@@ -259,8 +263,8 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
             checkFormat(SIDES[i]+"Border", border[i], getCellBorder(i));
             checkFormat(SIDES[i]+"BorderColor", ExcelColorUtils.lookupStandardColorName(borderColor[i]), getCellBorderColor(i));
         }
-        final HSSFCell excelCell = getExcelCell();
-        checkFormat("type", getType(), ExcelCellUtils.getCellType(excelCell == null ? HSSFCell.CELL_TYPE_BLANK : excelCell.getCellType()));
+        final Cell excelCell = getExcelCell();
+        checkFormat("type", getType(), ExcelCellUtils.getCellType(excelCell == null ? Cell.CELL_TYPE_BLANK : excelCell.getCellType()));
         if (excelCell == null) {
             if (cellNotRequired()) {
                 return;
@@ -268,7 +272,7 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
                 throw new StepExecutionException("Can't find cell for " + getCellReferenceStr(), this);
             }
         }
-        final HSSFCellStyle cellStyle = excelCell.getCellStyle();
+        final CellStyle cellStyle = excelCell.getCellStyle();
         checkFormat("format", getFormat(), getExcelWorkbook().createDataFormat().getFormat(cellStyle.getDataFormat()));
         checkFormat("align", getAlign(), ExcelCellUtils.getAlignmentString(cellStyle.getAlignment()));
         checkFormat("valign", getValign(), ExcelCellUtils.getVerticalAlignmentString(cellStyle.getVerticalAlignment()));
@@ -277,8 +281,8 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
         checkFormat("fontName", getFontName(), getFont(cellStyle).getFontName());
         checkFormat("fontSize", getFontSize(), String.valueOf(getFont(cellStyle).getFontHeightInPoints()));
         checkFormat("fontStyle", sortElements(getFontStyle()), getFontStyle(getFont(cellStyle)));
-        checkFormat("fillColor", ExcelColorUtils.lookupStandardColorName(getFillColor()), ExcelColorUtils.getColorName(this, cellStyle.getFillForegroundColor()));
-        checkFormat("fillBackgroundColor", ExcelColorUtils.lookupStandardColorName(getFillBackgroundColor()), ExcelColorUtils.getColorName(this, cellStyle.getFillBackgroundColor()));
+        checkFormat("fillColor", ExcelColorUtils.lookupStandardColorName(getFillColor()), ExcelColorUtils.getColorName(this, cellStyle.getFillForegroundColorColor()));
+        checkFormat("fillBackgroundColor", ExcelColorUtils.lookupStandardColorName(getFillBackgroundColor()), ExcelColorUtils.getColorName(this, cellStyle.getFillBackgroundColorColor()));
         checkFormat("textColor", ExcelColorUtils.lookupStandardColorName(getTextColor()), ExcelColorUtils.getColorName(this, getFont(cellStyle).getColor()));
         checkFormat("fillPattern", getFillPattern(), ExcelCellUtils.getFillPattern(cellStyle.getFillPattern()));
     }
@@ -303,9 +307,9 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
         return sb.toString();
     }
 
-    private static String getFontStyle(final HSSFFont font) {
+    private static String getFontStyle(final Font font) {
         final StringBuffer sb = new StringBuffer();
-        if (font.getBoldweight() == HSSFFont.BOLDWEIGHT_BOLD) {
+        if (font.getBoldweight() == Font.BOLDWEIGHT_BOLD) {
             sb.append("bold ");
         }
         if (font.getItalic()) {
@@ -314,17 +318,17 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
         if (font.getStrikeout()) {
             sb.append("strikethrough ");
         }
-        if (font.getTypeOffset() == HSSFFont.SS_SUB) {
+        if (font.getTypeOffset() == Font.SS_SUB) {
             sb.append("subscript ");
-        } else if (font.getTypeOffset() == HSSFFont.SS_SUPER) {
+        } else if (font.getTypeOffset() == Font.SS_SUPER) {
             sb.append("superscript ");
         }
         switch(font.getUnderline()) {
-            case HSSFFont.U_NONE: break;
-            case HSSFFont.U_SINGLE: sb.append("underline "); break;
-            case HSSFFont.U_SINGLE_ACCOUNTING: sb.append("underline-accounting "); break;
-            case HSSFFont.U_DOUBLE: sb.append("underline-double "); break;
-            case HSSFFont.U_DOUBLE_ACCOUNTING: sb.append("underline-double-accounting "); break;
+            case Font.U_NONE: break;
+            case Font.U_SINGLE: sb.append("underline "); break;
+            case Font.U_SINGLE_ACCOUNTING: sb.append("underline-accounting "); break;
+            case Font.U_DOUBLE: sb.append("underline-double "); break;
+            case Font.U_DOUBLE_ACCOUNTING: sb.append("underline-double-accounting "); break;
             default: sb.append("underline-unknown "); break;
         }
         if (sb.length() == 0) {
@@ -340,13 +344,13 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
     }
 
     public String getCellBorder(final int dir) {
-        final HSSFCell excelCellAt = getExcelCell();
-        short border = HSSFCellStyle.BORDER_NONE;
+        final Cell excelCellAt = getExcelCell();
+        short border = CellStyle.BORDER_NONE;
         if (excelCellAt != null) {
             border = getBorder(excelCellAt.getCellStyle(), dir);
         }
-        if (border == HSSFCellStyle.BORDER_NONE) {
-            final HSSFCell adjacentCell = getAdjacentCell(dir);
+        if (border == CellStyle.BORDER_NONE) {
+            final Cell adjacentCell = getAdjacentCell(dir);
             if (adjacentCell != null) {
                 border = getBorder(adjacentCell.getCellStyle(), (dir + 2) % 4);
             }
@@ -355,13 +359,13 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
     }
 
     public String getCellBorderColor(final int dir) {
-        final HSSFCell excelCellAt = getExcelCell();
-        short border = HSSFCellStyle.BORDER_NONE;
+        final Cell excelCellAt = getExcelCell();
+        short border = CellStyle.BORDER_NONE;
         if (excelCellAt != null) {
             border = getBorderColor(excelCellAt.getCellStyle(), dir);
         }
-        if (border == HSSFCellStyle.BORDER_NONE) {
-            final HSSFCell adjacentCell = getAdjacentCell(dir);
+        if (border == CellStyle.BORDER_NONE) {
+            final Cell adjacentCell = getAdjacentCell(dir);
             if (adjacentCell != null) {
                 border = getBorderColor(adjacentCell.getCellStyle(), (dir + 2) % 4);
             }
@@ -369,7 +373,7 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
         return ExcelColorUtils.getColorName(this, border);
     }
 
-    HSSFCell getAdjacentCell(final int dir) {
+    Cell getAdjacentCell(final int dir) {
         final CellReference cellReference = getCellReference();
         short yofs = 0;
         int xofs = 0;
@@ -383,7 +387,7 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
         return ExcelCellUtils.getExcelCellAt(this, cellReference.getRow() + yofs, (short)(cellReference.getCol() + xofs));
     }
 
-    short getBorder(final HSSFCellStyle cellStyle, final int index) {
+    short getBorder(final CellStyle cellStyle, final int index) {
          switch(index) {
              case TOP: return cellStyle.getBorderTop();
              case RIGHT: return cellStyle.getBorderRight();
@@ -393,7 +397,7 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
          }
     }
 
-    short getBorderColor(final HSSFCellStyle cellStyle, final int index) {
+    short getBorderColor(final CellStyle cellStyle, final int index) {
          switch(index) {
              case TOP: return cellStyle.getTopBorderColor();
              case RIGHT: return cellStyle.getRightBorderColor();
@@ -403,7 +407,7 @@ public class ExcelVerifyCellStyle extends AbstractExcelCellStep {
          }
     }
 
-    private HSSFFont getFont(final HSSFCellStyle cellStyle) {
+    private Font getFont(final CellStyle cellStyle) {
         return getExcelWorkbook().getFontAt(cellStyle.getFontIndex());
     }
 
