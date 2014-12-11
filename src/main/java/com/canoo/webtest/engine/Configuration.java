@@ -227,11 +227,11 @@ public class Configuration extends Task {
             String propValue = getProject().getProperty(propName);
             if(propName.startsWith("wt.config.option")) {
                 Option option = new Option();
-                option.setName(propName.substring(propName.indexOf("option")  7));
+                option.setName(propName.substring(propName.indexOf("option") + 7));
                 option.setValue(propValue);
                 addOption(option);
 
-                LOG.info("Using "  propName  " from project property "  option.getName()  ": "  option.getValue());
+                LOG.info("Using " + propName + " from project property " + option.getName() + ": " + option.getValue());
             } else {
                continue;
             }
