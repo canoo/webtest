@@ -34,7 +34,7 @@ import com.gargoylesoftware.htmlunit.WebRequest;
  *   description="This step executes a request to a particular URL."
  */
 public class InvokePage extends AbstractTargetAction {
-	private static final Logger LOG = Logger.getLogger(InvokePage.class);
+    private static final Logger LOG = Logger.getLogger(InvokePage.class);
     private String fUrl;
     private String fCompleteUrl;
     private String fMethod = "GET";
@@ -53,7 +53,7 @@ public class InvokePage extends AbstractTargetAction {
     }
     
     public String getContentType() {
-    	return fContentType;
+        return fContentType;
     }
 
     /**
@@ -66,13 +66,13 @@ public class InvokePage extends AbstractTargetAction {
      * Otherwise this is used to set the 'content' attribute for e.g. large content (properties get evaluated in this content)."
      */
     public void addText(final String txt) {
-    	final String expandedText = getProject().replaceProperties(txt);
-    	if (getUrl() == null) {
-    		setUrl(expandedText);
-    	}
-    	else {
-    		setContent(expandedText);
-    	}
+        final String expandedText = getProject().replaceProperties(txt);
+        if (getUrl() == null) {
+            setUrl(expandedText);
+        }
+        else {
+            setContent(expandedText);
+        }
     }
     
     /**
@@ -95,7 +95,7 @@ public class InvokePage extends AbstractTargetAction {
      *   default="application/x-www-form-urlencoded"
      */
     public void setContentType(final String contentType) {
-    	fContentType = contentType;
+        fContentType = contentType;
     }
 
     /**
@@ -188,7 +188,7 @@ public class InvokePage extends AbstractTargetAction {
         
         final Map headers = new HashMap();
         if (!StringUtils.isEmpty(fContentType)) {
-        	headers.put("Content-Type", fContentType);
+            headers.put("Content-Type", fContentType);
         }
         else if (!StringUtils.isEmpty(fSoapAction)) {
             headers.put("Content-Type", "text/xml; charset=" + charset);
@@ -219,9 +219,9 @@ public class InvokePage extends AbstractTargetAction {
      * Adds the computed url if only a part was specified (nice to have in reports)
      */
     protected void addComputedParameters(final Map map) {
-    	super.addComputedParameters(map);
-    	if (!StringUtils.equals(fUrl, fCompleteUrl)) {
-    		MapUtil.putIfNotNull(map, "-> complete url", fCompleteUrl);
-    	}
+        super.addComputedParameters(map);
+        if (!StringUtils.equals(fUrl, fCompleteUrl)) {
+            MapUtil.putIfNotNull(map, "-> complete url", fCompleteUrl);
+        }
     }
 }
