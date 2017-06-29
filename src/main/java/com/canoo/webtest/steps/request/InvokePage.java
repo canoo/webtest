@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 import org.xml.sax.SAXException;
 
 import com.canoo.webtest.util.FileUtil;
@@ -33,11 +34,13 @@ import com.gargoylesoftware.htmlunit.WebRequest;
  *   description="This step executes a request to a particular URL."
  */
 public class InvokePage extends AbstractTargetAction {
+	private static final Logger LOG = Logger.getLogger(InvokePage.class);
     private String fUrl;
     private String fCompleteUrl;
     private String fMethod = "GET";
     private File fContentFile;
     private String fContent;
+    private String fContentType;
 
     private String fSoapAction;
 
@@ -47,6 +50,10 @@ public class InvokePage extends AbstractTargetAction {
 
     public String getUrl() {
         return fUrl;
+    }
+    
+    public String getContentType() {
+    	return fContentType;
     }
 
     /**
@@ -77,6 +84,18 @@ public class InvokePage extends AbstractTargetAction {
      */
     public void setUrl(final String newUrl) {
         fUrl = newUrl;
+    }
+    
+    /**
+     * Sets the Content Type
+     * @param contentType
+     * @webtest.parameter 
+     *   required="no"
+     *   description="Sets the content-type HTTP header for POST requests"
+     *   default="application/x-www-form-urlencoded"
+     */
+    public void setContentType(final String contentType) {
+    	fContentType = contentType;
     }
 
     /**
@@ -168,13 +187,16 @@ public class InvokePage extends AbstractTargetAction {
         final String charset = System.getProperty("file.encoding");
         
         final Map headers = new HashMap();
-        if (!StringUtils.isEmpty(fSoapAction)) {
-            headers.put("Content-type", "text/xml; charset=" + charset);
+        if (!StringUtils.isEmpty(fContentType)) {
+        	headers.put("Content-Type", fContentType);
+        }
+        else if (!StringUtils.isEmpty(fSoapAction)) {
+            headers.put("Content-Type", "text/xml; charset=" + charset);
             headers.put("SOAPAction", fSoapAction);
         } 
         else {
             // TODO: is this the correct Content-type for non-SOAP posts?
-            headers.put("Content-type", "application/x-www-form-urlencoded");
+            headers.put("Content-Type", "application/x-www-form-urlencoded");
         }
         settings.setAdditionalHeaders(headers);
         final String content;
@@ -198,7 +220,8 @@ public class InvokePage extends AbstractTargetAction {
      */
     protected void addComputedParameters(final Map map) {
     	super.addComputedParameters(map);
-    	if (!StringUtils.equals(fUrl, fCompleteUrl))
+    	if (!StringUtils.equals(fUrl, fCompleteUrl)) {
     		MapUtil.putIfNotNull(map, "-> complete url", fCompleteUrl);
+    	}
     }
 }
