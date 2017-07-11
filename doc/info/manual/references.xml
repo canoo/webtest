@@ -56,6 +56,10 @@
         <note>The Canoo Online Services for german language exploration.</note>
         <note>Includes hundreds of pages with static, dynamic and mixed content.</note>
     </ref>
+    <ref id="opencsv" title="opencsv" type="Home Page">
+        <link href="http://opencsv.sourceforge.net" />
+        <note>opencsv is a free open-source csv (comma-separated value) parser library written in Java</note>
+    </ref>
     <ref id="pdfbox" title="PDFBox" type="Home Page">
         <link href="http://www.pdfbox.org"/>
         <note>PDFBox is a free open-source Java PDF Library developed by Ben Litchfield.</note>

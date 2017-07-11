@@ -1,5 +1,19 @@
 package com.canoo.ant.table;
 
+import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFFormulaEvaluator;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormat;
+import org.apache.poi.ss.usermodel.DateUtil;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,16 +25,6 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
-
-import org.apache.log4j.Logger;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFDataFormat;
-import org.apache.poi.hssf.usermodel.HSSFDateUtil;
-import org.apache.poi.hssf.usermodel.HSSFFormulaEvaluator;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 public class ExcelPropertyTable extends APropertyTable {
 
@@ -40,7 +44,7 @@ public class ExcelPropertyTable extends APropertyTable {
     	return sheet != null;
     }
 
-    private HSSFWorkbook getWorkbook() throws IOException {
+    private Workbook getWorkbook() throws IOException {
         final File file = getContainer();
         if (!file.exists()) {
         	throw new FileNotFoundException("File not found >" + file.getAbsolutePath() + "< " + getContainer());
@@ -48,19 +52,24 @@ public class ExcelPropertyTable extends APropertyTable {
         else if (!file.isFile() ||!file.canRead()) {
         	throw new IllegalArgumentException("No a regular readable file: >" + file.getAbsolutePath() + "<");
         }
-        final POIFSFileSystem excelFile = new POIFSFileSystem(new FileInputStream(file));
-        return new HSSFWorkbook(excelFile);
+
+        try {
+            final POIFSFileSystem excelFile = new POIFSFileSystem(new FileInputStream(file));
+            return new HSSFWorkbook(excelFile);
+        } catch (Exception e) {
+            return new XSSFWorkbook(new FileInputStream(file));
+        }
 	}
 
 	protected List read(final String sheetName) throws IOException {
-        final HSSFWorkbook workbook = getWorkbook();
-        final HSSFSheet sheet = getSheet(workbook, sheetName);
+        final Workbook workbook = getWorkbook();
+        final Sheet sheet = getSheet(workbook, sheetName);
 
         final int lastRowNum = sheet.getLastRowNum();
         final List header = new ArrayList();
-        final HSSFRow headerRow = sheet.getRow(0);
+        final Row headerRow = sheet.getRow(0);
         for (short i = 0; i < headerRow.getLastCellNum(); i++) {
-        	final HSSFCell cell = headerRow.getCell(i);
+        	final Cell cell = headerRow.getCell(i);
         	if (cell != null)
         		header.add(stringValueOf(workbook, sheet, headerRow, cell));
         	else
@@ -68,7 +77,7 @@ public class ExcelPropertyTable extends APropertyTable {
         }
         final List result = new LinkedList();
         for (int rowNo = 1; rowNo <= lastRowNum; rowNo++) { // last Row is included
-            final HSSFRow row = sheet.getRow(rowNo);
+            final Row row = sheet.getRow(rowNo);
             if (row != null) // surprising, but row can be null
             {
 	            final Properties props = new Properties();
@@ -76,7 +85,7 @@ public class ExcelPropertyTable extends APropertyTable {
 	            	final String headerName = (String) header.get(i);
 	            	if (headerName != null) // handle empty cols
 	            	{
-		            	final HSSFCell cell = row.getCell(i);
+		            	final Cell cell = row.getCell(i);
 		            	final String value = stringValueOf(workbook, sheet, row, cell);
 		                putValue(value, headerName, props);
 	            	}
@@ -88,9 +97,9 @@ public class ExcelPropertyTable extends APropertyTable {
         return result;
     }
 
-	private HSSFSheet getSheet(final HSSFWorkbook workbook, final String sheetName)
+	private Sheet getSheet(final Workbook workbook, final String sheetName)
 	{
-		final HSSFSheet sheet;
+		final Sheet sheet;
 		if (sheetName == null) {
         	sheet = workbook.getSheetAt(0); // no name specified, take the first sheet
         }
@@ -113,14 +122,18 @@ public class ExcelPropertyTable extends APropertyTable {
         props.put(key, value);
     }
     
-    private String stringValueOf(final HSSFWorkbook workbook, final HSSFSheet sheet, final HSSFRow row, final HSSFCell cell) {
+    private String stringValueOf(final Workbook workbook, final Sheet sheet, final Row row, final Cell cell) {
         if (null == cell) {
             return EMPTY;
         }
         final int cellValueType;
-        if (cell.getCellType() == HSSFCell.CELL_TYPE_FORMULA) {
-           	final HSSFFormulaEvaluator evaluator = new HSSFFormulaEvaluator(sheet, workbook);
-           	evaluator.setCurrentRow(row);
+        if (cell.getCellType() == Cell.CELL_TYPE_FORMULA) {
+            FormulaEvaluator evaluator;
+            if (workbook instanceof HSSFWorkbook) {
+                evaluator = new HSSFFormulaEvaluator((HSSFWorkbook) workbook);
+            } else {
+                evaluator = new XSSFFormulaEvaluator((XSSFWorkbook) workbook);
+            }
            	cellValueType = evaluator.evaluateFormulaCell(cell);
         }
         else {
@@ -128,17 +141,17 @@ public class ExcelPropertyTable extends APropertyTable {
         }
         
         switch (cellValueType) {
-            case (HSSFCell.CELL_TYPE_STRING):
+            case (Cell.CELL_TYPE_STRING):
                 return cell.getRichStringCellValue().getString();
-            case (HSSFCell.CELL_TYPE_NUMERIC):
-                final HSSFDataFormat dataFormat = workbook.createDataFormat();
-            	if (HSSFDateUtil.isCellDateFormatted(cell))
+            case (Cell.CELL_TYPE_NUMERIC):
+                final DataFormat dataFormat = workbook.createDataFormat();
+            	if (DateUtil.isCellDateFormatted(cell))
             		return excelDateToString(dataFormat, cell);
             	else
             		return excelNumberToString(dataFormat, cell);
-            case (HSSFCell.CELL_TYPE_BLANK):
+            case (Cell.CELL_TYPE_BLANK):
                 return "";
-            case (HSSFCell.CELL_TYPE_BOOLEAN):
+            case (Cell.CELL_TYPE_BOOLEAN):
                 return "" + cell.getBooleanCellValue();
             default:
                 LOG.warn("Cell Type not supported: " + cell.getCellType());
@@ -146,7 +159,7 @@ public class ExcelPropertyTable extends APropertyTable {
         }
     }
     
-    private String excelNumberToString(HSSFDataFormat dataFormat, HSSFCell _cell)
+    private String excelNumberToString(DataFormat dataFormat, Cell _cell)
 	{
     	final String excelFormat = dataFormat.getFormat(_cell.getCellStyle().getDataFormat());
     	final String javaFormat = excelNumberFormat2Java(excelFormat);
@@ -165,13 +178,13 @@ public class ExcelPropertyTable extends APropertyTable {
 			return _excelFormat;
 	}
 
-	private String excelDateToString(final HSSFDataFormat dataFormat, final HSSFCell _cell)
+	private String excelDateToString(final DataFormat dataFormat, final Cell _cell)
 	{
     	final String excelFormat = dataFormat.getFormat(_cell.getCellStyle().getDataFormat());
     	final String javaFormat = excelDateFormat2Java(excelFormat);
     	LOG.debug("Excel date format >" + excelFormat + "< converted to >" + javaFormat + "<");
     	
-    	final Date date = HSSFDateUtil.getJavaDate(_cell.getNumericCellValue());
+    	final Date date = DateUtil.getJavaDate(_cell.getNumericCellValue());
     	return new SimpleDateFormat(javaFormat).format(date);
 	}
 

@@ -1,10 +1,9 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
-
-import org.apache.poi.hssf.usermodel.HSSFSheet;
 
 import com.canoo.webtest.ant.WebtestTask;
 import com.canoo.webtest.steps.Step;
+import org.apache.poi.ss.usermodel.Sheet;
 
 /**
  * Test class for {@link AbstractExcelSheetStep}.<p>
@@ -53,14 +52,14 @@ public class AbstractExcelSheetStepTest extends BaseExcelStepTestCase
         final AbstractExcelSheetStep step = (AbstractExcelSheetStep) getStep();
         step.setSheetName(sheetName);
         step.setSheetIndex(sheetIndex);
-        final HSSFSheet excelSheet = step.getExcelSheet();
-        final HSSFSheet expectedSheet = step.getExcelWorkbook().getSheetAt(expectedSheetIndex);
+        final Sheet excelSheet = step.getExcelSheet();
+        final Sheet expectedSheet = step.getExcelWorkbook().getSheetAt(expectedSheetIndex);
         assertSame(expectedSheet, excelSheet);
     }
 
     public void testGetSheetStoredInContext() {
         final AbstractExcelSheetStep step = (AbstractExcelSheetStep) getStep();
-        final HSSFSheet currentSheet = step.getExcelWorkbook().getSheetAt(2);
+        final Sheet currentSheet = step.getExcelWorkbook().getSheetAt(2);
         step.setCurrentSheet(currentSheet);
         assertSame(currentSheet, step.getExcelSheet());
     }

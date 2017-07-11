@@ -1,7 +1,7 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
 
-import org.apache.poi.hssf.util.CellReference;
+import org.apache.poi.ss.util.CellReference;
 
 import com.canoo.webtest.steps.Step;
 
@@ -17,7 +17,7 @@ public class AbstractExcelCellStepTest extends BaseExcelStepTestCase
     }
 
     public void testTrickyCellByReference() throws Exception  {
-        checkCellReference(122, 106, "ABC123", null, null);
+        checkCellReference(122, 730, "ABC123", null, null);
     }
 
     public void testCellByRowCol() throws Exception  {

@@ -1,12 +1,12 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
 
 import com.canoo.webtest.self.TestBlock;
 import com.canoo.webtest.self.ThrowAssert;
 import com.canoo.webtest.steps.Step;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
 
 /**
  * Test class for {@link ExcelVerifyCellStyle}.<p>
@@ -124,7 +124,7 @@ public class ExcelVerifyCellStyleTest extends BaseExcelStepTestCase {
         final ExcelVerifyCellStyle step = (ExcelVerifyCellStyle) getStep();
         step.setCell("B2");
         step.getExcelCell().setCellErrorValue((byte)42);
-        step.getExcelCell().setCellType(HSSFCell.CELL_TYPE_ERROR);
+        step.getExcelCell().setCellType(Cell.CELL_TYPE_ERROR);
         step.setType("error");
         executeStep(step);
     }
@@ -132,12 +132,12 @@ public class ExcelVerifyCellStyleTest extends BaseExcelStepTestCase {
     public void testUnknownProperties() throws Exception {
         final ExcelVerifyCellStyle step = (ExcelVerifyCellStyle) getStep();
         step.setCell("B2");
-        final HSSFCellStyle cellStyle = step.getExcelCell().getCellStyle();
+        final CellStyle cellStyle = step.getExcelCell().getCellStyle();
         cellStyle.setBorderTop(Short.MAX_VALUE);
         cellStyle.setAlignment(Short.MAX_VALUE);
         cellStyle.setVerticalAlignment(Short.MAX_VALUE);
         cellStyle.setFillPattern(Short.MAX_VALUE);
-        final HSSFFont fontAt = step.getExcelWorkbook().getFontAt(cellStyle.getFontIndex());
+        final Font fontAt = step.getExcelWorkbook().getFontAt(cellStyle.getFontIndex());
         fontAt.setUnderline(Byte.MAX_VALUE);
         step.setBorder("top:unknown");
         step.setAlign("unknown");
