@@ -40,7 +40,7 @@ if [ -z "$WEBTEST_HOME" -o ! -d "$WEBTEST_HOME" ] ; then
 	WEBTEST_HOME=`cd "$WEBTEST_HOME" && pwd`
 fi
 
-JAVA_OPTS="-Xms64M -Xmx256M -XX:MaxPermSize=256m"
+JAVA_OPTS="-Xms64M -Xmx256M"
 
 RT_LIB=$WEBTEST_HOME/lib
 BUILD_LIB=$WEBTEST_HOME/lib/build
