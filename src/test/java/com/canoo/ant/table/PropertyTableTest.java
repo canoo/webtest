@@ -7,6 +7,7 @@ import com.canoo.ant.table.test.InMemoryPropertyTable;
 import junit.framework.TestCase;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -132,6 +133,36 @@ public class PropertyTableTest extends TestCase {
         assertEquals("myvalue", prop.getProperty("myname"));
         assertEquals("myvalue", prop.getProperty("myForeignName"));
         assertEquals("thirdvalue", prop.getProperty("othername"));
+
+    }
+
+    public void testMultiThreadingGetDepth() throws Exception {
+        final Thread thread1 = new Thread("WebTest1")
+        {
+            @Override
+            public void run() {
+                InMemoryPropertyTable table = new InMemoryPropertyTable();
+                table.getPropertiesList(null, null);
+            }
+        };
+
+        final List<Throwable> uncaugtExceptions = new ArrayList<Throwable>();
+        final Thread.UncaughtExceptionHandler collectingExceptionHandler = new Thread.UncaughtExceptionHandler()
+        {
+            public void uncaughtException(Thread t, Throwable e) {
+                uncaugtExceptions.add(e);
+            }
+        };
+        thread1.setUncaughtExceptionHandler(collectingExceptionHandler);
+        thread1.start();
+
+        thread1.join(5000);
+
+        if (!uncaugtExceptions.isEmpty())
+        {
+            uncaugtExceptions.get(0).printStackTrace(System.err);
+            assertTrue("Found exceptions: " + uncaugtExceptions, uncaugtExceptions.isEmpty());
+        }
 
     }
 

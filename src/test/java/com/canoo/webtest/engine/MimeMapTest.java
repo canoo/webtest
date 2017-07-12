@@ -31,6 +31,8 @@ public class MimeMapTest extends TestCase {
     	assertEquals("text/xml", MimeMap.adjustMimeTypeIfNeeded("text/xml", "http://foo/fii.xls"));
     	assertEquals(MimeMap.EXCEL_MIME_TYPE, 
     			MimeMap.adjustMimeTypeIfNeeded(MimeMap.UNKNOWN_BINARY_MIME_TYPE, "http://foo/fii.xls"));
+        assertEquals(MimeMap.EXCELX_MIME_TYPE,
+                MimeMap.adjustMimeTypeIfNeeded(MimeMap.UNKNOWN_BINARY_MIME_TYPE, "http://foo/fii.xlsx"));
     	assertEquals(MimeMap.UNKNOWN_BINARY_MIME_TYPE, 
     			MimeMap.adjustMimeTypeIfNeeded(MimeMap.UNKNOWN_BINARY_MIME_TYPE, null));
     }

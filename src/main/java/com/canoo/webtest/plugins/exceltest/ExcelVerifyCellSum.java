@@ -1,10 +1,10 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
 
-import com.canoo.webtest.engine.StepFailedException;
 import com.canoo.webtest.engine.StepExecutionException;
-import org.apache.poi.hssf.util.CellReference;
-import org.apache.poi.hssf.usermodel.HSSFCell;
+import com.canoo.webtest.engine.StepFailedException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.util.CellReference;
 
 /**
  * Verifies that a cell represents the sum of a range of cells in an Excel spreadsheet file, either
@@ -42,13 +42,13 @@ public class ExcelVerifyCellSum extends AbstractExcelCellStep {
     }
 
     public void doExecute() throws Exception {
-        final HSSFCell excelCell = getExcelCell();
+        final Cell excelCell = getExcelCell();
         checkFormula(excelCell);
         checkLiteralValue(excelCell);
     }
 
-    private void checkFormula(final HSSFCell excelCell) {
-        if (excelCell.getCellType() == HSSFCell.CELL_TYPE_FORMULA) {
+    private void checkFormula(final Cell excelCell) {
+        if (excelCell.getCellType() == Cell.CELL_TYPE_FORMULA) {
             final String expectedValue = "SUM(" + getRange() + ")".toUpperCase();
             final String actualValue = excelCell.getCellFormula().toUpperCase();
             if (verifyStrings(expectedValue, actualValue)) {
@@ -56,12 +56,12 @@ public class ExcelVerifyCellSum extends AbstractExcelCellStep {
             }
             throw new StepFailedException("Unexpected formula in cell " + getCellReferenceStr(), expectedValue, actualValue);
         }
-        else if (excelCell.getCellType() != HSSFCell.CELL_TYPE_NUMERIC) {
+        else if (excelCell.getCellType() != Cell.CELL_TYPE_NUMERIC) {
             throw new StepFailedException("Cell " + getCellReferenceStr() + " does not contain a formula or a numeric value.");
         }
     }
 
-    private void checkLiteralValue(final HSSFCell excelCell) {
+    private void checkLiteralValue(final Cell excelCell) {
         final double cellValue = excelCell.getNumericCellValue();
         final int colon = getRange().indexOf(':');
         final CellReference start = ExcelCellUtils.getCellReference(this, getRange().substring(0, colon));
@@ -69,11 +69,11 @@ public class ExcelVerifyCellSum extends AbstractExcelCellStep {
         double sum = 0;
         for(int row = start.getRow() ; row <= end.getRow() ; row++ ) {
             for(short col = start.getCol(); col <= end.getCol(); col++) {
-                final HSSFCell excelCellAt = ExcelCellUtils.getExcelCellAt(this, row, col);
-                if (excelCellAt == null || excelCellAt.getCellType() == HSSFCell.CELL_TYPE_BLANK) {
+                final Cell excelCellAt = ExcelCellUtils.getExcelCellAt(this, row, col);
+                if (excelCellAt == null || excelCellAt.getCellType() == Cell.CELL_TYPE_BLANK) {
                     continue;
                 }
-                if (excelCellAt.getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
+                if (excelCellAt.getCellType() == Cell.CELL_TYPE_NUMERIC) {
                     sum += excelCellAt.getNumericCellValue();
                 } else {
                     throw new StepFailedException("Cell " + ((char) ('A' + col)) + (row + 1) + " does not contain a numeric value.");

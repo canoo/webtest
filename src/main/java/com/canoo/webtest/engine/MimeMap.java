@@ -1,4 +1,4 @@
-// Copyright © 2002-2007 Canoo Engineering AG, Switzerland.
+// Copyright ï¿½ 2002-2007 Canoo Engineering AG, Switzerland.
 package com.canoo.webtest.engine;
 
 import java.util.HashMap;
@@ -17,6 +17,7 @@ public class MimeMap
 
     private static final Map<String, String> DEFAULT_MAP = new HashMap<String, String>(101);
     public static final String EXCEL_MIME_TYPE = "application/vnd.ms-excel";
+    public static final String EXCELX_MIME_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
     public static final String UNKNOWN_BINARY_MIME_TYPE = "application/octet-stream";
 
     static {
@@ -27,6 +28,7 @@ public class MimeMap
         DEFAULT_MAP.put("application/pdf", "pdf");
         DEFAULT_MAP.put("application/vnd.ms-excel", "xls");
         DEFAULT_MAP.put("application/excel", "xls");
+        DEFAULT_MAP.put("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "xlsx");
         DEFAULT_MAP.put("application/vnd.openxmlformats-officedocument.wordprocessingml.document", "docx");
         DEFAULT_MAP.put("application/vnd.oasis.opendocument.text", "odt");
         DEFAULT_MAP.put("application/vnd.oasis.opendocument.spreadsheet", "ods");
@@ -123,9 +125,11 @@ public class MimeMap
      * Should probably be moved to htmlunit.
      */
     public static String adjustMimeTypeIfNeeded(final String contentType, final String responseFileName) {
-        if (UNKNOWN_BINARY_MIME_TYPE.equals(contentType)) {
-            if (responseFileName != null && responseFileName.endsWith(".xls")) {
+        if (UNKNOWN_BINARY_MIME_TYPE.equals(contentType) && responseFileName != null) {
+            if (responseFileName.endsWith(".xls")) {
                 return EXCEL_MIME_TYPE;
+            } else if (responseFileName.endsWith(".xlsx")) {
+                return EXCELX_MIME_TYPE;
             }
         }
         return contentType;

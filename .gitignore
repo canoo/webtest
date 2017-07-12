@@ -19,6 +19,7 @@ webtestRunning.txt
 junit*.properties
 dummy
 spiderman.txt
-webtest.iml
-webtest.ipr
-webtest.iws
+.idea/
+*.iml
+*.ipr
+*.iws

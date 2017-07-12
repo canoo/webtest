@@ -1,10 +1,10 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.util.CellReference;
 
 import com.canoo.webtest.engine.StepExecutionException;
+import org.apache.poi.ss.util.CellReference;
+import org.apache.poi.ss.usermodel.Cell;
 
 /**
  * Base class for steps that deal with an individual cell of an Excel spreadsheet.<p>
@@ -65,7 +65,7 @@ public abstract class AbstractExcelCellStep extends AbstractExcelSheetStep {
         }
     }
 
-    protected HSSFCell getExcelCell() {
+    protected Cell getExcelCell() {
         final CellReference cellReference = ExcelCellUtils.getCellReference(this, getCell(), getRow(), getCol());
         return ExcelCellUtils.getExcelCellAt(this, cellReference.getRow(), cellReference.getCol());
     }

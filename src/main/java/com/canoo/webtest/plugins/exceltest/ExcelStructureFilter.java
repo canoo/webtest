@@ -1,22 +1,20 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import com.canoo.webtest.engine.ContextHelper;
+import com.canoo.webtest.interfaces.IContentFilter;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.canoo.webtest.engine.ContextHelper;
-import com.canoo.webtest.interfaces.IContentFilter;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 
 /**
  * @author Rob Nielsen
@@ -28,18 +26,19 @@ import com.canoo.webtest.interfaces.IContentFilter;
 public class ExcelStructureFilter extends AbstractExcelStep implements IContentFilter {
 
     public void doExecute() throws Exception {
-        final HSSFWorkbook excelWorkbook = getExcelWorkbook();
+        final Workbook excelWorkbook = getExcelWorkbook();
         final DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         final Document doc = builder.newDocument();
         final Element root = doc.createElement("excelWorkbook");
         doc.appendChild(root);
-        root.setAttribute("backup", String.valueOf(excelWorkbook.getBackupFlag()));
+        //root.setAttribute("backup", String.valueOf(excelWorkbook.getBackupFlag()));
+        root.setAttribute("backup", String.valueOf(Boolean.FALSE));
         root.setAttribute("numberOfFonts", String.valueOf(excelWorkbook.getNumberOfFonts()));
         root.setAttribute("numberOfCellStyles", String.valueOf(excelWorkbook.getNumCellStyles()));
         root.setAttribute("numberOfNames", String.valueOf(excelWorkbook.getNumberOfNames()));
         final Element sheets = doc.createElement("sheets");
         for(int i=0; i < excelWorkbook.getNumberOfSheets(); i++) {
-            final HSSFSheet sheetAt = excelWorkbook.getSheetAt(i);
+            final Sheet sheetAt = excelWorkbook.getSheetAt(i);
             final Element sheetElement = doc.createElement("sheet");
             sheetElement.setAttribute("index", String.valueOf(i));
             sheetElement.setAttribute("name", excelWorkbook.getSheetName(i));

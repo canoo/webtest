@@ -1,4 +1,4 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
 
 import com.canoo.webtest.boundary.FileBoundary;

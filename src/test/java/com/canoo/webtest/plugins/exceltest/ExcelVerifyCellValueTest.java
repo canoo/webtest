@@ -1,8 +1,8 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
 
 import com.canoo.webtest.steps.Step;
-import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.ss.usermodel.Cell;
 
 /**
  * Test class for {@link ExcelVerifyCellValue}.<p>
@@ -26,8 +26,8 @@ public class ExcelVerifyCellValueTest extends BaseExcelStepTestCase {
         final ExcelVerifyCellValue step = (ExcelVerifyCellValue) getStep();
         step.setCell("B2");
         step.setText("Error Code 42");
+        step.getExcelCell().setCellType(Cell.CELL_TYPE_ERROR);
         step.getExcelCell().setCellErrorValue((byte)42);
-        step.getExcelCell().setCellType(HSSFCell.CELL_TYPE_ERROR);
         executeStep(step);
     }
 

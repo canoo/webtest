@@ -1,19 +1,20 @@
-// Copyright © 2006-2007 ASERT. Released under the Canoo Webtest license.
+// Copyright ï¿½ 2006-2007 ASERT. Released under the Canoo Webtest license.
 package com.canoo.webtest.plugins.exceltest;
-
-import java.io.InputStream;
-import java.util.WeakHashMap;
-import java.util.Map;
-
-import org.apache.commons.io.IOUtils;
-import org.apache.log4j.Logger;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
 import com.canoo.webtest.engine.MimeMap;
 import com.canoo.webtest.engine.StepExecutionException;
 import com.canoo.webtest.steps.Step;
 import com.gargoylesoftware.htmlunit.Page;
+import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.InputStream;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 /**
  * Base class for Excel steps.
@@ -35,9 +36,9 @@ public abstract class AbstractExcelStep extends Step
      * @throws StepExecutionException
      *          if pdf analyzer cannot be initialized correctly
      */
-    protected HSSFWorkbook getExcelWorkbook() {
+    protected Workbook getExcelWorkbook() {
     	final Page currentPage = getContext().getCurrentResponse();
-    	HSSFWorkbook workbook = (HSSFWorkbook) sMapWorkbooks.get(currentPage);
+    	Workbook workbook = (Workbook) sMapWorkbooks.get(currentPage);
     	if (workbook == null) {
     		workbook = createWorkbook(currentPage);
     		sMapWorkbooks.put(currentPage, workbook); // weak map, analyser garbage collected together with the page
@@ -46,19 +47,24 @@ public abstract class AbstractExcelStep extends Step
     }
 
     /**
-     * Creates an HSSFWorkbook for the page. This method should not be used directly, 
+     * Creates an Workbook for the page. This method should not be used directly,
      * use {@link #getExcelWorkbook()} instead.
      * @param currentPage the page containing the Excel document
      * @return the analyzer
      */
-    private HSSFWorkbook createWorkbook(final Page currentPage) {
+    private Workbook createWorkbook(final Page currentPage) {
         InputStream is = null;
         try {
             getContext().put(KEY_CURRENT_SHEET, null);
-            is = currentPage.getWebResponse().getContentAsStream();
 
-            final POIFSFileSystem excelFile = new RetryWithCapsPOIFSFileSystem(is);
-            return new HSSFWorkbook(excelFile);
+            try {
+                is = currentPage.getWebResponse().getContentAsStream();
+                final POIFSFileSystem excelFile = new RetryWithCapsPOIFSFileSystem(is);
+                return new HSSFWorkbook(excelFile);
+            } catch (Exception e) {
+                is = currentPage.getWebResponse().getContentAsStream();
+                return new XSSFWorkbook(is);
+            }
         } 
         catch (final Exception e) {
             final String message = "Could not open Excel file.";
@@ -75,7 +81,7 @@ public abstract class AbstractExcelStep extends Step
         final Page currentResponse = getContext().getCurrentResponse();
 
         String contentType = currentResponse.getWebResponse().getContentType();
-        if (!MimeMap.EXCEL_MIME_TYPE.equals(contentType)) {
+        if (!MimeMap.EXCEL_MIME_TYPE.equals(contentType) && !MimeMap.EXCELX_MIME_TYPE.equals(contentType)) {
             throw new StepExecutionException("File does not have correct content type (not a '.xls' file?): "
                     + currentResponse.getWebResponse().getContentType(), this);
         }

@@ -24,12 +24,11 @@ public abstract class APropertyTable implements IPropertyTable {
     protected static final String EMPTY = "";
     protected static final String KEY_JOIN = "JOIN";
 
-    static{
-        setDepth(0);
-    }
-
     protected APropertyTable() {
         fFilter = new AllFilter();
+        if( DEPTH.get() == null ) {
+            setDepth(0);
+        }
     }
 
     private static void setDepth(int depth){
