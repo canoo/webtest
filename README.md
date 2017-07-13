@@ -3,29 +3,6 @@ webtest
 
 The most effective way to test your webapp - http://webtest.canoo.com/
 
-Build Instructions with ant
-===========================
-
-Ensure that you have Apache Ant, Groovy and Maven installed and configured.
-
-To build a clean build:
-
-```
-ant full
-```
-
-To build the release and bundle it into a .zip file:
-
-```
-ant manuals
-ant apidoc
-ant assembleRuntime
-ant zip
-```
-
-These steps produce the file deploy/build.zip.
-=======
-
 Building webtest
 ----------------
 
@@ -35,10 +12,24 @@ The *lib* directory contains a minimal ant and maven runtime capable of building
 
 If you don't have ant installed, build everything using
 
-  $ ./bin/webtest.sh full
+```
+$ ./bin/webtest.sh full
+```
 
-If you do have ant and maven installed, build evrything using
+If you do have ant, groovy, and maven installed, build evrything using
 
-  $ ant full -nouserlib
+```
+$ ant full -nouserlib
+```
+
+Either of the above steps produces 
+
+- deploy/webtest.zip (webtest executable release)
+- deploy/doc.zip (webtest manual)
+- deploy/javadoc.zip (webtest api docs)
+
+and some other artifacts as well.
+
+Interestingly, the files *webtest.[bat|sh]* are the same scripts used to run webtest after installation. 
 
 
