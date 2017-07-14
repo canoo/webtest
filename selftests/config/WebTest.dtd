@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="us-ascii"?><!--Generated on 10-Jul-2017 16:51 for build development-->
+<?xml version="1.0" encoding="us-ascii"?><!--Generated on 13-Jul-2017 20:23 for build development-->
 <!ENTITY % step "(pdfToLinksFilter | selectWebClient | pdfVerifyPageCount | excelStoreCellValue | verifyCheckbox | ifStep | setRadioButton | enableJavaScript | forceInputFieldAttribute | replaceFilter | verifyNoDialogs | pdfVerifyBookmark | storeRegEx | verifyContent | not | confirm | verifyLinks | applyFilters | pdfVerifyInfoProperty | pdfVerifyField | verifyText | storeResponseCode | pdfVerifyFont | emailStoreHeader | verifyElement | pdfVerifyCheckboxField | emailStoreMessageId | normalizeXml | excelFindRow | groovy | contentStripper | verifyElementText | setInputField | reportLinks | emailSetConfig | pdfDecryptDocument | verifyHeader | verifyRadioButton | invoke | retry | pdfVerifyEncryptionPermissions | group | pdfVerifyEncryptionStrength | clickLink | selectWindow | pdfToTextFilter | selectForm | pdfVerifyTitle | closeWindow | testInfo | expectDialog | dataDriven | alert | storeInputFieldAttribute | reportSite | pdfToBookmarksFilter | pdfVerifyEncryption | storeCookie | storeDigest | previousResponse | emailMessageStructureFilter | storeProperty | timedGroup | verifyDocumentURL | mouseOut | steps | matchLinesFilter | setFileField | pdfVerifyLink | verifyProperty | verifyImages | verifyTextarea | repeat | verifyLinkedContent | config | prompt | storeHeader | webtest | tagStripper | dragAndDrop | pdfVerifyFieldCount | verifyCookie | lineSeparatorFilter | excelStructureFilter | followFrame | pdfToFontsFilter | emailStorePartCount | verifyInputField | countWebtestResults | storeRandom | pdfVerifyTextField | selectLinesFilter | expectDialogs | storeLength | emailDeleteMessage | excelSelectSheet | antWrapper | storeLinkParameter | excelVerifyCellStyle | verifyTitle | setCheckbox | storeElementAttribute | excelVerifyCellSum | verifyXPath | pdfVerifyText | clickElement | verifySelectField | forceHiddenInputField | emailStorePartFilename | clickButton | emailStoreMessageType | setSelectField | scriptStep | storeXPath | emailMessageContentFilter | excelVerifyCellValue | pdfVerifyReadOnlyField | emailStoreMessageCount | mouseOver | pdfVerifyEncryptionProperty)" >
 <!ELEMENT step EMPTY >
 <!ELEMENT condition EMPTY >
@@ -304,6 +304,7 @@
 <!ATTLIST invoke
 	content CDATA #IMPLIED
 	contentFile CDATA #IMPLIED
+	contentType CDATA #IMPLIED
 	description CDATA #IMPLIED
 	method CDATA #IMPLIED
 	password CDATA #IMPLIED

@@ -763,7 +763,7 @@
 	<target name="deploy" description="construct the doc and zip"
 			depends="develop, manuals, apidoc, assembleRuntime, zip"/>
 
-	<target name="manuals" description="call the manual build" depends="test.init">
+	<target name="manuals" description="call the manual build" depends="test.init,develop">
 		<property name="manuals.witness" location="${build.dir}/manualsRunning.txt"/>
 		<property name="logFile" value="${log.dir}/manuals.console.log.xml"/>
 		<echo message="Generating manuals (log: ${logFile})"/>

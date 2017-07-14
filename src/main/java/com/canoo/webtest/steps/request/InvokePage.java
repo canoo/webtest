@@ -91,7 +91,7 @@ public class InvokePage extends AbstractTargetAction {
      * @param contentType
      * @webtest.parameter 
      *   required="no"
-     *   description="Sets the content-type HTTP header for POST requests"
+     *   description="Sets the content-type HTTP header for POST and PUT requests"
      *   default="application/x-www-form-urlencoded"
      */
     public void setContentType(final String contentType) {
@@ -101,11 +101,15 @@ public class InvokePage extends AbstractTargetAction {
     /**
      * Sets the HTTP Method.
      *
+     * Strings that do not map directly to 
+     * <a href="http://htmlunit.sourceforge.net/apidocs/com/gargoylesoftware/htmlunit/HttpMethod.html">htmlunit.HttpMethod</a>
+     * constants are not supported.
+     *
      * @param method
      * @webtest.parameter
      *   required="no"
      *   default="GET"
-     *   description="Sets the HTTP Method, i.e. whether the invoke is a GET or POST."
+     *   description="Sets the HTTP Method, i.e. whether the invoke is a GET, POST, PUT, etc."
      */
     public void setMethod(final String method) {
         fMethod = method;
@@ -161,16 +165,23 @@ public class InvokePage extends AbstractTargetAction {
         fSoapAction = soapAction;
     }
 
+    private boolean isContentNull() {
+      return getContent() == null && getContentFile() == null;
+    }
+
     protected void verifyParameters() {
         super.verifyParameters();
         nullParamCheck(getUrl(), "url");
-        paramCheck(getContent() != null && getContentFile() != null, "Only one of 'content' and 'contentFile' must be set.");
-        paramCheck("POST".equals(getMethod()) && getContent() == null && getContentFile() == null,
-                "One of 'content' or 'contentFile' must be set for POST.");
+        paramCheck(getContent() != null && getContentFile() != null, 
+            "Only one of 'content' and 'contentFile' must be set.");
+        paramCheck("POST".equals(fMethod) && isContentNull(), 
+            "One of 'content' or 'contentFile' must be set for POST.");
+        paramCheck("PUT".equals(fMethod) && isContentNull(), 
+            "One of 'content' or 'contentFile' must be set for PUT.");
     }
 
     protected Page findTarget() throws IOException, SAXException {
-        if ("POST".equals(getMethod())) {
+        if ("POST".equals(fMethod) || "PUT".equals(fMethod)) {
             return findTargetByPost();
         }
         fCompleteUrl = getContext().getConfig().getUrlForPage(getUrl());
@@ -181,7 +192,7 @@ public class InvokePage extends AbstractTargetAction {
 
     private Page findTargetByPost() throws IOException, SAXException {
         String url = getContext().getConfig().getUrlForPage(getUrl());
-        final WebRequest settings = new WebRequest(new URL(url), HttpMethod.POST);
+        final WebRequest settings = new WebRequest(new URL(url), HttpMethod.valueOf(fMethod));
         
         // get default encoding
         final String charset = System.getProperty("file.encoding");
