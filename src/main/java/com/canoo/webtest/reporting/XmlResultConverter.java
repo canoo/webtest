@@ -209,7 +209,7 @@ public class XmlResultConverter {
 
         addStepResult(stepElement, stepResult);
 
-        final Map<String, String> attributes = new TreeMap<String, String>(stepResult.getAttributes());
+        final Map<String, Object> attributes = new TreeMap<String, Object>(stepResult.getAttributes());
 
         attributes.remove("description");
         final String resultFile = (String) attributes.remove("resultFilename");

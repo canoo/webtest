@@ -33,7 +33,7 @@ public class StepResult {
 		return taskName;
 	}
 
-	private final Map<String, String> fAttributes = new TreeMap<String, String>();
+	private final Map<String, Object> fAttributes = new TreeMap<String, Object>();
 	private final List<StepResult> fChildren = new ArrayList<StepResult>();
 	private Date fEndDate;
 	private List fHtmlParserMessages = Collections.EMPTY_LIST;
@@ -121,7 +121,7 @@ public class StepResult {
 	void propertiesExpanded(final String originalValue, final String expanded) {
 		// write expanded values (if any) in place of original values
 		// (would be interesting to have both)
-		for (final Map.Entry<String, String> entry : fAttributes.entrySet()) {
+		for (final Map.Entry<String, Object> entry : fAttributes.entrySet()) {
 			final String unexpandedValue = (String) entry.getValue();
 			if (originalValue.equals(unexpandedValue)) {
 				LOG.debug("Replacing value with expanded value: " + expanded);
@@ -181,7 +181,7 @@ public class StepResult {
 	 *
 	 * @return the attributes
 	 */
-	public Map<String, String> getAttributes() {
+	public Map<String, Object> getAttributes() {
 		return fAttributes;
 	}
 
