@@ -7,6 +7,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import junit.framework.TestCase;
+
 import org.junit.Test;
 
 import com.canoo.webtest.engine.PdfAwarePageCreator;
@@ -18,13 +20,13 @@ import com.gargoylesoftware.htmlunit.WebClient;
  * @author Marc Guillemot
  * @version $Revision: 102192 $
  */
-public class PdfBoxPDFPageTest {
+public class PdfBoxPDFPageTest extends TestCase
+{
 
 	/**
 	 *
 	 */
-	@Test
-	public void getLinks() throws Exception {
+	public void testGetLinks() throws Exception {
 		final PdfBoxPDFPage pdfPage = getPdfPage("testDocLinks.pdf");
 		final List<PDFBoxPDFLink> links = pdfPage.getLinks();
 
@@ -37,8 +39,7 @@ public class PdfBoxPDFPageTest {
 	/**
 	 *
 	 */
-	@Test
-	public void getText() throws Exception {
+	public void testGetText() throws Exception {
 		final PdfBoxPDFPage pdfPage = getPdfPage("testDocBookmarks.pdf");
 		final String text = pdfPage.getText("--\n", "\n", "\n--end page--\n", PDFPage.MODE_LINES);
 

@@ -13,6 +13,8 @@ import java.util.Vector;
 import javax.xml.namespace.QName;
 import javax.xml.transform.TransformerException;
 
+import junit.framework.TestCase;
+
 import org.apache.xpath.XPathContext;
 import org.apache.xpath.functions.Function;
 import org.apache.xpath.objects.XObject;
@@ -29,7 +31,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
  * Tests for {@link XPathHelper}.
  * @author Marc Guillemot
  */
-public class XPathHelperTest
+public class XPathHelperTest extends TestCase
 {
 	public static class MyFunction extends Function
 	{
@@ -45,7 +47,6 @@ public class XPathHelperTest
 		}
 	}
 
-	@Test
 	public void testGlobalObjects() throws Exception
 	{
 		final int nbGlobalFunctions = XPathHelper.getGlobalFunctions().size(); // the WebTest default ones
@@ -73,7 +74,6 @@ public class XPathHelperTest
 		assertEquals("http://my.namespace.uri", helper.getNamespaceContext().getNamespaceURI("my"));
 	}
 	
-	@Test
 	public void testQuote()
 	{
 		assertEquals("''", XPathHelper.quote(""));
@@ -91,7 +91,6 @@ public class XPathHelperTest
 	 * when no hack is used to create the same situation as when HtmlUnit processes an XPath by itself. 
 	 * @throws Exception
 	 */
-	@Test
 	public void upperCaseHtmlTags() throws Exception
 	{
         final WebClient webClient = new WebClient();

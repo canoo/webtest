@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+import junit.framework.TestCase;
+
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.BuildLogger;
 import org.apache.tools.ant.Location;
@@ -14,15 +16,13 @@ import org.apache.tools.ant.ProjectHelper;
 import org.apache.tools.ant.Target;
 import org.apache.tools.ant.taskdefs.ImportTask;
 import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * Unit tests for {@link PropertyTableTask}.
  * @author Marc Guillemot
  */
-public class PropertyTableTaskTest
+public class PropertyTableTaskTest extends TestCase
 {
-	@Test
 	public void testFailASAP() throws Exception {
 		
 		final Project p = prepareProject("com/canoo/ant/table/dataDriven.xml");
@@ -38,7 +38,6 @@ public class PropertyTableTaskTest
 		}
 	}
 
-	@Test
 	public void testFailAtTheEnd() throws Exception {
 		
 		final Project p = prepareProject("com/canoo/ant/table/dataDriven.xml");
