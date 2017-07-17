@@ -518,8 +518,8 @@
 			</classpath>
 			<javac debug="on" deprecation="off"
 				   encoding="ISO-8859-1"
-				   source="1.6"
-				   target="1.6"
+				   source="1.8"
+				   target="1.8"
 					>
 			</javac>
 		</groovyc>
@@ -613,13 +613,15 @@
 		<mkdir dir="${junitrep.dir}"/>
 
 		<junit
-				printsummary="yes" haltonfailure="no" failureproperty="junit.failed"
+				printsummary="yes" haltonfailure="yes" failureproperty="junit.failed"
 				fork="yes" forkmode="once" dir="${basedir}" includeantruntime="no"
 				>
 			<jvmarg value="-Xmx256M"/>
 			<sysproperty key="log4j.defaultInitOverride" value="false"/>
 			<sysproperty key="log4j.configuration" value="log4j.junit.xml"/>
 			<sysproperty key="log.dir" path="${log.dir}"/>
+			<classpath refid="junit.rt.cp"/>
+			<formatter type="xml"/>
 
 			<batchtest todir="${junitrep.dir}">
 				<!-- execute the unit tests against webtest.jar, which only contains com/canoo -->
@@ -638,8 +640,6 @@
 					<include name="com/canoo/webtest/extension/applet/runner/ScenarioRunnerTest.class"/>
 				</fileset>
 			</batchtest>
-			<formatter type="xml"/>
-			<classpath refid="junit.rt.cp"/>
 		</junit>
 		<junitreport todir="${log.dir}" tofile="${junitTestReport.file}">
 			<fileset dir="${junitrep.dir}" includes="TEST-*.xml"/>

@@ -24,7 +24,7 @@ rem echo Will use %JAVA_CMD%
 
 set LOG4J=-Dlog4j.configuration=file:/%RT_LIB%/log4j.properties
 
-set EXEC=%JAVA_CMD% %JAVA_OPTS% -cp "%RT_LIB%\ant-launcher-1.8.4.jar" -Dant.library.dir="%RT_LIB%" "%LOG4J%" org.apache.tools.ant.launch.Launcher -nouserlib -lib "%CLOVER_LIB%" %*
+set EXEC=%JAVA_CMD% %JAVA_OPTS% -cp "%RT_LIB%\ant-launcher-1.10.1.jar" -Dant.library.dir="%RT_LIB%" "%LOG4J%" org.apache.tools.ant.launch.Launcher -nouserlib -lib "%CLOVER_LIB%" %*
 echo %EXEC%
 
 %EXEC%

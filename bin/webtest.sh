@@ -66,4 +66,4 @@ LOG4J=-Dlog4j.configuration="file://${cygwin:+/}$RT_LIB/log4j.properties"
 # Let webtest know its location
 export WEBTEST_HOME
 
-exec "$JAVA_CMD" $JAVA_OPTS -cp "$RT_LIB/ant-launcher-1.8.4.jar" -Dant.library.dir="$RT_LIB" $LOG4J org.apache.tools.ant.launch.Launcher -nouserlib "$@"
+exec "$JAVA_CMD" $JAVA_OPTS -cp "$RT_LIB/ant-launcher-1.10.1.jar" -Dant.library.dir="$RT_LIB" $LOG4J org.apache.tools.ant.launch.Launcher -nouserlib "$@"
