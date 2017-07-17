@@ -1,7 +1,0 @@
-<post>
-
-    <code caption="emailDeleteMessage">
-        <include src='emailexamples/emailDeleteMessageExample.xml' />
-    </code>
-
-</post>

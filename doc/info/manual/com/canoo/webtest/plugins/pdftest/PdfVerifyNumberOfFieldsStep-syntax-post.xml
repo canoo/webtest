@@ -1,7 +1,0 @@
-<post>
-
-    <code caption="pdfVerifyFieldCount">
-        <include src='pdfexamples/verifyFieldCountExample.xml' />
-    </code>
-
-</post>

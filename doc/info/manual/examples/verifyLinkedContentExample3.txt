@@ -1,4 +1,0 @@
-<verifyLinkedContent
-	xpath="//img/@src | //input[@type='image']/@src"
-	accept="image/gif;image/png"
-	/>

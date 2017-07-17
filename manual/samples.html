@@ -1,0 +1,780 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Simple test" href="#Simple test" rel="subsection">
+<link title="Organize your tests" href="#Organize your tests" rel="subsection">
+<link title="Include files" href="#Include files" rel="subsection">
+<link title="Property Usage" href="#Property Usage" rel="subsection">
+<link title="Putting it all together" href="#Putting it all together" rel="subsection">
+<link title="Rules of thumb" href="#Rules of thumb" rel="subsection">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="The samples should give you an easy jump start. You can copy/paste them from this page into your editor. We will start with the easiest examples and explain more advanced topics as we proceed. The description of every sample is based on the preceeding examples. This page only shows very few of the available steps that can be used with Canoo WebTest. See the various Syntax Reference pages (e.g. ) for more details about the steps. In particular, has usage samples for the PDF Steps. This page assumes that you have already followed the instructions.">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Simple test,Organize your tests,Include files,Property Usage,Putting it all together,Rules of thumb,">
+<title>Samples to give you a jump start</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html" class="selected">Samples</a>
+<ul>
+<li>
+<a href="#Simple test">&gt; Simple test</a>
+</li>
+<li>
+<a href="#Organize your tests">&gt; Organize your tests</a>
+</li>
+<li>
+<a href="#Include files">&gt; Include files</a>
+</li>
+<li>
+<a href="#Property Usage">&gt; Property Usage</a>
+</li>
+<li>
+<a href="#Putting it all together">&gt; Putting it all together</a>
+</li>
+<li>
+<a href="#Rules of thumb">&gt; Rules of thumb</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html">Syntax Reference - Core Steps</a>
+</li>
+<li>
+<a href="syntaxExtension.html">Syntax Reference - Extension Steps</a>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>Samples to give you a jump start</h1>
+
+    
+<p>The samples should give you an easy jump start.
+	You can copy/paste them from this page into your editor.</p>
+
+    
+<p>We will start with the easiest examples and explain
+	more advanced topics as we proceed. The description of every
+	sample is based on the preceeding examples.</p>
+
+      
+<p>
+          This page only shows very few of the available steps that
+          can be used with Canoo WebTest. See the various Syntax Reference
+          pages (e.g. <a href="syntaxCore.html">Syntax Reference - Core Steps</a>)
+          for more details about the steps. In particular,
+          <a href="syntaxPDF.html">Syntax Reference - PDF Steps</a> has
+          usage samples for the PDF Steps.
+      </p>
+
+      
+<p>
+          This page assumes that you have already followed the
+          <a href="install.html">Install</a> instructions.
+      </p>
+
+  
+<h2>
+<a name="Simple test">Simple test</a>
+</h2>
+
+    
+<p>The first simple example shows how to connect to a webapplication
+		starting at
+      <span class="example">http://www.myserver.com:8080/myApp/login</span>.
+    </p>
+
+    
+<div class="code">
+<div class="caption">SimpleTest.xml</div>
+<div class="content">
+      
+&lt;<span class="tag">project</span>&nbsp;<span class="att">name</span>="<span class="val">SimpleTest</span>"&nbsp;<span class="att">basedir</span>="<span class="val">.</span>"&nbsp;<span class="att">default</span>="<span class="val">wt.full</span>"&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">property</span>&nbsp;<span class="att">name</span>="<span class="val">webtest.home</span>"&nbsp;<span class="att">location</span>="<span class="val">C:/java/webtest</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">import</span>&nbsp;<span class="att">file</span>="<span class="val">${webtest.home}/webtest.xml</span>"/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">wt.testInWork</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">my&nbsp;simple&nbsp;Test</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">url</span>="<span class="val">http://www.myserver.com:8080/myApp/login</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">description</span>="<span class="val">get&nbsp;Login&nbsp;Page</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyTitle</span>&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">text</span>="<span class="val">Login&nbsp;Page</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">description</span>="<span class="val">we&nbsp;should&nbsp;see&nbsp;the&nbsp;login&nbsp;title</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">webtest</span>&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">target</span>&gt;<br>
+&lt;/<span class="tag">project</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>Look above the <span class="example">import</span> task.
+		It is crucial that you replace <span class="example">C:/java/webtest</span> with your
+      <span class="example">WEBTEST_HOME</span> installation directory. 
+      Otherwise, Canoo WebTest may not find its implementation. 
+      You can also provide this value as a relative path, e.g. a value of
+      <span class="example">"../webtest"</span> is convenient if your
+      <span class="example">SimpleText.xml</span> is stored in a directory next to your
+      <span class="example">WEBTEST_HOME</span>.
+    </p>
+
+    
+<p>Put this file where you would like your tests to be, open a command shell in
+		that directory and type:</p>
+
+    
+<div class="code">
+<div class="content">
+			webtest -buildfile SimpleTest.xml
+    </div>
+</div>
+
+  
+<h2>
+<a name="Organize your tests">Organize your tests</a>
+</h2>
+
+    
+<p>The <span class="example">import</span> statement in the previous example should be executed only once and not be present in all test files
+     to avoid memory problems. For this reason it is wise to organize tests in a subfolder
+     as done in the sample project created by <i>wt.createProject</i> and call the real tests
+     from the main build file
+     </p>
+
+    
+<div class="code">
+<div class="caption">build.xml</div>
+<div class="content">
+      
+&lt;<span class="tag">project</span>&nbsp;<span class="att">default</span>="<span class="val">wt.full</span>"&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">property</span>&nbsp;<span class="att">name</span>="<span class="val">webtest.home</span>"&nbsp;<span class="att">location</span>="<span class="val">C:/java/webtest</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">import</span>&nbsp;<span class="att">file</span>="<span class="val">${webtest.home}/webtest.xml</span>"/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">wt.testInWork</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">ant</span>&nbsp;<span class="att">dir</span>="<span class="val">tests</span>"&nbsp;<span class="att">file</span>="<span class="val">allTests.xml</span>"/&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">target</span>&gt;<br>
+&lt;/<span class="tag">project</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<div class="code">
+<div class="caption">tests/allTests.xml</div>
+<div class="content">
+      
+&lt;<span class="tag">project</span>&nbsp;<span class="att">default</span>="<span class="val">all</span>"&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">all</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">ant</span>&nbsp;<span class="att">file</span>="<span class="val">testFoo.xml</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">ant</span>&nbsp;<span class="att">file</span>="<span class="val">testSomething.xml</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">ant</span>&nbsp;<span class="att">file</span>="<span class="val">testSomethingElse.xml</span>"/&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">target</span>&gt;<br>
+&lt;/<span class="tag">project</span>&gt;<br>
+
+    
+</div>
+</div>
+   
+<h2>
+<a name="Include files">Include files</a>
+</h2>
+  	
+<p>It is important to avoid duplications to keep tests maintainable. 
+  	This can be achieved with the usage of entities (or with macros).
+  	Entities are standard XML features allowing to refer (external) xml fragments through a DTD.</p>
+  	
+<p>
+<i>webtest.xml</i> provides facilities to make work with entities and DTD easier: a DTD file
+  	<i>dtd/Project.dtd</i> is automatically created to reference the files contained
+  	in the <i>includes</i> folder.</p>
+  	
+  	
+<p>This means that when your <i>includes&gt;</i> folder contains a file like this:</p>
+  	
+<div class="code">
+<div class="caption">includes/goToLogin.xml</div>
+<div class="content">
+  		
+&lt;<span class="tag">invoke</span>
+<br>
+&nbsp;&nbsp;<span class="att">url</span>="<span class="val">http://www.myserver.com:8080/myApp/login</span>"<br>
+&nbsp;&nbsp;<span class="att">description</span>="<span class="val">get&nbsp;Login&nbsp;Page</span>"&nbsp;/&gt;<br>
+&lt;<span class="tag">verifyTitle</span>&nbsp;<br>
+&nbsp;&nbsp;<span class="att">text</span>="<span class="val">Login&nbsp;Page</span>"<br>
+&nbsp;&nbsp;<span class="att">description</span>="<span class="val">we&nbsp;should&nbsp;see&nbsp;the&nbsp;login&nbsp;title</span>"&nbsp;/&gt;<br>
+
+  	
+</div>
+</div>
+  	
+<p>WebTest will automatically generate <i>dtd/Project.dtd</i> containing a reference like:</p>
+  	
+<div class="code">
+<div class="content">
+  		
+&lt;<span class="tag">!ENTITY</span>&nbsp;goToLogin&nbsp;SYSTEM&nbsp;"../includes/goToLogin.xml"&gt;<br>
+
+  	
+</div>
+</div>
+  	
+<p>Referencing this DTD in your tests allows to make usage of the entities:</p>
+  	
+<div class="code">
+<div class="caption">tests/testSomething.xml</div>
+<div class="content">
+  		
+&lt;<span class="tag">!DOCTYPE</span>&nbsp;project&nbsp;SYSTEM&nbsp;"../dtd/Project.dtd"&gt;<br>
+
+<br>
+&lt;<span class="tag">project</span>&nbsp;<span class="att">default</span>="<span class="val">test</span>"&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">test</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">my&nbsp;simple&nbsp;Test</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;goToLogin;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">setInputField</span>&nbsp;<span class="att">forLabel</span>="<span class="val">Login</span>"&nbsp;<span class="att">text</span>="<span class="val">John</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">setInputField</span>&nbsp;<span class="att">forLabel</span>="<span class="val">Password</span>"&nbsp;<span class="att">text</span>="<span class="val">secret</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">clickButton</span>&nbsp;<span class="att">label</span>="<span class="val">Login</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">webtest</span>&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">target</span>&gt;<br>
+&lt;/<span class="tag">project</span>&gt;<br>
+
+  	
+</div>
+</div>
+  
+<h2>
+<a name="Property Usage">Property Usage</a>
+</h2>
+    
+<p>You can use the full range of
+      <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> features to deal with
+		properties. A typical example is that you use a url that has some
+        common prefix but is extended with different parameters.
+        Using a property for describing the common prefix makes your tests
+        both: more readable and easier to adapt to changes.
+    </p>
+
+    
+<div class="code">
+<div class="caption">property usage</div>
+<div class="content">
+      
+..<br>
+&nbsp;&nbsp;&lt;<span class="tag">property</span>&nbsp;<span class="att">name</span>="<span class="val">url</span>"&nbsp;<span class="att">value</span>="<span class="val">login?scott=</span>"/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">main</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">myTest</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;config;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">description</span>="<span class="val">bad&nbsp;login</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">url</span>="<span class="val">${url}wolf</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyTitle</span>&nbsp;<span class="att">text</span>="<span class="val">Sorry,&nbsp;bad&nbsp;login</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">description</span>="<span class="val">proper&nbsp;login</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">url</span>="<span class="val">${url}tiger</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyTitle</span>&nbsp;<span class="att">text</span>="<span class="val">Welcome</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">webtest</span>&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">target</span>&gt;<br>
+..<br>
+
+    
+</div>
+</div>
+
+    
+<p>This opens quite a number of possibilities.</p>
+      
+<dl>
+        
+          
+<dt>Entity Modules</dt>
+          
+<dd>When extracting a block into an external file as shown above,
+				you can still use the ${property} syntax. This makes external files
+                more reusable in different contexts. They can effectively become
+                modules that capture the
+            <i>structure</i> of the steps you are
+				executing.
+          </dd>
+        
+        
+          
+<dt>Property Files</dt>
+          
+<dd>If you have a 'family' of properties that change values together,
+                e.g. label.a and label.b both for english and french, then you can create
+                two files: <i>english-labels.properties</i> and <i>french-label.properties</i> and
+                select it via <i>&lt;property file="english-labels.properties"&gt;</i>
+                in your webtest. The files themselves contain the properties in the
+				format <i>name=value</i> one at a line. See the
+            <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> documentation
+                for more details.
+          </dd>
+        
+        
+          
+<dt>Immutable Properties</dt>
+          
+<dd>The value of a property cannot change once it has been set.
+				While this is sometimes annoying it makes for quite a nice way to
+				reuse a test that depends on properties. In the above example
+                we could set the property "url" from a caller of the test target to a
+                different value. A caller can use the &lt;ant&gt; or &lt;antcall&gt;
+                tasks to do that (using nested property elements).
+                See the
+            <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> documentation
+                for more details.
+          </dd>
+        
+
+      
+</dl>
+
+  
+<h2>
+<a name="Putting it all together">Putting it all together</a>
+</h2>
+
+    
+<p>Let's stick to our login examle. Say we want to create a "Login" module.
+		It could look like this:</p>
+
+    
+<div class="code">
+<div class="caption">includes/login.xml</div>
+<div class="content">
+      
+&lt;<span class="tag">invoke</span>
+<br>
+&nbsp;&nbsp;<span class="att">description</span>="<span class="val">goto&nbsp;start&nbsp;page</span>"<br>
+&nbsp;&nbsp;<span class="att">url</span>="<span class="val">${start.page}</span>"&nbsp;/&gt;<br>
+&lt;<span class="tag">setInputField</span>&nbsp;<span class="att">description</span>="<span class="val">set&nbsp;user&nbsp;name</span>"<br>
+&nbsp;&nbsp;<span class="att">name</span>="<span class="val">username</span>"<br>
+&nbsp;&nbsp;<span class="att">value</span>="<span class="val">${user}</span>"&nbsp;/&gt;<br>
+&lt;<span class="tag">setInputField</span>&nbsp;<span class="att">description</span>="<span class="val">set&nbsp;password</span>"<br>
+&nbsp;&nbsp;<span class="att">name</span>="<span class="val">password</span>"<br>
+&nbsp;&nbsp;<span class="att">value</span>="<span class="val">${login.ok.password}</span>"&nbsp;/&gt;<br>
+&lt;<span class="tag">clickButton</span>
+<br>
+&nbsp;&nbsp;<span class="att">label</span>="<span class="val">login</span>"<br>
+&nbsp;&nbsp;<span class="att">description</span>="<span class="val">Click&nbsp;the&nbsp;submit&nbsp;button</span>"&nbsp;/&gt;<br>
+&lt;<span class="tag">verifyTitle</span>&nbsp;<span class="att">description</span>="<span class="val">Home&nbsp;Page&nbsp;follows&nbsp;if&nbsp;login&nbsp;ok</span>"<br>
+&nbsp;&nbsp;<span class="att">text</span>="<span class="val">${login.ok.title}</span>"&nbsp;&nbsp;/&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>This should be reasonably self-explanatory. Note that you can use
+		xml comments at any time, but they do not get reported. Therefore, I like it better
+		to use the description for commenting. </p>
+    
+<p>There will be a lot of Use Cases using this module. Here is one.</p>
+
+    
+<div class="code">
+<div class="caption">tests/loginAndStep.xml</div>
+<div class="content">
+      
+&lt;<span class="tag">?xml</span>&nbsp;<span class="att">version</span>="<span class="val">1.0</span>"?&gt;<br>
+
+<br>
+&lt;<span class="tag">!DOCTYPE</span>&nbsp;project&nbsp;SYSTEM&nbsp;"../dtd/Project.dtd"&gt;<br>
+
+<br>
+&lt;<span class="tag">project</span>&nbsp;<span class="att">default</span>="<span class="val">test</span>"&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">test</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">loginAndStep</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;login;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;step;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">webtest</span>&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">target</span>&gt;<br>
+&lt;/<span class="tag">project</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>Other Use Cases will be different in what they do after the login.
+			They are likely to share even more modules, e.g. "step". They will differ
+			in how they assemble the modules and what they do in between the
+			module calls. How do we make sure that all use cases get executed?
+			We collect them in a test suite:</p>
+
+    
+<div class="code">
+<div class="caption">tests/allUseCasesTestSuite.xml</div>
+<div class="content">
+      
+&lt;<span class="tag">?xml</span>&nbsp;<span class="att">version</span>="<span class="val">1.0</span>"?&gt;<br>
+
+<br>
+&lt;<span class="tag">project</span>&nbsp;<span class="att">default</span>="<span class="val">testSuite</span>"&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">property</span>&nbsp;<span class="att">name</span>="<span class="val">start.page</span>"&nbsp;<span class="att">value</span>="<span class="val">myStartPage</span>"/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">testSuite</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">ant</span>&nbsp;<span class="att">antfile</span>="<span class="val">loginAndStep.xml</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">ant</span>&nbsp;<span class="att">antfile</span>="<span class="val">useCase2.xml</span>"/&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">target</span>&gt;<br>
+&lt;/<span class="tag">project</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>However, the Use Cases do not change in structure for different languages.
+		Only the labels change. We put those languages in different property files.</p>
+
+    
+<div class="code">
+<div class="caption">properties/english.properties</div>
+<div class="content">
+			user=scott<br>
+			login.ok.password=tiger<br>
+			login.ok.title=Welcome<br>
+    
+</div>
+</div>
+    
+<div class="code">
+<div class="caption">properties/french.properties</div>
+<div class="content">
+			user=pascal<br>
+			login.ok.password=fleur<br>
+			login.ok.title=Bienvenue<br>
+    
+</div>
+</div>
+
+    
+<p>In Order to properly test all Use Cases for all languages, we build
+        a test suite that calls the AllUseCasesTestSuite for each language
+        property file.</p>
+
+    
+<div class="code">
+<div class="caption">tests/allLanguagesTestSuite.xml</div>
+<div class="content">
+      
+&lt;<span class="tag">project</span>&nbsp;<span class="att">default</span>="<span class="val">testSuite</span>"&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">property</span>&nbsp;<span class="att">name</span>="<span class="val">suite.xml</span>"&nbsp;<span class="att">value</span>="<span class="val">allUseCases.xml</span>"&nbsp;/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">testSuite</span>"&nbsp;<span class="att">depends</span>="<span class="val">testSuiteFrench,testSuiteEnglish</span>"&nbsp;/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">testSuiteFrench</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">ant</span>&nbsp;<span class="att">antfile</span>="<span class="val">${suite.xml}</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">property</span>&nbsp;<span class="att">file</span>="<span class="val">properties/french.properties</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">ant</span>&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">target</span>&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">testSuiteEnglish</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">ant</span>&nbsp;<span class="att">antfile</span>="<span class="val">${suite.xml}</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">property</span>&nbsp;<span class="att">file</span>="<span class="val">properties/english.properties</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">ant</span>&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">target</span>&gt;<br>
+
+<br>
+&lt;/<span class="tag">project</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>For keeping the tests manageable, proper naming of your test files,
+        entities, and properties helps much. The same holds true for the
+        directory structure. The structure used above allows to use <i>webtest.xml</i>
+        propertly but it is in no way mandatory. In short it looks like this:</p>
+
+    
+<div class="code">
+<div class="caption">Test Directory Structure</div>
+<div class="content">
+		WebTestProject<br>
+      	&nbsp;&nbsp;dtd<br>
+      	&nbsp;&nbsp;includes<br>
+        &nbsp;&nbsp;properties<br>
+        &nbsp;&nbsp;tests<br>
+    
+</div>
+</div>
+
+    
+<p>Following the proposed strategy of removing duplication in the tests
+		will enable you to keep your tests managable and flexible enough to
+		keep up to speed with application development. The goal is to keep every file
+		understandable and comprehensive for its own, at its own level of abstraction.
+		Sure this goes at the price
+        of not having a flat view over the test "storybook". However, this can
+        be achieved 'after-the-fact' by using the builtin reporting features.
+		See the "Build Info"."Selftest Report" for an example.</p>
+
+    
+<p>You should now be able to tackle even more complicated scenarios
+        like different datasets in local, test, and integration environments.</p>
+
+  
+<h2>
+<a name="Rules of thumb">Rules of thumb</a>
+</h2>
+      
+<dl>
+        
+          
+<dt>Strike Two - You're Out!</dt>
+          
+<dd>This is hardball. As soon as you find yourself using code a second
+						time, don't copy but refactor. Put it in a property, an own ant
+						file, a separate target, or a module (external entity).
+          </dd>
+        
+        
+          
+<dt>Keep targets short</dt>
+          
+<dd>Remember that you can call every target separately.
+						Putting all your tests in one target limits your options of
+						running selective tests.
+          </dd>
+        
+        
+          
+<dt>Use description</dt>
+          
+<dd>When writing the description think what message would help you
+						if this step fails.
+          </dd>
+        
+        
+          
+<dt>Fail first</dt>
+          
+<dd>Assure
+            <i>that</i> the test fails as expected and watch
+            <i>how</i> it fails, i.e. make it fail with a meaningful
+						message. This is a mean of "test-the-test".
+						Sometimes it is useful to even keep a negative
+						test in a "not" step. You will find lots of those in the
+						selftests of Canoo WebTest.
+          </dd>
+        
+        
+          
+<dt>One test at a time</dt>
+          
+<dd>Only write one test at a time. Make it fail, make it run.
+          </dd>
+        
+        
+          
+<dt>Use a proper editor</dt>
+          
+<dd>Take that little extra time to set up your editor such that it
+						recognizes the WebTest.dtd. This will payback multiple times.
+          </dd>
+        
+        
+          
+<dt>Learn XPATH</dt>
+          
+<dd>Make yourself familiar with the
+            <a title="XML Path Language." href="annotatedRefs.html#XPATH">XPath</a> syntax. This will
+						enhance the power, flexibility and clarity of your tests by far.
+						Use the
+            <a title="Alex Chaffee's XPath Exploration tool." href="annotatedRefs.html#XPE">XPath Explorer</a> to make your life easier.
+          </dd>
+        
+        
+          
+<dt>Database Setup</dt>
+          
+<dd>If your tests rely on a specific population in the
+						database, make sure, this population is reconstructed right
+						before the test. Look at
+            <a title="A tool for testing all database related issues." href="annotatedRefs.html#dbunit">DbUnit</a> on how to achieve this.
+          </dd>
+        
+
+      
+</dl>
+  
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

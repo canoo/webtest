@@ -1,5 +1,0 @@
-Heading One 
-Subheading 
-[+++ NEW PAGE +++]
-Heading Two 
-[+++ NEW PAGE +++]

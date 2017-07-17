@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Develop Overview" href="developOverview.html" rel="section">
+<link title="Building" href="building.html" rel="section">
+<link title="Prerequisites" href="#Prerequisites" rel="subsection">
+<link title="Building WebTest with ant" href="#Building WebTest with ant" rel="subsection">
+<link title="Building with an IDE" href="#Building with an IDE" rel="subsection">
+<link title="IntelliJ IDEA" href="#IntelliJ IDEA" rel="subsection">
+<link title="Eclipse" href="#Eclipse" rel="subsection">
+<link title="Release" href="release.html" rel="section">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="This page describes how to build webtest from the sources. The build file included with the source provides a complete and repeatable build process, which the second section explains. The build file is used by the build server to produces high quality deliveries but can, and should, also be used to develop WebTest. It is however convenient during development to build webtest from the comfort of an IDE, and the third section gives a few hints on ow to set-up an IDE.">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Prerequisites,Building WebTest with ant,Building with an IDE,IntelliJ IDEA,Eclipse,">
+<title>Building WebTest</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html">Manual</a>
+</li>
+<li>
+<a href="developOverview.html" class="selected">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="developOverview.html">Develop Overview</a>
+</li>
+<li>
+<a href="building.html" class="selected">Building</a>
+<ul>
+<li>
+<a href="#Prerequisites">&gt; Prerequisites</a>
+</li>
+<li>
+<a href="#Building WebTest with ant">&gt; Building WebTest with ant</a>
+</li>
+<li>
+<a href="#Building with an IDE">&gt; Building with an IDE</a>
+</li>
+<li>
+<a href="#IntelliJ IDEA">&gt; IntelliJ IDEA</a>
+</li>
+<li>
+<a href="#Eclipse">&gt; Eclipse</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="release.html">Release</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>Building WebTest</h1>
+		
+<p>This page describes how to build webtest from the sources.
+			The build file included with the source provides a complete and repeatable build process, which the second
+			section explains.
+			The build file is used by the build server to produces high quality deliveries but can, and should, also be
+			used to
+			develop WebTest. It is however convenient during development to build webtest from the comfort of an IDE,
+			and the third section gives a few hints on ow to set-up an IDE.
+		</p>
+	
+<h2>
+<a name="Prerequisites">Prerequisites</a>
+</h2>
+		
+<dl>
+			
+				
+<dt>A platform that is able to run Java.</dt>
+			
+			
+				
+<dt>An installed JDK version 8 or higher.</dt>
+			
+			
+				
+<dt>Ant, version 1.10.1 or newer.</dt>
+				
+<dd>The distributions of webtest contain the necessary part from ant 1.10.1 ready to run.</dd>
+			
+		
+</dl>
+	
+<h2>
+<a name="Building WebTest with ant">Building WebTest with ant</a>
+</h2>
+
+		
+<p>Rebuilding the whole Canoo WebTest from the source may be
+			an option if you want to change it's behavior.
+		</p>
+
+		
+<p>First, checkout the latest version from the svn repository to
+			<span class="example">&lt;WEBTEST_HOME&gt;</span>
+			:
+		</p>
+        
+<div class="code">
+<div class="content">git clone git@github.com:DaveParillo/webtest.git</div>
+</div>
+        or
+        <div class="code">
+<div class="content">git clone https://github.com/DaveParillo/webtest.git</div>
+</div>
+		
+<p>Then call the build script. Depending from your operating system, it may be necessary to fiddle
+			with the execution rights of the scripts in the directory
+			<span class="example">bin/</span>
+			.
+		</p>
+		
+<p>The main build file in
+			<span class="example">&lt;WEBTEST_HOME&gt;</span>
+			provides the following targets:
+		</p>
+		
+<dl>
+			
+				
+<dt>clean</dt>
+				
+<dd>Deletes (most of) the results of a previous build.</dd>
+			
+			
+				
+<dt>develop</dt>
+				
+<dd>Compiles and tests webtest.</dd>
+			
+			
+				
+<dt>full</dt>
+				
+<dd>Runs clean, then compiles and tests webtest, then generates all kinds of documentations and reports.
+				</dd>
+			
+			
+				
+<dt>fetchDependencies</dt>
+				
+<dd>Lets maven fetch all the dependencies described in the pom.
+					This target needs only to be called explicitly if the build will occur offline.
+				</dd>
+			
+		
+</dl>
+		
+<p>To generate a complete release, including the documentation, type:</p>
+		
+<div class="code">
+<div class="content">
+			cd &lt;WEBTEST_HOME&gt;
+			<br>
+			bin/webtest.sh full
+		</div>
+</div>
+		
+<p>To get a clean build without documentation, type:</p>
+		
+<div class="code">
+<div class="content">
+			cd &lt;WEBTEST_HOME&gt;
+			<br>
+			bin/webtest clean develop
+		</div>
+</div>
+	
+<h2>
+<a name="Building with an IDE">Building with an IDE</a>
+</h2>
+		
+<p>As there are too many possible IDEs, this section only outlines how to set-up an IDE.</p>
+		
+<p>Although webtest build is an ant script, it is taking advantage of
+			<a title="Maven is a Java project management and project comprehension tool that
+            provides a well defined model for your project." href="annotatedRefs.html#Maven">Maven</a>
+			's (version 2) declarative
+			definition of dependencies: All dependencies required to build and run webtest are defined in the file
+			<i>pom.xml</i>
+			. The target
+			<i>fetchDependencies</i>
+			of the build script looks at the required dependencies, looks at maven's dependency cache (in the user's
+			home directory) and downloads the dependency jar files from one of the
+			maven repositories to the shared dependency cache.
+		</p>
+		
+<p>Since the actual dependency jar files are not part of the module, but potentially shared with other unrelated
+			projects, the difficulty is to tell the IDE which jar files it needs and where they are. The easiest
+			solution is to take advantage of maven's various plugins to convert webtest's
+			<i>pom.xml</i>
+			to a project file for an IDE. This requires of course maven (version 2!) to be available on the machine.
+		</p>
+		
+<p>Note that some dependencies are indeed part of webtest's module: these are jar files for versions that are
+			not (yet?) available on a public maven repository. These jar files are however organized as a local maven
+			repository and accessed like every other dependencies.
+		</p>
+	
+<h2>
+<a name="IntelliJ IDEA">IntelliJ IDEA</a>
+</h2>
+		
+<p>To create an
+			<i>Idea project</i>, just use:
+		</p>
+		
+<div class="code">
+<div class="content">
+			cd &lt;WEBTEST_HOME&gt;
+			<br>
+			mvn idea:idea
+		</div>
+</div>
+	
+<h2>
+<a name="Eclipse">Eclipse</a>
+</h2>
+		
+<p>To create an
+			<i>eclipse project</i>, just use:
+		</p>
+		
+<div class="code">
+<div class="content">
+			cd &lt;WEBTEST_HOME&gt;
+			<br>
+			mvn eclipse:eclipse
+		</div>
+</div>
+		
+<p>Note that working with the generated project-files in eclipse requires to define a new classpath
+			variable named
+			<i>M2_REPO</i>
+			which leads to your local maven repository. It must be defined under
+			<span class="example">preferences -&gt; java -&gt; build path</span>
+			.
+		</p>
+	
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

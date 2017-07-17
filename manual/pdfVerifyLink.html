@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="pdfDecryptDocument" href="pdfDecryptDocument.html" rel="subsection">
+<link title="pdfToBookmarksFilter" href="pdfToBookmarksFilter.html" rel="subsection">
+<link title="pdfToFontsFilter" href="pdfToFontsFilter.html" rel="subsection">
+<link title="pdfToLinksFilter" href="pdfToLinksFilter.html" rel="subsection">
+<link title="pdfToTextFilter" href="pdfToTextFilter.html" rel="subsection">
+<link title="pdfVerifyBookmark" href="pdfVerifyBookmark.html" rel="subsection">
+<link title="pdfVerifyCheckboxField" href="pdfVerifyCheckboxField.html" rel="subsection">
+<link title="pdfVerifyEncryption" href="pdfVerifyEncryption.html" rel="subsection">
+<link title="pdfVerifyEncryptionPermissions" href="pdfVerifyEncryptionPermissions.html" rel="subsection">
+<link title="pdfVerifyEncryptionProperty" href="pdfVerifyEncryptionProperty.html" rel="subsection">
+<link title="pdfVerifyEncryptionStrength" href="pdfVerifyEncryptionStrength.html" rel="subsection">
+<link title="pdfVerifyField" href="pdfVerifyField.html" rel="subsection">
+<link title="pdfVerifyFieldCount" href="pdfVerifyFieldCount.html" rel="subsection">
+<link title="pdfVerifyFont" href="pdfVerifyFont.html" rel="subsection">
+<link title="pdfVerifyInfoProperty" href="pdfVerifyInfoProperty.html" rel="subsection">
+<link title="pdfVerifyLink" href="pdfVerifyLink.html" rel="subsection">
+<link title="pdfVerifyPageCount" href="pdfVerifyPageCount.html" rel="subsection">
+<link title="pdfVerifyReadOnlyField" href="pdfVerifyReadOnlyField.html" rel="subsection">
+<link title="pdfVerifyText" href="pdfVerifyText.html" rel="subsection">
+<link title="pdfVerifyTextField" href="pdfVerifyTextField.html" rel="subsection">
+<link title="pdfVerifyTitle" href="pdfVerifyTitle.html" rel="subsection">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Description,Parameters,Details,">
+<title>PDF Step: pdfVerifyLink</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html">Syntax Reference - Core Steps</a>
+</li>
+<li>
+<a href="syntaxExtension.html">Syntax Reference - Extension Steps</a>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html" class="selected">Syntax Reference - PDF Steps</a>
+<ul>
+<li>
+<a href="pdfDecryptDocument.html">&gt; pdfDecryptDocument</a>
+</li>
+<li>
+<a href="pdfToBookmarksFilter.html">&gt; pdfToBookmarksFilter</a>
+</li>
+<li>
+<a href="pdfToFontsFilter.html">&gt; pdfToFontsFilter</a>
+</li>
+<li>
+<a href="pdfToLinksFilter.html">&gt; pdfToLinksFilter</a>
+</li>
+<li>
+<a href="pdfToTextFilter.html">&gt; pdfToTextFilter</a>
+</li>
+<li>
+<a href="pdfVerifyBookmark.html">&gt; pdfVerifyBookmark</a>
+</li>
+<li>
+<a href="pdfVerifyCheckboxField.html">&gt; pdfVerifyCheckboxField</a>
+</li>
+<li>
+<a href="pdfVerifyEncryption.html">&gt; pdfVerifyEncryption</a>
+</li>
+<li>
+<a href="pdfVerifyEncryptionPermissions.html">&gt; pdfVerifyEncryptionPermissions</a>
+</li>
+<li>
+<a href="pdfVerifyEncryptionProperty.html">&gt; pdfVerifyEncryptionProperty</a>
+</li>
+<li>
+<a href="pdfVerifyEncryptionStrength.html">&gt; pdfVerifyEncryptionStrength</a>
+</li>
+<li>
+<a href="pdfVerifyField.html">&gt; pdfVerifyField</a>
+</li>
+<li>
+<a href="pdfVerifyFieldCount.html">&gt; pdfVerifyFieldCount</a>
+</li>
+<li>
+<a href="pdfVerifyFont.html">&gt; pdfVerifyFont</a>
+</li>
+<li>
+<a href="pdfVerifyInfoProperty.html">&gt; pdfVerifyInfoProperty</a>
+</li>
+<li>
+<a href="pdfVerifyLink.html" class="selected">&gt; pdfVerifyLink</a>
+</li>
+<li>
+<a href="pdfVerifyPageCount.html">&gt; pdfVerifyPageCount</a>
+</li>
+<li>
+<a href="pdfVerifyReadOnlyField.html">&gt; pdfVerifyReadOnlyField</a>
+</li>
+<li>
+<a href="pdfVerifyText.html">&gt; pdfVerifyText</a>
+</li>
+<li>
+<a href="pdfVerifyTextField.html">&gt; pdfVerifyTextField</a>
+</li>
+<li>
+<a href="pdfVerifyTitle.html">&gt; pdfVerifyTitle</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>
+<span class="category">PDF Step</span> pdfVerifyLink</h1>
+<h2>
+<a name="Description">Description</a>
+</h2>
+<p>This step verifies the existence of a link within a <a title="Invented by Adobe, Portable Document Format (PDF) is the published specification
+            used around the world for secure, reliable electronic document distribution and exchange." href="annotatedRefs.html#pdf">PDF</a> document.</p>
+<h2>
+<a name="Parameters">Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>description</dt>
+<dd class="required">Required? no</dd>
+<dd>The description of this test step.</dd>
+<dt>href</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>The href of the link to find. One of <i>text</i> or <i>href</i> must be set.</dd>
+<dt>page</dt>
+<dd class="required">Required? no, default is
+					all pages</dd>
+<dd>The page on which to search.</dd>
+<dt>regex</dt>
+<dd class="required">Required? no, default is
+					'false'</dd>
+<dd>Specifies whether the search value represents a <a title="Canoo WebTest uses the built in Regular Expression capacities of Java (since 1.4) with the dotall mode
+            enabled (allows &quot;.&quot; to match any character including a line terminator, this is what Perl names the single
+            line mode)." href="annotatedRefs.html#regex">regular expression</a>.</dd>
+<dt>text</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>The text of the link to find. One of <i>text</i> or <i>href</i> must be set.</dd>
+</dl>
+<h2>
+<a name="Details">Details</a>
+</h2>
+    
+<p>
+        Here is an example of using <i>pdfVerifyLink</i>:
+    </p>
+
+    
+<div class="code">
+<div class="caption">pdfVerifyLink example</div>
+<div class="content">
+        
+&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>&nbsp;<span class="att">url</span>="<span class="val">testDocLinks.pdf</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">pdfVerifyLink</span>&nbsp;<span class="att">text</span>="<span class="val">.*external.*</span>"&nbsp;<span class="att">regex</span>="<span class="val">true</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">pdfVerifyLink</span>&nbsp;<span class="att">href</span>="<span class="val">#top</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">not</span>&nbsp;<span class="att">description</span>="<span class="val">expect&nbsp;to&nbsp;fail:&nbsp;unknown&nbsp;link</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">pdfVerifyLink</span>&nbsp;<span class="att">text</span>="<span class="val">into&nbsp;the&nbsp;unknown</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">not</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>&nbsp;<span class="att">url</span>="<span class="val">Bookmarks.pdf</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">not</span>&nbsp;<span class="att">description</span>="<span class="val">expect&nbsp;to&nbsp;fail:&nbsp;document&nbsp;has&nbsp;no&nbsp;links</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">pdfVerifyLink</span>&nbsp;<span class="att">text</span>="<span class="val">.*</span>"&nbsp;<span class="att">regex</span>="<span class="val">true</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">not</span>&gt;<br>
+&lt;/<span class="tag">steps</span>&gt;<br>
+
+    
+</div>
+</div>
+
+
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

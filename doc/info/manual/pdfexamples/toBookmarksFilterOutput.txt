@@ -1,3 +1,0 @@
-Heading One
-    Subheading
-Heading Two

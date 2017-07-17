@@ -1,7 +1,0 @@
-...
-<clickButton description="Submit the simple form"
-	name="doIt">
-		<form name="form2" />
-		<index value="1" />
-</clickButton>
-...

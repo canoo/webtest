@@ -1,2 +1,0 @@
-<message type="Simple" contentType="text/plain">
-</message>

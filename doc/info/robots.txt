@@ -1,5 +1,0 @@
-#
-# robots.txt for http://webtest.canoo.com/
-#
-
-user-agent: *

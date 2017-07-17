@@ -1,6 +1,0 @@
-<groovy>
-import com.gargoylesoftware.htmlunit.util.DebuggingWebConnection as DWC
-
-def w = step.context.webClient
-w.webConnection = new DWC(w.webConnection, "mytest")
-</groovy>

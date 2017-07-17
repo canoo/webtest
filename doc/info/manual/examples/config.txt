@@ -1,5 +1,0 @@
-<config
-	host="www.myserver.com"
-	port="8080"
-	protocol="http"
-	basepath="myApp" />

@@ -1,1 +1,0 @@
-<!ENTITY goToLogin SYSTEM "../includes/goToLogin.xml">

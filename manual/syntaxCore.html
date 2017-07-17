@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="clickButton" href="clickButton.html" rel="subsection">
+<link title="clickLink" href="clickLink.html" rel="subsection">
+<link title="followFrame" href="followFrame.html" rel="subsection">
+<link title="group" href="group.html" rel="subsection">
+<link title="invoke" href="invoke.html" rel="subsection">
+<link title="not" href="not.html" rel="subsection">
+<link title="previousResponse" href="previousResponse.html" rel="subsection">
+<link title="repeat" href="repeat.html" rel="subsection">
+<link title="selectForm" href="selectForm.html" rel="subsection">
+<link title="setCheckbox" href="setCheckbox.html" rel="subsection">
+<link title="setFileField" href="setFileField.html" rel="subsection">
+<link title="setInputField" href="setInputField.html" rel="subsection">
+<link title="setRadioButton" href="setRadioButton.html" rel="subsection">
+<link title="setSelectField" href="setSelectField.html" rel="subsection">
+<link title="storeCookie" href="storeCookie.html" rel="subsection">
+<link title="storeHeader" href="storeHeader.html" rel="subsection">
+<link title="storeProperty" href="storeProperty.html" rel="subsection">
+<link title="storeRegEx" href="storeRegEx.html" rel="subsection">
+<link title="storeXPath" href="storeXPath.html" rel="subsection">
+<link title="table" href="table.html" rel="subsection">
+<link title="testInfo" href="testInfo.html" rel="subsection">
+<link title="verifyCheckbox" href="verifyCheckbox.html" rel="subsection">
+<link title="verifyCookie" href="verifyCookie.html" rel="subsection">
+<link title="verifyElement" href="verifyElement.html" rel="subsection">
+<link title="verifyElementText" href="verifyElementText.html" rel="subsection">
+<link title="verifyInputField" href="verifyInputField.html" rel="subsection">
+<link title="verifyLinks" href="verifyLinks.html" rel="subsection">
+<link title="verifyProperty" href="verifyProperty.html" rel="subsection">
+<link title="verifyRadioButton" href="verifyRadioButton.html" rel="subsection">
+<link title="verifySelectField" href="verifySelectField.html" rel="subsection">
+<link title="verifyText" href="verifyText.html" rel="subsection">
+<link title="verifyTextarea" href="verifyTextarea.html" rel="subsection">
+<link title="verifyTitle" href="verifyTitle.html" rel="subsection">
+<link title="verifyXPath" href="verifyXPath.html" rel="subsection">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="This is the syntax documentation for the Core steps. The task includes all information about a test specification. It contains the nested tasks (soon to be optional) which defines configuration information and (soon to be optional) which defines a sequence of test steps. The element can contain any number of Core, Extension, PDF or grouping test steps. A recent feature is that you can also mix in normal ANT tasks as well. You can use the step or just add them in and an step will be added implicitly for you. This is fairly new and hasn't had extensive testing yet - use with caution. The main Core steps provide the ability to invoke pages, store and verify various information about visited pages, and manipulate HTML forms and include: Test steps can be further grouped (and even nested) using the following steps: In addition, there are special steps which help set appropriate context information, e.g. can be used to select a particular form as the current form and can contain the locating step. Most of the steps work on the &quot;current page&quot; (actions like , , ... as well as verifications like , , ...). The notion of &quot;current page&quot; is quite simple when no JavaScript is involved: it is the result of the last action step triggering a request (, or ) or the frame followed by or the response restored by . It becomes more complicated when JavaScript is involved but it aims to be as &quot;natural&quot; as possible. A newly loaded page becomes the new &quot;current response&quot; if one of the following conditions applies: the page is loaded in the window of the current response the page is loaded in a new window the page is loaded in a frame which enclosing page is already loaded and the load was not triggered by JavaScript Furthermore if the window containing the &quot;current response&quot; is closed, then the content of the last opened window becomes the &quot;current response&quot;. Proxy settings configured with the ant <setproxy> task prior to are used to access the website to test.">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						">
+<title>Available Core Steps</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html" class="selected">Syntax Reference - Core Steps</a>
+<ul>
+<li>
+<a href="clickButton.html">&gt; clickButton</a>
+</li>
+<li>
+<a href="clickLink.html">&gt; clickLink</a>
+</li>
+<li>
+<a href="followFrame.html">&gt; followFrame</a>
+</li>
+<li>
+<a href="group.html">&gt; group</a>
+</li>
+<li>
+<a href="invoke.html">&gt; invoke</a>
+</li>
+<li>
+<a href="not.html">&gt; not</a>
+</li>
+<li>
+<a href="previousResponse.html">&gt; previousResponse</a>
+</li>
+<li>
+<a href="repeat.html">&gt; repeat</a>
+</li>
+<li>
+<a href="selectForm.html">&gt; selectForm</a>
+</li>
+<li>
+<a href="setCheckbox.html">&gt; setCheckbox</a>
+</li>
+<li>
+<a href="setFileField.html">&gt; setFileField</a>
+</li>
+<li>
+<a href="setInputField.html">&gt; setInputField</a>
+</li>
+<li>
+<a href="setRadioButton.html">&gt; setRadioButton</a>
+</li>
+<li>
+<a href="setSelectField.html">&gt; setSelectField</a>
+</li>
+<li>
+<a href="storeCookie.html">&gt; storeCookie</a>
+</li>
+<li>
+<a href="storeHeader.html">&gt; storeHeader</a>
+</li>
+<li>
+<a href="storeProperty.html">&gt; storeProperty</a>
+</li>
+<li>
+<a href="storeRegEx.html">&gt; storeRegEx</a>
+</li>
+<li>
+<a href="storeXPath.html">&gt; storeXPath</a>
+</li>
+<li>
+<a href="table.html">&gt; table</a>
+</li>
+<li>
+<a href="testInfo.html">&gt; testInfo</a>
+</li>
+<li>
+<a href="verifyCheckbox.html">&gt; verifyCheckbox</a>
+</li>
+<li>
+<a href="verifyCookie.html">&gt; verifyCookie</a>
+</li>
+<li>
+<a href="verifyElement.html">&gt; verifyElement</a>
+</li>
+<li>
+<a href="verifyElementText.html">&gt; verifyElementText</a>
+</li>
+<li>
+<a href="verifyInputField.html">&gt; verifyInputField</a>
+</li>
+<li>
+<a href="verifyLinks.html">&gt; verifyLinks</a>
+</li>
+<li>
+<a href="verifyProperty.html">&gt; verifyProperty</a>
+</li>
+<li>
+<a href="verifyRadioButton.html">&gt; verifyRadioButton</a>
+</li>
+<li>
+<a href="verifySelectField.html">&gt; verifySelectField</a>
+</li>
+<li>
+<a href="verifyText.html">&gt; verifyText</a>
+</li>
+<li>
+<a href="verifyTextarea.html">&gt; verifyTextarea</a>
+</li>
+<li>
+<a href="verifyTitle.html">&gt; verifyTitle</a>
+</li>
+<li>
+<a href="verifyXPath.html">&gt; verifyXPath</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="syntaxExtension.html">Syntax Reference - Extension Steps</a>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>Available Core Steps</h1>
+    
+<p>This is the syntax documentation for the Core steps.</p>
+
+    
+<p>
+        The <a href="webtest.html" class="stepref">webtest</a>
+        task includes all information about a test specification. It contains
+        the nested tasks <a href="config.html" class="stepref">config</a>
+        (soon to be optional) which defines configuration information and
+        <a href="steps.html" class="stepref">steps</a>
+        (soon to be optional) which defines a sequence of test steps.
+    </p>
+
+    
+<p>
+        The <a href="steps.html" class="stepref">steps</a>
+        element can contain any number of Core, Extension, PDF or grouping test steps.
+        A recent feature is that you can also mix in normal
+        <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> tasks as well. You can use the <a href="antWrapper.html" class="stepref">antWrapper</a>
+        step or just add them in and an
+        <a href="antWrapper.html" class="stepref">antWrapper</a> step will be added implicitly for you.
+        This is fairly new and hasn't had extensive testing yet - use with caution.
+    </p>
+
+    
+<p>The main Core steps provide the ability to invoke pages, store and verify various
+        information about visited pages, and manipulate <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> forms and include:
+        <a href="invoke.html" class="stepref">invoke</a>
+        <a href="clickLink.html" class="stepref">clickLink</a>
+        <a href="clickButton.html" class="stepref">clickButton</a>
+        <a href="followFrame.html" class="stepref">followFrame</a>
+        <a href="previousResponse.html" class="stepref">previousResponse</a>
+        <a href="verifyTitle.html" class="stepref">verifyTitle</a>
+        <a href="verifyText.html" class="stepref">verifyText</a>
+        <a href="verifyElement.html" class="stepref">verifyElement</a>
+        <a href="verifyElementText.html" class="stepref">verifyElementText</a>
+        <a href="verifyTextarea.html" class="stepref">verifyTextarea</a>
+        <a href="verifyInputField.html" class="stepref">verifyInputField</a>
+        <a href="verifySelectField.html" class="stepref">verifySelectField</a>
+        <a href="verifyLinks.html" class="stepref">verifyLinks</a>
+        <a href="verifyXPath.html" class="stepref">verifyXPath</a>
+        <a href="verifyCheckbox.html" class="stepref">verifyCheckbox</a>
+        <a href="verifyCookie.html" class="stepref">verifyCookie</a>
+        <a href="setCheckbox.html" class="stepref">setCheckbox</a>
+        <a href="setInputField.html" class="stepref">setInputField</a>
+        <a href="setRadioButton.html" class="stepref">setRadioButton</a>
+        <a href="setSelectField.html" class="stepref">setSelectField</a>
+        <a href="storeRegEx.html" class="stepref">storeRegEx</a>
+        <a href="storeProperty.html" class="stepref">storeProperty</a>
+        <a href="storeXPath.html" class="stepref">storeXPath</a>
+        <a href="storeDynamicProperty.html" class="stepref">storeDynamicProperty</a>
+        <a href="storeCookie.html" class="stepref">storeCookie</a>
+        <a href="storeHeader.html" class="stepref">storeHeader</a>
+        <a href="verifyProperty.html" class="stepref">verifyProperty</a>
+
+    
+</p>
+
+    
+<p>Test steps can be further grouped (and even nested) using the following steps:
+        <a href="group.html" class="stepref">group</a>
+        <a href="not.html" class="stepref">not</a>
+        <a href="repeat.html" class="stepref">repeat</a>
+        <a href="ifStep.html" class="stepref">ifStep</a>
+        <a href="timedGroup.html" class="stepref">timedGroup</a>
+        <a href="retry.html" class="stepref">retry</a>
+    
+</p>
+
+		
+<p>In addition, there are special steps which help set appropriate context information,
+        e.g. <a href="selectForm.html" class="stepref">selectForm</a> can be used to select a particular form as the <i>current form</i>
+            and <a href="verifyText.html" class="stepref">verifyText</a> can contain the
+						<a href="table.html" class="stepref">table</a> locating step.
+		</p>
+
+
+		
+<p>Most of the steps work on the "current page" (actions like <a href="clickLink.html" class="stepref">clickLink</a>, <a href="clickButton.html" class="stepref">clickButton</a>, ... as well as verifications like <a href="verifyTitle.html" class="stepref">verifyTitle</a>, <a href="verifyInputField.html" class="stepref">verifyInputField</a>, ...).
+		The notion of "current page" is quite simple when no JavaScript is involved: it is the result of the last action step triggering a request (<a href="invoke.html" class="stepref">invoke</a>, <a href="clickLink.html" class="stepref">clickLink</a> or <a href="clickButton.html" class="stepref">clickButton</a>) or the frame followed by <a href="followFrame.html" class="stepref">followFrame</a> or the response restored by <a href="previousResponse.html" class="stepref">previousResponse</a>.
+		It becomes more complicated when JavaScript is involved but it aims to be as "natural" as possible. A newly loaded page becomes the new "current response" if one of the following conditions applies:
+		</p>
+
+		
+<dl>
+		
+<dd>the page is loaded in the window of the current response</dd>
+		
+<dd>the page is loaded in a new window</dd>
+		
+<dd>the page is loaded in a frame which enclosing page is already loaded and the load was not triggered by JavaScript</dd>
+		
+</dl>
+
+		
+<p>Furthermore if the window containing the "current response" is closed, then the content of the last opened window becomes the "current response".
+		</p>
+
+	
+<p>Proxy settings configured with the ant <i>&lt;setproxy&gt;</i> task prior to <a href="webtest.html" class="stepref">webtest</a> are used to access the website to test.
+	</p>
+
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

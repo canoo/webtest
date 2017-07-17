@@ -1,3 +1,0 @@
-<verifyLinkedContent
-	xpath="/html/head/link[@rel='stylesheet']/@href"
-	/>

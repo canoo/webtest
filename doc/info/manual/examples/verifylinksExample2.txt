@@ -1,8 +1,0 @@
-<webtest name="Check all links on current page, on subpages and on their subpages">
-	<config ... />
-	<steps>		
-		<invoke ... />
-		<verifyLinks description="Check Links" 
-			depth="2"/>
-	</steps>
-</webtest>

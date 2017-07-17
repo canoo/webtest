@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="excelFindRow" href="excelFindRow.html" rel="subsection">
+<link title="excelSelectSheet" href="excelSelectSheet.html" rel="subsection">
+<link title="excelStoreCellValue" href="excelStoreCellValue.html" rel="subsection">
+<link title="excelStructureFilter" href="excelStructureFilter.html" rel="subsection">
+<link title="excelVerifyCellStyle" href="excelVerifyCellStyle.html" rel="subsection">
+<link title="excelVerifyCellSum" href="excelVerifyCellSum.html" rel="subsection">
+<link title="excelVerifyCellValue" href="excelVerifyCellValue.html" rel="subsection">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Description,Parameters,Details,">
+<title>Excel Step: excelStoreCellValue</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html">Syntax Reference - Core Steps</a>
+</li>
+<li>
+<a href="syntaxExtension.html">Syntax Reference - Extension Steps</a>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html" class="selected">Syntax Reference - Excel Steps</a>
+<ul>
+<li>
+<a href="excelFindRow.html">&gt; excelFindRow</a>
+</li>
+<li>
+<a href="excelSelectSheet.html">&gt; excelSelectSheet</a>
+</li>
+<li>
+<a href="excelStoreCellValue.html" class="selected">&gt; excelStoreCellValue</a>
+</li>
+<li>
+<a href="excelStructureFilter.html">&gt; excelStructureFilter</a>
+</li>
+<li>
+<a href="excelVerifyCellStyle.html">&gt; excelVerifyCellStyle</a>
+</li>
+<li>
+<a href="excelVerifyCellSum.html">&gt; excelVerifyCellSum</a>
+</li>
+<li>
+<a href="excelVerifyCellValue.html">&gt; excelVerifyCellValue</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>
+<span class="category">Excel Step</span> excelStoreCellValue</h1>
+<h2>
+<a name="Description">Description</a>
+</h2>
+<p>Provides the ability to store the value of a cell in a property for later checking. Note that this step tests the actual stored value of the cell, not what is displayed in the spreadsheet. In particular, formulas will not be evaluated.</p>
+<h2>
+<a name="Parameters">Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>property</dt>
+<dd class="required">Required? yes</dd>
+<dd>The name of the property in which to store the value.</dd>
+<dt>cell</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>The spreadsheet cell to select. eg. A5. Either <i>cell</i> or <i>row</i> and <i>col</i> must be specified.</dd>
+<dt>col</dt>
+<dd class="required">Required? no</dd>
+<dd>The name or number (starting at 1) of the column to select. eg 1 or A. Either <i>cell</i> or <i>row</i> and <i>col</i> must be specified.</dd>
+<dt>description</dt>
+<dd class="required">Required? no</dd>
+<dd>The description of this test step.</dd>
+<dt>propertyType</dt>
+<dd class="required">Required? no, default is
+					the "defaultPropertyType" as specified in the "config" element is used.</dd>
+<dd>The type of the property in which to store the value. Either "ant" or "dynamic".</dd>
+<dt>row</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>The number of the row to select, starting at 1. Either <i>cell</i> or <i>row</i> and <i>col</i> must be specified.</dd>
+<dt>sheetIndex</dt>
+<dd class="required">Required? no</dd>
+<dd>The index of the sheet to select, starting at zero. If no sheet is selected, the value of the last <i>excelSelectSheet</i> call is used, or defaults to the first sheet.</dd>
+<dt>sheetName</dt>
+<dd class="required">Required? no</dd>
+<dd>The name of the sheet to select. If no sheet is selected, the value of the last <i>excelSelectSheet</i> call is used, or defaults to the first sheet.</dd>
+</dl>
+<h2>
+<a name="Details">Details</a>
+</h2>
+
+    
+<p>
+        Here is an example of using the
+        <i>excelStoreCellValue</i>
+        step illustrating both a simple and more complex comparison:
+    </p>
+
+    
+<div class="code">
+<div class="caption">excelStoreCellValue Example</div>
+<div class="content">
+        
+&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">exceltest&nbsp;-&nbsp;store&nbsp;cell&nbsp;value</span>"&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">config</span>&nbsp;.../&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>&nbsp;<span class="att">url</span>="<span class="val">testExcel.xls</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;simple&nbsp;comparison&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">excelStoreCellValue</span>&nbsp;<span class="att">property</span>="<span class="val">intValue</span>"&nbsp;<span class="att">cell</span>="<span class="val">B26</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">property</span>="<span class="val">intValue</span>"&nbsp;<span class="att">text</span>="<span class="val">23</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;comparison&nbsp;with&nbsp;manipulation:&nbsp;cell&nbsp;contains&nbsp;'$9.50'&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">excelStoreCellValue</span>&nbsp;<span class="att">property</span>="<span class="val">dollarValue</span>"&nbsp;<span class="att">cell</span>="<span class="val">C26</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;remove&nbsp;'$'&nbsp;and&nbsp;account&nbsp;for&nbsp;rounding&nbsp;errors&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">groovy</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;junit.framework.Assert.assertEquals(9.5&nbsp;as&nbsp;double,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'#{dollarValue}'.substring(1).toDouble(),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.0000001&nbsp;as&nbsp;double)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">groovy</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&lt;/<span class="tag">steps</span>&gt;<br>
+&lt;/<span class="tag">webtest</span>&gt;<br>
+
+    
+</div>
+</div>
+
+
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

@@ -1,7 +1,0 @@
-<post>
-
-    <code caption="webtest">
-        <include src='examples/webtestExample.xml'/>
-    </code>
-
-</post>
