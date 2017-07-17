@@ -1,0 +1,564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="alert" href="alert.html" rel="subsection">
+<link title="antWrapper" href="antWrapper.html" rel="subsection">
+<link title="clickElement" href="clickElement.html" rel="subsection">
+<link title="closeWindow" href="closeWindow.html" rel="subsection">
+<link title="condition" href="condition.html" rel="subsection">
+<link title="confirm" href="confirm.html" rel="subsection">
+<link title="countWebtestResults" href="countWebtestResults.html" rel="subsection">
+<link title="dataDriven" href="dataDriven.html" rel="subsection">
+<link title="dragAndDrop" href="dragAndDrop.html" rel="subsection">
+<link title="enableJavaScript" href="enableJavaScript.html" rel="subsection">
+<link title="expectDialog" href="expectDialog.html" rel="subsection">
+<link title="expectDialogs" href="expectDialogs.html" rel="subsection">
+<link title="forceHiddenInputField" href="forceHiddenInputField.html" rel="subsection">
+<link title="forceInputFieldAttribute" href="forceInputFieldAttribute.html" rel="subsection">
+<link title="groovy" href="groovy.html" rel="subsection">
+<link title="ifStep" href="ifStep.html" rel="subsection">
+<link title="mouseOut" href="mouseOut.html" rel="subsection">
+<link title="mouseOver" href="mouseOver.html" rel="subsection">
+<link title="prompt" href="prompt.html" rel="subsection">
+<link title="reportLinks" href="reportLinks.html" rel="subsection">
+<link title="reportSite" href="reportSite.html" rel="subsection">
+<link title="retry" href="retry.html" rel="subsection">
+<link title="scriptStep" href="scriptStep.html" rel="subsection">
+<link title="selectWebClient" href="selectWebClient.html" rel="subsection">
+<link title="selectWindow" href="selectWindow.html" rel="subsection">
+<link title="storeDigest" href="storeDigest.html" rel="subsection">
+<link title="storeElementAttribute" href="storeElementAttribute.html" rel="subsection">
+<link title="storeInputFieldAttribute" href="storeInputFieldAttribute.html" rel="subsection">
+<link title="storeLength" href="storeLength.html" rel="subsection">
+<link title="storeLinkParameter" href="storeLinkParameter.html" rel="subsection">
+<link title="storeRandom" href="storeRandom.html" rel="subsection">
+<link title="storeResponseCode" href="storeResponseCode.html" rel="subsection">
+<link title="timedGroup" href="timedGroup.html" rel="subsection">
+<link title="verifyContent" href="verifyContent.html" rel="subsection">
+<link title="verifyDocumentURL" href="verifyDocumentURL.html" rel="subsection">
+<link title="verifyHeader" href="verifyHeader.html" rel="subsection">
+<link title="verifyImages" href="verifyImages.html" rel="subsection">
+<link title="verifyLinkedContent" href="verifyLinkedContent.html" rel="subsection">
+<link title="verifyNoDialogs" href="verifyNoDialogs.html" rel="subsection">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Description,Parameters,Details,">
+<title>Extension Step: storeRandom</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html">Syntax Reference - Core Steps</a>
+</li>
+<li>
+<a href="syntaxExtension.html" class="selected">Syntax Reference - Extension Steps</a>
+<ul>
+<li>
+<a href="alert.html">&gt; alert</a>
+</li>
+<li>
+<a href="antWrapper.html">&gt; antWrapper</a>
+</li>
+<li>
+<a href="clickElement.html">&gt; clickElement</a>
+</li>
+<li>
+<a href="closeWindow.html">&gt; closeWindow</a>
+</li>
+<li>
+<a href="condition.html">&gt; condition</a>
+</li>
+<li>
+<a href="confirm.html">&gt; confirm</a>
+</li>
+<li>
+<a href="countWebtestResults.html">&gt; countWebtestResults</a>
+</li>
+<li>
+<a href="dataDriven.html">&gt; dataDriven</a>
+</li>
+<li>
+<a href="dragAndDrop.html">&gt; dragAndDrop</a>
+</li>
+<li>
+<a href="enableJavaScript.html">&gt; enableJavaScript</a>
+</li>
+<li>
+<a href="expectDialog.html">&gt; expectDialog</a>
+</li>
+<li>
+<a href="expectDialogs.html">&gt; expectDialogs</a>
+</li>
+<li>
+<a href="forceHiddenInputField.html">&gt; forceHiddenInputField</a>
+</li>
+<li>
+<a href="forceInputFieldAttribute.html">&gt; forceInputFieldAttribute</a>
+</li>
+<li>
+<a href="groovy.html">&gt; groovy</a>
+</li>
+<li>
+<a href="ifStep.html">&gt; ifStep</a>
+</li>
+<li>
+<a href="mouseOut.html">&gt; mouseOut</a>
+</li>
+<li>
+<a href="mouseOver.html">&gt; mouseOver</a>
+</li>
+<li>
+<a href="prompt.html">&gt; prompt</a>
+</li>
+<li>
+<a href="reportLinks.html">&gt; reportLinks</a>
+</li>
+<li>
+<a href="reportSite.html">&gt; reportSite</a>
+</li>
+<li>
+<a href="retry.html">&gt; retry</a>
+</li>
+<li>
+<a href="scriptStep.html">&gt; scriptStep</a>
+</li>
+<li>
+<a href="selectWebClient.html">&gt; selectWebClient</a>
+</li>
+<li>
+<a href="selectWindow.html">&gt; selectWindow</a>
+</li>
+<li>
+<a href="storeDigest.html">&gt; storeDigest</a>
+</li>
+<li>
+<a href="storeElementAttribute.html">&gt; storeElementAttribute</a>
+</li>
+<li>
+<a href="storeInputFieldAttribute.html">&gt; storeInputFieldAttribute</a>
+</li>
+<li>
+<a href="storeLength.html">&gt; storeLength</a>
+</li>
+<li>
+<a href="storeLinkParameter.html">&gt; storeLinkParameter</a>
+</li>
+<li>
+<a href="storeRandom.html" class="selected">&gt; storeRandom</a>
+</li>
+<li>
+<a href="storeResponseCode.html">&gt; storeResponseCode</a>
+</li>
+<li>
+<a href="timedGroup.html">&gt; timedGroup</a>
+</li>
+<li>
+<a href="verifyContent.html">&gt; verifyContent</a>
+</li>
+<li>
+<a href="verifyDocumentURL.html">&gt; verifyDocumentURL</a>
+</li>
+<li>
+<a href="verifyHeader.html">&gt; verifyHeader</a>
+</li>
+<li>
+<a href="verifyImages.html">&gt; verifyImages</a>
+</li>
+<li>
+<a href="verifyLinkedContent.html">&gt; verifyLinkedContent</a>
+</li>
+<li>
+<a href="verifyNoDialogs.html">&gt; verifyNoDialogs</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>
+<span class="category">Extension Step</span> storeRandom</h1>
+<h2>
+<a name="Description">Description</a>
+</h2>
+<p>Provides the ability to store a random number, string or token value for later processing. Useful to avoid setting (and maintaining) large numbers of properties containing test data when specific test values aren't important.</p>
+    
+<p>
+        Maintaining test data can be one of the biggest challenges
+        with keeping a test suite relevant and not too brittle as
+        environments, requirements and external factors change. Random
+        data provides another valuable tool to assist in maintaining test
+        data in complex systems.
+    </p>
+    
+<p>
+        Care must be exercised when using random data. If selecting test
+        data by hand, careful choices can be made to ensure that boundary
+        cases are covered by tests. Using purely random data may make this
+        harder to do. Having said that, random data
+        can simplify build scripts, can reduce the risk that poor
+        test cases are chosen and lends itself to being suitable for
+        load or stress testing with different data in multiple test runs.
+    </p>
+
+<h2>
+<a name="Parameters">Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>chars</dt>
+<dd class="required">Required? no, default is
+					the upper and lowercase alphabets plus numbers plus spaces</dd>
+<dd>Used when storing a random string. The set of characters to choose from when creating the random string. Ignored unless <i>length</i> is set.</dd>
+<dt>choice</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>Used when storing a random token. The comma delimited choice of tokens to randomly select between. Parameters <i>from</i>, <i>to</i> and <i>length</i> must be empty.</dd>
+<dt>description</dt>
+<dd class="required">Required? no</dd>
+<dd>The description of this test step.</dd>
+<dt>from</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>Used when storing a random number. The random number stored will be greater than or equal to this number. Required if <i>to</i> is set. Parameters <i>length</i> and <i>choice</i> must be empty.</dd>
+<dt>length</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>Used when storing a random string. The length of the random string to store (i.e. the number of characters to randomly select). Parameters <i>from</i>, <i>to</i> and <i>choice</i> must be empty.</dd>
+<dt>property</dt>
+<dd class="required">Required? no</dd>
+<dd>The name of the property in which to store the retrieved value.</dd>
+<dt>propertyType</dt>
+<dd class="required">Required? no, default is
+					the "defaultPropertyType" as specified in the "config" element is used.</dd>
+<dd>The type of the property in which to store the retrieve value. Either "ant" or "dynamic".</dd>
+<dt>to</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>Used when storing a random number. The random number stored will be less than or equal to this number. Required if <i>from</i> is set. Parameters <i>length</i> and <i>choice</i> must be empty.</dd>
+</dl>
+<h2>
+<a name="Details">Details</a>
+</h2>
+
+    
+<p>Consider the following JSP which allows user preference information to be gathered
+        in a form and produces a subsequent page based on the choices made:</p>
+
+    
+<div class="code">
+<div class="caption">storeRandom JSP under test</div>
+<div class="content">
+        
+&lt;<span class="tag">html</span>&gt;<br>
+&lt;<span class="tag">head</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">title</span>&gt;Favourite&nbsp;preferences&nbsp;page&lt;/<span class="tag">title</span>&gt;<br>
+&lt;/<span class="tag">head</span>&gt;<br>
+&lt;<span class="tag">body</span>&gt;<br>
+&lt;%<br>
+&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;<span class="att">greeting</span>="<span class="val">Hello&nbsp;</span>"&nbsp;+&nbsp;request.getParameter("name");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;<span class="att">fontStyle</span>="<span class="val">font-family:</span>"&nbsp;+&nbsp;request.getParameter("font");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;<span class="att">colorStyle</span>="<span class="val">color:</span>"&nbsp;+&nbsp;request.getParameter("colour");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;levelStr&nbsp;=&nbsp;request.getParameter("level");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;level&nbsp;=&nbsp;1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level&nbsp;=&nbsp;Integer.parseInt(levelStr);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(level&nbsp;&lt;&nbsp;1)&nbsp;level&nbsp;=&nbsp;1;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(level&nbsp;&gt;&nbsp;6)&nbsp;level&nbsp;=&nbsp;6;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(Exception&nbsp;e)&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;ignore&nbsp;gives&nbsp;default&nbsp;level&nbsp;of&nbsp;one<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;String&nbsp;<span class="att">headingTag</span>="<span class="val">h</span>"&nbsp;+&nbsp;level;<br>
+%&gt;<br>
+&lt;%=&nbsp;"&lt;"&nbsp;+&nbsp;headingTag&nbsp;+&nbsp;"&nbsp;id='heading'&nbsp;style='"&nbsp;+&nbsp;colorStyle&nbsp;+&nbsp;";&nbsp;"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;fontStyle&nbsp;+&nbsp;"'&gt;"&nbsp;+&nbsp;greeting&nbsp;+&nbsp;"&lt;/"&nbsp;+&nbsp;headingTag&nbsp;+&nbsp;"&gt;"&nbsp;%&gt;<br>
+&lt;<span class="tag">form</span>&nbsp;<span class="att">method</span>="<span class="val">post</span>"&nbsp;<span class="att">action</span>="<span class="val">favourite.jsp</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">input</span>&nbsp;<span class="att">type</span>="<span class="val">hidden</span>"&nbsp;<span class="att">name</span>="<span class="val">hiddenLevel</span>"&nbsp;<span class="att">value</span>="<span class="val">&lt;%=&nbsp;level&nbsp;%&gt;</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">label</span>&nbsp;<span class="att">for</span>="<span class="val">name</span>"&gt;Enter&nbsp;your&nbsp;name&lt;/<span class="tag">label</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">input</span>&nbsp;<span class="att">id</span>="<span class="val">name</span>"&nbsp;<span class="att">name</span>="<span class="val">name</span>"&nbsp;<span class="att">type</span>="<span class="val">text</span>"&nbsp;<span class="att">size</span>="<span class="val">10</span>"&gt;&lt;<span class="tag">br</span>/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">label</span>&nbsp;<span class="att">for</span>="<span class="val">colour</span>"&gt;Enter&nbsp;your&nbsp;favourite&nbsp;colour&lt;/<span class="tag">label</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">select</span>&nbsp;<span class="att">id</span>="<span class="val">colour</span>"&nbsp;<span class="att">name</span>="<span class="val">colour</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">option</span>&gt;&amp;lt;Select&nbsp;Colour&amp;gt;&lt;/<span class="tag">option</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">option</span>&nbsp;<span class="att">value</span>="<span class="val">red</span>"/&gt;Red<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">option</span>&nbsp;<span class="att">value</span>="<span class="val">green</span>"/&gt;Green<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">option</span>&nbsp;<span class="att">value</span>="<span class="val">blue</span>"/&gt;Blue<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">option</span>&nbsp;<span class="att">value</span>="<span class="val">black</span>"/&gt;Black<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">select</span>&gt;&lt;<span class="tag">br</span>/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">label</span>&nbsp;<span class="att">for</span>="<span class="val">font</span>"&gt;Enter&nbsp;your&nbsp;favourite&nbsp;font&lt;/<span class="tag">label</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">select</span>&nbsp;<span class="att">id</span>="<span class="val">font</span>"&nbsp;<span class="att">name</span>="<span class="val">font</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">option</span>&gt;&amp;lt;Select&nbsp;Font&amp;gt;&lt;/<span class="tag">option</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">option</span>&nbsp;<span class="att">value</span>="<span class="val">arial</span>"/&gt;Arial<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">option</span>&nbsp;<span class="att">value</span>="<span class="val">times&nbsp;roman</span>"/&gt;Times&nbsp;Roman<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">option</span>&nbsp;<span class="att">value</span>="<span class="val">courier</span>"/&gt;Courier<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">option</span>&nbsp;<span class="att">value</span>="<span class="val">helvetica</span>"/&gt;Helvetica<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">select</span>&gt;&lt;<span class="tag">br</span>/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">label</span>&nbsp;<span class="att">for</span>="<span class="val">level</span>"&gt;Enter&nbsp;a&nbsp;number&nbsp;between&nbsp;1&nbsp;and&nbsp;6&lt;/<span class="tag">label</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">input</span>&nbsp;<span class="att">id</span>="<span class="val">level</span>"&nbsp;<span class="att">name</span>="<span class="val">level</span>"&nbsp;<span class="att">type</span>="<span class="val">text</span>"&nbsp;<span class="att">size</span>="<span class="val">3</span>"&gt;&lt;<span class="tag">br</span>/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">br</span>/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">input</span>&nbsp;<span class="att">type</span>="<span class="val">submit</span>"&nbsp;<span class="att">name</span>="<span class="val">fav_submit</span>"&nbsp;<span class="att">value</span>="<span class="val">Submit</span>"&gt;<br>
+&lt;/<span class="tag">form</span>&gt;<br>
+&lt;/<span class="tag">body</span>&gt;<br>
+&lt;/<span class="tag">html</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>If a field value in our form takes on one of several values, e.g.
+        the colours in this example, we can randomly select a value to
+        use from that list of tokens:</p>
+
+    
+<div class="code">
+<div class="caption">storeRandom token Example</div>
+<div class="content">
+        
+&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>&nbsp;...&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;random&nbsp;colour&nbsp;using&nbsp;tokens&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeRandom</span>&nbsp;<span class="att">description</span>="<span class="val">choose&nbsp;colour</span>"&nbsp;<span class="att">property</span>="<span class="val">expectedColour</span>"&nbsp;<span class="att">choice</span>="<span class="val">red,green,blue,black</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">setSelectField</span>&nbsp;<span class="att">name</span>="<span class="val">colour</span>"&nbsp;<span class="att">value</span>="<span class="val">#{expectedColour}</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;additonal&nbsp;steps&nbsp;...&nbsp;--&gt;<br>
+&lt;/<span class="tag">steps</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>Here is an example which selects a random number for a field
+        expecting a number between 1 and 6 (corresponding to setting
+        the heading level to be one of "H1" through "H6"). Note that we also allow
+        some numbers outside the desired range to test that server validation
+        is working (in our examples it rounds to the nearest valid value):</p>
+
+    
+<div class="code">
+<div class="caption">storeRandom number Example</div>
+<div class="content">
+        
+&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;previous&nbsp;steps&nbsp;...&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;random&nbsp;level&nbsp;including&nbsp;out&nbsp;of&nbsp;range&nbsp;values&nbsp;to&nbsp;test&nbsp;server&nbsp;validation&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeRandom</span>&nbsp;<span class="att">description</span>="<span class="val">choose&nbsp;level</span>"&nbsp;<span class="att">property</span>="<span class="val">level</span>"&nbsp;<span class="att">from</span>="<span class="val">0</span>"&nbsp;<span class="att">to</span>="<span class="val">9</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">setInputField</span>&nbsp;<span class="att">name</span>="<span class="val">level</span>"&nbsp;<span class="att">value</span>="<span class="val">#{level}</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;additonal&nbsp;steps&nbsp;...&nbsp;--&gt;<br>
+&lt;/<span class="tag">steps</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>We can combine XPath with random selection to perform very powerful
+        operations, e.g. in this example we randomly select one of the "option"
+        values from a "select" element in the
+        <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> form (note that in this example we skip over the empty
+        option value by starting the random number at "2"):</p>
+
+    
+<div class="code">
+<div class="caption">storeRandom tricky number and XPath Example</div>
+<div class="content">
+        
+&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;previous&nbsp;steps&nbsp;...&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;random&nbsp;font&nbsp;extracted&nbsp;from&nbsp;dropdown&nbsp;select&nbsp;list&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeXPath</span>&nbsp;<span class="att">property</span>="<span class="val">numsel</span>"&nbsp;<span class="att">xpath</span>="<span class="val">count(//select[@name='font']/option)</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeRandom</span>&nbsp;<span class="att">property</span>="<span class="val">fontIndex</span>"&nbsp;<span class="att">from</span>="<span class="val">2</span>"&nbsp;<span class="att">to</span>="<span class="val">#{numsel}</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeXPath</span>&nbsp;<span class="att">property</span>="<span class="val">expectedFont</span>"&nbsp;<span class="att">xpath</span>="<span class="val">//select[@name='font']/option[#{fontIndex}]/@value</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">setSelectField</span>&nbsp;<span class="att">name</span>="<span class="val">font</span>"&nbsp;<span class="att">value</span>="<span class="val">#{expectedFont}</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;additonal&nbsp;steps&nbsp;...&nbsp;--&gt;<br>
+&lt;/<span class="tag">steps</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>In this final example, we generate random first and last names. Each name
+        starts with a random uppercase character, and is followed by a random
+        number of random lowercase characters:</p>
+
+    
+<div class="code">
+<div class="caption">storeRandom string Example</div>
+<div class="content">
+        
+&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;previous&nbsp;steps&nbsp;...&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;random&nbsp;two-word&nbsp;name&nbsp;(firstname&nbsp;up&nbsp;to&nbsp;10&nbsp;chars,&nbsp;lastname&nbsp;up&nbsp;to&nbsp;20&nbsp;chars)&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeRandom</span>&nbsp;<span class="att">description</span>="<span class="val">first&nbsp;name&nbsp;first&nbsp;letter</span>"&nbsp;<span class="att">property</span>="<span class="val">firstStart</span>"&nbsp;<span class="att">chars</span>="<span class="val">${UCCHARS}</span>"&nbsp;<span class="att">length</span>="<span class="val">1</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeRandom</span>&nbsp;<span class="att">description</span>="<span class="val">first&nbsp;name&nbsp;num&nbsp;remaining&nbsp;chars</span>"&nbsp;<span class="att">property</span>="<span class="val">firstSizeRest</span>"&nbsp;<span class="att">from</span>="<span class="val">3</span>"&nbsp;<span class="att">to</span>="<span class="val">9</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeRandom</span>&nbsp;<span class="att">description</span>="<span class="val">first&nbsp;name&nbsp;remaining&nbsp;chars</span>"&nbsp;<span class="att">property</span>="<span class="val">firstRest</span>"&nbsp;<span class="att">chars</span>="<span class="val">${LCCHARS}</span>"&nbsp;<span class="att">length</span>="<span class="val">#{firstSizeRest}</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeRandom</span>&nbsp;<span class="att">description</span>="<span class="val">last&nbsp;name&nbsp;first&nbsp;letter</span>"&nbsp;<span class="att">property</span>="<span class="val">lastStart</span>"&nbsp;<span class="att">chars</span>="<span class="val">${UCCHARS}</span>"&nbsp;<span class="att">length</span>="<span class="val">1</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeRandom</span>&nbsp;<span class="att">description</span>="<span class="val">last&nbsp;name&nbsp;num&nbsp;remaining&nbsp;chars</span>"&nbsp;<span class="att">property</span>="<span class="val">lastSizeRest</span>"&nbsp;<span class="att">from</span>="<span class="val">3</span>"&nbsp;<span class="att">to</span>="<span class="val">19</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeRandom</span>&nbsp;<span class="att">description</span>="<span class="val">last&nbsp;name&nbsp;remaining&nbsp;chars</span>"&nbsp;<span class="att">property</span>="<span class="val">lastRest</span>"&nbsp;<span class="att">chars</span>="<span class="val">${LCCHARS}</span>"&nbsp;<span class="att">length</span>="<span class="val">#{lastSizeRest}</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeProperty</span>&nbsp;<span class="att">name</span>="<span class="val">expectedName</span>"&nbsp;<span class="att">value</span>="<span class="val">#{firstStart}#{firstRest}&nbsp;#{lastStart}#{lastRest}</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">setInputField</span>&nbsp;<span class="att">name</span>="<span class="val">name</span>"&nbsp;<span class="att">value</span>="<span class="val">#{expectedName}</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;additonal&nbsp;steps&nbsp;...&nbsp;--&gt;<br>
+&lt;/<span class="tag">steps</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>The full example (found in <i>storeRandom.xml</i> in the selftests) the test
+        then goes on to submit the form (by clicking its button) which causes a new page
+        to be created based on the preferences chosen in the form. The form is then tested
+        to ensure the actual attributes used to generate the form match the above
+        randomly generated expected values.</p>
+
+
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

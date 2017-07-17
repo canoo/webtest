@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="alert" href="alert.html" rel="subsection">
+<link title="antWrapper" href="antWrapper.html" rel="subsection">
+<link title="clickElement" href="clickElement.html" rel="subsection">
+<link title="closeWindow" href="closeWindow.html" rel="subsection">
+<link title="condition" href="condition.html" rel="subsection">
+<link title="confirm" href="confirm.html" rel="subsection">
+<link title="countWebtestResults" href="countWebtestResults.html" rel="subsection">
+<link title="dataDriven" href="dataDriven.html" rel="subsection">
+<link title="dragAndDrop" href="dragAndDrop.html" rel="subsection">
+<link title="enableJavaScript" href="enableJavaScript.html" rel="subsection">
+<link title="expectDialog" href="expectDialog.html" rel="subsection">
+<link title="expectDialogs" href="expectDialogs.html" rel="subsection">
+<link title="forceHiddenInputField" href="forceHiddenInputField.html" rel="subsection">
+<link title="forceInputFieldAttribute" href="forceInputFieldAttribute.html" rel="subsection">
+<link title="groovy" href="groovy.html" rel="subsection">
+<link title="ifStep" href="ifStep.html" rel="subsection">
+<link title="mouseOut" href="mouseOut.html" rel="subsection">
+<link title="mouseOver" href="mouseOver.html" rel="subsection">
+<link title="prompt" href="prompt.html" rel="subsection">
+<link title="reportLinks" href="reportLinks.html" rel="subsection">
+<link title="reportSite" href="reportSite.html" rel="subsection">
+<link title="retry" href="retry.html" rel="subsection">
+<link title="scriptStep" href="scriptStep.html" rel="subsection">
+<link title="selectWebClient" href="selectWebClient.html" rel="subsection">
+<link title="selectWindow" href="selectWindow.html" rel="subsection">
+<link title="storeDigest" href="storeDigest.html" rel="subsection">
+<link title="storeElementAttribute" href="storeElementAttribute.html" rel="subsection">
+<link title="storeInputFieldAttribute" href="storeInputFieldAttribute.html" rel="subsection">
+<link title="storeLength" href="storeLength.html" rel="subsection">
+<link title="storeLinkParameter" href="storeLinkParameter.html" rel="subsection">
+<link title="storeRandom" href="storeRandom.html" rel="subsection">
+<link title="storeResponseCode" href="storeResponseCode.html" rel="subsection">
+<link title="timedGroup" href="timedGroup.html" rel="subsection">
+<link title="verifyContent" href="verifyContent.html" rel="subsection">
+<link title="verifyDocumentURL" href="verifyDocumentURL.html" rel="subsection">
+<link title="verifyHeader" href="verifyHeader.html" rel="subsection">
+<link title="verifyImages" href="verifyImages.html" rel="subsection">
+<link title="verifyLinkedContent" href="verifyLinkedContent.html" rel="subsection">
+<link title="verifyNoDialogs" href="verifyNoDialogs.html" rel="subsection">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Description,Parameters,Nested Parameters,Details,">
+<title>Extension Step: storeDigest</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html">Syntax Reference - Core Steps</a>
+</li>
+<li>
+<a href="syntaxExtension.html" class="selected">Syntax Reference - Extension Steps</a>
+<ul>
+<li>
+<a href="alert.html">&gt; alert</a>
+</li>
+<li>
+<a href="antWrapper.html">&gt; antWrapper</a>
+</li>
+<li>
+<a href="clickElement.html">&gt; clickElement</a>
+</li>
+<li>
+<a href="closeWindow.html">&gt; closeWindow</a>
+</li>
+<li>
+<a href="condition.html">&gt; condition</a>
+</li>
+<li>
+<a href="confirm.html">&gt; confirm</a>
+</li>
+<li>
+<a href="countWebtestResults.html">&gt; countWebtestResults</a>
+</li>
+<li>
+<a href="dataDriven.html">&gt; dataDriven</a>
+</li>
+<li>
+<a href="dragAndDrop.html">&gt; dragAndDrop</a>
+</li>
+<li>
+<a href="enableJavaScript.html">&gt; enableJavaScript</a>
+</li>
+<li>
+<a href="expectDialog.html">&gt; expectDialog</a>
+</li>
+<li>
+<a href="expectDialogs.html">&gt; expectDialogs</a>
+</li>
+<li>
+<a href="forceHiddenInputField.html">&gt; forceHiddenInputField</a>
+</li>
+<li>
+<a href="forceInputFieldAttribute.html">&gt; forceInputFieldAttribute</a>
+</li>
+<li>
+<a href="groovy.html">&gt; groovy</a>
+</li>
+<li>
+<a href="ifStep.html">&gt; ifStep</a>
+</li>
+<li>
+<a href="mouseOut.html">&gt; mouseOut</a>
+</li>
+<li>
+<a href="mouseOver.html">&gt; mouseOver</a>
+</li>
+<li>
+<a href="prompt.html">&gt; prompt</a>
+</li>
+<li>
+<a href="reportLinks.html">&gt; reportLinks</a>
+</li>
+<li>
+<a href="reportSite.html">&gt; reportSite</a>
+</li>
+<li>
+<a href="retry.html">&gt; retry</a>
+</li>
+<li>
+<a href="scriptStep.html">&gt; scriptStep</a>
+</li>
+<li>
+<a href="selectWebClient.html">&gt; selectWebClient</a>
+</li>
+<li>
+<a href="selectWindow.html">&gt; selectWindow</a>
+</li>
+<li>
+<a href="storeDigest.html" class="selected">&gt; storeDigest</a>
+</li>
+<li>
+<a href="storeElementAttribute.html">&gt; storeElementAttribute</a>
+</li>
+<li>
+<a href="storeInputFieldAttribute.html">&gt; storeInputFieldAttribute</a>
+</li>
+<li>
+<a href="storeLength.html">&gt; storeLength</a>
+</li>
+<li>
+<a href="storeLinkParameter.html">&gt; storeLinkParameter</a>
+</li>
+<li>
+<a href="storeRandom.html">&gt; storeRandom</a>
+</li>
+<li>
+<a href="storeResponseCode.html">&gt; storeResponseCode</a>
+</li>
+<li>
+<a href="timedGroup.html">&gt; timedGroup</a>
+</li>
+<li>
+<a href="verifyContent.html">&gt; verifyContent</a>
+</li>
+<li>
+<a href="verifyDocumentURL.html">&gt; verifyDocumentURL</a>
+</li>
+<li>
+<a href="verifyHeader.html">&gt; verifyHeader</a>
+</li>
+<li>
+<a href="verifyImages.html">&gt; verifyImages</a>
+</li>
+<li>
+<a href="verifyLinkedContent.html">&gt; verifyLinkedContent</a>
+</li>
+<li>
+<a href="verifyNoDialogs.html">&gt; verifyNoDialogs</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>
+<span class="category">Extension Step</span> storeDigest</h1>
+<h2>
+<a name="Description">Description</a>
+</h2>
+<p>Stores a digest value for the response (or part of the response) into a property. This is useful when you don't care what the value within a response is but you want to ensure that the generated content hasn't changed. If any single character in the response changes, so will the digest. Supports content filters such as <a href="lineSeparatorFilter.html" class="stepref">lineSeparatorFilter</a> and <a href="replaceFilter.html" class="stepref">replaceFilter</a> to allow you to filter out changes that you don't care about and the <a href="table.html" class="stepref">table</a> locator step if you are interested in content within a table.</p>
+<h2>
+<a name="Parameters">Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>property</dt>
+<dd class="required">Required? yes</dd>
+<dd>The target property name.</dd>
+<dt>description</dt>
+<dd class="required">Required? no</dd>
+<dd>The description of this test step.</dd>
+<dt>htmlId</dt>
+<dd class="required">Required? no</dd>
+<dd>The id of an <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> element. If present, processing will be limited to this element. Will be ignored if a nested <a href="table.html" class="stepref">table</a> step is used.</dd>
+<dt>propertyType</dt>
+<dd class="required">Required? no, default is
+					the "defaultPropertyType" as specified in the "config" element is used.</dd>
+<dd>The target property type. Either "ant" or "dynamic".</dd>
+<dt>type</dt>
+<dd class="required">Required? no, default is
+					SHA-1</dd>
+<dd>The type of message digest algorithm to use, e.g. 'MD5' or 'SHA-1'.</dd>
+<dt>xpath</dt>
+<dd class="required">Required? no</dd>
+<dd>An XPath expression identifying an <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> element. If present, processing will be limited to this element. Will be ignored if <i>htmlId</i> is set or if a nested <a href="table.html" class="stepref">table</a> step is used.</dd>
+</dl>
+<h2>
+<a name="Nested Parameters">Nested Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>
+<a href="step.html">step</a>
+</dt>
+<dd class="required">Required? yes</dd>
+<dd>A webtest step.</dd>
+<dt>
+<a href="table.html">table</a>
+</dt>
+<dd class="required">Required? no</dd>
+<dd>To locate a specific cell in a specific table on the page.</dd>
+</dl>
+<h2>
+<a name="Details">Details</a>
+</h2>
+
+    
+<p>The following example illustrates how to use the <i>storeDigest</i> step (illustrating the use of the nested
+        line separator content filter which ensures that differences in line separator which may occur in different
+        environments don't influence the digest value):</p>
+
+    
+<div class="code">
+<div class="caption">storeDigest example</div>
+<div class="content">
+        
+&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">testStoreDigestSimple</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">property</span>&nbsp;<span class="att">name</span>="<span class="val">variableNumberRegex</span>"&nbsp;<span class="att">value</span>="<span class="val">(?&amp;lt;=&nbsp;)[0-9]+(?=&nbsp;time)</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">property</span>&nbsp;<span class="att">name</span>="<span class="val">visitCountDigest</span>"&nbsp;<span class="att">value</span>="<span class="val">c1&nbsp;e2&nbsp;29&nbsp;ad&nbsp;d4&nbsp;6b&nbsp;2a&nbsp;96&nbsp;2f&nbsp;18&nbsp;18&nbsp;f4&nbsp;71&nbsp;e6&nbsp;bb&nbsp;88&nbsp;73&nbsp;9a&nbsp;c7&nbsp;62</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">storeDigest:&nbsp;Show&nbsp;how&nbsp;to&nbsp;use&nbsp;storeDigest&nbsp;step</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">config</span>&nbsp;...&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>&nbsp;<span class="att">url</span>="<span class="val">dummy.html</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeDigest</span>&nbsp;<span class="att">property</span>="<span class="val">dummyDigestSHA1</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">lineSeparatorFilter</span>/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">storeDigest</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">name</span>="<span class="val">dummyDigestSHA1</span>"&nbsp;<span class="att">text</span>="<span class="val">4e&nbsp;7e&nbsp;c7&nbsp;59&nbsp;21&nbsp;9&nbsp;15&nbsp;44&nbsp;52&nbsp;f3&nbsp;45&nbsp;70&nbsp;76&nbsp;b9&nbsp;a1&nbsp;93&nbsp;e7&nbsp;b3&nbsp;78&nbsp;f2</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeDigest</span>&nbsp;<span class="att">property</span>="<span class="val">dummyDigestMD5</span>"&nbsp;<span class="att">type</span>="<span class="val">MD5</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">lineSeparatorFilter</span>/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">storeDigest</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">name</span>="<span class="val">dummyDigestMD5</span>"&nbsp;<span class="att">text</span>="<span class="val">27&nbsp;e2&nbsp;37&nbsp;6c&nbsp;ff&nbsp;d6&nbsp;ac&nbsp;13&nbsp;65&nbsp;8d&nbsp;80&nbsp;d9&nbsp;94&nbsp;0&nbsp;f7&nbsp;21</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">webtest</span>&gt;<br>
+&lt;/<span class="tag">target</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>Note that both <i>SHA-1</i> (the default) and <i>MD5</i> digest are shown. These are the most commonly
+    used digests with Java (because they are built in) but about 20 different kinds of digests are available
+    in various cryptography packages for Java and may be available to you if someone has downloaded an appropriate
+    class library and configured your systems to use it. You may also have heard of the related terms checksum
+    and/or hash (sometimes loosely means a digest, sometimes meaning a weaker algorithm which can be
+    used to detect some forms of content change) or digital signature (a digest value can be part of this).</p>
+
+    
+<p>At the moment the best way to calculate the digest value (so that you can write the test) is to use a
+        dummy value (e.g. 'xxxxx') and then run the test. Then when it fails it will tell you what it was expecting.
+        Simply copy that value into your test. Eventually we may store digest values in a file and populate the
+        file for you the first time the test is run or we may have a tool (e.g. Mozilla plug-in or one of the
+        other recorder tools) to pre-calculate digest values for you.</p>
+
+    
+<p>
+<i>See also</i>: the <a href="verifyContent.html" class="stepref">verifyContent</a>,
+        <a href="storeLength.html" class="stepref">storeLength</a>,
+        <a href="lineSeparatorFilter.html" class="stepref">lineSeparatorFilter</a>,
+        <a href="replaceFilter.html" class="stepref">replaceFilter</a>,
+        <a href="tagStripper.html" class="stepref">tagStripper</a> and
+        <a href="contentStripper.html" class="stepref">contentStripper</a> steps.</p>
+
+
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

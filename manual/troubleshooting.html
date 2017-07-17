@@ -1,0 +1,562 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Home" href="WebTestHome.html" rel="section">
+<link title="Key Characteristics" href="keyCharacteristics.html" rel="section">
+<link title="White Paper" href="whitepaper.html" rel="section">
+<link title="Downloads" href="Downloads.html" rel="section">
+<link title="Install" href="install.html" rel="section">
+<link title="Troubleshooting" href="troubleshooting.html" rel="section">
+<link title="Issue Tracker" href="#Issue Tracker" rel="subsection">
+<link title="Out of Memory" href="#Out of Memory" rel="subsection">
+<link title="java.lang.VerifyError" href="#java.lang.VerifyError" rel="subsection">
+<link title="Parsing issues" href="#Parsing issues" rel="subsection">
+<link title="JavaScript Errors" href="#JavaScript Errors" rel="subsection">
+<link title="Button found more than once" href="#Button found more than once" rel="subsection">
+<link title="Inspect HTTP traffic" href="#Inspect HTTP traffic" rel="subsection">
+<link title="Getting more information" href="#Getting more information" rel="subsection">
+<link title="Debugging WebTest" href="#Debugging WebTest" rel="subsection">
+<link title="Tests get messy" href="#Tests get messy" rel="subsection">
+<link title="Weird Errors running your script" href="#Weird Errors running your script" rel="subsection">
+<link title="Acknowledgments" href="acknowledgments.html" rel="section">
+<link title="Issue tracker" href="https://github.com/DaveParillo/webtest/issues" rel="section">
+<link title="Source code" href="https://github.com/DaveParillo/webtest" rel="section">
+<link title="License" href="license.html" rel="section">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Issue Tracker,Out of Memory,java.lang.VerifyError,Parsing issues,JavaScript Errors,Button found more than once,Inspect HTTP traffic,Getting more information,Debugging WebTest,Tests get messy,Weird Errors running your script,">
+<title>Troubleshooting WebTests</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html" class="selected">Home</a>
+</li>
+<li>
+<a href="manualOverview.html">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="keyCharacteristics.html">Key Characteristics</a>
+</li>
+<li>
+<a href="whitepaper.html">White Paper</a>
+</li>
+<li>
+<a href="Downloads.html">Downloads</a>
+</li>
+<li>
+<a href="install.html">Install</a>
+</li>
+<li>
+<a href="troubleshooting.html" class="selected">Troubleshooting</a>
+<ul>
+<li>
+<a href="#Issue Tracker">&gt; Issue Tracker</a>
+</li>
+<li>
+<a href="#Out of Memory">&gt; Out of Memory</a>
+</li>
+<li>
+<a href="#java.lang.VerifyError">&gt; java.lang.VerifyError</a>
+</li>
+<li>
+<a href="#Parsing issues">&gt; Parsing issues</a>
+</li>
+<li>
+<a href="#JavaScript Errors">&gt; JavaScript Errors</a>
+</li>
+<li>
+<a href="#Button found more than once">&gt; Button found more than once</a>
+</li>
+<li>
+<a href="#Inspect HTTP traffic">&gt; Inspect HTTP traffic</a>
+</li>
+<li>
+<a href="#Getting more information">&gt; Getting more information</a>
+</li>
+<li>
+<a href="#Debugging WebTest">&gt; Debugging WebTest</a>
+</li>
+<li>
+<a href="#Tests get messy">&gt; Tests get messy</a>
+</li>
+<li>
+<a href="#Weird Errors running your script">&gt; Weird Errors running your script</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="acknowledgments.html">Acknowledgments</a>
+</li>
+<li>
+<a href="https://github.com/DaveParillo/webtest/issues">Issue tracker</a>
+</li>
+<li>
+<a href="https://github.com/DaveParillo/webtest">Source code</a>
+</li>
+<li>
+<a href="license.html">License</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>Troubleshooting WebTests</h1>
+
+
+<h2>
+<a name="Issue Tracker">Issue Tracker</a>
+</h2>
+        
+<p>
+            When in trouble, you may want to visit Canoo WebTest's
+            <a class="ext" title="external link: opens in new window" target="_blank" href="http://webtest-community.canoo.com/jira/">JIRA Issue Tracker</a>.
+        </p>
+    
+<h2>
+<a name="Out of Memory">Out of Memory</a>
+</h2>
+		
+<p>
+			
+<a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> may eat up a lot of memory when started for
+            the use with Canoo WebTest. You can give it more space to live
+            in by specifying a higher "maximum heap size" through the
+            environment variable <span class="example">ANT_OPTS</span>, e.g.:
+		</p>
+		
+<p>
+			
+<span class="example">ANT_OPTS=-Xmx128m</span>
+		
+</p>
+		
+<p>
+			See the <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> documentation for more details.
+		</p>
+		
+<p>
+			In order to save memory avoid calling the
+            <span class="example">taskdef</span> more than once. When your test suite
+            grows beyond some thousand steps consider using
+            more than one file for collecting the reports.
+		</p>
+	
+<h2>
+<a name="java.lang.VerifyError">java.lang.VerifyError</a>
+</h2>
+		
+<p>
+			There may be non-compliant <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> version that
+			interferes with the <span class="example">ant.jar</span>
+			provided in <span class="example">&lt;WEBTESTHOME&gt;/lib</span>.
+		</p>
+		
+<p>
+			Consider to copy <span class="example">&lt;WEBTESTHOME&gt;/lib/ant.jar</span>
+			to <span class="example">&lt;ANT_HOME&gt;/lib</span>.
+		</p>
+		
+<p>
+			While <span class="example">installTest.xml</span> reports this error
+			on some occasions, it cannot catch all possible cases.
+		</p>
+	
+<h2>
+<a name="Parsing issues">Parsing issues</a>
+</h2>
+
+		
+<p>If it happens for instance that Canoo WebTest shows an error indicating that it
+		did not find a button that was referenced in a test although the button
+		is clearly visible in the browser (and works as well), one of the most
+		common reasons is incorrectly formatted <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> that isn't understood
+		by the parser.
+		</p>
+
+		
+<p>"Normal" browsers are able to cope with really messy <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> code.
+		WebTest too.. but not to the same extend.
+		</p>
+		
+		
+<p>An <a title="A program that checks whether an HTML page conforms to the standard." href="annotatedRefs.html#validator">HTML Validator</a> will be able to tell you if your HTML code is valid or not
+		and indicate how to fix it.
+		</p>
+
+		
+<p>To "see" the current state of a page (the DOM) in memory, you can dump it to the console
+		with a small step:
+		</p>
+		
+<div class="code">
+<div class="caption">Dump current DOM to the console</div>
+<div class="content">
+			
+&lt;<span class="tag">groovy</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;println&nbsp;step.context.currentResponse.asXml()<br>
+&lt;/<span class="tag">groovy</span>&gt;<br>
+
+		
+</div>
+</div>
+
+	
+<h2>
+<a name="JavaScript Errors">JavaScript Errors</a>
+</h2>
+
+	
+<p>
+		There are two types of JavaScript errors: "real" JavaScript errors occurring as well in a "real" browser and JavaScript errors
+		occurring only in WebTest due to insufficient/incorrect reproduction of the simulated browser's behavior.
+	</p>
+	
+<p>
+		If your test fails due to a "real" JavaScript error, it is wise to fix your application. If you can't do it, you can
+		choose to ignore JavaScript errors.
+	</p>
+	
+<p>
+		Following steps may help to understand the cause of a JavaScript error reported by WebTest:
+		</p>
+			
+<dl>
+				
+					
+<dt>Verify in the "real" browser</dt>
+					
+<dd>The quality of the browser simulation including JavaScript execution is already very good and it often happens
+					that WebTest reports exactly the same JavaScript errors than the simulated browser (sometimes even with a better precision!).
+					To detect if you have encountered a real JavaScript error, you need to do exactly the same actions in your browser
+					than the ones done in your webtest. This requires high concentration! Be sure to really click the same links and buttons
+					as your WebTest and not any other than may appear in the page (even with same label).
+					In Firefox you can see JavaScript errors for instance in the JavaScript console. Other browsers have similar ways to acces
+					to JavaScript errors.  
+					</dd>
+				
+				
+					
+<dt>Ugrade to latest WebTest and HtmlUnit version</dt>
+					
+<dd>If no error occurs in the real browser that you want to simulate with your webtest, then it probably means that
+					WebTest's behavior is incorrect. Be sure to use the latest WebTest build (replacing as well the HtmlUnit
+					version contained in WebTest by the latest HtmlUnit snapshot when possible): it's possible that the problem you encounter
+					has already been fixed.
+					</dd>
+				
+				
+					
+<dt>Report the problem</dt>
+					
+<dd>If the problem still occurs with the most recent versions of WebTest (and HtmlUnit) then it means that you've
+					hint a new problem. In this case, please report it. Problems are sometimes fixed within a very short time.
+					A look at HtmlUnit's <a class="ext" title="external link: opens in new window" target="_blank" href="http://htmlunit.sourceforge.net/submittingJSBugs.html">Submitting JavaScript bugs</a>
+					documentation may help to find the best way to report a bug.
+					</dd>
+				
+			
+</dl>
+    
+<h2>
+<a name="Button found more than once">Button found more than once</a>
+</h2>
+
+	
+<p>For clicking on a button or a link, Canoo WebTest needs to locate that
+	button or that link on the page. The above message occurs if the reference
+	is not unique, which generally indicates an error in the test.</p>
+
+	
+<p>Consider using the <span class="example">name</span> attribute or a locator element
+	to create a unique reference. Refer to the syntax description and the samples
+	on how to do this.</p>
+
+	
+<p>If the message still shows up, although the reference should be unique,
+	it is likely that the page's <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> source is invalid. A common
+	error is improper nesting of <span class="example">form</span> elements with
+	table rows and cells, they cannot be mixed.
+	<a href="#Parsing issues">"Parsing issues"</a> may be helpful.</p>
+
+	
+<h2>
+<a name="Inspect HTTP traffic">Inspect HTTP traffic</a>
+</h2>
+
+	
+<p>
+		It is sometimes interesting to inspect the HTTP traffic to compare 
+		the requests sent by WebTest and the responses received from the server(s)
+		when WebTest is running with the ones of the "real" browser being simulated.
+		Caution: remember that WebTest will do less requests than a normal browser, for instance
+		it won't download images and stylesheets unless it detects that they play a role in the
+		JavaScript execution.
+	</p>
+	
+<p>
+		There are different solutions to view the HTTP traffic, for instance these ones:
+	</p>
+		
+<dl>
+			
+				
+<dt>Use DebuggingWebConnection in WebTest</dt>
+				
+<dd>
+				Following code instruments the web connection of the underlying
+				<span class="example">WebClient</span>. This will generate 
+				a report of the HTTP traffic in the sub-folder named <span class="example">mytest</span>
+				of your temporary directory for the rest of your webtest:
+					<div class="code">
+<div class="caption">Wrap HTMLUnit web connection to track HTTP traffic</div>
+<div class="content">
+						
+&lt;<span class="tag">groovy</span>&gt;<br>
+import&nbsp;com.gargoylesoftware.htmlunit.util.DebuggingWebConnection&nbsp;as&nbsp;DWC<br>
+
+<br>
+def&nbsp;w&nbsp;=&nbsp;step.context.webClient<br>
+w.webConnection&nbsp;=&nbsp;new&nbsp;DWC(w.webConnection,&nbsp;"mytest")<br>
+&lt;/<span class="tag">groovy</span>&gt;<br>
+
+					
+</div>
+</div>
+				
+</dd>
+			
+			
+				
+<dt>Use Firebug in Firefox</dt>
+				
+<dd>
+				The Network monitoring features of the <a class="ext" title="external link: opens in new window" target="_blank" href="www.getfirebug.com/">Firebug</a> extension for Firefox
+				allow to track all HTTP requests.
+				</dd>
+			
+			
+				
+<dt>Use a proxy both for WebTest and your "normal" browser</dt>
+				
+<dd>
+				An other solution to track HTTP traffic both for WebTest and for a "normal" browser
+				is to use an HTTP proxy that can show you the request and responses.
+				Different proxies are available for this purpose. For Java developers
+				<a class="ext" title="external link: opens in new window" target="_blank" href="http://www.parosproxy.org/index.shtml">Paros</a> may be interesting
+				as it is Open Source and written in Java.
+				</dd>
+			
+		
+</dl>
+	
+<h2>
+<a name="Getting more information">Getting more information</a>
+</h2>
+
+	
+<p>A test fails, but you don't know why? If that is because of the <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a>
+	structure of the tests, unresolved properties or unexpected directory handling, you
+	should consider running your <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> tests with the <span class="example">-v</span>
+	option. This gives additional verbose information about target sequence, unresolved
+	properties and attempts to override property values.</p>
+
+	
+<p>If it is a problem within the <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a>, try to use the reporting as described
+	in <a href="#Out of Memory">"Out of Memory"</a>. It is often useful to inspect your page
+	with an <a title="A program that checks whether an HTML page conforms to the standard." href="annotatedRefs.html#validator">HTML Validator</a>.</p>
+
+	
+<h2>
+<a name="Debugging WebTest">Debugging WebTest</a>
+</h2>
+
+	
+<p>The last ditch attempt to troubleshoot Canoo WebTest is to go for Java debugging
+	on the source code level. You are likely to need not only the Canoo WebTest sources
+	but also the source of the packages that Canoo WebTest is built on. That is <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a>,
+	and <a title="The Open Source java unit testing framework for testing web based applications." href="annotatedRefs.html#htmlunit">HtmlUnit</a>. You may need even more, e.g. when
+	stepping into the HTML parsing. But if you are so experienced, you probably know
+	how to do this.</p>
+
+	
+<p>You need a Java debugger, a class to start the debugger on, the command line parameters and
+	the proper classpath and sourcepath. We cannot help you with the debugger itself. You
+	probably have one within your IDE. The JDK contains the <span class="example">jdb</span>, but that one
+	is not very comfortable. The remaining parameters can be determined from your ant starter
+	script that resides under <span class="example">&lt;ANT_HOME&gt;/bin</span>. Put all jars on the
+	<span class="example">CLASSPATH</span> that reside under <span class="example">&lt;ANT_HOME&gt;/lib</span>
+	and <span class="example">&lt;WEBTESTHOME&gt;/lib</span>. Put the sources on the
+	<span class="example">-sourcepath</span>.
+	Provide the option
+	<span class="example">-Dant.home="&lt;ANT_HOME&gt;"</span> and start the debugger on the class
+	<span class="example">org.apache.tools.ant.Main</span>. Provide the command line parameters
+	<span class="example">-buildfile &lt;file&gt;</span> and <span class="example">&lt;target&gt;</span> as
+	necessary.</p>
+
+	
+<p>When debugging, a good thing to look for is implicit tags that the parser
+	inserts into incomplete <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a>.</p>
+
+	
+<h2>
+<a name="Tests get messy">Tests get messy</a>
+</h2>
+
+	
+<p>If your tests get messy, this is mostly because they contain duplication. Avoid
+	this at any costs.</p>
+
+	
+<p>Put all the references that occur more than once into an <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> property.
+	Consider putting shared properties into a properties file. Use the
+	<span class="example">ant</span> and <span class="example">antcall</span> tasks to
+	extract reusable logic into subbuild files and subtargets. Use <a title="Extensible Markup Language" href="annotatedRefs.html#XML">XML</a>
+	entities for textual includes. See the samples on how to do this. Also
+    consider using Macros - see the <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> documentation for more details.</p>
+
+	
+<p>Keep your targets short and avoid putting too many <span class="example">webtest</span>s
+	into one target. </p>
+
+	
+<p>Make use of the <span class="example">description</span> attribute for main targets and
+	use the <span class="example">description</span> attribute for test steps.</p>
+
+	
+<h2>
+<a name="Weird Errors running your script">Weird Errors running your script</a>
+</h2>
+
+	
+<p>
+        If you get weird errors when running your script inside an IDE it could be that
+        your IDE is using a custom ant runner. For some reason this seems to sometimes
+        cause a conflict. If you find yourself in this situation, try to configure
+        your IDE to use a standard <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> runner.
+    </p>
+
+    
+<p>
+        Possible technical explanation: <a title="The Canoo WebTest distribution." href="annotatedRefs.html#CWT">Canoo WebTest</a>
+        relies on <a title="The Open Source java unit testing framework for testing web based applications." href="annotatedRefs.html#htmlunit">HtmlUnit</a> which parses <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> using <a title="NekoHTML is a simple HTML scanner/parser and tag balancer that enables application programmers to
+            parse HTML documents and access the information using standard XML interfaces." href="annotatedRefs.html#nekohtml">NekoHTML</a>.
+        <a title="NekoHTML is a simple HTML scanner/parser and tag balancer that enables application programmers to
+            parse HTML documents and access the information using standard XML interfaces." href="annotatedRefs.html#nekohtml">NekoHTML</a> is set up as a custom ContentHandler for the <a title="Apache Xerces XML Parser" href="annotatedRefs.html#xerces">Xerces</a> XML Parser.
+        Your custom <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> runner may also have set itself up as a custom ContentHandler.
+        For some reason this seems to sometimes cause a conflict.
+    </p>
+
+    
+<p>
+        As an example, in IntelliJ, if you run a script which uses the standard embedded ant
+        then if you have a step which parses HTML you might see the following exception thrown:
+        <span class="example">java.lang.AbstractMethodError: org.cyberneko.html.HTMLScanner.getCharacterOffset()I</span>.
+        This will occur if you for instance use an <a href="invoke.html" class="stepref">invoke</a> step.
+        The workaround is simply to configure
+        in your ant build settings to use an external ant rather than the embedded one.
+    </p>
+
+    
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

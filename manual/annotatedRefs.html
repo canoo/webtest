@@ -1,0 +1,614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Annotated References" href="#Annotated References" rel="subsection">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="Some annotated references related to WebTest.">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Annotated References,">
+<title>Annotated References</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html">Syntax Reference - Core Steps</a>
+</li>
+<li>
+<a href="syntaxExtension.html">Syntax Reference - Extension Steps</a>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html" class="selected">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>Annotated References</h1>
+
+<p>Some annotated references related to WebTest.</p>
+
+<dl class="ref">
+<dt>
+<a name="ANT">ANT</a>
+</dt>
+<dd class="link">
+<a href="http://ant.apache.org/">http://ant.apache.org/</a>
+</dd>
+<dd>The leading build automation tool.</dd>
+<dd>The platform independent replacement for "make".</dd>
+<dt>
+<a name="ANTC">Ant-Contrib</a>
+</dt>
+<dd class="link">
+<a href="http://ant-contrib.sourceforge.net/ant-contrib/manual/tasks/index.html">http://ant-contrib.sourceforge.net/ant-contrib/manual/tasks/index.html</a>
+</dd>
+<dd>The Ant-Contrib project is a collection of tasks (and at one point maybe types and other tools) for Apache
+            Ant.</dd>
+<dt>
+<a name="ats">Automated Testing Specialists</a>
+</dt>
+<dd class="link">
+<a href="http://www.sqa-test.com/">http://www.sqa-test.com/</a>
+</dd>
+<dd>Points to a huge set of resources about automated testing.</dd>
+<dd>Answers a lot of questions about testing.</dd>
+<dd>Homepage of an independent consultants' community.</dd>
+<dt>
+<a name="BSF">Bean Scripting Framework (BSF)</a>
+</dt>
+<dd class="link">
+<a href="http://jakarta.apache.org/bsf/">http://jakarta.apache.org/bsf/</a>
+</dd>
+<dd>Bean Scripting Framework (BSF) is a set of Java classes which
+            provides scripting language support within Java applications.</dd>
+<dt>
+<a name="canoo">Canoo Engineering AG</a>
+</dt>
+<dd class="link">
+<a href="http://www.canoo.com/">http://www.canoo.com/</a>
+</dd>
+<dd>Owner of Canoo WebTest in Basel, Switzerland.</dd>
+<dt>
+<a name="OLS">Canoo Online Services</a>
+</dt>
+<dd class="link">
+<a href="http://www.canoo.net">http://www.canoo.net</a>
+</dd>
+<dd>The Canoo Online Services for german language exploration.</dd>
+<dd>Includes hundreds of pages with static, dynamic and mixed content.</dd>
+<dt>
+<a name="CWT">Canoo WebTest</a>
+</dt>
+<dd class="link">
+<a href="http://webtest.canoo.com/webtest">http://webtest.canoo.com/webtest</a>
+</dd>
+<dd>The Canoo WebTest distribution.</dd>
+<dd>An Open Source tool to facilitate automatic functional testing
+            of html-bound web applications.</dd>
+<dt>
+<a name="WebTestCommunity">Canoo WebTest Community Site</a>
+</dt>
+<dd class="link">
+<a href="http://webtest-community.canoo.com">http://webtest-community.canoo.com</a>
+</dd>
+<dd>The Canoo WebTest Community Site for FAQ,
+            sharing Contributions, Discussions, etc.</dd>
+<dd>A Forum-like Wiki specialized on code sharing.</dd>
+<dt>
+<a name="mailingList">Canoo WebTest Mailing List</a>
+</dt>
+<dd class="link">
+<a href="http://lists.canoo.com/mailman/listinfo/webtest">http://lists.canoo.com/mailman/listinfo/webtest</a>
+</dd>
+<dd class="link">
+<a href="news://news.gmane.org/gmane.comp.web.canoo.webtest">news://news.gmane.org/gmane.comp.web.canoo.webtest</a>
+</dd>
+<dd>The Canoo WebTest moderated mailing list for community discussions and latest news.</dd>
+<dd>The right place to post success stories, bugs and feature requests.</dd>
+<dt>
+<a name="CLOVER">Clover</a>
+</dt>
+<dd class="link">
+<a href="http://www.cenqua.com/clover/">http://www.cenqua.com/clover/</a>
+</dd>
+<dd>A code coverage tool for Java.</dd>
+<dd>Thanks to the clover people for providing such an
+            excellent tool and for supporting Canoo WebTest with a free license.</dd>
+<dt>
+<a name="csfs">Credit Suisse Financial Services</a>
+</dt>
+<dd class="link">
+<a href="http://www.csfs.com/">http://www.csfs.com/</a>
+</dd>
+<dd>Credit Suisse Fincancial Services</dd>
+<dt>
+<a name="cspb">Credit Suisse Private Banking</a>
+</dt>
+<dd class="link">
+<a href="http://www.cspb.com/">http://www.cspb.com/</a>
+</dd>
+<dd>Credit Suisse Private Banking</dd>
+<dt>
+<a name="cruisecontrol">CruiseControl</a>
+</dt>
+<dd class="link">
+<a href="http://cruisecontrol.sourceforge.net/">http://cruisecontrol.sourceforge.net/</a>
+</dd>
+<dd>The Open Source Continuous Integration facilitator.</dd>
+<dd>The site also points to more information about continuous integration.</dd>
+<dd>CruiseControl uses ANT to trigger new builds on any repository change
+            and reports the build result as email and on a website using JSP, XML and XSLT.</dd>
+<dt>
+<a name="dbunit">DbUnit</a>
+</dt>
+<dd class="link">
+<a href="http://dbunit.sourceforge.net/">http://dbunit.sourceforge.net/</a>
+</dd>
+<dd class="link">
+<a href="http://dbunit.sourceforge.net/howto.html#canoo">http://dbunit.sourceforge.net/howto.html#canoo</a>
+</dd>
+<dd>A tool for testing all database related issues.</dd>
+<dd>Beside testing your db queries and setup, it makes an excellent companion to
+            WebTest as it allows to safely populate your test db with the required test data.
+            Using the dbunit ANT task, this population can take place right before your
+            test, such that WebTest and test data go together. (See also SQLUnit)</dd>
+<dt>
+<a name="groovy">Groovy</a>
+</dt>
+<dd class="link">
+<a href="http://groovy.codehaus.org/">http://groovy.codehaus.org/</a>
+</dd>
+<dd>Groovy is a powerful high-level scripting language for the Java platform
+            which compiles down to Java bytecode and utilises Java syntax and features.</dd>
+<dt>
+<a name="HTML">HTML</a>
+</dt>
+<dd class="link">
+<a href="http://www.w3.org/MarkUp/">http://www.w3.org/MarkUp/</a>
+</dd>
+<dd>Hypertext Markup Language.</dd>
+<dd>HTML is the lingua franca for publishing hypertext on the World Wide Web</dd>
+<dd>Consider visiting the site of the world wide web consortium to find more
+            information about html variants, formats, parsers and validators.</dd>
+<dt>
+<a name="htmlunit">HtmlUnit</a>
+</dt>
+<dd class="link">
+<a href="http://htmlunit.sourceforge.net/">http://htmlunit.sourceforge.net/</a>
+</dd>
+<dd>The Open Source java unit testing framework for testing web based applications.</dd>
+<dd>This is the "browser" used to play webtest test suites.</dd>
+<dt>
+<a name="validator">HTML Validator</a>
+</dt>
+<dd class="link">
+<a href="http://validator.w3.org/">http://validator.w3.org/</a>
+</dd>
+<dd class="link">
+<a href="http://www.htmlhelp.com/tools/validator/">http://www.htmlhelp.com/tools/validator/</a>
+</dd>
+<dd class="link">
+<a href="http://www.htmlvalidator.com/">http://www.htmlvalidator.com/</a>
+</dd>
+<dd class="link">
+<a href="http://arealvalidator.com/">http://arealvalidator.com/</a>
+</dd>
+<dd>A program that checks whether an HTML page conforms to the standard.</dd>
+<dd>There are free validators on the web and commercial ones that can be run locally.</dd>
+<dd>Use one! It's worth it!</dd>
+<dt>
+<a name="HTTP">HTTP</a>
+</dt>
+<dd class="link">
+<a href="http://www.w3.org/Protocols/">http://www.w3.org/Protocols/</a>
+</dd>
+<dd class="link">
+<a href="ftp://ftp.isi.edu/in-notes/rfc2616.txt">ftp://ftp.isi.edu/in-notes/rfc2616.txt</a>
+</dd>
+<dd>Hypertext Transfer Protocol.</dd>
+<dd>The Hypertext Transfer Protocol (HTTP) is an application-level protocol for
+            distributed, collaborative, hypermedia information systems. HTTP is used by browsers
+            to request pages and images and submit forms. It is also used by RESTful Web Services
+            to access services.</dd>
+<dt>
+<a name="httpunit">HttpUnit</a>
+</dt>
+<dd class="link">
+<a href="http://www.httpunit.org">http://www.httpunit.org</a>
+</dd>
+<dd>The Open Source Web Site Testing tool for programmers.</dd>
+<dd>Captures web site testing in JUnit TestCases.</dd>
+<dt>
+<a name="ibmPL">IBM Public License</a>
+</dt>
+<dd class="link">
+<a href="http://oss.software.ibm.com/developerworks/opensource/license10.html">http://oss.software.ibm.com/developerworks/opensource/license10.html</a>
+</dd>
+<dd>IBM Public License conditions</dd>
+<dt>
+<a name="Intellij">IntelliJ IDEA</a>
+</dt>
+<dd class="link">
+<a href="http://www.jetbrains.com/idea/">http://www.jetbrains.com/idea/</a>
+</dd>
+<dd>An excellent Java, J2EE and XML (including WebTest scripts) refactoring IDE.</dd>
+<dd>Thanks to the JetBrains people for providing such an
+            excellent tool and for supporting Canoo WebTest with a free open source license.</dd>
+<dt>
+<a name="javascript">JavaScript</a>
+</dt>
+<dd class="link">
+<a href="http://www.ecma-international.org/publications/standards/Ecma-262.htm">http://www.ecma-international.org/publications/standards/Ecma-262.htm</a>
+</dd>
+<dd class="link">
+<a href="http://msdn.microsoft.com/library/default.asp?url=/library/en-us/script56/html/js56jsoriJScript.asp">http://msdn.microsoft.com/library/default.asp?url=/library/en-us/script56/html/js56jsoriJScript.asp</a>
+</dd>
+<dd class="link">
+<a href="http://www.mozilla.org/js/">http://www.mozilla.org/js/</a>
+</dd>
+<dd>The scripting language supported by most browsers.</dd>
+<dt>
+<a name="jemmy">Jemmy</a>
+</dt>
+<dd class="link">
+<a href="http://jemmy.netbeans.org/">http://jemmy.netbeans.org/</a>
+</dd>
+<dd>Jemmy is a library that is used to create automated tests for Java GUI applications.</dd>
+<dd>Is used in the AppletRunner step.</dd>
+<dt>
+<a name="jetty">Jetty</a>
+</dt>
+<dd class="link">
+<a href="http://jetty.mortbay.org/jetty/">http://jetty.mortbay.org/jetty/</a>
+</dd>
+<dd>Jetty is a 100% Java HTTP Server and Servlet Container.</dd>
+<dd>Is used to preform selftest in a controlled environment during the build of webtest.</dd>
+<dt>
+<a name="Jira">Jira</a>
+</dt>
+<dd class="link">
+<a href="http://www.atlassian.com/software/jira/">http://www.atlassian.com/software/jira/</a>
+</dd>
+<dd>A Bug Tracking, Issue Tracking and Project Management Tool.</dd>
+<dd>Thanks to the atlassian people for providing such an
+            excellent tool and for supporting Canoo WebTest with a free open source license.</dd>
+<dt>
+<a name="jtidy">JTidy</a>
+</dt>
+<dd class="link">
+<a href="http://sourceforge.net/projects/jtidy">http://sourceforge.net/projects/jtidy</a>
+</dd>
+<dd>Small and lean Open Source HTML parser.</dd>
+<dd>Is used in the HttpUnit package.</dd>
+<dt>
+<a name="junit">JUnit</a>
+</dt>
+<dd class="link">
+<a href="http://www.junit.org/">http://www.junit.org/</a>
+</dd>
+<dd>Home of the unit test community.</dd>
+<dd>Points to articles, downloads and other on-line resources.</dd>
+<dd>Unit test tools for other languages than Java are also available,
+            including Smalltalk, C++, Perl, Python, JavaScript and even VisualBasic.</dd>
+<dt>
+<a name="Maven">Maven</a>
+</dt>
+<dd class="link">
+<a href="http://maven.apache.org/">http://maven.apache.org/</a>
+</dd>
+<dd>Maven is a Java project management and project comprehension tool that
+            provides a well defined model for your project.</dd>
+<dt>
+<a name="MavenPlugin">Maven Canoo WebTest Plugin</a>
+</dt>
+<dd class="link">
+<a href="http://maven-plugins.sourceforge.net/maven-webtest-plugin/index.html">http://maven-plugins.sourceforge.net/maven-webtest-plugin/index.html</a>
+</dd>
+<dd class="link">
+<a href="http://jakarta.apache.org/turbine/maven/">http://jakarta.apache.org/turbine/maven/</a>
+</dd>
+<dd>Provided by Siegfried Goeschl.</dd>
+<dd>Maven is a Java project management and project comprehension tool that
+            provides a well defined model for your project. The Canoo WebTest plugin comes into
+            play to model the acceptance tests. Typically Maven, that model is validated, run, and
+            results get visualized.</dd>
+<dt>
+<a name="nekohtml">NekoHTML</a>
+</dt>
+<dd class="link">
+<a href="http://www.apache.org/~andyc/neko/doc/html/">http://www.apache.org/~andyc/neko/doc/html/</a>
+</dd>
+<dd>NekoHTML is a simple HTML scanner/parser and tag balancer that enables application programmers to
+            parse HTML documents and access the information using standard XML interfaces.</dd>
+<dd>NekoHTML is used in the HtmlUnit package.</dd>
+<dt>
+<a name="opencsv">opencsv</a>
+</dt>
+<dd class="link">
+<a href="http://opencsv.sourceforge.net">http://opencsv.sourceforge.net</a>
+</dd>
+<dd>opencsv is a free open-source csv (comma-separated value) parser library written in Java</dd>
+<dt>
+<a name="pdf">PDF</a>
+</dt>
+<dd class="link">
+<a href="http://www.adobe.com/products/acrobat/adobepdf.html">http://www.adobe.com/products/acrobat/adobepdf.html</a>
+</dd>
+<dd>Invented by Adobe, Portable Document Format (PDF) is the published specification
+            used around the world for secure, reliable electronic document distribution and exchange.</dd>
+<dt>
+<a name="pdfbox">PDFBox</a>
+</dt>
+<dd class="link">
+<a href="http://www.pdfbox.org">http://www.pdfbox.org</a>
+</dd>
+<dd>PDFBox is a free open-source Java PDF Library developed by Ben Litchfield.</dd>
+<dt>
+<a name="regex">regular expression</a>
+</dt>
+<dd class="link">
+<a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html">http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/Pattern.html</a>
+</dd>
+<dd>Canoo WebTest uses the built in Regular Expression capacities of Java (since 1.4) with the dotall mode
+            enabled (allows "." to match any character including a line terminator, this is what Perl names the single
+            line mode).</dd>
+<dt>
+<a name="seiberTEC">seiberTEC</a>
+</dt>
+<dd class="link">
+<a href="http://www.seibertec.ch/">http://www.seibertec.ch/</a>
+</dd>
+<dd>A high-profile software development company in Rueschlikon, Switzerland.</dd>
+<dt>
+<a name="sourceforge">SourceForge.net</a>
+</dt>
+<dd class="link">
+<a href="http://sourceforge.net/">http://sourceforge.net/</a>
+</dd>
+<dd>The leading distribution page for open source software.</dd>
+<dd>A regular must-visit for every developer.</dd>
+<dt>
+<a name="sqlunit">SQLUnit</a>
+</dt>
+<dd class="link">
+<a href="http://sqlunit.sourceforge.net/">http://sqlunit.sourceforge.net/</a>
+</dd>
+<dd class="link">
+<a href="http://sqlunit.sourceforge.net/x3931.html">http://sqlunit.sourceforge.net/x3931.html</a>
+</dd>
+<dd>A tool for testing all database related issues.</dd>
+<dd>Besides testing your db stored procedures, queries and setup, it makes an excellent
+            companion to WebTest as it allows you to safely populate your test db with the required test data.
+            Using the sqlunit ANT task, this population can take place right before your
+            test, so that WebTest and the database test data are always in sync. Post test tidy up is also
+            supported. SQLUnit supports reporting using an XML file compatible with WebTest's
+            reporting format, so that you can generate HTML reports combining both sets of
+            information. (See also DbUnit)</dd>
+<dt>
+<a name="jakarta">The Jakarta Project</a>
+</dt>
+<dd class="link">
+<a href="http://jakarta.apache.org/">http://jakarta.apache.org/</a>
+</dd>
+<dd>The leading Java open source software site.</dd>
+<dd>Includes the Apache web server, Tomcat, ANT, Log4J,
+            Cactus, ORO, Struts and many more.</dd>
+<dt>
+<a name="xerces">Xerces</a>
+</dt>
+<dd class="link">
+<a href="http://xerces.apache.org/xerces2-j/">http://xerces.apache.org/xerces2-j/</a>
+</dd>
+<dd>Apache Xerces XML Parser</dd>
+<dt>
+<a name="xls">XLS</a>
+</dt>
+<dd class="link">
+<a href="http://office.microsoft.com/excel">http://office.microsoft.com/excel</a>
+</dd>
+<dd>File format used by Microsoft Excel to save spreadsheets.</dd>
+<dt>
+<a name="XML">XML</a>
+</dt>
+<dd class="link">
+<a href="http://www.w3.org/xml">http://www.w3.org/xml</a>
+</dd>
+<dd>Extensible Markup Language</dd>
+<dt>
+<a name="XPATH">XPath</a>
+</dt>
+<dd class="link">
+<a href="http://www.w3.org/TR/xpath">http://www.w3.org/TR/xpath</a>
+</dd>
+<dd class="link">
+<a href="http://www.w3schools.com/xpath/">http://www.w3schools.com/xpath/</a>
+</dd>
+<dd>XML Path Language.</dd>
+<dd>XPath defines a formal notation to reference parts of XML document structures.
+            Its main use is for XSLT and XPointer.</dd>
+<dd>XPath expressions allow to query a document like you would query a database
+            by SQL. In combination with Canoo WebTest it enables queries on HTML documents.</dd>
+<dt>
+<a name="XPather">XPather</a>
+</dt>
+<dd class="link">
+<a href="http://xpath.alephzarro.com/">http://xpath.alephzarro.com/</a>
+</dd>
+<dd>Firefox plugin to evaluate and generate XPath expressions while browsing.</dd>
+<dt>
+<a name="XPE">XPath Explorer</a>
+</dt>
+<dd class="link">
+<a href="http://www.purpletech.com/xpe/index.jsp">http://www.purpletech.com/xpe/index.jsp</a>
+</dd>
+<dd>Alex Chaffee's XPath Exploration tool.</dd>
+<dd>It not only allows exploring XML/HTML using XPath, it also makes
+            creating XPath expressions a real pleasure, as you can select the node under test
+            and the expression will be created for you.</dd>
+<dd>The XPath Explorer is the recommended companion to use with WebTest's
+            'verifyXPath' and 'storeXPath' steps.</dd>
+<dt>
+<a name="XSLT">XSLT</a>
+</dt>
+<dd class="link">
+<a href="http://www.w3.org/TR/xslt">http://www.w3.org/TR/xslt</a>
+</dd>
+<dd class="link">
+<a href="http://www.w3.org/TR/xsl/">http://www.w3.org/TR/xsl/</a>
+</dd>
+<dd>XSL Transformations</dd>
+<dd>Uses the Extensible Stylesheet Language (XSL) for transformations
+            of XML trees into other tree structures like html, formatting objects
+            (that can be serialized as PDF) or XML again.</dd>
+</dl>
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

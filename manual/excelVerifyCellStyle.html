@@ -1,0 +1,352 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="excelFindRow" href="excelFindRow.html" rel="subsection">
+<link title="excelSelectSheet" href="excelSelectSheet.html" rel="subsection">
+<link title="excelStoreCellValue" href="excelStoreCellValue.html" rel="subsection">
+<link title="excelStructureFilter" href="excelStructureFilter.html" rel="subsection">
+<link title="excelVerifyCellStyle" href="excelVerifyCellStyle.html" rel="subsection">
+<link title="excelVerifyCellSum" href="excelVerifyCellSum.html" rel="subsection">
+<link title="excelVerifyCellValue" href="excelVerifyCellValue.html" rel="subsection">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Description,Parameters,Details,">
+<title>Excel Step: excelVerifyCellStyle</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html">Syntax Reference - Core Steps</a>
+</li>
+<li>
+<a href="syntaxExtension.html">Syntax Reference - Extension Steps</a>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html" class="selected">Syntax Reference - Excel Steps</a>
+<ul>
+<li>
+<a href="excelFindRow.html">&gt; excelFindRow</a>
+</li>
+<li>
+<a href="excelSelectSheet.html">&gt; excelSelectSheet</a>
+</li>
+<li>
+<a href="excelStoreCellValue.html">&gt; excelStoreCellValue</a>
+</li>
+<li>
+<a href="excelStructureFilter.html">&gt; excelStructureFilter</a>
+</li>
+<li>
+<a href="excelVerifyCellStyle.html" class="selected">&gt; excelVerifyCellStyle</a>
+</li>
+<li>
+<a href="excelVerifyCellSum.html">&gt; excelVerifyCellSum</a>
+</li>
+<li>
+<a href="excelVerifyCellValue.html">&gt; excelVerifyCellValue</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>
+<span class="category">Excel Step</span> excelVerifyCellStyle</h1>
+<h2>
+<a name="Description">Description</a>
+</h2>
+<p>This step verifies the style of a specified cell in an Excel spreadsheet. Only those properties set will be checked.</p>
+<h2>
+<a name="Parameters">Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>align</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected horizontal alignment. One of center, center-selection, fill, general, justify, left, right</dd>
+<dt>border</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected border style. One of <i>dash dot, dash dot dot, dashed, dotted, double, hair, medium, medium dash dot, medium dash dot dot, medium dashed, slanted dash dot, thick, thin, none</i>. See below for details on specifying sides.</dd>
+<dt>borderColor</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected border color. Specify as #rrggbb or use a standard name. See below for details on specifying sides.</dd>
+<dt>cell</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>The spreadsheet cell to select. eg. A5. Either <i>cell</i> or <i>row</i> and <i>col</i> must be specified.</dd>
+<dt>col</dt>
+<dd class="required">Required? no</dd>
+<dd>The name or number (starting at 1) of the column to select. eg 1 or A. Either <i>cell</i> or <i>row</i> and <i>col</i> must be specified.</dd>
+<dt>description</dt>
+<dd class="required">Required? no</dd>
+<dd>The description of this test step.</dd>
+<dt>fillBackgroundColor</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected background cell fill color. Specify as #rrggbb or use a standard name.</dd>
+<dt>fillColor</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected foreground cell fill color. Specify as #rrggbb or use a standard name.</dd>
+<dt>fillPattern</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected fill pattern. One of <i>none, solid, 50% gray, 75% gray, 25% gray, horizontal stripe, vertical stripe, reverse diagonal stripe, diagonal stripe, diagonal crosshatch, thick diagonal crosshatch, thin horizontal stripe, thin vertical stripe, thin reverse diagonal stripe, thin diagonal stripe, thin horizontal crosshatch, thin diagonal crosshatch, 12.5% gray, 6.25% gray</i>
+</dd>
+<dt>fontName</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected font name. eg. Arial or Times</dd>
+<dt>fontSize</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected font size in points. eg 10 or 12</dd>
+<dt>fontStyle</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected font style. A combination of bold, italic, strikethrough, subscript, superscript, underline, underline-accounting, underline-double, underline-double-accounting separated by spaces, or normal</dd>
+<dt>format</dt>
+<dd class="required">Required? no</dd>
+<dd>The format to check for. eg 0.00 for two decimal places.</dd>
+<dt>locked</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected locked status. true or false</dd>
+<dt>row</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>The number of the row to select, starting at 1. Either <i>cell</i> or <i>row</i> and <i>col</i> must be specified.</dd>
+<dt>sheetIndex</dt>
+<dd class="required">Required? no</dd>
+<dd>The index of the sheet to select, starting at zero. If no sheet is selected, the value of the last <i>excelSelectSheet</i> call is used, or defaults to the first sheet.</dd>
+<dt>sheetName</dt>
+<dd class="required">Required? no</dd>
+<dd>The name of the sheet to select. If no sheet is selected, the value of the last <i>excelSelectSheet</i> call is used, or defaults to the first sheet.</dd>
+<dt>textColor</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected text color. Specify as #rrggbb or use a standard name.</dd>
+<dt>type</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected cell type. One of <i>blank, numeric, formula, string, boolean or error.</i>
+</dd>
+<dt>valign</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected vertical alignment. One of bottom, center, justify, top</dd>
+<dt>wrap</dt>
+<dd class="required">Required? no</dd>
+<dd>The expected wrap setting. true or false</dd>
+</dl>
+<h2>
+<a name="Details">Details</a>
+</h2>
+
+    
+<p>
+        Here is an example using the <i>excelVerifyCellStyle</i> step:
+    </p>
+
+    
+<div class="code">
+<div class="caption">excelVerifyCellStyle Example</div>
+<div class="content">
+        
+&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">exceltest&nbsp;-&nbsp;verify&nbsp;cell&nbsp;style</span>"&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">config</span>&nbsp;.../&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>&nbsp;<span class="att">url</span>="<span class="val">testExcel.xls</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">excelVerifyCellStyle</span>&nbsp;<span class="att">cell</span>="<span class="val">B37</span>"&nbsp;<span class="att">border</span>="<span class="val">top:thick;&nbsp;bottom:dash&nbsp;dot;&nbsp;left:none;&nbsp;right:medium&nbsp;dash&nbsp;dot</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">borderColor</span>="<span class="val">top:auto;&nbsp;bottom:plum;&nbsp;left:none;&nbsp;right:bright&nbsp;green</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">fillColor</span>="<span class="val">tan</span>"&nbsp;<span class="att">fillBackgroundColor</span>="<span class="val">red</span>"&nbsp;<span class="att">textColor</span>="<span class="val">green</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">fontName</span>="<span class="val">Arial</span>"&nbsp;<span class="att">fontSize</span>="<span class="val">12</span>"&nbsp;<span class="att">fontStyle</span>="<span class="val">strikethrough&nbsp;bold&nbsp;italic&nbsp;underline</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">align</span>="<span class="val">center</span>"&nbsp;<span class="att">valign</span>="<span class="val">top</span>"&nbsp;<span class="att">fillPattern</span>="<span class="val">thin&nbsp;diagonal&nbsp;stripe</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">description</span>="<span class="val">A&nbsp;bit&nbsp;of&nbsp;everything</span>"/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">excelVerifyCellStyle</span>&nbsp;<span class="att">cell</span>="<span class="val">A6</span>"&nbsp;<span class="att">border</span>="<span class="val">left:thin</span>"/&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">steps</span>&gt;<br>
+&lt;/<span class="tag">webtest</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>
+        For the <i>border</i> and <i>borderColor</i> properties, you can have fine grained control over what is
+        expected for the border on each side of the cell.  Here are some examples:
+    </p>
+            
+<div class="code">
+<div class="content">border="thin"</div>
+</div> 
+<p>This tests for a thin border all the way around the cell.</p>
+            
+<div class="code">
+<div class="content">borderColor="left:red"</div>
+</div> 
+<p>This tests for a red border on the left of the cell.  The other borders are ignored.</p>
+            
+<div class="code">
+<div class="content">border="top,left:none;bottom:thin;right:dashed"</div>
+</div> 
+<p>This tests for no borders on the top and left of the cell, a thin border on bottom and a dashed one to the right</p>
+            
+<div class="code">
+<div class="content">borderColor="#0000ff;top:none"</div>
+</div> 
+<p>This tests for a blue border on the left, right and top sides and no border on the top.</p>
+
+    
+<p>
+        For the <i>borderColor</i>, <i>textColor</i>, <i>fillColor</i> and <i>fillBackgroundColor</i> properties,
+        you can use the following standard color names instead of hex values: <i>aqua, black, blue, blue gray, bright green,
+        brown, coral, dark blue, dark green, dark purple, dark red, dark teal, dark yellow, gold, green, 25% gray, 40% gray,
+        50% gray, 80% gray, ice blue, indigo, ivory, lavender, light blue, light green, light orange, light turquoise,
+        light yellow, lime, maroon, ocean blue, olive green, orange, pale blue, periwinkle, pink, plum, red, rose, sea green,
+        sky blue, tan, teal, turquoise, violet, white, yellow.</i>
+    
+</p>
+
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

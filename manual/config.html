@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="config" href="config.html" rel="subsection">
+<link title="header" href="header.html" rel="subsection">
+<link title="option" href="option.html" rel="subsection">
+<link title="step" href="step.html" rel="subsection">
+<link title="steps" href="steps.html" rel="subsection">
+<link title="webtest" href="webtest.html" rel="subsection">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Description,Parameters,Nested Parameters,">
+<title>General Step: config</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html" class="selected">Syntax Reference - General Steps</a>
+<ul>
+<li>
+<a href="config.html" class="selected">&gt; config</a>
+</li>
+<li>
+<a href="header.html">&gt; header</a>
+</li>
+<li>
+<a href="option.html">&gt; option</a>
+</li>
+<li>
+<a href="step.html">&gt; step</a>
+</li>
+<li>
+<a href="steps.html">&gt; steps</a>
+</li>
+<li>
+<a href="webtest.html">&gt; webtest</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="syntaxCore.html">Syntax Reference - Core Steps</a>
+</li>
+<li>
+<a href="syntaxExtension.html">Syntax Reference - Extension Steps</a>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>
+<span class="category">General Step</span> config</h1>
+<h2>
+<a name="Description">Description</a>
+</h2>
+<p>This is a nested task of <a href="webtest.html" class="stepref">webtest</a> and is used to configure the target host system to use for a particular <a href="webtest.html" class="stepref">webtest</a> and several other features such as reporting of test results and printing of debug information.</p>
+
+    
+<p>The
+        <i>&lt;config&gt;</i> element is a nested element of
+        <a href="webtest.html" class="stepref">webtest</a> and is used
+		to configure the target host system to use for a particular webtest and several other feature like
+		reporting of test results and printing of debug information.
+    </p>
+
+    
+<p>Since the
+        <i>&lt;config&gt;</i> element can contain so many different attributes,
+		the description of the attributes is split over many tables.
+    </p>
+
+    
+<p>The first table describes the default URL parameter.</p>
+
+        
+<dl class="attributes">
+<dt>basepath</dt>
+<dd class="required">Required? No, defaults is empty</dd>
+<dd>Defines the constant base path used to construct request URLs, e.g. "shop"
+		can be considered a
+                    <i>basepath</i> in "http:/www.myhost.com/shop/productlist"
+		and "http:/www.myhost.com/shop/checkout".
+                </dd>
+<dt>host</dt>
+<dd class="required">Required? No, default is "localhost"</dd>
+<dd>Defines the hostname to use for executing requests, e.g.
+                    "localhost" or "www.myhost.com".</dd>
+<dt>port</dt>
+<dd class="required">Required? No, defaults is "80"</dd>
+<dd>Defines the port number to use for executing requests, e.g.
+                    "8080".</dd>
+<dt>protocol</dt>
+<dd class="required">Required? No, defaults is "http"</dd>
+<dd>Defines the protocol to use for executing requests.
+                    "http", "https", and "file" are currently the only supported protocols.</dd>
+</dl>
+    
+<p>
+	    The next table describes the attributes responsible for WebTest's reporting and logging.
+        These attributes define
+        <i>if</i> and
+        <i>where</i> WebTest store logging information. Actual reporting is usually
+			performed by xsl transformation after the test complete.
+    </p>
+        
+<dl class="attributes">
+<dt>resultpath</dt>
+<dd class="required">Required? No, default is the subdirectory "webtest-results" of the project base directory.</dd>
+<dd>Defines the resultpath of saved responses (for example last response).</dd>
+<dt>saveprefix</dt>
+<dd class="required">Required? No, default is "response"</dd>
+<dd>Sets the name to use if the current response received from the target
+                host is to be saved into a file. A unique id will also be appended after the prefix.
+                </dd>
+<dt>saveresponse</dt>
+<dd class="required">Required? No, default is "false"</dd>
+<dd>Defines whether the last response received from the target
+                host is saved into the file "&lt;saveprefix&gt;&lt;uniqueId&gt;.html".
+                <i>saveprefix</i> is the value set in the &lt;saveprefix&gt; config element.<br>
+                
+<i>uniqueId</i> is a timestamp at the time the file is saved.<br>
+                This is especially helpful for debugging your tests.
+                </dd>
+</dl>
+    
+<p>The next table describes the webtest's behaviour when encountering failures and errors.</p>
+        
+<dl class="attributes">
+<dt>errorproperty</dt>
+<dd class="required">Required? No</dd>
+<dd>Specifies the name of an ant property which is set to true if the execution
+					of the current &lt;webtest&gt; stops if a program error (unhandled exception) is encountered
+					in one of the test steps. When using this property, set "haltonerror" to "false".
+					Then check the ant property after performing all of your tests and if set fail. This allows your tests to
+					continue running even if some experience execution errors (allowing you to catch multiple errors with one test run)
+					but still ultimately fails the build if anything went wrong.
+                </dd>
+<dt>failureproperty</dt>
+<dd class="required">Required? No</dd>
+<dd>Specifies the name of an ant property which is set to true if the test fails.
+					When using this property, set "haltonfailure" to "false". Then check the
+					ant property after performing all of your tests and if set fail. This allows your tests to
+					continue running even if some fail (allowing you to catch multiple errors with one test run)
+					but still ultimately fails the build if anything went wrong.
+                </dd>
+<dt>haltonerror</dt>
+<dd class="required">Required? No, default is "true"</dd>
+<dd>Determines if the execution of the current &lt;webtest&gt; stops if a
+		program error (unhandled exception) is encountered in one of the test steps. An
+                    <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> BuildFailed exception will be raised
+		if it is set to "Yes". This will terminate the execution of the
+                    <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> script.
+                    <br>
+		Setting the option to "false" will stop the execution of the current &lt;webtest&gt; but continues with the
+		next
+                    <a title="The leading build automation tool." href="annotatedRefs.html#ANT">ANT</a> task, e.g. another &lt;webtest&gt;.
+                </dd>
+<dt>haltonfailure</dt>
+<dd class="required">Required? No, default is "true"</dd>
+<dd>Determines if the execution of the current test halts if a failure of one of the
+		test steps is detected, e.g. a &lt;verify...&gt; test did not pass. Even when set to "false"
+		all of the trailing &lt;step&gt;s of the current &lt;webtest&gt; will be skipped but processing will
+		continue with the next &lt;webtest&gt;.</dd>
+</dl>
+    
+<p>The next table groups miscellaneous configuration options.
+    </p>
+        
+<dl class="attributes">
+<dt>autorefresh</dt>
+<dd class="required">Required? No, default is "false"</dd>
+<dd>Specifies whether the client should automatically follow page refresh requests (html:
+                    <i>&lt;meta http-equiv="refresh" ...&gt;</i>).
+                    <br>
+                    If set to "true" or "false", this indicates if refresh requests should be followed or not.
+                    If set to an integer value only refresh request with a delay less or equal to the specified value will be executed. 
+                </dd>
+<dt>browser</dt>
+<dd class="required">Required? No, default is "InternetExplorer6"</dd>
+<dd>Specifies the browser that should be simulated.
+                Allowed values are 
+                <span class="example">Firefox3</span> (or <span class="example">FF3</span>) (deprecated),
+                <span class="example">Firefox3.6</span> (or <span class="example">FF3.6</span>),
+                <span class="example">Firefox10</span> (or <span class="example">FF10</span>),
+                <span class="example">InternetExplorer6</span> (or <span class="example">IE6</span>),
+                <span class="example">InternetExplorer7</span> (or <span class="example">IE7</span>),
+                <span class="example">InternetExplorer8</span> (or <span class="example">IE8</span>).
+                </dd>
+<dt>defaultpropertytype</dt>
+<dd class="required">Required? No, default is "dynamic",</dd>
+<dd>Determines the default storage used for properties. If set to "dynamic", webtest dynamic properties are used.
+					If set to "ant", properties are stored as ant variables. If set to "antstrict", ant properties are
+					used but normal ant immutability is respected, i.e. if a property is already set, then it won't be over-written.
+                    <br>
+					When setting this attribute to "ant" or "antstrict", the #{propName} syntax allows late binding
+					to ant properties whereas the ${propName} syntax remains supported with normal binding.
+                    <br>
+					If using ant properties to store webtest properties, the values of properties persist across &lt;webtest&gt; tasks but
+					you run the risk of name clashes with other tasks using ant properties.
+                    <br>
+					If using repeat steps, avoid using "antstrict" for this setting if you need access to the repeat loop
+					counter value. The repeat loop will execute as normal but the #{count} property will remain unchanged once set.
+                </dd>
+<dt>showhtmlparseroutput</dt>
+<dd class="required">Required? No, default is "false"</dd>
+<dd>Defines that the JTidy output of parsing resulting
+                    <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> pages shall be shown.
+		If enabled, the generated errors/warnings are collected as test step parameters and written into the report file.
+        The output is also written to stdout. The parser output can be used to
+		detect invalid
+                    <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> code in a particular page, unbalanced elements or invalid
+		nesting of elements (e.g. &lt;form&gt; and &lt;table&gt;).
+                    <br>
+		Since the parser can generate a lot of warnings and these warnings need to be
+		manually analyzed, it is recommended to enable this option only on demand,
+		e.g. to initially verify the correctness of an
+                    <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> page or if a particular
+		test case does not work (e.g. a button can not be found in a page).
+                </dd>
+<dt>sslKeyStore</dt>
+<dd class="required">Required? No, default is "null"</dd>
+<dd>Specifies a file system path or URL to a keystore or certificate file containing one or more
+                    client certificates. If present, WebTest is performing ssl authentication using client certificates.
+                    The file / keystore type is defined by "sslKeyStoreType".
+                </dd>
+<dt>sslKeyStorePassword</dt>
+<dd class="required">Required? No, default is "null"</dd>
+<dd>Specifies the keystore password.
+                </dd>
+<dt>sslKeyStoreType</dt>
+<dd class="required">Required? No, default is "jks"</dd>
+<dd>Specifies type of the keystore or ssl certificate file defined by "sslKeyStore".
+                    Can be "pkcs12" or "jks" (Java Key Store) ...
+                </dd>
+<dt>sslTrustStore</dt>
+<dd class="required">Required? No, default is "null"</dd>
+<dd>Specifies the path or URL to a Java Key Store containing server certificates to be trusted.
+                </dd>
+<dt>sslTrustStorePassword</dt>
+<dd class="required">Required? No, default is "null"</dd>
+<dd>Specifies the sslTrustStore password.
+                </dd>
+<dt>timeout</dt>
+<dd class="required">Required? No, default is "300"</dd>
+<dd>Defines the timeout value in seconds for both connection and socket.<br>
+                The connection timeout is the maximum allowed time until a connection is etablished.
+                The socket timeout is the timeout for waiting for data.<br>
+                A timeout value of zero is interpreted as an infinite timeout.
+                </dd>
+<dt>useInsecureSSL</dt>
+<dd class="required">Required? No, default is "false"</dd>
+<dd>Specifies if WebTest should ignore insecure SSL certificates like self signed certificate that
+                have not been added to the truststore or expired certificates.
+                </dd>
+</dl>
+
+    
+<div class="code">
+<div class="caption">config</div>
+<div class="content">
+        
+&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">Visit&nbsp;the&nbsp;shop&nbsp;on&nbsp;myhost</span>"&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">config</span>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">host</span>="<span class="val">www.myhost.com</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">port</span>="<span class="val">8080</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">protocol</span>="<span class="val">http</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">basepath</span>="<span class="val">shop</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">saveresponse</span>="<span class="val">true</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">resultpath</span>="<span class="val">/tmp/results</span>"<br>
+&nbsp;&nbsp;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">header</span>&nbsp;<span class="att">name</span>="<span class="val">User-Agent</span>"&nbsp;<span class="att">value</span>="<span class="val">Mozilla/4.0</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">header</span>&nbsp;<span class="att">name</span>="<span class="val">Accept-Language</span>"&nbsp;<span class="att">value</span>="<span class="val">de-ch</span>"/&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">config</span>&gt;<br>
+&nbsp;&nbsp;...<br>
+&lt;/<span class="tag">webtest</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>The previous test code example will create URLs with the following prefix: "http://www.myhost.com:8080/shop/".</p>
+
+<h2>
+<a name="Parameters">Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>description</dt>
+<dd class="required">Required? no</dd>
+<dd>The description of this test step.</dd>
+</dl>
+<h2>
+<a name="Nested Parameters">Nested Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>
+<a href="header.html">header</a>
+</dt>
+<dd class="required">Required? no</dd>
+<dd>Specify http headers by name and value</dd>
+<dt>
+<a href="option.html">option</a>
+</dt>
+<dd class="required">Required? no</dd>
+<dd>Tweak the underlying web client options/settings</dd>
+</dl>
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

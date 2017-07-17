@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="clickButton" href="clickButton.html" rel="subsection">
+<link title="clickLink" href="clickLink.html" rel="subsection">
+<link title="followFrame" href="followFrame.html" rel="subsection">
+<link title="group" href="group.html" rel="subsection">
+<link title="invoke" href="invoke.html" rel="subsection">
+<link title="not" href="not.html" rel="subsection">
+<link title="previousResponse" href="previousResponse.html" rel="subsection">
+<link title="repeat" href="repeat.html" rel="subsection">
+<link title="selectForm" href="selectForm.html" rel="subsection">
+<link title="setCheckbox" href="setCheckbox.html" rel="subsection">
+<link title="setFileField" href="setFileField.html" rel="subsection">
+<link title="setInputField" href="setInputField.html" rel="subsection">
+<link title="setRadioButton" href="setRadioButton.html" rel="subsection">
+<link title="setSelectField" href="setSelectField.html" rel="subsection">
+<link title="storeCookie" href="storeCookie.html" rel="subsection">
+<link title="storeHeader" href="storeHeader.html" rel="subsection">
+<link title="storeProperty" href="storeProperty.html" rel="subsection">
+<link title="storeRegEx" href="storeRegEx.html" rel="subsection">
+<link title="storeXPath" href="storeXPath.html" rel="subsection">
+<link title="table" href="table.html" rel="subsection">
+<link title="testInfo" href="testInfo.html" rel="subsection">
+<link title="verifyCheckbox" href="verifyCheckbox.html" rel="subsection">
+<link title="verifyCookie" href="verifyCookie.html" rel="subsection">
+<link title="verifyElement" href="verifyElement.html" rel="subsection">
+<link title="verifyElementText" href="verifyElementText.html" rel="subsection">
+<link title="verifyInputField" href="verifyInputField.html" rel="subsection">
+<link title="verifyLinks" href="verifyLinks.html" rel="subsection">
+<link title="verifyProperty" href="verifyProperty.html" rel="subsection">
+<link title="verifyRadioButton" href="verifyRadioButton.html" rel="subsection">
+<link title="verifySelectField" href="verifySelectField.html" rel="subsection">
+<link title="verifyText" href="verifyText.html" rel="subsection">
+<link title="verifyTextarea" href="verifyTextarea.html" rel="subsection">
+<link title="verifyTitle" href="verifyTitle.html" rel="subsection">
+<link title="verifyXPath" href="verifyXPath.html" rel="subsection">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Description,Parameters,Details,">
+<title>Core Step: storeXPath</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html" class="selected">Syntax Reference - Core Steps</a>
+<ul>
+<li>
+<a href="clickButton.html">&gt; clickButton</a>
+</li>
+<li>
+<a href="clickLink.html">&gt; clickLink</a>
+</li>
+<li>
+<a href="followFrame.html">&gt; followFrame</a>
+</li>
+<li>
+<a href="group.html">&gt; group</a>
+</li>
+<li>
+<a href="invoke.html">&gt; invoke</a>
+</li>
+<li>
+<a href="not.html">&gt; not</a>
+</li>
+<li>
+<a href="previousResponse.html">&gt; previousResponse</a>
+</li>
+<li>
+<a href="repeat.html">&gt; repeat</a>
+</li>
+<li>
+<a href="selectForm.html">&gt; selectForm</a>
+</li>
+<li>
+<a href="setCheckbox.html">&gt; setCheckbox</a>
+</li>
+<li>
+<a href="setFileField.html">&gt; setFileField</a>
+</li>
+<li>
+<a href="setInputField.html">&gt; setInputField</a>
+</li>
+<li>
+<a href="setRadioButton.html">&gt; setRadioButton</a>
+</li>
+<li>
+<a href="setSelectField.html">&gt; setSelectField</a>
+</li>
+<li>
+<a href="storeCookie.html">&gt; storeCookie</a>
+</li>
+<li>
+<a href="storeHeader.html">&gt; storeHeader</a>
+</li>
+<li>
+<a href="storeProperty.html">&gt; storeProperty</a>
+</li>
+<li>
+<a href="storeRegEx.html">&gt; storeRegEx</a>
+</li>
+<li>
+<a href="storeXPath.html" class="selected">&gt; storeXPath</a>
+</li>
+<li>
+<a href="table.html">&gt; table</a>
+</li>
+<li>
+<a href="testInfo.html">&gt; testInfo</a>
+</li>
+<li>
+<a href="verifyCheckbox.html">&gt; verifyCheckbox</a>
+</li>
+<li>
+<a href="verifyCookie.html">&gt; verifyCookie</a>
+</li>
+<li>
+<a href="verifyElement.html">&gt; verifyElement</a>
+</li>
+<li>
+<a href="verifyElementText.html">&gt; verifyElementText</a>
+</li>
+<li>
+<a href="verifyInputField.html">&gt; verifyInputField</a>
+</li>
+<li>
+<a href="verifyLinks.html">&gt; verifyLinks</a>
+</li>
+<li>
+<a href="verifyProperty.html">&gt; verifyProperty</a>
+</li>
+<li>
+<a href="verifyRadioButton.html">&gt; verifyRadioButton</a>
+</li>
+<li>
+<a href="verifySelectField.html">&gt; verifySelectField</a>
+</li>
+<li>
+<a href="verifyText.html">&gt; verifyText</a>
+</li>
+<li>
+<a href="verifyTextarea.html">&gt; verifyTextarea</a>
+</li>
+<li>
+<a href="verifyTitle.html">&gt; verifyTitle</a>
+</li>
+<li>
+<a href="verifyXPath.html">&gt; verifyXPath</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="syntaxExtension.html">Syntax Reference - Extension Steps</a>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>
+<span class="category">Core Step</span> storeXPath</h1>
+<h2>
+<a name="Description">Description</a>
+</h2>
+<p>This step stores the result of an <a title="XML Path Language." href="annotatedRefs.html#XPATH">XPath</a> expression into a property.</p>
+
+    
+<p>You may want to use <a title="Alex Chaffee's XPath Exploration tool." href="annotatedRefs.html#XPE">XPath Explorer</a>, an IDE or an XML editor for finding appropriate expressions.</p>
+
+
+<h2>
+<a name="Parameters">Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>xpath</dt>
+<dd class="required">Required? yes</dd>
+<dd>The <a title="XML Path Language." href="annotatedRefs.html#XPATH">XPath</a> that shall be evaluated.</dd>
+<dt>default</dt>
+<dd class="required">Required? no</dd>
+<dd>The value to store in the property when the xpath evaluation returns no result (if not set, the step will fail if the xpath evaluation returns no result).</dd>
+<dt>description</dt>
+<dd class="required">Required? no</dd>
+<dd>The description of this test step.</dd>
+<dt>property</dt>
+<dd class="required">Required? no</dd>
+<dd>The name of the property in which to store the retrieved value.</dd>
+<dt>propertyType</dt>
+<dd class="required">Required? no, default is
+					the "defaultPropertyType" as specified in the "config" element is used.</dd>
+<dd>The type of the property in which to store the retrieve value. Either "ant" or "dynamic".</dd>
+</dl>
+<h2>
+<a name="Details">Details</a>
+</h2>
+
+    
+<p>The following example extracts the <i>href</i> attribute from the first anchor
+    element and uses it for the following <i>invoke</i>.</p>
+
+    
+<div class="code">
+<div class="caption">storeXPath example</div>
+<div class="content">
+        
+&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">...</span>"&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">config</span>&nbsp;...&nbsp;/&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>&nbsp;...&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">storeXPath</span>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">description</span>="<span class="val">Extract&nbsp;href&nbsp;of&nbsp;first&nbsp;link&nbsp;on&nbsp;page</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">xpath</span>="<span class="val">//a[1]/@href</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">property</span>="<span class="val">uri</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">description</span>="<span class="val">Invoke&nbsp;target&nbsp;page&nbsp;specified&nbsp;in&nbsp;href</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">url</span>="<span class="val">#{uri}</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&lt;/<span class="tag">steps</span>&gt;<br>
+&lt;/<span class="tag">webtest</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>
+<i>See also</i>: the <a href="verifyXPath.html" class="stepref">verifyXPath</a> step.</p>
+
+
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

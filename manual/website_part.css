@@ -1,0 +1,99 @@
+/* Style rules for the generated documentation */
+span.tag {
+	color: blue;
+}
+
+span.att {
+	color: #336600;
+}
+
+span.val {
+	color: #993300;
+}
+
+span.example, div.code div.content, dl.attributes dt {
+	font-family: "Courier New", Courier, monospace;
+}
+
+span.posted {
+    font-size: smaller;
+}
+
+div.code {
+	margin: 1.12em 0 0 0;
+	padding: 5px;
+	background: #ffffC0;
+	width: 475px;
+}
+
+div.code div.caption {
+	text-align: right;
+	font-weight: bolder;
+	margin-bottom: 1em;
+	width: 464px;
+}
+
+div.code div.content {
+	overflow: auto;
+	width: 464px;
+}
+
+td.dt {
+	color: #336600;
+	white-space: nowrap;
+}
+
+th {
+	font-weight: bolder;
+}
+
+blockquote {
+	padding: 2px;
+}
+
+blockquote p.author {
+	font-style: italic;
+	text-align: right;
+}
+
+dl {
+	line-height: 1.5em;
+}
+
+dl dt, dl.ref dd, div#blogs li {
+	display: list-item;
+	list-style: disc url( images/bullet.gif ) inside;
+}
+
+dt.smile {
+	list-style: disc url( images/smiley-smile.png ) inside;	
+}
+dt.frown {
+	list-style: disc url( images/smiley-sad.png ) inside;	
+}
+
+dl.ref dt {
+	margin-top: 1.5em;
+	font-weight: bolder;
+}
+
+dl.ref dt, dl.ref dd.link {
+	list-style-image: none;
+	list-style-type: none;
+}
+
+dl.attributes dd.required {
+	font-style: italic;
+}
+
+a.stepref {
+	font-style: italic;
+}
+
+a.stepref:before {
+	content: '<';
+}
+
+a.stepref:after {
+	content: '>';
+}

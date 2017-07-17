@@ -1,0 +1,350 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="SQLUnit Integration" href="sqlunit.html" rel="subsection">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="sqlunit is a technology for testing databases. It can be used for testing stored procedures within a database or if you have a data-driven website, it can be used in conjunction with WebTest to ensure that the web and database parts of the application are working well together. Here are some sample scenarios where sqlunit may be useful for your WebTest-tested applications: Integration Test Pre-condition Checking You might be about to call a WebTest test which assumes a particular user is already valid within your system. sqlunit could help you check a precondition such as the user exists and is not disabled. Integration Test Post-condition Checking You can check integration between your web application and your model. E.g. create a new user using a form driven via WebTest and then check that the newly created user now exists in the database. Database Data Manipulation and/or Cleanup You may wish to run some tests using temporary data. You could create a user using sqlunit, run your WebTest steps, then remove the user again with sqlunit. sqlunit supports several reporting formats including an XML format compatible with WebTest's reporting format, so you can happily mix the two tools and generate combined reporting. Here is an example of how you might invoke the sqlunit selftests (using WebTest formatting) from the command-line: ant sqlunit-nested canoo2html -Dtestdir=mock -Dlog.format=canoo -Doutput.file=results.xml -Dwebtest.style=WebTestReport Here is an example of what the resulting report might look like: Here is an example of how you might use the sqlunit ant task from within your WebTest file: Here is an example of what your sqlunit test file might look like:">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						">
+<title>SQLUnit Integration</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html">Syntax Reference - Core Steps</a>
+</li>
+<li>
+<a href="syntaxExtension.html">Syntax Reference - Extension Steps</a>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html" class="selected">Integration with other Tools</a>
+<ul>
+<li>
+<a href="sqlunit.html" class="selected">&gt; SQLUnit Integration</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>SQLUnit Integration</h1>
+        
+<p>
+            
+<a title="A tool for testing all database related issues." href="annotatedRefs.html#sqlunit">SQLUnit</a>
+            is a technology for testing databases. It can be used for testing stored procedures
+            within a database or if you have a data-driven website, it can be used in conjunction
+            with WebTest to ensure that the web and database parts of the application are working well together.
+        </p>
+
+        
+<p>Here are some sample scenarios where
+            <a title="A tool for testing all database related issues." href="annotatedRefs.html#sqlunit">SQLUnit</a>
+            may be useful for your WebTest-tested applications:
+        </p>
+
+        
+<dl>
+            
+                
+<dt>Integration Test Pre-condition Checking</dt>
+                
+<dd>You might be about to call a WebTest test
+                    which assumes a particular user is already valid within your system. <a title="A tool for testing all database related issues." href="annotatedRefs.html#sqlunit">SQLUnit</a> could help
+                    you check a precondition such as the user exists and is not disabled.</dd>
+            
+            
+                
+<dt>Integration Test Post-condition Checking</dt>
+                
+<dd>You can check integration between your web application and your
+                    model. E.g. create a new user using a form driven via WebTest and then
+                    check that the newly created user now exists in the database.</dd>
+            
+            
+                
+<dt>Database Data Manipulation and/or Cleanup</dt>
+                
+<dd>You may wish to run some tests using temporary data. You could create a user
+                    using <a title="A tool for testing all database related issues." href="annotatedRefs.html#sqlunit">SQLUnit</a>, run your WebTest steps, then remove the user again with <a title="A tool for testing all database related issues." href="annotatedRefs.html#sqlunit">SQLUnit</a>.</dd>
+            
+        
+</dl>
+
+        
+<p>
+            
+<a title="A tool for testing all database related issues." href="annotatedRefs.html#sqlunit">SQLUnit</a>
+            supports several reporting formats including an XML format compatible
+            with WebTest's reporting format, so you can happily mix the two tools and generate combined
+            reporting.
+        </p>
+
+        
+<p>Here is an example of how you might invoke the <a title="A tool for testing all database related issues." href="annotatedRefs.html#sqlunit">SQLUnit</a> selftests (using WebTest formatting) from the command-line:</p>
+
+        
+<div class="code">
+<div class="caption">SQLUnit Command-line example</div>
+<div class="content">
+        ant sqlunit-nested canoo2html -Dtestdir=mock -Dlog.format=canoo -Doutput.file=results.xml -Dwebtest.style=WebTestReport
+        </div>
+</div>
+
+        
+<p>Here is an example of what the resulting report might look like:</p>
+
+        
+<p>
+<img src="images/sqlunit.jpg"></p>
+
+        
+<p>Here is an example of how you might use the <a title="A tool for testing all database related issues." href="annotatedRefs.html#sqlunit">SQLUnit</a> ant task from within your WebTest file:</p>
+
+        
+<div class="code">
+<div class="caption">SQLUnit Ant Task example</div>
+<div class="content">
+            
+...<br>
+&lt;<span class="tag">taskdef</span>&nbsp;<span class="att">name</span>="<span class="val">sqlunit</span>"&nbsp;<span class="att">classname</span>="<span class="val">net.sourceforge.sqlunit.ant.SqlunitTask</span>"/&gt;<br>
+...<br>
+&lt;--&nbsp;Testing&nbsp;SQLUnit&nbsp;using&nbsp;flat&nbsp;form&nbsp;of&nbsp;sqlunit&nbsp;call&nbsp;--&gt;<br>
+&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">sqlunit-flat</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;<span class="tag">sqlunit</span>&nbsp;<span class="att">testfile</span>="<span class="val">${testfile}</span>"&nbsp;<span class="att">haltOnFailure</span>="<span class="val">true</span>"&nbsp;<span class="att">debug</span>="<span class="val">${debug}</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">logfile</span>="<span class="val">${result.file}</span>"&nbsp;<span class="att">logformat</span>="<span class="val">${log.format}</span>"&nbsp;/&gt;<br>
+&lt;/<span class="tag">target</span>&gt;<br>
+
+<br>
+&lt;--&nbsp;Testing&nbsp;SQLUnit&nbsp;using&nbsp;nested&nbsp;form&nbsp;of&nbsp;sqlunit&nbsp;call&nbsp;--&gt;<br>
+&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">sqlunit-nested</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;<span class="tag">sqlunit</span>&nbsp;<span class="att">haltOnFailure</span>="<span class="val">false</span>"&nbsp;<span class="att">debug</span>="<span class="val">${debug}</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">logfile</span>="<span class="val">${result.file}</span>"&nbsp;<span class="att">logformat</span>="<span class="val">${log.format}</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">fileset</span>&nbsp;<span class="att">dir</span>="<span class="val">${test.dir}/${testdir}</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">include</span>&nbsp;<span class="att">name</span>="<span class="val">**/*.xml</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">fileset</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">sqlunit</span>&gt;<br>
+&lt;/<span class="tag">target</span>&gt;<br>
+...<br>
+&lt;--&nbsp;reporting&nbsp;--&gt;<br>
+&lt;<span class="tag">target</span>&nbsp;<span class="att">name</span>="<span class="val">canoo2html</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;<span class="tag">delete</span>&nbsp;<span class="att">file</span>="<span class="val">${output.dir}/${output.file}.html</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;<span class="tag">xslt</span>&nbsp;<span class="att">in</span>="<span class="val">${result.file}</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">out</span>="<span class="val">${output.dir}/${output.file}.html</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">style</span>="<span class="val">${etc.dir}/${webtest.style}.xsl</span>"&nbsp;/&gt;<br>
+&lt;/<span class="tag">target</span>&gt;<br>
+...<br>
+
+        
+</div>
+</div>
+
+        
+<p>Here is an example of what your <a title="A tool for testing all database related issues." href="annotatedRefs.html#sqlunit">SQLUnit</a> test file might look like:</p>
+
+        
+<div class="code">
+<div class="caption">SQLUnit Ant Task example</div>
+<div class="content">
+            
+&lt;<span class="tag">?xml</span>&nbsp;<span class="att">version</span>="<span class="val">1.0</span>"?&gt;<br>
+&lt;<span class="tag">!DOCTYPE</span>&nbsp;sqlunit&nbsp;SYSTEM&nbsp;"file:sqlunit/lib/sqlunit.dtd"&nbsp;[<br>
+&nbsp;&nbsp;&lt;<span class="tag">!ENTITY</span>&nbsp;connection&nbsp;SYSTEM&nbsp;"file:sqlunitConnectionConfig.xml"&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">!ENTITY</span>&nbsp;data&nbsp;SYSTEM&nbsp;"file:sqlunitTestData.xml"&gt;<br>
+]&gt;<br>
+
+<br>
+&lt;<span class="tag">sqlunit</span>&gt;<br>
+
+<br>
+&nbsp;&nbsp;&amp;connection;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">setup</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&amp;data;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">setup</span>&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">test</span>&nbsp;<span class="att">name</span>="<span class="val">Looking&nbsp;up&nbsp;New&nbsp;Member&nbsp;created&nbsp;from&nbsp;Register&nbsp;page</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">sql</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">stmt</span>&gt;select&nbsp;Firstname,Surname&nbsp;from&nbsp;Client&nbsp;where&nbsp;UserID=?&lt;/<span class="tag">stmt</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">param</span>&nbsp;<span class="att">id</span>="<span class="val">1</span>"&nbsp;<span class="att">type</span>="<span class="val">VARCHAR</span>"&nbsp;<span class="att">inout</span>="<span class="val">in</span>"&gt;${test.newuser.id}&lt;/<span class="tag">param</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">sql</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">result</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">resultset</span>&nbsp;<span class="att">id</span>="<span class="val">1</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">row</span>&nbsp;<span class="att">id</span>="<span class="val">1</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">col</span>&nbsp;<span class="att">id</span>="<span class="val">1</span>"&nbsp;<span class="att">type</span>="<span class="val">VARCHAR</span>"&gt;Dummy&lt;/<span class="tag">col</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">col</span>&nbsp;<span class="att">id</span>="<span class="val">2</span>"&nbsp;<span class="att">type</span>="<span class="val">VARCHAR</span>"&gt;User&lt;/<span class="tag">col</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">row</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">resultset</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">result</span>&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">test</span>&gt;<br>
+
+<br>
+&nbsp;&nbsp;&lt;<span class="tag">teardown</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">sql</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">stmt</span>&gt;delete&nbsp;from&nbsp;Client&nbsp;where&nbsp;UserID=?&lt;/<span class="tag">stmt</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">param</span>&nbsp;<span class="att">id</span>="<span class="val">1</span>"&nbsp;<span class="att">type</span>="<span class="val">INTEGER</span>"&nbsp;<span class="att">inout</span>="<span class="val">in</span>"&gt;${test.newuser.id}&lt;/<span class="tag">param</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">sql</span>&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">teardown</span>&gt;<br>
+
+<br>
+&lt;/<span class="tag">sqlunit</span>&gt;<br>
+
+        
+</div>
+</div>
+
+    
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

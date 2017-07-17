@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="clickButton" href="clickButton.html" rel="subsection">
+<link title="clickLink" href="clickLink.html" rel="subsection">
+<link title="followFrame" href="followFrame.html" rel="subsection">
+<link title="group" href="group.html" rel="subsection">
+<link title="invoke" href="invoke.html" rel="subsection">
+<link title="not" href="not.html" rel="subsection">
+<link title="previousResponse" href="previousResponse.html" rel="subsection">
+<link title="repeat" href="repeat.html" rel="subsection">
+<link title="selectForm" href="selectForm.html" rel="subsection">
+<link title="setCheckbox" href="setCheckbox.html" rel="subsection">
+<link title="setFileField" href="setFileField.html" rel="subsection">
+<link title="setInputField" href="setInputField.html" rel="subsection">
+<link title="setRadioButton" href="setRadioButton.html" rel="subsection">
+<link title="setSelectField" href="setSelectField.html" rel="subsection">
+<link title="storeCookie" href="storeCookie.html" rel="subsection">
+<link title="storeHeader" href="storeHeader.html" rel="subsection">
+<link title="storeProperty" href="storeProperty.html" rel="subsection">
+<link title="storeRegEx" href="storeRegEx.html" rel="subsection">
+<link title="storeXPath" href="storeXPath.html" rel="subsection">
+<link title="table" href="table.html" rel="subsection">
+<link title="testInfo" href="testInfo.html" rel="subsection">
+<link title="verifyCheckbox" href="verifyCheckbox.html" rel="subsection">
+<link title="verifyCookie" href="verifyCookie.html" rel="subsection">
+<link title="verifyElement" href="verifyElement.html" rel="subsection">
+<link title="verifyElementText" href="verifyElementText.html" rel="subsection">
+<link title="verifyInputField" href="verifyInputField.html" rel="subsection">
+<link title="verifyLinks" href="verifyLinks.html" rel="subsection">
+<link title="verifyProperty" href="verifyProperty.html" rel="subsection">
+<link title="verifyRadioButton" href="verifyRadioButton.html" rel="subsection">
+<link title="verifySelectField" href="verifySelectField.html" rel="subsection">
+<link title="verifyText" href="verifyText.html" rel="subsection">
+<link title="verifyTextarea" href="verifyTextarea.html" rel="subsection">
+<link title="verifyTitle" href="verifyTitle.html" rel="subsection">
+<link title="verifyXPath" href="verifyXPath.html" rel="subsection">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Description,Parameters,">
+<title>Core Step: setFileField</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html" class="selected">Syntax Reference - Core Steps</a>
+<ul>
+<li>
+<a href="clickButton.html">&gt; clickButton</a>
+</li>
+<li>
+<a href="clickLink.html">&gt; clickLink</a>
+</li>
+<li>
+<a href="followFrame.html">&gt; followFrame</a>
+</li>
+<li>
+<a href="group.html">&gt; group</a>
+</li>
+<li>
+<a href="invoke.html">&gt; invoke</a>
+</li>
+<li>
+<a href="not.html">&gt; not</a>
+</li>
+<li>
+<a href="previousResponse.html">&gt; previousResponse</a>
+</li>
+<li>
+<a href="repeat.html">&gt; repeat</a>
+</li>
+<li>
+<a href="selectForm.html">&gt; selectForm</a>
+</li>
+<li>
+<a href="setCheckbox.html">&gt; setCheckbox</a>
+</li>
+<li>
+<a href="setFileField.html" class="selected">&gt; setFileField</a>
+</li>
+<li>
+<a href="setInputField.html">&gt; setInputField</a>
+</li>
+<li>
+<a href="setRadioButton.html">&gt; setRadioButton</a>
+</li>
+<li>
+<a href="setSelectField.html">&gt; setSelectField</a>
+</li>
+<li>
+<a href="storeCookie.html">&gt; storeCookie</a>
+</li>
+<li>
+<a href="storeHeader.html">&gt; storeHeader</a>
+</li>
+<li>
+<a href="storeProperty.html">&gt; storeProperty</a>
+</li>
+<li>
+<a href="storeRegEx.html">&gt; storeRegEx</a>
+</li>
+<li>
+<a href="storeXPath.html">&gt; storeXPath</a>
+</li>
+<li>
+<a href="table.html">&gt; table</a>
+</li>
+<li>
+<a href="testInfo.html">&gt; testInfo</a>
+</li>
+<li>
+<a href="verifyCheckbox.html">&gt; verifyCheckbox</a>
+</li>
+<li>
+<a href="verifyCookie.html">&gt; verifyCookie</a>
+</li>
+<li>
+<a href="verifyElement.html">&gt; verifyElement</a>
+</li>
+<li>
+<a href="verifyElementText.html">&gt; verifyElementText</a>
+</li>
+<li>
+<a href="verifyInputField.html">&gt; verifyInputField</a>
+</li>
+<li>
+<a href="verifyLinks.html">&gt; verifyLinks</a>
+</li>
+<li>
+<a href="verifyProperty.html">&gt; verifyProperty</a>
+</li>
+<li>
+<a href="verifyRadioButton.html">&gt; verifyRadioButton</a>
+</li>
+<li>
+<a href="verifySelectField.html">&gt; verifySelectField</a>
+</li>
+<li>
+<a href="verifyText.html">&gt; verifyText</a>
+</li>
+<li>
+<a href="verifyTextarea.html">&gt; verifyTextarea</a>
+</li>
+<li>
+<a href="verifyTitle.html">&gt; verifyTitle</a>
+</li>
+<li>
+<a href="verifyXPath.html">&gt; verifyXPath</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="syntaxExtension.html">Syntax Reference - Extension Steps</a>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>
+<span class="category">Core Step</span> setFileField</h1>
+<h2>
+<a name="Description">Description</a>
+</h2>
+<p>Provides the ability to set an &lt;input type="file" ...&gt; form field.</p>
+<h2>
+<a name="Parameters">Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>checkFileExists</dt>
+<dd class="required">Required? false, default is
+					true</dd>
+<dd>Indicates if the step should verify that the file to upload exists. It is useful to deactivate this check, when you want to test how the application react when a file input field is filled with a wrong value.</dd>
+<dt>description</dt>
+<dd class="required">Required? no</dd>
+<dd>The description of this test step.</dd>
+<dt>fieldIndex</dt>
+<dd class="required">Required? no, default is
+					the first field found that matches criteria</dd>
+<dd>The index of the field of interest (starting at 0) if more than one field matches criteria. Ignored if <i>htmlId</i> or <i>xpath</i> is used.</dd>
+<dt>fileName</dt>
+<dd class="required">Required? true</dd>
+<dd>The name of the file to upload.</dd>
+<dt>forLabel</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>The text of the label field associated with the input field of interest. One of <i>forLabel</i>, <i>htmlId</i>, <i>name</i>, or <i>xpath</i> is required.</dd>
+<dt>formName</dt>
+<dd class="required">Required? no, default is
+					the last form selected using 'selectForm', otherwise searches all forms</dd>
+<dd>The name of the form containing the field of interest. Ignored if <i>htmlId</i> is used.</dd>
+<dt>htmlId</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>The id of the input field of interest. One of <i>forLabel</i>, <i>htmlId</i>, <i>name</i>, or <i>xpath</i> is required.</dd>
+<dt>name</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>The name of the input field of interest. One of <i>forLabel</i>, <i>htmlId</i>, <i>name</i>, or <i>xpath</i> is required.</dd>
+<dt>save</dt>
+<dd class="required">Required? no</dd>
+<dd>A shorthand: <i>save='prefixName'</i> is the same as <i>savePrefix='prefixName' saveResponse='true'</i>.</dd>
+<dt>savePrefix</dt>
+<dd class="required">Required? no, default is
+					the 'savePrefix' parameter as specified in &lt;config&gt;.</dd>
+<dd>A name prefix can be specified for making a permanent copy of received responses. A unique number and the file extension (depending on the MIME-Type) will be appended. The <i>resultpath</i> attribute of the &lt;config&gt; element is used for determining the location of the saved result.</dd>
+<dt>saveResponse</dt>
+<dd class="required">Required? no</dd>
+<dd>Whether to make a permanent copy of received responses. Overrides the default value set in the &lt;config&gt; element.</dd>
+<dt>xpath</dt>
+<dd class="required">Required? yes/no</dd>
+<dd>The xpath of the input field of interest. One of <i>forLabel</i>, <i>htmlId</i>, <i>name</i>, or <i>xpath</i> is required.</dd>
+</dl>
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

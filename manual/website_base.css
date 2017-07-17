@@ -1,0 +1,345 @@
+/*
+	 Generic style rules to comply with WebTest Look-and-Feel 2005.
+
+	 grey-background: #d7d7d7
+	 grey-border: #666666
+	 grey-text: #7b7978
+
+	 webtest-selected: #339933
+	 webtest-background: #226622
+
+	 text-background: #ffffc0
+ */
+#page {
+	position: relative;
+	width: 949px;
+	border: 1px solid #000000;
+	margin: auto auto 10px auto;
+}
+
+img.mosaic {
+    margin: 0;
+    display: block;
+}
+
+#navigation-top {
+	width: 100%;
+	height: 17px;
+	margin: auto;
+	border-top: #ffffff solid 1px;
+	border-bottom: #ffffff solid 1px;
+	font-size: 11px;
+	letter-spacing: 0px;
+}
+
+#navigation-top ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+#navigation-top li {
+	padding: 0px;
+	margin: 0px;
+	float: left;
+	border-right: #ffffff solid 1px;
+}
+
+#navigation-top a,
+	#navigation-top li.empty {
+	display: block;
+	width: 89px;
+	height: 15px;
+	padding: 2px 0px 0px 5px;
+	margin: 0px;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#navigation-top,
+	#navigation-top a,
+	#navigation-top li.empty {
+	background: #339933;
+}
+
+#navigation-top a:hover {
+	background: #226622;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#navigation-top a.selected {
+	color: #000000;
+	background: #ffffff;
+}
+
+#navigation-top a.selected:link,
+	#navigation-top a.selected:visited,
+	#navigation-top a.selected:active {
+	color: #000000;
+	text-decoration: none;
+}
+
+#navigation-top a.selected:hover {
+	color: #000000;
+	background: #ffffff;
+	text-decoration: none;
+}
+
+#navigation-top a:link,
+	#navigation-top a:visited,
+	#navigation-top a:active {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#navigation-top a.selected,
+	#navigation-top a.selected:link,
+	#navigation-top a.selected:visited,
+	#navigation-top a.selected:active,
+	#navigation-top a.selected:hover {
+	color: #339933;
+}
+
+#main {
+	position: relative;
+	width: 100%;
+	min-height: 500px;
+	border: 0;
+	margin: 0;
+}
+
+.main-left #search, #main-content h1, #main-right h1 {
+	margin-top: 18px;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	height: 36px;
+}
+
+.main-left {
+	background-color: #d7d7d7;
+	border-right: 1px solid #666666;
+	font-size: 11px;
+}
+
+#search {
+	padding-right: 0;
+	padding-left: 10px;
+	border-bottom: solid 1px #666666;
+}
+
+#navigation-left ul {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+#navigation-left li {
+	padding: 0px;
+	margin: 0px;
+}
+
+#navigation-left a {
+	display: block;
+	height: 14px;
+	padding: 2px 0px 1px 10px;
+	border-bottom: #666666 1px solid;
+	background-color: #d7d7d7;
+}
+
+#navigation-left a.selected {
+	background: #ffffff;
+}
+
+#navigation-left a.selected:link,
+	#navigation-left a.selected:visited,
+	#navigation-left a.selected:active {
+	text-decoration: none;
+}
+
+#navigation-left a.selected:hover {
+	background: #ffffff;
+	text-decoration: none;
+}
+
+#navigation-left a:link,
+	#navigation-left a:visited,
+	#navigation-left a:active {
+	color: #000000;
+	text-decoration: none;
+}
+
+#navigation-left a:hover {
+	color: #000000;
+	background-color: #999999;
+	text-decoration: none;
+}
+
+#navigation-left a.selected,
+	#navigation-left a.selected:link,
+	#navigation-left a.selected:visited,
+	#navigation-left a.selected:active,
+	#navigation-left a.selected:hover {
+	color: #339933;
+}
+
+.main-left div.filler {
+	height: 100px;
+}
+
+#copyright {
+	padding-bottom: 10px;
+	padding-right: 10px;
+	text-align: right;
+	font-size: 9px;
+	line-height: 12px;
+}
+
+#main-content {
+	padding-left: 42px;
+	padding-bottom: 10px;
+	padding-right: 42px;
+}
+
+#main-content h1 {
+	width: 100%;
+	font-size: 24px;
+	font-weight: bold;
+	color: #339933;
+	border-bottom: solid 1px #339933;
+	position: relative;
+}
+
+#main-content h1 span.category {
+	font-size: 12px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#main-content h2 {
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 20px;
+}
+
+#main-content h3 {
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 15px;
+}
+
+#main-content p {
+	line-height: 1.5em;
+}
+
+#main-content li {
+	list-style: disc url( images/bullet.gif );
+	margin-top: 5px;
+}
+
+#main-right {
+	background-color: #d7d7d7;
+	border-left: 1px solid #666666;
+	margin-top: 20px;
+}
+
+#main-right h1 {
+	color: #999999;
+	padding-right: 10px;
+	padding-left: 10px;
+	border-bottom: #666666 solid 1px;
+	font-size: 34px;
+	font-weight: bold;
+}
+
+#main-right p {
+	color: #333333;
+	padding: 0px 10px 10px 10px;
+	border-bottom: #666666 solid 1px;
+	font-size: 11px;
+	line-height: 18px;
+}
+
+#main-right span.date {
+	display: block;
+	font-size: 9px;
+}
+
+#footer {
+	clear: both;
+	height: 1px;
+}
+
+body, table {
+	margin: 0;
+	padding: 0;
+	font-family: arial, helvetica, sans-serif;
+	font-size: 11px;
+}
+
+table {
+	table-layout: fixed;
+}
+
+td.Headline {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+img {
+	border: none;
+}
+
+a:link, a:visited, a:active {
+	text-decoration: none;
+}
+
+a:link:hover, a:visited:hover, a:active:hover {
+	text-decoration: underline;
+}
+
+a:link,
+	a:visited,
+	a:active,
+	a:link:hover,
+	a:visited:hover,
+	a:active:hover {
+	color: #226622;
+}
+
+div.spacer {
+	height: 18px;
+	clear: both;
+}
+
+div.filler {
+	height: 10px;
+}
+
+#searchForm {
+	margin: 0;					/* IE needs that! */
+}
+
+input#searchText  {
+	width: 120px;				/* note width of the left column in WhitePaperStyle.xsl */
+	font-size: 0.8em;			/* adjust font-size; 'em' is more flexible than 'px' in font-size */
+	padding: 0;					/* don't assume "0" as default! */
+}
+
+input#searchButton  {
+	float: right;
+	width: 50px;                /* note width of the left column in WhitePaperStyle.xsl */
+	margin: 1px;
+	padding: 0px;
+	font-size: 0.8em;			/* adjust font-size; 'em' is more flexible than 'px' in font-size */
+}
+
+#blogs {
+	padding: 0px 10px 10px 10px;
+	border-bottom: #666666 solid 1px;
+	font-size: 11px;
+}
+#blogs li {
+	margin-left: -15px;
+}

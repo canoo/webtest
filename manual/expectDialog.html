@@ -1,0 +1,711 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Manual Overview" href="manualOverview.html" rel="section">
+<link title="Samples" href="samples.html" rel="section">
+<link title="Properties" href="properties.html" rel="section">
+<link title="Syntax Reference - General Steps" href="syntaxGeneral.html" rel="section">
+<link title="Syntax Reference - Core Steps" href="syntaxCore.html" rel="section">
+<link title="Syntax Reference - Extension Steps" href="syntaxExtension.html" rel="section">
+<link title="alert" href="alert.html" rel="subsection">
+<link title="antWrapper" href="antWrapper.html" rel="subsection">
+<link title="clickElement" href="clickElement.html" rel="subsection">
+<link title="closeWindow" href="closeWindow.html" rel="subsection">
+<link title="condition" href="condition.html" rel="subsection">
+<link title="confirm" href="confirm.html" rel="subsection">
+<link title="countWebtestResults" href="countWebtestResults.html" rel="subsection">
+<link title="dataDriven" href="dataDriven.html" rel="subsection">
+<link title="dragAndDrop" href="dragAndDrop.html" rel="subsection">
+<link title="enableJavaScript" href="enableJavaScript.html" rel="subsection">
+<link title="expectDialog" href="expectDialog.html" rel="subsection">
+<link title="expectDialogs" href="expectDialogs.html" rel="subsection">
+<link title="forceHiddenInputField" href="forceHiddenInputField.html" rel="subsection">
+<link title="forceInputFieldAttribute" href="forceInputFieldAttribute.html" rel="subsection">
+<link title="groovy" href="groovy.html" rel="subsection">
+<link title="ifStep" href="ifStep.html" rel="subsection">
+<link title="mouseOut" href="mouseOut.html" rel="subsection">
+<link title="mouseOver" href="mouseOver.html" rel="subsection">
+<link title="prompt" href="prompt.html" rel="subsection">
+<link title="reportLinks" href="reportLinks.html" rel="subsection">
+<link title="reportSite" href="reportSite.html" rel="subsection">
+<link title="retry" href="retry.html" rel="subsection">
+<link title="scriptStep" href="scriptStep.html" rel="subsection">
+<link title="selectWebClient" href="selectWebClient.html" rel="subsection">
+<link title="selectWindow" href="selectWindow.html" rel="subsection">
+<link title="storeDigest" href="storeDigest.html" rel="subsection">
+<link title="storeElementAttribute" href="storeElementAttribute.html" rel="subsection">
+<link title="storeInputFieldAttribute" href="storeInputFieldAttribute.html" rel="subsection">
+<link title="storeLength" href="storeLength.html" rel="subsection">
+<link title="storeLinkParameter" href="storeLinkParameter.html" rel="subsection">
+<link title="storeRandom" href="storeRandom.html" rel="subsection">
+<link title="storeResponseCode" href="storeResponseCode.html" rel="subsection">
+<link title="timedGroup" href="timedGroup.html" rel="subsection">
+<link title="verifyContent" href="verifyContent.html" rel="subsection">
+<link title="verifyDocumentURL" href="verifyDocumentURL.html" rel="subsection">
+<link title="verifyHeader" href="verifyHeader.html" rel="subsection">
+<link title="verifyImages" href="verifyImages.html" rel="subsection">
+<link title="verifyLinkedContent" href="verifyLinkedContent.html" rel="subsection">
+<link title="verifyNoDialogs" href="verifyNoDialogs.html" rel="subsection">
+<link title="Syntax Reference - Filter Steps" href="syntaxFilter.html" rel="section">
+<link title="Syntax Reference - PDF Steps" href="syntaxPDF.html" rel="section">
+<link title="Syntax Reference - Excel Steps" href="syntaxExcel.html" rel="section">
+<link title="Syntax Reference - Email Steps" href="syntaxEmail.html" rel="section">
+<link title="Step Index" href="stepIndex.html" rel="section">
+<link title="Groovy Testing" href="groovyTesting.html" rel="section">
+<link title="Integration with other Tools" href="integration.html" rel="section">
+<link title="Annotated References" href="annotatedRefs.html" rel="section">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Description,Parameters,Details,">
+<title>Extension Step: expectDialog</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="manualOverview.html" class="selected">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="manualOverview.html">Manual Overview</a>
+</li>
+<li>
+<a href="samples.html">Samples</a>
+</li>
+<li>
+<a href="properties.html">Properties</a>
+</li>
+<li>
+<a href="syntaxGeneral.html">Syntax Reference - General Steps</a>
+</li>
+<li>
+<a href="syntaxCore.html">Syntax Reference - Core Steps</a>
+</li>
+<li>
+<a href="syntaxExtension.html" class="selected">Syntax Reference - Extension Steps</a>
+<ul>
+<li>
+<a href="alert.html">&gt; alert</a>
+</li>
+<li>
+<a href="antWrapper.html">&gt; antWrapper</a>
+</li>
+<li>
+<a href="clickElement.html">&gt; clickElement</a>
+</li>
+<li>
+<a href="closeWindow.html">&gt; closeWindow</a>
+</li>
+<li>
+<a href="condition.html">&gt; condition</a>
+</li>
+<li>
+<a href="confirm.html">&gt; confirm</a>
+</li>
+<li>
+<a href="countWebtestResults.html">&gt; countWebtestResults</a>
+</li>
+<li>
+<a href="dataDriven.html">&gt; dataDriven</a>
+</li>
+<li>
+<a href="dragAndDrop.html">&gt; dragAndDrop</a>
+</li>
+<li>
+<a href="enableJavaScript.html">&gt; enableJavaScript</a>
+</li>
+<li>
+<a href="expectDialog.html" class="selected">&gt; expectDialog</a>
+</li>
+<li>
+<a href="expectDialogs.html">&gt; expectDialogs</a>
+</li>
+<li>
+<a href="forceHiddenInputField.html">&gt; forceHiddenInputField</a>
+</li>
+<li>
+<a href="forceInputFieldAttribute.html">&gt; forceInputFieldAttribute</a>
+</li>
+<li>
+<a href="groovy.html">&gt; groovy</a>
+</li>
+<li>
+<a href="ifStep.html">&gt; ifStep</a>
+</li>
+<li>
+<a href="mouseOut.html">&gt; mouseOut</a>
+</li>
+<li>
+<a href="mouseOver.html">&gt; mouseOver</a>
+</li>
+<li>
+<a href="prompt.html">&gt; prompt</a>
+</li>
+<li>
+<a href="reportLinks.html">&gt; reportLinks</a>
+</li>
+<li>
+<a href="reportSite.html">&gt; reportSite</a>
+</li>
+<li>
+<a href="retry.html">&gt; retry</a>
+</li>
+<li>
+<a href="scriptStep.html">&gt; scriptStep</a>
+</li>
+<li>
+<a href="selectWebClient.html">&gt; selectWebClient</a>
+</li>
+<li>
+<a href="selectWindow.html">&gt; selectWindow</a>
+</li>
+<li>
+<a href="storeDigest.html">&gt; storeDigest</a>
+</li>
+<li>
+<a href="storeElementAttribute.html">&gt; storeElementAttribute</a>
+</li>
+<li>
+<a href="storeInputFieldAttribute.html">&gt; storeInputFieldAttribute</a>
+</li>
+<li>
+<a href="storeLength.html">&gt; storeLength</a>
+</li>
+<li>
+<a href="storeLinkParameter.html">&gt; storeLinkParameter</a>
+</li>
+<li>
+<a href="storeRandom.html">&gt; storeRandom</a>
+</li>
+<li>
+<a href="storeResponseCode.html">&gt; storeResponseCode</a>
+</li>
+<li>
+<a href="timedGroup.html">&gt; timedGroup</a>
+</li>
+<li>
+<a href="verifyContent.html">&gt; verifyContent</a>
+</li>
+<li>
+<a href="verifyDocumentURL.html">&gt; verifyDocumentURL</a>
+</li>
+<li>
+<a href="verifyHeader.html">&gt; verifyHeader</a>
+</li>
+<li>
+<a href="verifyImages.html">&gt; verifyImages</a>
+</li>
+<li>
+<a href="verifyLinkedContent.html">&gt; verifyLinkedContent</a>
+</li>
+<li>
+<a href="verifyNoDialogs.html">&gt; verifyNoDialogs</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="syntaxFilter.html">Syntax Reference - Filter Steps</a>
+</li>
+<li>
+<a href="syntaxPDF.html">Syntax Reference - PDF Steps</a>
+</li>
+<li>
+<a href="syntaxExcel.html">Syntax Reference - Excel Steps</a>
+</li>
+<li>
+<a href="syntaxEmail.html">Syntax Reference - Email Steps</a>
+</li>
+<li>
+<a href="stepIndex.html">Step Index</a>
+</li>
+<li>
+<a href="groovyTesting.html">Groovy Testing</a>
+</li>
+<li>
+<a href="integration.html">Integration with other Tools</a>
+</li>
+<li>
+<a href="annotatedRefs.html">Annotated References</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>
+<span class="category">Extension Step</span> expectDialog</h1>
+<h2>
+<a name="Description">Description</a>
+</h2>
+<p>Provides the ability to set expectations in relation to user responses to <a title="The scripting language supported by most browsers." href="annotatedRefs.html#javascript">JavaScript</a> Dialog boxes (Alert, Confirm and Prompt dialogs).</p>
+    
+<p>This step is used prior to clicking on a link or button
+        which invokes some
+        <a title="The scripting language supported by most browsers." href="annotatedRefs.html#javascript">JavaScript</a>
+        that uses dialogs (Alert, Confirm or Prompt dialogs).
+        If you don't use this step,
+        <a title="The Canoo WebTest distribution." href="annotatedRefs.html#CWT">Canoo WebTest</a>
+        simply clicks 'OK' on every dialog silently.
+        This is OK if you don't care about the Dialogs, but if you do care, you have no way of
+        telling if anything was actually clicked or what messages were displayed in the dialogs.
+    </p>
+
+    
+<p>You may be wondering why you need to set up expectations prior to clicking on a link
+        or button. This is mostly due to implementation issues with the way <a title="The Canoo WebTest distribution." href="annotatedRefs.html#CWT">Canoo WebTest</a>
+        works and the way it calls <a title="The Open Source java unit testing framework for testing web based applications." href="annotatedRefs.html#htmlunit">HtmlUnit</a> . It turns out to be easier at the moment to
+        create a list of dialog expectations. As interactions with your application cause
+        <a title="The scripting language supported by most browsers." href="annotatedRefs.html#javascript">JavaScript</a> to invoke dialogs, we simply look at the next dialog expectation
+        on the list, check that it meets expectations (or optionally save away the dialog
+        message text) and then remove it from the list. For tricky <a title="The scripting language supported by most browsers." href="annotatedRefs.html#javascript">JavaScript</a>
+        there may be multiple interactions from the user.
+        We simply list all the expected dialog interactions in the order we expect them to
+        occur by repeating this step as many times as required. (Alternatively, consider
+        using the newer <a href="expectDialogs.html" class="stepref">expectDialogs</a> step which allows more concise expression
+        of dialog sequences.)
+    </p>
+
+    
+<p>Often you will use the
+        <a href="verifyNoDialogs.html" class="stepref">verifyNoDialogs</a>
+        step in conjunction
+        with this step to ensure that your expectations for dialogs were met. The
+        <a href="verifyNoDialogs.html" class="stepref">verifyNoDialogs</a>
+        step is used after clicking on your link or button - it
+        checks that the list of expected dialogs is now empty, i.e. by the
+        time you have finished interacting with your application all the dialogs you
+        were expecting to need clicking were actually clicked.
+    </p>
+
+<h2>
+<a name="Parameters">Parameters</a>
+</h2>
+<dl class="attributes">
+<dt>description</dt>
+<dd class="required">Required? no</dd>
+<dd>The description of this test step.</dd>
+<dt>dialogType</dt>
+<dd class="required">Required? no, default is
+					alert</dd>
+<dd>One of "alert", "confirm" or "prompt".</dd>
+<dt>response</dt>
+<dd class="required">Required? no, default is
+					true</dd>
+<dd>simulate user response: ignored for alerts, converted to boolean for confirms - "OK" (true) or "Cancel" (false), contains typed text for prompts.</dd>
+<dt>saveProperty</dt>
+<dd class="required">Required? no</dd>
+<dd>The name of the property in which to store the dialog text for later checking with "verifyProperty".</dd>
+<dt>savePropertyType</dt>
+<dd class="required">Required? no, default is
+					the "defaultPropertyType" as specified in the "config" element is used.</dd>
+<dd>The type of the property in which to store the dialog text for later checking. Either "ant" or "dynamic".</dd>
+</dl>
+<h2>
+<a name="Details">Details</a>
+</h2>
+
+    
+<p>Normally only one <i>&lt;expectDialog&gt;</i> step will be required but if you have
+    complex <a title="The scripting language supported by most browsers." href="annotatedRefs.html#javascript">JavaScript</a>, it may require the user to respond to multiple dialogs associated
+    with one form or link click. If this is the case (as in the complex example below) you should
+    use multiple <i>&lt;expectDialog&gt;</i> steps in the same order that the user would respond
+    to them in or consider using the enhanced <a href="expectDialogs.html" class="stepref">expectDialogs</a> step. If you want to
+    check that no dialogs were in fact used, you <i>must</i> use the <a href="expectDialogs.html" class="stepref">expectDialogs</a> step.
+    Only one <a href="verifyNoDialogs.html" class="stepref">verifyNoDialogs</a> is ever required after the click event
+    to check that everything worked as planned.</p>
+
+    
+<p>If you were expecting the <a title="The scripting language supported by most browsers." href="annotatedRefs.html#javascript">JavaScript</a> to invoke 2 dialog but only one was in fact
+    invoked, the <a href="verifyNoDialogs.html" class="stepref">verifyNoDialogs</a> step will fail with an appropriate error message.
+    Similarly, if you expected only one dialog interaction but more occurred, the intervening click
+    request step will fail.
+    </p>
+
+    
+<p>
+<i>Simple Example</i>
+</p>
+
+    
+<p>Consider the following <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> form:</p>
+
+    
+<p>
+<img src="images/dialog_simpleapp.gif"></p>
+
+    
+<p>If the user leaves fields blank, we want to pop up an alert as follows:</p>
+
+    
+<p>
+<img src="images/dialog_simplealert.gif"></p>
+
+    
+<p>The <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> might look something like:</p>
+
+    
+<div class="code">
+<div class="caption">Simple dialog example HTML</div>
+<div class="content">
+     
+&lt;<span class="tag">HTML</span>&gt;<br>
+&lt;<span class="tag">HEAD</span>&gt;&lt;<span class="tag">TITLE</span>&gt;Simple&nbsp;Dialog&nbsp;Example&lt;/<span class="tag">TITLE</span>&gt;<br>
+&lt;<span class="tag">SCRIPT</span>&nbsp;LANGUAGE='JAVASCRIPT'&gt;<br>
+function&nbsp;isEmpty(thefield)&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;re&nbsp;=&nbsp;/^\s{1,}$/g;&nbsp;//match&nbsp;white&nbsp;space&nbsp;i.e.&nbsp;space,&nbsp;tab,&nbsp;form-feed,&nbsp;etc.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((thefield.value.length==0)&nbsp;||&nbsp;(thefield.value==null)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;((thefield.value.search(re))&nbsp;&gt;&nbsp;-1))&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;<br>
+}<br>
+function&nbsp;validate(theForm)&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;<span class="att">message</span>="<span class="val">Validation&nbsp;errors&nbsp;in&nbsp;form:\n</span>";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;errorFound&nbsp;=&nbsp;false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(isEmpty(theForm.name))&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message&nbsp;+=&nbsp;"Username&nbsp;field&nbsp;must&nbsp;not&nbsp;be&nbsp;blank!\n";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theForm.name.focus();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorFound&nbsp;=&nbsp;true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(isEmpty(theForm.password))&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message&nbsp;+=&nbsp;"Password&nbsp;field&nbsp;must&nbsp;not&nbsp;be&nbsp;blank!\n";<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!errorFound)&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;theForm.password.focus();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;errorFound&nbsp;=&nbsp;true;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(errorFound)&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(message);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;false;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;true;<br>
+}<br>
+&lt;/<span class="tag">SCRIPT</span>&gt;<br>
+&lt;/<span class="tag">HEAD</span>&gt;<br>
+&lt;<span class="tag">BODY</span>&gt;<br>
+&lt;<span class="tag">FORM</span>&nbsp;name='myForm'&nbsp;action=''&nbsp;method='post'&gt;<br>
+&nbsp;&nbsp;&nbsp;Username:&nbsp;&lt;<span class="tag">INPUT</span>&nbsp;type='text'&nbsp;NAME='name'&nbsp;value=''&nbsp;SIZE='30'&gt;&lt;<span class="tag">br</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;Password:&nbsp;&lt;<span class="tag">INPUT</span>&nbsp;type='password'&nbsp;NAME='password'&nbsp;value=''&nbsp;SIZE='30'&gt;&lt;<span class="tag">br</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;<span class="tag">INPUT</span>&nbsp;type='button'&nbsp;name='submit'&nbsp;value='&nbsp;Login&nbsp;'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onClick='return&nbsp;validate(myForm);'&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;<span class="tag">INPUT</span>&nbsp;type='reset'&nbsp;name='reset'&nbsp;value='&nbsp;Clear&nbsp;'&gt;<br>
+&lt;/<span class="tag">FORM</span>&gt;<br>
+&lt;/<span class="tag">BODY</span>&gt;<br>
+&lt;/<span class="tag">HTML</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>The test might look something like:</p>
+
+    
+<div class="code">
+<div class="caption">Simple dialog example Test</div>
+<div class="content">
+     
+&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">verifyDialogs:&nbsp;test&nbsp;simple&nbsp;dialog&nbsp;form&nbsp;validation&nbsp;example</span>"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">config</span>&nbsp;.../&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>&nbsp;<span class="att">description</span>="<span class="val">Load&nbsp;Page</span>"&nbsp;<span class="att">url</span>="<span class="val">/simpleDialogExample.html</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyTitle</span>&nbsp;<span class="att">description</span>="<span class="val">Confirm&nbsp;page</span>"&nbsp;<span class="att">text</span>="<span class="val">Simple&nbsp;Dialog&nbsp;Example</span>"/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;try&nbsp;with&nbsp;both&nbsp;fields&nbsp;blank&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">dialogType</span>="<span class="val">alert</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">simpleDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">clickButton</span>&nbsp;<span class="att">description</span>="<span class="val">Click&nbsp;Login&nbsp;button</span>"&nbsp;<span class="att">name</span>="<span class="val">submit</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">name</span>="<span class="val">simpleDialog</span>"&nbsp;<span class="att">regex</span>="<span class="val">true</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">text</span>="<span class="val">.*Username&nbsp;field&nbsp;must&nbsp;not&nbsp;be&nbsp;blank.*</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">name</span>="<span class="val">simpleDialog</span>"&nbsp;<span class="att">regex</span>="<span class="val">true</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">text</span>="<span class="val">.*Password&nbsp;field&nbsp;must&nbsp;not&nbsp;be&nbsp;blank.*</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyNoDialogs</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;all&nbsp;dialogs&nbsp;were&nbsp;used</span>"&nbsp;/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;try&nbsp;with&nbsp;just&nbsp;password&nbsp;field&nbsp;blank&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">dialogType</span>="<span class="val">alert</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">simpleDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">setInputField</span>&nbsp;<span class="att">name</span>="<span class="val">name</span>"&nbsp;<span class="att">value</span>="<span class="val">some&nbsp;username</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">clickButton</span>&nbsp;<span class="att">description</span>="<span class="val">Click&nbsp;Login&nbsp;button</span>"&nbsp;<span class="att">name</span>="<span class="val">submit</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">not</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">name</span>="<span class="val">simpleDialog</span>"&nbsp;<span class="att">regex</span>="<span class="val">true</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">text</span>="<span class="val">.*Username&nbsp;field&nbsp;must&nbsp;not&nbsp;be&nbsp;blank.*</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">not</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">name</span>="<span class="val">simpleDialog</span>"&nbsp;<span class="att">regex</span>="<span class="val">true</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">text</span>="<span class="val">.*Password&nbsp;field&nbsp;must&nbsp;not&nbsp;be&nbsp;blank.*</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyNoDialogs</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;all&nbsp;dialogs&nbsp;were&nbsp;used</span>"&nbsp;/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;try&nbsp;with&nbsp;just&nbsp;username&nbsp;field&nbsp;blank&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">dialogType</span>="<span class="val">alert</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">simpleDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">setInputField</span>&nbsp;<span class="att">name</span>="<span class="val">name</span>"&nbsp;<span class="att">value</span>="<span class="val"></span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">setInputField</span>&nbsp;<span class="att">name</span>="<span class="val">password</span>"&nbsp;<span class="att">value</span>="<span class="val">some&nbsp;password</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">clickButton</span>&nbsp;<span class="att">description</span>="<span class="val">Click&nbsp;Login&nbsp;button</span>"&nbsp;<span class="att">name</span>="<span class="val">submit</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">name</span>="<span class="val">simpleDialog</span>"&nbsp;<span class="att">regex</span>="<span class="val">true</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">text</span>="<span class="val">.*Username&nbsp;field&nbsp;must&nbsp;not&nbsp;be&nbsp;blank.*</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">not</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">name</span>="<span class="val">simpleDialog</span>"&nbsp;<span class="att">regex</span>="<span class="val">true</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">text</span>="<span class="val">.*Password&nbsp;field&nbsp;must&nbsp;not&nbsp;be&nbsp;blank.*</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">not</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyNoDialogs</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;all&nbsp;dialogs&nbsp;were&nbsp;used</span>"&nbsp;/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;try&nbsp;with&nbsp;valid&nbsp;fields&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">setInputField</span>&nbsp;<span class="att">name</span>="<span class="val">name</span>"&nbsp;<span class="att">value</span>="<span class="val">some&nbsp;username</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">clickButton</span>&nbsp;<span class="att">description</span>="<span class="val">Click&nbsp;Login&nbsp;button</span>"&nbsp;<span class="att">name</span>="<span class="val">submit</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;would&nbsp;normally&nbsp;check&nbsp;we&nbsp;are&nbsp;on&nbsp;a&nbsp;new&nbsp;page&nbsp;here&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="tag">steps</span>&gt;<br>
+&lt;/<span class="tag">webtest</span>&gt;<br>
+
+    
+</div>
+</div>
+
+
+<p>
+<i>Complex Example</i>
+</p>
+
+    
+<p>Consider an application which performs some disk administration (the samples below
+    don't actual do anything but show the kind of <a title="The scripting language supported by most browsers." href="annotatedRefs.html#javascript">JavaScript</a> messages that such
+    an application would need to use).</p>
+
+    
+<p>
+<img src="images/dialog_app.gif"></p>
+
+    
+<p>When the user clicks the clean button they receive a <a title="The scripting language supported by most browsers." href="annotatedRefs.html#javascript">JavaScript</a> confirm dialog:</p>
+
+    
+<p>
+<img src="images/dialog_confirm.gif"></p>
+
+    
+<p>If the user selects "Cancel" they receive the following alert:</p>
+
+    
+<p>
+<img src="images/dialog_alert1.gif"></p>
+
+    
+<p>If the user selects "OK" they receive the following prompt dialog as a precaution:</p>
+
+    
+<p>
+<img src="images/dialog_prompt.gif"></p>
+
+    
+<p>If the user then clicks "Cancel" or enters incorrect text, e.g. "No" in the prompt, they receive the following alert dialog:</p>
+
+    
+<p>
+<img src="images/dialog_alert2.gif"></p>
+
+    
+<p>If the user enters the correct "YES" text and clicks "OK", they receive the following alert dialog (<i>NOTE</i>: nothing happens despite the message - this is just a hypothetical demo):</p>
+
+    
+<p>
+<img src="images/dialog_alert3.gif"></p>
+
+    
+<p>Here is the relevant part of the build.xml:</p>
+
+    
+<div class="code">
+<div class="caption">Complex example test</div>
+<div class="content">
+     
+&lt;<span class="tag">webtest</span>&nbsp;<span class="att">name</span>="<span class="val">testHardDiskErase</span>"&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">config</span>&nbsp;.../&gt;<br>
+&nbsp;&nbsp;&lt;<span class="tag">steps</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">invoke</span>&nbsp;<span class="att">description</span>="<span class="val">Load&nbsp;Initial&nbsp;Page</span>"&nbsp;<span class="att">url</span>="<span class="val">/diskadmin.jsp</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifytitle</span>&nbsp;<span class="att">description</span>="<span class="val">Should&nbsp;be&nbsp;disk&nbsp;admin&nbsp;page</span>"&nbsp;<span class="att">text</span>="<span class="val">Disk&nbsp;Admin&nbsp;Page</span>"/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;check&nbsp;for&nbsp;initial&nbsp;cancel&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">description</span>="<span class="val">Save&nbsp;first&nbsp;JavaScript&nbsp;Response</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">dialogType</span>="<span class="val">confirm</span>"&nbsp;<span class="att">response</span>="<span class="val">false</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">initialDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">description</span>="<span class="val">Save&nbsp;second&nbsp;JavaScript&nbsp;Response</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">dialogType</span>="<span class="val">alert</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">resultDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">clickbutton</span>&nbsp;<span class="att">description</span>="<span class="val">Click&nbsp;Clean&nbsp;button</span>"&nbsp;<span class="att">name</span>="<span class="val">CleanButton</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;text&nbsp;from&nbsp;first&nbsp;JavaScript&nbsp;Dialog</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">property</span>="<span class="val">initialDialog</span>"&nbsp;<span class="att">text</span>="<span class="val">Are&nbsp;you&nbsp;sure?</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;text&nbsp;from&nbsp;second&nbsp;JavaScript&nbsp;Dialog</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">property</span>="<span class="val">resultDialog</span>"&nbsp;<span class="att">text</span>="<span class="val">Operation&nbsp;cancelled!</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyNoDialogs</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;all&nbsp;dialogs&nbsp;were&nbsp;used</span>"&nbsp;/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;check&nbsp;for&nbsp;initial&nbsp;OK&nbsp;but&nbsp;then&nbsp;cancel&nbsp;instead&nbsp;of&nbsp;confirm&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">description</span>="<span class="val">Save&nbsp;first&nbsp;JavaScript&nbsp;Response</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">dialogType</span>="<span class="val">confirm</span>"&nbsp;<span class="att">response</span>="<span class="val">true</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">initialDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">description</span>="<span class="val">Save&nbsp;second&nbsp;JavaScript&nbsp;Response</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">dialogType</span>="<span class="val">prompt</span>"&nbsp;<span class="att">response</span>="<span class="val">false</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">confirmDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">description</span>="<span class="val">Save&nbsp;third&nbsp;JavaScript&nbsp;Response</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">dialogType</span>="<span class="val">alert</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">resultDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">clickbutton</span>&nbsp;<span class="att">description</span>="<span class="val">Click&nbsp;Clean&nbsp;button</span>"&nbsp;<span class="att">name</span>="<span class="val">CleanButton</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;text&nbsp;from&nbsp;first&nbsp;JavaScript&nbsp;Dialog</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">property</span>="<span class="val">initialDialog</span>"&nbsp;<span class="att">text</span>="<span class="val">Are&nbsp;you&nbsp;sure?</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;text&nbsp;from&nbsp;second&nbsp;JavaScript&nbsp;Dialog</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">property</span>="<span class="val">confirmDialog</span>"&nbsp;<span class="att">regex</span>="<span class="val">true</span>"&nbsp;<span class="att">text</span>="<span class="val">.*very&nbsp;sure.*YES.*</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;text&nbsp;from&nbsp;third&nbsp;JavaScript&nbsp;Dialog</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">property</span>="<span class="val">resultDialog</span>"&nbsp;<span class="att">text</span>="<span class="val">Operation&nbsp;aborted!</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyNoDialogs</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;all&nbsp;dialogs&nbsp;were&nbsp;used</span>"&nbsp;/&gt;<br>
+
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;--&nbsp;check&nbsp;for&nbsp;initial&nbsp;OK&nbsp;followed&nbsp;by&nbsp;confirm&nbsp;--&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">description</span>="<span class="val">Save&nbsp;first&nbsp;JavaScript&nbsp;Response</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">dialogType</span>="<span class="val">confirm</span>"&nbsp;<span class="att">response</span>="<span class="val">true</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">initialDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">description</span>="<span class="val">Save&nbsp;second&nbsp;JavaScript&nbsp;Response</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">dialogType</span>="<span class="val">prompt</span>"&nbsp;<span class="att">response</span>="<span class="val">YES</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">confirmDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">expectDialog</span>&nbsp;<span class="att">description</span>="<span class="val">Save&nbsp;third&nbsp;JavaScript&nbsp;Response</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">dialogType</span>="<span class="val">alert</span>"&nbsp;<span class="att">saveProperty</span>="<span class="val">resultDialog</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">clickbutton</span>&nbsp;<span class="att">description</span>="<span class="val">Click&nbsp;Clean&nbsp;button</span>"&nbsp;<span class="att">name</span>="<span class="val">CleanButton</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;text&nbsp;from&nbsp;first&nbsp;JavaScript&nbsp;Dialog</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">property</span>="<span class="val">initialDialog</span>"&nbsp;<span class="att">text</span>="<span class="val">Are&nbsp;you&nbsp;sure?</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;text&nbsp;from&nbsp;second&nbsp;JavaScript&nbsp;Dialog</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">property</span>="<span class="val">confirmDialog</span>"&nbsp;<span class="att">regex</span>="<span class="val">true</span>"&nbsp;<span class="att">text</span>="<span class="val">.*very&nbsp;sure.*YES.*</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyProperty</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;text&nbsp;from&nbsp;third&nbsp;JavaScript&nbsp;Dialog</span>"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="att">property</span>="<span class="val">resultDialog</span>"&nbsp;<span class="att">text</span>="<span class="val">Hard&nbsp;disk&nbsp;erased!</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="tag">verifyNoDialogs</span>&nbsp;<span class="att">description</span>="<span class="val">Check&nbsp;all&nbsp;dialogs&nbsp;were&nbsp;used</span>"&nbsp;/&gt;<br>
+&nbsp;&nbsp;&lt;/<span class="tag">steps</span>&gt;<br>
+&lt;/<span class="tag">webtest</span>&gt;<br>
+
+    
+</div>
+</div>
+
+    
+<p>This assumes you have some <a title="Hypertext Markup Language." href="annotatedRefs.html#HTML">HTML</a> containing a form and some <a title="The scripting language supported by most browsers." href="annotatedRefs.html#javascript">JavaScript</a> something like the following:</p>
+
+    
+<div class="code">
+<div class="caption">Complex example HTML/JavaScript</div>
+<div class="content">
+     
+&lt;<span class="tag">html</span>&gt;<br>
+&lt;<span class="tag">title</span>&gt;Disk&nbsp;Admin&nbsp;Page&lt;/<span class="tag">title</span>&gt;<br>
+&lt;<span class="tag">body</span>&gt;<br>
+&lt;<span class="tag">script</span>&gt;<br>
+function&nbsp;doubleCheck()&nbsp;{<br>
+var&nbsp;x=confirm("Are&nbsp;you&nbsp;sure?")<br>
+if&nbsp;(x)&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;y=prompt("Are&nbsp;you&nbsp;very&nbsp;sure?&nbsp;Type&nbsp;'YES'&nbsp;to&nbsp;confirm")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(y=="YES")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Hard&nbsp;disk&nbsp;erased!")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert("Operation&nbsp;aborted!")<br>
+}&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alert("Operation&nbsp;cancelled!")<br>
+}<br>
+&lt;/<span class="tag">script</span>&gt;<br>
+&lt;<span class="tag">h3</span>&gt;Clean&nbsp;Disk?&lt;/<span class="tag">h3</span>&gt;<br>
+&lt;<span class="tag">form</span>&nbsp;<span class="att">method</span>="<span class="val">POST</span>"&gt;<br>
+&lt;<span class="tag">p</span>&gt;&lt;<span class="tag">input</span>&nbsp;<span class="att">type</span>="<span class="val">button</span>"&nbsp;<span class="att">name</span>="<span class="val">CleanButton</span>"&nbsp;<span class="att">value</span>="<span class="val">OK</span>"&nbsp;<span class="att">onclick</span>="<span class="val">doubleCheck()</span>"&gt;&lt;/<span class="tag">p</span>&gt;<br>
+&lt;/<span class="tag">form</span>&gt;<br>
+&lt;/<span class="tag">body</span>&gt;<br>
+&lt;/<span class="tag">html</span>&gt;<br>
+
+    
+</div>
+</div>
+
+
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>

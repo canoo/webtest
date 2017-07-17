@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="favicon.ico" type="image/x-icon" rel="shortcut icon">
+<link href="favicon.ico" type="image/x-icon" rel="icon">
+<link title="Home" href="WebTestHome.html" rel="chapter">
+<link title="Home" href="WebTestHome.html" rel="section">
+<link title="Key Characteristics" href="keyCharacteristics.html" rel="section">
+<link title="White Paper" href="whitepaper.html" rel="section">
+<link title="Downloads" href="Downloads.html" rel="section">
+<link title="Install" href="install.html" rel="section">
+<link title="Prerequisites" href="#Prerequisites" rel="subsection">
+<link title="Download" href="#Download" rel="subsection">
+<link title="Configure system path" href="#Configure system path" rel="subsection">
+<link title="Create a new WebTest project" href="#Create a new WebTest project" rel="subsection">
+<link title="Run the demo tests" href="#Run the demo tests" rel="subsection">
+<link title="Troubleshooting" href="troubleshooting.html" rel="section">
+<link title="Acknowledgments" href="acknowledgments.html" rel="section">
+<link title="Issue tracker" href="https://github.com/DaveParillo/webtest/issues" rel="section">
+<link title="Source code" href="https://github.com/DaveParillo/webtest" rel="section">
+<link title="License" href="license.html" rel="section">
+<link title="Manual" href="manualOverview.html" rel="chapter">
+<link title="Develop" href="developOverview.html" rel="chapter">
+<link title="Build Info" href="buildOverview.html" rel="chapter">
+<link href="website_base.css" type="text/css" rel="stylesheet">
+<link href="website_part.css" type="text/css" rel="stylesheet">
+<meta name="description" content="">
+<meta name="keywords" content="Canoo,
+						WebTest, web application testing, automatic, XP, ANT, httpunit, htmlunit, groovy,
+						acceptance testing, extreme programming, agile development,
+						Prerequisites,Download,Configure system path,Create a new WebTest project,Run the demo tests,">
+<title>Installing WebTest</title>
+</head>
+<body>
+<div id="page">
+<img alt="Canoo Webtest" height="89" width="949" usemap="#headerLinks" src="images/header.gif" class="mosaic"><map name="headerLinks">
+<area alt="WebTest" href="http://webtest.canoo.com/" coords="35px,35px,200px,70px" shape="rect">
+<area alt="Canoo" href="http://www.canoo.com/" coords="770px,35px,856px,70px" shape="rect">
+</map>
+<div id="navigation-top">
+<ul>
+<li>
+<a href="WebTestHome.html" class="selected">Home</a>
+</li>
+<li>
+<a href="manualOverview.html">Manual</a>
+</li>
+<li>
+<a href="developOverview.html">Develop</a>
+</li>
+<li>
+<a href="buildOverview.html">Build Info</a>
+</li>
+</ul>
+</div>
+<table style="border-collapse: collapse;" cellpadding="0" cellspacing="0" border="0" rules="none" frame="void" id="main">
+<col width="190">
+<col width="569">
+<col width="189">
+<tr valign="top">
+<td class="main-left" valign="top">
+<div id="search">
+<form id="searchForm" action="http://www.google.de/search">
+<input value="webtest.canoo.com" name="sitesearch" type="hidden"><input alt="Search" title="Search" value="Search" name="go" id="searchButton" type="submit"><input title="Search" onfocus="this.select();" name="q" id="searchText" type="text">
+</form>
+</div>
+<div id="navigation-left">
+<ul>
+<li>
+<a href="WebTestHome.html">Home</a>
+</li>
+<li>
+<a href="keyCharacteristics.html">Key Characteristics</a>
+</li>
+<li>
+<a href="whitepaper.html">White Paper</a>
+</li>
+<li>
+<a href="Downloads.html">Downloads</a>
+</li>
+<li>
+<a href="install.html" class="selected">Install</a>
+<ul>
+<li>
+<a href="#Prerequisites">&gt; Prerequisites</a>
+</li>
+<li>
+<a href="#Download">&gt; Download</a>
+</li>
+<li>
+<a href="#Configure system path">&gt; Configure system path</a>
+</li>
+<li>
+<a href="#Create a new WebTest project">&gt; Create a new WebTest project</a>
+</li>
+<li>
+<a href="#Run the demo tests">&gt; Run the demo tests</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="troubleshooting.html">Troubleshooting</a>
+</li>
+<li>
+<a href="acknowledgments.html">Acknowledgments</a>
+</li>
+<li>
+<a href="https://github.com/DaveParillo/webtest/issues">Issue tracker</a>
+</li>
+<li>
+<a href="https://github.com/DaveParillo/webtest">Source code</a>
+</li>
+<li>
+<a href="license.html">License</a>
+</li>
+</ul>
+<div style="margin-top: 20px">
+<a href="http://webtestrecorder.canoo.com/" style="border-bottom: none; padding-left: 40px"><img style="position:absolute; left: 3px" src="images/WebTestRecorderFirefox.gif" alt="WebTestRecorder">
+WebTestRecorder<br> the Firefox Extension for WebTest</a>
+</div>
+</div>
+<div class="filler"></div>
+</td><td rowspan="2" valign="top">
+<div id="main-content">
+<h1>Installing WebTest</h1>
+
+	
+<h2>
+<a name="Prerequisites">Prerequisites</a>
+</h2>
+		
+<dl>
+			
+				
+<dt>A platform that is able to run Java.</dt>
+			
+			
+				
+<dt>An installed JDK version 6 or higher.</dt>
+			
+			
+				
+<dt>Ant version 1.8.4 or newer (optional)</dt>
+				
+<dd>WebTest's distribution contains the necessary part from ant 1.8.4 ready to run</dd>
+			
+			
+				
+<dt>A tool to unzip.</dt>
+			
+		
+</dl>
+	
+<h2>
+<a name="Download">Download</a>
+</h2>
+		
+<p>Download the latest build from: <a href="Downloads.html">Downloads</a>.</p>
+		
+<p>Extract it to a directory of your choice. We refer to that directory as your <i>WebTest home</i>.
+		</p>
+	
+<h2>
+<a name="Configure system path">Configure system path</a>
+</h2>
+		
+<p>The sub-directory <span class="example">lib/</span> of your <i>WebTest home</i> contains all the java libraries that make up WebTest's runtime.
+			The sub-directory <span class="example">bin/</span> of your <i>WebTest home</i> contains shell scripts for Unix and Windows that start WebTest from
+			<span class="example">lib/</span>.
+		</p>
+		
+<p>Set your path to run WebTest with one of the provided shell scripts:</p>
+		
+<dl>
+			
+				
+<dt>On Windows</dt>
+				
+<dd>Add the <span class="example">bin/</span> directory of your <i>WebTest home</i>
+					to your path, by opening up the System Properties (WinKey + Pause), selecting the
+					<i>Advanced</i>
+					tab, and the
+					<i>Environment Variables</i>
+					button, then editing the
+					<span class="example">PATH</span>
+					variable in the <i>user variables</i>.<br>
+					For example:<br>
+					
+<span class="example">"C:\Program Files\Webtest\bin";%PATH%</span>
+				
+</dd>
+			
+			
+				
+<dt>Unix-based Operating Systems</dt>
+				
+<dd>Add the <span class="example">bin/</span> directory of your <i>WebTest home</i>
+					to your <span class="example">PATH</span>.<br>
+					For example:
+					<br>
+					
+<span class="example">setenv PATH ${PATH}:/usr/local/webtest/bin</span>
+					in
+					<span class="example">.login</span>
+					(tcsh)<br>
+					or<br>
+					
+<span class="example">export PATH=${PATH}:/usr/local/webtest/bin</span>
+					in
+					<span class="example">.bashrc</span>
+					(bash).
+				</dd>
+			
+		
+</dl>
+	
+<h2>
+<a name="Create a new WebTest project">Create a new WebTest project</a>
+</h2>
+		
+<p>WebTest contains a utility script able to create a new project with some examples ready to run.</p>
+		
+<p>Open a new shell and type:</p>
+		
+<div class="code">
+<div class="content">
+			C:\&gt; webtest -f path\to\webtest\home\webtest.xml wt.createProject
+		</div>
+</div>
+
+<p>(For shell users, the command name is <i>webtest.sh</i> instead of <i>webtest</i>)</p>
+
+		
+<p>You will be asked for the name of the new project to create. If you just hit [enter] the 
+		default name <span class="example">myWebTestProject</span> will be used;</p>
+		
+<div class="code">
+<div class="content">
+		C:\&gt; webtest -f WebTest\webtest.xml wt.createProject<br>
+Buildfile: WebTest\webtest.xml<br>
+
+<br>
+wt.init:<br>
+
+<br>
+wt.createProject:<br>
+    [input] Enter your WebTest project name: [myWebTestProject]<br>
+
+<br>
+     [echo]<br>
+     [echo] Your WebTest project &gt;myWebTestProject&lt; has been successfully created with some demo<br>
+     [echo] tests to get started.<br>
+     [echo] You can now just go to &gt;c:\myWebTestProject&lt; and run ant.<br>
+     [echo]<br>
+
+<br>
+BUILD SUCCESSFUL<br>
+Total time: 7 seconds<br>
+
+</div>
+</div>
+
+	
+<h2>
+<a name="Run the demo tests">Run the demo tests</a>
+</h2>
+
+		
+<p>Your newly created project contains some web tests ready to run that you can use as templates. 
+		You can run them just by moving to the project directory and calling:</p>
+		
+<div class="code">
+<div class="content">
+			C:\myWebTestProject&gt; webtest
+		</div>
+</div>
+		
+<p>(if you're behind a proxy, edit the <span class="example">build.xml</span> file to configure the proxy connection)</p>
+
+		
+<p>
+		You should see some activity in the shell window and after a few seconds something like:
+		</p>
+
+<div class="code">
+<div class="content">
+....<br>
+wt.openResultFile:<br>
+     [echo] Opening result file C:\myWebTestProject\results\webtestResults.html with cmd<br>
+
+<br>
+wt.full:<br>
+
+<br>
+BUILD SUCCESSFUL<br>
+Total time: 16 seconds<br>
+
+</div>
+</div>
+		
+<p>and an html report file like this one should be displayed in your favorite browser:
+		<img src="images/reportDemoTests.png">
+		</p>
+	
+</div>
+</td><td id="main-right" valign="top" rowspan="2">
+<h1>
+<img width="97" height="18" alt="news" src="images/news.gif"></h1>
+	
+<p>Latest build:
+		development
+		<br>
+<span class="posted">Posted: 
+			17-Jul-2017 16:08
+		</span>
+	
+</p>
+	
+<p>
+		Extend WebTest with Groovy!
+		<br>
+		
+<a class="ext" title="external link: opens in new window" target="_blank" href="https://www.manning.com/books/groovy-in-action-second-edition">
+			<img src="images/gina.jpg" alt="Groovy in Action">
+		</a>
+		
+<br>
+    Groovy in Action
+		<br>
+<span class="posted">Posted: 29 January 2007</span>
+	
+</p>
+
+<div id="blogs">
+<h3>Committers' blogs</h3>
+<ul>
+<li>
+<a href="http://www.jroller.com/page/dna">Denis N. Antonioli's blog</a>
+</li>
+<li>
+<a href="http://www.amazon.com/gp/blog/A368TUB0Q1IE3F/103-4309468-8306223">Dierk K&ouml;nig's blog
+						</a>
+</li>
+<li>
+<a href="http://mguillem.wordpress.com/">Marc Guillemot's blog</a>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td class="main-left" valign="bottom">
+<div id="copyright">Copyright &copy; 2002-2008<br>Canoo Engineering AG<br>Kirschgartenstrasse 7<br>CH - 4051 Basel<br>Phone: +41 61 228 94 44<br>All Rights Reserved</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="filler"></div>
+</body>
+</html>
